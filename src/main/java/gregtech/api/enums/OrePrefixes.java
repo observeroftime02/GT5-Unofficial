@@ -331,7 +331,7 @@ public enum OrePrefixes {
         ingotHot.mHeatDamage = 3.0F;
         cellPlasma.mHeatDamage = 6.0F;
 
-        block.ignoreMaterials(Materials.Ice, Materials.Snow, Materials.Concrete, Materials.Glass, Materials.Glowstone, Materials.DarkIron, Materials.Marble, Materials.Quartz, Materials.CertusQuartz, Materials.Limestone);
+        block.ignoreMaterials(Materials.Ice, Materials.Snow, Materials.Concrete, Materials.Glass, Materials.Glowstone, Materials.Marble, Materials.Quartz, Materials.CertusQuartz);
         ingot.ignoreMaterials(Materials.Brick, Materials.NetherBrick);
 
         dust.addFamiliarPrefix(dustTiny);
@@ -390,7 +390,6 @@ public enum OrePrefixes {
         cell.mNotGeneratedItems.add(Materials.Lava);
         cell.mNotGeneratedItems.add(Materials.ConstructionFoam);
         cell.mNotGeneratedItems.add(Materials.UUMatter);
-        cell.mNotGeneratedItems.add(Materials.CoalFuel);
         bucket.mNotGeneratedItems.add(Materials.Empty);
         bucket.mNotGeneratedItems.add(Materials.Lava);
         bucket.mNotGeneratedItems.add(Materials.Milk);
@@ -413,7 +412,6 @@ public enum OrePrefixes {
         dustImpure.mGeneratedItems.add(Materials.GraniteBlack);
         dustImpure.mGeneratedItems.add(Materials.Quartzite);
         dustImpure.mGeneratedItems.add(Materials.Flint);
-        dustImpure.mGeneratedItems.add(Materials.Redrock);
         dustImpure.mGeneratedItems.add(Materials.Basalt);
         dustImpure.mGeneratedItems.add(Materials.Marble);
         dustImpure.mGeneratedItems.add(Materials.Netherrack);
@@ -425,7 +423,6 @@ public enum OrePrefixes {
         plate.mGeneratedItems.add(Materials.GraniteRed);
         plate.mGeneratedItems.add(Materials.GraniteBlack);
         plate.mGeneratedItems.add(Materials.Glowstone);
-        plate.mGeneratedItems.add(Materials.Nikolite);
         plate.mGeneratedItems.add(Materials.Obsidian);
 
         plate.mGeneratedItems.add(Materials.Paper);
@@ -665,7 +662,7 @@ public enum OrePrefixes {
                         aMaterial == Materials.Europium || aMaterial == Materials.Americium || aMaterial == Materials.RedAlloy || aMaterial == Materials.SolderingAlloy || aMaterial == Materials.BatteryAlloy ||
                         aMaterial == Materials.AnnealedCopper || aMaterial == Materials.Firestone || aMaterial == Materials.VanadiumGallium || aMaterial == Materials.YttriumBariumCuprate ||
                         aMaterial == Materials.NiobiumTitanium || aMaterial == Materials.CertusQuartz || aMaterial == Materials.NetherQuartz || aMaterial == Materials.Lazurite || aMaterial == Materials.Lapis ||
-                        aMaterial == Materials.Paper || aMaterial == Materials.Jasper || aMaterial == Materials.Dilithium || aMaterial == Materials.Forcicium || aMaterial == Materials.Forcillium ||
+                        aMaterial == Materials.Paper || aMaterial == Materials.Jasper || aMaterial == Materials.Dilithium || /*aMaterial == Materials.Forcicium || aMaterial == Materials.Forcillium ||*/
                         aMaterial == Materials.EnderPearl || aMaterial == Materials.EnderEye || aMaterial == Materials.Glass || aMaterial == Materials.Copper || aMaterial == Materials.Tin || aMaterial == Materials.Redstone ||
                         aMaterial == Materials.Sodalite || aMaterial == Materials.Gallium || aMaterial == Materials.GalliumArsenide || aMaterial == Materials.IndiumGalliumPhosphide))
                     plate.mDisabledItems.add(aMaterial);

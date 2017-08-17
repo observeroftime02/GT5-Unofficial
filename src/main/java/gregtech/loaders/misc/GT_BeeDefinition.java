@@ -519,7 +519,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
         	IBeeMutationCustom tMutation = registerMutation(TITANIUM.species, RUBY.species, 5);
-        	tMutation.requireResource(GregTech_API.sBlockMetal2, 3);
+        	tMutation.requireResource(GregTech_API.sBlockMetal2, 0);
         }
     },
     MANGANESE(GT_BranchDefinition.RAREMETAL, "Manganese", true, 0xD5D5D5, 0xAAAAAA) {
@@ -539,7 +539,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
         	IBeeMutationCustom tMutation = registerMutation(TITANIUM.species, ALUMINIUM.species, 5);
-        	tMutation.requireResource(GregTech_API.sBlockMetal4, 6);
+        	tMutation.requireResource(GregTech_API.sBlockMetal3, 6);
         }
     },
     TUNGSTEN(GT_BranchDefinition.RAREMETAL, "Tungsten", true, 0x5C5C8A, 0x7D7DA1) {
@@ -559,7 +559,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
         	IBeeMutationCustom tMutation = registerMutation(getSpecies("Heroic"), MANGANESE.species, 5);
-        	tMutation.requireResource(GregTech_API.sBlockMetal7, 11);
+        	tMutation.requireResource(GregTech_API.sBlockMetal5, 13);
         }
     },
     PLATINUM(GT_BranchDefinition.RAREMETAL, "Platinum", true, 0xE6E6E6, 0xFFFFCC) {
@@ -579,7 +579,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
         	IBeeMutationCustom tMutation = registerMutation(DIAMOND.species, CHROME.species, 5);
-        	tMutation.requireResource(GregTech_API.sBlockMetal5, 12);
+        	tMutation.requireResource(GregTech_API.sBlockMetal4, 10);
         }
     },
     IRIDIUM(GT_BranchDefinition.RAREMETAL, "Iridium", true, 0xDADADA, 0xD1D1E0) {
@@ -600,7 +600,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
         	IBeeMutationCustom tMutation = registerMutation(TUNGSTEN.species, PLATINUM.species, 5);
-        	tMutation.requireResource(GregTech_API.sBlockMetal3, 12);
+        	tMutation.requireResource(GregTech_API.sBlockMetal2, 15);
         }
     },
     URANIUM(GT_BranchDefinition.RADIOACTIVE, "Uranium", true, 0x19AF19, 0x169E16) {
@@ -620,7 +620,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
         	IBeeMutationCustom tMutation = registerMutation(getSpecies("Avenging"), PLATINUM.species, 5);
-        	tMutation.requireResource(GregTech_API.sBlockMetal7, 14);
+        	tMutation.requireResource(GregTech_API.sBlockMetal6, 0);
         }
     },
     PLUTONIUM(GT_BranchDefinition.RADIOACTIVE, "Plutonium", true, 0x335C33, 0x6B8F00) {
@@ -641,7 +641,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
         	IBeeMutationCustom tMutation = registerMutation(URANIUM.species, EMERALD.species, 5);
-        	tMutation.requireResource(GregTech_API.sBlockMetal5, 13);
+        	tMutation.requireResource(GregTech_API.sBlockMetal4, 11);
         }
     },
     NAQUADAH(GT_BranchDefinition.RADIOACTIVE, "Naquadah", true, 0x003300, 0x002400) {
@@ -662,7 +662,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
         	IBeeMutationCustom tMutation = registerMutation(PLUTONIUM.species, IRIDIUM.species, 3);
-        	tMutation.requireResource(GregTech_API.sBlockMetal4, 12);
+        	tMutation.requireResource(GregTech_API.sBlockMetal3, 11);
         }
     };
 

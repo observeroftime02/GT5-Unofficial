@@ -148,7 +148,7 @@ public class ProcessingDust implements gregtech.api.interfaces.IOreRecipeRegistr
                         break;
                     case "Coal":
                         if (GT_Mod.gregtechproxy.mTEMachineRecipes)
-                            GT_ModHandler.addLiquidTransposerFillRecipe(GT_Utility.copyAmount(1L, new Object[]{aStack}), Materials.Water.getFluid(125L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.HydratedCoal, 1L), 125);
+                            //GT_ModHandler.addLiquidTransposerFillRecipe(GT_Utility.copyAmount(1L, new Object[]{aStack}), Materials.Water.getFluid(125L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.HydratedCoal, 1L), 125);
                         break;
                     case "HydratedCoal":
                         if (GT_Mod.gregtechproxy.mTEMachineRecipes)
