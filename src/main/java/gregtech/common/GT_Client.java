@@ -18,7 +18,6 @@ import gregtech.api.interfaces.tileentity.ITurnable;
 import gregtech.api.metatileentity.BaseMetaPipeEntity;
 import gregtech.api.util.GT_Log;
 import gregtech.api.util.GT_PlayedSound;
-import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.entities.GT_Entity_Arrow;
 import gregtech.common.entities.GT_Entity_Arrow_Potion;
@@ -29,7 +28,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatFileWriter;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
@@ -298,7 +296,7 @@ public class GT_Client extends GT_Proxy
     @SubscribeEvent
     public void onPlayerTickEventClient(TickEvent.PlayerTickEvent aEvent) {
         if ((aEvent.side.isClient()) && (aEvent.phase == TickEvent.Phase.END) && (!aEvent.player.isDead)) {
-            afterSomeTime++;
+            /*afterSomeTime++;
             if(afterSomeTime>=100L){
                 afterSomeTime=0;
                 StatFileWriter sfw= Minecraft.getMinecraft().thePlayer.getStatFileWriter();
@@ -308,20 +306,20 @@ public class GT_Client extends GT_Proxy
                         recipe.mHidden = false;
                     }
                 }catch (Exception e){}
-            }
-            ArrayList<GT_PlayedSound> tList = new ArrayList();
+            }*/
+            ArrayList tList = new ArrayList();
             for (Map.Entry<GT_PlayedSound, Integer> tEntry : GT_Utility.sPlayedSoundMap.entrySet()) {
-                if (tEntry.getValue().intValue() < 0) {//Integer -> Integer -> int? >_<, fix
+                if (tEntry.getValue() < 0) {//Integer -> Integer -> int? >_<, fix
                     tList.add(tEntry.getKey());
                 } else {
-                    tEntry.setValue(Integer.valueOf(tEntry.getValue().intValue() - 1));
+                    tEntry.setValue(tEntry.getValue() - 1);
                 }
             }
             GT_PlayedSound tKey;
             for (Iterator i$ = tList.iterator(); i$.hasNext(); GT_Utility.sPlayedSoundMap.remove(tKey)) {
                 tKey = (GT_PlayedSound) i$.next();
             }
-            if(GregTech_API.mServerStarted == false)GregTech_API.mServerStarted = true;
+            if(!GregTech_API.mServerStarted)GregTech_API.mServerStarted = true;
             /*if ((this.isFirstClientPlayerTick) && (aEvent.player == GT_Values.GT.getThePlayer())) {
                 this.isFirstClientPlayerTick = false;
                 GT_FluidStack.fixAllThoseFuckingFluidIDs();
