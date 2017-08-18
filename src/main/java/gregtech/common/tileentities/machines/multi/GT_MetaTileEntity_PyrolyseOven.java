@@ -29,7 +29,7 @@ public class GT_MetaTileEntity_PyrolyseOven extends GT_MetaTileEntity_MultiBlock
 
     public String[] getDescription() {
         return new String[]{
-                "Controller Block for the Pyrolyse Oven",
+                "Controller Block for the Pyrolysis Oven",
                 "Industrial Charcoal producer and Oil from Plants",
                 "Size(WxHxD): 5x4x5, Controller (Bottom center)",
                 "3x1x3 of Kanthal Coil Blocks (At the center of the bottom layer)",
