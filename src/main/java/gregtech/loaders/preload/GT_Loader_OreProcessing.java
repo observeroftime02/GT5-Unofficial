@@ -8,12 +8,10 @@ public class GT_Loader_OreProcessing
     public void run() {
         GT_Log.out.println("GT_Mod: Register Ore processing.");
         new ProcessingAll();
-        new ProcessingArrows();
         new ProcessingBeans();
         new ProcessingBlock();
         new ProcessingBolt();
         new ProcessingCell();
-        new ProcessingCrate();
         new ProcessingCircuit();
         new ProcessingCompressed();
         new ProcessingCrafting();

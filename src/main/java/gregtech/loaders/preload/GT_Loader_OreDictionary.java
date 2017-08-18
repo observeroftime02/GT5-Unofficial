@@ -119,7 +119,7 @@ public class GT_Loader_OreDictionary
         GT_OreDictUnificator.registerOre(OreDictNames.craftingQuartz, GT_ModHandler.getModItem("appliedenergistics2", "item.ItemMultiMaterial", 1L, 11));
         GT_OreDictUnificator.registerOre("cropLemon", ItemList.FR_Lemon.get(1L, new Object[0]));
         GT_OreDictUnificator.registerOre("cropCoffee", ItemList.IC2_CoffeeBeans.get(1L, new Object[0]));
-        GT_OreDictUnificator.registerOre("cropPotato", ItemList.Food_Raw_Potato.get(1L, new Object[0]));
+        GT_OreDictUnificator.registerOre("cropPotato", new ItemStack(Items.baked_potato));
         GT_OreDictUnificator.registerOre("calclavia:BATTERY", GT_ModHandler.getIC2Item("reBattery", 1L));
         GT_OreDictUnificator.registerOre("calclavia:BATTERY", GT_ModHandler.getIC2Item("chargedReBattery", 1L, 32767));
         GT_OreDictUnificator.registerOre(OrePrefixes.battery, Materials.Basic, GT_ModHandler.getIC2Item("reBattery", 1L));
