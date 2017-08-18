@@ -59,9 +59,6 @@ public class ProcessingBlock implements gregtech.api.interfaces.IOreRecipeRegist
         if (!OrePrefixes.block.isIgnored(aMaterial))
             GT_ModHandler.addCompressionRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, aMaterial, 9L), GT_OreDictUnificator.get(OrePrefixes.block, aMaterial, 1L));
         switch (aMaterial.mName) {
-            case "Mercury":
-                System.err.println("'blockQuickSilver'?, In which Ice Desert can you actually place this as a solid Block?");
-                break;
             case "Iron":
             case "WroughtIron":
                 GT_Values.RA.addExtruderRecipe(GT_Utility.copyAmount(1L, new Object[]{aStack}), ItemList.Shape_Extruder_Rod.get(0L, new Object[0]), ItemList.IC2_ShaftIron.get(1L, new Object[0]), 640, 120);

@@ -7,8 +7,7 @@ public class GT_Loader_OreProcessing
         implements Runnable {
     public void run() {
         GT_Log.out.println("GT_Mod: Register Ore processing.");
-        new ProcessingAll();
-        new ProcessingBeans();
+        //new ProcessingAll();
         new ProcessingBlock();
         new ProcessingBolt();
         new ProcessingCell();
@@ -18,12 +17,10 @@ public class GT_Loader_OreProcessing
         new ProcessingCrop();
         new ProcessingCrushedOre();
         new ProcessingCrystallized();
-        new ProcessingDirty();
         new ProcessingDust();
-        new ProcessingDye();
+        //new ProcessingDye();
         new ProcessingFoil();
         new ProcessingFineWire();
-        new ProcessingFood();
         new ProcessingLens();
         new ProcessingShaping();
         new ProcessingGem();
@@ -34,23 +31,18 @@ public class GT_Loader_OreProcessing
         new ProcessingTransforming();
         new ProcessingNugget();
         new ProcessingOre();
-        new ProcessingOrePoor();
+        //new ProcessingOrePoor();
         new ProcessingOreSmelting();
         new ProcessingPipe();
         new ProcessingPlank();
         new ProcessingPlate();
-        new ProcessingPure();
         new ProcessingRecycling();
         new ProcessingRound();
         new ProcessingRotor();
-        new ProcessingSand();
         new ProcessingSaplings();
         new ProcessingScrew();
-        new ProcessingSlab();
         new ProcessingStick();
-        new ProcessingStickLong();
         new ProcessingStone();
-        new ProcessingStoneCobble();
         new ProcessingStoneVarious();
         new ProcessingToolHead();
         new ProcessingToolOther();

@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 public class ProcessingCrystallized implements gregtech.api.interfaces.IOreRecipeRegistrator {
     public ProcessingCrystallized() {
         OrePrefixes.crystal.add(this);
-        OrePrefixes.crystalline.add(this);
     }
 
     public void registerOre(OrePrefixes aPrefix, Materials aMaterial, String aOreDictName, String aModName, ItemStack aStack) {
