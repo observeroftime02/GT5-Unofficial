@@ -640,7 +640,7 @@ public enum OrePrefixes {
                 if (!enableUnusedTripleIngots) ingotTriple.mDisabledItems.add(aMaterial);
                 if (!enableUnusedQuadIngots) ingotQuadruple.mDisabledItems.add(aMaterial);
                 if (!enableUnusedQuinIngots) ingotQuintuple.mDisabledItems.add(aMaterial);
-                if (!enableUnusedDoublePlates && ((aMaterial.mTypes & 0x40) == 0) && !(aMaterial == Materials.Paper || aMaterial == Materials.Aluminium || aMaterial == Materials.Steel || aMaterial == Materials.TungstenSteel))
+                if (!enableUnusedDoublePlates && !(aMaterial == Materials.Paper || aMaterial == Materials.Aluminium || aMaterial == Materials.Steel || aMaterial == Materials.TungstenSteel))
                     plateDouble.mDisabledItems.add(aMaterial);
                 if (!enableUnusedTriplePlates && !(aMaterial == Materials.Paper)) plateTriple.mDisabledItems.add(aMaterial);
                 if (!enableUnusedQuadPlates && !(aMaterial == Materials.Paper)) plateQuadruple.mDisabledItems.add(aMaterial);
@@ -690,7 +690,7 @@ public enum OrePrefixes {
                         aMaterial == Materials.PigIron || aMaterial == Materials.TungstenSteel || aMaterial == Materials.Tungsten || aMaterial == Materials.HSSE || aMaterial == Materials.HSSG))
                     bolt.mDisabledItems.add(aMaterial);
                 //Screws
-                if (!enableUnusedScrews && ((aMaterial.mTypes & 0x40) == 0) && !(aMaterial == Materials.Titanium || aMaterial == Materials.Chrome || aMaterial == Materials.Iron ||
+                if (!enableUnusedScrews && !(aMaterial == Materials.Titanium || aMaterial == Materials.Chrome || aMaterial == Materials.Iron ||
                         aMaterial == Materials.Tin || aMaterial == Materials.Osmium || aMaterial == Materials.Iridium || aMaterial == Materials.Neutronium ||
                         aMaterial == Materials.Bronze || aMaterial == Materials.WroughtIron || aMaterial == Materials.Steel || aMaterial == Materials.StainlessSteel ||
                         aMaterial == Materials.PigIron || aMaterial == Materials.TungstenSteel || aMaterial == Materials.HSSE || aMaterial == Materials.HSSG))
