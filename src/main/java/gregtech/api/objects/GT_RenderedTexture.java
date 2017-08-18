@@ -71,10 +71,10 @@ public class GT_RenderedTexture implements ITexture, IColorModulationContainer {
         IIcon aIcon = mIconContainer.getIcon();
 
         float d_16 = 16.0F;
-        float d3 = (float)aIcon.getInterpolatedU(aRenderer.renderMaxX * d_16);
-        float d4 = (float)aIcon.getInterpolatedU(aRenderer.renderMinX * d_16);
-        float d5 = (float)aIcon.getInterpolatedV(aRenderer.renderMinZ * d_16);
-        float d6 = (float)aIcon.getInterpolatedV(aRenderer.renderMaxZ * d_16);
+        float d3 = aIcon.getInterpolatedU(aRenderer.renderMaxX * d_16);
+        float d4 = aIcon.getInterpolatedU(aRenderer.renderMinX * d_16);
+        float d5 = aIcon.getInterpolatedV(aRenderer.renderMinZ * d_16);
+        float d6 = aIcon.getInterpolatedV(aRenderer.renderMaxZ * d_16);
 
         if (aRenderer.renderMinX < 0.0D || aRenderer.renderMaxX > 1.0D) {
             d3 = aIcon.getMaxU();

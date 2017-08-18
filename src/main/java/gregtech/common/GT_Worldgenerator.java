@@ -139,7 +139,7 @@ public class GT_Worldgenerator implements IWorldGenerator {
                     for (int i = 0; (i < 256) && (temp); i++) {
                         tRandomWeight = aRandom.nextInt(GT_Worldgen_GT_Ore_Layer.sWeight);
                         for (GT_Worldgen_GT_Ore_Layer tWorldGen : GT_Worldgen_GT_Ore_Layer.sList) {
-                            tRandomWeight -= ((GT_Worldgen_GT_Ore_Layer) tWorldGen).mWeight;
+                            tRandomWeight -= tWorldGen.mWeight;
                             if (tRandomWeight <= 0) {
                                 try {
                                     if ((tWorldGen.mEndAsteroid && tDimensionType == 1) || (tWorldGen.mAsteroid && tDimensionType == -30)) {
@@ -162,9 +162,9 @@ public class GT_Worldgenerator implements IWorldGenerator {
                 int tY = 50 + aRandom.nextInt(200 - 50);
                 int tZ = mZ + aRandom.nextInt(16);
                 if (tDimensionType == 1) {
-                    mSize = aRandom.nextInt((int) (endMaxSize - endMinSize));
+                    mSize = aRandom.nextInt(endMaxSize - endMinSize);
                 } else if (tDimensionName.equals("Asteroids")) {
-                    mSize = aRandom.nextInt((int) (gcMaxSize - gcMinSize));
+                    mSize = aRandom.nextInt(gcMaxSize - gcMinSize);
                 }
                 if ((mWorld.getBlock(tX, tY, tZ).isAir(mWorld, tX, tY, tZ))) {
                     float var6 = aRandom.nextFloat() * 3.141593F;

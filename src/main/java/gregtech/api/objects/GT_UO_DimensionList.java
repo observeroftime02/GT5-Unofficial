@@ -29,8 +29,7 @@ public class GT_UO_DimensionList {
 	
 	public boolean CheckBlackList(int aDimensionId){
 		try {
-			if (java.util.Arrays.binarySearch(BlackList, aDimensionId) >= 0) return true;
-			else return false;
+            return java.util.Arrays.binarySearch(BlackList, aDimensionId) >= 0;
 		} catch (Exception e) {
 			return false;
 		}

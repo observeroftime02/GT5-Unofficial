@@ -53,8 +53,8 @@ public class GuiModularArmor extends GuiContainer {
 			}
 		} else if (x >= 59 && x <= 66) {
 			if (y >= 20 && y <= 27) {
-				list.add(GT_LanguageManager.getTranslation("Thorns") + ": " + (int) Math.round(cont.mInvArmor.data.mStat.get(StatType.THORNSSINGLE)) + " Dmg");
-				list.add(GT_LanguageManager.getTranslation("Total Thorns") + ": " + (int) Math.round(cont.mInvArmor.data.mStat.get(StatType.THORNS)) + " Dmg");
+				list.add(GT_LanguageManager.getTranslation("Thorns") + ": " + Math.round(cont.mInvArmor.data.mStat.get(StatType.THORNSSINGLE)) + " Dmg");
+				list.add(GT_LanguageManager.getTranslation("Total Thorns") + ": " + Math.round(cont.mInvArmor.data.mStat.get(StatType.THORNS)) + " Dmg");
 			} else if (y >= 29 && y <= 36) {
 				list.add(GT_LanguageManager.getTranslation("Magnet") + ": " + cont.mInvArmor.data.mStat.get(StatType.MAGNETSINGLE) + " m");
 				list.add(GT_LanguageManager.getTranslation("Total Magnet") + ": " + cont.mInvArmor.data.mStat.get(StatType.MAGNET) + " m");
@@ -73,7 +73,7 @@ public class GuiModularArmor extends GuiContainer {
 					list.add(GT_LanguageManager.getTranslation("Fall Damage absorbtion"));
 					list.add(GT_LanguageManager.getTranslation("Only for Boots"));
 				}else{
-				list.add(GT_LanguageManager.getTranslation("Absorbs") + " " + (int) Math.round(cont.mInvArmor.data.mStat.get(StatType.FALLDEFENCE)) + GT_LanguageManager.getTranslation("m of Fall Damage"));}
+				list.add(GT_LanguageManager.getTranslation("Absorbs") + " " + Math.round(cont.mInvArmor.data.mStat.get(StatType.FALLDEFENCE)) + GT_LanguageManager.getTranslation("m of Fall Damage"));}
 			}
 		}
 		if (!list.isEmpty())

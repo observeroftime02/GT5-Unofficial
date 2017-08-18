@@ -208,7 +208,7 @@ public class GT_MetaPipeEntity_Cable extends MetaPipeEntity implements IMetaTile
                             rUsedAmperes++;
                         } else if (((IEnergyReceiver) tTileEntity).receiveEnergy(tDirection, rfOut, true) > 0) {
                             if (mRestRF == 0) {
-                                int RFtrans = ((IEnergyReceiver) tTileEntity).receiveEnergy(tDirection, (int) rfOut, false);
+                                int RFtrans = ((IEnergyReceiver) tTileEntity).receiveEnergy(tDirection, rfOut, false);
                                 rUsedAmperes++;
                                 mRestRF = rfOut - RFtrans;
                             } else {

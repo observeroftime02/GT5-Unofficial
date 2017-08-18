@@ -48,10 +48,8 @@ public class GT_Client extends GT_Proxy
     private static List ROTATABLE_VANILLA_BLOCKS;
 
     static {
-        ROTATABLE_VANILLA_BLOCKS = Arrays.asList(new Block[]{
-                Blocks.piston, Blocks.sticky_piston, Blocks.furnace, Blocks.lit_furnace, Blocks.dropper, Blocks.dispenser, Blocks.chest, Blocks.trapped_chest, Blocks.ender_chest, Blocks.hopper,
-                Blocks.pumpkin, Blocks.lit_pumpkin
-        });
+        ROTATABLE_VANILLA_BLOCKS = Arrays.asList(Blocks.piston, Blocks.sticky_piston, Blocks.furnace, Blocks.lit_furnace, Blocks.dropper, Blocks.dispenser, Blocks.chest, Blocks.trapped_chest, Blocks.ender_chest, Blocks.hopper,
+                Blocks.pumpkin, Blocks.lit_pumpkin);
     }
 
     private final HashSet mCapeList = new HashSet();
@@ -59,19 +57,19 @@ public class GT_Client extends GT_Proxy
     private final List mPosR;
     private final List mPosG;
     private final List mPosB;
-    private final List mPosA = Arrays.asList(new Object[0]);
+    private final List mPosA = Arrays.asList();
     private final List mNegR;
     private final List mNegG;
     private final List mNegB;
-    private final List mNegA = Arrays.asList(new Object[0]);
+    private final List mNegA = Arrays.asList();
     private final List mMoltenPosR;
     private final List mMoltenPosG;
     private final List mMoltenPosB;
-    private final List mMoltenPosA = Arrays.asList(new Object[0]);
+    private final List mMoltenPosA = Arrays.asList();
     private final List mMoltenNegR;
     private final List mMoltenNegG;
     private final List mMoltenNegB;
-    private final List mMoltenNegA = Arrays.asList(new Object[0]);
+    private final List mMoltenNegA = Arrays.asList();
     /**This is the place to def the value used below**/
     private long afterSomeTime;
     private long mAnimationTick;
@@ -81,48 +79,24 @@ public class GT_Client extends GT_Proxy
     	mCapeRenderer = new GT_CapeRenderer(mCapeList);
         mAnimationTick = 0L;
         mAnimationDirection = false;
-        mPosR = Arrays.asList(new Materials[]{
-                /**Materials.ChargedCertusQuartz, **/Materials.Enderium, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder,
-                Materials.Glowstone, Materials.Thaumium, Materials.InfusedVis, Materials.InfusedAir, Materials.InfusedFire, Materials.Firestone
-        });
-        mPosG = Arrays.asList(new Materials[]{
-                /**Materials.ChargedCertusQuartz, **/Materials.Enderium, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder,
-                Materials.Glowstone, Materials.InfusedAir, Materials.InfusedEarth
-        });
-        mPosB = Arrays.asList(new Materials[]{
-                /**Materials.ChargedCertusQuartz, **/Materials.Enderium, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder, Materials.InfusedVis,
-                Materials.InfusedWater, Materials.Thaumium
-        });
-        mNegR = Arrays.asList(new Materials[]{
-                Materials.InfusedEntropy, Materials.NetherStar
-        });
-        mNegG = Arrays.asList(new Materials[]{
-                Materials.InfusedEntropy, Materials.NetherStar
-        });
-        mNegB = Arrays.asList(new Materials[]{
-                Materials.InfusedEntropy, Materials.NetherStar
-        });
-        mMoltenPosR = Arrays.asList(new Materials[]{
-                Materials.Enderium, Materials.NetherStar, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder,
-                Materials.Glowstone, Materials.Thaumium, Materials.InfusedVis, Materials.InfusedAir, Materials.InfusedFire, Materials.Firestone
-        });
-        mMoltenPosG = Arrays.asList(new Materials[]{
-                Materials.Enderium, Materials.NetherStar, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder,
-                Materials.Glowstone, Materials.InfusedAir, Materials.InfusedEarth
-        });
-        mMoltenPosB = Arrays.asList(new Materials[]{
-                Materials.Enderium, Materials.NetherStar, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder, Materials.InfusedVis,
-                Materials.InfusedWater, Materials.Thaumium
-        });
-        mMoltenNegR = Arrays.asList(new Materials[]{
-                Materials.InfusedEntropy
-        });
-        mMoltenNegG = Arrays.asList(new Materials[]{
-                Materials.InfusedEntropy
-        });
-        mMoltenNegB = Arrays.asList(new Materials[]{
-                Materials.InfusedEntropy
-        });
+        mPosR = Arrays.asList( /**Materials.ChargedCertusQuartz, **/Materials.Enderium, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder,
+                Materials.Glowstone, Materials.Thaumium, Materials.InfusedVis, Materials.InfusedAir, Materials.InfusedFire, Materials.Firestone);
+        mPosG = Arrays.asList( /**Materials.ChargedCertusQuartz, **/Materials.Enderium, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder,
+                Materials.Glowstone, Materials.InfusedAir, Materials.InfusedEarth);
+        mPosB = Arrays.asList( /**Materials.ChargedCertusQuartz, **/Materials.Enderium, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder, Materials.InfusedVis,
+                Materials.InfusedWater, Materials.Thaumium);
+        mNegR = Arrays.asList(Materials.InfusedEntropy, Materials.NetherStar);
+        mNegG = Arrays.asList(Materials.InfusedEntropy, Materials.NetherStar);
+        mNegB = Arrays.asList(Materials.InfusedEntropy, Materials.NetherStar);
+        mMoltenPosR = Arrays.asList(Materials.Enderium, Materials.NetherStar, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder,
+                Materials.Glowstone, Materials.Thaumium, Materials.InfusedVis, Materials.InfusedAir, Materials.InfusedFire, Materials.Firestone);
+        mMoltenPosG = Arrays.asList(Materials.Enderium, Materials.NetherStar, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder,
+                Materials.Glowstone, Materials.InfusedAir, Materials.InfusedEarth);
+        mMoltenPosB = Arrays.asList(Materials.Enderium, Materials.NetherStar, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder, Materials.InfusedVis,
+                Materials.InfusedWater, Materials.Thaumium);
+        mMoltenNegR = Arrays.asList(Materials.InfusedEntropy);
+        mMoltenNegG = Arrays.asList(Materials.InfusedEntropy);
+        mMoltenNegB = Arrays.asList(Materials.InfusedEntropy);
     }
 
     private static void drawGrid(DrawBlockHighlightEvent aEvent) {
@@ -484,8 +458,8 @@ public class GT_Client extends GT_Proxy
         do {
             if (i >= j)
                 break;
-            if (GT_Utility.areStacksEqual((ItemStack) mSoundItems.get(i), aStack)) {
-                tString = (String) mSoundNames.get(i);
+            if (GT_Utility.areStacksEqual(mSoundItems.get(i), aStack)) {
+                tString = mSoundNames.get(i);
                 break;
             }
             i++;

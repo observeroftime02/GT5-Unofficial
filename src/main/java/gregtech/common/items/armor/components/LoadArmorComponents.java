@@ -99,50 +99,50 @@ public class LoadArmorComponents {
 		
 		new ArmorComponentFunction("componentnightvision", GT_ModHandler.getIC2Item("nightvisionGoggles", 1), true, 100, StatType.NIGHTVISION, 100);
 		if(GT_ModHandler.getModItem("Thaumcraft", "ItemGoggles", 1)!=null)new ArmorComponentFunction("componentthaumicgoggles", GT_ModHandler.getModItem("Thaumcraft", "ItemGoggles", 1), true, 100, StatType.THAUMICGOGGLES, 100);
-		new ArmorComponentBattery("batteryLVLI", ItemList.Battery_RE_LV_Lithium.get(1, new Object[]{}), true, 100, 100000);
-		new ArmorComponentBattery("batteryMVLI", ItemList.Battery_RE_MV_Lithium.get(1, new Object[]{}), true, 100, 400000);
-		new ArmorComponentBattery("batteryHVLI", ItemList.Battery_RE_HV_Lithium.get(1, new Object[]{}), true, 100, 1600000);
+		new ArmorComponentBattery("batteryLVLI", ItemList.Battery_RE_LV_Lithium.get(1), true, 100, 100000);
+		new ArmorComponentBattery("batteryMVLI", ItemList.Battery_RE_MV_Lithium.get(1), true, 100, 400000);
+		new ArmorComponentBattery("batteryHVLI", ItemList.Battery_RE_HV_Lithium.get(1), true, 100, 1600000);
 
-		new ArmorComponentBattery("batteryLVCA", ItemList.Battery_RE_LV_Cadmium.get(1, new Object[]{}), true, 100, 75000);
-		new ArmorComponentBattery("batteryMVCA", ItemList.Battery_RE_MV_Cadmium.get(1, new Object[]{}), true, 100, 300000);
-		new ArmorComponentBattery("batteryHVCA", ItemList.Battery_RE_HV_Cadmium.get(1, new Object[]{}), true, 100, 1200000);
+		new ArmorComponentBattery("batteryLVCA", ItemList.Battery_RE_LV_Cadmium.get(1), true, 100, 75000);
+		new ArmorComponentBattery("batteryMVCA", ItemList.Battery_RE_MV_Cadmium.get(1), true, 100, 300000);
+		new ArmorComponentBattery("batteryHVCA", ItemList.Battery_RE_HV_Cadmium.get(1), true, 100, 1200000);
 
-		new ArmorComponentBattery("batteryLVSO", ItemList.Battery_RE_LV_Sodium.get(1, new Object[]{}), true, 100, 50000);
-		new ArmorComponentBattery("batteryMVSO", ItemList.Battery_RE_MV_Sodium.get(1, new Object[]{}), true, 100, 200000);
-		new ArmorComponentBattery("batteryHVSO", ItemList.Battery_RE_HV_Sodium.get(1, new Object[]{}), true, 100, 800000);
+		new ArmorComponentBattery("batteryLVSO", ItemList.Battery_RE_LV_Sodium.get(1), true, 100, 50000);
+		new ArmorComponentBattery("batteryMVSO", ItemList.Battery_RE_MV_Sodium.get(1), true, 100, 200000);
+		new ArmorComponentBattery("batteryHVSO", ItemList.Battery_RE_HV_Sodium.get(1), true, 100, 800000);
 		
-		new ArmorComponentBattery("batterycystal", ItemList.IC2_EnergyCrystal.get(1, new Object[]{}), true, 100, 1000000);
-		new ArmorComponentBattery("batterylapotron", ItemList.IC2_LapotronCrystal.get(1, new Object[]{}), true, 100, 10000000);
-		new ArmorComponentBattery("batterylapoorb", ItemList.Energy_LapotronicOrb.get(1, new Object[]{}), true, 100, 100000000);
-		new ArmorComponentBattery("batteryorbcluster", ItemList.Energy_LapotronicOrb2.get(1, new Object[]{}), true, 100, 1000000000);
+		new ArmorComponentBattery("batterycystal", ItemList.IC2_EnergyCrystal.get(1), true, 100, 1000000);
+		new ArmorComponentBattery("batterylapotron", ItemList.IC2_LapotronCrystal.get(1), true, 100, 10000000);
+		new ArmorComponentBattery("batterylapoorb", ItemList.Energy_LapotronicOrb.get(1), true, 100, 100000000);
+		new ArmorComponentBattery("batteryorbcluster", ItemList.Energy_LapotronicOrb2.get(1), true, 100, 1000000000);
 		
-		new ArmorElectricComponent("motorlv", ItemList.Electric_Motor_LV.get(1, new Object[]{}), 20, StatType.MOTPRPOWER, 200f, StatType.MOTOREUUSAGE,  50f, StatType.PROCESSINGPOWERUSED,  10f);
-		new ArmorElectricComponent("motormv", ItemList.Electric_Motor_MV.get(1, new Object[]{}), 40, StatType.MOTPRPOWER, 300f, StatType.MOTOREUUSAGE, 100f, StatType.PROCESSINGPOWERUSED,  20f);
-		new ArmorElectricComponent("motorhv", ItemList.Electric_Motor_HV.get(1, new Object[]{}), 60, StatType.MOTPRPOWER, 400f, StatType.MOTOREUUSAGE, 200f, StatType.PROCESSINGPOWERUSED,  50f);
-		new ArmorElectricComponent("motorev", ItemList.Electric_Motor_EV.get(1, new Object[]{}), 80, StatType.MOTPRPOWER, 500f, StatType.MOTOREUUSAGE, 400f, StatType.PROCESSINGPOWERUSED, 100f);
-		new ArmorElectricComponent("motoriv", ItemList.Electric_Motor_IV.get(1, new Object[]{}),100, StatType.MOTPRPOWER, 600f, StatType.MOTOREUUSAGE, 800f, StatType.PROCESSINGPOWERUSED, 200f);
+		new ArmorElectricComponent("motorlv", ItemList.Electric_Motor_LV.get(1), 20, StatType.MOTPRPOWER, 200f, StatType.MOTOREUUSAGE,  50f, StatType.PROCESSINGPOWERUSED,  10f);
+		new ArmorElectricComponent("motormv", ItemList.Electric_Motor_MV.get(1), 40, StatType.MOTPRPOWER, 300f, StatType.MOTOREUUSAGE, 100f, StatType.PROCESSINGPOWERUSED,  20f);
+		new ArmorElectricComponent("motorhv", ItemList.Electric_Motor_HV.get(1), 60, StatType.MOTPRPOWER, 400f, StatType.MOTOREUUSAGE, 200f, StatType.PROCESSINGPOWERUSED,  50f);
+		new ArmorElectricComponent("motorev", ItemList.Electric_Motor_EV.get(1), 80, StatType.MOTPRPOWER, 500f, StatType.MOTOREUUSAGE, 400f, StatType.PROCESSINGPOWERUSED, 100f);
+		new ArmorElectricComponent("motoriv", ItemList.Electric_Motor_IV.get(1),100, StatType.MOTPRPOWER, 600f, StatType.MOTOREUUSAGE, 800f, StatType.PROCESSINGPOWERUSED, 200f);
 
-		new ArmorElectricComponent("pistonlv", ItemList.Electric_Piston_LV.get(1, new Object[]{}), 20, StatType.PISTONJUMPBOOST, 3, StatType.PISTONEUUSAGE, 200f, StatType.PROCESSINGPOWERUSED,  10f);
-		new ArmorElectricComponent("pistonmv", ItemList.Electric_Piston_MV.get(1, new Object[]{}), 40, StatType.PISTONJUMPBOOST, 4, StatType.PISTONEUUSAGE, 300f, StatType.PROCESSINGPOWERUSED,  20f);
-		new ArmorElectricComponent("pistonhv", ItemList.Electric_Piston_HV.get(1, new Object[]{}), 60, StatType.PISTONJUMPBOOST, 5, StatType.PISTONEUUSAGE, 450f, StatType.PROCESSINGPOWERUSED,  50f);
-		new ArmorElectricComponent("pistonev", ItemList.Electric_Piston_EV.get(1, new Object[]{}), 80, StatType.PISTONJUMPBOOST, 6, StatType.PISTONEUUSAGE, 800f, StatType.PROCESSINGPOWERUSED, 100f);
-		new ArmorElectricComponent("pistoniv", ItemList.Electric_Piston_IV.get(1, new Object[]{}),100, StatType.PISTONJUMPBOOST, 7, StatType.PISTONEUUSAGE,1600f, StatType.PROCESSINGPOWERUSED, 200f);
+		new ArmorElectricComponent("pistonlv", ItemList.Electric_Piston_LV.get(1), 20, StatType.PISTONJUMPBOOST, 3, StatType.PISTONEUUSAGE, 200f, StatType.PROCESSINGPOWERUSED,  10f);
+		new ArmorElectricComponent("pistonmv", ItemList.Electric_Piston_MV.get(1), 40, StatType.PISTONJUMPBOOST, 4, StatType.PISTONEUUSAGE, 300f, StatType.PROCESSINGPOWERUSED,  20f);
+		new ArmorElectricComponent("pistonhv", ItemList.Electric_Piston_HV.get(1), 60, StatType.PISTONJUMPBOOST, 5, StatType.PISTONEUUSAGE, 450f, StatType.PROCESSINGPOWERUSED,  50f);
+		new ArmorElectricComponent("pistonev", ItemList.Electric_Piston_EV.get(1), 80, StatType.PISTONJUMPBOOST, 6, StatType.PISTONEUUSAGE, 800f, StatType.PROCESSINGPOWERUSED, 100f);
+		new ArmorElectricComponent("pistoniv", ItemList.Electric_Piston_IV.get(1),100, StatType.PISTONJUMPBOOST, 7, StatType.PISTONEUUSAGE,1600f, StatType.PROCESSINGPOWERUSED, 200f);
 		
-		new ArmorElectricComponent("electrolyzerlv", ItemList.Machine_LV_Electrolyzer.get(1, new Object[]{}), 20, StatType.ELECTROLYZERPROD, 10, StatType.ELECTROLYZEREUUSAGE, 1, StatType.PROCESSINGPOWERUSED,  50f);
-		new ArmorElectricComponent("electrolyzermv", ItemList.Machine_MV_Electrolyzer.get(1, new Object[]{}), 40, StatType.ELECTROLYZERPROD, 20, StatType.ELECTROLYZEREUUSAGE, 4, StatType.PROCESSINGPOWERUSED,  100f);
-		new ArmorElectricComponent("electrolyzerhv", ItemList.Machine_HV_Electrolyzer.get(1, new Object[]{}), 60, StatType.ELECTROLYZERPROD, 40, StatType.ELECTROLYZEREUUSAGE, 16, StatType.PROCESSINGPOWERUSED,  150f);
-		new ArmorElectricComponent("electrolyzerev", ItemList.Machine_EV_Electrolyzer.get(1, new Object[]{}), 80, StatType.ELECTROLYZERPROD, 80, StatType.ELECTROLYZEREUUSAGE, 64, StatType.PROCESSINGPOWERUSED,  200f);
-		new ArmorElectricComponent("electrolyzeriv", ItemList.Machine_IV_Electrolyzer.get(1, new Object[]{}),100, StatType.ELECTROLYZERPROD,160, StatType.ELECTROLYZEREUUSAGE, 128, StatType.PROCESSINGPOWERUSED,  250f);
+		new ArmorElectricComponent("electrolyzerlv", ItemList.Machine_LV_Electrolyzer.get(1), 20, StatType.ELECTROLYZERPROD, 10, StatType.ELECTROLYZEREUUSAGE, 1, StatType.PROCESSINGPOWERUSED,  50f);
+		new ArmorElectricComponent("electrolyzermv", ItemList.Machine_MV_Electrolyzer.get(1), 40, StatType.ELECTROLYZERPROD, 20, StatType.ELECTROLYZEREUUSAGE, 4, StatType.PROCESSINGPOWERUSED,  100f);
+		new ArmorElectricComponent("electrolyzerhv", ItemList.Machine_HV_Electrolyzer.get(1), 60, StatType.ELECTROLYZERPROD, 40, StatType.ELECTROLYZEREUUSAGE, 16, StatType.PROCESSINGPOWERUSED,  150f);
+		new ArmorElectricComponent("electrolyzerev", ItemList.Machine_EV_Electrolyzer.get(1), 80, StatType.ELECTROLYZERPROD, 80, StatType.ELECTROLYZEREUUSAGE, 64, StatType.PROCESSINGPOWERUSED,  200f);
+		new ArmorElectricComponent("electrolyzeriv", ItemList.Machine_IV_Electrolyzer.get(1),100, StatType.ELECTROLYZERPROD,160, StatType.ELECTROLYZEREUUSAGE, 128, StatType.PROCESSINGPOWERUSED,  250f);
 		
-		new ArmorElectricComponent("fieldgenlv", ItemList.Field_Generator_LV.get(1, new Object[]{}), 20, StatType.FIELDGENCAP, 1, StatType.FIELDGENEUUSAGE, 1, StatType.PROCESSINGPOWERUSED,  100f);
-		new ArmorElectricComponent("fieldgenmv", ItemList.Field_Generator_MV.get(1, new Object[]{}), 40, StatType.FIELDGENCAP, 2, StatType.FIELDGENEUUSAGE, 4, StatType.PROCESSINGPOWERUSED,  200f);
-		new ArmorElectricComponent("fieldgenhv", ItemList.Field_Generator_HV.get(1, new Object[]{}), 60, StatType.FIELDGENCAP, 3, StatType.FIELDGENEUUSAGE, 16, StatType.PROCESSINGPOWERUSED,  300f);
-		new ArmorElectricComponent("fieldgenev", ItemList.Field_Generator_EV.get(1, new Object[]{}), 80, StatType.FIELDGENCAP, 4, StatType.FIELDGENEUUSAGE, 64, StatType.PROCESSINGPOWERUSED,  400f);
-		new ArmorElectricComponent("fieldgeniv", ItemList.Field_Generator_IV.get(1, new Object[]{}),100, StatType.FIELDGENCAP, 5, StatType.FIELDGENEUUSAGE, 512, StatType.PROCESSINGPOWERUSED,  500f);
+		new ArmorElectricComponent("fieldgenlv", ItemList.Field_Generator_LV.get(1), 20, StatType.FIELDGENCAP, 1, StatType.FIELDGENEUUSAGE, 1, StatType.PROCESSINGPOWERUSED,  100f);
+		new ArmorElectricComponent("fieldgenmv", ItemList.Field_Generator_MV.get(1), 40, StatType.FIELDGENCAP, 2, StatType.FIELDGENEUUSAGE, 4, StatType.PROCESSINGPOWERUSED,  200f);
+		new ArmorElectricComponent("fieldgenhv", ItemList.Field_Generator_HV.get(1), 60, StatType.FIELDGENCAP, 3, StatType.FIELDGENEUUSAGE, 16, StatType.PROCESSINGPOWERUSED,  300f);
+		new ArmorElectricComponent("fieldgenev", ItemList.Field_Generator_EV.get(1), 80, StatType.FIELDGENCAP, 4, StatType.FIELDGENEUUSAGE, 64, StatType.PROCESSINGPOWERUSED,  400f);
+		new ArmorElectricComponent("fieldgeniv", ItemList.Field_Generator_IV.get(1),100, StatType.FIELDGENCAP, 5, StatType.FIELDGENEUUSAGE, 512, StatType.PROCESSINGPOWERUSED,  500f);
 
-		new ArmorElectricComponent("cell", ItemList.Cell_Empty.get(1, new Object[]{}), 20, StatType.TANKCAP, 8000, null, 1, null,  0);
-		new ArmorElectricComponent("cellsteel", ItemList.Large_Fluid_Cell_Steel.get(1, new Object[]{}), 40, StatType.TANKCAP, 16000, null, 1, null,  0);
-		new ArmorElectricComponent("cellts", ItemList.Large_Fluid_Cell_TungstenSteel.get(1, new Object[]{}), 80, StatType.TANKCAP, 64000, null, 1, null,  0);
+		new ArmorElectricComponent("cell", ItemList.Cell_Empty.get(1), 20, StatType.TANKCAP, 8000, null, 1, null,  0);
+		new ArmorElectricComponent("cellsteel", ItemList.Large_Fluid_Cell_Steel.get(1), 40, StatType.TANKCAP, 16000, null, 1, null,  0);
+		new ArmorElectricComponent("cellts", ItemList.Large_Fluid_Cell_TungstenSteel.get(1), 80, StatType.TANKCAP, 64000, null, 1, null,  0);
 
 		new ArmorElectricComponent("circuitbasic", GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Basic, 1),   10, StatType.PROCESSINGPOWER, 100, null, 1, null,  1);
 		new ArmorElectricComponent("circuitgood", GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Good, 1),    20, StatType.PROCESSINGPOWER, 200, null, 1, null,  1);

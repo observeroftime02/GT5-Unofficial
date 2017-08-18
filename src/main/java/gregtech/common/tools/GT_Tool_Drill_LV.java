@@ -50,19 +50,19 @@ public class GT_Tool_Drill_LV
     }
 
     public String getCraftingSound() {
-        return (String) GregTech_API.sSoundList.get(Integer.valueOf(106));
+        return GregTech_API.sSoundList.get(Integer.valueOf(106));
     }
 
     public String getEntityHitSound() {
-        return (String) GregTech_API.sSoundList.get(Integer.valueOf(106));
+        return GregTech_API.sSoundList.get(Integer.valueOf(106));
     }
 
     public String getBreakingSound() {
-        return (String) GregTech_API.sSoundList.get(Integer.valueOf(106));
+        return GregTech_API.sSoundList.get(Integer.valueOf(106));
     }
 
     public String getMiningSound() {
-        return (String) GregTech_API.sSoundList.get(Integer.valueOf(106));
+        return GregTech_API.sSoundList.get(Integer.valueOf(106));
     }
 
     public boolean canBlock() {

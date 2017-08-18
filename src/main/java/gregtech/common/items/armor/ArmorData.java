@@ -93,7 +93,7 @@ public class ArmorData {
 		}
 		this.type = type;
 		this.armorTier = tier;
-		ContainerModularArmor tmp = new ContainerBasicArmor((EntityPlayer) player, new InventoryArmor(ModularArmor_Item.class, stack));
+		ContainerModularArmor tmp = new ContainerBasicArmor(player, new InventoryArmor(ModularArmor_Item.class, stack));
 		calculateArmor(tmp.mInvArmor.parts);
 		switch (tier) {
 		case 0:

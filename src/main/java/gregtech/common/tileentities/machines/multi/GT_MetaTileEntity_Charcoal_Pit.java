@@ -108,7 +108,7 @@ public class GT_MetaTileEntity_Charcoal_Pit extends GT_MetaTileEntity_MultiBlock
             tList2.add(new ChunkPosition(0, -1, 0));
         }
         while (!tList2.isEmpty()) {
-            ChunkPosition tPos = (ChunkPosition) tList2.get(0);
+            ChunkPosition tPos = tList2.get(0);
             tList2.remove(0);
             if (!checkAllBlockSides(tPos.chunkPosX, tPos.chunkPosY, tPos.chunkPosZ, tList1, tList2)) {
                 return false;

@@ -184,7 +184,7 @@ public class GT_BaseCrop extends CropCard implements ICropCardInfo {
     @Override
     public boolean rightclick(ICropTile aCrop, EntityPlayer aPlayer) {
         if (!canBeHarvested(aCrop)) return false;
-        return aCrop.harvest(aPlayer == null ? false : aPlayer instanceof EntityPlayerMP);
+        return aCrop.harvest(aPlayer != null && aPlayer instanceof EntityPlayerMP);
     }
 
     @Override
@@ -203,11 +203,7 @@ public class GT_BaseCrop extends CropCard implements ICropCardInfo {
                 if ((tTileEntity instanceof GT_TileEntity_Ores)) {
                     Materials tMaterial = GregTech_API.sGeneratedMaterials[(((GT_TileEntity_Ores) tTileEntity).mMetaData % 1000)];
                     if ((tMaterial != null) && (tMaterial != Materials._NULL)) {
-                        if (tMaterial == mBlock) {
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        return tMaterial == mBlock;
                     }
                 }
             } else {

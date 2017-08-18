@@ -155,7 +155,7 @@ public abstract class GT_MetaTileEntity_PrimitiveBlastFurnace extends MetaTileEn
 								return false;
 							}
 						} else if ((!GT_Utility.arrayContains(getBaseMetaTileEntity().getBlockOffset(xDir + i, j, zDir + k),
-								new Object[] { Blocks.lava, Blocks.flowing_lava, null }))
+                                Blocks.lava, Blocks.flowing_lava, null))
 								&& (!getBaseMetaTileEntity().getAirOffset(xDir + i, j, zDir + k))) {
 							return false;
 						}
@@ -264,12 +264,9 @@ public abstract class GT_MetaTileEntity_PrimitiveBlastFurnace extends MetaTileEn
 		if (this.mInventory[absoluteSlot] == null || outputStack == null) {
 			return true;
 		}
-		if (((this.mInventory[absoluteSlot].stackSize + outputStack.stackSize <= this.mInventory[absoluteSlot].getMaxStackSize())
-				&& (GT_Utility.areStacksEqual(this.mInventory[absoluteSlot], outputStack)))) {
-			return true;
-		}
-		return false;
-	}
+        return ((this.mInventory[absoluteSlot].stackSize + outputStack.stackSize <= this.mInventory[absoluteSlot].getMaxStackSize())
+                && (GT_Utility.areStacksEqual(this.mInventory[absoluteSlot], outputStack)));
+    }
 
 	private boolean checkRecipe() {
 		if (!this.mMachine) {

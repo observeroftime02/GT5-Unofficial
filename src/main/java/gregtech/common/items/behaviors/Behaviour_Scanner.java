@@ -24,12 +24,12 @@ public class Behaviour_Scanner
             if (aItem.use(aStack, GT_Utility.getCoordinateScan(tList, aPlayer, aWorld, 1, aX, aY, aZ, aSide, hitX, hitY, hitZ), aPlayer)) {
                 int tList_sS=tList.size();
                 for (int i = 0; i < tList_sS; i++) {
-                    GT_Utility.sendChatToPlayer(aPlayer, (String) tList.get(i));
+                    GT_Utility.sendChatToPlayer(aPlayer, tList.get(i));
                 }
             }
             return true;
         }
-        GT_Utility.doSoundAtClient((String) GregTech_API.sSoundList.get(Integer.valueOf(108)), 1, 1.0F, aX, aY, aZ);
+        GT_Utility.doSoundAtClient(GregTech_API.sSoundList.get(Integer.valueOf(108)), 1, 1.0F, aX, aY, aZ);
         return aPlayer instanceof EntityPlayerMP;
     }
 

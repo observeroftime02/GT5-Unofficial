@@ -623,7 +623,7 @@ public class Textures {
 
         protected IIcon mIcon;
 
-        private BlockIcons() {
+        BlockIcons() {
             GregTech_API.sGTBlockIconload.add(this);
         }
 
@@ -710,7 +710,7 @@ public class Textures {
 
         protected IIcon mIcon, mOverlay;
 
-        private ItemIcons() {
+        ItemIcons() {
             GregTech_API.sGTItemIconload.add(this);
         }
 
