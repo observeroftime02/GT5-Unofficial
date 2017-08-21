@@ -5,7 +5,6 @@ import cpw.mods.fml.common.Loader;
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.*;
-import gregtech.api.interfaces.ITexture;
 import gregtech.api.metatileentity.implementations.*;
 import gregtech.api.util.GT_Log;
 import gregtech.api.util.GT_ModHandler;
@@ -1314,7 +1313,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {
     	long bits = GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED;
     	long bitsd = GT_ModHandler.RecipeBits.DISMANTLEABLE | GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED;
         for (int i = 0; i < GregTech_API.sGeneratedMaterials.length; i++) {
-            if (((GregTech_API.sGeneratedMaterials[i] != null) && ((GregTech_API.sGeneratedMaterials[i].mTypes & 0x2) != 0)) || (GregTech_API.sGeneratedMaterials[i] == Materials.Wood)) {
+            if (((GregTech_API.sGeneratedMaterials[i] != null) && ((GregTech_API.sGeneratedMaterials[i].mTypes & 0x2) != 0) && !OrePrefixes.rod.mDisabledItems.contains(GregTech_API.sGeneratedMaterials[i])) || (GregTech_API.sGeneratedMaterials[i] == Materials.Wood)) {
                 new GT_MetaPipeEntity_Frame(4096 + i, "GT_Frame_" + GregTech_API.sGeneratedMaterials[i], GregTech_API.sGeneratedMaterials[i].mDefaultLocalName + " Frame Box", GregTech_API.sGeneratedMaterials[i]);
             }
         }

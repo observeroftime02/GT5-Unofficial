@@ -930,8 +930,6 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                                             GT_OreDictUnificator.registerOre(Dyes.dyeCyan, aEvent.Ore);
                                         } else if (aMaterial == Materials.InfusedAir || aMaterial == Materials.InfusedWater || aMaterial == Materials.InfusedFire || aMaterial == Materials.InfusedEarth || aMaterial == Materials.InfusedOrder || aMaterial == Materials.InfusedEntropy) {
                                             GT_OreDictUnificator.registerOre(aMaterial.mName.replaceFirst("Infused", "shard"), aEvent.Ore);
-                                        } else if (aMaterial == Materials.Chocolate) {
-                                            GT_OreDictUnificator.registerOre(Dyes.dyeBrown, aEvent.Ore);
                                         } else if (aMaterial == Materials.CertusQuartz || aMaterial == Materials.NetherQuartz) {
                                             GT_OreDictUnificator.registerOre(OrePrefixes.item.get(aMaterial), aEvent.Ore);
                                             GT_OreDictUnificator.registerOre(OrePrefixes.crystal, aMaterial, aEvent.Ore);
@@ -997,11 +995,6 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                                             GT_OreDictUnificator.registerOre(Dyes.dyeCyan, aEvent.Ore);
                                         } else if (aMaterial == Materials.Sodalite) {
                                             GT_OreDictUnificator.registerOre(Dyes.dyeBlue, aEvent.Ore);
-                                        } else if (aMaterial == Materials.Cocoa) {
-                                            GT_OreDictUnificator.registerOre(Dyes.dyeBrown, aEvent.Ore);
-                                            GT_OreDictUnificator.registerOre("foodCocoapowder", aEvent.Ore);
-                                        } else if (aMaterial == Materials.Coffee) {
-                                            GT_OreDictUnificator.registerOre(Dyes.dyeBrown, aEvent.Ore);
                                         } else if (aMaterial == Materials.BrownLimonite) {
                                             GT_OreDictUnificator.registerOre(Dyes.dyeBrown, aEvent.Ore);
                                         } else if (aMaterial == Materials.YellowLimonite) {
@@ -1096,11 +1089,6 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                     case wood:
                         if (tName.equals("Rubber")) {
                             GT_OreDictUnificator.registerOre("logRubber", aEvent.Ore);
-                        }
-                        break;
-                    case food:
-                        if (tName.equals("Cocoapowder")) {
-                            GT_OreDictUnificator.registerOre(OrePrefixes.dust, Materials.Cocoa, aEvent.Ore);
                         }
                         break;
                     default:

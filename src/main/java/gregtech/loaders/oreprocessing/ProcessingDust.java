@@ -122,9 +122,6 @@ public class ProcessingDust implements gregtech.api.interfaces.IOreRecipeRegistr
                         if (gregtech.api.GregTech_API.sRecipeFile.get(gregtech.api.enums.ConfigCategories.Recipes.disabledrecipes, "QuartzDustSmeltingIntoAESilicon", true))
                             GT_ModHandler.removeFurnaceSmelting(aStack);
                         break;
-                    case "MeatRaw":
-                        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, aStack), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.MeatCooked, 1L));
-                        break;
                     case "Mercury":
                         System.err.println("Quicksilver Dust?, To melt that, you don't even need a Furnace...");
                         break;
