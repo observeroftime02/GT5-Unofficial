@@ -1,15 +1,9 @@
 package gregtech.loaders.oreprocessing;
 
-import java.util.ArrayList;
-
 import appeng.api.config.TunnelType;
 import appeng.core.Api;
 import gregtech.GT_Mod;
-import gregtech.api.enums.GT_Values;
-import gregtech.api.enums.ItemList;
-import gregtech.api.enums.Materials;
-import gregtech.api.enums.OrePrefixes;
-import gregtech.api.enums.SubTag;
+import gregtech.api.enums.*;
 import gregtech.api.util.GT_Log;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
@@ -18,6 +12,8 @@ import gregtech.common.GT_Proxy;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+
+import java.util.ArrayList;
 
 public class ProcessingWire implements gregtech.api.interfaces.IOreRecipeRegistrator {
 
@@ -42,7 +38,6 @@ public class ProcessingWire implements gregtech.api.interfaces.IOreRecipeRegistr
             	cableWidth = 1;
             	correspondingCable = OrePrefixes.cableGt01;
                 if (!aMaterial.contains(gregtech.api.enums.SubTag.NO_SMASHING)) {
-                    GT_Values.RA.addBenderRecipe(GT_Utility.copyAmount(1L, aStack), GT_OreDictUnificator.get(OrePrefixes.springSmall, aMaterial, 2L), 100, 8);
                     GT_Values.RA.addWiremillRecipe(GT_Utility.copyAmount(1L, aStack), GT_OreDictUnificator.get(OrePrefixes.wireFine, aMaterial, 4L), 200, 8);
                     GT_Values.RA.addWiremillRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, aMaterial, 1L), GT_Utility.copy(GT_Utility.copyAmount(2L, aStack), GT_OreDictUnificator.get(OrePrefixes.wireFine, aMaterial, 8L)), 100, 4);
                     GT_Values.RA.addWiremillRecipe(GT_OreDictUnificator.get(OrePrefixes.stick, aMaterial, 1L), GT_Utility.copy(aStack, GT_OreDictUnificator.get(OrePrefixes.wireFine, aMaterial, 4L)), 50, 4);

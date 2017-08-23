@@ -1,5 +1,6 @@
 package gregtech.api.util;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregtech.GT_Mod;
@@ -342,7 +343,7 @@ public class GT_ModHandler {
      * Gets an Item from RailCraft, and returns a Replacement Item if not possible
      */
     public static ItemStack getModItem(String aModID, String aItem, long aAmount, ItemStack aReplacement) {
-        if (GT_Utility.isStringInvalid(aItem) || !GregTech_API.sPreloadStarted) return null;
+        if (GT_Utility.isStringInvalid(aItem) || !GregTech_API.sPreloadStarted || !Loader.isModLoaded(aModID)) return null;
         return GT_Utility.copyAmount(aAmount, GameRegistry.findItemStack(aModID, aItem, (int) aAmount), aReplacement);
     }
 

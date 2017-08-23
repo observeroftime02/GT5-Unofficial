@@ -10,7 +10,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.*;
-import gregtech.api.enums.TC_Aspects.TC_AspectStack;
+import gregtech.api.enums.Aspects.AspectStack;
 import gregtech.api.interfaces.IProjectileItem;
 import gregtech.api.interfaces.internal.IGT_Mod;
 import gregtech.api.interfaces.internal.IThaumcraftCompat;
@@ -911,9 +911,9 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                                 aMaterial.add(GT_Utility.copyAmount(1L, new Object[]{aEvent.Ore}));
 
                                 if (GregTech_API.sThaumcraftCompat != null && aPrefix.doGenerateItem(aMaterial) && !aPrefix.isIgnored(aMaterial)) {
-                                    List<TC_AspectStack> tAspects = new ArrayList<TC_AspectStack>();
-                                    for (TC_AspectStack tAspect : aPrefix.mAspects) tAspect.addToAspectList(tAspects);
-                                    if (aPrefix.mMaterialAmount >= 3628800 || aPrefix.mMaterialAmount < 0) for (TC_AspectStack tAspect : aMaterial.mAspects) tAspect.addToAspectList(tAspects);
+                                    List<AspectStack> tAspects = new ArrayList<AspectStack>();
+                                    for (AspectStack tAspect : aPrefix.mAspects) tAspect.addToAspectList(tAspects);
+                                    if (aPrefix.mMaterialAmount >= 3628800 || aPrefix.mMaterialAmount < 0) for (AspectStack tAspect : aMaterial.mAspects) tAspect.addToAspectList(tAspects);
                                     GregTech_API.sThaumcraftCompat.registerThaumcraftAspectsToItem(GT_Utility.copyAmount(1, aEvent.Ore), tAspects, aEvent.Name);
                                 }
 
@@ -951,7 +951,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                                         }
                                         break;
                                     case lens:
-                                        if ((aMaterial.contains(SubTag.TRANSPARENT)) && (aMaterial.mColor != Dyes._NULL)) {
+                                        if ((aMaterial.contains(SubTag.TRANSPARENT)) && (aMaterial.mColor != Dyes.dyeNULL)) {
                                             GT_OreDictUnificator.registerOre("craftingLens" + aMaterial.mColor.toString().replaceFirst("dye", ""), aEvent.Ore);
                                         }
                                         break;
@@ -1551,7 +1551,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     public Fluid addFluid(String aName, String aTexture, String aLocalized, Materials aMaterial, short[] aRGBa, int aState, int aTemperatureK,
                           ItemStack aFullContainer, ItemStack aEmptyContainer, int aFluidAmount) {
         aName = aName.toLowerCase(Locale.ENGLISH);
-        Fluid rFluid = new GT_Fluid(aName, aTexture, aRGBa != null ? aRGBa : Dyes._NULL.getRGBA());
+        Fluid rFluid = new GT_Fluid(aName, aTexture, aRGBa != null ? aRGBa : Dyes.dyeNULL.getRGBA());
         GT_LanguageManager.addStringLocalization(rFluid.getUnlocalizedName(), aLocalized == null ? aName : aLocalized);
         if (FluidRegistry.registerFluid(rFluid)) {
             switch (aState) {

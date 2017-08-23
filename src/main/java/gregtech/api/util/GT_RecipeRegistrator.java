@@ -3,7 +3,7 @@ package gregtech.api.util;
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.*;
-import gregtech.api.enums.TC_Aspects.TC_AspectStack;
+import gregtech.api.enums.Aspects.AspectStack;
 import gregtech.api.interfaces.internal.IThaumcraftCompat;
 import gregtech.api.objects.ItemData;
 import gregtech.api.objects.MaterialStack;
@@ -266,7 +266,7 @@ public class GT_RecipeRegistrator {
         ItemStack tDust = GT_OreDictUnificator.getDust(aData.mMaterial);
         if (tDust != null && GT_ModHandler.addPulverisationRecipe(GT_Utility.copyAmount(1, aStack), tDust, GT_OreDictUnificator.getDust(aData.getByProduct(0)), 100, GT_OreDictUnificator.getDust(aData.getByProduct(1)), 100, true)) {
             if (GregTech_API.sThaumcraftCompat != null)
-                GregTech_API.sThaumcraftCompat.addCrucibleRecipe(IThaumcraftCompat.ADVANCEDENTROPICPROCESSING, aStack, tDust, Arrays.asList(new TC_AspectStack(TC_Aspects.PERDITIO, Math.max(1, (aData.mMaterial.mAmount * 2) / M))));
+                GregTech_API.sThaumcraftCompat.addCrucibleRecipe(IThaumcraftCompat.ADVANCEDENTROPICPROCESSING, aStack, tDust, Arrays.asList(new AspectStack(Aspects.PERDITIO, Math.max(1, (aData.mMaterial.mAmount * 2) / M))));
         }
     }
 

@@ -207,7 +207,7 @@ public class GT_Mod implements IGT_Mod {
         GregTech_API.sMultiThreadedSounds = tMainConfig.get(aTextGeneral, "sound_multi_threading", false).getBoolean(false);
         String SBdye0 = "ColorModulation.";
         for (Dyes tDye : Dyes.values()) {
-            if ((tDye != Dyes._NULL) && (tDye.mIndex < 0)) {
+            if ((tDye != Dyes.dyeNULL) && (tDye.mIndex < 0)) {
                 String SBdye1 = new StringBuilder(18).append(SBdye0).append(tDye).toString();
                 tDye.mRGBa[0] = ((short) Math.min(255, Math.max(0, GregTech_API.sClientDataFile.get(SBdye1, "R", tDye.mRGBa[0]))));
                 tDye.mRGBa[1] = ((short) Math.min(255, Math.max(0, GregTech_API.sClientDataFile.get(SBdye1, "G", tDye.mRGBa[1]))));
@@ -400,16 +400,6 @@ public class GT_Mod implements IGT_Mod {
         	OrePrefixes.nugget.mGeneratedItems.add(tName);
         }
         if(tPrefix == OrePrefixes.spring){
-        	OrePrefixes.stickLong.mDisabledItems.remove(tName);
-        	OrePrefixes.stickLong.mGeneratedItems.add(tName);
-        	OrePrefixes.stick.mDisabledItems.remove(tName);
-        	OrePrefixes.stick.mGeneratedItems.add(tName);
-        }
-        if(tPrefix == OrePrefixes.springSmall){
-        	OrePrefixes.stick.mDisabledItems.remove(tName);
-        	OrePrefixes.stick.mGeneratedItems.add(tName);
-        }
-        if(tPrefix == OrePrefixes.stickLong){
         	OrePrefixes.stick.mDisabledItems.remove(tName);
         	OrePrefixes.stick.mGeneratedItems.add(tName);
         }
@@ -434,7 +424,7 @@ public class GT_Mod implements IGT_Mod {
         new GT_SonictronLoader().run();
         new GT_SpawnEventHandler();
         if (GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.gregtechrecipes, "SolarPanel", true)) {
-            GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel.get(1L),    GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"SGS", "CPC", 'C', OrePrefixes.circuit.get(Materials.Basic), 'G', new ItemStack(Blocks.glass_pane, 1), 'P', OrePrefixes.plateAlloy.get(Materials.Carbon), 'S', ItemList.Circuit_Silicon_Wafer});
+            GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel.get(1L),    GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"SGS", "CPC", 'C', OrePrefixes.circuit.get(Materials.Basic), 'G', new ItemStack(Blocks.glass_pane, 1), 'P', ItemList.Plate_CarbonAlloy.get(1), 'S', ItemList.Circuit_Silicon_Wafer});
             GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_8V.get(1L), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"SGS", "CPC","R R", 'C', OrePrefixes.circuit.get(Materials.Advanced), 'G', new ItemStack(Blocks.glass_pane, 1), 'P', OrePrefixes.wireGt04.get(Materials.Graphene), 'S', ItemList.Circuit_Silicon_Wafer2,'R', OrePrefixes.plate.get(Materials.GalliumArsenide)});
             GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_LV.get(1L), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"SGS", "CPC","R R", 'C', OrePrefixes.circuit.get(Materials.Master), 'G', GT_ModHandler.getIC2Item("reinforcedGlass", 1L), 'P', OrePrefixes.wireGt16.get(Materials.Graphene), 'S', ItemList.Circuit_Silicon_Wafer3,'R', OrePrefixes.plate.get(Materials.IndiumGalliumPhosphide)});
                                }
@@ -1173,7 +1163,7 @@ public class GT_Mod implements IGT_Mod {
         		GT_OreDictUnificator.get(ItemList.Block_SSFUEL.get(1)),
         		GT_OreDictUnificator.get(ItemList.Block_MSSFUEL.get(1)),
         		GT_OreDictUnificator.get(OrePrefixes.bucket, Materials.Lava, 1),
-        		GT_OreDictUnificator.get(OrePrefixes.rod, Materials.Blaze, 1));
+        		GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Blaze, 1));
         if (Loader.isModLoaded("Thaumcraft")) {
         	GT_Recipe.GT_Recipe_Map.sLargeBoilerFakeFuels.addSolidRecipe(GT_ModHandler.getModItem("Thaumcraft", "ItemResource", 1));
         }

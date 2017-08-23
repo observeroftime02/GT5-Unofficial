@@ -24,37 +24,37 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
     public static GT_MetaGenerated_Item_02 INSTANCE;
 
     public GT_MetaGenerated_Item_02() {
-        super("metaitem.02", OrePrefixes.toolHeadSword, OrePrefixes.toolHeadPickaxe, OrePrefixes.toolHeadShovel, OrePrefixes.toolHeadAxe, OrePrefixes.toolHeadHoe, OrePrefixes.toolHeadHammer, OrePrefixes.toolHeadFile, OrePrefixes.toolHeadSaw, OrePrefixes.toolHeadDrill, OrePrefixes.toolHeadChainsaw, OrePrefixes.toolHeadWrench, OrePrefixes.toolHeadUniversalSpade, OrePrefixes.toolHeadSense, OrePrefixes.toolHeadPlow, null, OrePrefixes.toolHeadBuzzSaw, OrePrefixes.turbineBlade, null, null, OrePrefixes.wireFine, OrePrefixes.gearGtSmall, OrePrefixes.rotor, OrePrefixes.stickLong, OrePrefixes.springSmall, OrePrefixes.spring, null, null, OrePrefixes.gemChipped, OrePrefixes.gemFlawed, OrePrefixes.gemFlawless, OrePrefixes.gemExquisite, OrePrefixes.gearGt);
+        super("metaitem.02", OrePrefixes.toolHeadSword, OrePrefixes.toolHeadPickaxe, OrePrefixes.toolHeadShovel, OrePrefixes.toolHeadAxe, OrePrefixes.toolHeadHoe, OrePrefixes.toolHeadHammer, OrePrefixes.toolHeadFile, OrePrefixes.toolHeadSaw, OrePrefixes.toolHeadDrill, OrePrefixes.toolHeadChainsaw, OrePrefixes.toolHeadWrench, OrePrefixes.toolHeadUniversalSpade, OrePrefixes.toolHeadSense, OrePrefixes.toolHeadPlow, null, OrePrefixes.toolHeadBuzzSaw, OrePrefixes.turbineBlade, null, null, OrePrefixes.wireFine, OrePrefixes.gearGtSmall, OrePrefixes.rotor, null, null, OrePrefixes.spring, null, null, OrePrefixes.gemChipped, OrePrefixes.gemFlawed, OrePrefixes.gemFlawless, OrePrefixes.gemExquisite, OrePrefixes.gearGt);
         INSTANCE = this;
 
         int tLastID = 0;
 
         ItemList.GelledToluene.set(addItem(tLastID = 10, "Gelled Toluene", "Raw Explosive", new Object[]{}));
-        ItemList.Bottle_Purple_Drink.set(addItem(tLastID = 100, "Purple Drink", "How about Lemonade. Or some Ice Tea? I got Purple Drink!", new Object[]{new GT_FoodStat(8, 0.2F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.moveSlowdown.id, 400, 1, 90), new TC_Aspects.TC_AspectStack(TC_Aspects.VITREUS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.VINCULUM, 1L)}));
+        ItemList.Bottle_Purple_Drink.set(addItem(tLastID = 100, "Purple Drink", "How about Lemonade. Or some Ice Tea? I got Purple Drink!", new Object[]{new GT_FoodStat(8, 0.2F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.moveSlowdown.id, 400, 1, 90), new Aspects.AspectStack(Aspects.VITREUS, 1L), new Aspects.AspectStack(Aspects.AQUA, 1L), new Aspects.AspectStack(Aspects.VINCULUM, 1L)}));
 
-        ItemList.Dye_Indigo.set(addItem(tLastID = 410, "Indigo Dye", "Blue Dye", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.SENSUS, 1L), Dyes.dyeBlue}));
+        ItemList.Dye_Indigo.set(addItem(tLastID = 410, "Indigo Dye", "Blue Dye", new Object[]{new Aspects.AspectStack(Aspects.SENSUS, 1L), Dyes.dyeBlue}));
 
-        ItemList.Bottle_Dragon_Blood.set(addItem(tLastID = 114, "Dragon Blood", "FUS RO DAH!", new Object[]{SubTag.INVISIBLE, new GT_FoodStat(4, 0.4F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.confusion.id, 300, 2, 90, Potion.damageBoost.id, 300, 2, 90, Potion.poison.id, 200, 2, 10, Potion.harm.id, 0, 2, 5), new TC_Aspects.TC_AspectStack(TC_Aspects.VITREUS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.VENENUM, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 2L)}));
+        ItemList.Bottle_Dragon_Blood.set(addItem(tLastID = 114, "Dragon Blood", "FUS RO DAH!", new Object[]{SubTag.INVISIBLE, new GT_FoodStat(4, 0.4F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.confusion.id, 300, 2, 90, Potion.damageBoost.id, 300, 2, 90, Potion.poison.id, 200, 2, 10, Potion.harm.id, 0, 2, 5), new Aspects.AspectStack(Aspects.VITREUS, 1L), new Aspects.AspectStack(Aspects.VENENUM, 2L), new Aspects.AspectStack(Aspects.POTENTIA, 2L)}));
 
         ItemList.SFMixture.set(addItem(tLastID = 270, "Super Fuel Binder", "Raw Material", new Object[]{}));
         ItemList.MSFMixture.set(addItem(tLastID = 271, "Magic Super Fuel Binder", "Raw Material", new Object[]{}));
 
-        ItemList.Crop_Drop_Plumbilia.set(addItem(tLastID = 500, "Plumbilia Leaf", "Source of Lead", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 1L)}));
-        ItemList.Crop_Drop_Argentia.set(addItem(tLastID = 501, "Argentia Leaf", "Source of Silver", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.LUCRUM, 1L)}));
-        ItemList.Crop_Drop_Indigo.set(addItem(tLastID = 502, "Indigo Blossom", "Used for making Blue Dye", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.SENSUS, 1L)}));
-        ItemList.Crop_Drop_Ferru.set(addItem(tLastID = 503, "Ferru Leaf", "Source of Iron", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 2L)}));
-        ItemList.Crop_Drop_Aurelia.set(addItem(tLastID = 504, "Aurelia Leaf", "Source of Gold", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.LUCRUM, 1L)}));
+        ItemList.Crop_Drop_Plumbilia.set(addItem(tLastID = 500, "Plumbilia Leaf", "Source of Lead", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1L), new Aspects.AspectStack(Aspects.METALLUM, 1L), new Aspects.AspectStack(Aspects.ORDO, 1L)}));
+        ItemList.Crop_Drop_Argentia.set(addItem(tLastID = 501, "Argentia Leaf", "Source of Silver", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1L), new Aspects.AspectStack(Aspects.METALLUM, 1L), new Aspects.AspectStack(Aspects.LUCRUM, 1L)}));
+        ItemList.Crop_Drop_Indigo.set(addItem(tLastID = 502, "Indigo Blossom", "Used for making Blue Dye", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1L), new Aspects.AspectStack(Aspects.SENSUS, 1L)}));
+        ItemList.Crop_Drop_Ferru.set(addItem(tLastID = 503, "Ferru Leaf", "Source of Iron", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1L), new Aspects.AspectStack(Aspects.METALLUM, 2L)}));
+        ItemList.Crop_Drop_Aurelia.set(addItem(tLastID = 504, "Aurelia Leaf", "Source of Gold", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1L), new Aspects.AspectStack(Aspects.METALLUM, 1L), new Aspects.AspectStack(Aspects.LUCRUM, 1L)}));
 
-        ItemList.Crop_Drop_OilBerry.set(addItem(tLastID = 510, "Oil Berry", "Oil in Berry form", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 1L)}));
-        ItemList.Crop_Drop_BobsYerUncleRanks.set(addItem(tLastID = 511, "Bobs-Yer-Uncle-Berry", "Source of Emeralds", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.VITREUS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.LUCRUM, 1L)}));
-        ItemList.Crop_Drop_UUMBerry.set(addItem(tLastID = 512, "UUM Berry", "UUM in Berry form", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 1L)}));
-        ItemList.Crop_Drop_UUABerry.set(addItem(tLastID = 513, "UUA Berry", "UUA in Berry form", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 1L)}));
+        ItemList.Crop_Drop_OilBerry.set(addItem(tLastID = 510, "Oil Berry", "Oil in Berry form", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1L), new Aspects.AspectStack(Aspects.AQUA, 1L), new Aspects.AspectStack(Aspects.POTENTIA, 1L)}));
+        ItemList.Crop_Drop_BobsYerUncleRanks.set(addItem(tLastID = 511, "Bobs-Yer-Uncle-Berry", "Source of Emeralds", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1L), new Aspects.AspectStack(Aspects.VITREUS, 1L), new Aspects.AspectStack(Aspects.LUCRUM, 1L)}));
+        ItemList.Crop_Drop_UUMBerry.set(addItem(tLastID = 512, "UUM Berry", "UUM in Berry form", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1L), new Aspects.AspectStack(Aspects.AQUA, 1L), new Aspects.AspectStack(Aspects.POTENTIA, 1L)}));
+        ItemList.Crop_Drop_UUABerry.set(addItem(tLastID = 513, "UUA Berry", "UUA in Berry form", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1L), new Aspects.AspectStack(Aspects.AQUA, 1L), new Aspects.AspectStack(Aspects.POTENTIA, 1L)}));
 
-        ItemList.Crop_Drop_MilkWart.set(addItem(tLastID = 520, "Milk Wart", "Source of Milk", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.SANO, 1L)}));
+        ItemList.Crop_Drop_MilkWart.set(addItem(tLastID = 520, "Milk Wart", "Source of Milk", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1L), new Aspects.AspectStack(Aspects.AQUA, 1L), new Aspects.AspectStack(Aspects.SANO, 1L)}));
 
-        ItemList.Crop_Drop_Coppon.set(addItem(tLastID = 530, "Coppon Fiber", "ORANGE WOOOOOOOL!!!", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.PERMUTATIO, 1L)}));
+        ItemList.Crop_Drop_Coppon.set(addItem(tLastID = 530, "Coppon Fiber", "ORANGE WOOOOOOOL!!!", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1L), new Aspects.AspectStack(Aspects.METALLUM, 1L), new Aspects.AspectStack(Aspects.PERMUTATIO, 1L)}));
 
-        ItemList.Crop_Drop_Tine.set(addItem(tLastID = 540, "Tine Twig", "Source of Tin", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.ARBOR, 1L)}));
+        ItemList.Crop_Drop_Tine.set(addItem(tLastID = 540, "Tine Twig", "Source of Tin", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1L), new Aspects.AspectStack(Aspects.METALLUM, 1L), new Aspects.AspectStack(Aspects.ARBOR, 1L)}));
         setBurnValue(32000 + tLastID, 100);
 
         ItemList.Crop_Drop_Bauxite.set(addItem(tLastID = 521, "Bauxia Leaf", "Source of Aluminium", new Object[]{}));
@@ -104,7 +104,6 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         GT_ModHandler.addCompressionRecipe(new ItemStack(Blocks.red_flower, 8, 32767), ItemList.IC2_PlantballCompressed.get(1L));
         GT_ModHandler.addCompressionRecipe(new ItemStack(Blocks.yellow_flower, 8, 32767), ItemList.IC2_PlantballCompressed.get(1L));
 
-        GT_ModHandler.addPulverisationRecipe(ItemList.Dye_Cocoa.get(1L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Cocoa, 1L));
         GT_ModHandler.addPulverisationRecipe(ItemList.Crop_Drop_Tine.get(1L), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Wood, 2L));
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.reeds, 1), new ItemStack(Items.sugar, 1), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.melon_block, 1, 0), new ItemStack(Items.melon, 8, 0), new ItemStack(Items.melon_seeds, 1), 80, false);
@@ -123,7 +122,7 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
                 e.printStackTrace(GT_Log.err);
             }
         }
-        ItemList.Display_ITS_FREE.set(addItem(tLastID = 766, "ITS FREE", "(or at least almost free)", new Object[]{SubTag.INVISIBLE, new TC_Aspects.TC_AspectStack(TC_Aspects.LUCRUM, 1L)}));
+        ItemList.Display_ITS_FREE.set(addItem(tLastID = 766, "ITS FREE", "(or at least almost free)", new Object[]{SubTag.INVISIBLE, new Aspects.AspectStack(Aspects.LUCRUM, 1L)}));
     }
 
     public boolean onLeftClickEntity(ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {

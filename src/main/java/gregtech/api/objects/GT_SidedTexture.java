@@ -32,7 +32,7 @@ public class GT_SidedTexture implements ITexture, IColorModulationContainer {
     }
 
     public GT_SidedTexture(IIconContainer aIcon0, IIconContainer aIcon1, IIconContainer aIcon2, IIconContainer aIcon3, IIconContainer aIcon4, IIconContainer aIcon5) {
-        this(aIcon0, aIcon1, aIcon2, aIcon3, aIcon4, aIcon5, Dyes._NULL.mRGBa);
+        this(aIcon0, aIcon1, aIcon2, aIcon3, aIcon4, aIcon5, Dyes.dyeNULL.mRGBa);
     }
 
     public GT_SidedTexture(IIconContainer aBottom, IIconContainer aTop, IIconContainer aSides, short[] aRGBa) {
@@ -40,7 +40,7 @@ public class GT_SidedTexture implements ITexture, IColorModulationContainer {
     }
 
     public GT_SidedTexture(IIconContainer aBottom, IIconContainer aTop, IIconContainer aSides) {
-        this(aBottom, aTop, aSides, Dyes._NULL.mRGBa);
+        this(aBottom, aTop, aSides, Dyes.dyeNULL.mRGBa);
     }
 
     @Override

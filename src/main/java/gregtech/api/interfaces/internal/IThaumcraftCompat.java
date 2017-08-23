@@ -1,7 +1,6 @@
 package gregtech.api.interfaces.internal;
 
-import gregtech.api.enums.TC_Aspects;
-import gregtech.api.enums.TC_Aspects.TC_AspectStack;
+import gregtech.api.enums.Aspects.AspectStack;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
@@ -18,13 +17,13 @@ public interface IThaumcraftCompat {
 
     boolean registerPortholeBlacklistedBlock(Block aBlock);
 
-    boolean registerThaumcraftAspectsToItem(ItemStack aStack, List<TC_AspectStack> aAspects, boolean aAdditive);
+    boolean registerThaumcraftAspectsToItem(ItemStack aStack, List<AspectStack> aAspects, boolean aAdditive);
 
-    boolean registerThaumcraftAspectsToItem(ItemStack aStack, List<TC_AspectStack> aAspects, String aOreDict);
+    boolean registerThaumcraftAspectsToItem(ItemStack aStack, List<AspectStack> aAspects, String aOreDict);
 
-    Object addCrucibleRecipe(String aResearch, Object aInput, ItemStack aOutput, List<TC_AspectStack> aAspects);
+    Object addCrucibleRecipe(String aResearch, Object aInput, ItemStack aOutput, List<AspectStack> aAspects);
 
-    Object addInfusionRecipe(String aResearch, ItemStack aMainInput, ItemStack[] aSideInputs, ItemStack aOutput, int aInstability, List<TC_Aspects.TC_AspectStack> aAspects);
+    Object addInfusionRecipe(String aResearch, ItemStack aMainInput, ItemStack[] aSideInputs, ItemStack aOutput, int aInstability, List<AspectStack> aAspects);
 
-    Object addResearch(String aResearch, String aName, String aText, String[] aParentResearches, String aCategory, ItemStack aIcon, int aComplexity, int aType, int aX, int aY, List<TC_AspectStack> aAspects, ItemStack[] aResearchTriggers, Object[] aPages);
+    Object addResearch(String aResearch, String aName, String aText, String[] aParentResearches, String aCategory, ItemStack aIcon, int aComplexity, int aType, int aX, int aY, List<AspectStack> aAspects, ItemStack[] aResearchTriggers, Object[] aPages);
 }

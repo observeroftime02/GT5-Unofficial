@@ -32,7 +32,7 @@ public class GT_RenderedTexture implements ITexture, IColorModulationContainer {
     }
 
     public GT_RenderedTexture(IIconContainer aIcon) {
-        this(aIcon, Dyes._NULL.mRGBa);
+        this(aIcon, Dyes.dyeNULL.mRGBa);
     }
 
     @Override

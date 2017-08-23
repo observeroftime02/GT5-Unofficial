@@ -245,7 +245,7 @@ public class GT_MetaTileEntity_BasicMachine_GT_Recipe extends GT_MetaTileEntity_
                             break;
                         case 6:
                         case 7:
-                            aRecipe[i] = OrePrefixes.stickLong.get(Materials.NeodymiumMagnetic);
+                            aRecipe[i] = OrePrefixes.stick.get(Materials.NeodymiumMagnetic); //TODO FIX ME - WAS STICKLONG
                             break;
                         default:
                             aRecipe[i] = OrePrefixes.block.get(Materials.NeodymiumMagnetic);

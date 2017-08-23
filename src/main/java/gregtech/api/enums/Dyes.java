@@ -31,7 +31,7 @@ public enum Dyes implements IColorModulationContainer {
     /**
      * The NULL Color
      */
-    _NULL(-1, 255, 255, 255, "INVALID COLOR"),
+    dyeNULL(-1, 255, 255, 255, "INVALID COLOR"),
     /**
      * Additional Colors only used for direct Color referencing
      */
@@ -54,7 +54,7 @@ public enum Dyes implements IColorModulationContainer {
 
     public static Dyes get(int aColor) {
         if (aColor >= 0 && aColor < 16) return VALUES[aColor];
-        return _NULL;
+        return dyeNULL;
     }
 
     public static short[] getModulation(int aColor, short[] aDefaultModulation) {
@@ -65,7 +65,7 @@ public enum Dyes implements IColorModulationContainer {
     public static Dyes get(String aColor) {
         Object tObject = GT_Utility.getFieldContent(Dyes.class, aColor, false, false);
         if (tObject instanceof Dyes) return (Dyes) tObject;
-        return _NULL;
+        return dyeNULL;
     }
 
     public static boolean isAnyFluidDye(FluidStack aFluid) {

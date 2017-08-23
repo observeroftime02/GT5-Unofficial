@@ -1227,8 +1227,8 @@ public class GT_Loader_MetaTileEntities implements Runnable {
 
         ItemList.Seismic_Prospector.set(new GT_MetaTileEntity_SeismicProspector(1156, "basicmachine.seismicprospector", "Seismic Prospector", 1).getStackForm(1));
         ItemList.Seismic_Prospector_Adv.set(new GT_MetaTileEntity_AdvSeismicProspector(1173, "basicmachine.seismicprospector.3", "Advanced Seismic Prospector", 4, 95, 4).getStackForm(1));
-        GT_ModHandler.addCraftingRecipe(ItemList.Seismic_Prospector.get(1L), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.Hull_Steel, 'W', OrePrefixes.plateDouble.get(Materials.Steel), 'E', OrePrefixes.circuit.get(Materials.Basic), 'C', ItemList.Sensor_LV});
-        GT_ModHandler.addCraftingRecipe(ItemList.Seismic_Prospector_Adv.get(1L), bitsd, new Object[] { "WWW", "EME", "CCC", 'M', ItemList.Hull_EV, 'W', OrePrefixes.plateDouble.get(Materials.VanadiumSteel),'E', OrePrefixes.circuit.get(Materials.Data), 'C', ItemList.Sensor_EV });
+        GT_ModHandler.addCraftingRecipe(ItemList.Seismic_Prospector.get(1L), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.Hull_Steel, 'W', OrePrefixes.plate.get(Materials.Steel), 'E', OrePrefixes.circuit.get(Materials.Basic), 'C', ItemList.Sensor_LV});
+        GT_ModHandler.addCraftingRecipe(ItemList.Seismic_Prospector_Adv.get(1L), bitsd, new Object[] { "WWW", "EME", "CCC", 'M', ItemList.Hull_EV, 'W', OrePrefixes.plate.get(Materials.VanadiumSteel),'E', OrePrefixes.circuit.get(Materials.Data), 'C', ItemList.Sensor_EV });
 
         ItemList.OilDrill.set(new GT_MetaTileEntity_OilDrill(1157, "multimachine.oildrill", "Oil Drilling Rig").getStackForm(1));
         GT_ModHandler.addCraftingRecipe(ItemList.OilDrill.get(1L), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.Hull_MV, 'W', OrePrefixes.frameGt.get(Materials.Steel), 'E', OrePrefixes.circuit.get(Materials.Good), 'C', ItemList.Electric_Motor_MV});
@@ -1313,7 +1313,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {
     	long bits = GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED;
     	long bitsd = GT_ModHandler.RecipeBits.DISMANTLEABLE | GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED;
         for (int i = 0; i < GregTech_API.sGeneratedMaterials.length; i++) {
-            if (((GregTech_API.sGeneratedMaterials[i] != null) && ((GregTech_API.sGeneratedMaterials[i].mTypes & 0x2) != 0) && !OrePrefixes.rod.mDisabledItems.contains(GregTech_API.sGeneratedMaterials[i])) || (GregTech_API.sGeneratedMaterials[i] == Materials.Wood)) {
+            if (((GregTech_API.sGeneratedMaterials[i] != null) && ((GregTech_API.sGeneratedMaterials[i].mTypes & 0x2) != 0) && !OrePrefixes.stick.mDisabledItems.contains(GregTech_API.sGeneratedMaterials[i])) || (GregTech_API.sGeneratedMaterials[i] == Materials.Wood)) {
                 new GT_MetaPipeEntity_Frame(4096 + i, "GT_Frame_" + GregTech_API.sGeneratedMaterials[i], GregTech_API.sGeneratedMaterials[i].mDefaultLocalName + " Frame Box", GregTech_API.sGeneratedMaterials[i]);
             }
         }

@@ -10,7 +10,7 @@ import gregtech.api.util.GT_Utility;
 import net.minecraft.item.ItemStack;
 
 public class ProcessingOreSmelting implements gregtech.api.interfaces.IOreRecipeRegistrator {
-    private final OrePrefixes[] mSmeltingPrefixes = {OrePrefixes.crushed, OrePrefixes.crushedPurified, OrePrefixes.crushedCentrifuged, OrePrefixes.dustImpure, OrePrefixes.dustPure, OrePrefixes.dustRefined};
+    private final OrePrefixes[] mSmeltingPrefixes = {OrePrefixes.crushed, OrePrefixes.crushedPurified, OrePrefixes.crushedCentrifuged, OrePrefixes.dustImpure, OrePrefixes.dustPure};
 
     public ProcessingOreSmelting() {
         for (OrePrefixes tPrefix : this.mSmeltingPrefixes) tPrefix.add(this);

@@ -17,7 +17,6 @@ public class ProcessingDust implements gregtech.api.interfaces.IOreRecipeRegistr
         OrePrefixes.dust.add(this);
         OrePrefixes.dustPure.add(this);
         OrePrefixes.dustImpure.add(this);
-        OrePrefixes.dustRefined.add(this);
         OrePrefixes.dustSmall.add(this);
         OrePrefixes.dustTiny.add(this);
     }
@@ -162,8 +161,8 @@ public class ProcessingDust implements gregtech.api.interfaces.IOreRecipeRegistr
                         GT_Values.RA.addImplosionRecipe(GT_Utility.copyAmount(4L, aStack), 16, GT_OreDictUnificator.get(OrePrefixes.gem, aMaterial, 3L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.DarkAsh, 8L));
                 }
                 break;
-            case dustPure: case dustImpure:case dustRefined:
-                Materials tByProduct = GT_Utility.selectItemInList(aPrefix == OrePrefixes.dustRefined ? 2 : aPrefix == OrePrefixes.dustPure ? 1 : 0, aMaterial, aMaterial.mOreByProducts);
+            case dustPure: case dustImpure:
+                Materials tByProduct = GT_Utility.selectItemInList(aPrefix == OrePrefixes.dustPure ? 1 : 0, aMaterial, aMaterial.mOreByProducts);
 
                 if (aPrefix == OrePrefixes.dustPure) {
                     if (aMaterial.contains(SubTag.ELECTROMAGNETIC_SEPERATION_GOLD))

@@ -29,12 +29,12 @@ public interface IEnergyConductor extends IEnergyConnected {
     long getLossPerMeter();
 
     /**
-     * @return the Material the Cable consists of. (may return Materials._NULL)
+     * @return the Material the Cable consists of. (may return Materials.dyeNULL)
      */
     Materials getCableMaterial();
 
     /**
-     * @return the Material the Cable Insulation consists of. (may return Materials._NULL)
+     * @return the Material the Cable Insulation consists of. (may return Materials.dyeNULL)
      */
     Materials getInsulationMaterial();
 }
