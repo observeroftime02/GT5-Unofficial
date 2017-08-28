@@ -24,10 +24,10 @@ public class ElementStack implements Cloneable {
     public boolean equals(Object aObject) {
         if (aObject == this) return true;
         if (aObject == null) return false;
-        if (aObject instanceof Element) {return aObject == mElement;}
-        if (aObject instanceof ElementStack)
-            return ((ElementStack) aObject).mElement == mElement && (mAmount < 0 || ((ElementStack) aObject).mAmount < 0 || ((ElementStack) aObject).mAmount == mAmount);
-        return false;
+        if (aObject instanceof Element) {
+            return aObject == mElement;
+        }
+        return aObject instanceof ElementStack && ((ElementStack) aObject).mElement == mElement && (mAmount < 0 || ((ElementStack) aObject).mAmount < 0 || ((ElementStack) aObject).mAmount == mAmount);
     }
 
     @Override

@@ -331,20 +331,17 @@ public abstract class BaseTileEntity extends TileEntity implements IHasWorldObje
 
     @Override
     public final boolean getSky(int aX, int aY, int aZ) {
-        if (ignoreUnloadedChunks && crossedChunkBorder(aX, aZ) && !worldObj.blockExists(aX, aY, aZ)) return true;
-        return worldObj.canBlockSeeTheSky(aX, aY, aZ);
+        return ignoreUnloadedChunks && crossedChunkBorder(aX, aZ) && !worldObj.blockExists(aX, aY, aZ) || worldObj.canBlockSeeTheSky(aX, aY, aZ);
     }
 
     @Override
     public final boolean getOpacity(int aX, int aY, int aZ) {
-        if (ignoreUnloadedChunks && crossedChunkBorder(aX, aZ) && !worldObj.blockExists(aX, aY, aZ)) return false;
-        return GT_Utility.isOpaqueBlock(worldObj, aX, aY, aZ);
+        return !(ignoreUnloadedChunks && crossedChunkBorder(aX, aZ) && !worldObj.blockExists(aX, aY, aZ)) && GT_Utility.isOpaqueBlock(worldObj, aX, aY, aZ);
     }
 
     @Override
     public final boolean getAir(int aX, int aY, int aZ) {
-        if (ignoreUnloadedChunks && crossedChunkBorder(aX, aZ) && !worldObj.blockExists(aX, aY, aZ)) return true;
-        return GT_Utility.isBlockAir(worldObj, aX, aY, aZ);
+        return ignoreUnloadedChunks && crossedChunkBorder(aX, aZ) && !worldObj.blockExists(aX, aY, aZ) || GT_Utility.isBlockAir(worldObj, aX, aY, aZ);
     }
 
     @Override

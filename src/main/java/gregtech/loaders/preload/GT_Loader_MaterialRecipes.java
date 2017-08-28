@@ -885,29 +885,29 @@ public class GT_Loader_MaterialRecipes implements Runnable {
     }
 
     public void addMaterialSpecificRecipes() {
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 1)), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.WroughtIron, 1L));
+        GT_ModHandler.addSmeltingRecipe(GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 1), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.WroughtIron, 1L));
         //TODO FIX RICH?
-        GT_Values.RA.addCentrifugeRecipe(GT_Utility.copyAmount(1L, GT_OreDictUnificator.get(OrePrefixes.ore, Materials.Oilsands, 1)), null, null, Materials.Oil.getFluid(/*tIsRich ? 1000L : */500L), new ItemStack(net.minecraft.init.Blocks.sand, 1, 0), null, null, null, null, null, new int[]{'?'}, /*tIsRich ? 2000 : */1000, 5);
+        GT_Values.RA.addCentrifugeRecipe(GT_OreDictUnificator.get(OrePrefixes.ore, Materials.Oilsands, 1), null, null, Materials.Oil.getFluid(/*tIsRich ? 1000L : */500L), new ItemStack(net.minecraft.init.Blocks.sand, 1, 0), null, null, null, null, null, new int[]{'?'}, /*tIsRich ? 2000 : */1000, 5);
 
-        if (gregtech.api.GregTech_API.sRecipeFile.get(gregtech.api.enums.ConfigCategories.Recipes.disabledrecipes, "QuartzDustSmeltingIntoAESilicon", true)) {
+        if (GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.disabledrecipes, "QuartzDustSmeltingIntoAESilicon", true)) {
             GT_ModHandler.removeFurnaceSmelting(Materials.NetherQuartz.getDust(1));
             GT_ModHandler.removeFurnaceSmelting(Materials.Quartz.getDust(1));
             GT_ModHandler.removeFurnaceSmelting(Materials.CertusQuartz.getDust(1));
         }
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.Glass.getDust(1)), new ItemStack(Blocks.glass));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.Tetrahedrite.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Copper, 6L));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.Chalcopyrite.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Copper, 6L));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.Malachite.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Copper, 6L));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.Pentlandite.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Nickel, 6L));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.Garnierite.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Nickel, 1L));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.Cassiterite.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Tin, 1L));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.Magnetite.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 3L));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.VanadiumMagnetite.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 3L));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.BasalticMineralSand.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 3L));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.GraniticMineralSand.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 3L));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.YellowLimonite.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 1L));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.BrownLimonite.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 1L));
-        GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, Materials.BandedIron.getDust(1)), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 1L));
+        GT_ModHandler.addSmeltingRecipe(Materials.Glass.getDust(1), new ItemStack(Blocks.glass));
+        GT_ModHandler.addSmeltingRecipe(Materials.Tetrahedrite.getDust(1), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Copper, 6L));
+        GT_ModHandler.addSmeltingRecipe(Materials.Chalcopyrite.getDust(1), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Copper, 6L));
+        GT_ModHandler.addSmeltingRecipe(Materials.Malachite.getDust(1), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Copper, 6L));
+        GT_ModHandler.addSmeltingRecipe(Materials.Pentlandite.getDust(1), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Nickel, 6L));
+        GT_ModHandler.addSmeltingRecipe(Materials.Garnierite.getDust(1), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Nickel, 1L));
+        GT_ModHandler.addSmeltingRecipe(Materials.Cassiterite.getDust(1), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Tin, 1L));
+        GT_ModHandler.addSmeltingRecipe(Materials.Magnetite.getDust(1), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 3L));
+        GT_ModHandler.addSmeltingRecipe(Materials.VanadiumMagnetite.getDust(1), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 3L));
+        GT_ModHandler.addSmeltingRecipe(Materials.BasalticMineralSand.getDust(1), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 3L));
+        GT_ModHandler.addSmeltingRecipe(Materials.GraniticMineralSand.getDust(1), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 3L));
+        GT_ModHandler.addSmeltingRecipe(Materials.YellowLimonite.getDust(1), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 1L));
+        GT_ModHandler.addSmeltingRecipe(Materials.BrownLimonite.getDust(1), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 1L));
+        GT_ModHandler.addSmeltingRecipe(Materials.BandedIron.getDust(1), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 1L));
         GT_Values.RA.addImplosionRecipe(GT_Utility.copyAmount(4L, Materials.Diamond.getDust(1)), 32, ItemList.IC2_Industrial_Diamond.get(3L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.DarkAsh, 16L));
         GT_Values.RA.addImplosionRecipe(GT_Utility.copyAmount(4L, Materials.Opal.getDust(1)), 24, GT_OreDictUnificator.get(OrePrefixes.gem, Materials.Opal, 3L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.DarkAsh, 12L));
         GT_Values.RA.addImplosionRecipe(GT_Utility.copyAmount(4L, Materials.Olivine.getDust(1)), 24, GT_OreDictUnificator.get(OrePrefixes.gem, Materials.Olivine, 3L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.DarkAsh, 12L));
@@ -925,7 +925,7 @@ public class GT_Loader_MaterialRecipes implements Runnable {
         GT_Values.RA.addImplosionRecipe(GT_Utility.copyAmount(4L, Materials.Amber.getDust(1)), 16, GT_OreDictUnificator.get(OrePrefixes.gem, Materials.Amber, 3L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.DarkAsh, 8L));
         GT_Values.RA.addImplosionRecipe(GT_Utility.copyAmount(4L, Materials.Monazite.getDust(1)), 16, GT_OreDictUnificator.get(OrePrefixes.gem, Materials.Monazite, 3L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.DarkAsh, 8L));
         GT_Values.RA.addElectrolyzerRecipe(GT_OreDictUnificator.get(OrePrefixes.gem, Materials.CertusQuartz, 1), 0, GT_ModHandler.getModItem("appliedenergistics2", "item.ItemMultiMaterial", 1L, 1), null, null, null, null, null, 2000, 30);
-        if (gregtech.api.GregTech_API.sRecipeFile.get(gregtech.api.enums.ConfigCategories.Recipes.disabledrecipes, "torchesFromCoal", false)) {
+        if (GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.disabledrecipes, "torchesFromCoal", false)) {
             GT_ModHandler.removeRecipe(new ItemStack(Items.coal, 1, 0), null, null, new ItemStack(net.minecraft.init.Items.stick, 1, 0));
             GT_ModHandler.removeRecipe(new ItemStack(Items.coal, 1, 1), null, null, new ItemStack(net.minecraft.init.Items.stick, 1, 0));
         }
@@ -937,7 +937,7 @@ public class GT_Loader_MaterialRecipes implements Runnable {
         /*if (aModName.equalsIgnoreCase("AtomicScience")) {
             GT_ModHandler.addExtractionRecipe(ItemList.Cell_Empty.get(1L), aStack);
         }*/
-        GT_ModHandler.addCraftingRecipe(GT_Utility.copyAmount(GregTech_API.sRecipeFile.get(gregtech.api.enums.ConfigCategories.Recipes.harderrecipes, Materials.Paper.getPlates(1), true) ? 2L : 3L, Materials.Paper.getPlates(1)), new Object[]{"XXX", 'X', new ItemStack(net.minecraft.init.Items.reeds, 1, 32767)});
+        GT_ModHandler.addCraftingRecipe(GT_Utility.copyAmount(GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.harderrecipes, Materials.Paper.getPlates(1), true) ? 2L : 3L, Materials.Paper.getPlates(1)), new Object[]{"XXX", 'X', new ItemStack(net.minecraft.init.Items.reeds, 1, 32767)});
         GregTech_API.registerCover(Materials.Iron.getPlates(1), new GT_CopiedBlockTexture(Blocks.iron_block, 1, 0), null);
         GregTech_API.registerCover(Materials.Gold.getPlates(1), new GT_CopiedBlockTexture(Blocks.gold_block, 1, 0), null);
         GregTech_API.registerCover(Materials.Diamond.getPlates(1), new GT_CopiedBlockTexture(Blocks.diamond_block, 1, 0), null);
@@ -949,9 +949,9 @@ public class GT_Loader_MaterialRecipes implements Runnable {
         GregTech_API.registerCover(Materials.NetherQuartz.getPlates(1), new GT_CopiedBlockTexture(Blocks.quartz_block, 1, 0), null);
         GregTech_API.registerCover(Materials.Obsidian.getPlates(1), new GT_CopiedBlockTexture(Blocks.obsidian, 1, 0), null);
         GregTech_API.registerCover(Materials.Stone.getPlates(1), new GT_CopiedBlockTexture(Blocks.stone, 1, 0), null);
-        GregTech_API.registerCover(Materials.GraniteBlack.getPlates(1), new GT_RenderedTexture(gregtech.api.enums.Textures.BlockIcons.GRANITE_BLACK_SMOOTH), null);
-        GregTech_API.registerCover(Materials.GraniteRed.getPlates(1), new GT_RenderedTexture(gregtech.api.enums.Textures.BlockIcons.GRANITE_RED_SMOOTH), null);
-        GregTech_API.registerCover(Materials.Concrete.getPlates(1), new GT_RenderedTexture(gregtech.api.enums.Textures.BlockIcons.CONCRETE_LIGHT_SMOOTH), null);
+        GregTech_API.registerCover(Materials.GraniteBlack.getPlates(1), new GT_RenderedTexture(Textures.BlockIcons.GRANITE_BLACK_SMOOTH), null);
+        GregTech_API.registerCover(Materials.GraniteRed.getPlates(1), new GT_RenderedTexture(Textures.BlockIcons.GRANITE_RED_SMOOTH), null);
+        GregTech_API.registerCover(Materials.Concrete.getPlates(1), new GT_RenderedTexture(Textures.BlockIcons.CONCRETE_LIGHT_SMOOTH), null);
         GT_ModHandler.addCraftingRecipe(GT_OreDictUnificator.get(OrePrefixes.gearGt, Materials.Wood, 1L), tBits, new Object[]{"SPS", "PsP", "SPS", Character.valueOf('P'), OrePrefixes.plank.get(Materials.Wood), Character.valueOf('S'), OrePrefixes.stick.get(Materials.Wood)});
         GT_ModHandler.addCraftingRecipe(GT_OreDictUnificator.get(OrePrefixes.gearGt, Materials.Stone, 1L), tBits, new Object[]{"SPS", "PfP", "SPS", Character.valueOf('P'), OrePrefixes.stoneSmooth, Character.valueOf('S'), new ItemStack(Blocks.stone_button, 1, 32767)});
         GT_ModHandler.addCraftingRecipe(GT_OreDictUnificator.get(OrePrefixes.gearGtSmall, Materials.Wood, 1L), tBits, new Object[]{"P ", " s", Character.valueOf('P'), OrePrefixes.plank.get(Materials.Wood)});
@@ -1033,8 +1033,9 @@ public class GT_Loader_MaterialRecipes implements Runnable {
 
         int tAmount = (int) (OrePrefixes.ingot.mMaterialAmount / 3628800L);
         if ((tAmount > 0) && (tAmount <= 64) && (OrePrefixes.ingot.mMaterialAmount % 3628800L == 0L)) {
-            GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Glass, 1), ItemList.Shape_Extruder_Bottle.get(0L), new ItemStack(Items.glass_bottle, 1), tAmount * 32, 16);
-            GT_Values.RA.addAlloySmelterRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Glass, 1), ItemList.Shape_Mold_Bottle.get(0L), new ItemStack(Items.glass_bottle, 1), tAmount * 64, 4);
+            ItemStack aGlassDust = GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Glass, 1);
+            GT_Values.RA.addExtruderRecipe(aGlassDust, ItemList.Shape_Extruder_Bottle.get(0L), new ItemStack(Items.glass_bottle, 1), tAmount * 32, 16);
+            GT_Values.RA.addAlloySmelterRecipe(aGlassDust, ItemList.Shape_Mold_Bottle.get(0L), new ItemStack(Items.glass_bottle, 1), tAmount * 64, 4);
 
             GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Steel, 2), ItemList.Shape_Extruder_Cell.get(0L), ItemList.Cell_Empty.get(tAmount), tAmount * 128, 32);
             GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Polytetrafluoroethylene, 2), ItemList.Shape_Extruder_Cell.get(0L), ItemList.Cell_Empty.get(tAmount), tAmount * 128, 32);

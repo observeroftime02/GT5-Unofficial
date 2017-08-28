@@ -148,7 +148,6 @@ public class GT_OreDictUnificator {
             tPrefixMaterial.mUnificationTarget = sName2StackMap.get(tPrefixMaterial.toString());
         rStack = tPrefixMaterial.mUnificationTarget;
         if (GT_Utility.isStackInvalid(rStack)) return GT_Utility.copy(aStack);
-        assert rStack != null;
         rStack.setTagCompound(aStack.getTagCompound());
         return GT_Utility.copyAmount(aStack.stackSize, rStack);
     }

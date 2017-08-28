@@ -18,8 +18,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 
-public class GT_Renderer_Block
-        implements ISimpleBlockRenderingHandler {
+public class GT_Renderer_Block implements ISimpleBlockRenderingHandler {
     public static GT_Renderer_Block INSTANCE;
     public final int mRenderID;
 
@@ -116,10 +115,7 @@ public class GT_Renderer_Block
 
     public static boolean renderStandardBlock(IBlockAccess aWorld, int aX, int aY, int aZ, Block aBlock, RenderBlocks aRenderer) {
         TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
-        if ((tTileEntity instanceof ITexturedTileEntity)) {
-            return renderStandardBlock(aWorld, aX, aY, aZ, aBlock, aRenderer, new ITexture[][]{((ITexturedTileEntity) tTileEntity).getTexture(aBlock, (byte) 0), ((ITexturedTileEntity) tTileEntity).getTexture(aBlock, (byte) 1), ((ITexturedTileEntity) tTileEntity).getTexture(aBlock, (byte) 2), ((ITexturedTileEntity) tTileEntity).getTexture(aBlock, (byte) 3), ((ITexturedTileEntity) tTileEntity).getTexture(aBlock, (byte) 4), ((ITexturedTileEntity) tTileEntity).getTexture(aBlock, (byte) 5)});
-        }
-        return false;
+        return (tTileEntity instanceof ITexturedTileEntity) && renderStandardBlock(aWorld, aX, aY, aZ, aBlock, aRenderer, new ITexture[][]{((ITexturedTileEntity) tTileEntity).getTexture(aBlock, (byte) 0), ((ITexturedTileEntity) tTileEntity).getTexture(aBlock, (byte) 1), ((ITexturedTileEntity) tTileEntity).getTexture(aBlock, (byte) 2), ((ITexturedTileEntity) tTileEntity).getTexture(aBlock, (byte) 3), ((ITexturedTileEntity) tTileEntity).getTexture(aBlock, (byte) 4), ((ITexturedTileEntity) tTileEntity).getTexture(aBlock, (byte) 5)});
     }
 
     public static boolean renderStandardBlock(IBlockAccess aWorld, int aX, int aY, int aZ, Block aBlock, RenderBlocks aRenderer, ITexture[][] aTextures) {

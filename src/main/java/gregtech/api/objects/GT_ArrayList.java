@@ -35,8 +35,7 @@ public class GT_ArrayList<E> extends ArrayList<E> {
 
     @Override
     public boolean add(E aElement) {
-        if (mAllowNulls || aElement != null) return super.add(aElement);
-        return false;
+        return (mAllowNulls || aElement != null) && super.add(aElement);
     }
 
     @Override

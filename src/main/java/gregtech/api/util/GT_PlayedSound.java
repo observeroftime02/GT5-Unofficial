@@ -15,10 +15,7 @@ public class GT_PlayedSound {
 
     @Override
     public boolean equals(Object aObject) {
-        if (aObject instanceof GT_PlayedSound) {
-            return ((GT_PlayedSound) aObject).mX == mX && ((GT_PlayedSound) aObject).mY == mY && ((GT_PlayedSound) aObject).mZ == mZ && ((GT_PlayedSound) aObject).mSoundName.equals(mSoundName);
-        }
-        return false;
+        return aObject instanceof GT_PlayedSound && ((GT_PlayedSound) aObject).mX == mX && ((GT_PlayedSound) aObject).mY == mY && ((GT_PlayedSound) aObject).mZ == mZ && ((GT_PlayedSound) aObject).mSoundName.equals(mSoundName);
     }
 
     @Override

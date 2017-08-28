@@ -8,17 +8,10 @@ import net.minecraftforge.fluids.FluidStack;
 public interface IGT_RecipeAdder {
     /**
      * Adds a FusionreactorRecipe
-     * Does not work anymore!
-     */
-    @Deprecated
-    boolean addFusionReactorRecipe(ItemStack aInput1, ItemStack aInput2, ItemStack aOutput1, int aFusionDurationInTicks, int aFusionEnergyPerTick, int aEnergyNeededForStartingFusion);
-
-    /**
-     * Adds a FusionreactorRecipe
      *
      * @param aInput1                        = first Input (not null, and respects StackSize)
      * @param aInput2                        = second Input (not null, and respects StackSize)
-     * @param aOutput                        = Output of the Fusion (can be null, and respects StackSize)
+     * @param aOutput1                        = Output of the Fusion (can be null, and respects StackSize)
      * @param aFusionDurationInTicks         = How many ticks the Fusion lasts (must be > 0)
      * @param aFusionEnergyPerTick           = The EU generated per Tick (can even be negative!)
      * @param aEnergyNeededForStartingFusion = EU needed for heating the Reactor up (must be >= 0)
@@ -30,7 +23,7 @@ public interface IGT_RecipeAdder {
      * Adds a Centrifuge Recipe
      *
      * @param aInput1    must be != null
-     * @param aCellInput this is for the needed Cells, > 0 for Tincellcount, < 0 for negative Fuelcancount, == 0 for nothing
+     * @param aInput2 this is for the needed Cells, > 0 for Tincellcount, < 0 for negative Fuelcancount, == 0 for nothing
      * @param aOutput1   must be != null
      * @param aOutput2   can be null
      * @param aOutput3   can be null
@@ -64,7 +57,7 @@ public interface IGT_RecipeAdder {
      * Adds a Electrolyzer Recipe
      *
      * @param aInput1    must be != null
-     * @param aCellInput this is for the needed Cells, > 0 for Tincellcount, < 0 for negative Fuelcancount, == 0 for nothing
+     * @param aInput2 this is for the needed Cells, > 0 for Tincellcount, < 0 for negative Fuelcancount, == 0 for nothing
      * @param aOutput1   must be != null
      * @param aOutput2   can be null
      * @param aOutput3   can be null
@@ -78,7 +71,7 @@ public interface IGT_RecipeAdder {
      * Adds a Electrolyzer Recipe
      *
      * @param aInput1    must be != null
-     * @param aCellInput this is for the needed Cells, > 0 for Tincellcount, < 0 for negative Fuelcancount, == 0 for nothing
+     * @param aInput2 this is for the needed Cells, > 0 for Tincellcount, < 0 for negative Fuelcancount, == 0 for nothing
      * @param aOutput1   must be != null
      * @param aOutput2   can be null
      * @param aOutput3   can be null
@@ -93,7 +86,7 @@ public interface IGT_RecipeAdder {
      *
      * @param aInput1   must be != null
      * @param aInput2   must be != null
-     * @param aOutput1  must be != null
+     * @param aOutput  must be != null
      * @param aDuration must be > 0
      */
     boolean addChemicalRecipe(ItemStack aInput1, ItemStack aInput2, ItemStack aOutput, int aDuration);
@@ -103,7 +96,7 @@ public interface IGT_RecipeAdder {
      *
      * @param aInput1   must be != null
      * @param aInput2   must be != null
-     * @param aOutput1  must be != null
+     * @param aOutput  must be != null
      * @param aDuration must be > 0
      */
     boolean addChemicalRecipe(ItemStack aInput1, ItemStack aInput2, FluidStack aFluidInput, FluidStack aFluidOutput, ItemStack aOutput, int aDuration);
@@ -113,7 +106,7 @@ public interface IGT_RecipeAdder {
      *
      * @param aInput1   must be != null
      * @param aInput2   must be != null
-     * @param aOutput1  must be != null
+     * @param aOutput  must be != null
      * @param aOutput2  must be != null
      * @param aDuration must be > 0
      */
@@ -125,7 +118,7 @@ public interface IGT_RecipeAdder {
      *
      * @param aInput1   must be != null
      * @param aInput2   must be != null
-     * @param aOutput1  must be != null
+     * @param aOutput  must be != null
      * @param aOutput2  must be != null
      * @param aDuration must be > 0
      */
@@ -143,7 +136,7 @@ public interface IGT_RecipeAdder {
      *
      * @param aInput1   must be != null
      * @param aInput2   must be != null
-     * @param aOutput1  must be != null
+     * @param aOutput  must be != null
      * @param aDuration must be > 0
      * @param aEUtick   must be > 0
      */
@@ -154,7 +147,7 @@ public interface IGT_RecipeAdder {
      *
      * @param aInput1   must be != null
      * @param aInput2   must be != null
-     * @param aOutput1  must be != null
+     * @param aOutput  must be != null
      * @param aOutput2  must be != null
      * @param aDuration must be > 0
      * @param aEUtick   must be > 0
@@ -174,20 +167,6 @@ public interface IGT_RecipeAdder {
      * aOutputs and aFluidOutputs must contain at least one valid output.
      */
     boolean addMultiblockChemicalRecipe(ItemStack[] aInputs, FluidStack[] aFluidInputs, FluidStack[] aFluidOutputs, ItemStack[] aOutputs, int aDuration, int aEUtick);
-    
-    /**
-     * Adds a Blast Furnace Recipe
-     *
-     * @param aInput1   must be != null
-     * @param aInput2   can be null
-     * @param aOutput1  must be != null
-     * @param aOutput2  can be null
-     * @param aDuration must be > 0
-     * @param aEUt      should be > 0
-     * @param aLevel    should be > 0 is the minimum Heat Level needed for this Recipe
-     */
-    @Deprecated
-    boolean addBlastRecipe(ItemStack aInput1, ItemStack aInput2, ItemStack aOutput1, ItemStack aOutput2, int aDuration, int aEUt, int aLevel);
 
     /**
      * Adds a Blast Furnace Recipe
@@ -230,7 +209,6 @@ public interface IGT_RecipeAdder {
      * @param aInput1   must be != null
      * @param aInput2   can be null
      * @param aOutput1  must be != null
-     * @param aOutput2  can be null
      * @param aDuration must be > 0
      * @param aEUt      should be > 0
      */
@@ -318,8 +296,8 @@ public interface IGT_RecipeAdder {
     /**
      * Adds a Wiremill Recipe
      *
-     * @param aInput1   must be != null
-     * @param aOutput1  must be != null
+     * @param aInput   must be != null
+     * @param aOutput  must be != null
      * @param aDuration must be > 0
      * @param aEUt      should be > 0
      */
@@ -328,8 +306,8 @@ public interface IGT_RecipeAdder {
     /**
      * Adds a Polariser Recipe
      *
-     * @param aInput1   must be != null
-     * @param aOutput1  must be != null
+     * @param aInput   must be != null
+     * @param aOutput  must be != null
      * @param aDuration must be > 0
      * @param aEUt      should be > 0
      */
@@ -338,8 +316,8 @@ public interface IGT_RecipeAdder {
     /**
      * Adds a Plate Bending Machine Recipe
      *
-     * @param aInput1   must be != null
-     * @param aOutput1  must be != null
+     * @param aInput   must be != null
+     * @param aOutput  must be != null
      * @param aDuration must be > 0
      * @param aEUt      should be > 0
      */
@@ -348,9 +326,9 @@ public interface IGT_RecipeAdder {
     /**
      * Adds a Extruder Machine Recipe
      *
-     * @param aInput1   must be != null
+     * @param aInput   must be != null
      * @param aShape    must be != null, Set the stackSize to 0 if you don't want to let it consume this Item.
-     * @param aOutput1  must be != null
+     * @param aOutput  must be != null
      * @param aDuration must be > 0
      * @param aEUt      should be > 0
      */
@@ -359,9 +337,9 @@ public interface IGT_RecipeAdder {
     /**
      * Adds a Slicer Machine Recipe
      *
-     * @param aInput1   must be != null
+     * @param aInput   must be != null
      * @param aShape    must be != null, Set the stackSize to 0 if you don't want to let it consume this Item.
-     * @param aOutput1  must be != null
+     * @param aOutput  must be != null
      * @param aDuration must be > 0
      * @param aEUt      should be > 0
      */
@@ -403,24 +381,17 @@ public interface IGT_RecipeAdder {
     /**
      * Adds a Distillation Tower Recipe
      *
-     * @param aInput1  must be != null
+     * @param aInput  must be != null
      * @param aOutputs must be != null 1-5 Fluids
      * @param aOutput2 can be null
      */
     boolean addDistillationTowerRecipe(FluidStack aInput, FluidStack[] aOutputs, ItemStack aOutput2, int aDuration, int aEUt);
-
 
     boolean addSimpleArcFurnaceRecipe(ItemStack aInput, FluidStack aFluidInput, ItemStack[] aOutputs, int[] aChances, int aDuration, int aEUt);
 
     boolean addPlasmaArcFurnaceRecipe(ItemStack aInput, FluidStack aFluidInput, ItemStack[] aOutputs, int[] aChances, int aDuration, int aEUt);
 
     boolean addPlasmaArcFurnaceRecipe(ItemStack aInput, FluidStack aFluidInput, ItemStack[] aOutputs, FluidStack aFluidPutput, int[] aChances, int aDuration, int aEUt);
-
-
-    /**
-     * Adds a Distillation Tower Recipe
-     */
-    boolean addDistillationRecipe(ItemStack aInput1, int aInput2, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, ItemStack aOutput4, int aDuration, int aEUt);
 
     /**
      * Adds a Lathe Machine Recipe
@@ -621,6 +592,7 @@ public interface IGT_RecipeAdder {
      * Adds Pyrolyse Recipe
      *
      * @param aInput
+     * @param aFluidInput
      * @param intCircuit
      * @param aOutput
      * @param aFluidOutput
@@ -628,17 +600,6 @@ public interface IGT_RecipeAdder {
      * @param aEUt
      */
     boolean addPyrolyseRecipe(ItemStack aInput, FluidStack aFluidInput, int intCircuit, ItemStack aOutput, FluidStack aFluidOutput, int aDuration, int aEUt);
-
-    /**
-     * Adds Oil Cracking Recipe
-     *
-     * @param aInput
-     * @param aOutput
-     * @param aDuration
-     * @param aEUt
-     */
-    @Deprecated
-    boolean addCrackingRecipe(FluidStack aInput, FluidStack aOutput, int aDuration, int aEUt);
 
     /**
      * Adds Oil Cracking Recipe

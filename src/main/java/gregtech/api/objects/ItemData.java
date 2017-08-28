@@ -40,7 +40,7 @@ public class ItemData {
                 if (aByProducts[i] != null && aByProducts[i].mMaterial != null)
                     tByProducts[j++] = aByProducts[i].clone();
             mByProducts = j > 0 ? new MaterialStack[j] : EMPTY_MATERIALSTACK_ARRAY;
-            for (int i = 0; i < mByProducts.length; i++) mByProducts[i] = tByProducts[i];
+            System.arraycopy(tByProducts, 0, mByProducts, 0, mByProducts.length);
         }
     }
 

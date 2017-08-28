@@ -94,7 +94,6 @@ public class GT_MetaTileEntity_OilCracker extends GT_MetaTileEntity_MultiBlockBa
         int xDir = this.orientation.offsetX;
         int zDir = this.orientation.offsetZ;
         int amount = 0;
-        replaceDeprecatedCoils(aBaseMetaTileEntity);
         if (xDir != 0) {
             for (int i = -1; i < 2; i++) {// xDirection
                 for (int j = -1; j < 2; j++) {// height
@@ -218,28 +217,6 @@ public class GT_MetaTileEntity_OilCracker extends GT_MetaTileEntity_MultiBlockBa
 
     public IMetaTileEntity newMetaEntity(IGregTechTileEntity aTileEntity) {
         return new GT_MetaTileEntity_OilCracker(this.mName);
-    }
-
-    private void replaceDeprecatedCoils(IGregTechTileEntity aBaseMetaTileEntity) {
-        int xDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetX;
-        int zDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetZ;
-        int tX = aBaseMetaTileEntity.getXCoord() + xDir;
-        int tY = (int) aBaseMetaTileEntity.getYCoord();
-        int tZ = aBaseMetaTileEntity.getZCoord() + zDir;
-        for (int xPos = tX - 1; xPos <= tX + 1; xPos += (xDir != 0 ? 1 : 2)) {
-            for (int yPos = tY - 1; yPos <= tY + 1; yPos++) {
-                for (int zPos = tZ - 1; zPos <= tZ + 1; zPos += (xDir != 0 ? 2 : 1)) {
-                    if ((yPos == tY) && (xPos == tX || zPos == tZ)) {
-                        continue;
-                    }
-                    if (aBaseMetaTileEntity.getBlock(xPos, yPos, zPos) == GregTech_API.sBlockCasings1 &&
-                        aBaseMetaTileEntity.getMetaID(xPos, yPos, zPos) == 12)
-                    {
-                        aBaseMetaTileEntity.getWorld().setBlock(xPos, yPos, zPos, GregTech_API.sBlockCasings5, 0, 3);
-                    }
-                }
-            }
-        }
     }
     
     @Override

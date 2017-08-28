@@ -37,9 +37,8 @@ public class GT_Circuit_Pulser
         }
         if ((tRedstone > 0) || (aCircuitData[4] > 0)) {
             int tmp40_39 = 4;
-            int[] tmp40_38 = aCircuitData;
-            int tmp42_41 = tmp40_38[tmp40_39];
-            tmp40_38[tmp40_39] = (tmp42_41 + 1);
+            int tmp42_41 = aCircuitData[tmp40_39];
+            aCircuitData[tmp40_39] = (tmp42_41 + 1);
             if ((tmp42_41 >= aCircuitData[0]) && (tRedstone <= 0)) {
                 aCircuitData[4] = 0;
             }

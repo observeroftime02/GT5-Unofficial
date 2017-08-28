@@ -20,9 +20,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-public class GT_SensorCard_Item
-        extends GT_Generic_Item
-        implements IRemoteSensor, IPanelDataSource {
+public class GT_SensorCard_Item extends GT_Generic_Item implements IRemoteSensor, IPanelDataSource {
     private static final UUID CARD_TYPE = new UUID(0L, 41L);
 
     public GT_SensorCard_Item(String aUnlocalized, String aEnglish) {
@@ -38,7 +36,7 @@ public class GT_SensorCard_Item
                 aList.add("Missing Coodinates!");
             } else {
                 aList.add("Device at:");
-                aList.add(String.format("x: %d, y: %d, z: %d", Integer.valueOf(tNBT.getInteger("x")), Integer.valueOf(tNBT.getInteger("y")), Integer.valueOf(tNBT.getInteger("z"))));
+                aList.add(String.format("x: %d, y: %d, z: %d", tNBT.getInteger("x"), tNBT.getInteger("y"), tNBT.getInteger("z")));
             }
         }
     }

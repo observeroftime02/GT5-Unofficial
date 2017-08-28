@@ -134,7 +134,7 @@ public class GT_EnergyArmor_Item extends ItemArmor implements ISpecialArmor {
         }
 
         if (!aPlayer.worldObj.isRemote && (mSpecials & 128) != 0) {
-            float var6 = jumpChargeMap.containsKey(aPlayer) ? ((Float) jumpChargeMap.get(aPlayer)).floatValue() : 1.0F;
+            float var6 = jumpChargeMap.containsKey(aPlayer) ? (Float) jumpChargeMap.get(aPlayer) : 1.0F;
 
             if (GT_ModHandler.canUseElectricItem(aStack, 1000) && aPlayer.onGround && var6 < 1.0F) {
                 var6 = 1.0F;
@@ -155,7 +155,7 @@ public class GT_EnergyArmor_Item extends ItemArmor implements ISpecialArmor {
                 }
             }
 
-            jumpChargeMap.put(aPlayer, Float.valueOf(var6));
+            jumpChargeMap.put(aPlayer, var6);
         }
 
         if ((mSpecials & 256) != 0) {

@@ -25,8 +25,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 
-public class GT_Loader_Item_Block_And_Fluid
-        implements Runnable {
+public class GT_Loader_Item_Block_And_Fluid implements Runnable {
     public void run() {
         Materials.Water.mFluid = (Materials.Ice.mFluid = GT_ModHandler.getWater(1000L).getFluid());
         Materials.Lava.mFluid = GT_ModHandler.getLava(1000L).getFluid();

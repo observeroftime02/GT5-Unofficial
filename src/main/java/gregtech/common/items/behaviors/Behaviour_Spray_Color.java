@@ -60,7 +60,7 @@ public class Behaviour_Spray_Color
             tUses = this.mUses;
         }
         if ((GT_Utility.areStacksEqual(aStack, this.mUsed, true)) && (colorize(aWorld, aX, aY, aZ, aSide))) {
-            GT_Utility.sendSoundToPlayers(aWorld, GregTech_API.sSoundList.get(Integer.valueOf(102)), 1.0F, 1.0F, aX, aY, aZ);
+            GT_Utility.sendSoundToPlayers(aWorld, GregTech_API.sSoundList.get(102), 1.0F, 1.0F, aX, aY, aZ);
             if (!aPlayer.capabilities.isCreativeMode) {
                 tUses -= 1L;
             }
@@ -90,24 +90,24 @@ public class Behaviour_Spray_Color
         Block aBlock = aWorld.getBlock(aX, aY, aZ);
         if ((aBlock != Blocks.air) && ((this.mAllowedVanillaBlocks.contains(aBlock)) || ((aBlock instanceof BlockColored)))) {
             if (aBlock == Blocks.hardened_clay) {
-                aWorld.setBlock(aX, aY, aZ, Blocks.stained_hardened_clay, (this.mColor ^ 0xFFFFFFFF) & 0xF, 3);
+                aWorld.setBlock(aX, aY, aZ, Blocks.stained_hardened_clay, (~this.mColor) & 0xF, 3);
                 return true;
             }
             if (aBlock == Blocks.glass_pane) {
-                aWorld.setBlock(aX, aY, aZ, Blocks.stained_glass_pane, (this.mColor ^ 0xFFFFFFFF) & 0xF, 3);
+                aWorld.setBlock(aX, aY, aZ, Blocks.stained_glass_pane, (~this.mColor) & 0xF, 3);
                 return true;
             }
             if (aBlock == Blocks.glass) {
-                aWorld.setBlock(aX, aY, aZ, Blocks.stained_glass, (this.mColor ^ 0xFFFFFFFF) & 0xF, 3);
+                aWorld.setBlock(aX, aY, aZ, Blocks.stained_glass, (~this.mColor) & 0xF, 3);
                 return true;
             }
-            if (aWorld.getBlockMetadata(aX, aY, aZ) == ((this.mColor ^ 0xFFFFFFFF) & 0xF)) {
+            if (aWorld.getBlockMetadata(aX, aY, aZ) == ((~this.mColor) & 0xF)) {
                 return false;
             }
-            aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (this.mColor ^ 0xFFFFFFFF) & 0xF, 3);
+            aWorld.setBlockMetadataWithNotify(aX, aY, aZ, (~this.mColor) & 0xF, 3);
             return true;
         }
-        return aBlock.recolourBlock(aWorld, aX, aY, aZ, ForgeDirection.getOrientation(aSide), (this.mColor ^ 0xFFFFFFFF) & 0xF);
+        return aBlock.recolourBlock(aWorld, aX, aY, aZ, ForgeDirection.getOrientation(aSide), (~this.mColor) & 0xF);
     }
 
     public List<String> getAdditionalToolTips(GT_MetaBase_Item aItem, List<String> aList, ItemStack aStack) {

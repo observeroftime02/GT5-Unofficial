@@ -227,7 +227,7 @@ public class GT_MetaGenerated_Item_01 extends GT_MetaGenerated_Item_X32 {
         GT_ModHandler.addShapelessCraftingRecipe(ItemList.Schematic.get(1L), GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{ItemList.Schematic_3by3});
         GT_ModHandler.addShapelessCraftingRecipe(ItemList.Schematic.get(1L), GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{ItemList.Schematic_Dust});
 
-        ItemList.Battery_Hull_LV.set(addItem(tLastID = 500, "Small Battery Hull", "An empty LV Battery Hull", new Object[]{new ItemData(Materials.BatteryAlloy, OrePrefixes.plate.mMaterialAmount * 1L), new Aspects.AspectStack(Aspects.ELECTRUM, 1L), new Aspects.AspectStack(Aspects.METALLUM, 1L), new Aspects.AspectStack(Aspects.VACUOS, 1L)}));
+        ItemList.Battery_Hull_LV.set(addItem(tLastID = 500, "Small Battery Hull", "An empty LV Battery Hull", new Object[]{new ItemData(Materials.BatteryAlloy, OrePrefixes.plate.mMaterialAmount), new Aspects.AspectStack(Aspects.ELECTRUM, 1L), new Aspects.AspectStack(Aspects.METALLUM, 1L), new Aspects.AspectStack(Aspects.VACUOS, 1L)}));
         ItemList.Battery_Hull_MV.set(addItem(tLastID = 501, "Medium Battery Hull", "An empty MV Battery Hull", new Object[]{new ItemData(Materials.BatteryAlloy, OrePrefixes.plate.mMaterialAmount * 3L), new Aspects.AspectStack(Aspects.ELECTRUM, 2L), new Aspects.AspectStack(Aspects.METALLUM, 2L), new Aspects.AspectStack(Aspects.VACUOS, 1L)}));
         ItemList.Battery_Hull_HV.set(addItem(tLastID = 502, "Large Battery Hull", "An empty HV Battery Hull", new Object[]{new ItemData(Materials.BatteryAlloy, OrePrefixes.plate.mMaterialAmount * 9L), new Aspects.AspectStack(Aspects.ELECTRUM, 4L), new Aspects.AspectStack(Aspects.METALLUM, 4L), new Aspects.AspectStack(Aspects.VACUOS, 1L)}));
 
@@ -650,7 +650,7 @@ public class GT_MetaGenerated_Item_01 extends GT_MetaGenerated_Item_X32 {
                         aItemEntity.worldObj.setBlockMetadataWithNotify(tX, tY, tZ, tMetaData - 1, 3);
                         return true;
                     }
-                }else if (aPrefix == OrePrefixes.crushed) {
+                } else if (aPrefix == OrePrefixes.crushed) {
                     Block tBlock = aItemEntity.worldObj.getBlock(tX, tY, tZ);
                     byte tMetaData = (byte) aItemEntity.worldObj.getBlockMetadata(tX, tY, tZ);
                     if ((tBlock == Blocks.cauldron) && (tMetaData > 0)) {
@@ -658,15 +658,7 @@ public class GT_MetaGenerated_Item_01 extends GT_MetaGenerated_Item_X32 {
                         aItemEntity.worldObj.setBlockMetadataWithNotify(tX, tY, tZ, tMetaData - 1, 3);
                         return true;
                     }
-                }/*else if(aPrefix == OrePrefixes.dust && aMaterial == Materials.Wheat){
-                	 Block tBlock = aItemEntity.worldObj.getBlock(tX, tY, tZ);
-                     byte tMetaData = (byte) aItemEntity.worldObj.getBlockMetadata(tX, tY, tZ);
-                     if ((tBlock == Blocks.cauldron) && (tMetaData > 0)) {
-                         aItemEntity.setEntityItemStack(ItemList.Food_Dough.get(aItemEntity.getEntityItem().stackSize, new Object[]{}));
-                         aItemEntity.worldObj.setBlockMetadataWithNotify(tX, tY, tZ, tMetaData - 1, 3);
-                         return true;
-                     }
-                }*/
+                }
             }
         }
         return false;
@@ -688,11 +680,12 @@ public class GT_MetaGenerated_Item_01 extends GT_MetaGenerated_Item_X32 {
 
     public boolean isPlasmaCellUsed(OrePrefixes aPrefix, Materials aMaterial) {
         Collection<GT_Recipe> fusionRecipes = GT_Recipe.GT_Recipe_Map.sFusionRecipes.mRecipeList;
-        if(aPrefix == OrePrefixes.cellPlasma && aMaterial.getPlasma(1L) != null) { //Materials has a plasma fluid
-            for(GT_Recipe recipe : fusionRecipes) { //Loop through fusion recipes
-                if(recipe.getFluidOutput(0) != null) { //Make sure fluid output can't be null (not sure if possible)
-                    if (recipe.getFluidOutput(0).isFluidEqual(aMaterial.getPlasma(1L)))
+        if (aPrefix == OrePrefixes.cellPlasma && aMaterial.getPlasma(1L) != null) { //Materials has a plasma fluid
+            for (GT_Recipe recipe : fusionRecipes) { //Loop through fusion recipes
+                if (recipe.getFluidOutput(0) != null) { //Make sure fluid output can't be null (not sure if possible)
+                    if (recipe.getFluidOutput(0).isFluidEqual(aMaterial.getPlasma(1L))) {
                         return true; //Fusion recipe output matches current plasma cell fluid
+                    }
                 }
             }
         }

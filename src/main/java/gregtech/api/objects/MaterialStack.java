@@ -25,9 +25,7 @@ public class MaterialStack implements Cloneable {
         if (aObject == this) return true;
         if (aObject == null) return false;
         if (aObject instanceof Materials) return aObject == mMaterial;
-        if (aObject instanceof MaterialStack)
-            return ((MaterialStack) aObject).mMaterial == mMaterial && (mAmount < 0 || ((MaterialStack) aObject).mAmount < 0 || ((MaterialStack) aObject).mAmount == mAmount);
-        return false;
+        return aObject instanceof MaterialStack && ((MaterialStack) aObject).mMaterial == mMaterial && (mAmount < 0 || ((MaterialStack) aObject).mAmount < 0 || ((MaterialStack) aObject).mAmount == mAmount);
     }
 
     @Override
@@ -44,14 +42,8 @@ public class MaterialStack implements Cloneable {
         return String.valueOf(new StringBuilder().append(temp1).append(temp2).append(temp3).append(temp4));
     }
 
-    private boolean isMaterialListComplex(MaterialStack materialStack){
-    	if (materialStack.mMaterial.mMaterialList.size() > 1) {
-    		return true;
-    	}
-    	if (materialStack.mMaterial.mMaterialList.size() == 0) {
-    		return false;
-    	}
-    	return isMaterialListComplex(materialStack.mMaterial.mMaterialList.get(0));
+    private boolean isMaterialListComplex(MaterialStack materialStack) {
+        return materialStack.mMaterial.mMaterialList.size() > 1 || materialStack.mMaterial.mMaterialList.size() != 0 && isMaterialListComplex(materialStack.mMaterial.mMaterialList.get(0));
     }
     
     @Override

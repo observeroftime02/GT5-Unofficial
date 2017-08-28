@@ -17,8 +17,7 @@ import org.lwjgl.opengl.GL11;
 
 import java.util.Iterator;
 
-public class GT_MetaGenerated_Item_Renderer
-        implements IItemRenderer {
+public class GT_MetaGenerated_Item_Renderer implements IItemRenderer {
     public GT_MetaGenerated_Item_Renderer() {
         GT_MetaGenerated_Item tItem;
         for (Iterator i$ = GT_MetaGenerated_Item.sInstances.values().iterator(); i$.hasNext(); MinecraftForgeClient.registerItemRenderer(tItem, this)) {
@@ -27,17 +26,11 @@ public class GT_MetaGenerated_Item_Renderer
     }
 
     public boolean handleRenderType(ItemStack aStack, IItemRenderer.ItemRenderType aType) {
-        if ((GT_Utility.isStackInvalid(aStack)) || (aStack.getItemDamage() < 0)) {
-            return false;
-        }
-        return (aType == IItemRenderer.ItemRenderType.EQUIPPED_FIRST_PERSON) || (aType == IItemRenderer.ItemRenderType.INVENTORY) || (aType == IItemRenderer.ItemRenderType.EQUIPPED) || (aType == IItemRenderer.ItemRenderType.ENTITY);
+        return !((GT_Utility.isStackInvalid(aStack)) || (aStack.getItemDamage() < 0)) && ((aType == ItemRenderType.EQUIPPED_FIRST_PERSON) || (aType == ItemRenderType.INVENTORY) || (aType == ItemRenderType.EQUIPPED) || (aType == ItemRenderType.ENTITY));
     }
 
     public boolean shouldUseRenderHelper(IItemRenderer.ItemRenderType aType, ItemStack aStack, IItemRenderer.ItemRendererHelper aHelper) {
-        if (GT_Utility.isStackInvalid(aStack)) {
-            return false;
-        }
-        return aType == IItemRenderer.ItemRenderType.ENTITY;
+        return !GT_Utility.isStackInvalid(aStack) && aType == ItemRenderType.ENTITY;
     }
 
     public void renderItem(IItemRenderer.ItemRenderType type, ItemStack aStack, Object... data) {
@@ -92,7 +85,6 @@ public class GT_MetaGenerated_Item_Renderer
                 ItemRenderer.renderItemIn2D(Tessellator.instance, tIcon.getMaxU(), tIcon.getMinV(), tIcon.getMinU(), tIcon.getMaxV(), tIcon.getIconWidth(), tIcon.getIconHeight(), 0.0625F);
             }
             if (tFluidIcon != null) {
-                assert (tFluid != null);
                 int tColor = tFluid.getFluid().getColor(tFluid);
                 GL11.glColor3f((tColor >> 16 & 0xFF) / 255.0F, (tColor >> 8 & 0xFF) / 255.0F, (tColor & 0xFF) / 255.0F);
                 Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
@@ -118,19 +110,19 @@ public class GT_MetaGenerated_Item_Renderer
         } else {
             IIcon tIcon;
             if (aItem.mIconList[(aMetaData - aItem.mOffset)].length > 1) {
-                Long[] tStats = aItem.mElectricStats.get(Short.valueOf(aMetaData));
+                Long[] tStats = aItem.mElectricStats.get(aMetaData);
 
-                if ((tStats != null) && (tStats[3].longValue() < 0L)) {
+                if ((tStats != null) && (tStats[3] < 0L)) {
                     long tCharge = aItem.getRealCharge(aStack);
 
                     if (tCharge <= 0L) {
                         tIcon = aItem.mIconList[(aMetaData - aItem.mOffset)][1];
                     } else {
 
-                        if (tCharge >= tStats[0].longValue()) {
+                        if (tCharge >= tStats[0]) {
                             tIcon = aItem.mIconList[(aMetaData - aItem.mOffset)][8];
                         } else {
-                            tIcon = aItem.mIconList[(aMetaData - aItem.mOffset)][(7 - (int) java.lang.Math.max(0L, java.lang.Math.min(5L, (tStats[0].longValue() - tCharge) * 6L / tStats[0].longValue())))];
+                            tIcon = aItem.mIconList[(aMetaData - aItem.mOffset)][(7 - (int) java.lang.Math.max(0L, java.lang.Math.min(5L, (tStats[0] - tCharge) * 6L / tStats[0])))];
                         }
                     }
                 } else {

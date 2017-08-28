@@ -1,8 +1,3 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-// Source File Name:   GT_Client.java
-
 package gregtech.common;
 
 import codechicken.lib.vec.Rotation;
@@ -36,14 +31,9 @@ import net.minecraftforge.event.terraingen.BiomeEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import org.lwjgl.opengl.GL11;
 
-import java.net.URL;
 import java.util.*;
 
-// Referenced classes of package gregtech.common:
-//            GT_Proxy
-
-public class GT_Client extends GT_Proxy
-        implements Runnable {
+public class GT_Client extends GT_Proxy {
 
     private static List ROTATABLE_VANILLA_BLOCKS;
 
@@ -178,31 +168,6 @@ public class GT_Client extends GT_Proxy
         return RenderingRegistry.addNewArmourRendererPrefix(aPrefix);
     }
 
-    public void onPreLoad() {
-        super.onPreLoad();
-        String arr$[] = {
-                "renadi", "hanakocz", "MysteryDump", "Flaver4", "x_Fame", "Peluche321", "Goshen_Ithilien", "manf", "Bimgo", "leagris",
-                "IAmMinecrafter02", "Cerous", "Devilin_Pixy", "Bkarlsson87", "BadAlchemy", "CaballoCraft", "melanclock", "Resursator", "demanzke", "AndrewAmmerlaan",
-                "Deathlycraft", "Jirajha", "Axlegear", "kei_kouma", "Dracion", "dungi", "Dorfschwein", "Zero Tw0", "mattiagraz85", "sebastiank30",
-                "Plem", "invultri", "grillo126", "malcanteth", "Malevolence_", "Nicholas_Manuel", "Sirbab", "kehaan", "bpgames123", "semig0d",
-                "9000bowser", "Sovereignty89", "Kris1432", "xander_cage_", "samuraijp", "bsaa", "SpwnX", "tworf", "Kadah", "kanni",
-                "Stute", "Hegik", "Onlyme", "t3hero", "Hotchi", "jagoly", "Nullav", "BH5432", "Sibmer", "inceee",
-                "foxxx0", "Hartok", "TMSama", "Shlnen", "Carsso", "zessirb", "meep310", "Seldron", "yttr1um", "hohounk",
-                "freebug", "Sylphio", "jmarler", "Saberawr", "r00teniy", "Neonbeta", "yinscape", "voooon24", "Quintine", "peach774",
-                "lepthymo", "bildeman", "Kremnari", "Aerosalo", "OndraSter", "oscares91", "mr10movie", "Daxx367x2", "EGERTRONx", "aka13_404",
-                "Abouttabs", "Johnstaal", "djshiny99", "megatronp", "DZCreeper", "Kane_Hart", "Truculent", "vidplace7", "simon6689", "MomoNasty",
-                "UnknownXLV", "goreacraft", "Fluttermine", "Daddy_Cecil", "MrMaleficus", "TigersFangs", "cublikefoot", "chainman564", "NikitaBuker", "Misha999777",
-                "25FiveDetail", "AntiCivilBoy", "michaelbrady", "xXxIceFirexXx", "Speedynutty68", "GarretSidzaka", "HallowCharm977", "mastermind1919", "The_Hypersonic", "diamondguy2798",
-                "zF4ll3nPr3d4t0r", "CrafterOfMines57", "XxELIT3xSNIP3RxX", "SuterusuKusanagi", "xavier0014", "adamros", "alexbegt"
-        };
-        int len$ = arr$.length;
-        for (int i$ = 0; i$ < len$; i$++) {
-            String tName = arr$[i$];
-            mCapeList.add(tName.toLowerCase());
-        }
-        (new Thread(this)).start();
-    }
-
     public void onLoad() {
         super.onLoad();
         new GT_Renderer_Block();
@@ -225,41 +190,6 @@ public class GT_Client extends GT_Proxy
                     i++;
                 } while (true);
         } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
-
-
-//        super.onPostLoad();
-//
-//            for (int i = 1; i < GregTech_API.METATILEENTITIES.length; i++) {
-//              try {
-//                for (; i < GregTech_API.METATILEENTITIES.length; i++) if (GregTech_API.METATILEENTITIES[i] != null) GregTech_API.METATILEENTITIES[i].getStackForm(1L).getTooltip(null, true);
-//              } catch (Throwable e) {
-//                e.printStackTrace(GT_Log.err);
-//              }
-//            }
-    }
-
-    public void run() {
-        try {
-            GT_Log.out.println("Skip: GT_Mod: Downloading Cape List.");
-            @SuppressWarnings("resource")
-            Scanner tScanner = new Scanner(new URL("http://gregtech.overminddl1.com/com/gregoriust/gregtech/supporterlist.txt").openStream());
-            while (tScanner.hasNextLine()) {
-                String tName = tScanner.nextLine();
-                if (!this.mCapeList.contains(tName.toLowerCase())) {
-                    this.mCapeList.add(tName.toLowerCase());
-                }
-            }
-        } catch (Throwable e) {
-        }
-        /**try {
-            GT_Log.out.println("Skip: GT_Mod: Downloading News.");
-            @SuppressWarnings("resource")
-            Scanner tScanner = new Scanner(new URL("http://files.minecraftforge.net/maven/com/gregoriust/gregtech/message.txt").openStream());
-            while (tScanner.hasNextLine()) {
-                this.mMessage = (this.mMessage + tScanner.nextLine() + " ");
-            }
-        } catch (Throwable e) {
-        }**/
     }
     
     @SubscribeEvent
@@ -270,20 +200,9 @@ public class GT_Client extends GT_Proxy
     @SubscribeEvent
     public void onPlayerTickEventClient(TickEvent.PlayerTickEvent aEvent) {
         if ((aEvent.side.isClient()) && (aEvent.phase == TickEvent.Phase.END) && (!aEvent.player.isDead)) {
-            /*afterSomeTime++;
-            if(afterSomeTime>=100L){
-                afterSomeTime=0;
-                StatFileWriter sfw= Minecraft.getMinecraft().thePlayer.getStatFileWriter();
-                try {
-                    for(GT_Recipe recipe: GT_Recipe.GT_Recipe_Map.sAssemblylineVisualRecipes.mRecipeList){
-                        //recipe.mHidden=!sfw.hasAchievementUnlocked(GT_Mod.achievements.getAchievement(recipe.getOutput(0).getUnlocalizedName()));
-                        recipe.mHidden = false;
-                    }
-                }catch (Exception e){}
-            }*/
             ArrayList tList = new ArrayList();
             for (Map.Entry<GT_PlayedSound, Integer> tEntry : GT_Utility.sPlayedSoundMap.entrySet()) {
-                if (tEntry.getValue() < 0) {//Integer -> Integer -> int? >_<, fix
+                if (tEntry.getValue() < 0) {
                     tList.add(tEntry.getKey());
                 } else {
                     tEntry.setValue(tEntry.getValue() - 1);
@@ -293,30 +212,7 @@ public class GT_Client extends GT_Proxy
             for (Iterator i$ = tList.iterator(); i$.hasNext(); GT_Utility.sPlayedSoundMap.remove(tKey)) {
                 tKey = (GT_PlayedSound) i$.next();
             }
-            if(!GregTech_API.mServerStarted)GregTech_API.mServerStarted = true;
-            /*if ((this.isFirstClientPlayerTick) && (aEvent.player == GT_Values.GT.getThePlayer())) {
-                this.isFirstClientPlayerTick = false;
-                GT_FluidStack.fixAllThoseFuckingFluidIDs();
-                if ((this.mMessage.length() > 5) && (GregTech_API.sSpecialFile.get(ConfigCategories.news, this.mMessage, true))) {
-                    aEvent.player.addChatComponentMessage(new ChatComponentText(this.mMessage));
-                }
-                try {
-                    int tVersion = Integer.parseInt(((String) Class.forName("ic2.core.IC2").getField("VERSION").get(null)).substring(4, 7));
-                    if (GT_Values.D1) {
-                        GT_Log.out.println("Industrialcraft Version: " + tVersion);
-                    }
-                    if (tVersion < 624) {
-                        aEvent.player.addChatComponentMessage(new ChatComponentText("GregTech: Please update your IndustrialCraft here:"));
-                        aEvent.player.addChatComponentMessage(new ChatComponentText("ic2api.player.to:8080/job/IC2_experimental/" + (GT_Mod.MAX_IC2 < Integer.MAX_VALUE ? GT_Mod.MAX_IC2 : 624) + "/"));
-                    } else if (tVersion > GT_Mod.MAX_IC2) {
-                        aEvent.player.addChatComponentMessage(new ChatComponentText("GregTech: Please downgrade your IndustrialCraft here:"));
-                        aEvent.player.addChatComponentMessage(new ChatComponentText("ic2api.player.to:8080/job/IC2_experimental/" + GT_Mod.MAX_IC2 + "/"));
-                    }
-                } catch (Throwable e) {
-                    aEvent.player.addChatComponentMessage(new ChatComponentText("GregTech: Please get the recommended Version of IndustrialCraft here:"));
-                    aEvent.player.addChatComponentMessage(new ChatComponentText("ic2api.player.to:8080/job/IC2_experimental/" + (GT_Mod.MAX_IC2 < Integer.MAX_VALUE ? GT_Mod.MAX_IC2 : 624) + "/"));
-                }
-            }*/
+            if (!GregTech_API.mServerStarted)GregTech_API.mServerStarted = true;
         }
     }
 
@@ -347,111 +243,92 @@ public class GT_Client extends GT_Proxy
     public void receiveRenderEvent(net.minecraftforge.client.event.RenderPlayerEvent.Pre aEvent) {
         if (GT_Utility.getFullInvisibility(aEvent.entityPlayer)) {
             aEvent.setCanceled(true);
-            return;
-        } else {
-            return;
         }
     }
 
     @SubscribeEvent
-    public void onClientTickEvent(cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent aEvent) {
-        if (aEvent.phase == cpw.mods.fml.common.gameevent.TickEvent.Phase.END) {
-            if(changeDetected>0)changeDetected--;
-            int newHideValue=shouldHeldItemHideThings();
-            if(newHideValue!=hideValue){
-                hideValue=newHideValue;
-                changeDetected=5;
+    public void onClientTickEvent(TickEvent.ClientTickEvent aEvent) {
+        if (aEvent.phase == TickEvent.Phase.END) {
+            if (changeDetected > 0) changeDetected--;
+            int newHideValue = shouldHeldItemHideThings();
+            if (newHideValue != hideValue) {
+                hideValue = newHideValue;
+                changeDetected = 5;
             }
             mAnimationTick++;
-            if (mAnimationTick % 50L == 0L)
-                {mAnimationDirection = !mAnimationDirection;}
+            if (mAnimationTick % 50L == 0L) {
+                mAnimationDirection = !mAnimationDirection;
+            }
             int tDirection = mAnimationDirection ? 1 : -1;
-            for (Iterator i$ = mPosR.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMPosR : mPosR) {
+                Materials tMaterial = (Materials) aMPosR;
                 tMaterial.mRGBa[0] += tDirection;
             }
-
-            for (Iterator i$ = mPosG.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMPosG : mPosG) {
+                Materials tMaterial = (Materials) aMPosG;
                 tMaterial.mRGBa[1] += tDirection;
             }
-
-            for (Iterator i$ = mPosB.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMPosB : mPosB) {
+                Materials tMaterial = (Materials) aMPosB;
                 tMaterial.mRGBa[2] += tDirection;
             }
-
-            for (Iterator i$ = mPosA.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMPosA : mPosA) {
+                Materials tMaterial = (Materials) aMPosA;
                 tMaterial.mRGBa[3] += tDirection;
             }
-
-            for (Iterator i$ = mNegR.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMNegR : mNegR) {
+                Materials tMaterial = (Materials) aMNegR;
                 tMaterial.mRGBa[0] -= tDirection;
             }
-
-            for (Iterator i$ = mNegG.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMNegG : mNegG) {
+                Materials tMaterial = (Materials) aMNegG;
                 tMaterial.mRGBa[1] -= tDirection;
             }
-
-            for (Iterator i$ = mNegB.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMNegB : mNegB) {
+                Materials tMaterial = (Materials) aMNegB;
                 tMaterial.mRGBa[2] -= tDirection;
             }
-
-            for (Iterator i$ = mNegA.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMNegA : mNegA) {
+                Materials tMaterial = (Materials) aMNegA;
                 tMaterial.mRGBa[3] -= tDirection;
             }
-
-            for (Iterator i$ = mMoltenPosR.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMMoltenPosR : mMoltenPosR) {
+                Materials tMaterial = (Materials) aMMoltenPosR;
                 tMaterial.mMoltenRGBa[0] += tDirection;
             }
-
-            for (Iterator i$ = mMoltenPosG.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMMoltenPosG : mMoltenPosG) {
+                Materials tMaterial = (Materials) aMMoltenPosG;
                 tMaterial.mMoltenRGBa[1] += tDirection;
             }
-
-            for (Iterator i$ = mMoltenPosB.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMMoltenPosB : mMoltenPosB) {
+                Materials tMaterial = (Materials) aMMoltenPosB;
                 tMaterial.mMoltenRGBa[2] += tDirection;
             }
-
-            for (Iterator i$ = mMoltenPosA.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMMoltenPosA : mMoltenPosA) {
+                Materials tMaterial = (Materials) aMMoltenPosA;
                 tMaterial.mMoltenRGBa[3] += tDirection;
             }
-
-            for (Iterator i$ = mMoltenNegR.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMMoltenNegR : mMoltenNegR) {
+                Materials tMaterial = (Materials) aMMoltenNegR;
                 tMaterial.mMoltenRGBa[0] -= tDirection;
             }
-
-            for (Iterator i$ = mMoltenNegG.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMMoltenNegG : mMoltenNegG) {
+                Materials tMaterial = (Materials) aMMoltenNegG;
                 tMaterial.mMoltenRGBa[1] -= tDirection;
             }
-
-            for (Iterator i$ = mMoltenNegB.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMMoltenNegB : mMoltenNegB) {
+                Materials tMaterial = (Materials) aMMoltenNegB;
                 tMaterial.mMoltenRGBa[2] -= tDirection;
             }
-
-            for (Iterator i$ = mMoltenNegA.iterator(); i$.hasNext(); ) {
-                Materials tMaterial = (Materials) i$.next();
+            for (Object aMMoltenNegA : mMoltenNegA) {
+                Materials tMaterial = (Materials) aMMoltenNegA;
                 tMaterial.mMoltenRGBa[3] -= tDirection;
             }
-
         }
     }
 
     public void doSonictronSound(ItemStack aStack, World aWorld, double aX, double aY, double aZ) {
-        if (GT_Utility.isStackInvalid(aStack))
-            return;
+        if (GT_Utility.isStackInvalid(aStack)) return;
         String tString = "note.harp";
         int i = 0;
         int j = mSoundItems.size();
@@ -464,12 +341,14 @@ public class GT_Client extends GT_Proxy
             }
             i++;
         } while (true);
-        if (tString.startsWith("random.explode"))
-            if (aStack.stackSize == 3)
+        if (tString.startsWith("random.explode")) {
+            if (aStack.stackSize == 3) {
                 tString = "random.fuse";
-            else if (aStack.stackSize == 2)
+            } else if (aStack.stackSize == 2) {
                 tString = "random.old_explode";
-        if (tString.startsWith("streaming."))
+            }
+        }
+        if (tString.startsWith("streaming.")) {
             switch (aStack.stackSize) {
                 case 1: // '\001'
                     tString = (new StringBuilder()).append(tString).append("13").toString();
@@ -523,32 +402,30 @@ public class GT_Client extends GT_Proxy
                     tString = (new StringBuilder()).append(tString).append("wherearewenow").toString();
                     break;
             }
-        if (tString.startsWith("streaming."))
+        }
+        if (tString.startsWith("streaming.")) {
             aWorld.playRecord(tString.substring(10, tString.length()), (int) aX, (int) aY, (int) aZ);
-        else
+        } else {
             aWorld.playSound(aX, aY, aZ, tString, 3F, tString.startsWith("note.") ? (float) Math.pow(2D, (double) (aStack.stackSize - 13) / 12D) : 1.0F, false);
+        }
     }
 
-    public static int hideValue=0;
-    public static int changeDetected=0;
+    public static int hideValue = 0;
+    public static int changeDetected = 0;
 
     private static int shouldHeldItemHideThings() {
-        try {
-            EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-            if (player == null) return 0;
-            ItemStack held = player.getCurrentEquippedItem();
-            if (held == null) return 0;
-            int[] ids = OreDictionary.getOreIDs(held);
-            int hide = 0;
-            for (int i : ids) {
-                if (OreDictionary.getOreName(i).equals("craftingToolSolderingIron")) {
-                    hide |= 0x1;
-                    break;
-                }
+        EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+        if (player == null) return 0;
+        ItemStack held = player.getCurrentEquippedItem();
+        if (held == null) return 0;
+        int[] ids = OreDictionary.getOreIDs(held);
+        int hide = 0;
+        for (int i : ids) {
+            if (OreDictionary.getOreName(i).equals("craftingToolSolderingIron")) {
+                hide |= 0x1;
+                break;
             }
-            return hide;
-        }catch(Exception e){
-            return 0;
         }
+        return hide;
     }
 }
