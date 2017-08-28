@@ -254,7 +254,10 @@ public class GT_RecipeRegistrator {
 
         long tAmount = 0;
         for (MaterialStack tMaterial : aData.getAllMaterialStacks())
-            tAmount += tMaterial.mAmount * tMaterial.mMaterial.getMass();
+            tAmount +=
+                    tMaterial.mAmount *
+                            tMaterial.mMaterial
+                                    .getMass();
         boolean tHide = (aData.mMaterial.mMaterial != Materials.Iron)&&(GT_Mod.gregtechproxy.mHideRecyclingRecipes);
         RA.addPulveriserRecipe(aStack, new ItemStack[]{GT_OreDictUnificator.getDust(aData.mMaterial), GT_OreDictUnificator.getDust(aData.getByProduct(0)), GT_OreDictUnificator.getDust(aData.getByProduct(1)), GT_OreDictUnificator.getDust(aData.getByProduct(2))}, null, aData.mMaterial.mMaterial==Materials.Marble ? 1 : (int) Math.max(16, tAmount / M), 4, tHide);
 
@@ -274,7 +277,7 @@ public class GT_RecipeRegistrator {
      * You give this Function a Material and it will scan almost everything for adding recycling Recipes
      *
      * @param aMat             a Material, for example an Ingot or a Gem.
-     * @param aOutput          the Dust you usually get from macerating aMat
+     * @param aPlate          the Dust you usually get from macerating aMat
      * @param aRecipeReplacing allows to replace the Recipe with a Plate variant
      */
     public static synchronized void registerUsagesForMaterials(ItemStack aMat, String aPlate, boolean aRecipeReplacing) {

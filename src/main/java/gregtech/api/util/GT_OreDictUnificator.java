@@ -178,9 +178,11 @@ public class GT_OreDictUnificator {
             if (mRunThroughTheList) {
                 if (GregTech_API.sLoadStarted) {
                     mRunThroughTheList = false;
-                    for (Entry<GT_ItemStack, ItemData> tEntry : sItemStack2DataMap.entrySet())
-                        if (!tEntry.getValue().hasValidPrefixData() || tEntry.getValue().mPrefix.mAllowNormalRecycling)
+                    for (Entry<GT_ItemStack, ItemData> tEntry : sItemStack2DataMap.entrySet()) {
+                        if (!tEntry.getValue().hasValidPrefixData() || tEntry.getValue().mPrefix.mAllowNormalRecycling) {
                             GT_RecipeRegistrator.registerMaterialRecycling(tEntry.getKey().toStack(), tEntry.getValue());
+                        }
+                    }
                 }
             } else {
                 if (!aData.hasValidPrefixData() || aData.mPrefix.mAllowNormalRecycling)

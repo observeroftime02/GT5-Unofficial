@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
+import gregtech.api.enums.MaterialFlags;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.interfaces.ITexture;
@@ -55,7 +56,7 @@ public abstract class GT_Block_Ores_Abstract extends GT_Generic_Block implements
                 for (int j = 0; j < aOreMetaCount; j++) {
                     GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + (i + (j * 1000)) + aTextName, getLocalizedName(GregTech_API.sGeneratedMaterials[i]));
                     GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + ((i + 16000) + (j * 1000)) + aTextName, aTextSmall + getLocalizedName(GregTech_API.sGeneratedMaterials[i]));
-                    if ((GregTech_API.sGeneratedMaterials[i].mTypes & 0x8) != 0) {
+                    if (GregTech_API.sGeneratedMaterials[i].hasFlag(MaterialFlags.ORE.bit)) {
                         GT_OreDictUnificator.registerOre(this.getProcessingPrefix()[j] != null ? this.getProcessingPrefix()[j].get(GregTech_API.sGeneratedMaterials[i]) : "", new ItemStack(this, 1, i + (j * 1000)));
                     if (tHideOres) {
                         if(!(j == 0 && !aHideFirstMeta)){
@@ -242,7 +243,7 @@ public abstract class GT_Block_Ores_Abstract extends GT_Generic_Block implements
     public void getSubBlocks(Item aItem, CreativeTabs aTab, List aList) {
         for (int i = 0; i < GregTech_API.sGeneratedMaterials.length; i++) {
             Materials tMaterial = GregTech_API.sGeneratedMaterials[i];
-            if ((tMaterial != null) && ((tMaterial.mTypes & 0x8) != 0)) {
+            if ((tMaterial != null) && tMaterial.hasFlag(MaterialFlags.ORE.bit)) {
                 if (!(new ItemStack(aItem, 1, i).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i));
                 if (!(new ItemStack(aItem, 1, i + 1000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 1000));
                 if (!(new ItemStack(aItem, 1, i + 2000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 2000));

@@ -123,15 +123,11 @@ public class GT_MetaTileEntity_TypeFilter
             if (tData != null && tData.mPrefix != null) {
                 OrePrefixes tFix = tData.mPrefix;
                 if (tFix == OrePrefixes.oreBlackgranite ||
-                        tFix == OrePrefixes.oreDense ||
                         tFix == OrePrefixes.oreEnd ||
                         tFix == OrePrefixes.oreEndstone ||
                         tFix == OrePrefixes.oreNether ||
                         tFix == OrePrefixes.oreNetherrack ||
-                        tFix == OrePrefixes.oreNormal ||
-                        tFix == OrePrefixes.orePoor ||
                         tFix == OrePrefixes.oreRedgranite ||
-                        tFix == OrePrefixes.oreRich ||
                         tFix == OrePrefixes.oreSmall ||
                         tFix == OrePrefixes.oreBasalt ||
                         tFix == OrePrefixes.oreMarble) tAllowPrefix = true;

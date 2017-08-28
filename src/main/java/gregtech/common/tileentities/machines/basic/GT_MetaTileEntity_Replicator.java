@@ -14,9 +14,6 @@ import gregtech.common.items.behaviors.Behaviour_DataOrb;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
-import java.util.Arrays;
-import java.util.Iterator;
-
 public class GT_MetaTileEntity_Replicator
         extends GT_MetaTileEntity_BasicMachine {
     private static int sHeaviestElementMass = 0;
@@ -94,11 +91,11 @@ public class GT_MetaTileEntity_Replicator
 
     public int getCapacity() {
         if ((sHeaviestElementMass == 0) && (GregTech_API.sPostloadFinished)) {
-            Materials tMaterial;
-            for (Iterator i$ = Arrays.asList(Materials.values()).iterator(); i$.hasNext(); sHeaviestElementMass = Math.max(sHeaviestElementMass, (int) tMaterial.getMass())) {
-                tMaterial = (Materials) i$.next();
+            for (Materials aMaterial : Materials.values()) {
+                sHeaviestElementMass = Math.max(sHeaviestElementMass, (int) aMaterial.getMass());
             }
         }
+        System.out.println("##@@ " + sHeaviestElementMass);
         return sHeaviestElementMass;
     }
 }

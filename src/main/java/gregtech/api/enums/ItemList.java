@@ -213,8 +213,6 @@ public enum ItemList implements IItemContainer {
     Battery_RE_HV_Lithium,
     Battery_RE_HV_Sodium,
     ZPM,
-    Fuel_Can_Plastic_Empty,
-    Fuel_Can_Plastic_Filled,
     Upgrade_Battery,
     Upgrade_Overclocker,
     Upgrade_Muffler,
@@ -260,9 +258,6 @@ public enum ItemList implements IItemContainer {
     Paper_Punch_Card_Encoded,
     NC_SensorCard,
     NC_SensorKit,
-    Tool_Matches,
-    Tool_MatchBox_Used,
-    Tool_MatchBox_Full,
     Tool_Lighter_Invar_Empty,
     Tool_Lighter_Invar_Used,
     Tool_Lighter_Invar_Full,
@@ -284,8 +279,6 @@ public enum ItemList implements IItemContainer {
     Tool_Shovel_Steel,
     Tool_Axe_Steel,
     Tool_Hoe_Steel,
-
-    Spray_Empty, Spray_Bug, Spray_Ice, Spray_Hardener, Spray_CFoam, Spray_Pepper, Spray_Hydration,
 
     Armor_Cheat,
     Armor_Cloaking,
