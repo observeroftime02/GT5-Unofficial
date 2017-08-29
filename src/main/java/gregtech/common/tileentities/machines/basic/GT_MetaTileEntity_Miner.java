@@ -8,7 +8,7 @@ import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicMachin
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.objects.ItemData;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.blocks.GT_Block_Ores_Abstract;
 import gregtech.common.blocks.GT_TileEntity_Ores;
@@ -117,7 +117,7 @@ public class GT_MetaTileEntity_Miner extends GT_MetaTileEntity_BasicMachine {
                                 return;
                             }
                         } else {
-                            ItemData association = GT_OreDictUnificator.getAssociation(new ItemStack(block, 1, blockMeta));
+                            ItemData association = MatUnifier.getAssociation(new ItemStack(block, 1, blockMeta));
                             if (association != null && association.mPrefix.toString().startsWith("ore")) {
                                 mineBlock(aBaseMetaTileEntity, drillX, drillY, drillZ);
                                 return;

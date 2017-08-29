@@ -20,6 +20,6 @@ public class GT_Loader_OreProcessing
         new ProcessingStone();
         new ProcessingStoneVarious();
         new ProcessingToolOther();
-        new ProcessingWire();
+        //new ProcessingWire();
     }
 }

@@ -13,7 +13,7 @@ import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_MultiBlockB
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.objects.ItemData;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.blocks.GT_Block_Ores_Abstract;
@@ -206,7 +206,7 @@ public abstract class GT_MetaTileEntity_OreDrillingPlantBase extends GT_MetaTile
     }
 
     private boolean doUseMaceratorRecipe(ItemStack currentItem) {
-        ItemData itemData = GT_OreDictUnificator.getItemData(currentItem);
+        ItemData itemData = MatUnifier.getItemData(currentItem);
         return itemData == null
                 || itemData.mPrefix != OrePrefixes.crushed
                 && itemData.mPrefix != OrePrefixes.dustImpure
@@ -277,7 +277,7 @@ public abstract class GT_MetaTileEntity_OreDrillingPlantBase extends GT_MetaTile
             if (tTileEntity != null && tTileEntity instanceof GT_TileEntity_Ores && ((GT_TileEntity_Ores) tTileEntity).mNatural)
                 oreBlockPositions.add(blockPos);
         } else {
-            ItemData association = GT_OreDictUnificator.getAssociation(new ItemStack(block, 1, blockMeta));
+            ItemData association = MatUnifier.getAssociation(new ItemStack(block, 1, blockMeta));
             if (association != null && association.mPrefix.toString().startsWith("ore"))
                 oreBlockPositions.add(blockPos);
         }

@@ -7,7 +7,7 @@ import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.interfaces.IIconContainer;
 import gregtech.api.util.GT_LanguageManager;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -59,9 +59,9 @@ public abstract class GT_MetaGenerated_Item_X01 extends GT_MetaGenerated_Item {
                 String tOreName = getOreDictString(tPrefix, tMaterial);
                 tPrefix = OrePrefixes.getOrePrefix(tOreName);
                 if (tPrefix != null && tPrefix.mIsUnificatable) {
-                    GT_OreDictUnificator.set(tPrefix, OrePrefixes.getMaterial(tOreName, tPrefix), tStack);
+                    MatUnifier.set(tPrefix, OrePrefixes.getMaterial(tOreName, tPrefix), tStack);
                 } else {
-                    GT_OreDictUnificator.registerOre(tOreName, tStack);
+                    MatUnifier.registerOre(tOreName, tStack);
                 }
             }
         }

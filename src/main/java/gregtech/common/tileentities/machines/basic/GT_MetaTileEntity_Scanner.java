@@ -83,24 +83,24 @@ public class GT_MetaTileEntity_Scanner
                     this.mEUt = 1;
                 }
                 aStack.stackSize -= 1;
-                this.mOutputItems[0] = GT_Utility.copyAmount(1L, aStack);
+                this.mOutputItems[0] = GT_Utility.copyAmount(1, aStack);
                 this.mOutputItems[0].setTagCompound(tNBT);
                 return 2;
             }
             if (ItemList.Tool_DataOrb.isStackEqual(getSpecialSlot(), false, true)) {
                 if (ItemList.Tool_DataOrb.isStackEqual(aStack, false, true)) {
                     aStack.stackSize -= 1;
-                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, getSpecialSlot());
+                    this.mOutputItems[0] = GT_Utility.copyAmount(1, getSpecialSlot());
                     this.mMaxProgresstime = (512 / (1 << this.mTier - 1));
                     this.mEUt = (32 * (1 << this.mTier - 1) * (1 << this.mTier - 1));
                     return 2;
                 }
-                ItemData tData = GT_OreDictUnificator.getAssociation(aStack);
+                ItemData tData = MatUnifier.getAssociation(aStack);
                 if ((tData != null) && ((tData.mPrefix == OrePrefixes.dust) || (tData.mPrefix == OrePrefixes.cell)) && (tData.mMaterial.mMaterial.mElement != null) && (!tData.mMaterial.mMaterial.mElement.mIsIsotope) && (tData.mMaterial.mMaterial != Materials.Magic) && (tData.mMaterial.mMaterial.getMass() > 0L)) {
                     getSpecialSlot().stackSize -= 1;
                     aStack.stackSize -= 1;
 
-                    this.mOutputItems[0] = ItemList.Tool_DataOrb.get(1L);
+                    this.mOutputItems[0] = ItemList.Tool_DataOrb.get(1);
                     Behaviour_DataOrb.setDataTitle(this.mOutputItems[0], "Elemental-Scan");
                     Behaviour_DataOrb.setDataName(this.mOutputItems[0], tData.mMaterial.mMaterial.mElement.name());
                     this.mMaxProgresstime = ((int) (tData.mMaterial.mMaterial.getMass() * 8192L / (1 << this.mTier - 1)));
@@ -111,7 +111,7 @@ public class GT_MetaTileEntity_Scanner
             if (ItemList.Tool_DataStick.isStackEqual(getSpecialSlot(), false, true)) {
                 if (ItemList.Tool_DataStick.isStackEqual(aStack, false, true)) {
                     aStack.stackSize -= 1;
-                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, ItemList.Tool_DataStick.get(1));
+                    this.mOutputItems[0] = GT_Utility.copyAmount(1, ItemList.Tool_DataStick.get(1));
                     this.mMaxProgresstime = (128 / (1 << this.mTier - 1));
                     this.mEUt = (32 * (1 << this.mTier - 1) * (1 << this.mTier - 1));
                     return 2;
@@ -120,7 +120,7 @@ public class GT_MetaTileEntity_Scanner
                     getSpecialSlot().stackSize -= 1;
                     aStack.stackSize -= 1;
 
-                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, getSpecialSlot());
+                    this.mOutputItems[0] = GT_Utility.copyAmount(1, getSpecialSlot());
                     this.mOutputItems[0].setTagCompound(aStack.getTagCompound());
                     this.mMaxProgresstime = (128 / (1 << this.mTier - 1));
                     this.mEUt = (32 * (1 << this.mTier - 1) * (1 << this.mTier - 1));
@@ -130,7 +130,7 @@ public class GT_MetaTileEntity_Scanner
                     getSpecialSlot().stackSize -= 1;
                     aStack.stackSize -= 1;
 
-                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, getSpecialSlot());
+                    this.mOutputItems[0] = GT_Utility.copyAmount(1, getSpecialSlot());
                     this.mOutputItems[0].setTagCompound(GT_Utility.getNBTContainingShort(new NBTTagCompound(), "map_id", (short) aStack.getItemDamage()));
                     this.mMaxProgresstime = (128 / (1 << this.mTier - 1));
                     this.mEUt = (32 * (1 << this.mTier - 1) * (1 << this.mTier - 1));
@@ -143,17 +143,17 @@ public class GT_MetaTileEntity_Scanner
                     GT_Utility.ItemNBT.convertProspectionData(aStack);
                     aStack.stackSize -= 1;
 
-                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, aStack);
+                    this.mOutputItems[0] = GT_Utility.copyAmount(1, aStack);
                     this.mMaxProgresstime = (1000 / (1 << this.mTier - 1));
                     this.mEUt = (32 * (1 << this.mTier - 1) * (1 << this.mTier - 1));
                     return 2;
 
                 }
             }
-            if(ItemList.Tool_DataStick.isStackEqual(getSpecialSlot(), false, true)&& aStack !=null){
+            if(ItemList.Tool_DataStick.isStackEqual(getSpecialSlot(), false, true)){
             	for(GT_Recipe.GT_Recipe_AssemblyLine tRecipe:GT_Recipe.GT_Recipe_AssemblyLine.sAssemblylineRecipes){
             	if(GT_Utility.areStacksEqual(tRecipe.mResearchItem, aStack, true)){
-            	this.mOutputItems[0] = GT_Utility.copyAmount(1L, getSpecialSlot());
+            	this.mOutputItems[0] = GT_Utility.copyAmount(1, getSpecialSlot());
                 GT_Utility.ItemNBT.setBookTitle(this.mOutputItems[0], GT_LanguageManager.getTranslation(tRecipe.mOutput.getDisplayName())+" Construction Data");
                 NBTTagCompound tNBT = this.mOutputItems[0].getTagCompound();
                 if (tNBT == null) {

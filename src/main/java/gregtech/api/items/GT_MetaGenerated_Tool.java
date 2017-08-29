@@ -16,7 +16,7 @@ import gregtech.api.interfaces.IDamagableItem;
 import gregtech.api.interfaces.IToolStats;
 import gregtech.api.util.GT_LanguageManager;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
 import mods.railcraft.api.core.items.IToolCrowbar;
 import net.minecraft.block.Block;
@@ -162,7 +162,7 @@ public abstract class GT_MetaGenerated_Tool extends GT_MetaBase_Item implements 
                 if (tOreDictNameOrAspect instanceof AspectStack)
                     ((AspectStack) tOreDictNameOrAspect).addToAspectList(tAspects);
                 else
-                    GT_OreDictUnificator.registerOre(tOreDictNameOrAspect, rStack);
+                    MatUnifier.registerOre(tOreDictNameOrAspect, rStack);
             }
             if (GregTech_API.sThaumcraftCompat != null)
                 GregTech_API.sThaumcraftCompat.registerThaumcraftAspectsToItem(rStack, tAspects, false);

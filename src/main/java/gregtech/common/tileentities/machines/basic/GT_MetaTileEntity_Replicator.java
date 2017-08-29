@@ -7,7 +7,7 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicMachine;
 import gregtech.api.objects.GT_RenderedTexture;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.items.behaviors.Behaviour_DataOrb;
@@ -44,8 +44,8 @@ public class GT_MetaTileEntity_Replicator
                 if ((tFluid.amount >= tMass) && (tMass > 0L)) {
                     this.mEUt = ((int) gregtech.api.enums.GT_Values.V[this.mTier]);
                     this.mMaxProgresstime = ((int) (tMass * 512L / (1 << this.mTier - 1)));
-                    if ((this.mOutputItems[0] = GT_OreDictUnificator.get(OrePrefixes.dust, tMaterial, 1L)) == null) {
-                        if ((this.mOutputItems[0] = GT_OreDictUnificator.get(OrePrefixes.cell, tMaterial, 1L)) != null) {
+                    if ((this.mOutputItems[0] = MatUnifier.get(OrePrefixes.dust, tMaterial)) == null) {
+                        if ((this.mOutputItems[0] = MatUnifier.get(OrePrefixes.cell, tMaterial)) != null) {
                             if ((this.mOutputFluid = GT_Utility.getFluidForFilledItem(this.mOutputItems[0], true)) == null) {
                                 if (ItemList.Cell_Empty.isStackEqual(getInputAt(0))) {
                                     if (canOutput(this.mOutputItems[0])) {

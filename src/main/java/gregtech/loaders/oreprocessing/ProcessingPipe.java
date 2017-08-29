@@ -1,12 +1,9 @@
 package gregtech.loaders.oreprocessing;
 
-import gregtech.api.enums.Materials;
-import gregtech.api.enums.OrePrefixes;
-import gregtech.api.enums.SubTag;
-import gregtech.api.enums.ToolDictNames;
+import gregtech.api.enums.*;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
+import gregtech.api.util.MatUnifier;
 import net.minecraft.item.ItemStack;
 
 public class ProcessingPipe implements gregtech.api.interfaces.IOreRecipeRegistrator {
@@ -29,7 +26,7 @@ public class ProcessingPipe implements gregtech.api.interfaces.IOreRecipeRegistr
             case pipeSmall:
                 if ((!aMaterial.contains(SubTag.NO_WORKING)) && ((aMaterial.contains(SubTag.WOOD)) || (!aMaterial.contains(SubTag.NO_SMASHING)))) {
                     if (!(aMaterial == Materials.Redstone || aMaterial == Materials.Glowstone)) {
-                        long aAmount = aPrefix == OrePrefixes.pipeLarge ? 1L : aPrefix == OrePrefixes.pipeMedium ? 2L : 6L;
+                        int aAmount = aPrefix == OrePrefixes.pipeLarge ? 1 : aPrefix == OrePrefixes.pipeMedium ? 2 : 6;
                         String aRecipeString1 = aPrefix == OrePrefixes.pipeLarge ? "PHP" : aPrefix == OrePrefixes.pipeMedium ? "PPP" : "PWP";
                         String aRecipeString2 = aPrefix == OrePrefixes.pipeLarge || aPrefix == OrePrefixes.pipeSmall ? "P P" : "W H";
                         String aRecipeString3 = aPrefix == OrePrefixes.pipeLarge ? "PWP" : aPrefix == OrePrefixes.pipeMedium ? "PPP" : "PHP";
@@ -42,7 +39,7 @@ public class ProcessingPipe implements gregtech.api.interfaces.IOreRecipeRegistr
             case pipeRestrictiveMedium:
             case pipeRestrictiveSmall:
             case pipeRestrictiveTiny:
-                gregtech.api.enums.GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(aOreDictName.replaceFirst("Restrictive", ""), null, 1L, false, true), GT_OreDictUnificator.get(OrePrefixes.ring, Materials.Steel, aPrefix.mSecondaryMaterial.mAmount / OrePrefixes.ring.mMaterialAmount), GT_Utility.copyAmount(1L, aStack), (int) (aPrefix.mSecondaryMaterial.mAmount * 400L / OrePrefixes.ring.mMaterialAmount), 4);
+                gregtech.api.enums.GT_Values.RA.addAssemblerRecipe(MatUnifier.get(aOreDictName.replaceFirst("Restrictive", ""), null, 1, true), MatUnifier.get(OrePrefixes.ring, Materials.Steel, aPrefix.mSecondaryMaterial.mAmount / OrePrefixes.ring.mMaterialAmount), GT_Utility.copyAmount(1, aStack), (int) (aPrefix.mSecondaryMaterial.mAmount * 400L / OrePrefixes.ring.mMaterialAmount), 4);
                 break;
         }
     }

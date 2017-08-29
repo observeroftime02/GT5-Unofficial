@@ -171,7 +171,7 @@ public class GT_MetaTileEntity_Pump extends GT_MetaTileEntity_Hatch {
 
     private boolean moveOneDown() {
         if ((this.mInventory[0] == null) || (this.mInventory[0].stackSize < 1)
-                || (!GT_Utility.areStacksEqual(this.mInventory[0], GT_ModHandler.getIC2Item("miningPipe", 1L)))) {
+                || (!GT_Utility.areStacksEqual(this.mInventory[0], GT_ModHandler.getIC2Item("miningPipe", 1)))) {
             return false;
         }
         int yHead = getYOfPumpHead();
@@ -182,11 +182,11 @@ public class GT_MetaTileEntity_Pump extends GT_MetaTileEntity_Hatch {
 
             return false;
         }
-        if (!(getBaseMetaTileEntity().getWorld().setBlock(getBaseMetaTileEntity().getXCoord(), yHead - 1, getBaseMetaTileEntity().getZCoord(), GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 1L))))) {
+        if (!(getBaseMetaTileEntity().getWorld().setBlock(getBaseMetaTileEntity().getXCoord(), yHead - 1, getBaseMetaTileEntity().getZCoord(), GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 1))))) {
             return false;
         }
         if (yHead != getBaseMetaTileEntity().getYCoord()) {
-            getBaseMetaTileEntity().getWorld().setBlock(getBaseMetaTileEntity().getXCoord(), yHead, getBaseMetaTileEntity().getZCoord(), GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("miningPipe", 1L)));
+            getBaseMetaTileEntity().getWorld().setBlock(getBaseMetaTileEntity().getXCoord(), yHead, getBaseMetaTileEntity().getZCoord(), GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("miningPipe", 1)));
         }
         getBaseMetaTileEntity().decrStackSize(0, 1);
         return true;
@@ -195,18 +195,18 @@ public class GT_MetaTileEntity_Pump extends GT_MetaTileEntity_Hatch {
     private int getYOfPumpHead() {
         int y = getBaseMetaTileEntity().getYCoord() - 1;
         while (getBaseMetaTileEntity().getBlock(getBaseMetaTileEntity().getXCoord(), y, getBaseMetaTileEntity().getZCoord()) == GT_Utility
-                .getBlockFromStack(GT_ModHandler.getIC2Item("miningPipe", 1L))) {
+                .getBlockFromStack(GT_ModHandler.getIC2Item("miningPipe", 1))) {
             y--;
         }
         if (y == getBaseMetaTileEntity().getYCoord() - 1) {
             if (getBaseMetaTileEntity().getBlock(getBaseMetaTileEntity().getXCoord(), y, getBaseMetaTileEntity().getZCoord()) != GT_Utility
-                    .getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 1L))) {
+                    .getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 1))) {
                 return y + 1;
             }
         } else if (getBaseMetaTileEntity().getBlock(getBaseMetaTileEntity().getXCoord(), y, getBaseMetaTileEntity().getZCoord()) != GT_Utility
-                .getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 1L)) && this.mInventory[0] != null && this.mInventory[0].stackSize > 0 && GT_Utility.areStacksEqual(this.mInventory[0], GT_ModHandler.getIC2Item("miningPipe", 1L))) {
+                .getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 1)) && this.mInventory[0] != null && this.mInventory[0].stackSize > 0 && GT_Utility.areStacksEqual(this.mInventory[0], GT_ModHandler.getIC2Item("miningPipe", 1))) {
             getBaseMetaTileEntity().getWorld().setBlock(getBaseMetaTileEntity().getXCoord(), y, getBaseMetaTileEntity().getZCoord(),
-                    GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 1L)));
+                    GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 1)));
             getBaseMetaTileEntity().decrStackSize(0, 1);
         }
         return y;

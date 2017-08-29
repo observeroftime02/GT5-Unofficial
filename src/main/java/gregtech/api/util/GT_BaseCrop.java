@@ -196,7 +196,7 @@ public class GT_BaseCrop extends CropCard implements ICropCardInfo {
                 }
             } else {
                 int tMetaID = aCrop.getWorld().getBlockMetadata(aCrop.getLocation().posX, aCrop.getLocation().posY - i, aCrop.getLocation().posZ);
-                ItemData tAssotiation = GT_OreDictUnificator.getAssociation(new ItemStack(tBlock, 1, tMetaID));
+                ItemData tAssotiation = MatUnifier.getAssociation(new ItemStack(tBlock, 1, tMetaID));
                 if ((tAssotiation != null) && (tAssotiation.mPrefix.toString().startsWith("ore")) && (tAssotiation.mMaterial.mMaterial == mBlock)) {
                     return true;
                 }

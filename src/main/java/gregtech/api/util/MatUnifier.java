@@ -13,7 +13,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -29,7 +28,7 @@ import static gregtech.api.enums.GT_Values.*;
  * <p/>
  * P.S. It is intended to be named "Unificator" and not "Unifier", because that sounds more awesome.
  */
-public class GT_OreDictUnificator {
+public class MatUnifier {
     private static final /*ConcurrentHash*/Map<String, ItemStack> sName2StackMap = new /*ConcurrentHash*/HashMap<String, ItemStack>();
     private static final /*ConcurrentHash*/Map<GT_ItemStack, ItemData> sItemStack2DataMap = new /*ConcurrentHash*/HashMap<GT_ItemStack, ItemData>();
     private static final GT_HashSet<GT_ItemStack> sNoUnificationList = new GT_HashSet<GT_ItemStack>();
@@ -78,31 +77,36 @@ public class GT_OreDictUnificator {
         if (GT_Utility.isStringInvalid(aName)) return null;
         ItemStack tStack = sName2StackMap.get(aName.toString());
         if (GT_Utility.isStackValid(tStack)) return GT_Utility.copyAmount(aAmount, tStack);
-        return GT_Utility.copyAmount(aAmount, getOres(aName).toArray());
+        return GT_Utility.copyAmount(aAmount, getOres(aName));
     }
 
     public static ItemStack get(Object aName, long aAmount) {
-        return get(aName, null, aAmount, true, true);
+        return get(aName, null, aAmount, true);
     }
 
     public static ItemStack get(Object aName, ItemStack aReplacement, long aAmount) {
-        return get(aName, aReplacement, aAmount, true, true);
+        return get(aName, aReplacement, aAmount, true);
     }
 
     public static ItemStack get(OrePrefixes aPrefix, Object aMaterial, long aAmount) {
         return get(aPrefix, aMaterial, null, aAmount);
     }
 
-    public static ItemStack get(OrePrefixes aPrefix, Object aMaterial, ItemStack aReplacement, long aAmount) {
-        //if (Materials.mDefaultComponents.contains(aPrefix) && !aPrefix.mDynamicItems.contains((Materials)aMaterial)) aPrefix.mDynamicItems.add((Materials) aMaterial);
-        if (OrePrefixes.mPreventableComponents.contains(aPrefix) && aPrefix.mDisabledItems.contains(aMaterial)) return aReplacement;
-        return get(aPrefix.get(aMaterial), aReplacement, aAmount, false, true);
+    public static ItemStack get(OrePrefixes aPrefix, Object aMaterial) {
+        return get(aPrefix, aMaterial, null, 1);
     }
 
-    public static ItemStack get(Object aName, ItemStack aReplacement, long aAmount, boolean aMentionPossibleTypos, boolean aNoInvalidAmounts) {
+    public static ItemStack get(OrePrefixes aPrefix, Object aMaterial, ItemStack aReplacement, long aAmount) {
+        if (aPrefix.mDisabledItems.contains(aMaterial)) return aReplacement;
+        return get(aPrefix.get(aMaterial), aReplacement, aAmount, true);
+    }
+
+    public static ItemStack get(OrePrefixes aPrefix, Object aMaterial, ItemStack aReplacement) {
+        return get(aPrefix, aMaterial, aReplacement, 1);
+    }
+
+    public static ItemStack get(Object aName, ItemStack aReplacement, long aAmount, boolean aNoInvalidAmounts) {
         if (aNoInvalidAmounts && aAmount < 1) return null;
-        if (!sName2StackMap.containsKey(aName.toString()) && aMentionPossibleTypos)
-            GT_Log.err.println("Unknown Key for Unification, Typo? " + aName);
         return GT_Utility.copyAmount(aAmount, sName2StackMap.get(aName.toString()), getFirstOre(aName, aAmount), aReplacement);
     }
 
@@ -111,7 +115,7 @@ public class GT_OreDictUnificator {
         return aStacks;
     }
 
-    public static ItemStack[] getStackArray(boolean aUseBlackList, Object... aStacks) {
+    public static ItemStack[] getStackArray(boolean aUseBlackList, ItemStack... aStacks) {
         ItemStack[] rStacks = new ItemStack[aStacks.length];
         for (int i = 0; i < aStacks.length; i++) rStacks[i] = get(aUseBlackList, GT_Utility.copy(aStacks[i]));
         return rStacks;
@@ -148,6 +152,7 @@ public class GT_OreDictUnificator {
             tPrefixMaterial.mUnificationTarget = sName2StackMap.get(tPrefixMaterial.toString());
         rStack = tPrefixMaterial.mUnificationTarget;
         if (GT_Utility.isStackInvalid(rStack)) return GT_Utility.copy(aStack);
+        assert rStack != null;
         rStack.setTagCompound(aStack.getTagCompound());
         return GT_Utility.copyAmount(aStack.stackSize, rStack);
     }
@@ -177,11 +182,9 @@ public class GT_OreDictUnificator {
             if (mRunThroughTheList) {
                 if (GregTech_API.sLoadStarted) {
                     mRunThroughTheList = false;
-                    for (Entry<GT_ItemStack, ItemData> tEntry : sItemStack2DataMap.entrySet()) {
-                        if (!tEntry.getValue().hasValidPrefixData() || tEntry.getValue().mPrefix.mAllowNormalRecycling) {
+                    for (Entry<GT_ItemStack, ItemData> tEntry : sItemStack2DataMap.entrySet())
+                        if (!tEntry.getValue().hasValidPrefixData() || tEntry.getValue().mPrefix.mAllowNormalRecycling)
                             GT_RecipeRegistrator.registerMaterialRecycling(tEntry.getKey().toStack(), tEntry.getValue());
-                        }
-                    }
                 }
             } else {
                 if (!aData.hasValidPrefixData() || aData.mPrefix.mAllowNormalRecycling)
@@ -233,8 +236,8 @@ public class GT_OreDictUnificator {
         if (aName == null || GT_Utility.isStackInvalid(aStack)) return false;
         String tName = aName.toString();
         if (GT_Utility.isStringInvalid(tName)) return false;
-        ArrayList<ItemStack> tList = getOres(tName);
-        for (int i = 0; i < tList.size(); i++) if (GT_Utility.areStacksEqual(tList.get(i), aStack, true)) return false;
+        ItemStack[] tList = getOres(tName);
+        for (int i = 0; i < tList.length; i++) if (GT_Utility.areStacksEqual(tList[i], aStack, true)) return false;
         isRegisteringOre++;
         OreDictionary.registerOre(tName, GT_Utility.copyAmount(1, aStack));
         isRegisteringOre--;
@@ -344,17 +347,17 @@ public class GT_OreDictUnificator {
     /**
      * @return a Copy of the OreDictionary.getOres() List
      */
-    public static ArrayList<ItemStack> getOres(OrePrefixes aPrefix, Object aMaterial) {
+    public static ItemStack[] getOres(OrePrefixes aPrefix, Object aMaterial) {
         return getOres(aPrefix.get(aMaterial));
     }
 
     /**
      * @return a Copy of the OreDictionary.getOres() List
      */
-    public static ArrayList<ItemStack> getOres(Object aOreName) {
+    public static ItemStack[] getOres(Object aOreName) {
         String aName = aOreName == null ? E : aOreName.toString();
-        ArrayList<ItemStack> rList = new ArrayList<ItemStack>();
-        if (GT_Utility.isStringValid(aName)) rList.addAll(OreDictionary.getOres(aName));
+        ItemStack[] rList = new ItemStack[]{};
+        if (GT_Utility.isStringValid(aName)) rList = OreDictionary.getOres(aName).toArray(new ItemStack[0]);
         return rList;
     }
 }

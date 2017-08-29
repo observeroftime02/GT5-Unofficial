@@ -16,7 +16,7 @@ import gregtech.api.interfaces.IItemContainer;
 import gregtech.api.objects.ItemData;
 import gregtech.api.util.GT_Config;
 import gregtech.api.util.GT_LanguageManager;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -119,7 +119,7 @@ public abstract class GT_MetaGenerated_Item extends GT_MetaBase_Item implements 
                         continue;
                     }
                     if (tRandomData == SubTag.NO_UNIFICATION) {
-                        GT_OreDictUnificator.addToBlacklist(rStack);
+                        MatUnifier.addToBlacklist(rStack);
                         continue;
                     }
                 }
@@ -153,12 +153,12 @@ public abstract class GT_MetaGenerated_Item extends GT_MetaBase_Item implements 
                     }
                     if (tRandomData instanceof ItemData) {
                         if (GT_Utility.isStringValid(tRandomData))
-                            GT_OreDictUnificator.registerOre(tRandomData, rStack);
-                        else GT_OreDictUnificator.addItemData(rStack, (ItemData) tRandomData);
+                            MatUnifier.registerOre(tRandomData, rStack);
+                        else MatUnifier.addItemData(rStack, (ItemData) tRandomData);
                         continue;
                     }
                     if (tUseOreDict) {
-                        GT_OreDictUnificator.registerOre(tRandomData, rStack);
+                        MatUnifier.registerOre(tRandomData, rStack);
                         continue;
                     }
                 }

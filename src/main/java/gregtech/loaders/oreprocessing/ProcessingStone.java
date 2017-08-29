@@ -6,7 +6,7 @@ import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.interfaces.IOreRecipeRegistrator;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -26,51 +26,51 @@ public class ProcessingStone
                 Block aBlock = GT_Utility.getBlockFromStack(aStack);
                 switch (aMaterial.mName) {
                     case "NULL":
-                        GT_Values.RA.addAssemblerRecipe(GT_Utility.copyAmount(3L, aStack), new ItemStack(Blocks.redstone_torch, 2), Materials.Redstone.getMolten(144L), new ItemStack(Items.repeater, 1), 100, 4);
+                        GT_Values.RA.addAssemblerRecipe(GT_Utility.copyAmount(3, aStack), new ItemStack(Blocks.redstone_torch, 2), Materials.Redstone.getMolten(144L), new ItemStack(Items.repeater, 1), 100, 4);
                         break;
                     case "Sand":
                         GT_ModHandler.addPulverisationRecipe(aStack, new ItemStack(Blocks.sand, 1, 0), null, 10, false);
                         break;
                     case "Endstone":
-                        GT_ModHandler.addPulverisationRecipe(aStack, GT_OreDictUnificator.get(OrePrefixes.dustImpure, Materials.Endstone, 1L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Tungsten, 1L), 5, false);
+                        GT_ModHandler.addPulverisationRecipe(aStack, MatUnifier.get(OrePrefixes.dustImpure, Materials.Endstone, 1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Tungsten, 1), 5, false);
                         break;
                     case "Netherrack":
-                        GT_ModHandler.addPulverisationRecipe(aStack, GT_OreDictUnificator.get(OrePrefixes.dustImpure, Materials.Netherrack, 1L), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Gold, 1L), 5, false);
+                        GT_ModHandler.addPulverisationRecipe(aStack, MatUnifier.get(OrePrefixes.dustImpure, Materials.Netherrack, 1), MatUnifier.get(OrePrefixes.nugget, Materials.Gold, 1), 5, false);
                         break;
                     case "NetherBrick":
-                        GT_Values.RA.addAssemblerRecipe(aStack, ItemList.Circuit_Integrated.getWithDamage(0L, 1L), new ItemStack(Blocks.nether_brick_fence, 1), 100, 4);
+                        GT_Values.RA.addAssemblerRecipe(aStack, ItemList.Circuit_Integrated.getWithDamage(0, 1), new ItemStack(Blocks.nether_brick_fence, 1), 100, 4);
                         break;
                     case "Obsidian":
                         if (aBlock != Blocks.air) aBlock.setResistance(20.0F);
-                        GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 2L), GT_Utility.copyAmount(5L, aStack), Materials.Glass.getMolten(72L), GT_ModHandler.getModItem("Forestry", "thermionicTubes", 4L, 6), 64, 32);
-                        GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.gem, Materials.NetherStar, 1L), GT_Utility.copyAmount(3L, aStack), Materials.Glass.getMolten(720L), new ItemStack(Blocks.beacon, 1, 0), 32, 16);
-                        GT_Values.RA.addAssemblerRecipe(aStack, ItemList.IC2_Compressed_Coal_Ball.get(8L), ItemList.IC2_Compressed_Coal_Chunk.get(1L), 400, 4);
-                        GT_Values.RA.addAssemblerRecipe(GT_Utility.copyAmount(8L, aStack), GT_OreDictUnificator.get(OrePrefixes.gem, Materials.EnderEye, 1L), new ItemStack(Blocks.ender_chest, 1), 400, 4);
-                        GT_ModHandler.addPulverisationRecipe(aStack, GT_ModHandler.getModItem("Railcraft", "cube.crushed.obsidian", 1L, GT_OreDictUnificator.get(OrePrefixes.dust, aMaterial, 1L)), GT_OreDictUnificator.get(OrePrefixes.dust, aMaterial, 1L), 10, true);
-                        GT_Values.RA.addCutterRecipe(aStack, GT_OreDictUnificator.get(OrePrefixes.plate, aMaterial, 1L), null, 200, 32);
+                        GT_Values.RA.addAssemblerRecipe(MatUnifier.get(OrePrefixes.dust, Materials.Redstone, 2), GT_Utility.copyAmount(5, aStack), Materials.Glass.getMolten(72L), GT_ModHandler.getModItem("Forestry", "thermionicTubes", 4, 6), 64, 32);
+                        GT_Values.RA.addAssemblerRecipe(MatUnifier.get(OrePrefixes.gem, Materials.NetherStar, 1), GT_Utility.copyAmount(3, aStack), Materials.Glass.getMolten(720L), new ItemStack(Blocks.beacon, 1, 0), 32, 16);
+                        GT_Values.RA.addAssemblerRecipe(aStack, ItemList.IC2_Compressed_Coal_Ball.get(8), ItemList.IC2_Compressed_Coal_Chunk.get(1), 400, 4);
+                        GT_Values.RA.addAssemblerRecipe(GT_Utility.copyAmount(8, aStack), MatUnifier.get(OrePrefixes.gem, Materials.EnderEye, 1), new ItemStack(Blocks.ender_chest, 1), 400, 4);
+                        GT_ModHandler.addPulverisationRecipe(aStack, GT_ModHandler.getModItem("Railcraft", "cube.crushed.obsidian", 1, MatUnifier.get(OrePrefixes.dust, aMaterial, 1)), MatUnifier.get(OrePrefixes.dust, aMaterial, 1), 10, true);
+                        GT_Values.RA.addCutterRecipe(aStack, MatUnifier.get(OrePrefixes.plate, aMaterial, 1), null, 200, 32);
                         break;
                     case "Concrete":
-                        GT_Values.RA.addCutterRecipe(aStack, GT_OreDictUnificator.get(OrePrefixes.plate, aMaterial, 1L), null, 100, 32);
-                        GT_ModHandler.addPulverisationRecipe(aStack, GT_OreDictUnificator.get(OrePrefixes.dust, aMaterial, 1L));
+                        GT_Values.RA.addCutterRecipe(aStack, MatUnifier.get(OrePrefixes.plate, aMaterial, 1), null, 100, 32);
+                        GT_ModHandler.addPulverisationRecipe(aStack, MatUnifier.get(OrePrefixes.dust, aMaterial, 1));
                         break;
                     case "Marble":
                     case "Basalt":
                     case "Flint":
-                        GT_ModHandler.addPulverisationRecipe(aStack, GT_OreDictUnificator.get(OrePrefixes.dustImpure, aMaterial, 2L), new ItemStack(Items.flint, 1), 50, false);
+                        GT_ModHandler.addPulverisationRecipe(aStack, MatUnifier.get(OrePrefixes.dustImpure, aMaterial, 2), new ItemStack(Items.flint, 1), 50, false);
                         break;
                     case "GraniteBlack":
-                        GT_Values.RA.addCutterRecipe(aStack, GT_OreDictUnificator.get(OrePrefixes.plate, aMaterial, 1L), null, 200, 32);
-                        GT_ModHandler.addPulverisationRecipe(aStack, GT_OreDictUnificator.get(OrePrefixes.dustImpure, aMaterial, 1L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Thorium, 1L), 1, false);
+                        GT_Values.RA.addCutterRecipe(aStack, MatUnifier.get(OrePrefixes.plate, aMaterial, 1), null, 200, 32);
+                        GT_ModHandler.addPulverisationRecipe(aStack, MatUnifier.get(OrePrefixes.dustImpure, aMaterial, 1), MatUnifier.get(OrePrefixes.dust, Materials.Thorium, 1), 1, false);
                         break;
                     case "GraniteRed":
-                        GT_Values.RA.addCutterRecipe(aStack, GT_OreDictUnificator.get(OrePrefixes.plate, aMaterial, 1L), null, 200, 32);
-                        GT_ModHandler.addPulverisationRecipe(aStack, GT_OreDictUnificator.get(OrePrefixes.dustImpure, aMaterial, 1L), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Uranium, 1L), 1, false);
+                        GT_Values.RA.addCutterRecipe(aStack, MatUnifier.get(OrePrefixes.plate, aMaterial, 1), null, 200, 32);
+                        GT_ModHandler.addPulverisationRecipe(aStack, MatUnifier.get(OrePrefixes.dustImpure, aMaterial, 1), MatUnifier.get(OrePrefixes.dustSmall, Materials.Uranium, 1), 1, false);
                 }
             case stoneCobble:
-                GT_Values.RA.addAssemblerRecipe(aStack, GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Wood, 1L), new ItemStack(Blocks.lever, 1), 400, 1);
-                GT_Values.RA.addAssemblerRecipe(GT_Utility.copyAmount(8L, aStack), ItemList.Circuit_Integrated.getWithDamage(0L, 8L), new ItemStack(Blocks.furnace, 1), 400, 4);
-                GT_Values.RA.addAssemblerRecipe(GT_Utility.copyAmount(7L, aStack), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 1L), new ItemStack(Blocks.dropper, 1), 400, 4);
-                GT_Values.RA.addAssemblerRecipe(GT_Utility.copyAmount(7L, aStack), new ItemStack(Items.bow, 1, 0), Materials.Redstone.getMolten(144L), new ItemStack(Blocks.dispenser, 1), 400, 4);
+                GT_Values.RA.addAssemblerRecipe(aStack, MatUnifier.get(OrePrefixes.stick, Materials.Wood, 1), new ItemStack(Blocks.lever, 1), 400, 1);
+                GT_Values.RA.addAssemblerRecipe(GT_Utility.copyAmount(8, aStack), ItemList.Circuit_Integrated.getWithDamage(0, 8), new ItemStack(Blocks.furnace, 1), 400, 4);
+                GT_Values.RA.addAssemblerRecipe(GT_Utility.copyAmount(7, aStack), MatUnifier.get(OrePrefixes.dust, Materials.Redstone, 1), new ItemStack(Blocks.dropper, 1), 400, 4);
+                GT_Values.RA.addAssemblerRecipe(GT_Utility.copyAmount(7, aStack), new ItemStack(Items.bow, 1, 0), Materials.Redstone.getMolten(144L), new ItemStack(Blocks.dispenser, 1), 400, 4);
 
         }
     }

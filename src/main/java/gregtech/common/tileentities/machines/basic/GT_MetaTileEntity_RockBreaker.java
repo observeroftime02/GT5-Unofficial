@@ -8,7 +8,7 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicMachine;
 import gregtech.api.objects.GT_RenderedTexture;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.init.Blocks;
@@ -50,7 +50,7 @@ public class GT_MetaTileEntity_RockBreaker
                 tOutput = new ItemStack(Blocks.cobblestone, 1);
             }
             if (tOutput != null) {
-                if (GT_Utility.areStacksEqual(getInputAt(0), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 1L))) {
+                if (GT_Utility.areStacksEqual(getInputAt(0), MatUnifier.get(OrePrefixes.dust, Materials.Redstone))) {
                     tOutput = new ItemStack(Blocks.obsidian, 1);
                     if (canOutput(tOutput)) {
                         getInputAt(0).stackSize -= 1;

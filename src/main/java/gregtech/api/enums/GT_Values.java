@@ -46,14 +46,14 @@ public class GT_Values {
      * This is used to determine the amount of Material contained inside a prefixed Ore.
      * For example Nugget = M / 9 as it contains out of 1/9 of an Ingot.
      */
-    public static final long M = 3628800;
+    public static final int M = 3628800;
 
     /**
      * Renamed from "FLUID_MATERIAL_UNIT" to just "L"
      * <p/>
      * Fluid per Material Unit (Prime Factors: 3 * 3 * 2 * 2 * 2 * 2)
      */
-    public static final long L = 144;
+    public static final int L = 144;
 
     /**
      * The Item WildCard Tag. Even shorter than the "-1" of the past

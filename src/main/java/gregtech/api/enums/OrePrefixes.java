@@ -314,7 +314,7 @@ public enum OrePrefixes {
      * 0 = Null
      * Negative = Undefined Amount
      */
-    public final long mMaterialAmount;
+    public final int mMaterialAmount;
     public final Collection<Materials> mDisabledItems = new HashSet<Materials>(), mNotGeneratedItems = new HashSet<Materials>(), mIgnoredMaterials = new HashSet<Materials>(), mGeneratedItems = new HashSet<Materials>();
     private final ArrayList<IOreRecipeRegistrator> mOreProcessing = new ArrayList<IOreRecipeRegistrator>();
     public ItemStack mContainerItem = null;
@@ -328,7 +328,7 @@ public enum OrePrefixes {
      * Yes this Value can be changed to add Bits for the MetaGenerated-Item-Check.
      */
     public int mMaterialGenerationBits = 0;
-    OrePrefixes(String aRegularLocalName, String aLocalizedMaterialPre, String aLocalizedMaterialPost, boolean aIsUnificatable, boolean aIsMaterialBased, boolean aIsSelfReferencing, boolean aIsContainer, boolean aDontUnificateActively, boolean aIsUsedForBlocks, boolean aAllowNormalRecycling, boolean aGenerateDefaultItem, boolean aIsEnchantable, boolean aIsUsedForOreProcessing, int aMaterialGenerationBits, long aMaterialAmount, int aDefaultStackSize, int aTextureindex) {
+    OrePrefixes(String aRegularLocalName, String aLocalizedMaterialPre, String aLocalizedMaterialPost, boolean aIsUnificatable, boolean aIsMaterialBased, boolean aIsSelfReferencing, boolean aIsContainer, boolean aDontUnificateActively, boolean aIsUsedForBlocks, boolean aAllowNormalRecycling, boolean aGenerateDefaultItem, boolean aIsEnchantable, boolean aIsUsedForOreProcessing, int aMaterialGenerationBits, int aMaterialAmount, int aDefaultStackSize, int aTextureindex) {
         mIsUnificatable = aIsUnificatable;
         mIsMaterialBased = aIsMaterialBased;
         mIsSelfReferencing = aIsSelfReferencing;

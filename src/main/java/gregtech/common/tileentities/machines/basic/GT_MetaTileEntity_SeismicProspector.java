@@ -10,7 +10,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicMachine;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.objects.ItemData;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.GT_UndergroundOil;
 import gregtech.common.blocks.GT_Block_Ores_Abstract;
@@ -55,7 +55,7 @@ public class GT_MetaTileEntity_SeismicProspector extends GT_MetaTileEntity_Basic
             		(aStack.getItem() == Item.getItemFromBlock(Blocks.tnt) && aStack.stackSize > 3 ) || 
             		(aStack.getItem() == Ic2Items.industrialTnt.getItem()  && aStack.stackSize > 1 ) ||
             		(aStack.getItem() == Ic2Items.dynamite.getItem()  	   && aStack.stackSize > 7 ) ||
-            		(GT_OreDictUnificator.getItemData(aStack).mMaterial.mMaterial == Materials.Glyceryl  && aStack.stackSize > 0 )
+            		(MatUnifier.getItemData(aStack).mMaterial.mMaterial == Materials.Glyceryl  && aStack.stackSize > 0 )
             		) ) {
                 if ((!aPlayer.capabilities.isCreativeMode) && (aStack.stackSize != 111)) {
                 	if(aStack.getItem() == Item.getItemFromBlock(Blocks.tnt)){
@@ -92,7 +92,7 @@ public class GT_MetaTileEntity_SeismicProspector extends GT_MetaTileEntity_Basic
                                 }
                             } else {
                                 int tMetaID = getBaseMetaTileEntity().getWorld().getBlockMetadata(getBaseMetaTileEntity().getXCoord() + f, getBaseMetaTileEntity().getYCoord() + (-i), getBaseMetaTileEntity().getZCoord() + g);
-                                ItemData tAssotiation = GT_OreDictUnificator.getAssociation(new ItemStack(tBlock, 1, tMetaID));
+                                ItemData tAssotiation = MatUnifier.getAssociation(new ItemStack(tBlock, 1, tMetaID));
                                 if ((tAssotiation != null) && (tAssotiation.mPrefix.toString().startsWith("ore"))) {
                                     if (!tStringList.contains(tAssotiation.mMaterial.mMaterial.mDefaultLocalName)) {
                                         tStringList.add(tAssotiation.mMaterial.mMaterial.mDefaultLocalName);

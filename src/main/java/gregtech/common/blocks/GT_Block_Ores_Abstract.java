@@ -12,7 +12,7 @@ import gregtech.api.interfaces.ITexture;
 import gregtech.api.items.GT_Generic_Block;
 import gregtech.api.util.GT_LanguageManager;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.common.render.GT_Renderer_Block;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -57,7 +57,7 @@ public abstract class GT_Block_Ores_Abstract extends GT_Generic_Block implements
                     GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + (i + (j * 1000)) + aTextName, getLocalizedName(GregTech_API.sGeneratedMaterials[i]));
                     GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + ((i + 16000) + (j * 1000)) + aTextName, aTextSmall + getLocalizedName(GregTech_API.sGeneratedMaterials[i]));
                     if (GregTech_API.sGeneratedMaterials[i].hasFlag(MaterialFlags.ORE.bit)) {
-                        GT_OreDictUnificator.registerOre(this.getProcessingPrefix()[j] != null ? this.getProcessingPrefix()[j].get(GregTech_API.sGeneratedMaterials[i]) : "", new ItemStack(this, 1, i + (j * 1000)));
+                        MatUnifier.registerOre(this.getProcessingPrefix()[j] != null ? this.getProcessingPrefix()[j].get(GregTech_API.sGeneratedMaterials[i]) : "", new ItemStack(this, 1, i + (j * 1000)));
                     if (tHideOres) {
                         if(!(j == 0 && !aHideFirstMeta)){
                             codechicken.nei.api.API.hideItem(new ItemStack(this, 1, i + (j * 1000)));}

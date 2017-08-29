@@ -692,7 +692,7 @@ public class GT_Utility {
     }
 
     public static boolean areUnificationsEqual(ItemStack aStack1, ItemStack aStack2, boolean aIgnoreNBT) {
-        return areStacksEqual(GT_OreDictUnificator.get(aStack1), GT_OreDictUnificator.get(aStack2), aIgnoreNBT);
+        return areStacksEqual(MatUnifier.get(aStack1), MatUnifier.get(aStack2), aIgnoreNBT);
     }
 
     public static String getFluidName(Fluid aFluid, boolean aLocalized) {
@@ -833,13 +833,13 @@ public class GT_Utility {
         if ((isStackInvalid(aInput) && isStackInvalid(aOutput) && isStackInvalid(aContainer)) || aRecipeList == null) return false;
         boolean rReturn = false;
         Iterator<Map.Entry<ic2.api.recipe.ICannerBottleRecipeManager.Input, RecipeOutput>> tIterator = aRecipeList.entrySet().iterator();
-        aOutput = GT_OreDictUnificator.get(aOutput);
+        aOutput = MatUnifier.get(aOutput);
         while (tIterator.hasNext()) {
             Map.Entry<ic2.api.recipe.ICannerBottleRecipeManager.Input, RecipeOutput> tEntry = tIterator.next();
             if (aInput == null || tEntry.getKey().matches(aContainer, aInput)) {
                 List<ItemStack> tList = tEntry.getValue().items;
                 if (tList != null) for (ItemStack tOutput : tList)
-                    if (aOutput == null || areStacksEqual(GT_OreDictUnificator.get(tOutput), aOutput)) {
+                    if (aOutput == null || areStacksEqual(MatUnifier.get(tOutput), aOutput)) {
                         tIterator.remove();
                         rReturn = true;
                         break;
@@ -853,13 +853,13 @@ public class GT_Utility {
         if ((isStackInvalid(aInput) && isStackInvalid(aOutput)) || aRecipeList == null) return false;
         boolean rReturn = false;
         Iterator<Map.Entry<IRecipeInput, RecipeOutput>> tIterator = aRecipeList.entrySet().iterator();
-        aOutput = GT_OreDictUnificator.get(aOutput);
+        aOutput = MatUnifier.get(aOutput);
         while (tIterator.hasNext()) {
             Map.Entry<IRecipeInput, RecipeOutput> tEntry = tIterator.next();
             if (aInput == null || tEntry.getKey().matches(aInput)) {
                 List<ItemStack> tList = tEntry.getValue().items;
                 if (tList != null) for (ItemStack tOutput : tList)
-                    if (aOutput == null || areStacksEqual(GT_OreDictUnificator.get(tOutput), aOutput)) {
+                    if (aOutput == null || areStacksEqual(MatUnifier.get(tOutput), aOutput)) {
                         tIterator.remove();
                         rReturn = true;
                         break;
@@ -869,16 +869,16 @@ public class GT_Utility {
         return rReturn;
     }
 
-    public static boolean addSimpleIC2MachineRecipe(ItemStack aInput, Map<IRecipeInput, RecipeOutput> aRecipeList, NBTTagCompound aNBT, Object... aOutput) {
+    public static boolean addSimpleIC2MachineRecipe(ItemStack aInput, Map<IRecipeInput, RecipeOutput> aRecipeList, NBTTagCompound aNBT, ItemStack... aOutput) {
         if (isStackInvalid(aInput) || aOutput.length == 0 || aRecipeList == null) return false;
-        ItemData tOreName = GT_OreDictUnificator.getAssociation(aInput);
+        ItemData tOreName = MatUnifier.getAssociation(aInput);
         for (int i = 0; i < aOutput.length; i++) {
             if (aOutput[i] == null) {
                 System.out.println("EmptyIC2Output!" + aInput.getUnlocalizedName());
                 return false;
             }
         }
-        ItemStack[] tStack = GT_OreDictUnificator.getStackArray(true, aOutput);
+        ItemStack[] tStack = MatUnifier.getStackArray(true, aOutput); //TODO REMOVE?
         if(tStack==null||(tStack.length>0&&GT_Utility.areStacksEqual(aInput, tStack[0])))return false;
         if (tOreName != null) {
         	if(tOreName.toString().equals("dustAsh")&&tStack[0].getUnlocalizedName().equals("tile.volcanicAsh"))return false;
@@ -971,7 +971,7 @@ public class GT_Utility {
     }
 
     public static ItemStack intToStack(int aStack) {
-        int tID = aStack & (~0 >>> 16), tMeta = aStack >>> 16;
+        int tID = aStack, tMeta = aStack >>> 16;
         Item tItem = Item.getItemById(tID);
         if (tItem != null) return new ItemStack(tItem, 1, tMeta);
         return null;
@@ -1050,16 +1050,16 @@ public class GT_Utility {
         return aString == null || aString.toString().isEmpty();
     }
 
-    public static boolean isStackValid(Object aStack) {
-        return (aStack instanceof ItemStack) && ((ItemStack) aStack).getItem() != null && ((ItemStack) aStack).stackSize >= 0;
+    public static boolean isStackValid(ItemStack aStack) {
+        return aStack != null && aStack.getItem() != null && aStack.stackSize >= 0;
     }
 
-    public static boolean isStackInvalid(Object aStack) {
-        return aStack == null || !(aStack instanceof ItemStack) || ((ItemStack) aStack).getItem() == null || ((ItemStack) aStack).stackSize < 0;
+    public static boolean isStackInvalid(ItemStack aStack) {
+        return aStack == null || aStack.getItem() == null || aStack.stackSize < 0;
     }
 
     public static boolean isDebugItem(ItemStack aStack) {
-        return /*ItemList.Armor_Cheat.isStackEqual(aStack, T, T) || */areStacksEqual(GT_ModHandler.getIC2Item("debug", 1), aStack, true);
+        return areStacksEqual(GT_ModHandler.getIC2Item("debug", 1), aStack, true);
     }
 
     public static ItemStack updateItemStack(ItemStack aStack) {
@@ -1223,12 +1223,12 @@ public class GT_Utility {
     }
 
     public static float getHeatDamageFromItem(ItemStack aStack) {
-        ItemData tData = GT_OreDictUnificator.getItemData(aStack);
+        ItemData tData = MatUnifier.getItemData(aStack);
         return tData == null ? 0 : (tData.mPrefix == null ? 0 : tData.mPrefix.mHeatDamage) + (tData.hasValidMaterialData() ? tData.mMaterial.mMaterial.mHeatDamage : 0);
     }
 
     public static int getRadioactivityLevel(ItemStack aStack) {
-        ItemData tData = GT_OreDictUnificator.getItemData(aStack);
+        ItemData tData = MatUnifier.getItemData(aStack);
         if (tData != null && tData.hasValidMaterialData()) {
             if (tData.mMaterial.mMaterial.mEnchantmentArmors instanceof Enchantment_Radioactivity)
                 return tData.mMaterial.mMaterial.mEnchantmentArmorsLevel;
@@ -1281,13 +1281,13 @@ public class GT_Utility {
         return false;
     }
 
-    public static ItemStack setStack(Object aSetStack, Object aToStack) {
+    public static ItemStack setStack(ItemStack aSetStack, ItemStack aToStack) {
         if (isStackInvalid(aSetStack) || isStackInvalid(aToStack)) return null;
-        ((ItemStack) aSetStack).func_150996_a(((ItemStack) aToStack).getItem());
-        ((ItemStack) aSetStack).stackSize = ((ItemStack) aToStack).stackSize;
-        Items.feather.setDamage((ItemStack) aSetStack, Items.feather.getDamage((ItemStack) aToStack));
-        ((ItemStack) aSetStack).setTagCompound(((ItemStack) aToStack).getTagCompound());
-        return (ItemStack) aSetStack;
+        aSetStack.func_150996_a(aToStack.getItem());
+        aSetStack.stackSize = aToStack.stackSize;
+        Items.feather.setDamage(aSetStack, Items.feather.getDamage(aToStack));
+        aSetStack.setTagCompound(aToStack.getTagCompound());
+        return aSetStack;
     }
 
     public static FluidStack[] copyFluidArray(FluidStack... aStacks) {
@@ -1296,35 +1296,34 @@ public class GT_Utility {
         return rStacks;
     }
 
-    public static ItemStack[] copyStackArray(Object... aStacks) {
+    public static ItemStack[] copyStackArray(ItemStack... aStacks) {
         ItemStack[] rStacks = new ItemStack[aStacks.length];
         for (int i = 0; i < aStacks.length; i++) rStacks[i] = copy(aStacks[i]);
         return rStacks;
     }
 
-    public static ItemStack copy(Object... aStacks) {
-        for (Object tStack : aStacks) if (isStackValid(tStack)) return ((ItemStack) tStack).copy();
+    public static ItemStack copy(ItemStack... aStacks) {
+        for (ItemStack tStack : aStacks) if (isStackValid(tStack)) return tStack.copy();
         return null;
     }
 
-    public static ItemStack copyAmount(long aAmount, Object... aStacks) {
+    public static ItemStack copyAmount(long aAmount, ItemStack... aStacks) {
         ItemStack rStack = copy(aStacks);
         if (isStackInvalid(rStack)) return null;
         if (aAmount > 64) aAmount = 64;
         else if (aAmount == -1) aAmount = 111;
-        else if (aAmount < 0) aAmount = 0;
         rStack.stackSize = (byte) aAmount;
         return rStack;
     }
 
-    public static ItemStack copyMetaData(long aMetaData, Object... aStacks) {
+    public static ItemStack copyMetaData(long aMetaData, ItemStack... aStacks) {
         ItemStack rStack = copy(aStacks);
         if (isStackInvalid(rStack)) return null;
         Items.feather.setDamage(rStack, (short) aMetaData);
         return rStack;
     }
 
-    public static ItemStack copyAmountAndMetaData(long aAmount, long aMetaData, Object... aStacks) {
+    public static ItemStack copyAmountAndMetaData(long aAmount, long aMetaData, ItemStack... aStacks) {
         ItemStack rStack = copyAmount(aAmount, aStacks);
         if (isStackInvalid(rStack)) return null;
         Items.feather.setDamage(rStack, (short) aMetaData);
@@ -1334,7 +1333,7 @@ public class GT_Utility {
     /**
      * returns a copy of an ItemStack with its Stacksize being multiplied by aMultiplier
      */
-    public static ItemStack mul(long aMultiplier, Object... aStacks) {
+    public static ItemStack mul(long aMultiplier, ItemStack... aStacks) {
         ItemStack rStack = copy(aStacks);
         if (rStack == null) return null;
         rStack.stackSize *= aMultiplier;
@@ -1365,7 +1364,7 @@ public class GT_Utility {
         } catch (Throwable e) {
             e.printStackTrace(GT_Log.err);
         }
-        return GT_OreDictUnificator.get(true, rStack);
+        return MatUnifier.get(true, rStack);
     }
 
     /**
@@ -1934,7 +1933,7 @@ public class GT_Utility {
      */
     public static boolean consumeItems(EntityPlayer player, ItemStack stack, gregtech.api.enums.Materials mat, int count) {
         if (stack != null
-            && GT_OreDictUnificator.getItemData(stack).mMaterial.mMaterial == mat
+            && MatUnifier.getItemData(stack).mMaterial.mMaterial == mat
             && stack.stackSize >= count) {
             if ((!player.capabilities.isCreativeMode) && (stack.stackSize != 111))
                 stack.stackSize -= count;

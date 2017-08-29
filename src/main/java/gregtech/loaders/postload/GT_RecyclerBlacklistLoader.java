@@ -15,7 +15,7 @@ public class GT_RecyclerBlacklistLoader implements Runnable {
         if (GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.disabledrecipes, "easymobgrinderrecycling", true)) {
             GT_ModHandler.addToRecyclerBlackList(new ItemStack(Items.arrow, 1, 0));
             GT_ModHandler.addToRecyclerBlackList(new ItemStack(Items.bone, 1, 0));
-            GT_ModHandler.addToRecyclerBlackList(ItemList.Dye_Bonemeal.get(1L));
+            GT_ModHandler.addToRecyclerBlackList(ItemList.Dye_Bonemeal.get(1));
             GT_ModHandler.addToRecyclerBlackList(new ItemStack(Items.rotten_flesh, 1, 0));
             GT_ModHandler.addToRecyclerBlackList(new ItemStack(Items.string, 1, 0));
             GT_ModHandler.addToRecyclerBlackList(new ItemStack(Items.egg, 1, 0));

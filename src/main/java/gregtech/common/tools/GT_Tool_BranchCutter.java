@@ -50,9 +50,9 @@ public class GT_Tool_BranchCutter
             } else if (aBlock == Blocks.leaves2) {
                 aDrops.clear();
                 aDrops.add(new ItemStack(Blocks.sapling, 1, (aMetaData & 0x3) + 4));
-            } else if (aBlock == GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("rubberLeaves", 1L))) {
+            } else if (aBlock == GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("rubberLeaves", 1))) {
                 aDrops.clear();
-                aDrops.add(GT_ModHandler.getIC2Item("rubberSapling", 1L));
+                aDrops.add(GT_ModHandler.getIC2Item("rubberSapling", 1));
             }
         }
         return 0;

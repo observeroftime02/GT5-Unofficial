@@ -10,7 +10,7 @@ import gregtech.api.interfaces.ISubTagContainer;
 import gregtech.api.objects.GT_FluidStack;
 import gregtech.api.objects.MaterialStack;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
 import gregtech.loaders.materialprocessing.ProcessingConfig;
 import gregtech.loaders.materialprocessing.ProcessingModSupport;
@@ -1696,34 +1696,34 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     }
 
     public ItemStack getCells(int amount){
-        return GT_OreDictUnificator.get(OrePrefixes.cell, this, amount);
+        return MatUnifier.get(OrePrefixes.cell, this, amount);
     }
 
     public ItemStack getDust(int amount){
-        return GT_OreDictUnificator.get(OrePrefixes.dust, this, amount);
+        return MatUnifier.get(OrePrefixes.dust, this, amount);
     }
 
     public ItemStack getDustSmall(int amount){
-        return GT_OreDictUnificator.get(OrePrefixes.dustSmall, this, amount);
+        return MatUnifier.get(OrePrefixes.dustSmall, this, amount);
     }
 
     public ItemStack getDustTiny(int amount){
-        return GT_OreDictUnificator.get(OrePrefixes.dustTiny, this, amount);
+        return MatUnifier.get(OrePrefixes.dustTiny, this, amount);
     }
 
     public ItemStack getGems(int amount){
-        return GT_OreDictUnificator.get(OrePrefixes.gem, this, amount);
+        return MatUnifier.get(OrePrefixes.gem, this, amount);
     }
 
     public ItemStack getIngots(int amount){
-        return GT_OreDictUnificator.get(OrePrefixes.ingot, this, amount);
+        return MatUnifier.get(OrePrefixes.ingot, this, amount);
     }
 
     public ItemStack getBlocks(int amount){
-        return GT_OreDictUnificator.get(OrePrefixes.block, this, amount);
+        return MatUnifier.get(OrePrefixes.block, this, amount);
     }
 
     public ItemStack getPlates(int amount){
-        return GT_OreDictUnificator.get(OrePrefixes.plate, this, amount);
+        return MatUnifier.get(OrePrefixes.plate, this, amount);
     }
 }

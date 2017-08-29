@@ -83,7 +83,7 @@ public class GT_MetaTileEntity_Boxinator
     public boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack) {
         if (super.allowPutStack(aBaseMetaTileEntity, aIndex, aSide, aStack)) {
             if ((ItemList.Schematic_1by1.isStackEqual(getInputAt(1))) || (ItemList.Schematic_2by2.isStackEqual(getInputAt(1))) || (ItemList.Schematic_3by3.isStackEqual(getInputAt(1)))) {
-                if (GT_Recipe.GT_Recipe_Map.sBoxinatorRecipes.findRecipe(getBaseMetaTileEntity(), true, gregtech.api.enums.GT_Values.V[this.mTier], null, GT_Utility.copyAmount(64L, aStack), getInputAt(1)) != null) {
+                if (GT_Recipe.GT_Recipe_Map.sBoxinatorRecipes.findRecipe(getBaseMetaTileEntity(), true, gregtech.api.enums.GT_Values.V[this.mTier], null, GT_Utility.copyAmount(64, aStack), getInputAt(1)) != null) {
                     return true;
                 }
                 if (ItemList.Schematic_1by1.isStackEqual(getInputAt(1)) && GT_ModHandler.getRecipeOutput(aStack) != null)

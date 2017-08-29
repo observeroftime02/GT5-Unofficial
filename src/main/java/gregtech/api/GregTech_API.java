@@ -270,7 +270,7 @@ public class GregTech_API {
     public static ItemStack getUnificatedOreDictStack(ItemStack aOreStack) {
         if (!GregTech_API.sPreloadFinished)
             GT_Log.err.println("GregTech_API ERROR: " + aOreStack.getItem() + "." + aOreStack.getItemDamage() + " - OreDict Unification Entries are not registered now, please call it in the postload phase.");
-        return GT_OreDictUnificator.get(true, aOreStack);
+        return MatUnifier.get(true, aOreStack);
     }
 
     /**

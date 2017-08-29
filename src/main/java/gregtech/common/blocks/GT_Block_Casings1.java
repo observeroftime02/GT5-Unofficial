@@ -45,9 +45,6 @@ public class GT_Block_Casings1
         ItemList.Casing_MAX.set(new ItemStack(this, 1, 9));
         ItemList.Casing_BronzePlatedBricks.set(new ItemStack(this, 1, 10));
         ItemList.Casing_HeatProof.set(new ItemStack(this, 1, 11));
-        ItemList.Casing_Coil_Cupronickel_Deprecated.set(new ItemStack(this, 1, 12));
-        ItemList.Casing_Coil_Kanthal_Deprecated.set(new ItemStack(this, 1, 13));
-        ItemList.Casing_Coil_Nichrome_Deprecated.set(new ItemStack(this, 1, 14));
         ItemList.Casing_Coil_Superconductor.set(new ItemStack(this, 1, 15));
     }
 

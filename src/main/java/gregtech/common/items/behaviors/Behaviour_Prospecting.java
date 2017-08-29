@@ -8,7 +8,7 @@ import gregtech.api.objects.ItemData;
 import gregtech.api.objects.XSTR;
 import gregtech.api.util.GT_LanguageManager;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.blocks.GT_Block_Ores_Abstract;
 import gregtech.common.blocks.GT_TileEntity_Ores;
@@ -45,7 +45,7 @@ public class Behaviour_Prospecting
           return false;
       }
       byte aMeta = (byte) aWorld.getBlockMetadata(aX, aY, aZ);
-        ItemData tAssotiation = GT_OreDictUnificator.getAssociation(new ItemStack(aBlock, 1, aMeta));
+        ItemData tAssotiation = MatUnifier.getAssociation(new ItemStack(aBlock, 1, aMeta));
         if ((tAssotiation != null) && (tAssotiation.mPrefix.toString().startsWith("ore"))){
         	GT_Utility.sendChatToPlayer(aPlayer, trans("100","This is ") + tAssotiation.mMaterial.mMaterial.mDefaultLocalName + trans("101"," Ore."));
         	GT_Utility.sendSoundToPlayers(aWorld, GregTech_API.sSoundList.get(1), 1.0F, -1.0F, aX, aY, aZ);
@@ -109,7 +109,7 @@ public class Behaviour_Prospecting
                         }
                     } else {
                         tMetaID = aWorld.getBlockMetadata(tX, tY, tZ);
-                        tAssotiation = GT_OreDictUnificator.getAssociation(new ItemStack(tBlock, 1, tMetaID));
+                        tAssotiation = MatUnifier.getAssociation(new ItemStack(tBlock, 1, tMetaID));
                         if ((tAssotiation != null) && (tAssotiation.mPrefix.toString().startsWith("ore"))) {
                             GT_Utility.sendChatToPlayer(aPlayer, trans("106","Found traces of ") + tAssotiation.mMaterial.mMaterial.mDefaultLocalName + trans("101"," Ore."));
                             return true;

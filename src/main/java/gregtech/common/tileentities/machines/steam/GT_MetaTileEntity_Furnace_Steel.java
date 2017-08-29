@@ -48,7 +48,7 @@ public class GT_MetaTileEntity_Furnace_Steel
         if (!super.allowPutStack(aBaseMetaTileEntity, aIndex, aSide, aStack)) {
             return false;
         }
-        return GT_ModHandler.getSmeltingOutput(GT_Utility.copyAmount(64L, aStack), false, null) != null;
+        return GT_ModHandler.getSmeltingOutput(GT_Utility.copyAmount(64, aStack), false, null) != null;
     }
 
     public void startSoundLoop(byte aIndex, double aX, double aY, double aZ) {

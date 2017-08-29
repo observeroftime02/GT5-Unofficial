@@ -22,9 +22,6 @@ import org.apache.commons.lang3.text.WordUtils;
 import java.util.Arrays;
 import java.util.Locale;
 
-//import forestry.apiculture.items.EnumHoneyComb;
-//import forestry.plugins.PluginApiculture;
-
 public enum GT_BeeDefinition implements IBeeDefinition {
     CLAY(GT_BranchDefinition.ORGANIC, "Clay", true, 0x19d0ec, 0xffdc16) {
         @Override

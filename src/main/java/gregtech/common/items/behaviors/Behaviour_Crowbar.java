@@ -24,7 +24,7 @@ public class Behaviour_Crowbar
         if (aWorld.isRemote) {
             return false;
         }
-        if (GT_ModHandler.getModItem("Railcraft", "fluid.creosote.bucket", 1L) != null) {
+        if (GT_ModHandler.getModItem("Railcraft", "fluid.creosote.bucket", 1) != null) {
             return false;
         }
         Block aBlock = aWorld.getBlock(aX, aY, aZ);

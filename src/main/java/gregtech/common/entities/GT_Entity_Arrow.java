@@ -2,7 +2,7 @@ package gregtech.common.entities;
 
 import com.mojang.authlib.GameProfile;
 import gregtech.api.objects.ItemData;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -136,7 +136,7 @@ public class GT_Entity_Arrow
             }
             if (tVector != null) {
                 if (tVector.entityHit != null) {
-                    ItemData tData = GT_OreDictUnificator.getItemData(this.mArrow);
+                    ItemData tData = MatUnifier.getItemData(this.mArrow);
 
 
                     float tMagicDamage = (tVector.entityHit instanceof EntityLivingBase) ? EnchantmentHelper.func_152377_a(this.mArrow, ((EntityLivingBase) tVector.entityHit).getCreatureAttribute()) : 0.0F;
@@ -331,7 +331,7 @@ public class GT_Entity_Arrow
     }
 
     public void setArrowItem(ItemStack aStack) {
-        this.mArrow = GT_Utility.updateItemStack(GT_Utility.copyAmount(1L, aStack));
+        this.mArrow = GT_Utility.updateItemStack(GT_Utility.copyAmount(1, aStack));
     }
 
     public boolean breaksOnImpact() {

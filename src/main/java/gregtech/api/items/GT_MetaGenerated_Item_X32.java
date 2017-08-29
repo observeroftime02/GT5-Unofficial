@@ -7,7 +7,7 @@ import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.interfaces.IIconContainer;
 import gregtech.api.util.GT_LanguageManager;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -55,9 +55,9 @@ public abstract class GT_MetaGenerated_Item_X32 extends GT_MetaGenerated_Item {
                 GT_LanguageManager.addStringLocalization(getUnlocalizedName(tStack) + ".name", getDefaultLocalization(tPrefix, tMaterial, i));
                 GT_LanguageManager.addStringLocalization(getUnlocalizedName(tStack) + ".tooltip", tMaterial.getToolTip(tPrefix.mMaterialAmount / M));
                 if (tPrefix.mIsUnificatable) {
-                    GT_OreDictUnificator.set(tPrefix, tMaterial, tStack);
+                    MatUnifier.set(tPrefix, tMaterial, tStack);
                 } else {
-                    GT_OreDictUnificator.registerOre(tPrefix.get(tMaterial), tStack);
+                    MatUnifier.registerOre(tPrefix.get(tMaterial), tStack);
                 }
                 if ((tPrefix == OrePrefixes.stick || tPrefix == OrePrefixes.wireFine || tPrefix == OrePrefixes.ingot) && (tMaterial == Materials.Lead || tMaterial == Materials.Tin || tMaterial == Materials.SolderingAlloy)) {
                     GregTech_API.sSolderingMetalList.add(tStack);

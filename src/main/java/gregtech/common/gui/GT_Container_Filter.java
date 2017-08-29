@@ -59,12 +59,12 @@ public class GT_Container_Filter
                     tStack = tSlot.getStack();
                     if (aMouseclick == 0) {
                         tSlot.putStack(null);
-                    } else if (tStack != null) {
+                    } else if (tStack != null) { //TODO WHOLE ELSE POINTLESS?
                     	tStack = GT_Utility.copyAmountAndMetaData(tStack.stackSize, 32767, tStack);
                     	if(GT_Utility.isStackInvalid(tStack)){tStack=null;}
                     }
                 } else {
-                    tSlot.putStack(GT_Utility.copyAmount(1L, tStack));
+                    tSlot.putStack(GT_Utility.copyAmount(1, tStack));
                 }
                 return null;
             }

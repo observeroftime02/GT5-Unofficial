@@ -249,11 +249,11 @@ public class GT_MetaPipeEntity_Fluid extends MetaPipeEntity {
                         	IGregTechTileEntity tSideTile = aBaseMetaTileEntity.getIGregTechTileEntityAtSide(tSide);
                             if(tSideTile!=null){
                             	ItemStack tCover = tSideTile.getCoverItemAtSide(GT_Utility.getOppositeSide(tSide));
-                            	if (tCover!=null &&(GT_Utility.areStacksEqual(tCover, ItemList.FluidRegulator_LV.get(1, new Object[]{},true)) || 
-                            			GT_Utility.areStacksEqual(tCover, ItemList.FluidRegulator_MV.get(1, new Object[]{},true)) || 
-                            			GT_Utility.areStacksEqual(tCover, ItemList.FluidRegulator_HV.get(1, new Object[]{},true)) || 
-                            			GT_Utility.areStacksEqual(tCover, ItemList.FluidRegulator_EV.get(1, new Object[]{},true)) || 
-                            			GT_Utility.areStacksEqual(tCover, ItemList.FluidRegulator_IV.get(1, new Object[]{},true)))) {
+                            	if (tCover!=null &&(GT_Utility.areStacksEqual(tCover, ItemList.FluidRegulator_LV.get(1), true)) ||
+                            			GT_Utility.areStacksEqual(tCover, ItemList.FluidRegulator_MV.get(1), true) ||
+                            			GT_Utility.areStacksEqual(tCover, ItemList.FluidRegulator_HV.get(1), true) ||
+                            			GT_Utility.areStacksEqual(tCover, ItemList.FluidRegulator_EV.get(1), true) ||
+                            			GT_Utility.areStacksEqual(tCover, ItemList.FluidRegulator_IV.get(1), true)) {
                             		mConnections |= (1 << tSide);
                             	}
                             }                        	
