@@ -140,12 +140,12 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
         GregTech_API.sBlockConcretes = new GT_Block_Concretes();
         GregTech_API.sBlockStones = new GT_Block_Stones();
         GregTech_API.sBlockOres1 = new GT_Block_Ores();
-        if(Loader.isModLoaded("UndergroundBiomes")) {
+        if(Loader.isModLoaded("UndergroundBiomes") && GT_Mod.gregtechproxy.enableUBOres) {
             GregTech_API.sBlockOresUb1 = new GT_Block_Ores_UB1();
             GregTech_API.sBlockOresUb2 = new GT_Block_Ores_UB2();
             GregTech_API.sBlockOresUb3 = new GT_Block_Ores_UB3();
         }
-        if(Loader.isModLoaded("GalacticraftCore") && Loader.isModLoaded("GalacticraftMars")) {
+        if(Loader.isModLoaded("GalacticraftCore") && Loader.isModLoaded("GalacticraftMars") && GT_Mod.gregtechproxy.enableGCOres) {
             GregTech_API.sBlockOresGC = new GT_Block_Ores_GC();
         }
         GregTech_API.sBlockMetal1 = new GT_Block_Metal("gt.blockmetal1", new Materials[]{
@@ -349,47 +349,47 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
         ItemList.sToluene = GT_Mod.gregtechproxy.addFluid("liquid_toluene", "Toluene", Materials.Toluene, 1, 295, Materials.Toluene.getCells(1), Materials.Empty.getCells(1), 1000);
         ItemList.sNitrationMixture = GT_Mod.gregtechproxy.addFluid("liquid_nitrationmixture", "Nitration Mixture", Materials.NitrationMixture, 1, 295, Materials.NitrationMixture.getCells(1), Materials.Empty.getCells(1), 1000);
 
-        GT_Mod.gregtechproxy.addFluid("liquid_heavy_oil", "Heavy Oil", Materials.OilHeavy, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.OilHeavy), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("liquid_medium_oil", "Raw Oil", Materials.OilMedium, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.OilMedium), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("liquid_light_oil", "Light Oil", Materials.OilLight, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.OilLight), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("gas_natural_gas", "Natural Gas", Materials.NaturalGas, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.NaturalGas), ItemList.Cell_Empty.get(1), 1000);
-        ItemList.sHydricSulfur = GT_Mod.gregtechproxy.addFluid("liquid_hydricsulfur", "Hydrogen Sulfide", Materials.HydricSulfide, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.HydricSulfide), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("gas_sulfuricgas", "Sulfuric Gas", Materials.SulfuricGas, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.SulfuricGas), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("gas_gas", "Refinery Gas", Materials.Gas, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.Gas), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("liquid_sulfuricnaphtha", "Sulfuric Naphtha", Materials.SulfuricNaphtha, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.SulfuricNaphtha), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("liquid_sufluriclight_fuel", "Sulfuric Light Fuel", Materials.SulfuricLightFuel, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.SulfuricLightFuel), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("liquid_sulfuricheavy_fuel", "Sulfuric Heavy Fuel", Materials.SulfuricHeavyFuel, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.SulfuricHeavyFuel), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("liquid_naphtha", "Naphtha", Materials.Naphtha, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Naphtha), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("liquid_light_fuel", "Light Fuel", Materials.LightFuel, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.LightFuel), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("liquid_heavy_fuel", "Heavy Fuel", Materials.HeavyFuel, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.HeavyFuel), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("liquid_lpg", "LPG", Materials.LPG, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.LPG), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("liquid_heavy_oil", "Heavy Oil", Materials.OilHeavy, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.OilHeavy, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("liquid_medium_oil", "Raw Oil", Materials.OilMedium, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.OilMedium, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("liquid_light_oil", "Light Oil", Materials.OilLight, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.OilLight, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("gas_natural_gas", "Natural Gas", Materials.NaturalGas, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.NaturalGas, 1L), ItemList.Cell_Empty.get(1), 1000);
+        ItemList.sHydricSulfur = GT_Mod.gregtechproxy.addFluid("liquid_hydricsulfur", "Hydrogen Sulfide", Materials.HydricSulfide, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.HydricSulfide, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("gas_sulfuricgas", "Sulfuric Gas", Materials.SulfuricGas, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.SulfuricGas, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("gas_gas", "Refinery Gas", Materials.Gas, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.Gas, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("liquid_sulfuricnaphtha", "Sulfuric Naphtha", Materials.SulfuricNaphtha, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.SulfuricNaphtha, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("liquid_sufluriclight_fuel", "Sulfuric Light Fuel", Materials.SulfuricLightFuel, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.SulfuricLightFuel, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("liquid_sulfuricheavy_fuel", "Sulfuric Heavy Fuel", Materials.SulfuricHeavyFuel, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.SulfuricHeavyFuel, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("liquid_naphtha", "Naphtha", Materials.Naphtha, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Naphtha, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("liquid_light_fuel", "Light Fuel", Materials.LightFuel, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.LightFuel, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("liquid_heavy_fuel", "Heavy Fuel", Materials.HeavyFuel, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.HeavyFuel, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("liquid_lpg", "LPG", Materials.LPG, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.LPG, 1L), ItemList.Cell_Empty.get(1), 1000);
 
-        GT_Mod.gregtechproxy.addFluid("charcoal_byproducts", "molten.autogenerated", "Charcoal Byproducts", Materials.CharcoalByproducts, Materials.CharcoalByproducts.mRGBa, 2, 775, MatUnifier.get(OrePrefixes.cell, Materials.CharcoalByproducts), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("molten.bisphenol_a", "molten.autogenerated", "Molten Bisphenol A", Materials.BisphenolA, Materials.BisphenolA.mRGBa, 1, 432, MatUnifier.get(OrePrefixes.cell, Materials.BisphenolA), ItemList.Cell_Empty.get(1), 1000);
-        
-        GT_Mod.gregtechproxy.addFluid("UUAmplifier", "UU Amplifier", Materials.UUAmplifier, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.UUAmplifier), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("Chlorine", "Chlorine", Materials.Chlorine, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.Chlorine), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("Mercury", "Mercury", Materials.Mercury, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Mercury), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("NitroFuel", "Cetane-Boosted Diesel", Materials.NitroFuel, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.NitroFuel), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("SodiumPersulfate", "Sodium Persulfate", Materials.SodiumPersulfate, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.SodiumPersulfate), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("Glyceryl", "Glyceryl Trinitrate", Materials.Glyceryl, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Glyceryl), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("charcoal_byproducts", "molten.autogenerated", "Charcoal Byproducts", Materials.CharcoalByproducts, Materials.CharcoalByproducts.mRGBa, 2, 775, MatUnifier.get(OrePrefixes.cell, Materials.CharcoalByproducts, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("molten.bisphenol_a", "molten.autogenerated", "Molten Bisphenol A", Materials.BisphenolA, Materials.BisphenolA.mRGBa, 1, 432, MatUnifier.get(OrePrefixes.cell, Materials.BisphenolA, 1L), ItemList.Cell_Empty.get(1), 1000);
 
-        GT_Mod.gregtechproxy.addFluid("lubricant", "Lubricant", Materials.Lubricant, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Lubricant), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("creosote", "Creosote Oil", Materials.Creosote, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Creosote), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("seedoil", "Seed Oil", Materials.SeedOil, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.SeedOil), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("fishoil", "Fish Oil", Materials.FishOil, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.FishOil), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("oil", "Oil", Materials.Oil, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Oil), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("fuel", "Diesel", Materials.Fuel, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Fuel), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("for.honey", "Honey", Materials.Honey, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Honey), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("biomass", "Biomass", Materials.Biomass, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Biomass), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("bioethanol", "Bio Ethanol", Materials.Ethanol, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Ethanol), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("sulfuricacid", "Sulfuric Acid", Materials.SulfuricAcid, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.SulfuricAcid), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("milk", "Milk", Materials.Milk, 1, 290, MatUnifier.get(OrePrefixes.cell, Materials.Milk), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("glue", "Glue", Materials.Glue, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Glue), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("UUAmplifier", "UU Amplifier", Materials.UUAmplifier, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.UUAmplifier, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("Chlorine", "Chlorine", Materials.Chlorine, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.Chlorine, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("Mercury", "Mercury", Materials.Mercury, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Mercury, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("NitroFuel", "Cetane-Boosted Diesel", Materials.NitroFuel, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.NitroFuel, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("SodiumPersulfate", "Sodium Persulfate", Materials.SodiumPersulfate, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.SodiumPersulfate, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("Glyceryl", "Glyceryl Trinitrate", Materials.Glyceryl, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Glyceryl, 1L), ItemList.Cell_Empty.get(1), 1000);
 
-        //TODO ? NNEDED ?GT_Mod.gregtechproxy.addFluid("fieryblood", "Fiery Blood", Materials.FierySteel, 1, 6400, GT_OreDictUnificator.get(OrePrefixes.cell, Materials.FierySteel), ItemList.Cell_Empty.get(1L, new Object[0]), 1000);
-        //if (ItemList.TF_Vial_FieryBlood.get(1L, new Object[0]) != null) {
-            //FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.FierySteel.getFluid(250L), ItemList.TF_Vial_FieryBlood.get(1L, new Object[0]), ItemList.Bottle_Empty.get(1L, new Object[0])));
+        GT_Mod.gregtechproxy.addFluid("lubricant", "Lubricant", Materials.Lubricant, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Lubricant, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("creosote", "Creosote Oil", Materials.Creosote, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Creosote, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("seedoil", "Seed Oil", Materials.SeedOil, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.SeedOil, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("fishoil", "Fish Oil", Materials.FishOil, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.FishOil, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("oil", "Oil", Materials.Oil, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Oil, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("fuel", "Diesel", Materials.Fuel, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Fuel, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("for.honey", "Honey", Materials.Honey, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Honey, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("biomass", "Biomass", Materials.Biomass, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Biomass, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("bioethanol", "Bio Ethanol", Materials.Ethanol, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Ethanol, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("sulfuricacid", "Sulfuric Acid", Materials.SulfuricAcid, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.SulfuricAcid, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("milk", "Milk", Materials.Milk, 1, 290, MatUnifier.get(OrePrefixes.cell, Materials.Milk, 1L), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("glue", "Glue", Materials.Glue, 1, 295, MatUnifier.get(OrePrefixes.cell, Materials.Glue, 1L), ItemList.Cell_Empty.get(1), 1000);
+
+        //TODO ? NNEDED ?GT_Mod.gregtechproxy.addFluid("fieryblood", "Fiery Blood", Materials.FierySteel, 1, 6400, MatUnifier.get(OrePrefixes.cell, Materials.FierySteel), ItemList.Cell_Empty.get(1), 1000);
+        //if (ItemList.TF_Vial_FieryBlood.get(1) != null) {
+            //FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.FierySteel.getFluid(250L), ItemList.TF_Vial_FieryBlood.get(1), ItemList.Bottle_Empty.get(1)));
         //}
         
         FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Milk.getFluid(1000), MatUnifier.get(OrePrefixes.bucket, Materials.Milk), MatUnifier.get(OrePrefixes.bucket, Materials.Empty)));
