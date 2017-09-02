@@ -194,11 +194,10 @@ public enum OrePrefixes {
         ingot.mNotGeneratedItems.add(Materials.Wood);
         nugget.mNotGeneratedItems.add(Materials.Gold);
         plate.mNotGeneratedItems.add(Materials.Paper);
-        cell.mNotGeneratedItems.add(Materials.Empty);
-        cell.mNotGeneratedItems.add(Materials.Water);
-        cell.mNotGeneratedItems.add(Materials.Lava);
-        cell.mNotGeneratedItems.add(Materials.ConstructionFoam);
-        cell.mNotGeneratedItems.add(Materials.UUMatter);
+        //cell.mNotGeneratedItems.add(Materials.Empty);
+        //cell.mNotGeneratedItems.add(Materials.Water);
+        //cell.mNotGeneratedItems.add(Materials.Lava);
+        //cell.mNotGeneratedItems.add(Materials.UUMatter);
         bucket.mNotGeneratedItems.add(Materials.Empty);
         bucket.mNotGeneratedItems.add(Materials.Lava);
         bucket.mNotGeneratedItems.add(Materials.Milk);
@@ -383,112 +382,8 @@ public enum OrePrefixes {
         }
     }
 
-    public static void initMaterialComponents() {
+    public static void initMaterialComponents() { //TODO CALL THIS TO REANBLE CONFIG MATS
         boolean enablePerItemSettings = GregTech_API.sMaterialComponents.get("general", "enablePerItemSettings", false);
-        boolean enableUnusedPlates = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedPlates", false);
-        boolean enableUnusedDensePlates = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedDensePlates", false);
-        boolean enableUnusedGears = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedGears", false);
-        boolean enableUnusedSmallGears = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedSmallGears", false);
-        boolean enableUnusedRings = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedRings", false);
-        boolean enableUnusedSprings = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedSprings", false);
-        boolean enableUnusedRounds = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedRounds", false);
-        boolean enableUnusedRotors = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedRotors", false);
-        boolean enableUnusedFineWires = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedFineWires", false);
-        boolean enableUnusedFoil = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedFoil", false);
-        boolean enableUnusedBolts = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedBolts", false);
-        boolean enableUnusedScrews = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedScrews", false);
-        boolean enableUnusedRods = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedRods", false);
-        boolean enableUnusedGems = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedGems", false);
-
-        //TODO possibly use OrePrefix mNotGeneratedItems/mGeneratedItems instead of a static List for every material instance?
-        //TODO Make sure stuff like gem plates / standard plates / paper plates all generate with the current condition
-        for (Materials aMaterial : Materials.values()) {
-            if (aMaterial.mMetaItemSubID > 0) {
-                if (aMaterial.mBlastFurnaceTemp <= 1750) ingotHot.mDisabledItems.add(aMaterial); //Moved HotIngot code from GT_MetaGenerated_Item_01 so all this is in once place
-                if (!enableUnusedSprings && (aMaterial != Materials.Titanium)) spring.mDisabledItems.add(aMaterial);
-                //Plates
-                if (!enableUnusedPlates && ((aMaterial.mMaterialFlags & 0x40) == 0) && !(aMaterial == Materials.Silicon || aMaterial == Materials.Zinc ||
-                        aMaterial == Materials.Europium || aMaterial == Materials.Americium || aMaterial == Materials.RedAlloy || aMaterial == Materials.SolderingAlloy || aMaterial == Materials.BatteryAlloy ||
-                        aMaterial == Materials.AnnealedCopper || aMaterial == Materials.Firestone || aMaterial == Materials.VanadiumGallium || aMaterial == Materials.YttriumBariumCuprate ||
-                        aMaterial == Materials.NiobiumTitanium || aMaterial == Materials.CertusQuartz || aMaterial == Materials.NetherQuartz || aMaterial == Materials.Lazurite || aMaterial == Materials.Lapis ||
-                        aMaterial == Materials.Paper || aMaterial == Materials.Jasper || aMaterial == Materials.Dilithium || /*aMaterial == Materials.Forcicium || aMaterial == Materials.Forcillium ||*/
-                        aMaterial == Materials.EnderPearl || aMaterial == Materials.EnderEye || aMaterial == Materials.Glass || aMaterial == Materials.Copper || aMaterial == Materials.Tin || aMaterial == Materials.Redstone ||
-                        aMaterial == Materials.Sodalite || aMaterial == Materials.Gallium || aMaterial == Materials.GalliumArsenide || aMaterial == Materials.IndiumGalliumPhosphide))
-                    plate.mDisabledItems.add(aMaterial);
-
-                if (!(enableUnusedDensePlates || GregTech_API.mGTPlusPlus) && !(aMaterial == Materials.Iron || aMaterial == Materials.Copper || aMaterial == Materials.Lead || aMaterial == Materials.Paper))
-                    plateDense.mDisabledItems.add(aMaterial);
-                //Rotors
-                if (!enableUnusedRotors && !(aMaterial == Materials.Titanium || aMaterial == Materials.Chrome || aMaterial == Materials.Tin || aMaterial == Materials.Osmium ||
-                        aMaterial == Materials.Iridium || aMaterial == Materials.Bronze || aMaterial == Materials.Steel || aMaterial == Materials.StainlessSteel ||
-                        aMaterial == Materials.TungstenSteel || aMaterial == Materials.HSSG || aMaterial == Materials.HSSE || aMaterial == Materials.Neutronium))
-                    rotor.mDisabledItems.add(aMaterial);
-                //Rings
-                if (!enableUnusedRings && !(aMaterial == Materials.Titanium || aMaterial == Materials.Chrome || aMaterial == Materials.Iron || aMaterial == Materials.Tin ||
-                        aMaterial == Materials.Osmium || aMaterial == Materials.Iridium || aMaterial == Materials.Bronze || aMaterial == Materials.WroughtIron ||
-                        aMaterial == Materials.Steel || aMaterial == Materials.StainlessSteel || aMaterial == Materials.PigIron || aMaterial == Materials.TungstenSteel ||
-                        aMaterial == Materials.Rubber || aMaterial == Materials.HSSE || aMaterial == Materials.Neutronium || aMaterial == Materials.HSSG || aMaterial == Materials.Aluminium || 
-                        aMaterial == Materials.Invar || aMaterial == Materials.Brass || aMaterial == Materials.Paper || aMaterial == Materials.Silicone || aMaterial == Materials.StyreneButadieneRubber))
-                    ring.mDisabledItems.add(aMaterial);
-                //Foil
-                if (!enableUnusedFoil && !(aMaterial == Materials.Zinc || aMaterial == Materials.Aluminium || aMaterial == Materials.Silicon || aMaterial == Materials.Gold ||
-                        aMaterial == Materials.Electrum || aMaterial == Materials.Platinum || aMaterial == Materials.Osmiridium || aMaterial == Materials.Osmium ||
-                        aMaterial == Materials.AnnealedCopper || aMaterial == Materials.Steel || aMaterial == Materials.Copper || aMaterial == Materials.YttriumBariumCuprate
-                        || aMaterial == Materials.VanadiumGallium || aMaterial == Materials.NiobiumTitanium || aMaterial == Materials.Naquadah || aMaterial == Materials.Manganese ||
-                        aMaterial == Materials.Plastic || aMaterial == Materials.Silicone || aMaterial == Materials.PolyvinylChloride || aMaterial == Materials.PolyphenyleneSulfide ||
-                		aMaterial == Materials.Nichrome || aMaterial == Materials.BlackSteel || aMaterial == Materials.Titanium || aMaterial == Materials.TungstenSteel || 
-                		aMaterial == Materials.Tungsten || aMaterial == Materials.HSSG || aMaterial == Materials.NaquadahAlloy || aMaterial == Materials.Duranium))
-                    foil.mDisabledItems.add(aMaterial);
-                //Fine Wire
-                if (!enableUnusedFineWires && !(aMaterial == Materials.Steel || aMaterial == Materials.AnnealedCopper || aMaterial == Materials.Platinum || aMaterial == Materials.Osmium ||
-                        aMaterial == Materials.Tin || aMaterial == Materials.Lead || aMaterial == Materials.SolderingAlloy || aMaterial == Materials.Copper || aMaterial == Materials.Electrum ||
-                        aMaterial == Materials.Gold || aMaterial == Materials.RedAlloy || aMaterial == Materials.Graphene || aMaterial == Materials.NiobiumTitanium || aMaterial == Materials.YttriumBariumCuprate ))
-                    wireFine.mDisabledItems.add(aMaterial);
-                //Gears
-                if (!enableUnusedGears && !(aMaterial == Materials.Aluminium || aMaterial == Materials.Titanium || aMaterial == Materials.Iron || aMaterial == Materials.Copper ||
-                        aMaterial == Materials.Tin || aMaterial == Materials.Gold || aMaterial == Materials.Stone || aMaterial == Materials.Bronze ||
-                        aMaterial == Materials.Steel || aMaterial == Materials.StainlessSteel || aMaterial == Materials.TungstenSteel || aMaterial == Materials.CobaltBrass ||
-                        aMaterial == Materials.Diamond || aMaterial == Materials.Wood || aMaterial == Materials.HSSG || aMaterial == Materials.HSSE || aMaterial == Materials.Neutronium))
-                    gearGt.mDisabledItems.add(aMaterial);
-                //Small Gears
-                if (!enableUnusedSmallGears && !(aMaterial == Materials.Aluminium || aMaterial == Materials.Titanium || aMaterial == Materials.Steel || aMaterial == Materials.StainlessSteel ||
-                        aMaterial == Materials.TungstenSteel || aMaterial == Materials.HSSG || aMaterial == Materials.HSSE || aMaterial == Materials.Neutronium))
-                    gearGtSmall.mDisabledItems.add(aMaterial);
-                //Bolts
-                if (!enableUnusedBolts && ((aMaterial.mMaterialFlags & 0x40) == 0) && !(aMaterial == Materials.Titanium || aMaterial == Materials.Chrome || aMaterial == Materials.Iron ||
-                        aMaterial == Materials.Tin || aMaterial == Materials.Osmium || aMaterial == Materials.Iridium || aMaterial == Materials.Neutronium ||
-                        aMaterial == Materials.Bronze || aMaterial == Materials.WroughtIron || aMaterial == Materials.Steel || aMaterial == Materials.StainlessSteel ||
-                        aMaterial == Materials.PigIron || aMaterial == Materials.TungstenSteel || aMaterial == Materials.Tungsten || aMaterial == Materials.HSSE || aMaterial == Materials.HSSG))
-                    bolt.mDisabledItems.add(aMaterial);
-                //Screws
-                if (!enableUnusedScrews && !(aMaterial == Materials.Titanium || aMaterial == Materials.Chrome || aMaterial == Materials.Iron ||
-                        aMaterial == Materials.Tin || aMaterial == Materials.Osmium || aMaterial == Materials.Iridium || aMaterial == Materials.Neutronium ||
-                        aMaterial == Materials.Bronze || aMaterial == Materials.WroughtIron || aMaterial == Materials.Steel || aMaterial == Materials.StainlessSteel ||
-                        aMaterial == Materials.PigIron || aMaterial == Materials.TungstenSteel || aMaterial == Materials.HSSE || aMaterial == Materials.HSSG))
-                    screw.mDisabledItems.add(aMaterial);
-                //Rods
-                if (!enableUnusedRods && ((aMaterial.mMaterialFlags & 0x40) == 0) && !(aMaterial == Materials.Titanium || aMaterial == Materials.Chrome || aMaterial == Materials.Iron ||
-                        aMaterial == Materials.Tin || aMaterial == Materials.Osmium || aMaterial == Materials.Iridium || aMaterial == Materials.Neutronium ||
-                        aMaterial == Materials.Bronze || aMaterial == Materials.WroughtIron || aMaterial == Materials.Steel || aMaterial == Materials.StainlessSteel ||
-                        aMaterial == Materials.PigIron || aMaterial == Materials.TungstenSteel || aMaterial == Materials.HSSE || aMaterial == Materials.HSSG ||
-                        aMaterial == Materials.Aluminium || aMaterial == Materials.Copper || aMaterial == Materials.Neodymium || aMaterial == Materials.Europium ||
-                        aMaterial == Materials.Platinum || aMaterial == Materials.Gold || aMaterial == Materials.Uranium235 || aMaterial == Materials.Plutonium241 ||
-                        aMaterial == Materials.Americium || aMaterial == Materials.Neutronium || aMaterial == Materials.Bronze || aMaterial == Materials.Brass ||
-                        aMaterial == Materials.Electrum || aMaterial == Materials.NaquadahEnriched || aMaterial == Materials.CobaltBrass || aMaterial == Materials.IronMagnetic ||
-                        aMaterial == Materials.SteelMagnetic || aMaterial == Materials.NeodymiumMagnetic || aMaterial == Materials.VanadiumGallium || aMaterial == Materials.Diamond ||
-                        aMaterial == Materials.Wood || aMaterial == Materials.Plastic || aMaterial == Materials.Lead || aMaterial == Materials.SolderingAlloy || aMaterial == Materials.Lapis || 
-                        aMaterial == Materials.Lazurite || aMaterial == Materials.Sodalite|| aMaterial == Materials.PolyvinylChloride))
-                    stick.mDisabledItems.add(aMaterial);
-
-                if (!enableUnusedGems && ((aMaterial.mMaterialFlags & 0x04) == 0)) {
-                    gem.mDisabledItems.add(aMaterial);
-                    gemChipped.mDisabledItems.add(aMaterial);
-                    gemFlawless.mDisabledItems.add(aMaterial);
-                    gemFlawed.mDisabledItems.add(aMaterial);
-                    gemExquisite.mDisabledItems.add(aMaterial);
-                }
-            }
-        }
         for (IMaterialHandler aRegistrator : Materials.mMaterialHandlers) {
             aRegistrator.onComponentInit();
         }
@@ -504,23 +399,19 @@ public enum OrePrefixes {
                     for (OrePrefixes aPrefix : mPreventableComponents) {
                         boolean aEnableComponent = GregTech_API.sMaterialComponents.get(aConfigPath, aPrefix.toString(), !aPrefix.mDisabledItems.contains(aMaterial));
                         if (!aEnableComponent) { //Disable component if false and is not already in disabled list
-                            aPrefix.disableComponent(aMaterial);
+                            if (aMaterial.hasFlag(aPrefix.mMaterialGenerationBits)) {
+                                aMaterial.remove(MaterialFlags.getFlagForValue(aPrefix.mMaterialGenerationBits));
+                            }
                         } else if (aEnableComponent) { //Enable component if true and is not already in enabled list
-                            aPrefix.enableComponent(aMaterial);
+                            if (!aMaterial.hasFlag(aPrefix.mMaterialGenerationBits)) {
+                                aMaterial.add(MaterialFlags.getFlagForValue(aPrefix.mMaterialGenerationBits));
+                            }
                         }
                     }
                     aConfigPathSB.setLength(0);
                 }
             }
         }
-    }
-
-    public void enableComponent(Materials aMaterial) {
-        if (this.mDisabledItems.contains(aMaterial)) this.mDisabledItems.remove(aMaterial);
-    }
-
-    public void disableComponent(Materials aMaterial) {
-        if (!this.mDisabledItems.contains(aMaterial)) this.mDisabledItems.add(aMaterial);
     }
 
     public static OrePrefixes getOrePrefix(String aOre) {
