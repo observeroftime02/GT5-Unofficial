@@ -13,7 +13,6 @@ import gregtech.api.metatileentity.BaseMetaPipeEntity;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
 import gregtech.api.metatileentity.BaseTileEntity;
 import gregtech.api.objects.XSTR;
-import gregtech.api.util.GT_BaseCrop;
 import gregtech.api.util.GT_Log;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.render.GT_Renderer_Block;
@@ -250,14 +249,6 @@ public class GT_Block_Machines
                     }
                 }
             } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
-            GT_Log.out.println("GT_Mod: Registering Crop specific Textures");
-            try {
-                for (GT_BaseCrop tCrop : GT_BaseCrop.sCropList) {
-                    tCrop.registerSprites(aIconRegister);
-                }
-            } catch (Throwable e) {
-                e.printStackTrace(GT_Log.err);
-            }
             GT_Log.out.println("GT_Mod: Starting Block Icon Load Phase");
             System.out.println("GT_Mod: Starting Block Icon Load Phase");
             try {

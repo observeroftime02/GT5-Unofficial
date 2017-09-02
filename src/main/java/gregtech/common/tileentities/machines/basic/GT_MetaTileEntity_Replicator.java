@@ -36,7 +36,7 @@ public class GT_MetaTileEntity_Replicator
 
     public int checkRecipe() {
         FluidStack tFluid = getFillableStack();
-        if ((tFluid != null) && (tFluid.isFluidEqual(Materials.UUMatter.getFluid(1L)))) {
+        if ((tFluid != null) && (tFluid.isFluidEqual(Materials.UUMatter.getFluid(1)))) {
             ItemStack tDataOrb = getSpecialSlot();
             if ((ItemList.Tool_DataOrb.isStackEqual(tDataOrb, false, true)) && (Behaviour_DataOrb.getDataTitle(tDataOrb).equals("Elemental-Scan"))) {
                 Materials tMaterial = Element.get(Behaviour_DataOrb.getDataName(tDataOrb)).mLinkedMaterials.get(0);
@@ -86,7 +86,7 @@ public class GT_MetaTileEntity_Replicator
     }
 
     public boolean isFluidInputAllowed(FluidStack aFluid) {
-        return aFluid.isFluidEqual(Materials.UUMatter.getFluid(1L));
+        return aFluid.isFluidEqual(Materials.UUMatter.getFluid(1));
     }
 
     public int getCapacity() {

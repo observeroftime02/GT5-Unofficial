@@ -1,5 +1,6 @@
 package gregtech.common.tileentities.machines.basic;
 
+import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
@@ -7,9 +8,8 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicMachine;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.objects.ItemData;
-import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
+import gregtech.api.util.MatUnifier;
 import gregtech.common.blocks.GT_Block_Ores_Abstract;
 import gregtech.common.blocks.GT_TileEntity_Ores;
 import net.minecraft.block.Block;
@@ -21,9 +21,9 @@ import net.minecraft.tileentity.TileEntity;
 import java.util.ArrayList;
 
 public class GT_MetaTileEntity_Miner extends GT_MetaTileEntity_BasicMachine {
-    private static final ItemStack MINING_PIPE = GT_ModHandler.getIC2Item("miningPipe", 0);
+    private static final ItemStack MINING_PIPE = ItemList.Block_MiningPipe.get(0);
     private static final Block MINING_PIPE_BLOCK = GT_Utility.getBlockFromStack(MINING_PIPE);
-    private static final Block MINING_PIPE_TIP_BLOCK = GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 0));
+    private static final Block MINING_PIPE_TIP_BLOCK = GT_Utility.getBlockFromStack(ItemList.Block_MiningPipeTip.get(0));
 
     int drillX, drillY, drillZ;
     boolean isPickingPipes;

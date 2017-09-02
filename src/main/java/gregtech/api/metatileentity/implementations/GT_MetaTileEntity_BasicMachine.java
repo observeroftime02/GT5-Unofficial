@@ -498,9 +498,9 @@ public abstract class GT_MetaTileEntity_BasicMachine extends GT_MetaTileEntity_B
                         }
                         if (mFluid != null && mFluid.amount <= 0) mFluid = null;
                         mMaxProgresstime = Math.max(1, mMaxProgresstime);
-                        if (GT_Utility.isDebugItem(mInventory[dechargerSlotStartIndex()])) {
+                        /* TODO if (GT_Utility.isDebugItem(mInventory[dechargerSlotStartIndex()])) {
                             mEUt = mMaxProgresstime = 1;
-                        }
+                        }*/
                         startProcess();
                     } else {
                         mMaxProgresstime = 0;

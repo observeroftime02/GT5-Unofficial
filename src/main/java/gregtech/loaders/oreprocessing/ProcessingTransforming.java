@@ -21,9 +21,9 @@ public class ProcessingTransforming
         switch (aMaterial.mName) {
             case "Wood":
                 ItemStack aSealedWoodStack = MatUnifier.get(aPrefix, Materials.WoodSealed);
-                GT_Values.RA.addChemicalBathRecipe(aStack, Materials.SeedOil.getFluid(GT_Utility.translateMaterialToAmount(aPrefix.mMaterialAmount, 120L, true)), aSealedWoodStack, GT_Values.NI, GT_Values.NI, null, 100, 8);
-                GT_Values.RA.addChemicalBathRecipe(aStack, Materials.SeedOilLin.getFluid(GT_Utility.translateMaterialToAmount(aPrefix.mMaterialAmount, 80L, true)), aSealedWoodStack, GT_Values.NI, GT_Values.NI, null, 100, 8);
-                GT_Values.RA.addChemicalBathRecipe(aStack, Materials.SeedOilHemp.getFluid(GT_Utility.translateMaterialToAmount(aPrefix.mMaterialAmount, 80L, true)), aSealedWoodStack, GT_Values.NI, GT_Values.NI, null, 100, 8);
+                GT_Values.RA.addChemicalBathRecipe(aStack, Materials.SeedOil.getFluid((int)GT_Utility.translateMaterialToAmount(aPrefix.mMaterialAmount, 120L, true)), aSealedWoodStack, GT_Values.NI, GT_Values.NI, null, 100, 8);
+                GT_Values.RA.addChemicalBathRecipe(aStack, Materials.SeedOilLin.getFluid((int)GT_Utility.translateMaterialToAmount(aPrefix.mMaterialAmount, 80L, true)), aSealedWoodStack, GT_Values.NI, GT_Values.NI, null, 100, 8);
+                GT_Values.RA.addChemicalBathRecipe(aStack, Materials.SeedOilHemp.getFluid((int)GT_Utility.translateMaterialToAmount(aPrefix.mMaterialAmount, 80L, true)), aSealedWoodStack, GT_Values.NI, GT_Values.NI, null, 100, 8);
                 break;
             case "Iron":
                 GT_Values.RA.addPolarizerRecipe(aStack, MatUnifier.get(aPrefix, Materials.IronMagnetic), (int) Math.max(16L, aPrefix.mMaterialAmount * 128L / 3628800L), 16);

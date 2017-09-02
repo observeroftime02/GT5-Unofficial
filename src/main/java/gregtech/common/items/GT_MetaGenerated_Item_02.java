@@ -93,6 +93,7 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Tine.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Tin, 1));
 
         GT_ModHandler.addCompressionRecipe(ItemList.Crop_Drop_Coppon.get(4), new ItemStack(Blocks.wool, 1, 1));
+        /*TODO
         GT_ModHandler.addCompressionRecipe(ItemList.Crop_Drop_Plumbilia.get(8), ItemList.IC2_PlantballCompressed.get(1));
         GT_ModHandler.addCompressionRecipe(ItemList.Crop_Drop_Argentia.get(8), ItemList.IC2_PlantballCompressed.get(1));
         GT_ModHandler.addCompressionRecipe(ItemList.Crop_Drop_Indigo.get(8), ItemList.IC2_PlantballCompressed.get(1));
@@ -102,7 +103,7 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         GT_ModHandler.addCompressionRecipe(ItemList.Crop_Drop_BobsYerUncleRanks.get(8), ItemList.IC2_PlantballCompressed.get(1));
         GT_ModHandler.addCompressionRecipe(ItemList.Crop_Drop_Tine.get(4), ItemList.IC2_PlantballCompressed.get(1));
         GT_ModHandler.addCompressionRecipe(new ItemStack(Blocks.red_flower, 8, 32767), ItemList.IC2_PlantballCompressed.get(1));
-        GT_ModHandler.addCompressionRecipe(new ItemStack(Blocks.yellow_flower, 8, 32767), ItemList.IC2_PlantballCompressed.get(1));
+        GT_ModHandler.addCompressionRecipe(new ItemStack(Blocks.yellow_flower, 8, 32767), ItemList.IC2_PlantballCompressed.get(1));*/
 
         GT_ModHandler.addPulverisationRecipe(ItemList.Crop_Drop_Tine.get(1), MatUnifier.get(OrePrefixes.dustSmall, Materials.Wood, 2));
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.reeds, 1), new ItemStack(Items.sugar, 1), null, 0, false);
@@ -110,7 +111,6 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.pumpkin, 1, 0), new ItemStack(Items.pumpkin_seeds, 4, 0), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.melon, 1, 0), new ItemStack(Items.melon_seeds, 1, 0), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.wheat, 1, 0), MatUnifier.get(OrePrefixes.dust, Materials.Wheat, 1), null, 0, false);
-        GT_ModHandler.addPulverisationRecipe(GT_ModHandler.getIC2Item("crop", 1), MatUnifier.get(OrePrefixes.dust, Materials.Wood, 1), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.stick, 1), MatUnifier.get(OrePrefixes.dustSmall, Materials.Wood, 2), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.wool, 1, 32767), new ItemStack(Items.string, 2), new ItemStack(Items.string, 1), 50, false);
         try {

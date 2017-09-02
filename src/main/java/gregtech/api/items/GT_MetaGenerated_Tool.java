@@ -1,6 +1,5 @@
 package gregtech.api.items;
 
-import buildcraft.api.tools.IToolWrench;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
@@ -10,15 +9,14 @@ import forestry.api.arboriculture.IToolGrafter;
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
 import gregtech.api.enchants.Enchantment_Radioactivity;
-import gregtech.api.enums.Materials;
 import gregtech.api.enums.Aspects.AspectStack;
+import gregtech.api.enums.Materials;
 import gregtech.api.interfaces.IDamagableItem;
 import gregtech.api.interfaces.IToolStats;
 import gregtech.api.util.GT_LanguageManager;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
-import mods.railcraft.api.core.items.IToolCrowbar;
+import gregtech.api.util.MatUnifier;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -28,7 +26,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -58,7 +55,7 @@ import static gregtech.api.enums.GT_Values.MOD_ID_RC;
  * GT_MetaGenerated_Tool.sInstances.get("gt.metatool.01").getToolWithStats(GT_MetaGenerated_Tool_01.WRENCH, 1, Materials.Bismuth, Materials.Bismuth, null);
  */
 @Optional.InterfaceList(value = {@Optional.Interface(iface = "forestry.api.arboriculture.IToolGrafter", modid = MOD_ID_FR), @Optional.Interface(iface = "mods.railcraft.api.core.items.IToolCrowbar", modid = MOD_ID_RC), @Optional.Interface(iface = "buildcraft.api.tools.IToolWrench", modid = "BuildCraft"), @Optional.Interface(iface = "crazypants.enderio.api.tool.ITool", modid = "EnderIO")})
-public abstract class GT_MetaGenerated_Tool extends GT_MetaBase_Item implements IDamagableItem, IToolGrafter, IToolCrowbar, IToolWrench, ITool {
+public abstract class GT_MetaGenerated_Tool extends GT_MetaBase_Item implements IDamagableItem, IToolGrafter, ITool {
     /**
      * All instances of this Item Class are listed here.
      * This gets used to register the Renderer to all Items of this Type, if useStandardMetaItemRenderer() returns true.
@@ -510,44 +507,44 @@ public abstract class GT_MetaGenerated_Tool extends GT_MetaBase_Item implements 
         return tStats != null && tStats.isGrafter() ? Math.min(100.0F, (1 + getHarvestLevel(aStack, "")) * 20.0F) : 0.0F;
     }
 
-    @Override
-    public boolean canWhack(EntityPlayer aPlayer, ItemStack aStack, int aX, int aY, int aZ) {
-        if (!isItemStackUsable(aStack)) return false;
-        IToolStats tStats = getToolStats(aStack);
-        return tStats != null && tStats.isCrowbar();
-    }
-
-    @Override
-    public void onWhack(EntityPlayer aPlayer, ItemStack aStack, int aX, int aY, int aZ) {
-        IToolStats tStats = getToolStats(aStack);
-        if (tStats != null) doDamage(aStack, tStats.getToolDamagePerEntityAttack());
-    }
-    
-	@Override
-	public boolean canWrench(EntityPlayer player, int x, int y, int z) {
-		if(player==null)return false;
-		if(player.getCurrentEquippedItem()==null)return false;
-        if (!isItemStackUsable(player.getCurrentEquippedItem())) return false;
-        IToolStats tStats = getToolStats(player.getCurrentEquippedItem());
-        return tStats != null && tStats.isWrench();
-	}
-
-	@Override
-	public void wrenchUsed(EntityPlayer player, int x, int y, int z) {
-		if(player==null)return;
-		if(player.getCurrentEquippedItem()==null)return;
-        IToolStats tStats = getToolStats(player.getCurrentEquippedItem());
-        if (tStats != null) doDamage(player.getCurrentEquippedItem(), tStats.getToolDamagePerEntityAttack());
-	}
-	
+//    @Override
+//    public boolean canWhack(EntityPlayer aPlayer, ItemStack aStack, int aX, int aY, int aZ) {
+//        if (!isItemStackUsable(aStack)) return false;
+//        IToolStats tStats = getToolStats(aStack);
+//        return tStats != null && tStats.isCrowbar();
+//    }
+//
+//    @Override
+//    public void onWhack(EntityPlayer aPlayer, ItemStack aStack, int aX, int aY, int aZ) {
+//        IToolStats tStats = getToolStats(aStack);
+//        if (tStats != null) doDamage(aStack, tStats.getToolDamagePerEntityAttack());
+//    }
+//
+//	@Override
+//	public boolean canWrench(EntityPlayer player, int x, int y, int z) {
+//		if(player==null)return false;
+//		if(player.getCurrentEquippedItem()==null)return false;
+//        if (!isItemStackUsable(player.getCurrentEquippedItem())) return false;
+//        IToolStats tStats = getToolStats(player.getCurrentEquippedItem());
+//        return tStats != null && tStats.isWrench();
+//	}
+//
+//	@Override
+//	public void wrenchUsed(EntityPlayer player, int x, int y, int z) {
+//		if(player==null)return;
+//		if(player.getCurrentEquippedItem()==null)return;
+//        IToolStats tStats = getToolStats(player.getCurrentEquippedItem());
+//        if (tStats != null) doDamage(player.getCurrentEquippedItem(), tStats.getToolDamagePerEntityAttack());
+//	}
+//
 	@Override
 	public boolean canUse(ItemStack stack, EntityPlayer player, int x, int y, int z){
-		 return canWrench(player, x, y, z);
+		 return false; //TODO canWrench(player, x, y, z);
 	}
 
 	@Override
 	public void used(ItemStack stack, EntityPlayer player, int x, int y, int z){
-		wrenchUsed(player, x, y, z);
+		//TODO wrenchUsed(player, x, y, z);
 	}
 	
 	@Override
@@ -560,31 +557,31 @@ public abstract class GT_MetaGenerated_Tool extends GT_MetaBase_Item implements 
 	}
 	
 
-    @Override
-    public boolean canLink(EntityPlayer aPlayer, ItemStack aStack, EntityMinecart cart) {
-        if (!isItemStackUsable(aStack)) return false;
-        IToolStats tStats = getToolStats(aStack);
-        return tStats != null && tStats.isCrowbar();
-    }
-
-    @Override
-    public void onLink(EntityPlayer aPlayer, ItemStack aStack, EntityMinecart cart) {
-        IToolStats tStats = getToolStats(aStack);
-        if (tStats != null) doDamage(aStack, tStats.getToolDamagePerEntityAttack());
-    }
-
-    @Override
-    public boolean canBoost(EntityPlayer aPlayer, ItemStack aStack, EntityMinecart cart) {
-        if (!isItemStackUsable(aStack)) return false;
-        IToolStats tStats = getToolStats(aStack);
-        return tStats != null && tStats.isCrowbar();
-    }
-
-    @Override
-    public void onBoost(EntityPlayer aPlayer, ItemStack aStack, EntityMinecart cart) {
-        IToolStats tStats = getToolStats(aStack);
-        if (tStats != null) doDamage(aStack, tStats.getToolDamagePerEntityAttack());
-    }
+//    @Override
+//    public boolean canLink(EntityPlayer aPlayer, ItemStack aStack, EntityMinecart cart) {
+//        if (!isItemStackUsable(aStack)) return false;
+//        IToolStats tStats = getToolStats(aStack);
+//        return tStats != null && tStats.isCrowbar();
+//    }
+//
+//    @Override
+//    public void onLink(EntityPlayer aPlayer, ItemStack aStack, EntityMinecart cart) {
+//        IToolStats tStats = getToolStats(aStack);
+//        if (tStats != null) doDamage(aStack, tStats.getToolDamagePerEntityAttack());
+//    }
+//
+//    @Override
+//    public boolean canBoost(EntityPlayer aPlayer, ItemStack aStack, EntityMinecart cart) {
+//        if (!isItemStackUsable(aStack)) return false;
+//        IToolStats tStats = getToolStats(aStack);
+//        return tStats != null && tStats.isCrowbar();
+//    }
+//
+//    @Override
+//    public void onBoost(EntityPlayer aPlayer, ItemStack aStack, EntityMinecart cart) {
+//        IToolStats tStats = getToolStats(aStack);
+//        if (tStats != null) doDamage(aStack, tStats.getToolDamagePerEntityAttack());
+//    }
 
     @Override
     public void onCreated(ItemStack aStack, World aWorld, EntityPlayer aPlayer) {

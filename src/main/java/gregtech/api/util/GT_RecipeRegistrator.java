@@ -151,7 +151,7 @@ public class GT_RecipeRegistrator {
         ItemData tData = MatUnifier.getItemData(aStack);
         boolean tHide = aStack.getUnlocalizedName().startsWith("gt.blockmachines")&&(GT_Mod.gregtechproxy.mHideRecyclingRecipes);
         if(GT_Mod.gregtechproxy.mHideRecyclingRecipes&&tData!=null&&tData.hasValidPrefixData()&&!(tData.mPrefix==OrePrefixes.dust||tData.mPrefix==OrePrefixes.ingot||tData.mPrefix==OrePrefixes.block|tData.mPrefix==OrePrefixes.plate)){tHide=true;}
-        RA.addFluidSmelterRecipe(GT_Utility.copyAmount(1, aStack), aByproduct == null ? null : aByproduct.mMaterial.contains(SubTag.NO_SMELTING) || !aByproduct.mMaterial.contains(SubTag.METAL) ? aByproduct.mMaterial.contains(SubTag.FLAMMABLE) ? MatUnifier.getDust(Materials.Ash, aByproduct.mAmount / 2) : aByproduct.mMaterial.contains(SubTag.UNBURNABLE) ? MatUnifier.getDustOrIngot(aByproduct.mMaterial.mSmeltInto, aByproduct.mAmount) : null : MatUnifier.getIngotOrDust(aByproduct.mMaterial.mSmeltInto, aByproduct.mAmount), aMaterial.mSmeltInto.getMolten((L * aMaterialAmount) / (M * aStack.stackSize)), 10000, (int) Math.max(1, (24 * aMaterialAmount) / M), Math.max(8, (int) Math.sqrt(2 * aMaterial.mSmeltInto.mStandardMoltenFluid.getTemperature())), tHide);
+        RA.addFluidSmelterRecipe(GT_Utility.copyAmount(1, aStack), aByproduct == null ? null : aByproduct.mMaterial.contains(SubTag.NO_SMELTING) || !aByproduct.mMaterial.contains(SubTag.METAL) ? aByproduct.mMaterial.contains(SubTag.FLAMMABLE) ? MatUnifier.getDust(Materials.Ash, aByproduct.mAmount / 2) : aByproduct.mMaterial.contains(SubTag.UNBURNABLE) ? MatUnifier.getDustOrIngot(aByproduct.mMaterial.mSmeltInto, aByproduct.mAmount) : null : MatUnifier.getIngotOrDust(aByproduct.mMaterial.mSmeltInto, aByproduct.mAmount), aMaterial.mSmeltInto.getMolten((int)((L * aMaterialAmount) / (M * aStack.stackSize))), 10000, (int) Math.max(1, (24 * aMaterialAmount) / M), Math.max(8, (int) Math.sqrt(2 * aMaterial.mSmeltInto.mStandardMoltenFluid.getTemperature())), tHide);
     }
 
     /**
@@ -254,10 +254,7 @@ public class GT_RecipeRegistrator {
 
         long tAmount = 0;
         for (MaterialStack tMaterial : aData.getAllMaterialStacks())
-            tAmount +=
-                    tMaterial.mAmount *
-                            tMaterial.mMaterial
-                                    .getMass();
+            tAmount += tMaterial.mAmount * tMaterial.mMaterial.getMass();
         boolean tHide = (aData.mMaterial.mMaterial != Materials.Iron)&&(GT_Mod.gregtechproxy.mHideRecyclingRecipes);
         RA.addPulveriserRecipe(aStack, new ItemStack[]{MatUnifier.getDust(aData.mMaterial), MatUnifier.getDust(aData.getByProduct(0)), MatUnifier.getDust(aData.getByProduct(1)), MatUnifier.getDust(aData.getByProduct(2))}, null, aData.mMaterial.mMaterial==Materials.Marble ? 1 : (int) Math.max(16, tAmount / M), 4, tHide);
 

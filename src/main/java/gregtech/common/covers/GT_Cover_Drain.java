@@ -36,9 +36,9 @@ public class GT_Cover_Drain
                 FluidStack tLiquid = null;
                 if (tBlock != null) {
                     if (((tBlock == Blocks.water) || (tBlock == Blocks.flowing_water)) && (aTileEntity.getMetaIDAtSide(aSide) == 0)) {
-                        tLiquid = Materials.Water.getFluid(1000L);
+                        tLiquid = Materials.Water.getFluid(1000);
                     } else if (((tBlock == Blocks.lava) || (tBlock == Blocks.flowing_lava)) && (aTileEntity.getMetaIDAtSide(aSide) == 0)) {
-                        tLiquid = Materials.Lava.getFluid(1000L);
+                        tLiquid = Materials.Lava.getFluid(1000);
                     } else if ((tBlock instanceof IFluidBlock)) {
                         tLiquid = ((IFluidBlock) tBlock).drain(aTileEntity.getWorld(), aTileEntity.getOffsetX(aSide, 1), aTileEntity.getOffsetY(aSide, 1), aTileEntity.getOffsetZ(aSide, 1), false);
                     }

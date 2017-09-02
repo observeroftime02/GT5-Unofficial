@@ -154,8 +154,6 @@ public class GregTech_API {
      * For the API Version check
      */
     public static volatile int VERSION = 509;
-    @Deprecated
-    public static IGT_RecipeAdder sRecipeAdder;
     /**
      * Used to register Aspects to ThaumCraft, this Object might be null if ThaumCraft isn't installed
      */
@@ -193,10 +191,6 @@ public class GregTech_API {
     public static int mRFtoEU = 20;
     public static boolean mRFExplosions = true;
     public static boolean mServerStarted = false;
-    public static boolean mIC2Classic = false;
-    public static boolean mMagneticraft = false;
-    public static boolean mImmersiveEngineering = false;
-    public static boolean mGTPlusPlus = false;
 
     public static boolean mUseOnlyGoodSolderingMaterials = false;
 

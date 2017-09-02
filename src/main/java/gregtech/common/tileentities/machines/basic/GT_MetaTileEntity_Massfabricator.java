@@ -60,10 +60,10 @@ public class GT_MetaTileEntity_Massfabricator
     public int checkRecipe() {
         FluidStack tFluid = getDrainableStack();
         if ((tFluid == null) || (tFluid.amount < getCapacity())) {
-            this.mOutputFluid = Materials.UUMatter.getFluid(1L);
+            this.mOutputFluid = Materials.UUMatter.getFluid(1);
             this.mEUt =  (((int) gregtech.api.enums.GT_Values.V[1]) * (int)Math.pow(2, this.mTier + 2));
             this.mMaxProgresstime = (sDurationMultiplier / (1 << this.mTier - 1));
-            if (((tFluid = getFillableStack()) != null) && (tFluid.amount >= sUUAperUUM) && (tFluid.isFluidEqual(Materials.UUAmplifier.getFluid(1L)))) {
+            if (((tFluid = getFillableStack()) != null) && (tFluid.amount >= sUUAperUUM) && (tFluid.isFluidEqual(Materials.UUAmplifier.getFluid(1)))) {
                 tFluid.amount -= sUUAperUUM;
                 this.mMaxProgresstime /= sUUASpeedBonus;
                 return 2;
@@ -79,7 +79,7 @@ public class GT_MetaTileEntity_Massfabricator
     }
 
     public boolean isFluidInputAllowed(FluidStack aFluid) {
-        return aFluid.isFluidEqual(Materials.UUAmplifier.getFluid(1L));
+        return aFluid.isFluidEqual(Materials.UUAmplifier.getFluid(1));
     }
 
     public int getCapacity() {

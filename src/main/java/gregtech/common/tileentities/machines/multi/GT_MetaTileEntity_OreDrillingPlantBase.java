@@ -12,10 +12,9 @@ import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Hatch_Energ
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_MultiBlockBase;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.objects.ItemData;
-import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Utility;
+import gregtech.api.util.MatUnifier;
 import gregtech.common.blocks.GT_Block_Ores_Abstract;
 import gregtech.common.blocks.GT_TileEntity_Ores;
 import net.minecraft.block.Block;
@@ -33,10 +32,10 @@ import java.util.ArrayList;
 import static gregtech.api.enums.GT_Values.*;
 
 public abstract class GT_MetaTileEntity_OreDrillingPlantBase extends GT_MetaTileEntity_MultiBlockBase {
-    private static final ItemStack miningPipe = GT_ModHandler.getIC2Item("miningPipe", 0);
-    private static final ItemStack miningPipeTip = GT_ModHandler.getIC2Item("miningPipeTip", 0);
-    private static final Block miningPipeBlock = GT_Utility.getBlockFromStack(miningPipe);
-    private static final Block miningPipeTipBlock = GT_Utility.getBlockFromStack(miningPipeTip);
+    private static ItemStack miningPipe;
+    private static ItemStack miningPipeTip;
+    private static Block miningPipeBlock;
+    private static Block miningPipeTipBlock;
 
     private final ArrayList<ChunkPosition> oreBlockPositions = new ArrayList<>();
 
@@ -61,6 +60,10 @@ public abstract class GT_MetaTileEntity_OreDrillingPlantBase extends GT_MetaTile
     }
 
     private void initFields() {
+        miningPipe = ItemList.Block_MiningPipe.get(1);
+        miningPipeTip = ItemList.Block_MiningPipeTip.get(1);
+        miningPipeBlock = GT_Utility.getBlockFromStack(miningPipe);
+        miningPipeTipBlock = GT_Utility.getBlockFromStack(miningPipeTip);
         casingBlock = getCasingBlockItem().getBlock();
         casingMeta = getCasingBlockItem().get(0).getItemDamage();
         int frameId = 4096 + getFrameMaterial().mMetaItemSubID;

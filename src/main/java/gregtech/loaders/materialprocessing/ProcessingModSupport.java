@@ -2,8 +2,8 @@ package gregtech.loaders.materialprocessing;
 
 import cpw.mods.fml.common.Loader;
 import gregtech.api.enums.GT_Values;
+import gregtech.api.enums.MaterialFlags;
 import gregtech.api.enums.Materials;
-import gregtech.api.enums.OrePrefixes;
 
 public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHandler {
     public static boolean aEnableThaumcraftMats = Loader.isModLoaded("Thaumcraft");
@@ -51,11 +51,11 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
     @Override
     public void onComponentInit() {
         if (Loader.isModLoaded("computronics")) {
-            OrePrefixes.ring.enableComponent(Materials.RedAlloy);
-            OrePrefixes.ring.enableComponent(Materials.NiobiumTitanium);
-            OrePrefixes.foil.enableComponent(Materials.StainlessSteel);
-            OrePrefixes.foil.enableComponent(Materials.Iron);
-            OrePrefixes.screw.enableComponent(Materials.Copper);
+            Materials.RedAlloy.add(MaterialFlags.RING);
+            Materials.NiobiumTitanium.add(MaterialFlags.RING);
+            Materials.StainlessSteel.add(MaterialFlags.FOIL);
+            Materials.Iron.add(MaterialFlags.FOIL);
+            Materials.Copper.add(MaterialFlags.SCREW);
         }
     }
 

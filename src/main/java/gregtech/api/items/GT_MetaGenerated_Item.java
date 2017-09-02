@@ -5,10 +5,9 @@ import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.GregTech_API;
-import gregtech.api.enums.ItemList;
+import gregtech.api.enums.Aspects.AspectStack;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.SubTag;
-import gregtech.api.enums.Aspects.AspectStack;
 import gregtech.api.interfaces.IFoodStat;
 import gregtech.api.interfaces.IIconContainer;
 import gregtech.api.interfaces.IItemBehaviour;
@@ -16,8 +15,8 @@ import gregtech.api.interfaces.IItemContainer;
 import gregtech.api.objects.ItemData;
 import gregtech.api.util.GT_Config;
 import gregtech.api.util.GT_LanguageManager;
-import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
+import gregtech.api.util.MatUnifier;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -98,7 +97,6 @@ public abstract class GT_MetaGenerated_Item extends GT_MetaBase_Item implements 
      * @param aID           The Id of the assigned Item [0 - mItemAmount] (The MetaData gets auto-shifted by +mOffset)
      * @param aEnglish      The Default Localized Name of the created Item
      * @param aToolTip      The Default ToolTip of the created Item, you can also insert null for having no ToolTip
-     * @param aFoodBehavior The Food Value of this Item. Can be null aswell. Just a convenience thing.
      * @param aRandomData   The OreDict Names you want to give the Item. Also used for TC Aspects and some other things.
      * @return An ItemStack containing the newly created Item.
      */
@@ -127,15 +125,6 @@ public abstract class GT_MetaGenerated_Item extends GT_MetaBase_Item implements 
             for (Object tRandomData : aRandomData)
                 if (tRandomData != null) {
                     boolean tUseOreDict = true;
-                    if (tRandomData instanceof IFoodStat) {
-                        setFoodBehavior(mOffset + aID, (IFoodStat) tRandomData);
-                        if (((IFoodStat) tRandomData).getFoodAction(this, rStack) == EnumAction.eat) {
-                            int tFoodValue = ((IFoodStat) tRandomData).getFoodLevel(this, rStack, null);
-                            if (tFoodValue > 0)
-                                RA.addCannerRecipe(rStack, ItemList.IC2_Food_Can_Empty.get(tFoodValue), ((IFoodStat) tRandomData).isRotten(this, rStack, null) ? ItemList.IC2_Food_Can_Spoiled.get(tFoodValue) : ItemList.IC2_Food_Can_Filled.get(tFoodValue), null, tFoodValue * 100, 1);
-                        }
-                        tUseOreDict = false;
-                    }
                     if (tRandomData instanceof IItemBehaviour) {
                         addItemBehavior(mOffset + aID, (IItemBehaviour<GT_MetaBase_Item>) tRandomData);
                         tUseOreDict = false;
@@ -221,13 +210,6 @@ public abstract class GT_MetaGenerated_Item extends GT_MetaBase_Item implements 
 
     /**
      * @param aMetaValue     the Meta Value of the Item you want to set it to. [0 - 32765]
-     * @param aMaxCharge     Maximum Charge. (if this is == 0 it will remove the Electric Behavior)
-     * @param aTransferLimit Transfer Limit.
-     * @param aTier          The electric Tier.
-     * @param aSpecialData   If this Item has a Fixed Charge, like a SingleUse Battery (if > 0).
-     *                       Use -1 if you want to make this Battery chargeable (the use and canUse Functions will still discharge if you just use this)
-     *                       Use -2 if you want to make this Battery dischargeable.
-     *                       Use -3 if you want to make this Battery charge/discharge-able.
      * @return the Item itself for convenience in constructing.
      */
     public final GT_MetaGenerated_Item setFluidContainerStats(int aMetaValue, long aCapacity, long aStacksize) {

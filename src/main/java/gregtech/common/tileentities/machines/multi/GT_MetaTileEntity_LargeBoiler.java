@@ -167,7 +167,7 @@ public abstract class GT_MetaTileEntity_LargeBoiler
                 this.mEfficiency = Math.min(10000, this.mEfficiency + this.mSuperEfficencyIncrease);
             int tGeneratedEU = (int) (this.mEUt * 2L * this.mEfficiency / 10000L);
             if (tGeneratedEU > 0) {
-                long amount = (tGeneratedEU + 160) / 160;
+                int amount = (tGeneratedEU + 160) / 160;
                 if (depleteInput(Materials.Water.getFluid(amount)) || depleteInput(GT_ModHandler.getDistilledWater(amount))) {
                     addOutput(GT_ModHandler.getSteam(tGeneratedEU));
                 } else {

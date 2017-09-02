@@ -95,7 +95,7 @@ public class GT_Spray_Foam_Item extends GT_Tool_Item {
         aY += ForgeDirection.getOrientation(aSide).offsetY;
         aZ += ForgeDirection.getOrientation(aSide).offsetZ;
 
-        ItemStack tStack = GT_ModHandler.getIC2Item("constructionFoam", 1);
+        ItemStack tStack = null;//TODO GT_ModHandler.getIC2Item("constructionFoam", 1);
         if (tStack != null && tStack.getItem() instanceof ItemBlock) {
             int tRotationPitch = Math.round(aPlayer.rotationPitch);
             byte tSide = 0;

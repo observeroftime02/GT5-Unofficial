@@ -1,6 +1,5 @@
 package gregtech.api.interfaces.internal;
 
-import gregtech.api.util.GT_Recipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -424,11 +423,6 @@ public interface IGT_RecipeAdder {
     boolean addThermalCentrifugeRecipe(ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, int aDuration, int aEUt);
 
     /**
-     * Adds an Unboxing Recipe
-     */
-    boolean addUnboxingRecipe(ItemStack aFullBox, ItemStack aContainedItem, ItemStack aEmptyBox, int aDuration, int aEUt);
-
-    /**
      * Adds a Vacuum Freezer Recipe
      *
      * @param aInput1   must be != null
@@ -582,7 +576,7 @@ public interface IGT_RecipeAdder {
      * Adds a Distillation Tower Recipe
      * Every Fluid also gets separate distillation recipes
      *
-     * @param aInput1  must be != null
+     * @param aInput  must be != null
      * @param aOutputs must be != null 1-5 Fluids
      * @param aOutput2 can be null
      */

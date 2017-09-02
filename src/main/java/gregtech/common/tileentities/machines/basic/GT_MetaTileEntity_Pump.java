@@ -1,5 +1,6 @@
 package gregtech.common.tileentities.machines.basic;
 
+import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Textures;
 import gregtech.api.gui.GT_Container_BasicTank;
 import gregtech.api.gui.GT_GUIContainer_BasicTank;
@@ -171,7 +172,7 @@ public class GT_MetaTileEntity_Pump extends GT_MetaTileEntity_Hatch {
 
     private boolean moveOneDown() {
         if ((this.mInventory[0] == null) || (this.mInventory[0].stackSize < 1)
-                || (!GT_Utility.areStacksEqual(this.mInventory[0], GT_ModHandler.getIC2Item("miningPipe", 1)))) {
+                || (!GT_Utility.areStacksEqual(this.mInventory[0], ItemList.Block_MiningPipe.get(1)))) {
             return false;
         }
         int yHead = getYOfPumpHead();
@@ -182,11 +183,11 @@ public class GT_MetaTileEntity_Pump extends GT_MetaTileEntity_Hatch {
 
             return false;
         }
-        if (!(getBaseMetaTileEntity().getWorld().setBlock(getBaseMetaTileEntity().getXCoord(), yHead - 1, getBaseMetaTileEntity().getZCoord(), GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 1))))) {
+        if (!(getBaseMetaTileEntity().getWorld().setBlock(getBaseMetaTileEntity().getXCoord(), yHead - 1, getBaseMetaTileEntity().getZCoord(), GT_Utility.getBlockFromStack(ItemList.Block_MiningPipeTip.get(1))))) {
             return false;
         }
         if (yHead != getBaseMetaTileEntity().getYCoord()) {
-            getBaseMetaTileEntity().getWorld().setBlock(getBaseMetaTileEntity().getXCoord(), yHead, getBaseMetaTileEntity().getZCoord(), GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("miningPipe", 1)));
+            getBaseMetaTileEntity().getWorld().setBlock(getBaseMetaTileEntity().getXCoord(), yHead, getBaseMetaTileEntity().getZCoord(), GT_Utility.getBlockFromStack(ItemList.Block_MiningPipe.get(1)));
         }
         getBaseMetaTileEntity().decrStackSize(0, 1);
         return true;
@@ -195,18 +196,18 @@ public class GT_MetaTileEntity_Pump extends GT_MetaTileEntity_Hatch {
     private int getYOfPumpHead() {
         int y = getBaseMetaTileEntity().getYCoord() - 1;
         while (getBaseMetaTileEntity().getBlock(getBaseMetaTileEntity().getXCoord(), y, getBaseMetaTileEntity().getZCoord()) == GT_Utility
-                .getBlockFromStack(GT_ModHandler.getIC2Item("miningPipe", 1))) {
+                .getBlockFromStack(ItemList.Block_MiningPipe.get(1))) {
             y--;
         }
         if (y == getBaseMetaTileEntity().getYCoord() - 1) {
             if (getBaseMetaTileEntity().getBlock(getBaseMetaTileEntity().getXCoord(), y, getBaseMetaTileEntity().getZCoord()) != GT_Utility
-                    .getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 1))) {
+                    .getBlockFromStack(ItemList.Block_MiningPipeTip.get(1))) {
                 return y + 1;
             }
         } else if (getBaseMetaTileEntity().getBlock(getBaseMetaTileEntity().getXCoord(), y, getBaseMetaTileEntity().getZCoord()) != GT_Utility
-                .getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 1)) && this.mInventory[0] != null && this.mInventory[0].stackSize > 0 && GT_Utility.areStacksEqual(this.mInventory[0], GT_ModHandler.getIC2Item("miningPipe", 1))) {
+                .getBlockFromStack(ItemList.Block_MiningPipeTip.get(1)) && this.mInventory[0] != null && this.mInventory[0].stackSize > 0 && GT_Utility.areStacksEqual(this.mInventory[0], ItemList.Block_MiningPipe.get(1))) {
             getBaseMetaTileEntity().getWorld().setBlock(getBaseMetaTileEntity().getXCoord(), y, getBaseMetaTileEntity().getZCoord(),
-                    GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("miningPipeTip", 1)));
+                    GT_Utility.getBlockFromStack(ItemList.Block_MiningPipeTip.get(1)));
             getBaseMetaTileEntity().decrStackSize(0, 1);
         }
         return y;
@@ -288,7 +289,7 @@ public class GT_MetaTileEntity_Pump extends GT_MetaTileEntity_Hatch {
                 if (aMeta == 0) {
                     if (this.mFluid == null) {
                         getBaseMetaTileEntity().decreaseStoredEnergyUnits(16 * ((int) Math.pow(4, this.mTier)), true);
-                        this.mFluid = GT_ModHandler.getWater(1000L);
+                        this.mFluid = GT_ModHandler.getWater(1000);
                     } else if (GT_ModHandler.isWater(this.mFluid)) {
                         getBaseMetaTileEntity().decreaseStoredEnergyUnits(16 * ((int) Math.pow(4, this.mTier)), true);
                         this.mFluid.amount += 1000;
@@ -303,7 +304,7 @@ public class GT_MetaTileEntity_Pump extends GT_MetaTileEntity_Hatch {
                 if (aMeta == 0) {
                     if (this.mFluid == null) {
                         getBaseMetaTileEntity().decreaseStoredEnergyUnits(16 * ((int) Math.pow(4, this.mTier)), true);
-                        this.mFluid = GT_ModHandler.getLava(1000L);
+                        this.mFluid = GT_ModHandler.getLava(1000);
                     } else if (GT_ModHandler.isLava(this.mFluid)) {
                         getBaseMetaTileEntity().decreaseStoredEnergyUnits(16 * ((int) Math.pow(4, this.mTier)), true);
                         this.mFluid.amount += 1000;

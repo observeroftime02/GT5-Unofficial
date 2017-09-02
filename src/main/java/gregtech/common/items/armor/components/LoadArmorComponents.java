@@ -96,8 +96,8 @@ public class LoadArmorComponents {
 		new ArmorPlating("plateAdamantium", "plateAdamantium", 			200, 0.28f, 0.28f, 0.26f, 0.30f, 0.30f);
 		new ArmorPlating("plateNaquadahAlloy", "plateNaquadahAlloy", 	300, 0.33f, 0.33f, 0.33f, 0.33f, 0.33f);
 		new ArmorPlating("plateNeutronium", "plateNeutronium", 			600, 0.50f, 0.50f, 0.50f, 0.50f, 0.50f);
-		
-		new ArmorComponentFunction("componentnightvision", GT_ModHandler.getIC2Item("nightvisionGoggles", 1), true, 100, StatType.NIGHTVISION, 100);
+
+		//TODO new ArmorComponentFunction("componentnightvision", GT_ModHandler.getIC2Item("nightvisionGoggles", 1), true, 100, StatType.NIGHTVISION, 100);
 		if(GT_ModHandler.getModItem("Thaumcraft", "ItemGoggles", 1)!=null)new ArmorComponentFunction("componentthaumicgoggles", GT_ModHandler.getModItem("Thaumcraft", "ItemGoggles", 1), true, 100, StatType.THAUMICGOGGLES, 100);
 		new ArmorComponentBattery("batteryLVLI", ItemList.Battery_RE_LV_Lithium.get(1), true, 100, 100000);
 		new ArmorComponentBattery("batteryMVLI", ItemList.Battery_RE_MV_Lithium.get(1), true, 100, 400000);
@@ -111,8 +111,8 @@ public class LoadArmorComponents {
 		new ArmorComponentBattery("batteryMVSO", ItemList.Battery_RE_MV_Sodium.get(1), true, 100, 200000);
 		new ArmorComponentBattery("batteryHVSO", ItemList.Battery_RE_HV_Sodium.get(1), true, 100, 800000);
 		
-		new ArmorComponentBattery("batterycystal", ItemList.IC2_EnergyCrystal.get(1), true, 100, 1000000);
-		new ArmorComponentBattery("batterylapotron", ItemList.IC2_LapotronCrystal.get(1), true, 100, 10000000);
+		//TODO new ArmorComponentBattery("batterycystal", ItemList.IC2_EnergyCrystal.get(1), true, 100, 1000000);
+		//TODO new ArmorComponentBattery("batterylapotron", ItemList.IC2_LapotronCrystal.get(1), true, 100, 10000000);
 		new ArmorComponentBattery("batterylapoorb", ItemList.Energy_LapotronicOrb.get(1), true, 100, 100000000);
 		new ArmorComponentBattery("batteryorbcluster", ItemList.Energy_LapotronicOrb2.get(1), true, 100, 1000000000);
 		

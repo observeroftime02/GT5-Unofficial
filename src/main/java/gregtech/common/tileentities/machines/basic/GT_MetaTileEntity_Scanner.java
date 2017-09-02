@@ -42,7 +42,7 @@ public class GT_MetaTileEntity_Scanner
         if (getOutputAt(0) != null) {
             this.mOutputBlocked += 1;
         } else if ((GT_Utility.isStackValid(aStack)) && (aStack.stackSize > 0)) {
-            if ((getFillableStack() != null) && (getFillableStack().containsFluid(Materials.Honey.getFluid(100L)))) {
+            if ((getFillableStack() != null) && (getFillableStack().containsFluid(Materials.Honey.getFluid(100)))) {
                 try {
                     Object tIndividual = AlleleManager.alleleRegistry.getIndividual(aStack);
                     if (tIndividual != null) {
@@ -68,24 +68,6 @@ public class GT_MetaTileEntity_Scanner
                         e.printStackTrace(GT_Log.err);
                     }
                 }
-            }
-            if (ItemList.IC2_Crop_Seeds.isStackEqual(aStack, true, true)) {
-                NBTTagCompound tNBT = aStack.getTagCompound();
-                if (tNBT == null) {
-                    tNBT = new NBTTagCompound();
-                }
-                if (tNBT.getByte("scan") < 4) {
-                    tNBT.setByte("scan", (byte) 4);
-                    this.mMaxProgresstime = (160 / (1 << this.mTier - 1));
-                    this.mEUt = (8 * (1 << this.mTier - 1) * (1 << this.mTier - 1));
-                } else {
-                    this.mMaxProgresstime = 1;
-                    this.mEUt = 1;
-                }
-                aStack.stackSize -= 1;
-                this.mOutputItems[0] = GT_Utility.copyAmount(1, aStack);
-                this.mOutputItems[0].setTagCompound(tNBT);
-                return 2;
             }
             if (ItemList.Tool_DataOrb.isStackEqual(getSpecialSlot(), false, true)) {
                 if (ItemList.Tool_DataOrb.isStackEqual(aStack, false, true)) {

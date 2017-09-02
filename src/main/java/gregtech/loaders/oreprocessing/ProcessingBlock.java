@@ -29,7 +29,7 @@ public class ProcessingBlock implements gregtech.api.interfaces.IOreRecipeRegist
             GT_ModHandler.removeRecipe(aDustStack, aDustStack, aDustStack, aDustStack, aDustStack, aDustStack, aDustStack, aDustStack, aDustStack);
         }
         if (aMaterial.mStandardMoltenFluid != null) {
-            GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Block.get(0), aMaterial.getMolten(1296L), aStack, 288, 8);
+            GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Block.get(0), aMaterial.getMolten(1296), aStack, 288, 8);
         }
         if (GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.storageblockcrafting, aStack.toString(), false)) {
             if ((aIngotStack == null) && (aGemStack == null) && (aDustStack != null))
@@ -52,17 +52,8 @@ public class ProcessingBlock implements gregtech.api.interfaces.IOreRecipeRegist
                 GT_ModHandler.addShapelessCraftingRecipe(GT_Utility.copyAmount(9, aIngotStack), new Object[]{aStack});
             }
         }
-        if (!OrePrefixes.block.isIgnored(aMaterial))
+        if (!OrePrefixes.block.isIgnored(aMaterial)) {
             GT_ModHandler.addCompressionRecipe(GT_Utility.copyAmount(9, aIngotStack), aStack);
-        switch (aMaterial.mName) {
-            case "Iron":
-            case "WroughtIron":
-                GT_Values.RA.addExtruderRecipe(aStack, ItemList.Shape_Extruder_Rod.get(0), ItemList.IC2_ShaftIron.get(1), 640, 120);
-                GT_Values.RA.addAssemblerRecipe(ItemList.IC2_Compressed_Coal_Ball.get(8), aStack, ItemList.IC2_Compressed_Coal_Chunk.get(1), 400, 4);
-                break;
-            case "Steel":
-                GT_Values.RA.addExtruderRecipe(aStack, ItemList.Shape_Extruder_Rod.get(0), ItemList.IC2_ShaftSteel.get(1), 1280, 120);
-                GT_Values.RA.addAssemblerRecipe(ItemList.IC2_Compressed_Coal_Ball.get(8), aStack, ItemList.IC2_Compressed_Coal_Chunk.get(1), 400, 4);
         }
     }
 }

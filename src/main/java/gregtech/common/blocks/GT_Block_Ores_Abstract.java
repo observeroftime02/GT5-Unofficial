@@ -11,7 +11,6 @@ import gregtech.api.enums.OrePrefixes;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.items.GT_Generic_Block;
 import gregtech.api.util.GT_LanguageManager;
-import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.MatUnifier;
 import gregtech.common.render.GT_Renderer_Block;
 import net.minecraft.block.Block;
@@ -48,9 +47,6 @@ public abstract class GT_Block_Ores_Abstract extends GT_Generic_Block implements
         tHideOres = Loader.isModLoaded("NotEnoughItems") && GT_Mod.gregtechproxy.mHideUnusedOres;
         if(aOreMetaCount > 8 || aOreMetaCount < 0) aOreMetaCount = 8;
 
-        for (int i = 0; i < 16; i++) {
-            GT_ModHandler.addValuableOre(this, i, 1);
-        }
         for (int i = 1; i < GregTech_API.sGeneratedMaterials.length; i++) {
             if (GregTech_API.sGeneratedMaterials[i] != null) {
                 for (int j = 0; j < aOreMetaCount; j++) {
@@ -58,11 +54,13 @@ public abstract class GT_Block_Ores_Abstract extends GT_Generic_Block implements
                     GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + ((i + 16000) + (j * 1000)) + aTextName, aTextSmall + getLocalizedName(GregTech_API.sGeneratedMaterials[i]));
                     if (GregTech_API.sGeneratedMaterials[i].hasFlag(MaterialFlags.ORE.bit)) {
                         MatUnifier.registerOre(this.getProcessingPrefix()[j] != null ? this.getProcessingPrefix()[j].get(GregTech_API.sGeneratedMaterials[i]) : "", new ItemStack(this, 1, i + (j * 1000)));
-                    if (tHideOres) {
-                        if(!(j == 0 && !aHideFirstMeta)){
-                            codechicken.nei.api.API.hideItem(new ItemStack(this, 1, i + (j * 1000)));}
+                        if (tHideOres) {
+                            if (!(j == 0 && !aHideFirstMeta)) {
+                                codechicken.nei.api.API.hideItem(new ItemStack(this, 1, i + (j * 1000)));
+                            }
                             codechicken.nei.api.API.hideItem(new ItemStack(this, 1, (i + 16000) + (j * 1000)));
-                    }}
+                        }
+                    }
                 }
             }
         }

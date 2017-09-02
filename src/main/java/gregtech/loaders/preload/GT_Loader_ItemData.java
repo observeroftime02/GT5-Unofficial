@@ -1,6 +1,5 @@
 package gregtech.loaders.preload;
 
-import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.objects.ItemData;
@@ -48,17 +47,12 @@ public class GT_Loader_ItemData
         MatUnifier.addItemData(new ItemStack(Items.minecart, 1), new ItemData(Materials.Iron, 18144000));
         MatUnifier.addItemData(new ItemStack(Items.cauldron, 1), new ItemData(Materials.Iron, 25401600));
         MatUnifier.addItemData(new ItemStack(Blocks.iron_bars, 8, 32767), new ItemData(Materials.Iron, 10886400));
-        MatUnifier.addItemData(ItemList.IC2_Food_Can_Empty.get(1), new ItemData(Materials.Tin, 1814400));
-        MatUnifier.addItemData(ItemList.IC2_Fuel_Rod_Empty.get(1), new ItemData(Materials.Iron, 3628800));
-        MatUnifier.addItemData(ItemList.IC2_Fuel_Can_Empty.get(1), new ItemData(Materials.Tin, 25401600));
         MatUnifier.addItemData(new ItemStack(Blocks.light_weighted_pressure_plate, 1, 32767), new ItemData(Materials.Gold, 7257600));
         MatUnifier.addItemData(new ItemStack(Blocks.heavy_weighted_pressure_plate, 1, 32767), new ItemData(Materials.Iron, 7257600));
         MatUnifier.addItemData(new ItemStack(Blocks.anvil, 1, 0), new ItemData(Materials.Iron, 108864000));
         MatUnifier.addItemData(new ItemStack(Blocks.anvil, 1, 1), new ItemData(Materials.Iron, 72576000));
         MatUnifier.addItemData(new ItemStack(Blocks.anvil, 1, 2), new ItemData(Materials.Iron, 36288000));
         MatUnifier.addItemData(new ItemStack(Blocks.hopper, 1, 32767), new ItemData(Materials.Iron, 18144000, new MaterialStack(Materials.Wood, 29030400)));
-        MatUnifier.addItemData(ItemList.Cell_Universal_Fluid.get(1), new ItemData(Materials.Tin, 7257600, new MaterialStack(Materials.Glass, 1360800)));
-        MatUnifier.addItemData(ItemList.Cell_Empty.get(1), new ItemData(Materials.Tin, 7257600));
         MatUnifier.addItemData(new ItemStack(Blocks.tripwire_hook, 1, 32767), new ItemData(Materials.Iron, OrePrefixes.ring.mMaterialAmount * 2, new MaterialStack(Materials.Wood, 3628800)));
         MatUnifier.addItemData(new ItemStack(Items.glass_bottle, 1), new ItemData(Materials.Glass, 3628800));
         MatUnifier.addItemData(new ItemStack(Items.potionitem, 1, 32767), new ItemData(Materials.Glass, 3628800));

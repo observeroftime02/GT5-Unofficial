@@ -17,16 +17,15 @@ public class ProcessingLog implements gregtech.api.interfaces.IOreRecipeRegistra
 
     public void registerOre(OrePrefixes aPrefix, Materials aMaterial, String aOreDictName, String aModName, ItemStack aStack) {
         if (aOreDictName.equals("logRubber")) {
-            GT_Values.RA.addCentrifugeRecipe(aStack, null, null, Materials.Methane.getGas(60L), ItemList.IC2_Resin.get(1), GT_ModHandler.getIC2Item("plantBall", 1), MatUnifier.get(OrePrefixes.dust, Materials.Carbon), MatUnifier.get(OrePrefixes.dust, Materials.Wood), null, null, new int[]{5000, 3750, 2500, 2500}, 200, 20);
-            GT_ModHandler.addSawmillRecipe(aStack, ItemList.IC2_Resin.get(1), MatUnifier.get(OrePrefixes.dust, Materials.Wood, 16));
+            GT_Values.RA.addCentrifugeRecipe(aStack, null, null, Materials.Methane.getGas(60), ItemList.Resin.get(1), MatUnifier.get(OrePrefixes.dust, Materials.Carbon), MatUnifier.get(OrePrefixes.dust, Materials.Wood), null, null, null, new int[]{5000, 2500, 2500}, 200, 20);
             GT_ModHandler.addExtractionRecipe(aStack, MatUnifier.get(OrePrefixes.dust, Materials.RawRubber));
-            GT_ModHandler.addPulverisationRecipe(aStack, MatUnifier.get(OrePrefixes.dust, Materials.Wood, 6), ItemList.IC2_Resin.get(1), 33, false);
+            GT_ModHandler.addPulverisationRecipe(aStack, MatUnifier.get(OrePrefixes.dust, Materials.Wood, 6), ItemList.Resin.get(1), 33, false);
         } else {
             GT_ModHandler.addPulverisationRecipe(aStack, MatUnifier.get(OrePrefixes.dust, Materials.Wood, 6), MatUnifier.get(OrePrefixes.dust, Materials.Wood), 80, false);
         }
 
-        GT_Values.RA.addAssemblerRecipe(aStack, ItemList.Circuit_Integrated.getWithDamage(0, 2), Materials.SeedOil.getFluid(50L), ItemList.FR_Stick.get(1), 16, 8);
-        GT_Values.RA.addAssemblerRecipe(GT_Utility.copyAmount(8, aStack), ItemList.Circuit_Integrated.getWithDamage(0, 8), Materials.SeedOil.getFluid(250L), ItemList.FR_Casing_Impregnated.get(1), 64, 16);
+        GT_Values.RA.addAssemblerRecipe(aStack, ItemList.Circuit_Integrated.getWithDamage(0, 2), Materials.SeedOil.getFluid(50), ItemList.FR_Stick.get(1), 16, 8);
+        GT_Values.RA.addAssemblerRecipe(GT_Utility.copyAmount(8, aStack), ItemList.Circuit_Integrated.getWithDamage(0, 8), Materials.SeedOil.getFluid(250), ItemList.FR_Casing_Impregnated.get(1), 64, 16);
 
         short aMeta = (short) aStack.getItemDamage();
         if (aMeta == Short.MAX_VALUE) {
@@ -51,9 +50,8 @@ public class ProcessingLog implements gregtech.api.interfaces.IOreRecipeRegistra
                 } else {
                     ItemStack tPlanks = GT_Utility.copy(tStack);
                     tPlanks.stackSize = (tPlanks.stackSize * 3 / 2);
-                    GT_Values.RA.addCutterRecipe(new ItemStack(aStack.getItem(), 1, i), Materials.Lubricant.getFluid(1L), GT_Utility.copy(tPlanks), MatUnifier.get(OrePrefixes.dust, Materials.Wood), 200, 8);
+                    GT_Values.RA.addCutterRecipe(new ItemStack(aStack.getItem(), 1, i), Materials.Lubricant.getFluid(1), GT_Utility.copy(tPlanks), MatUnifier.get(OrePrefixes.dust, Materials.Wood), 200, 8);
                     GT_Values.RA.addCutterRecipe(new ItemStack(aStack.getItem(), 1, i), GT_Utility.copyAmount(GT_Mod.gregtechproxy.mNerfedWoodPlank ? tStack.stackSize : tStack.stackSize * 5 / 4, tStack), MatUnifier.get(OrePrefixes.dust, Materials.Wood, 2), 200, 8);
-                    GT_ModHandler.addSawmillRecipe(new ItemStack(aStack.getItem(), 1, i), tPlanks, MatUnifier.get(OrePrefixes.dust, Materials.Wood));
                     GT_ModHandler.removeRecipe(new ItemStack(aStack.getItem(), 1, i));
                     GT_ModHandler.addCraftingRecipe(GT_Utility.copyAmount(GT_Mod.gregtechproxy.mNerfedWoodPlank ? tStack.stackSize : tStack.stackSize * 5 / 4, tStack), new Object[]{"s", "L", 'L', new ItemStack(aStack.getItem(), 1, i)});
                     GT_ModHandler.addShapelessCraftingRecipe(GT_Utility.copyAmount(tStack.stackSize / (GT_Mod.gregtechproxy.mNerfedWoodPlank ? 2 : 1), tStack), new Object[]{new ItemStack(aStack.getItem(), 1, i)});
@@ -70,9 +68,8 @@ public class ProcessingLog implements gregtech.api.interfaces.IOreRecipeRegistra
             if (tStack != null) {
                 ItemStack tPlanks = GT_Utility.copy(tStack);
                 tPlanks.stackSize = (tPlanks.stackSize * 3 / 2);
-                GT_Values.RA.addCutterRecipe(aStack, Materials.Lubricant.getFluid(1L), GT_Utility.copy(tPlanks), MatUnifier.get(OrePrefixes.dust, Materials.Wood), 200, 8);
+                GT_Values.RA.addCutterRecipe(aStack, Materials.Lubricant.getFluid(1), GT_Utility.copy(tPlanks), MatUnifier.get(OrePrefixes.dust, Materials.Wood), 200, 8);
                 GT_Values.RA.addCutterRecipe(aStack, GT_Utility.copyAmount(GT_Mod.gregtechproxy.mNerfedWoodPlank ? tStack.stackSize : tStack.stackSize * 5 / 4, tStack), MatUnifier.get(OrePrefixes.dust, Materials.Wood, 2), 200, 8);
-                GT_ModHandler.addSawmillRecipe(aStack, tPlanks, MatUnifier.get(OrePrefixes.dust, Materials.Wood));
                 GT_ModHandler.removeRecipe(aStack);
                 GT_ModHandler.addCraftingRecipe(GT_Utility.copyAmount(GT_Mod.gregtechproxy.mNerfedWoodPlank ? tStack.stackSize : tStack.stackSize * 5 / 4, tStack), new Object[]{"s", "L", 'L', aStack});
                 GT_ModHandler.addShapelessCraftingRecipe(GT_Utility.copyAmount(tStack.stackSize / (GT_Mod.gregtechproxy.mNerfedWoodPlank ? 2 : 1), tStack), new Object[]{aStack});

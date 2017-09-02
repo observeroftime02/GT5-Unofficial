@@ -810,8 +810,7 @@ public class GT_Utility {
         if (aStack.getItem().hasContainerItem(aStack)) return aStack.getItem().getContainerItem(aStack);
         /** These are all special Cases, in which it is intended to have only GT Blocks outputting those Container Items */
         if (ItemList.Cell_Empty.isStackEqual(aStack, false, true)) return null;
-        if (ItemList.IC2_Fuel_Can_Filled.isStackEqual(aStack, false, true)) return ItemList.IC2_Fuel_Can_Empty.get(1);
-        if (aStack.getItem() == Items.potionitem || aStack.getItem() == Items.experience_bottle || ItemList.TF_Vial_FieryBlood.isStackEqual(aStack) || ItemList.TF_Vial_FieryTears.isStackEqual(aStack))
+        if (aStack.getItem() == Items.potionitem || aStack.getItem() == Items.experience_bottle /*TODO || ItemList.TF_Vial_FieryBlood.isStackEqual(aStack) || ItemList.TF_Vial_FieryTears.isStackEqual(aStack)*/)
             return new ItemStack(Items.glass_bottle, 1);
 
         if (aCheckIFluidContainerItems && aStack.getItem() instanceof IFluidContainerItem && ((IFluidContainerItem) aStack.getItem()).getCapacity(aStack) > 0) {
@@ -824,8 +823,6 @@ public class GT_Utility {
         int tCapsuleCount = GT_ModHandler.getCapsuleCellContainerCount(aStack);
         if (tCapsuleCount > 0) return ItemList.Cell_Empty.get(tCapsuleCount);
 
-        if (ItemList.IC2_ForgeHammer.isStackEqual(aStack) || ItemList.IC2_WireCutter.isStackEqual(aStack))
-            return copyMetaData(Items.feather.getDamage(aStack) + 1, aStack);
         return null;
     }
     
@@ -1056,10 +1053,6 @@ public class GT_Utility {
 
     public static boolean isStackInvalid(ItemStack aStack) {
         return aStack == null || aStack.getItem() == null || aStack.stackSize < 0;
-    }
-
-    public static boolean isDebugItem(ItemStack aStack) {
-        return areStacksEqual(GT_ModHandler.getIC2Item("debug", 1), aStack, true);
     }
 
     public static ItemStack updateItemStack(ItemStack aStack) {

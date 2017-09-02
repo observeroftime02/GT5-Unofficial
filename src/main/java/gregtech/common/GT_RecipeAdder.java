@@ -1,6 +1,5 @@
 package gregtech.common;
 
-import cpw.mods.fml.common.Loader;
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.GT_Values;
@@ -11,23 +10,16 @@ import gregtech.api.interfaces.internal.IGT_RecipeAdder;
 import gregtech.api.objects.GT_FluidStack;
 import gregtech.api.objects.ItemData;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Recipe.GT_Recipe_AssemblyLine;
 import gregtech.api.util.GT_Utility;
-import mods.railcraft.common.blocks.aesthetics.cube.EnumCube;
-import mods.railcraft.common.items.RailcraftToolItems;
+import gregtech.api.util.MatUnifier;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
 public class GT_RecipeAdder implements IGT_RecipeAdder {
-    @Deprecated
-    public boolean addFusionReactorRecipe(ItemStack aInput1, ItemStack aInput2, ItemStack aOutput1, int aDuration, int aEUt, int aStartEU) {
-        return false;
-    }
-
     @Override
     public boolean addFusionReactorRecipe(FluidStack aInput1, FluidStack aInput2, FluidStack aOutput1, int aDuration, int aEUt, int aStartEU) {
         if (aInput1 == null || aInput2 == null || aOutput1 == null || aDuration < 1 || aEUt < 1 || aStartEU < 1) {
@@ -41,7 +33,7 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
     }
 
     public boolean addCentrifugeRecipe(ItemStack aInput1, int aInput2, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, ItemStack aOutput4, ItemStack aOutput5, ItemStack aOutput6, int aDuration) {
-        return addCentrifugeRecipe(aInput1, aInput2 < 0 ? ItemList.IC2_Fuel_Can_Empty.get(-aInput2) : aInput2 > 0 ? ItemList.Cell_Empty.get(aInput2) : null, null, null, aOutput1, aOutput2, aOutput3, aOutput4, aOutput5, aOutput6, null, aDuration, 5);
+        return addCentrifugeRecipe(aInput1, aInput2 > 0 ? ItemList.Cell_Empty.get(aInput2) : null, null, null, aOutput1, aOutput2, aOutput3, aOutput4, aOutput5, aOutput6, null, aDuration, 5);
     }
 
     public boolean addCentrifugeRecipe(ItemStack aInput1, ItemStack aInput2, FluidStack aFluidInput, FluidStack aFluidOutput, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, ItemStack aOutput4, ItemStack aOutput5, ItemStack aOutput6, int[] aChances, int aDuration, int aEUt) {
@@ -70,7 +62,7 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
     }
 
     public boolean addElectrolyzerRecipe(ItemStack aInput1, int aInput2, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, ItemStack aOutput4, ItemStack aOutput5, ItemStack aOutput6, int aDuration, int aEUt) {
-        return addElectrolyzerRecipe(aInput1, aInput2 < 0 ? ItemList.IC2_Fuel_Can_Empty.get(-aInput2) : aInput2 > 0 ? ItemList.Cell_Empty.get(aInput2) : null, null, null, aOutput1, aOutput2, aOutput3, aOutput4, aOutput5, aOutput6, null, aDuration, aEUt);
+        return addElectrolyzerRecipe(aInput1, aInput2 > 0 ? ItemList.Cell_Empty.get(aInput2) : null, null, null, aOutput1, aOutput2, aOutput3, aOutput4, aOutput5, aOutput6, null, aDuration, aEUt);
     }
 
     public boolean addElectrolyzerRecipe(ItemStack aInput1, ItemStack aInput2, FluidStack aFluidInput, FluidStack aFluidOutput, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, ItemStack aOutput4, ItemStack aOutput5, ItemStack aOutput6, int[] aChances, int aDuration, int aEUt) {
@@ -117,7 +109,6 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
             return false;
         }
         GT_Recipe.GT_Recipe_Map.sChemicalRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2}, new ItemStack[]{aOutput, aOutput2}, null, null, new FluidStack[]{aFluidInput}, new FluidStack[]{aFluidOutput}, aDuration, aEUtick, 0);
-//      GT_Recipe.GT_Recipe_Map.sMultiblockChemicalRecipes.addRecipe(false, new ItemStack[]{aInput1, aInput2}, new ItemStack[]{aOutput, aOutput2}, null, null, new FluidStack[]{aFluidInput}, new FluidStack[]{aFluidOutput}, aDuration, aEUtick, 0);
         return true;
     }
 
@@ -153,7 +144,7 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
     @Override
     public void addDefaultPolymerizationRecipes(Fluid aBasicMaterial, Fluid aPolymer) {
         //Oxygen/Titaniumtetrafluoride -> +50% Output each
-        addChemicalRecipe(ItemList.Cell_Air.get(2), GT_Utility.getIntegratedCircuit(1), new GT_FluidStack(aBasicMaterial, 144), new GT_FluidStack(aPolymer, 144), Materials.Empty.getCells(2), 160);
+        addChemicalRecipe(Materials.Air.getCells(2), GT_Utility.getIntegratedCircuit(1), new GT_FluidStack(aBasicMaterial, 144), new GT_FluidStack(aPolymer, 144), Materials.Empty.getCells(2), 160);
         addChemicalRecipe(Materials.Oxygen.getCells(2), GT_Utility.getIntegratedCircuit(1), new GT_FluidStack(aBasicMaterial, 144), new GT_FluidStack(aPolymer, 216), Materials.Empty.getCells(2), 160);
         addMultiblockChemicalRecipe(new ItemStack[]{GT_Utility.getIntegratedCircuit(2)},
                 new FluidStack[]{new GT_FluidStack(aBasicMaterial, 2160), Materials.Air.getGas(15000), Materials.Titaniumtetrachloride.getFluid(100)},
@@ -193,9 +184,6 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
             GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, coal.getGems(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDustTiny(aCoalAmount)}, null, null, null, null, aDuration, 0, 0);
             GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, coal.getDust(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDustTiny(aCoalAmount)}, null, null, null, null, aDuration, 0, 0);
         }
-        if (Loader.isModLoaded("Railcraft")) {
-            GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, RailcraftToolItems.getCoalCoke(aCoalAmount / 2)}, new ItemStack[]{aOutput1, aOutput2, Materials.Ash.getDustTiny(aCoalAmount / 2)}, null, null, null, null, aDuration * 2 / 3, 0, 0);
-        }
         if ((aInput1 == null || aInput1.stackSize <= 6) && (aInput2 == null || aInput2.stackSize <= 6) &&
                 (aOutput1 == null || aOutput1.stackSize <= 6) && (aOutput2 == null || aOutput2.stackSize <= 6)) {
             aInput1 = aInput1 == null ? null : GT_Utility.copyAmount(aInput1.stackSize * 10, aInput1);
@@ -205,9 +193,6 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
             for (Materials coal : coals) {
                 GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, coal.getBlocks(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDust(aCoalAmount)}, null, null, null, null, aDuration * 10, 0, 0);
                 GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, coal.getBlocks(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDust(aCoalAmount)}, null, null, null, null, aDuration * 10, 0, 0);
-            }
-            if (Loader.isModLoaded("Railcraft")) {
-                GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, EnumCube.COKE_BLOCK.getItem(aCoalAmount / 2)}, new ItemStack[]{aOutput1, aOutput2, Materials.Ash.getDust(aCoalAmount / 2)}, null, null, null, null, aDuration * 20 / 3, 0, 0);
             }
         }
         return true;
@@ -402,16 +387,14 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
         int tGunpowder = tExplosives * 2;
         int tDynamite = Math.max(1, tExplosives / 2);
         int tTNT = Math.max(1, tExplosives / 2);
-        int tITNT = Math.max(1, tExplosives / 4);
-        //new GT_Recipe(aInput1, aInput2, aOutput1, aOutput2);
         if (tGunpowder < 65) {
             GT_Recipe.GT_Recipe_Map.sImplosionRecipes.addRecipe(true, new ItemStack[]{aInput1, ItemList.Block_Powderbarrel.get(tGunpowder)}, new ItemStack[]{aOutput1, aOutput2}, null, null, null, null, 20, 30, 0);
         }
         if (tDynamite < 17) {
-            GT_Recipe.GT_Recipe_Map.sImplosionRecipes.addRecipe(true, new ItemStack[]{aInput1, GT_ModHandler.getIC2Item("dynamite", tDynamite, null)}, new ItemStack[]{aOutput1, aOutput2}, null, null, null, null, 20, 30, 0);
+            GT_Recipe.GT_Recipe_Map.sImplosionRecipes.addRecipe(true, new ItemStack[]{aInput1, ItemList.Dynamite.get(1)}, new ItemStack[]{aOutput1, aOutput2}, null, null, null, null, 20, 30, 0);
         }
         GT_Recipe.GT_Recipe_Map.sImplosionRecipes.addRecipe(true, new ItemStack[]{aInput1, new ItemStack(Blocks.tnt, tTNT)}, new ItemStack[]{aOutput1, aOutput2}, null, null, null, null, 20, 30, 0);
-        GT_Recipe.GT_Recipe_Map.sImplosionRecipes.addRecipe(true, new ItemStack[]{aInput1, GT_ModHandler.getIC2Item("industrialTnt", tITNT, null)}, new ItemStack[]{aOutput1, aOutput2}, null, null, null, null, 20, 30, 0);
+        GT_Recipe.GT_Recipe_Map.sImplosionRecipes.addRecipe(true, new ItemStack[]{aInput1, ItemList.IndustrialExplosive.get(1)}, new ItemStack[]{aOutput1, aOutput2}, null, null, null, null, 20, 30, 0);
 
         return true;
     }
@@ -491,17 +474,6 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
             return false;
         }
         GT_Recipe.GT_Recipe_Map.sBoxinatorRecipes.addRecipe(true, new ItemStack[]{aContainedItem, aEmptyBox}, new ItemStack[]{aFullBox}, null, null, null, aDuration, aEUt, 0);
-        return true;
-    }
-
-    public boolean addUnboxingRecipe(ItemStack aFullBox, ItemStack aContainedItem, ItemStack aEmptyBox, int aDuration, int aEUt) {
-        if ((aFullBox == null) || (aContainedItem == null)) {
-            return false;
-        }
-        if (!GregTech_API.sRecipeFile.get("unboxing", aFullBox, true)) {
-            return false;
-        }
-        GT_Recipe.GT_Recipe_Map.sUnboxinatorRecipes.addRecipe(true, new ItemStack[]{aFullBox}, new ItemStack[]{aContainedItem, aEmptyBox}, null, null, null, aDuration, aEUt, 0);
         return true;
     }
 

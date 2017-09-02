@@ -98,11 +98,11 @@ public class GT_MetaTileEntity_Boiler_Bronze
                         }
                         this.mFluid.amount -= 1;
                         if (this.mSteam == null) {
-                            this.mSteam = GT_ModHandler.getSteam(150L);
+                            this.mSteam = GT_ModHandler.getSteam(150);
                         } else if (GT_ModHandler.isSteam(this.mSteam)) {
                             this.mSteam.amount += 150;
                         } else {
-                            this.mSteam = GT_ModHandler.getSteam(150L);
+                            this.mSteam = GT_ModHandler.getSteam(150);
                         }
                     }
                 } else {

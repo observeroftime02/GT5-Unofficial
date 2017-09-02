@@ -52,6 +52,8 @@ public class GT_Block_Reinforced extends GT_Generic_Block {
         GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".5.name", "Powderbarrel");
         GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".6.name", "Solid Super Fuel");
         GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".7.name", "Magic Solid Super Fuel");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".8.name", "Mining Pipe");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".9.name", "Mining Pipe Tip");
         ItemList.Block_BronzePlate.set(new ItemStack(this.setHardness(60.0f).setResistance(150.0f), 1, 0));
         ItemList.Block_IridiumTungstensteel.set(new ItemStack(this.setHardness(200.0f).setResistance(600.0f), 1, 1));
         ItemList.Block_Plascrete.set(new ItemStack(this.setHardness(40.0f).setResistance(100.0f), 1, 2));
@@ -60,6 +62,8 @@ public class GT_Block_Reinforced extends GT_Generic_Block {
         ItemList.Block_Powderbarrel.set(new ItemStack(this.setHardness(2.5f).setResistance(2.0f), 1, 5));
         ItemList.Block_SSFUEL.set(new ItemStack(this.setHardness(2.5f).setResistance(2.0f), 1, 6));
         ItemList.Block_MSSFUEL.set(new ItemStack(this.setHardness(2.5f).setResistance(2.0f), 1, 7));
+        ItemList.Block_MiningPipe.set(new ItemStack(this.setHardness(1.0f).setResistance(1.5f), 1, 8));
+        ItemList.Block_MiningPipeTip.set(new ItemStack(this.setHardness(1.0f).setResistance(1.5f), 1, 9));
         GT_ModHandler.addCraftingRecipe(ItemList.Block_BronzePlate.get(1),GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"hP ", "PBP", " P ", 'P', OrePrefixes.plate.get(Materials.Bronze), 'B', OrePrefixes.stone.get(Materials.GraniteBlack)});
         GT_ModHandler.addCraftingRecipe(ItemList.Block_BronzePlate.get(1),GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"hP ", "PBP", " P ", 'P', OrePrefixes.plate.get(Materials.Bronze), 'B', OrePrefixes.stone.get(Materials.GraniteRed)});
         GT_ModHandler.addCraftingRecipe(ItemList.Block_IridiumTungstensteel.get(1),GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"hBP", 'P', OrePrefixes.plate.get(Materials.Iridium), 'B', ItemList.Block_TungstenSteelReinforced.get(1)});

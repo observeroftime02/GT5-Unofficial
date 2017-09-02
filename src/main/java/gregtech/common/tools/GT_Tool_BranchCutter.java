@@ -3,8 +3,6 @@ package gregtech.common.tools;
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.IIconContainer;
 import gregtech.api.items.GT_MetaGenerated_Tool;
-import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.GT_Utility;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -50,10 +48,10 @@ public class GT_Tool_BranchCutter
             } else if (aBlock == Blocks.leaves2) {
                 aDrops.clear();
                 aDrops.add(new ItemStack(Blocks.sapling, 1, (aMetaData & 0x3) + 4));
-            } else if (aBlock == GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("rubberLeaves", 1))) {
+            } /*else if (aBlock == GT_Utility.getBlockFromStack(GT_ModHandler.getIC2Item("rubberLeaves", 1))) { //TODO ADD MFR SUPPORT? READD IC2 SUPPORT?
                 aDrops.clear();
                 aDrops.add(GT_ModHandler.getIC2Item("rubberSapling", 1));
-            }
+            }*/
         }
         return 0;
     }

@@ -32,8 +32,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
-import thaumcraft.api.IGoggles;
-import thaumcraft.api.nodes.IRevealer;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -41,7 +39,7 @@ import java.util.Random;
 
 @Optional.InterfaceList(value = { @Optional.Interface(iface = "thaumcraft.api.IGoggles", modid = "Thaumcraft", striprefs = true),
 		@Optional.Interface(iface = "thaumcraft.api.nodes.IRevealer", modid = "Thaumcraft", striprefs = true) })
-public class ModularArmor_Item extends ItemArmor implements ISpecialArmor, IGoggles, IRevealer {
+public class ModularArmor_Item extends ItemArmor implements ISpecialArmor/*, IGoggles, IRevealer*/ {
 
 	public String mName;
 	public int timer = 160;
@@ -422,21 +420,21 @@ public class ModularArmor_Item extends ItemArmor implements ISpecialArmor, IGogg
 		return armor;
 	}
 
-	@Override
-	public boolean showNodes(ItemStack aStack, EntityLivingBase aPlayer) {
-		if (data == null) {
-			data = fillArmorData((EntityPlayer) aPlayer, aStack);
-		}
-		return data.mBStat.get(StatType.THAUMICGOGGLES) && data.armorTier > 0 && data.charge > 0;
-	}
-
-	@Override
-	public boolean showIngamePopups(ItemStack aStack, EntityLivingBase aPlayer) {
-		if (data == null) {
-			data = fillArmorData((EntityPlayer) aPlayer, aStack);
-		}
-		return data.mBStat.get(StatType.THAUMICGOGGLES) && data.armorTier > 0 && data.charge > 0;
-	}
+//	@Override
+//	public boolean showNodes(ItemStack aStack, EntityLivingBase aPlayer) {
+//		if (data == null) {
+//			data = fillArmorData((EntityPlayer) aPlayer, aStack);
+//		}
+//		return data.mBStat.get(StatType.THAUMICGOGGLES) && data.armorTier > 0 && data.charge > 0;
+//	}
+//
+//	@Override
+//	public boolean showIngamePopups(ItemStack aStack, EntityLivingBase aPlayer) {
+//		if (data == null) {
+//			data = fillArmorData((EntityPlayer) aPlayer, aStack);
+//		}
+//		return data.mBStat.get(StatType.THAUMICGOGGLES) && data.armorTier > 0 && data.charge > 0;
+//	}
 
 	public ArmorData fillArmorData(EntityPlayer player, ItemStack stack) {
 		return new ArmorData(player, stack, this.armorType, openGuiNr);

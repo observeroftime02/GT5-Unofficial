@@ -1,6 +1,5 @@
 package gregtech.loaders.preload;
 
-import codechicken.nei.api.API;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -13,8 +12,8 @@ import gregtech.api.metatileentity.BaseMetaPipeEntity;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
 import gregtech.api.util.GT_Log;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.MatUnifier;
 import gregtech.api.util.GT_Utility;
+import gregtech.api.util.MatUnifier;
 import gregtech.common.blocks.*;
 import gregtech.common.items.*;
 import gregtech.common.items.armor.ElectricModularArmor1;
@@ -27,8 +26,8 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 
 public class GT_Loader_Item_Block_And_Fluid implements Runnable {
     public void run() {
-        Materials.Water.mFluid = (Materials.Ice.mFluid = GT_ModHandler.getWater(1000L).getFluid());
-        Materials.Lava.mFluid = GT_ModHandler.getLava(1000L).getFluid();
+        Materials.Water.mFluid = (Materials.Ice.mFluid = GT_ModHandler.getWater(1000).getFluid());
+        Materials.Lava.mFluid = GT_ModHandler.getLava(1000).getFluid();
 
         GT_Log.out.println("GT_Mod: Register Books.");
 
@@ -77,10 +76,10 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
         ItemList.NC_SensorCard.set(tItem == null ? new GT_Generic_Item("sensorcard", "GregTech Sensor Card", "Nuclear Control not installed", false) : tItem);
         
         ItemList.Neutron_Reflector.set(new GT_NeutronReflector_Item("neutronreflector", "Iridium Neutron Reflector", 0));
-        GT_ModHandler.addCraftingRecipe(ItemList.Neutron_Reflector.get(1), GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"RRR", "RPR", "RRR", 'R', GT_ModHandler.getIC2Item("reactorReflectorThick", 1), 'P', ItemList.Plate_IridiumAlloy.get(1),});
-        GT_ModHandler.addCraftingRecipe(ItemList.Neutron_Reflector.get(1), GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"RBR", "RPR", "RBR", 'R', GT_ModHandler.getIC2Item("reactorReflectorThick", 1), 'P', ItemList.Plate_IridiumAlloy.get(1),'B', OrePrefixes.plate.get(Materials.TungstenCarbide)});
+        //TODO GT_ModHandler.addCraftingRecipe(ItemList.Neutron_Reflector.get(1), GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"RRR", "RPR", "RRR", 'R', GT_ModHandler.getIC2Item("reactorReflectorThick", 1), 'P', ItemList.Plate_IridiumAlloy.get(1),});
+        //TODO GT_ModHandler.addCraftingRecipe(ItemList.Neutron_Reflector.get(1), GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"RBR", "RPR", "RBR", 'R', GT_ModHandler.getIC2Item("reactorReflectorThick", 1), 'P', ItemList.Plate_IridiumAlloy.get(1),'B', OrePrefixes.plate.get(Materials.TungstenCarbide)});
 
-        ItemList.Reactor_Coolant_He_1.set(GregTech_API.constructCoolantCellItem("60k_Helium_Coolantcell", "60k He Coolant Cell", 60000));
+        /*ItemList.Reactor_Coolant_He_1.set(GregTech_API.constructCoolantCellItem("60k_Helium_Coolantcell", "60k He Coolant Cell", 60000));
         GT_ModHandler.addCraftingRecipe(ItemList.Reactor_Coolant_He_1.get(1), GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{" P ", "PCP", " P ", 'C', OrePrefixes.cell.get(Materials.Helium), 'P', OrePrefixes.plate.get(Materials.Tin)});
 
         ItemList.Reactor_Coolant_He_3.set(GregTech_API.constructCoolantCellItem("180k_Helium_Coolantcell", "180k He Coolant Cell", 180000));
@@ -96,8 +95,8 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
         GT_ModHandler.addCraftingRecipe(ItemList.Reactor_Coolant_NaK_3.get(1), GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"PCP", "PCP", "PCP", 'C', ItemList.Reactor_Coolant_NaK_1, 'P', OrePrefixes.plate.get(Materials.Tin)});
 
         ItemList.Reactor_Coolant_NaK_6.set(GregTech_API.constructCoolantCellItem("360k_NaK_Coolantcell", "360k NaK Coolantcell", 360000));
-        GT_ModHandler.addCraftingRecipe(ItemList.Reactor_Coolant_NaK_6.get(1), GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"PCP", "PDP", "PCP", 'C', ItemList.Reactor_Coolant_NaK_3, 'P', OrePrefixes.plate.get(Materials.Tin), 'D', OrePrefixes.plateDense.get(Materials.Copper)});
-        if(!GregTech_API.mIC2Classic){
+        GT_ModHandler.addCraftingRecipe(ItemList.Reactor_Coolant_NaK_6.get(1), GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"PCP", "PDP", "PCP", 'C', ItemList.Reactor_Coolant_NaK_3, 'P', OrePrefixes.plate.get(Materials.Tin), 'D', OrePrefixes.plateDense.get(Materials.Copper)});*/
+
         ItemList.Depleted_Thorium_1.set(new GT_DepletetCell_Item("ThoriumcellDep", "Fuel Rod (Depleted Thorium)", 1));
         ItemList.Depleted_Thorium_2.set(new GT_DepletetCell_Item("Double_ThoriumcellDep", "Dual Fuel Rod (Depleted Thorium)", 1));
         ItemList.Depleted_Thorium_4.set(new GT_DepletetCell_Item("Quad_ThoriumcellDep", "Quad Fuel Rod (Depleted Thorium)", 1));
@@ -121,22 +120,14 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
 
         ItemList.NaquadahCell_4.set(new GT_RadioactiveCellIC_Item("Quad_Naquadahcell", "Quad Fuel Rod (Naquadah)", 4, 100000, 2F, 1, 1F, ItemList.Depleted_Naquadah_4.get(1),true));
         GT_ModHandler.addCraftingRecipe(ItemList.NaquadahCell_4.get(1), GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"RPR", "CPC", "RPR", 'R', ItemList.NaquadahCell_1, 'P', OrePrefixes.plate.get(Materials.Iron), 'C', OrePrefixes.plate.get(Materials.Copper)});
-
-        GT_ModHandler.addThermalCentrifugeRecipe(ItemList.Depleted_Naquadah_1.get(1), 5000, MatUnifier.get(OrePrefixes.dust, Materials.Naquadah, 1), MatUnifier.get(OrePrefixes.dustSmall, Materials.Naquadria, 2), MatUnifier.get(OrePrefixes.dust, Materials.Iron, 1));
-        GT_ModHandler.addThermalCentrifugeRecipe(ItemList.Depleted_Naquadah_2.get(1), 5000, MatUnifier.get(OrePrefixes.dust, Materials.Naquadah, 2), MatUnifier.get(OrePrefixes.dust, Materials.Naquadria, 1), MatUnifier.get(OrePrefixes.dust, Materials.Iron, 3));
-        GT_ModHandler.addThermalCentrifugeRecipe(ItemList.Depleted_Naquadah_4.get(1), 5000, MatUnifier.get(OrePrefixes.dust, Materials.Naquadah, 4), MatUnifier.get(OrePrefixes.dust, Materials.Naquadria, 2), MatUnifier.get(OrePrefixes.dust, Materials.Iron, 6));
         
-        ItemList.Uraniumcell_1.set(new GT_RadioactiveCellIC_Item("reactorUraniumSimple", "Fuel Rod (Uranium)"       , 1, 20000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedUraniumSimple", 1),false));
-        ItemList.Uraniumcell_2.set(new GT_RadioactiveCellIC_Item("reactorUraniumDual", "Dual Fuel Rod (Uranium)"  , 2, 20000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedUraniumDual", 1),false));
-        ItemList.Uraniumcell_4.set(new GT_RadioactiveCellIC_Item("reactorUraniumQuad"  , "Quad Fuel Rod (Uranium)"  , 4, 20000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedUraniumQuad"  , 1),false));
-        ItemList.Moxcell_1.set(new GT_RadioactiveCellIC_Item("reactorMOXSimple", "Fuel Rod (Mox)", 1, 10000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedMOXSimple", 1),true));
-        ItemList.Moxcell_2.set(new GT_RadioactiveCellIC_Item("reactorMOXDual"  , "Dual Fuel Rod (Mox)", 2, 10000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedMOXDual", 1),true));
-        ItemList.Moxcell_4.set(new GT_RadioactiveCellIC_Item("reactorMOXQuad", "Quad Fuel Rod (Mox)"  , 4, 10000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedMOXQuad"  , 1),true));
+//        ItemList.Uraniumcell_1.set(new GT_RadioactiveCellIC_Item("reactorUraniumSimple", "Fuel Rod (Uranium)"       , 1, 20000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedUraniumSimple", 1),false));
+//        ItemList.Uraniumcell_2.set(new GT_RadioactiveCellIC_Item("reactorUraniumDual", "Dual Fuel Rod (Uranium)"  , 2, 20000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedUraniumDual", 1),false));
+//        ItemList.Uraniumcell_4.set(new GT_RadioactiveCellIC_Item("reactorUraniumQuad"  , "Quad Fuel Rod (Uranium)"  , 4, 20000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedUraniumQuad"  , 1),false));
+//        ItemList.Moxcell_1.set(new GT_RadioactiveCellIC_Item("reactorMOXSimple", "Fuel Rod (Mox)", 1, 10000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedMOXSimple", 1),true));
+//        ItemList.Moxcell_2.set(new GT_RadioactiveCellIC_Item("reactorMOXDual"  , "Dual Fuel Rod (Mox)", 2, 10000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedMOXDual", 1),true));
+//        ItemList.Moxcell_4.set(new GT_RadioactiveCellIC_Item("reactorMOXQuad", "Quad Fuel Rod (Mox)"  , 4, 10000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedMOXQuad"  , 1),true));
 
-        GT_ModHandler.addThermalCentrifugeRecipe(ItemList.Depleted_Thorium_1.get(1), 5000, MatUnifier.get(OrePrefixes.dustSmall, Materials.Lutetium, 2), MatUnifier.get(OrePrefixes.dust, Materials.Thorium, 1), MatUnifier.get(OrePrefixes.dust, Materials.Iron, 1));
-        GT_ModHandler.addThermalCentrifugeRecipe(ItemList.Depleted_Thorium_2.get(1), 5000, MatUnifier.get(OrePrefixes.dust, Materials.Lutetium, 1), MatUnifier.get(OrePrefixes.dust, Materials.Thorium, 2), MatUnifier.get(OrePrefixes.dust, Materials.Iron, 3));
-        GT_ModHandler.addThermalCentrifugeRecipe(ItemList.Depleted_Thorium_4.get(1), 5000, MatUnifier.get(OrePrefixes.dust, Materials.Lutetium, 2), MatUnifier.get(OrePrefixes.dust, Materials.Thorium, 4), MatUnifier.get(OrePrefixes.dust, Materials.Iron, 6));
-        }
         GT_Log.out.println("GT_Mod: Adding Blocks.");
         GregTech_API.sBlockMachines = new GT_Block_Machines();
         GregTech_API.sBlockCasings1 = new GT_Block_Casings1();
@@ -329,13 +320,9 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
         GT_Log.out.println("GT_Mod: Registering the Ore TileEntity.");
         GameRegistry.registerTileEntity(GT_TileEntity_Ores.class, "GT_TileEntity_Ores");
         FMLInterModComms.sendMessage("appliedenergistics2", "whitelist-spatial", GT_TileEntity_Ores.class.getName());
-        if(!GregTech_API.mIC2Classic){
-        GT_Log.out.println("GT_Mod: Registering Fluids.");
-        Materials.ConstructionFoam.mFluid = GT_Utility.getFluidForFilledItem(GT_ModHandler.getIC2Item("CFCell", 1), true).getFluid();
-        Materials.UUMatter.mFluid = GT_Utility.getFluidForFilledItem(GT_ModHandler.getIC2Item("uuMatterCell", 1), true).getFluid();
-        }
 
-        GT_Mod.gregtechproxy.addFluid("Air", "Air", Materials.Air, 2, 295, ItemList.Cell_Air.get(1), ItemList.Cell_Empty.get(1), 2000);
+        GT_Log.out.println("GT_Mod: Registering Fluids.");
+        GT_Mod.gregtechproxy.addFluid("Air", "Air", Materials.Air, 2, 295, Materials.Air.getCells(1), ItemList.Cell_Empty.get(1), 2000);
         GT_Mod.gregtechproxy.addFluid("Oxygen", "Oxygen", Materials.Oxygen, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.Oxygen), ItemList.Cell_Empty.get(1), 1000);
         GT_Mod.gregtechproxy.addFluid("Hydrogen", "Hydrogen", Materials.Hydrogen, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.Hydrogen), ItemList.Cell_Empty.get(1), 1000);
         GT_Mod.gregtechproxy.addFluid("Deuterium", "Deuterium", Materials.Deuterium, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.Deuterium), ItemList.Cell_Empty.get(1), 1000);
@@ -349,8 +336,10 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
         GT_Mod.gregtechproxy.addFluid("Methane", "Methane", Materials.Methane, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.Methane), ItemList.Cell_Empty.get(1), 1000);
         GT_Mod.gregtechproxy.addFluid("Nitrogen", "Nitrogen", Materials.Nitrogen, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.Nitrogen), ItemList.Cell_Empty.get(1), 1000);
         GT_Mod.gregtechproxy.addFluid("NitrogenDioxide", "Nitrogen Dioxide", Materials.NitrogenDioxide, 2, 295, MatUnifier.get(OrePrefixes.cell, Materials.NitrogenDioxide), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("Steam", "Steam", Materials.Water, 2, 375, GT_ModHandler.getIC2Item("steamCell", 1), Materials.Empty.getCells(1), 1000);
-        GT_Values.RA.addFluidCannerRecipe(Materials.Empty.getCells(1), GT_ModHandler.getIC2Item("steamCell", 1), GT_ModHandler.getSteam(1000), null);
+        GT_Mod.gregtechproxy.addFluid("Steam", "Steam", Materials.Water, 2, 375, ItemList.Cell_Steam.get(1), Materials.Empty.getCells(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("UUMatter", "UUMatter", Materials.UUMatter, 1, 375, MatUnifier.get(OrePrefixes.cell, Materials.UUMatter), ItemList.Cell_Empty.get(1), 1000);
+        GT_Mod.gregtechproxy.addFluid("Coolant", "Coolant", Materials.Coolant, 1, 375, MatUnifier.get(OrePrefixes.cell, Materials.Coolant), ItemList.Cell_Empty.get(1), 1000);
+        GT_Values.RA.addFluidCannerRecipe(Materials.Empty.getCells(1), ItemList.Cell_Steam.get(1), GT_ModHandler.getSteam(1000), null);
         Materials.Ice.mGas = Materials.Water.mGas;
         Materials.Water.mGas.setTemperature(375).setGaseous(true);
 
@@ -403,9 +392,9 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
             //FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.FierySteel.getFluid(250L), ItemList.TF_Vial_FieryBlood.get(1L, new Object[0]), ItemList.Bottle_Empty.get(1L, new Object[0])));
         //}
         
-        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Milk.getFluid(1000L), MatUnifier.get(OrePrefixes.bucket, Materials.Milk), MatUnifier.get(OrePrefixes.bucket, Materials.Empty)));
-        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Fuel.getFluid(100L), ItemList.Tool_Lighter_Invar_Full.get(1), ItemList.Tool_Lighter_Invar_Empty.get(1)));
-        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Fuel.getFluid(1000L), ItemList.Tool_Lighter_Platinum_Full.get(1), ItemList.Tool_Lighter_Platinum_Empty.get(1)));
+        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Milk.getFluid(1000), MatUnifier.get(OrePrefixes.bucket, Materials.Milk), MatUnifier.get(OrePrefixes.bucket, Materials.Empty)));
+        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Fuel.getFluid(100), ItemList.Tool_Lighter_Invar_Full.get(1), ItemList.Tool_Lighter_Invar_Empty.get(1)));
+        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Fuel.getFluid(1000), ItemList.Tool_Lighter_Platinum_Full.get(1), ItemList.Tool_Lighter_Platinum_Empty.get(1)));
 
         GT_Mod.gregtechproxy.addFluid("ice", "Crushed Ice", Materials.Ice, 0, 270, MatUnifier.get(OrePrefixes.cell, Materials.Ice), ItemList.Cell_Empty.get(1), 1000);
         Materials.Water.mSolid = Materials.Ice.mSolid;
@@ -415,6 +404,7 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
         GT_Mod.gregtechproxy.addFluid("molten.redstone", "Molten Redstone", Materials.Redstone, 4, 500);
         GT_Mod.gregtechproxy.addFluid("molten.blaze", "Molten Blaze", Materials.Blaze, 4, 6400);
         GT_Mod.gregtechproxy.addFluid("molten.concrete", "Wet Concrete", Materials.Concrete, 4, 300);
+
         for (Materials tMaterial : Materials.values()) {
             if ((tMaterial.mStandardMoltenFluid == null) && (tMaterial.contains(SubTag.SMELTING_TO_FLUID)) && (!tMaterial.contains(SubTag.NO_SMELTING))) {
                 GT_Mod.gregtechproxy.addAutogeneratedMoltenFluid(tMaterial);
@@ -483,34 +473,8 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
 		ItemList.ModularElectric2Leggings.set(new ElectricModularArmor1(0, 2, "modularelectric2_leggings",2));
 		ItemList.ModularElectric2Boots.set(new ElectricModularArmor1(0, 3, "modularelectric2_boots",2));
 
-        if (GregTech_API.sUnification.get(ConfigCategories.specialunificationtargets + "." + "railcraft", "plateIron", true)) {
-            MatUnifier.set(OrePrefixes.plate, Materials.Iron, GT_ModHandler.getModItem("Railcraft", "part.plate", 0));
-        } else {
-            MatUnifier.set(OrePrefixes.plate, Materials.Iron, GT_ModHandler.getModItem("Railcraft", "part.plate", 0), false, false);
-        }
-
-        if (GregTech_API.sUnification.get(ConfigCategories.specialunificationtargets + "." + "railcraft", "plateSteel", true)) {
-            MatUnifier.set(OrePrefixes.plate, Materials.Steel, GT_ModHandler.getModItem("Railcraft", "part.plate", 1));
-        } else {
-            MatUnifier.set(OrePrefixes.plate, Materials.Steel, GT_ModHandler.getModItem("Railcraft", "part.plate", 1), false, false);
-        }
-
-        if (GregTech_API.sUnification.get(ConfigCategories.specialunificationtargets + "." + "railcraft", "plateTinAlloy", true)) {
-            //TODO GT_OreDictUnificator.set(OrePrefixes.plate, Materials.TinAlloy, GT_ModHandler.getModItem("Railcraft", "part.plate", 2));
-        } else {
-            //TODO GT_OreDictUnificator.set(OrePrefixes.plate, Materials.TinAlloy, GT_ModHandler.getModItem("Railcraft", "part.plate", 2), false, false);
-        }
-
-
-        if (GregTech_API.sUnification.get(ConfigCategories.specialunificationtargets + "." + "railcraft", "plateCopper", true)) {
-            MatUnifier.set(OrePrefixes.plate, Materials.Copper, GT_ModHandler.getModItem("Railcraft", "part.plate", 3));
-        } else {
-            MatUnifier.set(OrePrefixes.plate, Materials.Copper, GT_ModHandler.getModItem("Railcraft", "part.plate", 3), false, false);
-        }
-
-        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Naquadah.getMolten(1000L), MatUnifier.get(OrePrefixes.cell, Materials.Naquadah), MatUnifier.get(OrePrefixes.cell, Materials.Empty)));
-        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.NaquadahEnriched.getMolten(1000L), MatUnifier.get(OrePrefixes.cell, Materials.NaquadahEnriched), MatUnifier.get(OrePrefixes.cell, Materials.Empty)));
-        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Naquadria.getMolten(1000L), MatUnifier.get(OrePrefixes.cell, Materials.Naquadria), MatUnifier.get(OrePrefixes.cell, Materials.Empty)));
-        
+        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Naquadah.getMolten(1000), MatUnifier.get(OrePrefixes.cell, Materials.Naquadah), MatUnifier.get(OrePrefixes.cell, Materials.Empty)));
+        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.NaquadahEnriched.getMolten(1000), MatUnifier.get(OrePrefixes.cell, Materials.NaquadahEnriched), MatUnifier.get(OrePrefixes.cell, Materials.Empty)));
+        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Naquadria.getMolten(1000), MatUnifier.get(OrePrefixes.cell, Materials.Naquadria), MatUnifier.get(OrePrefixes.cell, Materials.Empty)));
     }
 }

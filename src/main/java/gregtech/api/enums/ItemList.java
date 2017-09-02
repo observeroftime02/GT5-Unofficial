@@ -17,10 +17,6 @@ import static gregtech.api.enums.GT_Values.W;
 public enum ItemList implements IItemContainer {
     Display_ITS_FREE,
     Display_Fluid,
-    TE_Slag,
-    TE_Slag_Rich,
-    TE_Rockwool,
-    TE_Hardened_Glass,
     FR_Lemon,
     FR_Mulch,
     FR_Fertilizer,
@@ -43,61 +39,16 @@ public enum ItemList implements IItemContainer {
     FR_Serum,
     FR_Caterpillar,
     FR_PollenFertile,
-    TF_LiveRoot,
-    TF_Vial_FieryBlood,
-    TF_Vial_FieryTears,
-    RC_ShuntingWire,
-    RC_ShuntingWireFrame,
-    RC_Rail_Reinforced,
-    RC_Rail_Electric,
-    RC_Rail_Standard,
-    RC_Rail_Wooden,
-    RC_Rail_Adv,
-    RC_Rail_HS,
-    RC_Tie_Wood,
-    RC_Tie_Stone,
-    RC_Bed_Wood,
-    RC_Bed_Stone,
-    RC_Rebar,
-    IC2_Item_Casing_Tin,
-    IC2_Item_Casing_Copper,
-    IC2_Item_Casing_Iron,
-    IC2_Item_Casing_Steel,
-    IC2_Item_Casing_Lead,
-    IC2_Item_Casing_Bronze,
-    IC2_Item_Casing_Gold,
-    IC2_Spray_WeedEx,
-    IC2_Scrap,
-    IC2_Scrapbox,
-    IC2_Fertilizer,
-    IC2_Mixed_Metal_Ingot,
-    IC2_Hops,
-    IC2_Resin,
-    IC2_Plantball,
-    IC2_PlantballCompressed,
-    IC2_CoffeeBeans,
-    IC2_CoffeePowder,
-    IC2_Crop_Seeds,
-    IC2_Grin_Powder,
-    IC2_Energium_Dust,
-    IC2_Compressed_Coal_Ball,
-    IC2_Compressed_Coal_Chunk,
-    IC2_Fuel_Rod_Empty,
-    IC2_Fuel_Can_Empty,
-    IC2_Fuel_Can_Filled,
-    IC2_Food_Can_Empty,
-    IC2_Food_Can_Filled,
-    IC2_Food_Can_Spoiled,
-    IC2_ShaftIron,
-    IC2_ShaftSteel,
-    IC2_Industrial_Diamond,
-    IC2_ForgeHammer,
-    IC2_WireCutter,
-    IC2_SuBattery,
-    IC2_ReBattery,
-    IC2_AdvBattery,
-    IC2_EnergyCrystal,
-    IC2_LapotronCrystal,
+    Scrap,
+    Dynamite,
+    IndustrialExplosive,
+    Cell_Empty,
+    Cell_Steam,
+    Cell_Electrolyzed_Water,
+    RawCarbonFibers,
+    RawCarbonMesh,
+    Fertilizer,
+    Resin,
     Shape_Empty,
     Shape_Mold_Bottle,
     Shape_Mold_Plate,
@@ -145,11 +96,6 @@ public enum ItemList implements IItemContainer {
     Bottle_Dragon_Blood,
     Coin_Doge,
     Bottle_Purple_Drink,
-    Cell_Universal_Fluid,
-    Cell_Empty,
-    Cell_Water,
-    Cell_Lava,
-    Cell_Air,
     Large_Fluid_Cell_Steel,
     Large_Fluid_Cell_TungstenSteel,
     Crop_Drop_Argentia,
@@ -269,16 +215,6 @@ public enum ItemList implements IItemContainer {
     Tool_DataOrb,
     Tool_DataStick,
     Tool_Sonictron,
-    Tool_Sword_Bronze,
-    Tool_Pickaxe_Bronze,
-    Tool_Shovel_Bronze,
-    Tool_Axe_Bronze,
-    Tool_Hoe_Bronze,
-    Tool_Sword_Steel,
-    Tool_Pickaxe_Steel,
-    Tool_Shovel_Steel,
-    Tool_Axe_Steel,
-    Tool_Hoe_Steel,
 
     Armor_Cheat,
     Armor_Cloaking,
@@ -396,7 +332,6 @@ public enum ItemList implements IItemContainer {
     Machine_LV_OreWasher, Machine_MV_OreWasher, Machine_HV_OreWasher, Machine_EV_OreWasher, Machine_IV_OreWasher, Machine_LuV_OreWasher, Machine_ZPM_OreWasher, Machine_UV_OreWasher,
     Machine_LV_RockBreaker, Machine_MV_RockBreaker, Machine_HV_RockBreaker, Machine_EV_RockBreaker, Machine_IV_RockBreaker, Machine_LuV_RockBreaker, Machine_ZPM_RockBreaker, Machine_UV_RockBreaker,
     Machine_LV_Boxinator, Machine_MV_Boxinator, Machine_HV_Boxinator, Machine_EV_Boxinator, Machine_IV_Boxinator, Machine_LuV_Boxinator, Machine_ZPM_Boxinator, Machine_UV_Boxinator,
-    Machine_LV_Unboxinator, Machine_MV_Unboxinator, Machine_HV_Unboxinator, Machine_EV_Unboxinator, Machine_IV_Unboxinator, Machine_LuV_Unboxinator, Machine_ZPM_Unboxinator, Machine_UV_Unboxinator,
     Machine_LV_ChemicalReactor, Machine_MV_ChemicalReactor, Machine_HV_ChemicalReactor, Machine_EV_ChemicalReactor, Machine_IV_ChemicalReactor, Machine_LuV_ChemicalReactor, Machine_ZPM_ChemicalReactor, Machine_UV_ChemicalReactor,
     Machine_Multi_LargeChemicalReactor,
     Machine_LV_FluidCanner, Machine_MV_FluidCanner, Machine_HV_FluidCanner, Machine_EV_FluidCanner, Machine_IV_FluidCanner, Machine_LuV_FluidCanner, Machine_ZPM_FluidCanner, Machine_UV_FluidCanner,
@@ -422,7 +357,7 @@ public enum ItemList implements IItemContainer {
     Machine_LV_Miner, Machine_MV_Miner,
 
     Neutron_Reflector,
-    Reactor_Coolant_He_1, Reactor_Coolant_He_3, Reactor_Coolant_He_6, Reactor_Coolant_NaK_1, Reactor_Coolant_NaK_3, Reactor_Coolant_NaK_6,
+    //Reactor_Coolant_He_1, Reactor_Coolant_He_3, Reactor_Coolant_He_6, Reactor_Coolant_NaK_1, Reactor_Coolant_NaK_3, Reactor_Coolant_NaK_6,
     ThoriumCell_1, ThoriumCell_2, ThoriumCell_4,
     FusionComputer_LuV, FusionComputer_ZPMV, FusionComputer_UV,
     Casing_Fusion_Coil, Casing_Fusion, Casing_Fusion2,
@@ -447,7 +382,7 @@ public enum ItemList implements IItemContainer {
     Crop_Drop_Bauxite, Crop_Drop_Ilmenite, Crop_Drop_Pitchblende, Crop_Drop_Uraninite, Crop_Drop_Thorium, Crop_Drop_Nickel, Crop_Drop_Zinc, Crop_Drop_Manganese, Crop_Drop_Scheelite, Crop_Drop_Platinum, Crop_Drop_Iridium, Crop_Drop_Osmium, Crop_Drop_Naquadah, Uraniumcell_1, Uraniumcell_2, Uraniumcell_4, Moxcell_1, Moxcell_2, Moxcell_4,
     ModularBasicHelmet, ModularBasicChestplate, ModularBasicLeggings, ModularBasicBoots,
     ModularElectric1Helmet, ModularElectric1Chestplate, ModularElectric1Leggings, ModularElectric1Boots,
-    ModularElectric2Helmet, ModularElectric2Chestplate, ModularElectric2Leggings, ModularElectric2Boots, Block_Powderbarrel, GelledToluene,
+    ModularElectric2Helmet, ModularElectric2Chestplate, ModularElectric2Leggings, ModularElectric2Boots, Block_Powderbarrel, Block_MiningPipe, Block_MiningPipeTip, GelledToluene,
     FluidRegulator_LV, FluidRegulator_MV, FluidRegulator_HV, FluidRegulator_EV, FluidRegulator_IV, FluidRegulator_LuV, FluidRegulator_ZPM, FluidRegulator_UV, FluidFilter, CuringOven, Machine_Multi_Assemblyline, Machine_Multi_DieselEngine, QuantumEye, QuantumStar, Gravistar, Block_SSFUEL, Block_MSSFUEL, SFMixture, MSFMixture, Depleted_Naquadah_1, Depleted_Naquadah_2, Depleted_Naquadah_4, NaquadahCell_1, NaquadahCell_2, NaquadahCell_4, Hatch_AutoMaintenance,
     Machine_Multi_Cleanroom, Circuit_Board_Coated, Circuit_Board_Phenolic, Circuit_Board_Epoxy, Circuit_Board_Fiberglass, Circuit_Board_Multifiberglass, Circuit_Board_Wetware, 
     Circuit_Parts_Resistor, Circuit_Parts_ResistorSMD, Circuit_Parts_Glass_Tube, Circuit_Parts_Vacuum_Tube, Circuit_Parts_Coil, Circuit_Parts_Diode, Circuit_Parts_DiodeSMD, Circuit_Parts_Transistor, Circuit_Parts_TransistorSMD, Circuit_Parts_Capacitor, Circuit_Parts_CapacitorSMD, 
@@ -511,7 +446,7 @@ public enum ItemList implements IItemContainer {
     }
 
     @Override
-    public ItemStack get(long aAmount, ItemStack... aReplacements) {
+    public ItemStack get(int aAmount, ItemStack... aReplacements) {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
         if (GT_Utility.isStackInvalid(mStack)) return GT_Utility.copyAmount(aAmount, aReplacements);
@@ -519,7 +454,7 @@ public enum ItemList implements IItemContainer {
     }
 
     @Override
-    public ItemStack getWildcard(long aAmount, ItemStack... aReplacements) {
+    public ItemStack getWildcard(int aAmount, ItemStack... aReplacements) {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
         if (GT_Utility.isStackInvalid(mStack)) return GT_Utility.copyAmount(aAmount, aReplacements);
@@ -527,7 +462,7 @@ public enum ItemList implements IItemContainer {
     }
 
     @Override
-    public ItemStack getUndamaged(long aAmount, ItemStack... aReplacements) {
+    public ItemStack getUndamaged(int aAmount, ItemStack... aReplacements) {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
         if (GT_Utility.isStackInvalid(mStack)) return GT_Utility.copyAmount(aAmount, aReplacements);
@@ -535,7 +470,7 @@ public enum ItemList implements IItemContainer {
     }
 
     @Override
-    public ItemStack getAlmostBroken(long aAmount, ItemStack... aReplacements) {
+    public ItemStack getAlmostBroken(int aAmount, ItemStack... aReplacements) {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
         if (GT_Utility.isStackInvalid(mStack)) return GT_Utility.copyAmount(aAmount, aReplacements);
@@ -543,7 +478,7 @@ public enum ItemList implements IItemContainer {
     }
 
     @Override
-    public ItemStack getWithName(long aAmount, String aDisplayName, ItemStack... aReplacements) {
+    public ItemStack getWithName(int aAmount, String aDisplayName, ItemStack... aReplacements) {
         ItemStack rStack = get(1, aReplacements);
         if (GT_Utility.isStackInvalid(rStack)) return null;
         rStack.setStackDisplayName(aDisplayName);
@@ -551,7 +486,7 @@ public enum ItemList implements IItemContainer {
     }
 
     @Override
-    public ItemStack getWithCharge(long aAmount, int aEnergy, ItemStack... aReplacements) {
+    public ItemStack getWithCharge(int aAmount, int aEnergy, ItemStack... aReplacements) {
         ItemStack rStack = get(1, aReplacements);
         if (GT_Utility.isStackInvalid(rStack)) return null;
         GT_ModHandler.chargeElectricItem(rStack, aEnergy, Integer.MAX_VALUE, true, false);
@@ -559,7 +494,7 @@ public enum ItemList implements IItemContainer {
     }
 
     @Override
-    public ItemStack getWithDamage(long aAmount, long aMetaValue, ItemStack... aReplacements) {
+    public ItemStack getWithDamage(int aAmount, int aMetaValue, ItemStack... aReplacements) {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
         if (GT_Utility.isStackInvalid(mStack)) return GT_Utility.copyAmount(aAmount, aReplacements);

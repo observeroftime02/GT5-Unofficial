@@ -84,9 +84,9 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
                         if (hatchFluid1.isFluidEqual(tLiquid)) { //Has a diesel fluid
                             fuelConsumption = tLiquid.amount = boostEu ? (4096 / aFuel.mSpecialValue) : (2048 / aFuel.mSpecialValue); //Calc fuel consumption
                             if(depleteInput(tLiquid)) { //Deplete that amount
-                                boostEu = depleteInput(Materials.Oxygen.getGas(2L));
+                                boostEu = depleteInput(Materials.Oxygen.getGas(2));
 
-                                if(tFluids.contains(Materials.Lubricant.getFluid(1L))) { //Has lubricant?
+                                if(tFluids.contains(Materials.Lubricant.getFluid(1))) { //Has lubricant?
                                     //Deplete Lubricant. 1000L should = 1 hour of runtime (if baseEU = 2048)
                                     if(mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(boostEu ? 2 : 1));
                                 } else return false;

@@ -98,11 +98,11 @@ public class GT_MetaTileEntity_Boiler_Lava
                         }
                         this.mFluid.amount -= 1;
                         if (this.mSteam == null) {
-                            this.mSteam = GT_ModHandler.getSteam(300L);
+                            this.mSteam = GT_ModHandler.getSteam(300);
                         } else if (GT_ModHandler.isSteam(this.mSteam)) {
                             this.mSteam.amount += 300;
                         } else {
-                            this.mSteam = GT_ModHandler.getSteam(300L);
+                            this.mSteam = GT_ModHandler.getSteam(300);
                         }
                     }
                 } else {
