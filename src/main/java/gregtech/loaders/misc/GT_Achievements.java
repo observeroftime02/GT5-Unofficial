@@ -94,6 +94,7 @@ public class GT_Achievements {
         registerAchievement("repair", 4, 5, ItemList.Machine_HV_Disassembler.get(1), "highpowerdrill", false);
 
         registerAchievement("unitool", -2, 4, GT_MetaGenerated_Tool_01.INSTANCE.getToolWithStats(GT_MetaGenerated_Tool_01.UNIVERSALSPADE, 1, Materials.Steel, Materials.Iron, null), "tools", false);
+
         registerAchievement("recycling", -4, 4, ItemList.Machine_LV_ArcFurnace.get(1), "unitool", false);
 
         registerAchievement("crushed", 0, 6, MatUnifier.get(OrePrefixes.crushed, Materials.Tin), "tools", false);
@@ -202,7 +203,9 @@ public class GT_Achievements {
         registerAchievement("over9000", 7, 7, ItemList.Casing_Coil_NaquadahAlloy.get(1), "alienmetallurgy", false);
         registerAchievement("finalpreparations", 7, 9, MatUnifier.get(OrePrefixes.ingot, Materials.Naquadria), "over9000", false);
         registerAchievement("denseaspossible", 6, 10, ItemList.FusionComputer_UV.get(1), "finalpreparations", false);
-        registerAchievement("whatnow", 4, 10, ItemList.ZPM2.get(1), "denseaspossible", false);
+        registerAchievement("zpmage", 8, 10, ItemList.Energy_Module.get(1), "denseaspossible", false);
+        registerAchievement("uvage", 10, 10, ItemList.Energy_Cluster.get(1), "zpmage", false);
+        registerAchievement("whatnow", 12, 10, ItemList.ZPM2.get(1), "uvage", false);
 
         if (GT_Mod.gregtechproxy.mAchievements) {
             AchievementPage.registerAchievementPage(new AchievementPage("GregTech 5", (Achievement[]) this.achievementList.values().toArray(
@@ -583,6 +586,10 @@ public class GT_Achievements {
                 issueAchievement(player, "filterregulate");
             } else if (stack.getUnlocalizedName().equals("gt.metaitem.01.32605")) {
                 issueAchievement(player, "whatnow");
+            } else if (stack.getUnlocalizedName().equals("gt.metaitem.01.32736")) {
+                issueAchievement(player, "zpmage");
+            } else if (stack.getUnlocalizedName().equals("gt.metaitem.01.32737")) {
+                issueAchievement(player, "uvage");
             } else if (stack.getUnlocalizedName().equals("gt.metaitem.03.32030")) {
                 issueAchievement(player, "gtmonosilicon");
             } else if (stack.getUnlocalizedName().equals("gt.metaitem.03.32036")) {
@@ -597,6 +604,10 @@ public class GT_Achievements {
                 issueAchievement(player, "gtwetware");
             } else if (stack.getUnlocalizedName().equals("gt.metaitem.03.32095")) {
                 issueAchievement(player, "gtwetmain");
+            } else if (stack.getUnlocalizedName().equals("gt.metaitem.01.32736")) {
+                issueAchievement(player, "zpmage");
+            } else if (stack.getUnlocalizedName().equals("gt.metaitem.01.32737")) {
+                issueAchievement(player, "uvage");
             }
         } else if (stack.getUnlocalizedName().equals("gt.Thoriumcell")) {
             issueAchievement(player, "newfuel");

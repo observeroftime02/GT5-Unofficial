@@ -399,6 +399,12 @@ public class GT_Loader_MaterialRecipes implements Runnable {
 
         ArrayList<ItemStack> tByProductStacks = new ArrayList();
 
+        if (aMaterial.contains(SubTag.WASHING_MERCURY)) {
+            //TODO FIX GT_Values.RA.addChemicalBathRecipe(GT_Utility.copyAmount(1, aStack), Materials.Mercury.getFluid(1000), MatUnifier.get(aPrefix == OrePrefixes.crushed ? OrePrefixes.crushedPurified : OrePrefixes.dustPure, aMaterial, 1L), MatUnifier.get(OrePrefixes.dust, aMaterial.mMacerateInto, 1L), MatUnifier.get(OrePrefixes.dust, Materials.Stone, 1L), new int[]{10000, 7000, 4000}, 800, 8);
+        }
+        if (aMaterial.contains(SubTag.WASHING_SODIUMPERSULFATE)) {
+            //TODO FIX GT_Values.RA.addChemicalBathRecipe(GT_Utility.copyAmount(1, aStack), Materials.SodiumPersulfate.getFluid(GT_Mod.gregtechproxy.mDisableOldChemicalRecipes ? 1000 : 100), MatUnifier.get(aPrefix == OrePrefixes.crushed ? OrePrefixes.crushedPurified : OrePrefixes.dustPure, aMaterial, 1L), MatUnifier.get(OrePrefixes.dust, aMaterial.mMacerateInto, 1L), MatUnifier.get(OrePrefixes.dust, Materials.Stone, 1L), new int[]{10000, 7000, 4000}, 800, 8);
+        }
         for (Materials tMat : aMaterial.mOreByProducts) {
             ItemStack tByProduct = MatUnifier.get(OrePrefixes.dust, tMat);
             if (tByProduct != null) tByProductStacks.add(tByProduct);
@@ -417,7 +423,7 @@ public class GT_Loader_MaterialRecipes implements Runnable {
                 GT_Values.RA.addChemicalBathRecipe(aCrushedStack, Materials.Mercury.getFluid(1000), aCrushedPureStack/*TODO CHECK GT_OreDictUnificator.get(aPrefix == OrePrefixes.crushed ? OrePrefixes.crushedPurified : OrePrefixes.dustPure, aMaterial, 1L)*/, MatUnifier.get(OrePrefixes.dust, tMat.mMacerateInto), aDustStone, new int[]{10000, 7000, 4000}, 800, 8);
             }
             if (tMat.contains(SubTag.WASHING_SODIUMPERSULFATE)) {
-                GT_Values.RA.addChemicalBathRecipe(aCrushedStack, Materials.SodiumPersulfate.getFluid(GT_Mod.gregtechproxy.mReenableSimplifiedChemicalRecipes ? 1000 : 100), aCrushedPureStack/*TODO CHECK GT_OreDictUnificator.get(aPrefix == OrePrefixes.crushed ? OrePrefixes.crushedPurified : OrePrefixes.dustPure, aMaterial, 1L)*/, MatUnifier.get(OrePrefixes.dust, tMat.mMacerateInto), aDustStone, new int[]{10000, 7000, 4000}, 800, 8);
+                GT_Values.RA.addChemicalBathRecipe(aCrushedStack, Materials.SodiumPersulfate.getFluid(GT_Mod.gregtechproxy.mDisableOldChemicalRecipes ? 1000 : 100), aCrushedPureStack/*TODO CHECK GT_OreDictUnificator.get(aPrefix == OrePrefixes.crushed ? OrePrefixes.crushedPurified : OrePrefixes.dustPure, aMaterial, 1L)*/, MatUnifier.get(OrePrefixes.dust, tMat.mMacerateInto), aDustStone, new int[]{10000, 7000, 4000}, 800, 8);
             }
         }
         if (!tByProductStacks.isEmpty() && !aAlreadyListedOres.contains(aMaterial)) {
@@ -438,10 +444,10 @@ public class GT_Loader_MaterialRecipes implements Runnable {
 
             if (aMaterial.contains(SubTag.BLASTFURNACE_CALCITE_TRIPLE)) {
                 GT_Values.RA.addBlastRecipe(aOreStack, MatUnifier.get(OrePrefixes.dust, Materials.Calcite, aMultiplier), null, null, GT_Utility.mul(aMultiplier * 3 * aMaterial.mSmeltingMultiplier, aSmeltIntoStack), MatUnifier.get(OrePrefixes.dustSmall, Materials.DarkAsh), aSmeltIntoStack.stackSize * 500, 120, 1500);
-                GT_Values.RA.addBlastRecipe(aOreStack, MatUnifier.get(OrePrefixes.dustTiny, Materials.Quicklime, aMultiplier * 3), null, null, GT_Utility.mul(aMultiplier * 3 * aMaterial.mSmeltingMultiplier, aSmeltIntoStack), MatUnifier.get(OrePrefixes.dustSmall, Materials.DarkAsh), aSmeltIntoStack.stackSize * 500, 120, 1500);
+                GT_Values.RA.addBlastRecipe(aOreStack, MatUnifier.get(OrePrefixes.dust, Materials.Quicklime, aMultiplier), null, null, GT_Utility.mul(aMultiplier * 3 * aMaterial.mSmeltingMultiplier, aSmeltIntoStack), MatUnifier.get(OrePrefixes.dustSmall, Materials.DarkAsh), aSmeltIntoStack.stackSize * 500, 120, 1500);
             } else if (aMaterial.contains(SubTag.BLASTFURNACE_CALCITE_DOUBLE)) {
                 GT_Values.RA.addBlastRecipe(aOreStack, MatUnifier.get(OrePrefixes.dust, Materials.Calcite, aMultiplier), null, null, GT_Utility.mul(aMultiplier * 2 * aMaterial.mSmeltingMultiplier, aSmeltIntoStack), MatUnifier.get(OrePrefixes.dustSmall, Materials.DarkAsh), aSmeltIntoStack.stackSize * 500, 120, 1500);
-                GT_Values.RA.addBlastRecipe(aOreStack, MatUnifier.get(OrePrefixes.dustTiny, Materials.Quicklime, aMultiplier * 3), null, null, GT_Utility.mul(aMultiplier * 2 * aMaterial.mSmeltingMultiplier, aSmeltIntoStack), MatUnifier.get(OrePrefixes.dustSmall, Materials.DarkAsh), aSmeltIntoStack.stackSize * 500, 120, 1500);
+                GT_Values.RA.addBlastRecipe(aOreStack, MatUnifier.get(OrePrefixes.dust, Materials.Quicklime, aMultiplier), null, null, GT_Utility.mul(aMultiplier * 2 * aMaterial.mSmeltingMultiplier, aSmeltIntoStack), MatUnifier.get(OrePrefixes.dustSmall, Materials.DarkAsh), aSmeltIntoStack.stackSize * 500, 120, 1500);
             }
         }
         if (!tHasSmelting) {
@@ -456,7 +462,7 @@ public class GT_Loader_MaterialRecipes implements Runnable {
             GT_Values.RA.addChemicalBathRecipe(aCrushedStack, Materials.Mercury.getFluid(1000), aCrushedPureStack/*TODO CHECK GT_OreDictUnificator.get(aPrefix == OrePrefixes.crushed ? OrePrefixes.crushedPurified : OrePrefixes.dustPure, aMaterial, 1L)*/, MatUnifier.get(OrePrefixes.dust, aMaterial.mMacerateInto), aDustStone, new int[]{10000, 7000, 4000}, 800, 8);
         }
         if (aWashingSodium) {
-            GT_Values.RA.addChemicalBathRecipe(aCrushedStack, Materials.SodiumPersulfate.getFluid(GT_Mod.gregtechproxy.mReenableSimplifiedChemicalRecipes ? 1000 : 100), aCrushedPureStack/*TODO CHECK GT_OreDictUnificator.get(aPrefix == OrePrefixes.crushed ? OrePrefixes.crushedPurified : OrePrefixes.dustPure, aMaterial, 1L)*/, MatUnifier.get(OrePrefixes.dust, aMaterial.mMacerateInto), aDustStone, new int[]{10000, 7000, 4000}, 800, 8);
+            GT_Values.RA.addChemicalBathRecipe(aCrushedStack, Materials.SodiumPersulfate.getFluid(GT_Mod.gregtechproxy.mDisableOldChemicalRecipes ? 1000 : 100), aCrushedPureStack/*TODO CHECK GT_OreDictUnificator.get(aPrefix == OrePrefixes.crushed ? OrePrefixes.crushedPurified : OrePrefixes.dustPure, aMaterial, 1L)*/, MatUnifier.get(OrePrefixes.dust, aMaterial.mMacerateInto), aDustStone, new int[]{10000, 7000, 4000}, 800, 8);
         }
         GT_Values.RA.addForgeHammerRecipe(aCrushedStack, MatUnifier.get(OrePrefixes.dustImpure, aMaterial.mMacerateInto), 10, 16);
         GT_Values.RA.addForgeHammerRecipe(aCrushedCentStack, MatUnifier.get(OrePrefixes.dust, aMaterial.mMacerateInto), 10, 16);
@@ -842,19 +848,6 @@ public class GT_Loader_MaterialRecipes implements Runnable {
             GT_ModHandler.removeFurnaceSmelting(Materials.CertusQuartz.getDust(1));
         }
         GT_ModHandler.addSmeltingRecipe(Materials.Glass.getDust(1), new ItemStack(Blocks.glass));
-        GT_ModHandler.addSmeltingRecipe(Materials.Tetrahedrite.getDust(1), MatUnifier.get(OrePrefixes.nugget, Materials.Copper, 6));
-        GT_ModHandler.addSmeltingRecipe(Materials.Chalcopyrite.getDust(1), MatUnifier.get(OrePrefixes.nugget, Materials.Copper, 6));
-        GT_ModHandler.addSmeltingRecipe(Materials.Malachite.getDust(1), MatUnifier.get(OrePrefixes.nugget, Materials.Copper, 6));
-        GT_ModHandler.addSmeltingRecipe(Materials.Pentlandite.getDust(1), MatUnifier.get(OrePrefixes.nugget, Materials.Nickel, 6));
-        GT_ModHandler.addSmeltingRecipe(Materials.Garnierite.getDust(1), MatUnifier.get(OrePrefixes.ingot, Materials.Nickel));
-        GT_ModHandler.addSmeltingRecipe(Materials.Cassiterite.getDust(1), MatUnifier.get(OrePrefixes.ingot, Materials.Tin));
-        GT_ModHandler.addSmeltingRecipe(Materials.Magnetite.getDust(1), MatUnifier.get(OrePrefixes.nugget, Materials.Iron, 3));
-        GT_ModHandler.addSmeltingRecipe(Materials.VanadiumMagnetite.getDust(1), MatUnifier.get(OrePrefixes.nugget, Materials.Iron, 3));
-        GT_ModHandler.addSmeltingRecipe(Materials.BasalticMineralSand.getDust(1), MatUnifier.get(OrePrefixes.nugget, Materials.Iron, 3));
-        GT_ModHandler.addSmeltingRecipe(Materials.GraniticMineralSand.getDust(1), MatUnifier.get(OrePrefixes.nugget, Materials.Iron, 3));
-        GT_ModHandler.addSmeltingRecipe(Materials.YellowLimonite.getDust(1), MatUnifier.get(OrePrefixes.ingot, Materials.Iron, 1));
-        GT_ModHandler.addSmeltingRecipe(Materials.BrownLimonite.getDust(1), MatUnifier.get(OrePrefixes.ingot, Materials.Iron, 1));
-        GT_ModHandler.addSmeltingRecipe(Materials.BandedIron.getDust(1), MatUnifier.get(OrePrefixes.ingot, Materials.Iron, 1));
         GT_Values.RA.addImplosionRecipe(GT_Utility.copyAmount(4, Materials.Opal.getDust(1)), 24, MatUnifier.get(OrePrefixes.gem, Materials.Opal, 3), MatUnifier.get(OrePrefixes.dustTiny, Materials.DarkAsh, 12));
         GT_Values.RA.addImplosionRecipe(GT_Utility.copyAmount(4, Materials.Olivine.getDust(1)), 24, MatUnifier.get(OrePrefixes.gem, Materials.Olivine, 3), MatUnifier.get(OrePrefixes.dustTiny, Materials.DarkAsh, 12));
         GT_Values.RA.addImplosionRecipe(GT_Utility.copyAmount(4, Materials.Emerald.getDust(1)), 24, MatUnifier.get(OrePrefixes.gem, Materials.Emerald, 3), MatUnifier.get(OrePrefixes.dustTiny, Materials.DarkAsh, 12));
