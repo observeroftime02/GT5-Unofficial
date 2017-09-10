@@ -258,9 +258,9 @@ public class GT_RecipeRegistrator {
 
         long tAmount = 0;
         for (MaterialStack tMaterial : aData.getAllMaterialStacks()) {
-            if (tMaterial.mMaterial != null) { //TODO REMOVE IF CHECK ONCE FIX NULL BUG
+            //if (tMaterial.mMaterial != null) { //TODO REMOVE IF CHECK ONCE FIX NULL BUG
                 tAmount += tMaterial.mAmount * tMaterial.mMaterial.getMass();
-            }
+            //}
         }
         boolean tHide = (aData.mMaterial.mMaterial != Materials.Iron)&&(GT_Mod.gregtechproxy.mHideRecyclingRecipes);
         RA.addPulveriserRecipe(aStack, new ItemStack[]{MatUnifier.getDust(aData.mMaterial), MatUnifier.getDust(aData.getByProduct(0)), MatUnifier.getDust(aData.getByProduct(1)), MatUnifier.getDust(aData.getByProduct(2))}, null, aData.mMaterial.mMaterial==Materials.Marble ? 1 : (int) Math.max(16, tAmount / M), 4, tHide);

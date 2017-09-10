@@ -164,7 +164,7 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.Brass,
                 Materials.Bronze,
                 Materials.Caesium,
-                Materials.Cerium,
+                Materials.Cerium
         }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS1);
 
         GregTech_API.sBlockMetal2 = new GT_Block_Metal("gt.blockmetal2", new Materials[]{
@@ -181,13 +181,12 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.Enderium,
                 Materials.Europium,
                 Materials.Gallium,
-                Materials.InfusedGold,
                 Materials.Invar,
                 Materials.Iridium,
+                Materials.IronMagnetic
         }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS2);
 
         GregTech_API.sBlockMetal3 = new GT_Block_Metal("gt.blockmetal3", new Materials[]{
-                Materials.IronMagnetic,
                 Materials.Kanthal,
                 Materials.Lead,
                 Materials.Lutetium,
@@ -196,18 +195,17 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.Manganese,
                 Materials.MeteoricIron,
                 Materials.MeteoricSteel,
-                Materials.Mithril,
                 Materials.Molybdenum,
                 Materials.Naquadah,
                 Materials.NaquadahAlloy,
                 Materials.NaquadahEnriched,
                 Materials.Naquadria,
                 Materials.Neodymium,
+                Materials.NeodymiumMagnetic,
+                Materials.Neutronium,
         }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS3);
 
         GregTech_API.sBlockMetal4 = new GT_Block_Metal("gt.blockmetal4", new Materials[]{
-                Materials.NeodymiumMagnetic,
-                Materials.Neutronium,
                 Materials.Nichrome,
                 Materials.Nickel,
                 Materials.Niobium,
@@ -222,11 +220,11 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.RedAlloy,
                 Materials.RedSteel,
                 Materials.RoseGold,
+                Materials.Silicon,
+                Materials.Silver
         }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS4);
 
         GregTech_API.sBlockMetal5 = new GT_Block_Metal("gt.blockmetal5", new Materials[]{
-                Materials.Silicon,
-                Materials.Silver,
                 Materials.SolderingAlloy,
                 Materials.StainlessSteel,
                 Materials.Steel,
@@ -241,11 +239,11 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.Tungsten,
                 Materials.TungstenSteel,
                 Materials.Ultimet,
+                Materials.Uranium,
+                Materials.Uranium235
         }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS5);
 
         GregTech_API.sBlockMetal6 = new GT_Block_Metal("gt.blockmetal6", new Materials[]{
-                Materials.Uranium,
-                Materials.Uranium235,
                 Materials.Vanadium,
                 Materials.VanadiumGallium,
                 Materials.WroughtIron,
@@ -256,7 +254,7 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.VanadiumSteel,
                 Materials.HSSG,
                 Materials.HSSE,
-                Materials.HSSS
+                Materials.HSSS,
         }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS6);
 
         GregTech_API.sBlockGem1 = new GT_Block_Metal("gt.blockgem1", new Materials[]{
@@ -275,8 +273,8 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.Lazurite,
                 Materials.Lignite,
                 Materials.Monazite,
-                Materials.Olivine,
-        }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS9);
+                Materials.Olivine
+        }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS7);
 
         GregTech_API.sBlockGem2 = new GT_Block_Metal("gt.blockgem2", new Materials[]{
                 Materials.Opal,
@@ -294,7 +292,7 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.GarnetYellow,
                 Materials.NetherStar,
                 Materials.Charcoal
-        }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS10);
+        }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS8);
 
         GregTech_API.sBlockReinforced = new GT_Block_Reinforced("gt.blockreinforced");
 

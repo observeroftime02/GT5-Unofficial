@@ -29,7 +29,7 @@ public class GT_Block_Metal extends GT_Block_Storage {
                 MatUnifier.registerOre(aPrefix, aMats[i], new ItemStack(this, 1, i));
             }
         }
-        if (aMats.length<16 && Loader.isModLoaded("NotEnoughItems")) {
+        if (aMats.length < 16 && Loader.isModLoaded("NotEnoughItems")) {
             for (int i = aMats.length; i < 16; i++) codechicken.nei.api.API.hideItem(new ItemStack(this, 1, i));
         }
     }

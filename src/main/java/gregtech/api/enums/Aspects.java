@@ -17,10 +17,10 @@ public enum Aspects {
 
     public static class AspectStack {
         public Aspects mAspect;
-        public long mAmount;
+        public int mAmount;
 
 
-        public AspectStack(Aspects aAspect, long aAmount) {
+        public AspectStack(Aspects aAspect, int aAmount) {
             mAspect = aAspect;
             mAmount = aAmount;
         }
@@ -29,7 +29,7 @@ public enum Aspects {
             return new AspectStack(mAspect, mAmount);
         }
 
-        public AspectStack copy(long aAmount) {
+        public AspectStack copy(int aAmount) {
             return new AspectStack(mAspect, aAmount);
         }
 

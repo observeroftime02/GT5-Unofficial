@@ -28,23 +28,18 @@ public class GT_UO_DimensionList {
 	}
 	
 	public boolean CheckBlackList(int aDimensionId){
-		try {
-            return java.util.Arrays.binarySearch(BlackList, aDimensionId) >= 0;
-		} catch (Exception e) {
-			return false;
-		}
+		return java.util.Arrays.binarySearch(BlackList, aDimensionId) >= 0;
 	}
 	
 	public void SetConfigValues(String aDimensionName, String aDimension, String aName, String aRegistry, int aMinAmount, int aMaxAmount, int aChance, int aDecreasePerOperationAmount) {
-		String Category = fCategory+"."+aDimensionName;
+		String Category = fCategory + "." + aDimensionName;
 		fConfig.get(Category, "Dimension", aDimension).getString();
-		Category+="."+aName;
+		Category += "." + aName;
 		fConfig.get(Category, "Registry", aRegistry).getString();
 		fConfig.get(Category, "MinAmount", aMinAmount).getInt(aMinAmount);
 		fConfig.get(Category, "MaxAmount", aMaxAmount).getInt(aMaxAmount);
 		fConfig.get(Category, "Chance", aChance).getInt(aChance);
-		fConfig.get(Category, "DecreasePerOperationAmount", aDecreasePerOperationAmount).getInt(aDecreasePerOperationAmount);
-									//IT IS IN BUCKETS!!!
+		fConfig.get(Category, "DecreasePerOperationAmount", aDecreasePerOperationAmount).getInt(aDecreasePerOperationAmount); //IT IS IN BUCKETS!!!
 	}
 	
 	public void SetDafultValues() {
@@ -76,5 +71,4 @@ public class GT_UO_DimensionList {
 			fDimensionList.put(Dimension.Dimension, Dimension);
 		}
 	}
-
 }

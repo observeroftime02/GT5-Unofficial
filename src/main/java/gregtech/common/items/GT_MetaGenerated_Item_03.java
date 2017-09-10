@@ -135,7 +135,7 @@ public class GT_MetaGenerated_Item_03
         //Good Circuit				Item01
         
         //Integrated Logic Circuit  Item01 
-        ItemList.Circuit_Integrated_Good.set(addItem(tLastID = 79, "Good Integrated Circuit", "Good Circuit",  new Object[]{OrePrefixes.circuit.get(Materials.Good), SubTag.NO_UNIFICATION}));
+        ItemList.Circuit_Integrated_Good.set(addItem(tLastID = 79, "Good Integrated Circuit", "A Good Circuit",  new Object[]{OrePrefixes.circuit.get(Materials.Good), SubTag.NO_UNIFICATION}));
         //Good Integrated Circuit   Item01
         //Advanced Circuit			IC2
         

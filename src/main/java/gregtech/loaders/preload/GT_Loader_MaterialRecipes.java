@@ -46,6 +46,12 @@ public class GT_Loader_MaterialRecipes implements Runnable {
         ProgressManager.ProgressBar progressBar = ProgressManager.push("Registering Material Recipes: ", aSolidAndDustArray.length);
         for (Materials aMaterial : aSolidAndDustArray) {
             progressBar.step(aMaterial.mName);
+            aNormalDustStack = null;
+            aSmallDustStack = null;
+            aTinyDustStack = null;
+            aIngotStack = null;
+            aNuggetStack = null;
+            aPlateStack = null;
             if (aMaterial.mElement != null && !aMaterial.mElement.mIsIsotope && aMaterial.mMetaItemSubID != -128 && aMaterial.getMass() > 0) {
                 ItemStack tOutput = ItemList.Tool_DataOrb.get(1);
                 Behaviour_DataOrb.setDataTitle(tOutput, "Elemental-Scan");
@@ -53,6 +59,9 @@ public class GT_Loader_MaterialRecipes implements Runnable {
                 ItemStack tInput = aMaterial.hasFlag(MaterialFlags.CELL) ? MatUnifier.get(OrePrefixes.cell, aMaterial) : MatUnifier.get(OrePrefixes.dust, aMaterial);
                 GT_Recipe.GT_Recipe_Map.sScannerFakeRecipes.addFakeRecipe(false, new ItemStack[]{tInput}, new ItemStack[]{tOutput}, ItemList.Tool_DataOrb.get(1), null, null, (int) (aMaterial.getMass() * 8192), 32, 0);
                 GT_Recipe.GT_Recipe_Map.sReplicatorFakeRecipes.addFakeRecipe(false, null, new ItemStack[]{tInput}, new ItemStack[]{tOutput}, new FluidStack[]{Materials.UUMatter.getFluid((int)aMaterial.getMass())}, null, (int) (aMaterial.getMass() * 512), 32, 0);
+                ItemStack aPlasmaStack = MatUnifier.get(OrePrefixes.cellPlasma, aMaterial);
+                GT_Values.RA.addFuel(aPlasmaStack, GT_Utility.getFluidForFilledItem(aPlasmaStack, true) == null ? GT_Utility.getContainerItem(aPlasmaStack, true) : null, (int) Math.max(1024L, 1024L * aMaterial.getMass()), 4);
+                GT_Values.RA.addVacuumFreezerRecipe(aPlasmaStack, MatUnifier.get(OrePrefixes.cell, aMaterial), (int) Math.max(aMaterial.getMass() * 2L, 1L));
             }
             if (aMaterial.hasFlag(MaterialFlags.DUST)) {
                 aNoSmelting = aMaterial.contains(SubTag.NO_SMELTING);
@@ -210,11 +219,11 @@ public class GT_Loader_MaterialRecipes implements Runnable {
         if (!aNoWorking) {
             GT_Values.RA.addLatheRecipe(aMaterial.contains(SubTag.CRYSTAL) ? MatUnifier.get(OrePrefixes.gem, aMaterial) : aIngotStack, aStickStack, MatUnifier.get(OrePrefixes.dustSmall, aMaterial.mMacerateInto, 2), (int) Math.max(aMaterial.getMass() * 5L, 1L), 16);
             GT_Values.RA.addCutterRecipe(aStickStack, MatUnifier.get(OrePrefixes.bolt, aMaterial, 4), null, (int) Math.max(aMaterial.getMass() * 2L, 1L), 4);
-            if ((aMaterial.mUnificatable) && (aMaterial.mMaterialInto == aMaterial)) {
+            if ((aMaterial.mUnificatable) && (aMaterial.mMaterialInto == aMaterial) && !aMaterial.hasFlag(MaterialFlags.GEM)) {
                 GT_ModHandler.addCraftingRecipe(aStickStack, tBits, new Object[]{"f ", " X", Character.valueOf('X'), aIngotStack});
             }
         }
-        if (!aNoSmelting) {
+        if (!aNoSmelting && !aMaterial.hasFlag(MaterialFlags.GEM)) {
             //GT_Values.RA.addExtruderRecipe(aIngotStack, ItemList.Shape_Extruder_Rod.get(0), MatUnifier.get(OrePrefixes.stick, aMaterial.mSmeltInto, tAmount * 2), (int) Math.max(aMaterialMass * 2L * tAmount, tAmount), 6 * tVoltageMultiplier);
             //GT_Values.RA.addExtruderRecipe(aIngotStack, ItemList.Shape_Extruder_Wire.get(0), MatUnifier.get(OrePrefixes.wireGt01, aMaterial.mSmeltInto, tAmount * 2), (int) Math.max(aMaterialMass * 2L * tAmount, tAmount), 6 * tVoltageMultiplier);
         }
@@ -371,9 +380,6 @@ public class GT_Loader_MaterialRecipes implements Runnable {
 
     public void addCellRecipes(Materials aMaterial) {
         ItemStack aCellStack = MatUnifier.get(OrePrefixes.cell, aMaterial);
-        ItemStack aPlasmaStack = MatUnifier.get(OrePrefixes.cellPlasma, aMaterial);
-        GT_Values.RA.addFuel(aPlasmaStack, GT_Utility.getFluidForFilledItem(aPlasmaStack, true) == null ? GT_Utility.getContainerItem(aPlasmaStack, true) : null, (int) Math.max(1024L, 1024L * aMaterial.getMass()), 4);
-        GT_Values.RA.addVacuumFreezerRecipe(aPlasmaStack, aCellStack, (int) Math.max(aMaterial.getMass() * 2L, 1L));
         if (GT_Utility.getFluidForFilledItem(aCellStack, true) == null && aMaterial != Materials.Air) {
             GT_Values.RA.addCannerRecipe(aNormalDustStack, ItemList.Cell_Empty.get(1), aCellStack, null, 100, 1);
         }
@@ -456,9 +462,9 @@ public class GT_Loader_MaterialRecipes implements Runnable {
         GT_ModHandler.addPulverisationRecipe(aCrushedStack, MatUnifier.get(OrePrefixes.dustImpure, aMaterial.mMacerateInto, aDustMacerateInto, 1L), MatUnifier.get(OrePrefixes.dust, GT_Utility.selectItemInList(0, aMaterial.mMacerateInto, aMaterial.mOreByProducts)), 10, false);
         GT_ModHandler.addOreWasherRecipe(aCrushedStack, 1000, aCentStack, MatUnifier.get(OrePrefixes.dustTiny, GT_Utility.selectItemInList(0, aMaterial.mMacerateInto, aMaterial.mOreByProducts)), aStoneDust);
         GT_ModHandler.addThermalCentrifugeRecipe(aCrushedStack, aCentStack, MatUnifier.get(OrePrefixes.dustTiny, GT_Utility.selectItemInList(1, aMaterial.mMacerateInto, aMaterial.mOreByProducts)), aStoneDust);
-        if (aMaterial.contains(SubTag.WASHING_MERCURY))
+        if (aWashingMercury)
             GT_Values.RA.addChemicalBathRecipe(aCrushedStack, Materials.Mercury.getFluid(1000), MatUnifier.get(OrePrefixes.crushedPurified, aMaterial), aDustMacerateInto, aStoneDust, new int[]{10000, 7000, 4000}, 800, 8);
-        if (aMaterial.contains(SubTag.WASHING_SODIUMPERSULFATE))
+        if (aWashingSodium)
             GT_Values.RA.addChemicalBathRecipe(aCrushedStack, Materials.SodiumPersulfate.getFluid(GT_Mod.gregtechproxy.mDisableOldChemicalRecipes ? 100 : 1000), aCleanedStack, aDustMacerateInto, aStoneDust, new int[]{10000, 7000, 4000}, 800, 8);
         for (Materials aByProdMat : aMaterial.mOreByProducts) {
             if (aByProdMat.contains(SubTag.WASHING_MERCURY)) {
@@ -481,7 +487,6 @@ public class GT_Loader_MaterialRecipes implements Runnable {
         ItemStack aFlawlessStack = MatUnifier.get(OrePrefixes.gemFlawless, aMaterial);
         ItemStack aExquisiteStack = MatUnifier.get(OrePrefixes.gemExquisite, aMaterial);
         ItemStack aPlateStack = MatUnifier.get(OrePrefixes.plate, aMaterial);
-        //System.out.println("@@@ HAS PLATE FLAG: " + aMaterial.hasFlag(MaterialFlags.PLATE));
         ItemStack aBoltStack = MatUnifier.get(OrePrefixes.bolt, aMaterial);
         ItemStack aBlockStack = MatUnifier.get(OrePrefixes.block, aMaterial);
         if (aMaterial.mFuelPower > 0) {
@@ -533,7 +538,7 @@ public class GT_Loader_MaterialRecipes implements Runnable {
         GT_Values.RA.addForgeHammerRecipe(aFlawedStack, GT_Utility.copyAmount(2, aChippedStack), 64, 16);
         GT_Values.RA.addForgeHammerRecipe(aFlawlessStack, GT_Utility.copyAmount(2, aGemStack), 64, 16);
         //System.out.println("@@@ " + aMaterial.mName);
-        //GT_RecipeRegistrator.registerUsagesForMaterials(aGemStack, aPlateStack.toString(), !aNoSmashing);
+        //TODO NPE GT_RecipeRegistrator.registerUsagesForMaterials(aGemStack, aPlateStack.toString(), !aNoSmashing);
         if (aMaterial.mTransparent) {
             ItemStack aLensStack = MatUnifier.get(OrePrefixes.lens, aMaterial);
             GT_Values.RA.addLatheRecipe(aPlateStack, aLensStack, aSmallDustStack, (int) Math.max(aMaterial.getMass() / 2L, 1L), 480);
@@ -554,6 +559,7 @@ public class GT_Loader_MaterialRecipes implements Runnable {
             GT_Values.RA.addAutoclaveRecipe(aImpureDust, aDistilledStack, aGemStack, 9500, 1500, 24);
         }
 
+        //TODO MOVE TO SPEC RECIPES
         switch (aMaterial.mName) {
             case "Tanzanite": case "Sapphire": case "Olivine": case "GreenSapphire": case "Opal": case "Amethyst": case "Emerald": case "Ruby":
             case "Amber": case "Diamond": case "FoolsRuby": case "BlueTopaz": case "GarnetRed": case "Topaz": case "Jasper": case "GarnetYellow":
@@ -814,7 +820,8 @@ public class GT_Loader_MaterialRecipes implements Runnable {
             GT_ModHandler.removeRecipe(new ItemStack(Items.coal, 1, 0), null, null, new ItemStack(net.minecraft.init.Items.stick, 1, 0));
             GT_ModHandler.removeRecipe(new ItemStack(Items.coal, 1, 1), null, null, new ItemStack(net.minecraft.init.Items.stick, 1, 0));
         }
-        Materials[] aSifterGemMaterials = new Materials[]{Materials.Tanzanite, Materials.Sapphire, Materials.GreenSapphire, Materials.Opal, Materials.Amethyst, Materials.Emerald, Materials.Ruby, Materials.Amber, Materials.Diamond, Materials.FoolsRuby, Materials.BlueTopaz, Materials.GarnetRed, Materials.Topaz, Materials.Jasper, Materials.GarnetYellow};
+        //TODO MOVE TO COMB RECIPE AREA?
+        Materials[] aSifterGemMaterials = new Materials[]{Materials.Sapphire, Materials.GreenSapphire, Materials.Emerald, Materials.Ruby, Materials.Amber, Materials.Diamond};
         for (Materials aGemMaterial : aSifterGemMaterials) {
             ItemStack aGem = MatUnifier.get(OrePrefixes.gem, aGemMaterial);
             GT_Values.RA.addSifterRecipe(MatUnifier.get(OrePrefixes.crushedPurified, aGemMaterial), new ItemStack[]{MatUnifier.get(OrePrefixes.gemExquisite, aGemMaterial, aGem), MatUnifier.get(OrePrefixes.gemFlawless, aGemMaterial, aGem), aGem, MatUnifier.get(OrePrefixes.gemFlawed, aGemMaterial, aGem), MatUnifier.get(OrePrefixes.gemChipped, aGemMaterial, aGem), MatUnifier.get(OrePrefixes.dust, aGemMaterial, aGem)}, new int[]{300, 1200, 4500, 1400, 2800, 3500}, 800, 16);
@@ -1032,5 +1039,16 @@ public class GT_Loader_MaterialRecipes implements Runnable {
             MatUnifier.registerOre(OrePrefixes.gem, Materials.InfusedEntropy, aEvent.Ore);
             return;
         }*/
+
+        GT_RecipeRegistrator.registerUsagesForMaterials(new ItemStack(Blocks.planks, 1), null, false);
+        GT_RecipeRegistrator.registerUsagesForMaterials(new ItemStack(Blocks.cobblestone, 1), null, false);
+        GT_RecipeRegistrator.registerUsagesForMaterials(new ItemStack(Blocks.stone, 1), null, false);
+        GT_RecipeRegistrator.registerUsagesForMaterials(new ItemStack(Items.leather, 1), null, false);
+
+        if (!GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.storageblockcrafting, "tile.glowstone", false)) {
+            GT_ModHandler.removeRecipe(new ItemStack(Items.glowstone_dust, 1), new ItemStack(Items.glowstone_dust, 1), null, new ItemStack(Items.glowstone_dust, 1), new ItemStack(Items.glowstone_dust, 1));
+        }
+        GT_ModHandler.removeRecipe(new ItemStack(Blocks.wooden_slab, 1, 0), new ItemStack(Blocks.wooden_slab, 1, 1), new ItemStack(Blocks.wooden_slab, 1, 2));
+        GT_ModHandler.addCraftingRecipe(new ItemStack(Blocks.wooden_slab, 6, 0), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"WWW", 'W', new ItemStack(Blocks.planks, 1, 0)});
     }
 }

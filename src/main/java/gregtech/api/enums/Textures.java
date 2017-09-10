@@ -362,62 +362,43 @@ public class Textures {
                 FUSIONII_12,
             },
             STORAGE_BLOCKS1 = new IIconContainer[]{
-                BLOCK_ADAMANTIUM,
                 BLOCK_ALUMINIUM,
                 BLOCK_AMERICIUM,
                 BLOCK_ANNEALEDCOPPER,
                 BLOCK_ANTIMONY,
                 BLOCK_ARSENIC,
-                BLOCK_ASTRALSILVER,
                 BLOCK_BATTERYALLOY,
                 BLOCK_BERYLLIUM,
                 BLOCK_BISMUTH,
                 BLOCK_BISMUTHBRONZE,
                 BLOCK_BLACKBRONZE,
                 BLOCK_BLACKSTEEL,
-                BLOCK_BLUEALLOY,
                 BLOCK_BLUESTEEL,
-                BLOCK_BRASS
-            },
-            STORAGE_BLOCKS2 = new IIconContainer[]{
+                BLOCK_BRASS,
                 BLOCK_BRONZE,
                 BLOCK_CAESIUM,
-                BLOCK_CERIUM,
+                BLOCK_CERIUM
+            },
+            STORAGE_BLOCKS2 = new IIconContainer[]{
                 BLOCK_CHROME,
-                BLOCK_CHROMIUMDIOXIDE,
                 BLOCK_COBALT,
                 BLOCK_COBALTBRASS,
                 BLOCK_COPPER,
                 BLOCK_CUPRONICKEL,
                 BLOCK_DAMASCUSSTEEL,
-                BLOCK_DARKIRON,
-                BLOCK_DEEPIRON,
                 BLOCK_DESH,
                 BLOCK_DURANIUM,
                 BLOCK_DYSPROSIUM,
-                BLOCK_ELECTRUM
-            },
-            STORAGE_BLOCKS3 = new IIconContainer[]{
-                BLOCK_ELECTRUMFLUX,
+                BLOCK_ELECTRUM,
                 BLOCK_ENDERIUM,
-                BLOCK_ERBIUM,
                 BLOCK_EUROPIUM,
-                BLOCK_FIERYSTEEL,
-                BLOCK_GADOLINIUM,
                 BLOCK_GALLIUM,
-                BLOCK_HOLMIUM,
-                BLOCK_HSLA,
-                BLOCK_INDIUM,
-                BLOCK_INFUSEDGOLD,
                 BLOCK_INVAR,
                 BLOCK_IRIDIUM,
-                BLOCK_IRONMAGNETIC,
-                BLOCK_IRONWOOD,
-                BLOCK_KANTHAL
+                BLOCK_IRONMAGNETIC
             },
-            STORAGE_BLOCKS4 = new IIconContainer[]{
-                BLOCK_KNIGHTMETAL,
-                BLOCK_LANTHANUM,
+            STORAGE_BLOCKS3 = new IIconContainer[]{
+                BLOCK_KANTHAL,
                 BLOCK_LEAD,
                 BLOCK_LUTETIUM,
                 BLOCK_MAGNALIUM,
@@ -425,22 +406,19 @@ public class Textures {
                 BLOCK_MANGANESE,
                 BLOCK_METEORICIRON,
                 BLOCK_METEORICSTEEL,
-                BLOCK_MIDASIUM,
-                BLOCK_MITHRIL,
                 BLOCK_MOLYBDENUM,
                 BLOCK_NAQUADAH,
                 BLOCK_NAQUADAHALLOY,
                 BLOCK_NAQUADAHENRICHED,
-                BLOCK_NAQUADRIA
-            },
-            STORAGE_BLOCKS5 = new IIconContainer[]{
+                BLOCK_NAQUADRIA,
                 BLOCK_NEODYMIUM,
                 BLOCK_NEODYMIUMMAGNETIC,
-                BLOCK_NEUTRONIUM,
+                BLOCK_NEUTRONIUM
+            },
+            STORAGE_BLOCKS4 = new IIconContainer[]{
                 BLOCK_NICHROME,
                 BLOCK_NICKEL,
                 BLOCK_NIOBIUM,
-                BLOCK_NIOBIUMNITRIDE,
                 BLOCK_NIOBIUMTITANIUM,
                 BLOCK_OSMIRIDIUM,
                 BLOCK_OSMIUM,
@@ -449,36 +427,22 @@ public class Textures {
                 BLOCK_PLATINUM,
                 BLOCK_PLUTONIUM,
                 BLOCK_PLUTONIUM241,
-                BLOCK_PRASEODYMIUM
-            },
-            STORAGE_BLOCKS6 = new IIconContainer[]{
-                BLOCK_PROMETHIUM,
                 BLOCK_REDALLOY,
                 BLOCK_REDSTEEL,
                 BLOCK_ROSEGOLD,
-                BLOCK_RUBIDIUM,
-                BLOCK_SAMARIUM,
-                BLOCK_SCANDIUM,
-                BLOCK_SHADOWIRON,
-                BLOCK_SHADOWSTEEL,
                 BLOCK_SILICON,
-                BLOCK_SILVER,
+                BLOCK_SILVER
+            },
+            STORAGE_BLOCKS5 = new IIconContainer[]{
                 BLOCK_SOLDERINGALLOY,
                 BLOCK_STAINLESSSTEEL,
                 BLOCK_STEEL,
                 BLOCK_STEELMAGNETIC,
-                BLOCK_STERLINGSILVER
-            },
-            STORAGE_BLOCKS7 = new IIconContainer[]{
-                BLOCK_SUNNARIUM,
+                BLOCK_STERLINGSILVER,
                 BLOCK_TANTALUM,
-                BLOCK_TELLURIUM,
-                BLOCK_TERBIUM,
                 BLOCK_THAUMIUM,
                 BLOCK_THORIUM,
-                BLOCK_THULIUM,
                 BLOCK_TIN,
-                BLOCK_TINALLOY,
                 BLOCK_TITANIUM,
                 BLOCK_TRITANIUM,
                 BLOCK_TUNGSTEN,
@@ -487,11 +451,10 @@ public class Textures {
                 BLOCK_URANIUM,
                 BLOCK_URANIUM235
             },
-            STORAGE_BLOCKS8 = new IIconContainer[]{
+            STORAGE_BLOCKS6 = new IIconContainer[]{
                 BLOCK_VANADIUM,
                 BLOCK_VANADIUMGALLIUM,
                 BLOCK_WROUGHTIRON,
-                BLOCK_YTTRBIUM,
                 BLOCK_YTTRIUM,
                 BLOCK_YTTRIUMBARIUMCUPRATE,
                 BLOCK_ZINC,
@@ -501,30 +464,25 @@ public class Textures {
                 BLOCK_HSSE,
                 BLOCK_HSSS
             },
-            STORAGE_BLOCKS9 = new IIconContainer[]{
+            STORAGE_BLOCKS7 = new IIconContainer[]{
                 BLOCK_AERCRYSTAL,
                 BLOCK_AMBER,
                 BLOCK_AMETHYST,
                 BLOCK_AQUACRYSTAL,
-                BLOCK_BLUETOPAZ,
                 BLOCK_CERTUSQUARTZ,
                 BLOCK_DILITHIUM,
                 BLOCK_ENDEREYE,
                 BLOCK_ENDERPEARL,
                 BLOCK_FOOLSRUBY,
-                BLOCK_FORCE,
-                BLOCK_FORCICIUM,
-                BLOCK_FORCILLIUM,
                 BLOCK_GREENSAPPHIRE,
                 BLOCK_IGNISCRYSTAL,
-                BLOCK_JASPER
-            },
-            STORAGE_BLOCKS10 = new IIconContainer[]{
+                BLOCK_JASPER,
                 BLOCK_LAZURITE,
                 BLOCK_LIGNITE,
                 BLOCK_MONAZITE,
-                BLOCK_NITER,
-                BLOCK_OLIVINE,
+                BLOCK_OLIVINE
+            },
+            STORAGE_BLOCKS8 = new IIconContainer[]{
                 BLOCK_OPAL,
                 BLOCK_ORDOCRYSTAL,
                 BLOCK_PERDITIOCRYSTAL,
@@ -535,11 +493,8 @@ public class Textures {
                 BLOCK_SAPPHIRE,
                 BLOCK_SODALITE,
                 BLOCK_TANZANITE,
-                BLOCK_TERRACRYSTAL
-            },
-            STORAGE_BLOCKS11 = new IIconContainer[]{
+                BLOCK_TERRACRYSTAL,
                 BLOCK_TOPAZ,
-                BLOCK_VINTEUM,
                 BLOCK_YELLOWGARNET,
                 BLOCK_NETHERSTAR,
                 BLOCK_CHARCOAL

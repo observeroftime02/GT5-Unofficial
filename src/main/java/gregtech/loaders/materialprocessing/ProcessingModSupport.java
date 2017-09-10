@@ -20,7 +20,6 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
         if (!aEnableThaumcraftMats) {
             Materials.Amber.mHasParentMod = false;
             Materials.Thaumium.mHasParentMod = false;
-            Materials.InfusedGold.mHasParentMod = false;
             Materials.InfusedAir.mHasParentMod = false;
             Materials.InfusedFire.mHasParentMod = false;
             Materials.InfusedEarth.mHasParentMod = false;

@@ -316,12 +316,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     public void onPostLoad() {
         GT_Log.out.println("GT_Mod: Beginning PostLoad-Phase.");
         GT_Log.ore.println("GT_Mod: Beginning PostLoad-Phase.");
-        if (GT_Log.pal != null) {
-            new Thread(new GT_PlayerActivityLogger()).start();
-        }
         GregTech_API.sPostloadStarted = true;
-        MatUnifier.addItemData(new ItemStack(Items.iron_door, 1), new ItemData(Materials.Iron, 21772800));
-        MatUnifier.addItemData(new ItemStack(Items.wooden_door, 1, 32767), new ItemData(Materials.Wood, 21772800));
         for (FluidContainerRegistry.FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) {
             if ((tData.filledContainer.getItem() == Items.potionitem) && (tData.filledContainer.getItemDamage() == 0)) {
                 tData.fluid.amount = 0;
@@ -494,9 +489,6 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
         if ((aEvent.entityPlayer == null) || (aEvent.entityPlayer.worldObj == null) || (aEvent.action == null) || (aEvent.world.provider == null)) {
             return;
         }
-        if ((!aEvent.entityPlayer.worldObj.isRemote) && (aEvent.action != PlayerInteractEvent.Action.RIGHT_CLICK_AIR) && (GT_Log.pal != null)) {
-            this.mBufferedPlayerActivity.add(getDataAndTime() + ";" + aEvent.action.name() + ";" + aEvent.entityPlayer.getDisplayName() + ";DIM:" + aEvent.world.provider.dimensionId + ";" + aEvent.x + ";" + aEvent.y + ";" + aEvent.z + ";|;" + aEvent.x / 10 + ";" + aEvent.y / 10 + ";" + aEvent.z / 10);
-        }
         ItemStack aStack = aEvent.entityPlayer.getCurrentEquippedItem();
         if ((aStack != null) && (aEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) && (aStack.getItem() == Items.flint_and_steel)) {
             if ((!aEvent.world.isRemote) && (!aEvent.entityPlayer.capabilities.isCreativeMode) && (aEvent.world.rand.nextInt(100) >= this.mFlintChance)) {
@@ -515,9 +507,6 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     @SubscribeEvent
     public void onBlockHarvestingEvent(BlockEvent.HarvestDropsEvent aEvent) {
         if (aEvent.harvester != null) {
-            if ((!aEvent.world.isRemote) && (GT_Log.pal != null)) {
-                this.mBufferedPlayerActivity.add(getDataAndTime() + ";HARVEST_BLOCK;" + aEvent.harvester.getDisplayName() + ";DIM:" + aEvent.world.provider.dimensionId + ";" + aEvent.x + ";" + aEvent.y + ";" + aEvent.z + ";|;" + aEvent.x / 10 + ";" + aEvent.y / 10 + ";" + aEvent.z / 10);
-            }
             ItemStack aStack = aEvent.harvester.getCurrentEquippedItem();
             if (aStack != null) {
                 if ((aStack.getItem() instanceof GT_MetaGenerated_Tool)) {
@@ -1270,14 +1259,14 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                         MatUnifier.addAssociation(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, true);
                     } else {
                         MatUnifier.addAssociation(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, false);
-                        MatUnifier.set(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, (tOre.mModID != null) && (GregTech_API.sUnification.get(new StringBuilder().append(ConfigCategories.specialunificationtargets).append(".").append(tOre.mModID).toString(), tOre.mEvent.Name, false)), true);
+                        MatUnifier.set(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, (tOre.mModID != null) && GregTech_API.sUnification.get(String.valueOf(ConfigCategories.specialunificationtargets) + "." + tOre.mModID, tOre.mEvent.Name, false), true);
                     }
                 } else {
                     if (MatUnifier.isBlacklisted(tOre.mEvent.Ore)) {
                         MatUnifier.addAssociation(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, true);
                     } else {
                         MatUnifier.addAssociation(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, false);
-                        MatUnifier.set(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, (tOre.mModID != null) && (GregTech_API.sUnification.get(new StringBuilder().append(ConfigCategories.specialunificationtargets).append(".").append(tOre.mModID), tOre.mEvent.Name, false)), true);
+                        MatUnifier.set(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, (tOre.mModID != null) && GregTech_API.sUnification.get(new StringBuilder().append(ConfigCategories.specialunificationtargets).append(".").append(tOre.mModID), tOre.mEvent.Name, false), true);
                     }
                 }
             }

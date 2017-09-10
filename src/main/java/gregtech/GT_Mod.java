@@ -11,7 +11,6 @@ import gregtech.api.enchants.Enchantment_EnderDamage;
 import gregtech.api.enchants.Enchantment_Radioactivity;
 import gregtech.api.enums.*;
 import gregtech.api.interfaces.internal.IGT_Mod;
-import gregtech.api.objects.ItemData;
 import gregtech.api.util.*;
 import gregtech.common.GT_DummyWorld;
 import gregtech.common.GT_Network;
@@ -114,13 +113,6 @@ public class GT_Mod implements IGT_Mod {
             GT_Log.mOreDictLogFile = new File(aEvent.getModConfigurationDirectory().getParentFile(), "logs/OreDict.log");
             if (!GT_Log.mOreDictLogFile.exists()) {
                 GT_Log.mOreDictLogFile.createNewFile();
-            }
-            if (tMainConfig.get(aTextGeneral, "LoggingPlayerActivity", true).getBoolean(true)) {
-                GT_Log.mPlayerActivityLogFile = new File(aEvent.getModConfigurationDirectory().getParentFile(), "logs/PlayerActivity.log");
-                if (!GT_Log.mPlayerActivityLogFile.exists()) {
-                    GT_Log.mPlayerActivityLogFile.createNewFile();
-                }
-                GT_Log.pal = new PrintStream(GT_Log.mPlayerActivityLogFile);
             }
         } catch (Throwable e) {}
 
@@ -479,12 +471,14 @@ public class GT_Mod implements IGT_Mod {
         for (Runnable tRunnable : GregTech_API.sBeforeGTPostload) {
             tRunnable.run();
         }
-        gregtechproxy.onPostLoad();
+
+        GregTech_API.sPostloadStarted = true;
+        //gregtechproxy.onPostLoad();
         if (gregtechproxy.mSortToTheEnd) {
-            gregtechproxy.registerUnificationEntries();
+            //gregtechproxy.registerUnificationEntries();
         } else {
-            new GT_ItemIterator().run();
-            gregtechproxy.registerUnificationEntries();
+            //new GT_ItemIterator().run();
+            //gregtechproxy.registerUnificationEntries();
             new GT_FuelLoader().run();
         }
         new GT_BookAndLootLoader().run();
@@ -494,18 +488,6 @@ public class GT_Mod implements IGT_Mod {
         new GT_Worldgenloader().run();
         new GT_CoverLoader().run();
         LoadArmorComponents.init();
-
-        GT_RecipeRegistrator.registerUsagesForMaterials(new ItemStack(Blocks.planks, 1), null, false);
-        GT_RecipeRegistrator.registerUsagesForMaterials(new ItemStack(Blocks.cobblestone, 1), null, false);
-        GT_RecipeRegistrator.registerUsagesForMaterials(new ItemStack(Blocks.stone, 1), null, false);
-        GT_RecipeRegistrator.registerUsagesForMaterials(new ItemStack(Items.leather, 1), null, false);
-
-        MatUnifier.addItemData(GT_ModHandler.getRecipeOutput(null, MatUnifier.get(OrePrefixes.ingot, Materials.Tin), null, MatUnifier.get(OrePrefixes.ingot, Materials.Tin), null, MatUnifier.get(OrePrefixes.ingot, Materials.Tin), null, null, null), new ItemData(Materials.Tin, 10886400));
-        if (!GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.storageblockcrafting, "tile.glowstone", false)) {
-            GT_ModHandler.removeRecipe(new ItemStack(Items.glowstone_dust, 1), new ItemStack(Items.glowstone_dust, 1), null, new ItemStack(Items.glowstone_dust, 1), new ItemStack(Items.glowstone_dust, 1));
-        }
-        GT_ModHandler.removeRecipe(new ItemStack(Blocks.wooden_slab, 1, 0), new ItemStack(Blocks.wooden_slab, 1, 1), new ItemStack(Blocks.wooden_slab, 1, 2));
-        GT_ModHandler.addCraftingRecipe(new ItemStack(Blocks.wooden_slab, 6, 0), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"WWW", 'W', new ItemStack(Blocks.planks, 1, 0)});
 
         GT_Log.out.println("GT_Mod: Activating OreDictionary Handler, this can take some time, as it scans the whole OreDictionary");
         FMLLog.info("If your Log stops here, you were too impatient. Wait a bit more next time, before killing Minecraft with the Task Manager.");

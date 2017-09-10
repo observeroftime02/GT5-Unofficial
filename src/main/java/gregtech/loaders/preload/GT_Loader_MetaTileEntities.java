@@ -41,7 +41,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {
     private static ItemStack aCircuitBasic = MatUnifier.get(OrePrefixes.circuit, Materials.Basic);
     private static ItemStack aCircuitGood = MatUnifier.get(OrePrefixes.circuit, Materials.Good);
     private static ItemStack aCircuitAdv = MatUnifier.get(OrePrefixes.circuit, Materials.Advanced);
-    private static ItemStack aCircuitData = MatUnifier.get(OrePrefixes.circuit, Materials.Data, 1);
+    private static ItemStack aCircuitData = MatUnifier.get(OrePrefixes.circuit, Materials.Data);
     private static ItemStack aCircuitElite = MatUnifier.get(OrePrefixes.circuit, Materials.Elite);
     private static ItemStack aCircuitMaster = MatUnifier.get(OrePrefixes.circuit, Materials.Master);
     private static ItemStack aCircuitUltimate = MatUnifier.get(OrePrefixes.circuit, Materials.Ultimate);
@@ -1317,8 +1317,8 @@ public class GT_Loader_MetaTileEntities implements Runnable {
     private static void run4() {
     	long bitsd = GT_ModHandler.RecipeBits.DISMANTLEABLE | GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED;
 
-        for (Materials aMaterial : GregTech_API.sGeneratedMaterials) {
-            if (aMaterial != null && aMaterial.hasFlag(MaterialFlags.FRAME)) {
+        for (Materials aMaterial : GT_Loader_MaterialRecipes.aSolidAndDustList) {
+            if (aMaterial.hasFlag(MaterialFlags.FRAME)) {
                 new GT_MetaPipeEntity_Frame(4096 + aMaterial.mMetaItemSubID, "GT_Frame_" + aMaterial, aMaterial.mDefaultLocalName + " Frame Box", aMaterial);
             }
         }

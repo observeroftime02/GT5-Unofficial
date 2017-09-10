@@ -123,6 +123,9 @@ public class GT_Loader_ItemData
         MatUnifier.addItemData(new ItemStack(Blocks.sticky_piston, 1, 32767), new ItemData(Materials.Stone, 14515200, new MaterialStack(Materials.Wood, 10886400)));
         MatUnifier.addItemData(new ItemStack(Blocks.dispenser, 1, 32767), new ItemData(Materials.Stone, 25401600, new MaterialStack(Materials.Redstone, 3628800)));
         MatUnifier.addItemData(new ItemStack(Blocks.dropper, 1, 32767), new ItemData(Materials.Stone, 25401600, new MaterialStack(Materials.Redstone, 3628800)));
+        MatUnifier.addItemData(new ItemStack(Items.iron_door, 1), new ItemData(Materials.Iron, 21772800));
+        MatUnifier.addItemData(new ItemStack(Items.wooden_door, 1, 32767), new ItemData(Materials.Wood, 21772800));
+        MatUnifier.addItemData(GT_ModHandler.getRecipeOutput(null, MatUnifier.get(OrePrefixes.ingot, Materials.Tin), null, MatUnifier.get(OrePrefixes.ingot, Materials.Tin), null, MatUnifier.get(OrePrefixes.ingot, Materials.Tin), null, null, null), new ItemData(Materials.Tin, 10886400));
 
         //TODO MOVE TO ITEMDATALOADER?
         /*if (tOre.mModID.equalsIgnoreCase("enderio") && tOre.mPrefix == OrePrefixes.ingot && tOre.mMaterial == Materials.DarkSteel) {
