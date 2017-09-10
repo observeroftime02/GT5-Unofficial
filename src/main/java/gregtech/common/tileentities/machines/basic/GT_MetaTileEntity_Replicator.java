@@ -95,7 +95,6 @@ public class GT_MetaTileEntity_Replicator
                 sHeaviestElementMass = Math.max(sHeaviestElementMass, (int) aMaterial.getMass());
             }
         }
-        System.out.println("##@@ " + sHeaviestElementMass);
         return sHeaviestElementMass;
     }
 }
