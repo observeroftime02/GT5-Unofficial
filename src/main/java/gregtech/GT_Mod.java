@@ -564,6 +564,7 @@ public class GT_Mod implements IGT_Mod {
         GT_Log.out.println("GT_Mod: Activating OreDictionary Handler, this can take some time, as it scans the whole OreDictionary");
         FMLLog.info("If your Log stops here, you were too impatient. Wait a bit more next time, before killing Minecraft with the Task Manager.");
         gregtechproxy.activateOreDictHandler();
+        new GT_Loader_MaterialRecipes().run();
         FMLLog.info("Congratulations, you have been waiting long enough. Have a Cake.");
         GT_Log.out.println("GT_Mod: List of Lists of Tool Recipes: "+GT_ModHandler.sSingleNonBlockDamagableRecipeList_list.toString());
         GT_Log.out.println("GT_Mod: Vanilla Recipe List -> Outputs null or stackSize <=0: " + GT_ModHandler.sVanillaRecipeList_warntOutput.toString());
