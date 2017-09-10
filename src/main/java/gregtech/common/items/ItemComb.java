@@ -100,10 +100,10 @@ public class ItemComb extends Item {
 
 	    //Organic
 		tComb = getStackForType(CombType.LIGNIE);
-		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.gem, Materials.Lignite, 1), 90);
+		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.gem, Materials.Lignite), 90);
 		addProcess(tComb, Materials.Lignite, 100);
 		tComb = getStackForType(CombType.COAL);
-		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.gem, Materials.Coal, 1), 40);
+		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.gem, Materials.Coal), 40);
 		addProcess(tComb, Materials.Coal, 100);
 		tComb = getStackForType(CombType.STICKY);
 		addSpecialCent(tComb, ItemList.Resin.get(1), 70);
@@ -113,7 +113,7 @@ public class ItemComb extends Item {
 		
 	    //Gem Line
 		tComb = getStackForType(CombType.STONE);
-		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.dust, Materials.Stone, 1), 70, MatUnifier.get(OrePrefixes.dust,Materials.Salt,1),20, MatUnifier.get(OrePrefixes.dust,Materials.RockSalt,1),20);
+		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.dust, Materials.Stone), 70, MatUnifier.get(OrePrefixes.dust,Materials.Salt),20, MatUnifier.get(OrePrefixes.dust,Materials.RockSalt),20);
 		addProcess(tComb, Materials.Soapstone, 100);
 		addProcess(tComb, Materials.Talc, 100);
 		addProcess(tComb, Materials.Apatite, 100);
@@ -154,14 +154,14 @@ public class ItemComb extends Item {
 
 //	    // Metals Line
 		tComb = getStackForType(CombType.SLAG);
-		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.dust, Materials.Stone, 1), 50, MatUnifier.get(OrePrefixes.dust, Materials.GraniteBlack, 1), 20, MatUnifier.get(OrePrefixes.dust, Materials.GraniteRed, 1), 20);
+		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.dust, Materials.Stone), 50, MatUnifier.get(OrePrefixes.dust, Materials.GraniteBlack), 20, MatUnifier.get(OrePrefixes.dust, Materials.GraniteRed), 20);
 		addProcess(tComb, Materials.Salt, 100);
 		addProcess(tComb, Materials.RockSalt, 100);
 		addProcess(tComb, Materials.Lepidolite, 100);
 		addProcess(tComb, Materials.Spodumene, 100);
 		addProcess(tComb, Materials.Monazite, 100);
 		tComb = getStackForType(CombType.COPPER);
-		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.dustTiny, Materials.Copper, 1), 70);
+		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.dustTiny, Materials.Copper), 70);
 		addProcess(tComb, Materials.Copper, 100);
 		addProcess(tComb, Materials.Tetrahedrite, 100);
 		addProcess(tComb, Materials.Chalcopyrite, 100);
@@ -169,11 +169,11 @@ public class ItemComb extends Item {
 		addProcess(tComb, Materials.Pyrite, 100);
 		addProcess(tComb, Materials.Stibnite, 100);
 		tComb = getStackForType(CombType.TIN);
-		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.dustTiny, Materials.Tin, 1), 60);
+		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.dustTiny, Materials.Tin), 60);
 		addProcess(tComb, Materials.Tin, 100);
 		addProcess(tComb, Materials.Cassiterite, 100);
 		tComb = getStackForType(CombType.LEAD);
-		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.dustTiny, Materials.Lead, 1), 45);
+		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.dustTiny, Materials.Lead), 45);
 		addProcess(tComb, Materials.Lead, 100);
 		addProcess(tComb, Materials.Galena, 100);
 		tComb = getStackForType(CombType.IRON);
@@ -210,7 +210,7 @@ public class ItemComb extends Item {
 		addProcess(tComb, Materials.Sphalerite, 100);
 		addProcess(tComb, Materials.Sulfur, 100);
 		tComb = getStackForType(CombType.SILVER);
-		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.dustTiny, Materials.Silver, 1), 30);
+		addSpecialCent(tComb, MatUnifier.get(OrePrefixes.dustTiny, Materials.Silver), 30);
 		addProcess(tComb, Materials.Silver, 100);
 		addProcess(tComb, Materials.Galena, 100);
 		tComb = getStackForType(CombType.GOLD);
@@ -267,40 +267,35 @@ public class ItemComb extends Item {
 	public void addSpecialCent(ItemStack tComb, ItemStack aOutput, int chance){
 		GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, aOutput,	ItemList.FR_Wax.get(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100, 3000 }, 128, 5);
 		RecipeManagers.centrifugeManager.addRecipe(40, tComb, ImmutableMap.of(aOutput, chance * 0.01f, ItemList.FR_Wax.get(1), 0.3f));
-		//RecipeManagers.centrifugeManager.addRecipe(40, tComb, new ItemStack[]{aOutput, ItemList.FR_Wax.get(1)}, new int[]{chance, 30});
 	}
 	
 	public void addSpecialCent(ItemStack tComb, ItemStack aOutput, int chance, ItemStack aOutput2, int chance2){
 		GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, aOutput,	ItemList.FR_Wax.get(1), aOutput2, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100, 3000, chance2 * 100 }, 128, 5);
 		RecipeManagers.centrifugeManager.addRecipe(40, tComb, ImmutableMap.of(aOutput, chance * 0.01f, ItemList.FR_Wax.get(1), 0.3f,aOutput2,chance2 * 0.01f));
-		//RecipeManagers.centrifugeManager.addRecipe(40, tComb, new ItemStack[]{aOutput, aOutput2, ItemList.FR_Wax.get(1)}, new int[]{chance, chance2, 30});
 	}
 	
 	public void addSpecialCent(ItemStack tComb, ItemStack aOutput, int chance, ItemStack aOutput2, int chance2, ItemStack aOutput3, int chance3){
 		GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, aOutput,	ItemList.FR_Wax.get(1), aOutput2, aOutput3, GT_Values.NI, GT_Values.NI, new int[] { chance * 100, 3000, chance2 * 100, chance3*100 }, 128, 5);
 		RecipeManagers.centrifugeManager.addRecipe(40, tComb, ImmutableMap.of(aOutput, chance * 0.01f, ItemList.FR_Wax.get(1), 0.3f,aOutput2,chance2 * 0.01f,aOutput3,chance3*0.01f));
-		//RecipeManagers.centrifugeManager.addRecipe(40, tComb, new ItemStack[]{aOutput, aOutput2, aOutput3, ItemList.FR_Wax.get(1)}, new int[]{chance, chance2, chance3, 30});
 	}
 	
 	public void addProcess(ItemStack tComb, Materials aMaterial, int chance){
 		if(GT_Mod.gregtechproxy.mNerfedCombs){
-			GT_Values.RA.addChemicalRecipe(GT_Utility.copyAmount(9, tComb), MatUnifier.get(OrePrefixes.crushed, aMaterial, 1), Materials.Water.getFluid(1000), aMaterial.mOreByProducts.isEmpty() ? null : aMaterial.mOreByProducts.get(0).getMolten(144), MatUnifier.get(OrePrefixes.crushedPurified, aMaterial, 4), 96, 24);
-			GT_Values.RA.addAutoclaveRecipe(GT_Utility.copyAmount(16, tComb), Materials.UUMatter.getFluid(Math.max(1, ((((int)aMaterial.getMass())+9)/10))), MatUnifier.get(OrePrefixes.crushedPurified, aMaterial, 1), 10000, (int) (aMaterial.getMass() * 128), 384);
+			GT_Values.RA.addChemicalRecipe(GT_Utility.copyAmount(9, tComb), MatUnifier.get(OrePrefixes.crushed, aMaterial), Materials.Water.getFluid(1000), aMaterial.mOreByProducts.isEmpty() ? null : aMaterial.mOreByProducts.get(0).getMolten(144), MatUnifier.get(OrePrefixes.crushedPurified, aMaterial, 4), 96, 24);
+			GT_Values.RA.addAutoclaveRecipe(GT_Utility.copyAmount(16, tComb), Materials.UUMatter.getFluid(Math.max(1, ((((int)aMaterial.getMass())+9)/10))), MatUnifier.get(OrePrefixes.crushedPurified, aMaterial), 10000, (int) (aMaterial.getMass() * 128), 384);
 		} else {
-			GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, MatUnifier.get(OrePrefixes.dustTiny, aMaterial, 1),	ItemList.FR_Wax.get(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100, 3000 }, 128, 5);
-			RecipeManagers.centrifugeManager.addRecipe(40, tComb, ImmutableMap.of(MatUnifier.get(OrePrefixes.dustTiny, aMaterial, 1), chance * 0.01f, ItemList.FR_Wax.get(1), 0.3f));
-			//RecipeManagers.centrifugeManager.addRecipe(40, tComb, new ItemStack[]{MatUnifier.get(OrePrefixes.dustTiny, aMaterial), ItemList.FR_Wax.get(1)}, new int[]{chance, 30});
+			GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, MatUnifier.get(OrePrefixes.dustTiny, aMaterial),	ItemList.FR_Wax.get(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100, 3000 }, 128, 5);
+			RecipeManagers.centrifugeManager.addRecipe(40, tComb, ImmutableMap.of(MatUnifier.get(OrePrefixes.dustTiny, aMaterial), chance * 0.01f, ItemList.FR_Wax.get(1), 0.3f));
 		}
 	}
 	
 	public void addProcess(ItemStack tComb, Materials aInMaterial, Materials aOutMaterial, int chance){
 		if(GT_Mod.gregtechproxy.mNerfedCombs){
-			GT_Values.RA.addChemicalRecipe(GT_Utility.copyAmount(9, tComb), MatUnifier.get(OrePrefixes.crushed, aInMaterial, 1), Materials.Water.getFluid(1000), aInMaterial.mOreByProducts.isEmpty() ? null : aInMaterial.mOreByProducts.get(0).getMolten(144), MatUnifier.get(OrePrefixes.crushedPurified, aOutMaterial, 4), 96, 24);
-			GT_Values.RA.addAutoclaveRecipe(GT_Utility.copyAmount(16, tComb), Materials.UUMatter.getFluid(Math.max(1, ((((int)aOutMaterial.getMass())+9)/10))), MatUnifier.get(OrePrefixes.crushedPurified, aOutMaterial, 1), 10000, (int) (aOutMaterial.getMass() * 128), 384);
+			GT_Values.RA.addChemicalRecipe(GT_Utility.copyAmount(9, tComb), MatUnifier.get(OrePrefixes.crushed, aInMaterial), Materials.Water.getFluid(1000), aInMaterial.mOreByProducts.isEmpty() ? null : aInMaterial.mOreByProducts.get(0).getMolten(144), MatUnifier.get(OrePrefixes.crushedPurified, aOutMaterial, 4), 96, 24);
+			GT_Values.RA.addAutoclaveRecipe(GT_Utility.copyAmount(16, tComb), Materials.UUMatter.getFluid(Math.max(1, ((((int)aOutMaterial.getMass())+9)/10))), MatUnifier.get(OrePrefixes.crushedPurified, aOutMaterial), 10000, (int) (aOutMaterial.getMass() * 128), 384);
 		} else {
-			GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, MatUnifier.get(OrePrefixes.dustTiny, aOutMaterial, 1),	ItemList.FR_Wax.get(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100, 3000 }, 128, 5);
-			RecipeManagers.centrifugeManager.addRecipe(40, tComb, ImmutableMap.of(MatUnifier.get(OrePrefixes.dustTiny, aOutMaterial, 1), chance * 0.01f, ItemList.FR_Wax.get(1), 0.3f));
-			//RecipeManagers.centrifugeManager.addRecipe(40, tComb, new ItemStack[]{MatUnifier.get(OrePrefixes.dustTiny, aOutMaterial), ItemList.FR_Wax.get(1)}, new int[]{chance, 30});
+			GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, MatUnifier.get(OrePrefixes.dustTiny, aOutMaterial),	ItemList.FR_Wax.get(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100, 3000 }, 128, 5);
+			RecipeManagers.centrifugeManager.addRecipe(40, tComb, ImmutableMap.of(MatUnifier.get(OrePrefixes.dustTiny, aOutMaterial), chance * 0.01f, ItemList.FR_Wax.get(1), 0.3f));
 		}
 	}
 }

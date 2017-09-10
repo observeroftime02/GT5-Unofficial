@@ -324,6 +324,13 @@ public class GT_ModHandler {
         return RA.addAlloySmelterRecipe(aInput1, aInput2, aOutput1, aDuration, aEUt);
     }
 
+    public static boolean addThermalCentrifugeRecipe(ItemStack aInput, ItemStack... aOutputs) {
+        if (aInput == null || aOutputs == null || aOutputs.length <= 0 || aOutputs[0] == null) return false;
+        if (!GregTech_API.sRecipeFile.get(ConfigCategories.Machines.thermalcentrifuge, aInput, true)) return false;
+        RA.addThermalCentrifugeRecipe(aInput, aOutputs.length >= 1 ? aOutputs[0] : null, aOutputs.length >= 2 ? aOutputs[1] : null, aOutputs.length >= 3 ? aOutputs[2] : null, 500, 48);
+        return true;
+    }
+
     /**
      * IC2-OreWasher Recipe. Overloads old Recipes automatically
      */
@@ -677,11 +684,7 @@ public class GT_ModHandler {
                 } else if (tObject instanceof String) {
                     tRecipe[i] = MatUnifier.getFirstOre(tObject, 1);
                     if (tRecipe[i] == null) break;
-                }/* else if (tObject instanceof Boolean) {
-                    //
-                } else {
-                    throw new IllegalArgumentException();
-                }*/
+                }
                 i++;
             }
             removeRecipe(tRecipe);

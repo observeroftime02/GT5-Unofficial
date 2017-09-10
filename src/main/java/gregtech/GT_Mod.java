@@ -12,7 +12,6 @@ import gregtech.api.enchants.Enchantment_Radioactivity;
 import gregtech.api.enums.*;
 import gregtech.api.interfaces.internal.IGT_Mod;
 import gregtech.api.objects.ItemData;
-import gregtech.api.objects.XSTR;
 import gregtech.api.util.*;
 import gregtech.common.GT_DummyWorld;
 import gregtech.common.GT_Network;
@@ -34,13 +33,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -48,7 +42,10 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.PrintStream;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -62,8 +59,7 @@ public class GT_Mod implements IGT_Mod {
     @SidedProxy(modId = "gregtech", clientSide = "gregtech.common.GT_Client", serverSide = "gregtech.common.GT_Server")
     public static GT_Proxy gregtechproxy;
     public static GT_Achievements achievements;
-    private final String aTextGeneral = "general";
-   
+
     static {
         if ((509 != GregTech_API.VERSION) || (509 != GT_ModHandler.VERSION) || (509 != MatUnifier.VERSION) || (509 != GT_Recipe.VERSION) || (509 != GT_Utility.VERSION) || (509 != GT_RecipeRegistrator.VERSION) || (509 != Element.VERSION) || (509 != Materials.VERSION) || (509 != OrePrefixes.VERSION)) {
             throw new GT_ItsNotMyFaultException("One of your Mods included GregTech-API Files inside it's download, mention this to the Mod Author, who does this bad thing, and tell him/her to use reflection. I have added a Version check, to prevent Authors from breaking my Mod that way.");
@@ -109,46 +105,25 @@ public class GT_Mod implements IGT_Mod {
         GregTech_API.sClientDataFile = new GT_Config(new Configuration(new File(aEvent.getModConfigurationDirectory().getParentFile(), "GregTech.cfg")));
 
         GT_Log.mLogFile = new File(aEvent.getModConfigurationDirectory().getParentFile(), "logs/GregTech.log");
-        if (!GT_Log.mLogFile.exists()) {
-            try {
-                GT_Log.mLogFile.createNewFile();
-            } catch (Throwable e) {
-            }
-        }
+        String aTextGeneral = "general";
         try {
+            if (!GT_Log.mLogFile.exists()) {
+                GT_Log.mLogFile.createNewFile();
+            }
             GT_Log.out = GT_Log.err = new PrintStream(GT_Log.mLogFile);
-        } catch (FileNotFoundException e) {
-        }
-        GT_Log.mOreDictLogFile = new File(aEvent.getModConfigurationDirectory().getParentFile(), "logs/OreDict.log");
-        if (!GT_Log.mOreDictLogFile.exists()) {
-            try {
+            GT_Log.mOreDictLogFile = new File(aEvent.getModConfigurationDirectory().getParentFile(), "logs/OreDict.log");
+            if (!GT_Log.mOreDictLogFile.exists()) {
                 GT_Log.mOreDictLogFile.createNewFile();
-            } catch (Throwable e) {
             }
-        }
-        if (tMainConfig.get(aTextGeneral, "LoggingPlayerActivity", true).getBoolean(true)) {
-            GT_Log.mPlayerActivityLogFile = new File(aEvent.getModConfigurationDirectory().getParentFile(), "logs/PlayerActivity.log");
-            if (!GT_Log.mPlayerActivityLogFile.exists()) {
-                try {
+            if (tMainConfig.get(aTextGeneral, "LoggingPlayerActivity", true).getBoolean(true)) {
+                GT_Log.mPlayerActivityLogFile = new File(aEvent.getModConfigurationDirectory().getParentFile(), "logs/PlayerActivity.log");
+                if (!GT_Log.mPlayerActivityLogFile.exists()) {
                     GT_Log.mPlayerActivityLogFile.createNewFile();
-                } catch (Throwable e) {
                 }
-            }
-            try {
                 GT_Log.pal = new PrintStream(GT_Log.mPlayerActivityLogFile);
-            } catch (Throwable e) {
             }
-        }
-        List<String> tList = ((GT_Log.LogBuffer) GT_Log.ore).mBufferedOreDictLog;
-        GT_Log.ore.println("******************************************************************************");
-        GT_Log.ore.println("* This is the complete log of the GT5-Unofficial OreDictionary Handler. It   *");
-        GT_Log.ore.println("* processes all OreDictionary entries and can sometimes cause errors. All    *");
-        GT_Log.ore.println("* entries and errors are being logged. If you see an error please raise an   *");
-        GT_Log.ore.println("* issue at https://github.com/Blood-Asp/GT5-Unofficial.                      *");
-        GT_Log.ore.println("******************************************************************************");
-        /*for (String aString : tList) {
-            GT_Log.ore.println(aString);
-        }*/
+        } catch (Throwable e) {}
+
         gregtechproxy.onPreLoad();
 
         GT_Log.out.println("GT_Mod: Setting Configs");
@@ -180,7 +155,7 @@ public class GT_Mod implements IGT_Mod {
         String SBdye0 = "ColorModulation.";
         for (Dyes tDye : Dyes.values()) {
             if ((tDye != Dyes.dyeNULL) && (tDye.mIndex < 0)) {
-                String SBdye1 = new StringBuilder(18).append(SBdye0).append(tDye).toString();
+                String SBdye1 = SBdye0 + tDye;
                 tDye.mRGBa[0] = ((short) Math.min(255, Math.max(0, GregTech_API.sClientDataFile.get(SBdye1, "R", tDye.mRGBa[0]))));
                 tDye.mRGBa[1] = ((short) Math.min(255, Math.max(0, GregTech_API.sClientDataFile.get(SBdye1, "G", tDye.mRGBa[1]))));
                 tDye.mRGBa[2] = ((short) Math.min(255, Math.max(0, GregTech_API.sClientDataFile.get(SBdye1, "B", tDye.mRGBa[2]))));
@@ -212,10 +187,6 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.mHideUnusedOres = tMainConfig.get(aTextGeneral, "HideUnusedOres", true).getBoolean(true);
         gregtechproxy.mHideRecyclingRecipes = tMainConfig.get(aTextGeneral, "HideRecyclingRecipes", true).getBoolean(true);
         gregtechproxy.mArcSmeltIntoAnnealed = tMainConfig.get(aTextGeneral, "ArcSmeltIntoAnnealedWrought", true).getBoolean(true);
-        gregtechproxy.mMagneticraftRecipes = tMainConfig.get(aTextGeneral, "EnableMagneticraftSupport", true).getBoolean(true);
-        gregtechproxy.mImmersiveEngineeringRecipes = tMainConfig.get(aTextGeneral, "EnableImmersiveEngineeringRSupport", true).getBoolean(true);
-        gregtechproxy.mMagneticraftBonusOutputPercent = tMainConfig.get(aTextGeneral, "MagneticraftBonusOutputPercent", 100.0f).getDouble();
-        gregtechproxy.mTEMachineRecipes = tMainConfig.get("general", "TEMachineRecipes", false).getBoolean(false);
         gregtechproxy.mEnableAllMaterials = tMainConfig.get("general", "EnableAllMaterials", false).getBoolean(false);
         gregtechproxy.mEnableAllComponents = tMainConfig.get("general", "EnableAllComponents", false).getBoolean(false);
         gregtechproxy.mPollution = tMainConfig.get("Pollution", "EnablePollution", true).getBoolean(true);
@@ -228,8 +199,6 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.mUndergroundOil.getConfig(tMainConfig, "undergroundfluid");
         gregtechproxy.mEnableCleanroom = tMainConfig.get("general", "EnableCleanroom", true).getBoolean(true);
         gregtechproxy.mLowGravProcessing = Loader.isModLoaded(GT_Values.MOD_ID_GC_CORE) && tMainConfig.get("general", "LowGravProcessing", true).getBoolean(true);
-        Calendar now = Calendar.getInstance();
-        gregtechproxy.mAprilFool = GregTech_API.sSpecialFile.get(ConfigCategories.general, "AprilFool", now.get(Calendar.MONTH) == Calendar.APRIL && now.get(Calendar.DAY_OF_MONTH) == 1);
         gregtechproxy.mCropNeedBlock = tMainConfig.get("general", "CropNeedBlockBelow", true).getBoolean(true);
         gregtechproxy.mDisableOldChemicalRecipes = tMainConfig.get("general", "DisableOldChemicalRecipes", false).getBoolean(false);
         gregtechproxy.mAMHInteraction = tMainConfig.get("general", "AllowAutoMaintenanceHatchInteraction", false).getBoolean(false);
@@ -445,7 +414,7 @@ public class GT_Mod implements IGT_Mod {
                 GT_Log.out.println("GT_Mod: Sorting GregTech to the end of the Mod List for further processing.");
                 LoadController tLoadController = (LoadController) GT_Utility.getFieldContent(Loader.instance(), "modController", true, true);
                 List<ModContainer> tModList = tLoadController.getActiveModList();
-                List<ModContainer> tNewModsList = new ArrayList();
+                List<ModContainer> tNewModsList = new ArrayList<>();
                 ModContainer tGregTech = null;
                 short tModList_sS= (short) tModList.size();
                 for (short i = 0; i < tModList_sS; i = (short) (i + 1)) {
@@ -486,9 +455,7 @@ public class GT_Mod implements IGT_Mod {
         new GT_Bees();
 		
 		//Disable Low Grav regardless of config if Cleanroom is disabled.
-		if (!gregtechproxy.mEnableCleanroom){
-			gregtechproxy.mLowGravProcessing = false;
-		}
+        gregtechproxy.mLowGravProcessing = gregtechproxy.mEnableCleanroom;
 
         gregtechproxy.onLoad();
         if (gregtechproxy.mSortToTheEnd) {
@@ -548,14 +515,7 @@ public class GT_Mod implements IGT_Mod {
         GT_Log.out.println("GT_Mod: List of Lists of Tool Recipes: "+GT_ModHandler.sSingleNonBlockDamagableRecipeList_list.toString());
         GT_Log.out.println("GT_Mod: Vanilla Recipe List -> Outputs null or stackSize <=0: " + GT_ModHandler.sVanillaRecipeList_warntOutput.toString());
         GT_Log.out.println("GT_Mod: Single Non Block Damagable Recipe List -> Outputs null or stackSize <=0: " + GT_ModHandler.sSingleNonBlockDamagableRecipeList_warntOutput.toString());
-        //GT_Log.out.println("GT_Mod: sRodMaterialList cycles: " + GT_RecipeRegistrator.sRodMaterialList_cycles);
 
-        if (GT_Values.D1) {
-            IRecipe tRecipe;
-            for (Iterator i$ = GT_ModHandler.sSingleNonBlockDamagableRecipeList.iterator(); i$.hasNext(); GT_Log.out.println("=> " + tRecipe.getRecipeOutput().getDisplayName())) {
-                tRecipe = (IRecipe) i$.next();
-            }
-        }
         new GT_CraftingRecipeLoader().run();
         ItemStack ISdata0 = new ItemStack(Items.potionitem, 1, 0);
         ItemStack ILdata0 = new ItemStack(Items.glass_bottle, 1);
@@ -667,7 +627,7 @@ public class GT_Mod implements IGT_Mod {
         GT_Recipe.GT_Recipe_Map.sMassFabFakeRecipes.addFakeRecipe(false, null, null, null, new FluidStack[]{Materials.UUAmplifier.getFluid(GT_MetaTileEntity_Massfabricator.sUUAperUUM)}, new FluidStack[]{Materials.UUMatter.getFluid(1)}, GT_MetaTileEntity_Massfabricator.sDurationMultiplier / GT_MetaTileEntity_Massfabricator.sUUASpeedBonus, 256, 0);
         GT_Recipe.GT_Recipe_Map.sRockBreakerFakeRecipes.addFakeRecipe(false, new ItemStack[]{ItemList.Display_ITS_FREE.getWithName(0, "Place Lava on Side")}, new ItemStack[]{new ItemStack(Blocks.cobblestone, 1)}, null, null, null, 16, 32, 0);
         GT_Recipe.GT_Recipe_Map.sRockBreakerFakeRecipes.addFakeRecipe(false, new ItemStack[]{ItemList.Display_ITS_FREE.getWithName(0, "Place Lava on Top")}, new ItemStack[]{new ItemStack(Blocks.stone, 1)}, null, null, null, 16, 32, 0);
-        GT_Recipe.GT_Recipe_Map.sRockBreakerFakeRecipes.addFakeRecipe(false, new ItemStack[]{MatUnifier.get(OrePrefixes.dust, Materials.Redstone, 1)}, new ItemStack[]{new ItemStack(Blocks.obsidian, 1)}, null, null, null, 128, 32, 0);
+        GT_Recipe.GT_Recipe_Map.sRockBreakerFakeRecipes.addFakeRecipe(false, new ItemStack[]{MatUnifier.get(OrePrefixes.dust, Materials.Redstone)}, new ItemStack[]{new ItemStack(Blocks.obsidian, 1)}, null, null, null, 128, 32, 0);
 
         if (GregTech_API.mOutputRF || GregTech_API.mInputRF) {
             GT_Utility.checkAvailabilities();
@@ -677,7 +637,7 @@ public class GT_Mod implements IGT_Mod {
             }
         }
         
-        addSolidFakeLargeBoilerFuels();
+        addSolidFakeLargeBoilerFuels(); //TODO MOVE TO BETTER PLACE
         
         achievements = new GT_Achievements();
         GT_Log.out.println("GT_Mod: Loading finished, deallocating temporary Init Variables.");
@@ -695,75 +655,6 @@ public class GT_Mod implements IGT_Mod {
             tRunnable.run();
         }
         gregtechproxy.onServerStarting();
-        GT_Log.out.println("GT_Mod: Unificating outputs of all known Recipe Types.");
-        ArrayList<ItemStack> tStacks = new ArrayList(10000);
-
-        GT_Log.out.println("GT_Mod: Dungeon Loot");
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("dungeonChest").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("bonusChest").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("villageBlacksmith").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("strongholdCrossing").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("strongholdLibrary").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("strongholdCorridor").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("pyramidJungleDispenser").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("pyramidJungleChest").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("pyramidDesertyChest").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("mineshaftCorridor").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        GT_Log.out.println("GT_Mod: Smelting");
-        Object tStack;
-        for (Iterator i$ = FurnaceRecipes.smelting().getSmeltingList().values().iterator(); i$.hasNext(); tStacks.add((ItemStack) tStack)) {
-            tStack = i$.next();
-        }
-        if (gregtechproxy.mCraftingUnification) {
-            GT_Log.out.println("GT_Mod: Crafting Recipes");
-            for (Object tRecipe : CraftingManager.getInstance().getRecipeList()) {
-                if ((tRecipe instanceof IRecipe)) {
-                    tStacks.add(((IRecipe) tRecipe).getRecipeOutput());
-                }
-            }
-        }
-        for (ItemStack tOutput : tStacks) {
-            if (gregtechproxy.mRegisteredOres.contains(tOutput)) {
-                FMLLog.severe("GT-ERR-01: @ " + tOutput.getUnlocalizedName() + "   " + tOutput.getDisplayName());
-                FMLLog.severe("A Recipe used an OreDict Item as Output directly, without copying it before!!! This is a typical CallByReference/CallByValue Error");
-                FMLLog.severe("Said Item will be renamed to make the invalid Recipe visible, so that you can report it properly.");
-                FMLLog.severe("Please check all Recipes outputting this Item, and report the Recipes to their Owner.");
-                FMLLog.severe("The Owner of the ==>RECIPE<==, NOT the Owner of the Item, which has been mentioned above!!!");
-                FMLLog.severe("And ONLY Recipes which are ==>OUTPUTTING<== the Item, sorry but I don't want failed Bug Reports.");
-                FMLLog.severe("GregTech just reports this Error to you, so you can report it to the Mod causing the Problem.");
-                FMLLog.severe("Even though I make that Bug visible, I can not and will not fix that for you, that's for the causing Mod to fix.");
-                FMLLog.severe("And speaking of failed Reports:");
-                FMLLog.severe("Both IC2 and GregTech CANNOT be the CAUSE of this Problem, so don't report it to either of them.");
-                FMLLog.severe("I REPEAT, BOTH, IC2 and GregTech CANNOT be the source of THIS BUG. NO MATTER WHAT.");
-                FMLLog.severe("Asking in the IC2 Forums, which Mod is causing that, won't help anyone, since it is not possible to determine, which Mod it is.");
-                FMLLog.severe("If it would be possible, then I would have had added the Mod which is causing it to the Message already. But it is not possible.");
-                FMLLog.severe("Sorry, but this Error is serious enough to justify this Wall-O-Text and the partially allcapsed Language.");
-                FMLLog.severe("Also it is a Ban Reason on the IC2-Forums to post this seriously.");
-                tOutput.setStackDisplayName("ERROR! PLEASE CHECK YOUR LOG FOR 'GT-ERR-01'!");
-            } else {
-                MatUnifier.setStack(tOutput);
-            }
-        }
         GregTech_API.mServerStarted = true;
         GT_Log.out.println("GT_Mod: ServerStarting-Phase finished!");
         GT_Log.ore.println("GT_Mod: ServerStarting-Phase finished!");
@@ -793,7 +684,7 @@ public class GT_Mod implements IGT_Mod {
             tRunnable.run();
         }
         gregtechproxy.onServerStopping();
-        if ((GT_Values.D1) || (GT_Log.out != System.out)) {
+        if (GT_Values.D1 || GT_Log.out != System.out) {
             GT_Log.out.println("*");
             GT_Log.out.println("Printing List of all registered Objects inside the OreDictionary, now with free extra Sorting:");
             GT_Log.out.println("*");
@@ -884,38 +775,34 @@ public class GT_Mod implements IGT_Mod {
     
     private void addSolidFakeLargeBoilerFuels(){
         GT_Recipe.GT_Recipe_Map.sLargeBoilerFakeFuels.addSolidRecipes(
-        		MatUnifier.get(OrePrefixes.dust, Materials.Charcoal, 1),
-        		MatUnifier.get(OrePrefixes.gem, Materials.Charcoal, 1),
-        		MatUnifier.get(OrePrefixes.block, Materials.Charcoal, 1),
-        		MatUnifier.get(OrePrefixes.dust, Materials.Coal, 1),
-        		MatUnifier.get(OrePrefixes.gem, Materials.Coal, 1),
-        		MatUnifier.get(OrePrefixes.block, Materials.Coal, 1),
-        		MatUnifier.get(OrePrefixes.crushed, Materials.Coal, 1),
-        		MatUnifier.get(OrePrefixes.dust, Materials.Carbon, 1),
-        		MatUnifier.get(OrePrefixes.dust, Materials.Lignite, 1),
-        		MatUnifier.get(OrePrefixes.gem, Materials.Lignite, 1),
-        		MatUnifier.get(OrePrefixes.block, Materials.Lignite, 1),
-        		MatUnifier.get(OrePrefixes.crushed, Materials.Lignite, 1),
-        		MatUnifier.get(OrePrefixes.log, Materials.Wood, 1),
-        		MatUnifier.get(OrePrefixes.plank, Materials.Wood, 1),
-        		MatUnifier.get(OrePrefixes.stick, Materials.Wood, 1),
-        		MatUnifier.get(OrePrefixes.slab, Materials.Wood, 1),
-        		MatUnifier.get(OrePrefixes.dust, Materials.Wood, 1),
-        		MatUnifier.get(OrePrefixes.dust, Materials.Sodium, 1),
-        		MatUnifier.get(OrePrefixes.dust, Materials.Lithium, 1),
-        		MatUnifier.get(OrePrefixes.dust, Materials.Caesium, 1),
-        		MatUnifier.get(OrePrefixes.dust, Materials.Sulfur, 1),
+        		MatUnifier.get(OrePrefixes.dust, Materials.Charcoal),
+        		MatUnifier.get(OrePrefixes.gem, Materials.Charcoal),
+        		MatUnifier.get(OrePrefixes.block, Materials.Charcoal),
+        		MatUnifier.get(OrePrefixes.dust, Materials.Coal),
+        		MatUnifier.get(OrePrefixes.gem, Materials.Coal),
+        		MatUnifier.get(OrePrefixes.block, Materials.Coal),
+        		MatUnifier.get(OrePrefixes.crushed, Materials.Coal),
+        		MatUnifier.get(OrePrefixes.dust, Materials.Carbon),
+        		MatUnifier.get(OrePrefixes.dust, Materials.Lignite),
+        		MatUnifier.get(OrePrefixes.gem, Materials.Lignite),
+        		MatUnifier.get(OrePrefixes.block, Materials.Lignite),
+        		MatUnifier.get(OrePrefixes.crushed, Materials.Lignite),
+        		MatUnifier.get(OrePrefixes.log, Materials.Wood),
+        		MatUnifier.get(OrePrefixes.plank, Materials.Wood),
+        		MatUnifier.get(OrePrefixes.stick, Materials.Wood),
+        		MatUnifier.get(OrePrefixes.slab, Materials.Wood),
+        		MatUnifier.get(OrePrefixes.dust, Materials.Wood),
+        		MatUnifier.get(OrePrefixes.dust, Materials.Sodium),
+        		MatUnifier.get(OrePrefixes.dust, Materials.Lithium),
+        		MatUnifier.get(OrePrefixes.dust, Materials.Caesium),
+        		MatUnifier.get(OrePrefixes.dust, Materials.Sulfur),
         		MatUnifier.get(ItemList.Block_SSFUEL.get(1)),
         		MatUnifier.get(ItemList.Block_MSSFUEL.get(1)),
-        		MatUnifier.get(OrePrefixes.bucket, Materials.Lava, 1),
-        		MatUnifier.get(OrePrefixes.stick, Materials.Blaze, 1));
+        		MatUnifier.get(OrePrefixes.bucket, Materials.Lava),
+        		MatUnifier.get(OrePrefixes.stick, Materials.Blaze));
         if (Loader.isModLoaded("Thaumcraft")) {
         	GT_Recipe.GT_Recipe_Map.sLargeBoilerFakeFuels.addSolidRecipe(GT_ModHandler.getModItem("Thaumcraft", "ItemResource", 1));
         }
-    }
-    
-    public static int calculateTotalGTVersion(int minorVersion){
-    	return calculateTotalGTVersion(VERSION, minorVersion);
     }
 
     public static int calculateTotalGTVersion(int majorVersion, int minorVersion){

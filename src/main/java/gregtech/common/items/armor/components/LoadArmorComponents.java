@@ -144,12 +144,12 @@ public class LoadArmorComponents {
 		new ArmorElectricComponent("cellsteel", ItemList.Large_Fluid_Cell_Steel.get(1), 40, StatType.TANKCAP, 16000, null, 1, null,  0);
 		new ArmorElectricComponent("cellts", ItemList.Large_Fluid_Cell_TungstenSteel.get(1), 80, StatType.TANKCAP, 64000, null, 1, null,  0);
 
-		new ArmorElectricComponent("circuitbasic", MatUnifier.get(OrePrefixes.circuit, Materials.Basic, 1),   10, StatType.PROCESSINGPOWER, 100, null, 1, null,  1);
-		new ArmorElectricComponent("circuitgood", MatUnifier.get(OrePrefixes.circuit, Materials.Good, 1),    20, StatType.PROCESSINGPOWER, 200, null, 1, null,  1);
-		new ArmorElectricComponent("circuitadv", MatUnifier.get(OrePrefixes.circuit, Materials.Advanced, 1),30, StatType.PROCESSINGPOWER, 300, null, 1, null,  1);
-		new ArmorElectricComponent("circuitdata", MatUnifier.get(OrePrefixes.circuit, Materials.Data, 1),    40, StatType.PROCESSINGPOWER, 400, null, 1, null,  1);
-		new ArmorElectricComponent("cicuitelite", MatUnifier.get(OrePrefixes.circuit, Materials.Elite, 1),   50, StatType.PROCESSINGPOWER, 500, null, 1, null,  1);
-		new ArmorElectricComponent("cicuitmaster", MatUnifier.get(OrePrefixes.circuit, Materials.Master, 1),  60, StatType.PROCESSINGPOWER, 600, null, 1, null,  1);
+		new ArmorElectricComponent("circuitbasic", MatUnifier.get(OrePrefixes.circuit, Materials.Basic),  10, StatType.PROCESSINGPOWER, 100, null, 1, null,  1);
+		new ArmorElectricComponent("circuitgood", MatUnifier.get(OrePrefixes.circuit, Materials.Good),    20, StatType.PROCESSINGPOWER, 200, null, 1, null,  1);
+		new ArmorElectricComponent("circuitadv", MatUnifier.get(OrePrefixes.circuit, Materials.Advanced), 30, StatType.PROCESSINGPOWER, 300, null, 1, null,  1);
+		new ArmorElectricComponent("circuitdata", MatUnifier.get(OrePrefixes.circuit, Materials.Data),    40, StatType.PROCESSINGPOWER, 400, null, 1, null,  1);
+		new ArmorElectricComponent("cicuitelite", MatUnifier.get(OrePrefixes.circuit, Materials.Elite),   50, StatType.PROCESSINGPOWER, 500, null, 1, null,  1);
+		new ArmorElectricComponent("cicuitmaster", MatUnifier.get(OrePrefixes.circuit, Materials.Master), 60, StatType.PROCESSINGPOWER, 600, null, 1, null,  1);
 		
 //		if (parts[i].getItem().getUnlocalizedName().equals("gte.meta.jetpack")) {// jeptack parts
 //			switch (parts[i].getItem().getDamage(parts[i])) {

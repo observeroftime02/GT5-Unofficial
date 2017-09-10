@@ -38,8 +38,7 @@ public class GT_Client extends GT_Proxy {
     private static List ROTATABLE_VANILLA_BLOCKS;
 
     static {
-        ROTATABLE_VANILLA_BLOCKS = Arrays.asList(Blocks.piston, Blocks.sticky_piston, Blocks.furnace, Blocks.lit_furnace, Blocks.dropper, Blocks.dispenser, Blocks.chest, Blocks.trapped_chest, Blocks.ender_chest, Blocks.hopper,
-                Blocks.pumpkin, Blocks.lit_pumpkin);
+        ROTATABLE_VANILLA_BLOCKS = Arrays.asList(Blocks.piston, Blocks.sticky_piston, Blocks.furnace, Blocks.lit_furnace, Blocks.dropper, Blocks.dispenser, Blocks.chest, Blocks.trapped_chest, Blocks.ender_chest, Blocks.hopper, Blocks.pumpkin, Blocks.lit_pumpkin);
     }
 
     private final HashSet mCapeList = new HashSet();
@@ -61,7 +60,6 @@ public class GT_Client extends GT_Proxy {
     private final List mMoltenNegB;
     private final List mMoltenNegA = Arrays.asList();
     /**This is the place to def the value used below**/
-    private long afterSomeTime;
     private long mAnimationTick;
     private boolean mAnimationDirection;
     
@@ -69,21 +67,15 @@ public class GT_Client extends GT_Proxy {
     	mCapeRenderer = new GT_CapeRenderer(mCapeList);
         mAnimationTick = 0L;
         mAnimationDirection = false;
-        mPosR = Arrays.asList( /**Materials.ChargedCertusQuartz, **/Materials.Enderium, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder,
-                Materials.Glowstone, Materials.Thaumium, Materials.InfusedVis, Materials.InfusedAir, Materials.InfusedFire, Materials.Firestone);
-        mPosG = Arrays.asList( /**Materials.ChargedCertusQuartz, **/Materials.Enderium, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder,
-                Materials.Glowstone, Materials.InfusedAir, Materials.InfusedEarth);
-        mPosB = Arrays.asList( /**Materials.ChargedCertusQuartz, **/Materials.Enderium, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder, Materials.InfusedVis,
-                Materials.InfusedWater, Materials.Thaumium);
+        mPosR = Arrays.asList(Materials.Enderium, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder, Materials.Glowstone, Materials.Thaumium, Materials.InfusedVis, Materials.InfusedAir, Materials.InfusedFire);
+        mPosG = Arrays.asList(Materials.Enderium, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder, Materials.Glowstone, Materials.InfusedAir, Materials.InfusedEarth);
+        mPosB = Arrays.asList(Materials.Enderium, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder, Materials.InfusedVis, Materials.InfusedWater, Materials.Thaumium);
         mNegR = Arrays.asList(Materials.InfusedEntropy, Materials.NetherStar);
         mNegG = Arrays.asList(Materials.InfusedEntropy, Materials.NetherStar);
         mNegB = Arrays.asList(Materials.InfusedEntropy, Materials.NetherStar);
-        mMoltenPosR = Arrays.asList(Materials.Enderium, Materials.NetherStar, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder,
-                Materials.Glowstone, Materials.Thaumium, Materials.InfusedVis, Materials.InfusedAir, Materials.InfusedFire, Materials.Firestone);
-        mMoltenPosG = Arrays.asList(Materials.Enderium, Materials.NetherStar, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder,
-                Materials.Glowstone, Materials.InfusedAir, Materials.InfusedEarth);
-        mMoltenPosB = Arrays.asList(Materials.Enderium, Materials.NetherStar, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder, Materials.InfusedVis,
-                Materials.InfusedWater, Materials.Thaumium);
+        mMoltenPosR = Arrays.asList(Materials.Enderium, Materials.NetherStar, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder, Materials.Glowstone, Materials.Thaumium, Materials.InfusedVis, Materials.InfusedAir, Materials.InfusedFire);
+        mMoltenPosG = Arrays.asList(Materials.Enderium, Materials.NetherStar, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder, Materials.Glowstone, Materials.InfusedAir, Materials.InfusedEarth);
+        mMoltenPosB = Arrays.asList(Materials.Enderium, Materials.NetherStar, Materials.Uranium235, Materials.InfusedGold, Materials.Plutonium241, Materials.NaquadahEnriched, Materials.Naquadria, Materials.InfusedOrder, Materials.InfusedVis, Materials.InfusedWater, Materials.Thaumium);
         mMoltenNegR = Arrays.asList(Materials.InfusedEntropy);
         mMoltenNegG = Arrays.asList(Materials.InfusedEntropy);
         mMoltenNegB = Arrays.asList(Materials.InfusedEntropy);
@@ -112,39 +104,39 @@ public class GT_Client extends GT_Proxy {
     
     @SubscribeEvent
     public void manipulateDensity(EntityViewRenderEvent.FogDensity event) {
-    	if(GT_Pollution.mPlayerPollution > (GT_Mod.gregtechproxy.mPollutionSmogLimit)){    	
-        event.density = (0.15f*(Math.min(GT_Pollution.mPlayerPollution/((float)GT_Mod.gregtechproxy.mPollutionSourRainLimit),1.0f)))+0.1f;
-        event.setCanceled(true);
+    	if (GT_Pollution.mPlayerPollution > (GT_Mod.gregtechproxy.mPollutionSmogLimit)) {
+            event.density = (0.15f * (Math.min(GT_Pollution.mPlayerPollution / ((float) GT_Mod.gregtechproxy.mPollutionSourRainLimit), 1.0f))) + 0.1f;
+            event.setCanceled(true);
     	}
     }
 
     @SubscribeEvent
     public void manipulateColor(EntityViewRenderEvent.FogColors event) {
-    	if(GT_Pollution.mPlayerPollution > GT_Mod.gregtechproxy.mPollutionSmogLimit){
-        event.red = 140f/255f;
-        event.green = 80f/255f;
-        event.blue = 40f/255f;
+    	if (GT_Pollution.mPlayerPollution > GT_Mod.gregtechproxy.mPollutionSmogLimit) {
+            event.red = 140f / 255f;
+            event.green = 80f / 255f;
+            event.blue = 40f / 255f;
     	}
     }
     
     @SubscribeEvent
     public void manipulateGrassColor(BiomeEvent.GetGrassColor event) {
-    	if(GT_Pollution.mPlayerPollution > GT_Mod.gregtechproxy.mPollutionSmogLimit){
-        event.newColor = 0xD2691E;
+    	if (GT_Pollution.mPlayerPollution > GT_Mod.gregtechproxy.mPollutionSmogLimit) {
+            event.newColor = 0xD2691E;
     	}
     }
 
     @SubscribeEvent
     public void manipulateWaterColor(BiomeEvent.GetWaterColor event) {
-    	if(GT_Pollution.mPlayerPollution > GT_Mod.gregtechproxy.mPollutionSmogLimit){
-        event.newColor = 0x556B2F;
+    	if (GT_Pollution.mPlayerPollution > GT_Mod.gregtechproxy.mPollutionSmogLimit) {
+            event.newColor = 0x556B2F;
     	}
     }
 
     @SubscribeEvent
     public void manipulateFoliageColor(BiomeEvent.GetFoliageColor event) {
-    	if(GT_Pollution.mPlayerPollution > GT_Mod.gregtechproxy.mPollutionSmogLimit){
-        event.newColor = 0xCD853F;
+    	if (GT_Pollution.mPlayerPollution > GT_Mod.gregtechproxy.mPollutionSmogLimit) {
+            event.newColor = 0xCD853F;
     	}
     }
 
@@ -179,17 +171,18 @@ public class GT_Client extends GT_Proxy {
 
     public void onPostLoad() {
         super.onPostLoad();
-        try {
-            label0:
-            for (int i = 1; i < GregTech_API.METATILEENTITIES.length; i++)
-                do {
-                    if (i >= GregTech_API.METATILEENTITIES.length)
-                        continue label0;
-                    if (GregTech_API.METATILEENTITIES[i] != null)
-                        GregTech_API.METATILEENTITIES[i].getStackForm(1L).getTooltip(null, true);
-                    i++;
-                } while (true);
-        } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
+        label0:
+        for (int i = 1; i < GregTech_API.METATILEENTITIES.length; i++) {
+            do {
+                if (i >= GregTech_API.METATILEENTITIES.length) {
+                    continue label0;
+                }
+                if (GregTech_API.METATILEENTITIES[i] != null) {
+                    GregTech_API.METATILEENTITIES[i].getStackForm(1L).getTooltip(null, true);
+                }
+                i++;
+            } while (true);
+        }
     }
     
     @SubscribeEvent
@@ -353,51 +346,39 @@ public class GT_Client extends GT_Proxy {
                 case 1: // '\001'
                     tString = (new StringBuilder()).append(tString).append("13").toString();
                     break;
-
                 case 2: // '\002'
                     tString = (new StringBuilder()).append(tString).append("cat").toString();
                     break;
-
                 case 3: // '\003'
                     tString = (new StringBuilder()).append(tString).append("blocks").toString();
                     break;
-
                 case 4: // '\004'
                     tString = (new StringBuilder()).append(tString).append("chirp").toString();
                     break;
-
                 case 5: // '\005'
                     tString = (new StringBuilder()).append(tString).append("far").toString();
                     break;
-
                 case 6: // '\006'
                     tString = (new StringBuilder()).append(tString).append("mall").toString();
                     break;
-
                 case 7: // '\007'
                     tString = (new StringBuilder()).append(tString).append("mellohi").toString();
                     break;
-
                 case 8: // '\b'
                     tString = (new StringBuilder()).append(tString).append("stal").toString();
                     break;
-
                 case 9: // '\t'
                     tString = (new StringBuilder()).append(tString).append("strad").toString();
                     break;
-
                 case 10: // '\n'
                     tString = (new StringBuilder()).append(tString).append("ward").toString();
                     break;
-
                 case 11: // '\013'
                     tString = (new StringBuilder()).append(tString).append("11").toString();
                     break;
-
                 case 12: // '\f'
                     tString = (new StringBuilder()).append(tString).append("wait").toString();
                     break;
-
                 default:
                     tString = (new StringBuilder()).append(tString).append("wherearewenow").toString();
                     break;

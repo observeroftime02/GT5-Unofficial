@@ -18,8 +18,7 @@ import net.minecraft.world.storage.WorldInfo;
 
 import java.io.File;
 
-public class GT_DummyWorld
-        extends World {
+public class GT_DummyWorld extends World {
     public GT_IteratorRandom mRandom = new GT_IteratorRandom();
     public ItemStack mLastSetBlock = null;
 
@@ -30,54 +29,42 @@ public class GT_DummyWorld
 
     public GT_DummyWorld() {
         this(new ISaveHandler() {
-                 public void saveWorldInfoWithPlayer(WorldInfo var1, NBTTagCompound var2) {
-                 }
+             public void saveWorldInfoWithPlayer(WorldInfo var1, NBTTagCompound var2) {
+             }
 
-                 public void saveWorldInfo(WorldInfo var1) {
-                 }
+             public void saveWorldInfo(WorldInfo var1) {
+             }
 
-                 public WorldInfo loadWorldInfo() {
-                     return null;
-                 }
+             public WorldInfo loadWorldInfo() {
+                 return null;
+             }
 
-                 public IPlayerFileData getSaveHandler() {
-                     return null;
-                 }
+             public IPlayerFileData getSaveHandler() {
+                 return null;
+             }
 
-                 public File getMapFileFromName(String var1) {
-                     return null;
-                 }
+             public File getMapFileFromName(String var1) {
+                 return null;
+             }
 
-                 public IChunkLoader getChunkLoader(WorldProvider var1) {
-                     return null;
-                 }
+             public IChunkLoader getChunkLoader(WorldProvider var1) {
+                 return null;
+             }
 
-                 public void flush() {
-                 }
+             public void flush() {
+             }
 
-                 public void checkSessionLock() {
-                 }
+             public void checkSessionLock() {
+             }
 
-                 public String getWorldDirectoryName() {
-                     return null;
-                 }
+             public String getWorldDirectoryName() {
+                 return null;
+             }
 
-                 public File getWorldDirectory() {
-                     return null;
-                 }
-             }, "DUMMY_DIMENSION", null,
-//				new WorldProvider(),
-//    
-//
-//
-//      new WorldSettings(new WorldInfo(new NBTTagCompound()))
-//      {
-//        public String getDimensionName()
-//        {
-//          return "DUMMY_DIMENSION";
-//        }
-//      }
-                new WorldSettings(new WorldInfo(new NBTTagCompound())), new Profiler());
+             public File getWorldDirectory() {
+                 return null;
+             }
+        }, "DUMMY_DIMENSION", null, new WorldSettings(new WorldInfo(new NBTTagCompound())), new Profiler());
     }
 
     protected IChunkProvider createChunkProvider() {

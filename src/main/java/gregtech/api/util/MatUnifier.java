@@ -93,7 +93,8 @@ public class MatUnifier {
     }
 
     public static ItemStack get(OrePrefixes aPrefix, Object aMaterial) {
-        return get(aPrefix, aMaterial, null, 1);
+        ItemStack aStack = sName2StackMap.get(aPrefix.get(aMaterial).toString());
+        return aStack != null ? aStack : getFirstOre(aPrefix.get(aMaterial), 1);
     }
 
     public static ItemStack get(OrePrefixes aPrefix, Object aMaterial, ItemStack aReplacement, long aAmount) {
@@ -184,11 +185,11 @@ public class MatUnifier {
                     mRunThroughTheList = false;
                     for (Entry<GT_ItemStack, ItemData> tEntry : sItemStack2DataMap.entrySet())
                         if (!tEntry.getValue().hasValidPrefixData() || tEntry.getValue().mPrefix.mAllowNormalRecycling)
-                            GT_RecipeRegistrator.registerMaterialRecycling(tEntry.getKey().toStack(), tEntry.getValue());
+                            GT_RecipeRegistrator.registerMaterialRecycling(tEntry.getKey().toStack(), tEntry.getValue()); //TODO GETS CALLED MORE THAN ONCE PER MAT?
                 }
             } else {
                 if (!aData.hasValidPrefixData() || aData.mPrefix.mAllowNormalRecycling)
-                    GT_RecipeRegistrator.registerMaterialRecycling(aStack, aData);
+                    GT_RecipeRegistrator.registerMaterialRecycling(aStack, aData); //TODO GETS CALLED MORE THAN ONCE PER MAT?
             }
         } else {
             for (Object tObject : aData.mExtraData)

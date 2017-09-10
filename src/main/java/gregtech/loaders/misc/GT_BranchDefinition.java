@@ -99,5 +99,4 @@ public enum GT_BranchDefinition {
     public final IClassification getBranch() {
         return branch;
     }
-
 }

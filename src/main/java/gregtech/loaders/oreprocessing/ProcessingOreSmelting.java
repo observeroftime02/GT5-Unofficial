@@ -22,7 +22,7 @@ public class ProcessingOreSmelting implements gregtech.api.interfaces.IOreRecipe
 		GT_ModHandler.removeFurnaceSmelting(aStack);
 		if (!aMaterial.contains(SubTag.NO_SMELTING)) {
 			if ((aMaterial.mBlastFurnaceRequired) || (aMaterial.mDirectSmelting.mBlastFurnaceRequired)) {
-				GT_Values.RA.addBlastRecipe(GT_Utility.copyAmount(1, aStack), null, null, null, aMaterial.mBlastFurnaceTemp > 1750 ? MatUnifier.get(OrePrefixes.ingotHot, aMaterial, MatUnifier.get(OrePrefixes.ingot, aMaterial, 1L), 1L) : MatUnifier.get(OrePrefixes.ingot, aMaterial, 1L), null, (int) Math.max(aMaterial.getMass() / 4L, 1L) * aMaterial.mBlastFurnaceTemp, 120, aMaterial.mBlastFurnaceTemp);
+				GT_Values.RA.addBlastRecipe(GT_Utility.copyAmount(1, aStack), null, null, null, aMaterial.mBlastFurnaceTemp > 1750 ? MatUnifier.get(OrePrefixes.ingotHot, aMaterial, MatUnifier.get(OrePrefixes.ingot, aMaterial), 1L) : MatUnifier.get(OrePrefixes.ingot, aMaterial), null, (int) Math.max(aMaterial.getMass() / 4L, 1L) * aMaterial.mBlastFurnaceTemp, 120, aMaterial.mBlastFurnaceTemp);
 			} else {
 				OrePrefixes outputPrefix;
 				int outputSize;
@@ -80,9 +80,9 @@ public class ProcessingOreSmelting implements gregtech.api.interfaces.IOreRecipe
 				}
 				ItemStack tStack = MatUnifier.get(outputPrefix, aMaterial.mDirectSmelting, outputSize);
 				if (tStack == null)
-					tStack = MatUnifier.get(aMaterial.contains(SubTag.SMELTING_TO_GEM) ? OrePrefixes.gem : OrePrefixes.ingot, aMaterial.mDirectSmelting, 1L);
+					tStack = MatUnifier.get(aMaterial.contains(SubTag.SMELTING_TO_GEM) ? OrePrefixes.gem : OrePrefixes.ingot, aMaterial.mDirectSmelting);
 				if ((tStack == null) && (!aMaterial.contains(SubTag.SMELTING_TO_GEM)))
-					tStack = MatUnifier.get(OrePrefixes.ingot, aMaterial.mDirectSmelting, 1L);
+					tStack = MatUnifier.get(OrePrefixes.ingot, aMaterial.mDirectSmelting);
 				GT_ModHandler.addSmeltingRecipe(aStack, tStack);
 			}
 		}

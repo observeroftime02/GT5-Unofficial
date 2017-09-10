@@ -123,5 +123,17 @@ public class GT_Loader_ItemData
         MatUnifier.addItemData(new ItemStack(Blocks.sticky_piston, 1, 32767), new ItemData(Materials.Stone, 14515200, new MaterialStack(Materials.Wood, 10886400)));
         MatUnifier.addItemData(new ItemStack(Blocks.dispenser, 1, 32767), new ItemData(Materials.Stone, 25401600, new MaterialStack(Materials.Redstone, 3628800)));
         MatUnifier.addItemData(new ItemStack(Blocks.dropper, 1, 32767), new ItemData(Materials.Stone, 25401600, new MaterialStack(Materials.Redstone, 3628800)));
+
+        //TODO MOVE TO ITEMDATALOADER?
+        /*if (tOre.mModID.equalsIgnoreCase("enderio") && tOre.mPrefix == OrePrefixes.ingot && tOre.mMaterial == Materials.DarkSteel) {
+            MatUnifier.addAssociation(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, false);
+            MatUnifier.set(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, (GregTech_API.sUnification.get(new StringBuilder().append(ConfigCategories.specialunificationtargets).append(".").append(tOre.mModID).toString(), tOre.mEvent.Name, true)), true);continue;
+        } else if (tOre.mModID.equalsIgnoreCase("appliedenergistics2") && tOre.mPrefix == OrePrefixes.gem && tOre.mMaterial == Materials.CertusQuartz) {
+            MatUnifier.addAssociation(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, false);
+            MatUnifier.set(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, (GregTech_API.sUnification.get(new StringBuilder().append(ConfigCategories.specialunificationtargets).append(".").append(tOre.mModID).toString(), tOre.mEvent.Name, true)), true);continue;
+        } else if (tOre.mModID.equalsIgnoreCase("appliedenergistics2") && tOre.mPrefix == OrePrefixes.dust && tOre.mMaterial == Materials.CertusQuartz) {
+            MatUnifier.addAssociation(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, false);
+            MatUnifier.set(tOre.mPrefix, tOre.mMaterial, tOre.mEvent.Ore, (GregTech_API.sUnification.get(new StringBuilder().append(ConfigCategories.specialunificationtargets).append(".").append(tOre.mModID).toString(), tOre.mEvent.Name, true)), true);continue;
+        }*/
     }
 }

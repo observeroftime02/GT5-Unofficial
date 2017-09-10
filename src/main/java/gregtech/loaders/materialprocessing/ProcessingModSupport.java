@@ -1,7 +1,6 @@
 package gregtech.loaders.materialprocessing;
 
 import cpw.mods.fml.common.Loader;
-import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.MaterialFlags;
 import gregtech.api.enums.Materials;
 
@@ -9,7 +8,6 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
     public static boolean aEnableThaumcraftMats = Loader.isModLoaded("Thaumcraft");
     public static boolean aEnableThermalFoundationMats = Loader.isModLoaded("ThermalFoundation");
     public static boolean aEnableEnderIOMats = Loader.isModLoaded("EnderIO");
-    public static boolean aEnableRailcraftMats = Loader.isModLoaded(GT_Values.MOD_ID_RC);
     public static boolean aEnableGCMarsMats = Loader.isModLoaded("GalacticraftMars");
 
     public ProcessingModSupport() {
@@ -42,9 +40,6 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
         }
         if (!aEnableEnderIOMats) {
             Materials.DarkSteel.mHasParentMod = false;
-        }
-        if (!aEnableRailcraftMats) {
-            Materials.Firestone.mHasParentMod = false;
         }
     }
 

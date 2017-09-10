@@ -232,7 +232,7 @@
 //    public static Materials SeedOilLin = new Materials(723, TextureSet.FLUID, 	1.0F, 0, 0, 16, 196, 255, 0, 0, "SeedOilLin", "Lin Seed Oil", 3, 2, -1, 0, false, false, 1, 1, 1, Dyes.dyeLime, Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.GRANUM, 2)));
 //    public static Materials Stone = new Materials(299, TextureSet.ROUGH, 		4.0F, 32, 1, 1|64|128, 205, 205, 205, 0, "Stone", "Stone", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes.dyeLightGray, Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.TERRA, 1)));
 //    public static Materials Wheat = new Materials(881, TextureSet.POWDER, 		1.0F, 0, 0, 1, 255, 255, 196, 0, "Wheat", "Wheat", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes.dyeYellow, Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 2)));
-//    public static Materials WoodGas = new MaterialBuilder(660, TextureSet.FLUID, "Wood Gas").addCell().addGas().setRGB(222, 205, 135).setColor(Dyes.dyeBrown).setFuelType(MaterialBuilder.GAS).setFuelPower(24).build();
+//    public static Materials WoodGas = new MaterialBuilder(660, TextureSet.FLUID, "Wood RefineryGas").addCell().addGas().setRGB(222, 205, 135).setColor(Dyes.dyeBrown).setFuelType(MaterialBuilder.GAS).setFuelPower(24).build();
 //    public static Materials WoodTar = new MaterialBuilder(662, TextureSet.FLUID, "Wood Tar").addCell().addFluid().setRGB(40, 23, 11).setColor(Dyes.dyeBrown).build();
 //    public static Materials WoodVinegar = new MaterialBuilder(661, TextureSet.FLUID, "Wood Vinegar").addCell().addFluid().setRGB(212, 85, 0).setColor(Dyes.dyeBrown).build();
 //
@@ -336,9 +336,9 @@
 //    public static Materials OilMedium = new Materials(731, TextureSet.FLUID, 		1.0F, 0, 0, 16, 10, 10, 10, 0, "OilMedium", "Raw Oil", 3, 24, -1, 0, false, false, 1, 1, 1, Dyes.dyeBlack);
 //    public static Materials OilLight = new Materials(732, TextureSet.FLUID, 		1.0F, 0, 0, 16, 10, 10, 10, 0, "OilLight", "Light Oil", 3, 16, -1, 0, false, false, 1, 1, 1, Dyes.dyeBlack);
 //
-//    public static Materials NaturalGas = new Materials(733, TextureSet.FLUID, 		1.0F, 0, 1, 16, 255, 255, 255, 0, "NaturalGas", "Natural Gas", 1, 15, -1, 0, false, false, 3, 1, 1, Dyes.dyeWhite);
-//    public static Materials SulfuricGas = new Materials(734, TextureSet.FLUID, 		1.0F, 0, 1, 16, 255, 255, 255, 0, "SulfuricGas", "Sulfuric Gas", 1, 20, -1, 0, false, false, 3, 1, 1, Dyes.dyeWhite);
-//    public static Materials Gas = new Materials(735, TextureSet.FLUID, 				1.0F, 0, 1, 16, 255, 255, 255, 0, "Gas", "Refinery Gas", 1, 128, -1, 0, false, false, 3, 1, 1, Dyes.dyeWhite).setCanBeCracked(true);
+//    public static Materials NaturalGas = new Materials(733, TextureSet.FLUID, 		1.0F, 0, 1, 16, 255, 255, 255, 0, "NaturalGas", "Natural RefineryGas", 1, 15, -1, 0, false, false, 3, 1, 1, Dyes.dyeWhite);
+//    public static Materials SulfuricGas = new Materials(734, TextureSet.FLUID, 		1.0F, 0, 1, 16, 255, 255, 255, 0, "SulfuricGas", "Sulfuric RefineryGas", 1, 20, -1, 0, false, false, 3, 1, 1, Dyes.dyeWhite);
+//    public static Materials RefineryGas = new Materials(735, TextureSet.FLUID, 				1.0F, 0, 1, 16, 255, 255, 255, 0, "RefineryGas", "Refinery RefineryGas", 1, 128, -1, 0, false, false, 3, 1, 1, Dyes.dyeWhite).setCanBeCracked(true);
 //    public static Materials SulfuricNaphtha = new Materials(736, TextureSet.FLUID, 	1.0F, 0, 0, 16, 255, 255, 0, 0, "SulfuricNaphtha", "Sulfuric Naphtha", 1, 32, -1, 0, false, false, 1, 1, 1, Dyes.dyeYellow);
 //    public static Materials SulfuricLightFuel = new Materials(737, TextureSet.FLUID,1.0F, 0, 0, 16, 255, 255, 0, 0, "SulfuricLightFuel", "Sulfuric Light Fuel", 0, 32, -1, 0, false, false, 1, 1, 1, Dyes.dyeYellow);
 //    public static Materials SulfuricHeavyFuel = new Materials(738, TextureSet.FLUID,1.0F, 0, 0, 16, 255, 255, 0, 0, "SulfuricHeavyFuel", "Sulfuric Heavy Fuel", 3, 32, -1, 0, false, false, 1, 1, 1, Dyes.dyeBlack);

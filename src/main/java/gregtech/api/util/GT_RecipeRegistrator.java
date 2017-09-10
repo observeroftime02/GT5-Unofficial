@@ -122,7 +122,7 @@ public class GT_RecipeRegistrator {
     };
     public static volatile int VERSION = 509;
 
-    public static void registerMaterialRecycling(ItemStack aStack, Materials aMaterial, long aMaterialAmount, MaterialStack aByproduct) {
+    public static void registerMaterialRecycling(ItemStack aStack, Materials aMaterial, int aMaterialAmount, MaterialStack aByproduct) {
         if (GT_Utility.isStackInvalid(aStack)) return;
         if (aByproduct != null) {
             aByproduct = aByproduct.clone();
@@ -131,7 +131,7 @@ public class GT_RecipeRegistrator {
         MatUnifier.addItemData(GT_Utility.copyAmount(1, aStack), new ItemData(aMaterial, aMaterialAmount / aStack.stackSize, aByproduct));
     }
 
-    public static void registerMaterialRecycling(ItemStack aStack, ItemData aData) {
+    public static void registerMaterialRecycling(ItemStack aStack, ItemData aData) { //TODO MOVE TO REG-MAT-RECIPES?
         if (GT_Utility.isStackInvalid(aStack) || GT_Utility.areStacksEqual(new ItemStack(Items.blaze_rod), aStack) || aData == null || !aData.hasValidMaterialData() || aData.mMaterial.mAmount <= 0 || GT_Utility.getFluidForFilledItem(aStack, false) != null)
             return;
         registerReverseMacerating(GT_Utility.copyAmount(1, aStack), aData, aData.mPrefix == null);
@@ -149,9 +149,11 @@ public class GT_RecipeRegistrator {
         if (aStack == null || aMaterial == null || aMaterial.mSmeltInto.mStandardMoltenFluid == null || !aMaterial.contains(SubTag.SMELTING_TO_FLUID) || (L * aMaterialAmount) / (M * aStack.stackSize) <= 0)
             return;
         ItemData tData = MatUnifier.getItemData(aStack);
-        boolean tHide = aStack.getUnlocalizedName().startsWith("gt.blockmachines")&&(GT_Mod.gregtechproxy.mHideRecyclingRecipes);
-        if(GT_Mod.gregtechproxy.mHideRecyclingRecipes&&tData!=null&&tData.hasValidPrefixData()&&!(tData.mPrefix==OrePrefixes.dust||tData.mPrefix==OrePrefixes.ingot||tData.mPrefix==OrePrefixes.block|tData.mPrefix==OrePrefixes.plate)){tHide=true;}
-        RA.addFluidSmelterRecipe(GT_Utility.copyAmount(1, aStack), aByproduct == null ? null : aByproduct.mMaterial.contains(SubTag.NO_SMELTING) || !aByproduct.mMaterial.contains(SubTag.METAL) ? aByproduct.mMaterial.contains(SubTag.FLAMMABLE) ? MatUnifier.getDust(Materials.Ash, aByproduct.mAmount / 2) : aByproduct.mMaterial.contains(SubTag.UNBURNABLE) ? MatUnifier.getDustOrIngot(aByproduct.mMaterial.mSmeltInto, aByproduct.mAmount) : null : MatUnifier.getIngotOrDust(aByproduct.mMaterial.mSmeltInto, aByproduct.mAmount), aMaterial.mSmeltInto.getMolten((int)((L * aMaterialAmount) / (M * aStack.stackSize))), 10000, (int) Math.max(1, (24 * aMaterialAmount) / M), Math.max(8, (int) Math.sqrt(2 * aMaterial.mSmeltInto.mStandardMoltenFluid.getTemperature())), tHide);
+        boolean tHide = aStack.getUnlocalizedName().startsWith("gt.blockmachines") && (GT_Mod.gregtechproxy.mHideRecyclingRecipes);
+        if (GT_Mod.gregtechproxy.mHideRecyclingRecipes && tData != null && tData.hasValidPrefixData() && !(tData.mPrefix == OrePrefixes.dust || tData.mPrefix == OrePrefixes.ingot || tData.mPrefix == OrePrefixes.block | tData.mPrefix == OrePrefixes.plate)){
+            tHide = true;
+        }
+        RA.addFluidSmelterRecipe(aStack, aByproduct == null ? null : aByproduct.mMaterial.contains(SubTag.NO_SMELTING) || !aByproduct.mMaterial.contains(SubTag.METAL) ? aByproduct.mMaterial.contains(SubTag.FLAMMABLE) ? MatUnifier.getDust(Materials.Ash, aByproduct.mAmount / 2) : aByproduct.mMaterial.contains(SubTag.UNBURNABLE) ? MatUnifier.getDustOrIngot(aByproduct.mMaterial.mSmeltInto, aByproduct.mAmount) : null : MatUnifier.getIngotOrDust(aByproduct.mMaterial.mSmeltInto, aByproduct.mAmount), aMaterial.mSmeltInto.getMolten((int)((L * aMaterialAmount) / (M * aStack.stackSize))), 10000, (int) Math.max(1, (24 * aMaterialAmount) / M), Math.max(8, (int) Math.sqrt(2 * aMaterial.mSmeltInto.mStandardMoltenFluid.getTemperature())), tHide);
     }
 
     /**
@@ -161,19 +163,21 @@ public class GT_RecipeRegistrator {
      * @param aAllowAlloySmelter if it is allowed to be recycled inside the Alloy Smelter.
      */
     public static void registerReverseSmelting(ItemStack aStack, Materials aMaterial, long aMaterialAmount, boolean aAllowAlloySmelter) {
-        if (aStack == null || aMaterial == null || aMaterialAmount <= 0 || aMaterial.contains(SubTag.NO_SMELTING) || (aMaterialAmount > M && aMaterial.contains(SubTag.METAL)))
+        if (aStack == null || aMaterial == null || aMaterialAmount <= 0 || aMaterial.contains(SubTag.NO_SMELTING) || (aMaterialAmount > M && aMaterial.contains(SubTag.METAL))) {
             return;
+        }
         aMaterialAmount /= aStack.stackSize;
-        if(aMaterial==Materials.Naquadah||aMaterial==Materials.NaquadahEnriched)return;
+        if (aMaterial == Materials.Naquadah || aMaterial == Materials.NaquadahEnriched) return;
 
-        boolean tHide = (aMaterial != Materials.Iron)&&(GT_Mod.gregtechproxy.mHideRecyclingRecipes);
-        if (aAllowAlloySmelter)
-            GT_ModHandler.addSmeltingAndAlloySmeltingRecipe(GT_Utility.copyAmount(1, aStack), MatUnifier.getIngot(aMaterial.mSmeltInto, aMaterialAmount),tHide);
-        else
+        boolean tHide = aMaterial != Materials.Iron && GT_Mod.gregtechproxy.mHideRecyclingRecipes;
+        if (aAllowAlloySmelter) {
+            GT_ModHandler.addSmeltingAndAlloySmeltingRecipe(GT_Utility.copyAmount(1, aStack), MatUnifier.getIngot(aMaterial.mSmeltInto, aMaterialAmount), tHide);
+        } else {
             GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1, aStack), MatUnifier.getIngot(aMaterial.mSmeltInto, aMaterialAmount));
+        }
     }
 
-    public static void registerReverseArcSmelting(ItemStack aStack, Materials aMaterial, long aMaterialAmount, MaterialStack aByProduct01, MaterialStack aByProduct02, MaterialStack aByProduct03) {
+    public static void registerReverseArcSmelting(ItemStack aStack, Materials aMaterial, int aMaterialAmount, MaterialStack aByProduct01, MaterialStack aByProduct02, MaterialStack aByProduct03) {
         registerReverseArcSmelting(aStack, new ItemData(aMaterial == null ? null : new MaterialStack(aMaterial, aMaterialAmount), aByProduct01, aByProduct02, aByProduct03));
     }
 
@@ -235,7 +239,7 @@ public class GT_RecipeRegistrator {
         RA.addArcFurnaceRecipe(aStack, new ItemStack[]{MatUnifier.getIngotOrDust(aData.mMaterial), MatUnifier.getIngotOrDust(aData.getByProduct(0)), MatUnifier.getIngotOrDust(aData.getByProduct(1)), MatUnifier.getIngotOrDust(aData.getByProduct(2))}, null, (int) Math.max(16, tAmount / M), 96, tHide);
     }
 
-    public static void registerReverseMacerating(ItemStack aStack, Materials aMaterial, long aMaterialAmount, MaterialStack aByProduct01, MaterialStack aByProduct02, MaterialStack aByProduct03, boolean aAllowHammer) {
+    public static void registerReverseMacerating(ItemStack aStack, Materials aMaterial, int aMaterialAmount, MaterialStack aByProduct01, MaterialStack aByProduct02, MaterialStack aByProduct03, boolean aAllowHammer) {
         registerReverseMacerating(aStack, new ItemData(aMaterial == null ? null : new MaterialStack(aMaterial, aMaterialAmount), aByProduct01, aByProduct02, aByProduct03), aAllowHammer);
     }
 
@@ -253,8 +257,11 @@ public class GT_RecipeRegistrator {
         if (!aData.hasValidMaterialData()) return;
 
         long tAmount = 0;
-        for (MaterialStack tMaterial : aData.getAllMaterialStacks())
-            tAmount += tMaterial.mAmount * tMaterial.mMaterial.getMass();
+        for (MaterialStack tMaterial : aData.getAllMaterialStacks()) {
+            if (tMaterial.mMaterial != null) { //TODO REMOVE IF CHECK ONCE FIX NULL BUG
+                tAmount += tMaterial.mAmount * tMaterial.mMaterial.getMass();
+            }
+        }
         boolean tHide = (aData.mMaterial.mMaterial != Materials.Iron)&&(GT_Mod.gregtechproxy.mHideRecyclingRecipes);
         RA.addPulveriserRecipe(aStack, new ItemStack[]{MatUnifier.getDust(aData.mMaterial), MatUnifier.getDust(aData.getByProduct(0)), MatUnifier.getDust(aData.getByProduct(1)), MatUnifier.getDust(aData.getByProduct(2))}, null, aData.mMaterial.mMaterial==Materials.Marble ? 1 : (int) Math.max(16, tAmount / M), 4, tHide);
 

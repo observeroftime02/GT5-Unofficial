@@ -55,7 +55,7 @@ public class GT_MetaTileEntity_FusionComputer2 extends GT_MetaTileEntity_FusionC
         		"1-16 Output Hatches", 
         		"1-16 Energy Hatches", 
         		"All Hatches must be ZPMV or better", 
-        		"4096EU/t and 20mio EU Cap per Energy Hatch"};
+        		"4096EU/t and 20M EU Cap per Energy Hatch"};
     }
 
     @Override

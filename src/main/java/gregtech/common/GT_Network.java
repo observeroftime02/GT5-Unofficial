@@ -24,9 +24,7 @@ import java.util.EnumMap;
 import java.util.List;
 
 @ChannelHandler.Sharable
-public class GT_Network
-        extends MessageToMessageCodec<FMLProxyPacket, GT_Packet>
-        implements IGT_NetworkHandler {
+public class GT_Network extends MessageToMessageCodec<FMLProxyPacket, GT_Packet> implements IGT_NetworkHandler {
     private final EnumMap<Side, FMLEmbeddedChannel> mChannel;
     private final GT_Packet[] mSubChannels;
 
@@ -35,13 +33,11 @@ public class GT_Network
         this.mSubChannels = new GT_Packet[]{new GT_Packet_TileEntity(), new GT_Packet_Sound(), new GT_Packet_Block_Event(), new GT_Packet_Ores(), new GT_Packet_Pollution()};
     }
 
-    protected void encode(ChannelHandlerContext aContext, GT_Packet aPacket, List<Object> aOutput)
-            throws Exception {
+    protected void encode(ChannelHandlerContext aContext, GT_Packet aPacket, List<Object> aOutput) throws Exception {
         aOutput.add(new FMLProxyPacket(Unpooled.buffer().writeByte(aPacket.getPacketID()).writeBytes(aPacket.encode()).copy(), aContext.channel().attr(NetworkRegistry.FML_CHANNEL).get()));
     }
 
-    protected void decode(ChannelHandlerContext aContext, FMLProxyPacket aPacket, List<Object> aOutput)
-            throws Exception {
+    protected void decode(ChannelHandlerContext aContext, FMLProxyPacket aPacket, List<Object> aOutput) throws Exception {
         ByteArrayDataInput aData = ByteStreams.newDataInput(aPacket.payload().array());
         aOutput.add(this.mSubChannels[aData.readByte()].decode(aData));
     }
@@ -85,10 +81,8 @@ public class GT_Network
     }
 
     @ChannelHandler.Sharable
-    static final class HandlerShared
-            extends SimpleChannelInboundHandler<GT_Packet> {
-        protected void channelRead0(ChannelHandlerContext ctx, GT_Packet aPacket)
-                throws Exception {
+    static final class HandlerShared extends SimpleChannelInboundHandler<GT_Packet> {
+        protected void channelRead0(ChannelHandlerContext ctx, GT_Packet aPacket) throws Exception {
             EntityPlayer aPlayer = GT_Values.GT.getThePlayer();
             aPacket.process(aPlayer == null ? null : GT_Values.GT.getThePlayer().worldObj);
         }

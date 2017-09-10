@@ -3,15 +3,15 @@ package gregtech.api.objects;
 import gregtech.api.enums.Materials;
 
 public class MaterialStack implements Cloneable {
-    public long mAmount;
+    public int mAmount;
     public Materials mMaterial;
 
-    public MaterialStack(Materials aMaterial, long aAmount) {
+    public MaterialStack(Materials aMaterial, int aAmount) {
         mMaterial = aMaterial == null ? Materials._NULL : aMaterial;
         mAmount = aAmount;
     }
 
-    public MaterialStack copy(long aAmount) {
+    public MaterialStack copy(int aAmount) {
         return new MaterialStack(mMaterial, aAmount);
     }
 

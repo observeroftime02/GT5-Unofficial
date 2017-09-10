@@ -278,14 +278,7 @@ public class GT_Achievements {
         if (entityplayer == null || !GT_Mod.gregtechproxy.mAchievements) {
             return;
         }
-//		if (this.achievementList.containsKey(textId)) {
-//			if(this.issuedAchievements.containsKey((entityplayer.getDisplayName()+textId))){
-//			return;
-//			}else{
-//			this.issuedAchievements.put((entityplayer.getDisplayName()+textId), true);
         entityplayer.triggerAchievement(this.achievementList.get(textId));
-//			}
-//		}
     }
 
     public Achievement getAchievement(String textId) {
@@ -325,7 +318,6 @@ public class GT_Achievements {
             }
         }
         if (stack.getUnlocalizedName().equals("ic2.itemPartIndustrialDiamond")) {
-            //issueAchievement(player, "artificaldia");
             issueAchievement(player, "buildCoalDiamond");
         }
     }
@@ -363,8 +355,6 @@ public class GT_Achievements {
         if (data != null) {
             if (data.mPrefix == OrePrefixes.dust && data.mMaterial.mMaterial == Materials.Bronze) {
                 issueAchievement(player, "bronze");
-//            } else if (data.mPrefix == OrePrefixes.circuit && data.mMaterial.mMaterial == Materials.Advanced) {
-//                issueAchievement(player, "stepforward");
             }
         }
         if (stack.getUnlocalizedName().startsWith("gt.metaitem.")) {
@@ -548,7 +538,6 @@ public class GT_Achievements {
 //                issueAchievement(player, "stepforward");
             }
         }
-//        System.out.println(stack.getUnlocalizedName());
         if (stack.getUnlocalizedName().startsWith("gt.metaitem.")) {
             if (stack.getUnlocalizedName().equals("gt.metaitem.02.32500")) {
                 issueAchievement(player, "havestlead");
@@ -615,16 +604,16 @@ public class GT_Achievements {
                 (stack.getItem() == Ic2Items.quantumHelmet.getItem()) || (stack.getItem() == Ic2Items.quantumLeggings.getItem())) {
             issueAchievement(player, "buildQArmor");
         }*/
-        if(player.capabilities.isCreativeMode && stack.getUnlocalizedName().equals("gt.metaitem.01.32761")){//Debug Scanner pickup shows all assline recipes.
-            for(GT_Recipe recipe: GT_Recipe.GT_Recipe_Map.sAssemblylineVisualRecipes.mRecipeList) {
+        if (player.capabilities.isCreativeMode && stack.getUnlocalizedName().equals("gt.metaitem.01.32761")) {//Debug Scanner pickup shows all assline recipes.
+            for(GT_Recipe recipe : GT_Recipe.GT_Recipe_Map.sAssemblylineVisualRecipes.mRecipeList) {
                 issueAchievement(player, recipe.getOutput(0).getUnlocalizedName());
-                recipe.mHidden=false;
+                recipe.mHidden = false;
             }
         }
-        for(GT_Recipe recipe: GT_Recipe.GT_Recipe_Map.sAssemblylineVisualRecipes.mRecipeList){
+        for (GT_Recipe recipe : GT_Recipe.GT_Recipe_Map.sAssemblylineVisualRecipes.mRecipeList) {
             if(recipe.getOutput(0).getUnlocalizedName().equals(stack.getUnlocalizedName())) {
                 issueAchievement(player, recipe.getOutput(0).getUnlocalizedName());
-                recipe.mHidden=false;
+                recipe.mHidden = false;
             }
         }
     }

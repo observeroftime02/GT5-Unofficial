@@ -192,28 +192,27 @@ public class GT_MetaGenerated_Item_01 extends GT_MetaGenerated_Item_X32 {
             ItemList.Ingot_Heavy3.set(addItem(tLastID = 464, "Heavy Duty Alloy Ingot T3", "Used to make Heavy Duty Plates T3"));
         }
 
-        ItemList.CoalCoke.set(addItem(tLastID = 465, "Coal Coke", ""));
-        ItemList.Plantball.set(addItem(tLastID = 466, "Plantball", ""));
-        ItemList.Scrap.set(addItem(tLastID = 467, "Scrap", "Used to create UUAmplifier"));
-        ItemList.Dynamite.set(addItem(tLastID = 468, "Dynamite", "Used in the Implosion Compressor"));
-        ItemList.IndustrialExplosive.set(addItem(tLastID = 469, "Industrial Explosive", "Used in the Implosion Compressor"));
-        ItemList.Resin.set(addItem(tLastID = 470, "Sticky Resin", ""));
-        ItemList.Fertilizer.set(addItem(tLastID = 471, "Fertilizer", ""));
-        ItemList.Cell_Empty.set(addItem(tLastID = 472, "Empty Cell", ""));
-        ItemList.Cell_Steam.set(addItem(tLastID = 473, "Steam Cell", ""));
-        ItemList.Cell_Electrolyzed_Water.set(addItem(tLastID = 474, "Electrolyzed Water Cell", ""));
-        ItemList.RawCarbonFibers.set(addItem(tLastID = 475, "Raw Carbon Fibers", ""));
-        ItemList.RawCarbonMesh.set(addItem(tLastID = 476, "Raw Carbon Mesh", ""));
-        ItemList.Plate_CarbonAlloy.set(addItem(tLastID = 477, "Carbon Plate", ""));
-        ItemList.Plate_AdvancedAlloy.set(addItem(tLastID = 478, "Advanced Alloy", ""));
-        ItemList.Plate_IridiumAlloy.set(addItem(tLastID = 479, "Iridium Alloy Plate", ""));
-        ItemList.Ingot_IridiumAlloy.set(addItem(tLastID = 480, "Iridium Alloy Ingot", "Used to make Iridium Plates", new Object[]{new Aspects.AspectStack(Aspects.TUTAMEN, 4L), new Aspects.AspectStack(Aspects.METALLUM, 4L)}));
+        ItemList.CoalCoke.set(addItem(tLastID = 410, "Coal Coke", ""));
+        ItemList.Plantball.set(addItem(tLastID = 411, "Plantball", ""));
+        ItemList.Scrap.set(addItem(tLastID = 412, "Scrap", "Used to create UUAmplifier"));
+        ItemList.Dynamite.set(addItem(tLastID = 413, "Dynamite", "Used in the Implosion Compressor"));
+        ItemList.IndustrialExplosive.set(addItem(tLastID = 414, "Industrial Explosive", "Used in the Implosion Compressor"));
+        ItemList.Resin.set(addItem(tLastID = 415, "Sticky Resin", ""));
+        ItemList.Fertilizer.set(addItem(tLastID = 416, "Fertilizer", ""));
+        ItemList.Cell_Empty.set(addItem(tLastID = 417, "Empty Cell", ""));
+        ItemList.Cell_Steam.set(addItem(tLastID = 418, "Steam Cell", ""));
+        ItemList.Cell_Electrolyzed_Water.set(addItem(tLastID = 419, "Electrolyzed Water Cell", ""));
+        ItemList.RawCarbonFibers.set(addItem(tLastID = 420, "Raw Carbon Fibers", ""));
+        ItemList.RawCarbonMesh.set(addItem(tLastID = 421, "Raw Carbon Mesh", ""));
+        ItemList.Plate_CarbonAlloy.set(addItem(tLastID = 422, "Carbon Plate", ""));
+        ItemList.Plate_AdvancedAlloy.set(addItem(tLastID = 423, "Advanced Alloy", ""));
+        ItemList.Plate_IridiumAlloy.set(addItem(tLastID = 424, "Iridium Alloy Plate", "1.4.7s Most Expensive Component"));
+        ItemList.Ingot_IridiumAlloy.set(addItem(tLastID = 480, "Iridium Alloy Ingot", "Used to make Iridium Alloy Plates", new Object[]{new Aspects.AspectStack(Aspects.TUTAMEN, 4L), new Aspects.AspectStack(Aspects.METALLUM, 4L)}));
 
         GT_ModHandler.addCraftingRecipe(ItemList.Ingot_IridiumAlloy.get(1), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"IAI", "ADA", "IAI", 'D', GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.harderrecipes, "iridiumplate", true) ? OreDictNames.craftingIndustrialDiamond : OrePrefixes.dust.get(Materials.Diamond), 'A', ItemList.Plate_AdvancedAlloy.get(1), 'I', OrePrefixes.plate.get(Materials.Iridium)});
 
         OrePrefixes.cell.mContainerItem = ItemList.Cell_Empty.get(1);
         OrePrefixes.cellPlasma.mContainerItem = ItemList.Cell_Empty.get(1);
-        MatUnifier.registerOre(OrePrefixes.cell, Materials.Empty, new ItemStack(this, 1, 472));
         MatUnifier.addItemData(ItemList.Cell_Empty.get(1), new ItemData(Materials.Tin, 7257600));
 
 

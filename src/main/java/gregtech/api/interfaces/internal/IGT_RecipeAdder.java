@@ -439,7 +439,7 @@ public interface IGT_RecipeAdder {
      * @param aInput1  must be != null
      * @param aOutput1 can be null
      * @param aEU      EU per MilliBucket. If no Liquid Form of this Container is available, then it will give you EU*1000 per Item.
-     * @param aType    0 = Diesel; 1 = Gas Turbine; 2 = Thermal; 3 = Dense Fluid; 4 = Plasma; 5 = Magic; And if something is unclear or missing, then look at the GT_Recipe-Class
+     * @param aType    0 = Diesel; 1 = RefineryGas Turbine; 2 = Thermal; 3 = Dense Fluid; 4 = Plasma; 5 = Magic; And if something is unclear or missing, then look at the GT_Recipe-Class
      */
     boolean addFuel(ItemStack aInput1, ItemStack aOutput1, int aEU, int aType);
 

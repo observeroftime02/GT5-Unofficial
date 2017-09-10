@@ -67,10 +67,6 @@ public class GT_ItemIterator implements Runnable {
                     if ((tName.equals("item.fieryBlood")) || (tName.equals("item.fieryTears"))) {
                         GT_Values.RA.addFuel(new ItemStack(tItem, 1, 0), null, 2048, 5);
                     }
-                    if (tName.equals("tile.TFRoots")) {
-                        GT_ModHandler.addPulverisationRecipe(new ItemStack(tItem, 1, 0), new ItemStack(Items.stick, 2), new ItemStack(Items.stick, 1), 30);
-                        GT_Values.RA.addFuel(new ItemStack(tItem, 1, 1), new ItemStack(Items.stick, 4), 32, 5);
-                    }
                     if (tName.equals("item.ccprintout")) {
                         MatUnifier.registerOre("paperWritten", new ItemStack(tItem, 1, 0));
                         MatUnifier.registerOre("paperWritten", new ItemStack(tItem, 1, 1));

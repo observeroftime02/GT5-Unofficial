@@ -27,8 +27,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class GT_ThaumcraftCompat
-        implements IThaumcraftCompat {
+public class GT_ThaumcraftCompat implements IThaumcraftCompat {
     public GT_ThaumcraftCompat() {
         Aspects.AER.mAspect = Aspect.AIR;
         Aspects.ALIENIS.mAspect = Aspect.ELDRITCH;

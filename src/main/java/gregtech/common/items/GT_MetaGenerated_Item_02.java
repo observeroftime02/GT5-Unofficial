@@ -33,6 +33,9 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         ItemList.Bottle_Purple_Drink.set(addItem(tLastID = 100, "Purple Drink", "How about Lemonade. Or some Ice Tea? I got Purple Drink!", new Object[]{new GT_FoodStat(8, 0.2F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.moveSlowdown.id, 400, 1, 90), new Aspects.AspectStack(Aspects.VITREUS, 1L), new Aspects.AspectStack(Aspects.AQUA, 1L), new Aspects.AspectStack(Aspects.VINCULUM, 1L)}));
 
         ItemList.Dye_Indigo.set(addItem(tLastID = 410, "Indigo Dye", "Blue Dye", new Object[]{new Aspects.AspectStack(Aspects.SENSUS, 1L), Dyes.dyeBlue}));
+        for (byte i = 0; i < 16; i = (byte) (i + 1)) {
+            ItemList.DYE_ONLY_ITEMS[i].set(addItem(tLastID = 414 + i, Dyes.get(i).mName + " Dye", "", new Object[]{Dyes.get(i).name(), new Aspects.AspectStack(Aspects.SENSUS, 1L)}));
+        }
 
         ItemList.Bottle_Dragon_Blood.set(addItem(tLastID = 114, "Dragon Blood", "FUS RO DAH!", new Object[]{SubTag.INVISIBLE, new GT_FoodStat(4, 0.4F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.confusion.id, 300, 2, 90, Potion.damageBoost.id, 300, 2, 90, Potion.poison.id, 200, 2, 10, Potion.harm.id, 0, 2, 5), new Aspects.AspectStack(Aspects.VITREUS, 1L), new Aspects.AspectStack(Aspects.VENENUM, 2L), new Aspects.AspectStack(Aspects.POTENTIA, 2L)}));
 
@@ -85,12 +88,12 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.double_plant, 1, 1), new ItemStack(Items.dye, 3, 13));
         GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.double_plant, 1, 4), new ItemStack(Items.dye, 3, 1));
         GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.double_plant, 1, 5), new ItemStack(Items.dye, 3, 9));
-        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Plumbilia.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Lead, 1));
-        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Argentia.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Silver, 1));
+        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Plumbilia.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Lead));
+        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Argentia.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Silver));
         GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Indigo.get(1), ItemList.Dye_Indigo.get(1));
-        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_MilkWart.get(1), MatUnifier.get(OrePrefixes.dustSmall, Materials.Milk, 1));
-        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Coppon.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Copper, 1));
-        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Tine.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Tin, 1));
+        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_MilkWart.get(1), MatUnifier.get(OrePrefixes.dustSmall, Materials.Milk));
+        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Coppon.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Copper));
+        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Tine.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Tin));
 
         GT_ModHandler.addCompressionRecipe(ItemList.Crop_Drop_Coppon.get(4), new ItemStack(Blocks.wool, 1, 1));
         /*TODO
@@ -110,7 +113,7 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.melon_block, 1, 0), new ItemStack(Items.melon, 8, 0), new ItemStack(Items.melon_seeds, 1), 80, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.pumpkin, 1, 0), new ItemStack(Items.pumpkin_seeds, 4, 0), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.melon, 1, 0), new ItemStack(Items.melon_seeds, 1, 0), null, 0, false);
-        GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.wheat, 1, 0), MatUnifier.get(OrePrefixes.dust, Materials.Wheat, 1), null, 0, false);
+        GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.wheat, 1, 0), MatUnifier.get(OrePrefixes.dust, Materials.Wheat), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.stick, 1), MatUnifier.get(OrePrefixes.dustSmall, Materials.Wood, 2), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.wool, 1, 32767), new ItemStack(Items.string, 2), new ItemStack(Items.string, 1), 50, false);
         try {

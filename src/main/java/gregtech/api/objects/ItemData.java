@@ -44,11 +44,11 @@ public class ItemData {
         }
     }
 
-    public ItemData(Materials aMaterial, long aAmount, MaterialStack... aByProducts) {
+    public ItemData(Materials aMaterial, int aAmount, MaterialStack... aByProducts) {
         this(new MaterialStack(aMaterial, aAmount), aByProducts);
     }
 
-    public ItemData(Materials aMaterial, long aAmount, Materials aByProduct, long aByProductAmount) {
+    public ItemData(Materials aMaterial, int aAmount, Materials aByProduct, int aByProductAmount) {
         this(new MaterialStack(aMaterial, aAmount), new MaterialStack(aByProduct, aByProductAmount));
     }
 
