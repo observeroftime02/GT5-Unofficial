@@ -402,9 +402,8 @@ public class GT_Loader_MaterialRecipes implements Runnable {
         }
     }
 
-    private static ArrayList<Materials> mAlreadyListedOres = new ArrayList<>(1000);
     public void addOreRecipes(Materials aMaterial, boolean aIsRich) {
-        ItemStack aOreStack = GT_OreDictUnificator.get(OrePrefixes.ore, aMaterial);
+        ItemStack aOreStack = GT_OreDictUnificator.get(OrePrefixes.oreChunk, aMaterial);
 
         int aMultiplier = aIsRich ? 2 : 1;
         Materials aMatRep = aMaterial.mOreReplacement;
@@ -432,17 +431,16 @@ public class GT_Loader_MaterialRecipes implements Runnable {
             if (tPrimaryByProduct == null) {
                 tPrimaryByMaterial = tMat;
                 tPrimaryByProduct = GT_OreDictUnificator.get(OrePrefixes.dust, tMat);
-                if (GT_OreDictUnificator.get(OrePrefixes.dustSmall, tMat) == null)
+                if (GT_OreDictUnificator.get(OrePrefixes.dustSmall, tMat) == null) {
                     GT_OreDictUnificator.get(OrePrefixes.dustTiny, tMat, GT_OreDictUnificator.get(OrePrefixes.nugget, tMat, 2L), 2L);
+                }
             }
             GT_OreDictUnificator.get(OrePrefixes.dust, tMat);
-            if (GT_OreDictUnificator.get(OrePrefixes.dustSmall, tMat) == null)
+            if (GT_OreDictUnificator.get(OrePrefixes.dustSmall, tMat) == null) {
                 GT_OreDictUnificator.get(OrePrefixes.dustTiny, tMat, GT_OreDictUnificator.get(OrePrefixes.nugget, tMat, 2L), 2L);
+            }
         }
-        if ((!tByProductStacks.isEmpty()) && (!this.mAlreadyListedOres.contains(aMaterial))) {
-            this.mAlreadyListedOres.add(aMaterial);
-            GT_Recipe.GT_Recipe_Map.sByProductList.addFakeRecipe(false, new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.ore, aMaterial, aOreStack, 1L)}, tByProductStacks.toArray(new ItemStack[tByProductStacks.size()]), null, null, null, null, 0, 0, 0);
-        }
+        GT_Recipe.GT_Recipe_Map.sByProductList.addFakeRecipe(false, new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.ore, aMaterial, aOreStack)}, tByProductStacks.toArray(new ItemStack[tByProductStacks.size()]), null, null, null, null, 0, 0, 0);
 
         if (tPrimaryByMaterial == null) tPrimaryByMaterial = aMatRep;
         if (tPrimaryByProduct == null) tPrimaryByProduct = aDustStack;
@@ -693,6 +691,13 @@ public class GT_Loader_MaterialRecipes implements Runnable {
                 GT_RecipeRegistrator.registerReverseArcSmelting(aTinyDustStack, aMaterial, OrePrefixes.dustTiny.mMaterialAmount, null, null, null);
             }
         }
+        if (aMaterial.mDirectSmelting != aMaterial && !aNoSmelting) {
+            if (aMaterial.mBlastFurnaceRequired || aMaterial.mDirectSmelting.mBlastFurnaceRequired) {
+                GT_Values.RA.addBlastRecipe(aNormalDustStack, null, null, null, aMaterial.mBlastFurnaceTemp > 1750 ? GT_OreDictUnificator.get(OrePrefixes.ingotHot, aMaterial, GT_OreDictUnificator.get(OrePrefixes.ingot, aMaterial), 1L) : GT_OreDictUnificator.get(OrePrefixes.ingot, aMaterial), null, (int) Math.max(aMaterial.getMass() / 4L, 1L) * aMaterial.mBlastFurnaceTemp, 120, aMaterial.mBlastFurnaceTemp);
+            } else if (!aMaterial.contains(SubTag.DONT_ADD_DEFAULT_BBF_RECIPE)) {
+                GT_Values.RA.addPrimitiveBlastRecipe(GT_Utility.copyAmount(2, aNormalDustStack), GT_Values.NI, 2, aMaterial.mDirectSmelting.getIngots(GT_Mod.gregtechproxy.mMixedOreOnlyYieldsTwoThirdsOfPureOre ? 2 : 3), GT_Values.NI, 2400);
+            }
+        }
         if (aMaterial.mMaterialList.size() > 0 && (aMaterial.hasFlag(MaterialFlags.CENT) || aMaterial.hasFlag(MaterialFlags.ELEC))) {
             int aInputStackCount = 0;
             int tCapsuleCount = 0;
@@ -755,6 +760,15 @@ public class GT_Loader_MaterialRecipes implements Runnable {
     }
 
     public void addMaterialSpecificRecipes() {
+        int outputAmount = GT_Mod.gregtechproxy.mMixedOreOnlyYieldsTwoThirdsOfPureOre ? 2 : 3;
+        GT_Values.RA.addPrimitiveBlastRecipe(Materials.Chalcopyrite.getDust(2), new ItemStack(Blocks.sand, 2), 2, Materials.Chalcopyrite.mDirectSmelting.getIngots(outputAmount), Materials.Ferrosilite.getDustSmall(2 * outputAmount), 2400);
+        GT_Values.RA.addPrimitiveBlastRecipe(Materials.Chalcopyrite.getDust(2), Materials.Glass.getDust(2), 2, Materials.Chalcopyrite.mDirectSmelting.getIngots(outputAmount), Materials.Ferrosilite.getDustTiny(7 * outputAmount), 2400);
+        GT_Values.RA.addPrimitiveBlastRecipe(Materials.Chalcopyrite.getDust(2), Materials.SiliconDioxide.getDust(2), 2, Materials.Chalcopyrite.mDirectSmelting.getIngots(outputAmount), Materials.Ferrosilite.getDust(outputAmount), 2400);
+        GT_Values.RA.addPrimitiveBlastRecipe(Materials.Tetrahedrite.getDust(2), GT_Values.NI, 2, Materials.Tetrahedrite.mDirectSmelting.getIngots(outputAmount), Materials.Antimony.getNuggets(3 * outputAmount), 2400);
+        GT_Values.RA.addPrimitiveBlastRecipe(Materials.Galena.getDust(2), GT_Values.NI, 2, Materials.Galena.mDirectSmelting.getIngots(outputAmount), Materials.Silver.getNuggets(6 * outputAmount), 2400);
+
+
+
         GT_ModHandler.addSmeltingRecipe(GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Iron), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.WroughtIron));
         //TODO FIX RICH?
         GT_Values.RA.addCentrifugeRecipe(GT_OreDictUnificator.get(OrePrefixes.ore, Materials.Oilsands), null, null, Materials.Oil.getFluid(/*tIsRich ? 1000L : */500), new ItemStack(net.minecraft.init.Blocks.sand, 1, 0), null, null, null, null, null, new int[]{'?'}, /*tIsRich ? 2000 : */1000, 5);
@@ -806,7 +820,6 @@ public class GT_Loader_MaterialRecipes implements Runnable {
         GT_Values.RA.addImplosionRecipe(Materials.FoolsRuby.getDust(4), 16, GT_OreDictUnificator.get(OrePrefixes.gem, Materials.FoolsRuby, 3), aDarkAsh8Stack);
         GT_Values.RA.addImplosionRecipe(Materials.GarnetRed.getDust(4), 16, GT_OreDictUnificator.get(OrePrefixes.gem, Materials.GarnetRed, 3), aDarkAsh8Stack);
         GT_Values.RA.addImplosionRecipe(Materials.GarnetYellow.getDust(4), 16, GT_OreDictUnificator.get(OrePrefixes.gem, Materials.GarnetYellow, 3), aDarkAsh8Stack);
-        GT_Values.RA.addImplosionRecipe(Materials.Jasper.getDust(4), 16, GT_OreDictUnificator.get(OrePrefixes.gem, Materials.Jasper, 3), aDarkAsh8Stack);
         GT_Values.RA.addImplosionRecipe(Materials.Amber.getDust(4), 16, GT_OreDictUnificator.get(OrePrefixes.gem, Materials.Amber, 3), aDarkAsh8Stack);
         GT_Values.RA.addImplosionRecipe(Materials.Monazite.getDust(4), 16, GT_OreDictUnificator.get(OrePrefixes.gem, Materials.Monazite, 3), aDarkAsh8Stack);
         GT_Values.RA.addElectrolyzerRecipe(GT_OreDictUnificator.get(OrePrefixes.gem, Materials.CertusQuartz), 0, GT_ModHandler.getModItem("appliedenergistics2", "item.ItemMultiMaterial", 1, 1), null, null, null, null, null, 2000, 30);

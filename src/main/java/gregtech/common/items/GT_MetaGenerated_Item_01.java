@@ -30,7 +30,7 @@ public class GT_MetaGenerated_Item_01 extends GT_MetaGenerated_Item_X32 {
     private final static String aTextEmptyRow = "   "; private final static String aTextShape = " P ";
 
     public GT_MetaGenerated_Item_01() {
-        super("metaitem.01", OrePrefixes.dustTiny, OrePrefixes.dustSmall, OrePrefixes.dust, OrePrefixes.dustImpure, OrePrefixes.dustPure, OrePrefixes.crushed, OrePrefixes.crushedPurified, OrePrefixes.crushedCentrifuged, OrePrefixes.gem, OrePrefixes.nugget, null, OrePrefixes.ingot, OrePrefixes.ingotHot, null, null, null, null, OrePrefixes.plate, null, null, null, null, OrePrefixes.plateDense, OrePrefixes.stick, OrePrefixes.lens, null, OrePrefixes.bolt, OrePrefixes.screw, OrePrefixes.ring, OrePrefixes.foil, OrePrefixes.cell, OrePrefixes.cellPlasma);
+        super("metaitem.01", OrePrefixes.dustTiny, OrePrefixes.dustSmall, OrePrefixes.dust, OrePrefixes.dustImpure, OrePrefixes.dustPure, OrePrefixes.crushed, OrePrefixes.crushedPurified, OrePrefixes.crushedCentrifuged, OrePrefixes.gem, OrePrefixes.nugget, OrePrefixes.oreChunk, OrePrefixes.ingot, OrePrefixes.ingotHot, null, null, null, null, OrePrefixes.plate, null, null, null, null, OrePrefixes.plateDense, OrePrefixes.stick, OrePrefixes.lens, null, OrePrefixes.bolt, OrePrefixes.screw, OrePrefixes.ring, OrePrefixes.foil, OrePrefixes.cell, OrePrefixes.cellPlasma);
         INSTANCE = this;
 
         int tLastID = 0;

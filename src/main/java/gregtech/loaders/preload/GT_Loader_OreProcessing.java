@@ -7,7 +7,7 @@ public class GT_Loader_OreProcessing
         implements Runnable {
     public void run() {
         GT_Log.out.println("GT_Mod: Register Ore processing.");
-        new ProcessingOreSmelting();
+        //new ProcessingOreSmelting();
         new ProcessingCircuit();
         new ProcessingWire();
     }

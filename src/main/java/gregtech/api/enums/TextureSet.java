@@ -144,7 +144,7 @@ public class TextureSet {
         mTextures[122] = new Textures.ItemIcons.CustomIcon(aTextMatIconDir + mSetName + aTextVoidDir);
         mTextures[123] = new Textures.ItemIcons.CustomIcon(aTextMatIconDir + mSetName + aTextVoidDir);
         mTextures[124] = new Textures.ItemIcons.CustomIcon(aTextMatIconDir + mSetName + aTextVoidDir);
-        mTextures[125] = new Textures.ItemIcons.CustomIcon(aTextMatIconDir + mSetName + aTextVoidDir);
+        mTextures[125] = new Textures.ItemIcons.CustomIcon(aTextMatIconDir + mSetName + "/oreChunk");
         mTextures[126] = new Textures.ItemIcons.CustomIcon(aTextMatIconDir + mSetName + "/handleMallet");
         mTextures[127] = new Textures.ItemIcons.CustomIcon(aTextMatIconDir + mSetName + "/toolHeadMallet");
     }

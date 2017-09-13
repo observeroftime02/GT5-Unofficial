@@ -269,7 +269,7 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.FoolsRuby,
                 Materials.GreenSapphire,
                 Materials.InfusedFire,
-                Materials.Jasper,
+                Materials.Jasper, //TODO REMOVE
                 Materials.Lazurite,
                 Materials.Lignite,
                 Materials.Monazite,

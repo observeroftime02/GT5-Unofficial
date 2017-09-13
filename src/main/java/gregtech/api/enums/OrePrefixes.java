@@ -28,6 +28,7 @@ public enum OrePrefixes {
     oreEndstone("Endstone Ores", "End ", " Ore", true, true, false, false, false, true, false, false, false, true, MaterialFlags.ORE.bit, -1, 64, -1), // In case of an End-Ores Mod. Ore -> Material is a Oneway Operation!
     oreEnd("End Ores", "End ", " Ore", true, true, false, false, false, true, false, false, false, true, MaterialFlags.ORE.bit, -1, 64, -1), // In case of an End-Ores Mod. Ore -> Material is a Oneway Operation!
     ore("Ores", "", " Ore", true, true, false, false, false, true, false, false, false, true, MaterialFlags.ORE.bit, -1, 64, 68), // Regular Ore Prefix. Ore -> Material is a Oneway Operation! Introduced by Eloraam
+    oreChunk("Ore Chunks", "", " Ore Chunk", true, true, false, false, false, true, false, false, false, true, MaterialFlags.ORE.bit, -1, 64, 125), // Regular Ore Prefix. Ore -> Material is a Oneway Operation! Introduced by Eloraam
     crushedCentrifuged("Centrifuged Ores", "Centrifuged ", " Ore", true, true, false, false, false, false, false, true, false, true, MaterialFlags.ORE.bit, -1, 64, 7),
     crushedPurified("Purified Ores", "Purified ", " Ore", true, true, false, false, false, false, false, true, false, true, MaterialFlags.ORE.bit, -1, 64, 6),
     crushed("Crushed Ores", "Crushed ", " Ore", true, true, false, false, false, false, false, true, false, true, MaterialFlags.ORE.bit, -1, 64, 5),
