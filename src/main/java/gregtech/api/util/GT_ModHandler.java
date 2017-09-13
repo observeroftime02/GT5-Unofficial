@@ -233,6 +233,27 @@ public class GT_ModHandler {
         return false;
     }
 
+    public static void addPyrolyeOvenRecipes(ItemStack aLogStack){
+        ItemStack aNewLogStack = GT_Utility.copyAmount(16, aLogStack);
+        ItemStack aCharcoalStack = Materials.Charcoal.getGems(20);
+        FluidStack aCreosote = Materials.Creosote.getFluid(4000);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF,                    1,  aCharcoalStack, aCreosote,         640, 64);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 2,  aCharcoalStack, aCreosote,         320, 96);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF,                    3,  Materials.Ash.getDust(4),       Materials.OilHeavy.getFluid(200),          320, 192);
+        FluidStack aCharcoalByproducts = Materials.CharcoalByproducts.getGas(4000);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF,                    3,  aCharcoalStack, aCharcoalByproducts, 640, 64);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 4,  aCharcoalStack, aCharcoalByproducts, 320, 96);
+        FluidStack aWoodGas = Materials.WoodGas.getGas(1500);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF,                    5,  aCharcoalStack, aWoodGas, 640, 64);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 6,  aCharcoalStack, aWoodGas, 320, 96);
+        FluidStack aWoodVinegar = Materials.WoodVinegar.getFluid(3000);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF,                    7,  aCharcoalStack, aWoodVinegar, 640, 64);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 8,  aCharcoalStack, aWoodVinegar, 320, 96);
+        FluidStack aWoodTar = Materials.WoodTar.getFluid(1500);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF,                    9,  aCharcoalStack, aWoodTar, 640, 64);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 10, aCharcoalStack, aWoodTar, 320, 96);
+    }
+
     /**
      * Adds an Item to the Recycler Blacklist
      */
@@ -248,7 +269,7 @@ public class GT_ModHandler {
      * Just simple Furnace smelting. Unbelievable how Minecraft fails at making a simple ItemStack->ItemStack mapping...
      */
     public static boolean addSmeltingRecipe(ItemStack aInput, ItemStack aOutput) {
-        aOutput = MatUnifier.get(true, aOutput);
+        aOutput = GT_OreDictUnificator.get(true, aOutput);
         if (aInput == null || aOutput == null || GT_Utility.getContainerItem(aInput, false) != null) return false;
         if (!GregTech_API.sRecipeFile.get(ConfigCategories.Machines.smelting, aInput, true)) return false;
         FurnaceRecipes.smelting().func_151394_a(aInput, GT_Utility.copy(aOutput), 0.0F);
@@ -271,7 +292,7 @@ public class GT_ModHandler {
      * IC2-Extractor Recipe. Overloads old Recipes automatically
      */
     public static boolean addExtractionRecipe(ItemStack aInput, ItemStack aOutput) {
-        aOutput = MatUnifier.get(true, aOutput);
+        aOutput = GT_OreDictUnificator.get(true, aOutput);
         if (aInput == null || aOutput == null) return false;
         if (!GregTech_API.sRecipeFile.get(ConfigCategories.Machines.extractor, aInput, true)) return false;
         RA.addExtractorRecipe(aInput, aOutput, 300, 2);
@@ -306,8 +327,8 @@ public class GT_ModHandler {
      * Adds Several Pulverizer-Type Recipes.
      */
     public static boolean addPulverisationRecipe(ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2, int aChance2, ItemStack aOutput3, int aChance3, boolean aOverwrite) {
-        aOutput1 = MatUnifier.get(true, aOutput1);
-        aOutput2 = MatUnifier.get(true, aOutput2);
+        aOutput1 = GT_OreDictUnificator.get(true, aOutput1);
+        aOutput2 = GT_OreDictUnificator.get(true, aOutput2);
         if (GT_Utility.isStackInvalid(aInput) || GT_Utility.isStackInvalid(aOutput1)) return false;
         if (GT_Utility.getContainerItem(aInput, false) == null) {
             RA.addPulveriserRecipe(aInput, new ItemStack[]{aOutput1, aOutput2, aOutput3}, new int[]{10000, aChance2 <= 0 ? 1000 : 100 * aChance2, aChance3 <= 0 ? 1000 : 100 * aChance3}, 400, 2);
@@ -320,7 +341,7 @@ public class GT_ModHandler {
      */
     public static boolean addAlloySmelterRecipe(ItemStack aInput1, ItemStack aInput2, ItemStack aOutput1, int aDuration, int aEUt, boolean aAllowSecondaryInputEmpty) {
         if (aInput1 == null || (aInput2 == null && !aAllowSecondaryInputEmpty) || aOutput1 == null) return false;
-        aOutput1 = MatUnifier.get(true, aOutput1);
+        aOutput1 = GT_OreDictUnificator.get(true, aOutput1);
         return RA.addAlloySmelterRecipe(aInput1, aInput2, aOutput1, aDuration, aEUt);
     }
 
@@ -345,7 +366,7 @@ public class GT_ModHandler {
      * IC2-Compressor Recipe. Overloads old Recipes automatically
      */
     public static boolean addCompressionRecipe(ItemStack aInput, ItemStack aOutput) {
-        aOutput = MatUnifier.get(true, aOutput);
+        aOutput = GT_OreDictUnificator.get(true, aOutput);
         if (aInput == null || aOutput == null || GT_Utility.areStacksEqual(aInput, aOutput, true)) return false;
         if (!GregTech_API.sRecipeFile.get(ConfigCategories.Machines.compression, aInput, true)) return false;
         RA.addCompressorRecipe(aInput, aOutput, 300, 2);
@@ -425,7 +446,7 @@ public class GT_ModHandler {
      * Internal realisation of the Crafting Recipe adding Process.
      */
     private static boolean addCraftingRecipe(ItemStack aResult, Enchantment[] aEnchantmentsAdded, int[] aEnchantmentLevelsAdded, boolean aMirrored, boolean aBuffered, boolean aKeepNBT, boolean aDismantleable, boolean aRemovable, boolean aReversible, boolean aRemoveAllOthersWithSameOutput, boolean aRemoveAllOthersWithSameOutputIfTheyHaveSameNBT, boolean aRemoveAllOtherShapedsWithSameOutput, boolean aRemoveAllOtherNativeRecipes, boolean aCheckForCollisions, boolean aOnlyAddIfThereIsAnyRecipeOutputtingThis, boolean aOnlyAddIfResultIsNotNull, Object[] aRecipe) {
-        aResult = MatUnifier.get(true, aResult);
+        aResult = GT_OreDictUnificator.get(true, aResult);
         if (aOnlyAddIfResultIsNotNull && aResult == null) return false;
         if (aResult != null && Items.feather.getDamage(aResult) == W) Items.feather.setDamage(aResult, 0);
         if (aRecipe == null || aRecipe.length <= 0) return false;
@@ -541,7 +562,7 @@ public class GT_ModHandler {
                 Object in = aRecipe[idx + 1];
                 if (in instanceof ItemStack) {
                     tItemStackMap.put(chr, GT_Utility.copy((ItemStack) in));
-                    tItemDataMap.put(chr, MatUnifier.getItemData((ItemStack) in));
+                    tItemDataMap.put(chr, GT_OreDictUnificator.getItemData((ItemStack) in));
                 } else if (in instanceof ItemData) {
                     String tString = in.toString();
                     if (tString.equals("plankWood")) {
@@ -555,7 +576,7 @@ public class GT_ModHandler {
                     } else {
                         tItemDataMap.put(chr, (ItemData) in);
                     }
-                    ItemStack tStack = MatUnifier.getFirstOre(in, 1);
+                    ItemStack tStack = GT_OreDictUnificator.getFirstOre(in, 1);
                     if (tStack == null) tRemoveRecipe = false;
                     else tItemStackMap.put(chr, tStack);
                     in = aRecipe[idx + 1] = in.toString();
@@ -572,7 +593,7 @@ public class GT_ModHandler {
                         tItemDataMap.put(chr, new ItemData(Materials.Diamond, M));
                     else if (in.equals(OreDictNames.craftingAnvil.toString()))
                         tItemDataMap.put(chr, new ItemData(Materials.Iron, M * 10));
-                    ItemStack tStack = MatUnifier.getFirstOre(in, 1);
+                    ItemStack tStack = GT_OreDictUnificator.getFirstOre(in, 1);
                     if (tStack == null) tRemoveRecipe = false;
                     else tItemStackMap.put(chr, tStack);
                 } else {
@@ -585,7 +606,7 @@ public class GT_ModHandler {
                 int x = -1;
                 for (char chr : shape.toCharArray()) tData[++x] = tItemDataMap.get(chr);
                 if (GT_Utility.arrayContainsNonNull(tData))
-                    MatUnifier.addItemData(aResult, new ItemData(tData));
+                    GT_OreDictUnificator.addItemData(aResult, new ItemData(tData));
             }
 
             if (aCheckForCollisions && tRemoveRecipe) {
@@ -613,7 +634,7 @@ public class GT_ModHandler {
             for (int i = 0; i < tList_sS && !tThereWasARecipe; i++) {
                 IRecipe tRecipe = tList.get(i);
                 if (sSpecialRecipeClasses.contains(tRecipe.getClass().getName())) continue;
-                if (GT_Utility.areStacksEqual(MatUnifier.get(tRecipe.getRecipeOutput()), aResult, true)) {
+                if (GT_Utility.areStacksEqual(GT_OreDictUnificator.get(tRecipe.getRecipeOutput()), aResult, true)) {
                     tList.remove(i--); tList_sS=tList.size();
                     tThereWasARecipe = true;
                 }
@@ -659,7 +680,7 @@ public class GT_ModHandler {
      * Shapeless Crafting Recipes. Deletes conflicting Recipes too.
      */
     private static boolean addShapelessCraftingRecipe(ItemStack aResult, Enchantment[] aEnchantmentsAdded, int[] aEnchantmentLevelsAdded, boolean aBuffered, boolean aKeepNBT, boolean aDismantleable, boolean aRemovable, Object[] aRecipe) {
-        aResult = MatUnifier.get(true, aResult);
+        aResult = GT_OreDictUnificator.get(true, aResult);
         if (aRecipe == null || aRecipe.length <= 0) return false;
         for (byte i = 0; i < aRecipe.length; i++) {
             if (aRecipe[i] instanceof IItemContainer)
@@ -682,7 +703,7 @@ public class GT_ModHandler {
                 if (tObject instanceof ItemStack) {
                     tRecipe[i] = (ItemStack) tObject;
                 } else if (tObject instanceof String) {
-                    tRecipe[i] = MatUnifier.getFirstOre(tObject, 1);
+                    tRecipe[i] = GT_OreDictUnificator.getFirstOre(tObject, 1);
                     if (tRecipe[i] == null) break;
                 }
                 i++;
@@ -773,7 +794,7 @@ public class GT_ModHandler {
         if (aOutput == null) return false;
         boolean rReturn = false;
         ArrayList<IRecipe> tList = (ArrayList<IRecipe>) CraftingManager.getInstance().getRecipeList();
-        aOutput = MatUnifier.get(aOutput);
+        aOutput = GT_OreDictUnificator.get(aOutput);
         int tList_sS=tList.size();
         for (int i = 0; i < tList_sS; i++) {
             IRecipe tRecipe = tList.get(i);
@@ -785,7 +806,7 @@ public class GT_ModHandler {
                 if (sSpecialRecipeClasses.contains(tRecipe.getClass().getName())) continue;
             }
             ItemStack tStack = tRecipe.getRecipeOutput();
-            if ((!(tRecipe instanceof IGT_CraftingRecipe) || ((IGT_CraftingRecipe) tRecipe).isRemovable()) && GT_Utility.areStacksEqual(MatUnifier.get(tStack), aOutput, aIgnoreNBT)) {
+            if ((!(tRecipe instanceof IGT_CraftingRecipe) || ((IGT_CraftingRecipe) tRecipe).isRemovable()) && GT_Utility.areStacksEqual(GT_OreDictUnificator.get(tStack), aOutput, aIgnoreNBT)) {
                 tList.remove(i--); tList_sS=tList.size();
                 rReturn = true;
             }
@@ -1016,7 +1037,7 @@ public class GT_ModHandler {
      */
     public static ItemStack getSmeltingOutput(ItemStack aInput, boolean aRemoveInput, ItemStack aOutputSlot) {
         if (aInput == null || aInput.stackSize < 1) return null;
-        ItemStack rStack = MatUnifier.get(FurnaceRecipes.smelting().getSmeltingResult(aInput));
+        ItemStack rStack = GT_OreDictUnificator.get(FurnaceRecipes.smelting().getSmeltingResult(aInput));
         if (rStack != null && (aOutputSlot == null || (GT_Utility.areStacksEqual(rStack, aOutputSlot) && rStack.stackSize + aOutputSlot.stackSize <= aOutputSlot.getMaxStackSize()))) {
             if (aRemoveInput) aInput.stackSize--;
             return rStack;
@@ -1289,7 +1310,7 @@ public class GT_ModHandler {
 
     public static int getCapsuleCellContainerCount(ItemStack aStack) {
         if (aStack == null) return 0;
-        return GT_Utility.areStacksEqual(GT_Utility.getContainerForFilledItem(aStack, true), ItemList.Cell_Empty.get(1)) || OrePrefixes.cell.contains(aStack) || OrePrefixes.cellPlasma.contains(aStack) || GT_Utility.areStacksEqual(aStack, MatUnifier.get(OrePrefixes.cell, Materials.Water)) ? 1 : 0;
+        return GT_Utility.areStacksEqual(GT_Utility.getContainerForFilledItem(aStack, true), ItemList.Cell_Empty.get(1)) || OrePrefixes.cell.contains(aStack) || OrePrefixes.cellPlasma.contains(aStack) || GT_Utility.areStacksEqual(aStack, GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Water)) ? 1 : 0;
     }
 
     public static class RecipeBits {

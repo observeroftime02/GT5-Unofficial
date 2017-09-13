@@ -2,7 +2,7 @@ package gregtech.api.enums;
 
 import gregtech.api.interfaces.IItemContainer;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.MatUnifier;
+import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -334,7 +334,6 @@ public enum ItemList implements IItemContainer {
     Machine_LV_ThermalCentrifuge, Machine_MV_ThermalCentrifuge, Machine_HV_ThermalCentrifuge, Machine_EV_ThermalCentrifuge, Machine_IV_ThermalCentrifuge, Machine_LuV_ThermalCentrifuge, Machine_ZPM_ThermalCentrifuge, Machine_UV_ThermalCentrifuge,
     Machine_LV_OreWasher, Machine_MV_OreWasher, Machine_HV_OreWasher, Machine_EV_OreWasher, Machine_IV_OreWasher, Machine_LuV_OreWasher, Machine_ZPM_OreWasher, Machine_UV_OreWasher,
     Machine_LV_RockBreaker, Machine_MV_RockBreaker, Machine_HV_RockBreaker, Machine_EV_RockBreaker, Machine_IV_RockBreaker, Machine_LuV_RockBreaker, Machine_ZPM_RockBreaker, Machine_UV_RockBreaker,
-    Machine_LV_Boxinator, Machine_MV_Boxinator, Machine_HV_Boxinator, Machine_EV_Boxinator, Machine_IV_Boxinator, Machine_LuV_Boxinator, Machine_ZPM_Boxinator, Machine_UV_Boxinator,
     Machine_LV_ChemicalReactor, Machine_MV_ChemicalReactor, Machine_HV_ChemicalReactor, Machine_EV_ChemicalReactor, Machine_IV_ChemicalReactor, Machine_LuV_ChemicalReactor, Machine_ZPM_ChemicalReactor, Machine_UV_ChemicalReactor,
     Machine_Multi_LargeChemicalReactor,
     Machine_LV_FluidCanner, Machine_MV_FluidCanner, Machine_HV_FluidCanner, Machine_EV_FluidCanner, Machine_IV_FluidCanner, Machine_LuV_FluidCanner, Machine_ZPM_FluidCanner, Machine_UV_FluidCanner,
@@ -455,7 +454,7 @@ public enum ItemList implements IItemContainer {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
         if (GT_Utility.isStackInvalid(mStack)) return GT_Utility.copyAmount(aAmount, aReplacements);
-        return GT_Utility.copyAmount(aAmount, MatUnifier.get(mStack));
+        return GT_Utility.copyAmount(aAmount, GT_OreDictUnificator.get(mStack));
     }
 
     @Override
@@ -463,7 +462,7 @@ public enum ItemList implements IItemContainer {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
         if (GT_Utility.isStackInvalid(mStack)) return GT_Utility.copyAmount(aAmount, aReplacements);
-        return GT_Utility.copyAmountAndMetaData(aAmount, W, MatUnifier.get(mStack));
+        return GT_Utility.copyAmountAndMetaData(aAmount, W, GT_OreDictUnificator.get(mStack));
     }
 
     @Override
@@ -471,7 +470,7 @@ public enum ItemList implements IItemContainer {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
         if (GT_Utility.isStackInvalid(mStack)) return GT_Utility.copyAmount(aAmount, aReplacements);
-        return GT_Utility.copyAmountAndMetaData(aAmount, 0, MatUnifier.get(mStack));
+        return GT_Utility.copyAmountAndMetaData(aAmount, 0, GT_OreDictUnificator.get(mStack));
     }
 
     @Override
@@ -479,7 +478,7 @@ public enum ItemList implements IItemContainer {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
         if (GT_Utility.isStackInvalid(mStack)) return GT_Utility.copyAmount(aAmount, aReplacements);
-        return GT_Utility.copyAmountAndMetaData(aAmount, mStack.getMaxDamage() - 1, MatUnifier.get(mStack));
+        return GT_Utility.copyAmountAndMetaData(aAmount, mStack.getMaxDamage() - 1, GT_OreDictUnificator.get(mStack));
     }
 
     @Override
@@ -503,14 +502,14 @@ public enum ItemList implements IItemContainer {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
         if (GT_Utility.isStackInvalid(mStack)) return GT_Utility.copyAmount(aAmount, aReplacements);
-        return GT_Utility.copyAmountAndMetaData(aAmount, aMetaValue, MatUnifier.get(mStack));
+        return GT_Utility.copyAmountAndMetaData(aAmount, aMetaValue, GT_OreDictUnificator.get(mStack));
     }
 
     @Override
     public IItemContainer registerOre(Object... aOreNames) {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
-        for (Object tOreName : aOreNames) MatUnifier.registerOre(tOreName, get(1));
+        for (Object tOreName : aOreNames) GT_OreDictUnificator.registerOre(tOreName, get(1));
         return this;
     }
 
@@ -518,7 +517,7 @@ public enum ItemList implements IItemContainer {
     public IItemContainer registerWildcardAsOre(Object... aOreNames) {
         if (mHasNotBeenSet)
             throw new IllegalAccessError("The Enum '" + name() + "' has not been set to an Item at this time!");
-        for (Object tOreName : aOreNames) MatUnifier.registerOre(tOreName, getWildcard(1));
+        for (Object tOreName : aOreNames) GT_OreDictUnificator.registerOre(tOreName, getWildcard(1));
         return this;
     }
 }

@@ -16,7 +16,7 @@ import gregtech.api.enums.OrePrefixes;
 import gregtech.api.gui.GT_GUIContainer_BasicMachine;
 import gregtech.api.objects.ItemData;
 import gregtech.api.util.GT_LanguageManager;
-import gregtech.api.util.MatUnifier;
+import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.gui.GT_GUIContainer_FusionReactor;
@@ -83,14 +83,14 @@ public class GT_NEI_DefaultHandler
     }
 
     public void loadCraftingRecipes(ItemStack aResult) {
-        ItemData tPrefixMaterial = MatUnifier.getAssociation(aResult);
+        ItemData tPrefixMaterial = GT_OreDictUnificator.getAssociation(aResult);
 
         ArrayList<ItemStack> tResults = new ArrayList();
         tResults.add(aResult);
-        tResults.add(MatUnifier.get(true, aResult));
+        tResults.add(GT_OreDictUnificator.get(true, aResult));
         if ((tPrefixMaterial != null) && (!tPrefixMaterial.mBlackListed) && (!tPrefixMaterial.mPrefix.mFamiliarPrefixes.isEmpty())) {
             for (OrePrefixes tPrefix : tPrefixMaterial.mPrefix.mFamiliarPrefixes) {
-                tResults.add(MatUnifier.get(tPrefix, tPrefixMaterial.mMaterial.mMaterial));
+                tResults.add(GT_OreDictUnificator.get(tPrefix, tPrefixMaterial.mMaterial.mMaterial));
             }
         }
         FluidStack tFluid = GT_Utility.getFluidForFilledItem(aResult, true);
@@ -117,14 +117,14 @@ public class GT_NEI_DefaultHandler
     }
 
     public void loadUsageRecipes(ItemStack aInput) {
-        ItemData tPrefixMaterial = MatUnifier.getAssociation(aInput);
+        ItemData tPrefixMaterial = GT_OreDictUnificator.getAssociation(aInput);
 
         ArrayList<ItemStack> tInputs = new ArrayList();
         tInputs.add(aInput);
-        tInputs.add(MatUnifier.get(false, aInput));
+        tInputs.add(GT_OreDictUnificator.get(false, aInput));
         if ((tPrefixMaterial != null) && (!tPrefixMaterial.mPrefix.mFamiliarPrefixes.isEmpty())) {
             for (OrePrefixes tPrefix : tPrefixMaterial.mPrefix.mFamiliarPrefixes) {
-                tInputs.add(MatUnifier.get(tPrefix, tPrefixMaterial.mMaterial.mMaterial));
+                tInputs.add(GT_OreDictUnificator.get(tPrefix, tPrefixMaterial.mMaterial.mMaterial));
             }
         }
         FluidStack tFluid = GT_Utility.getFluidForFilledItem(aInput, true);

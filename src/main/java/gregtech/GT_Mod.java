@@ -11,8 +11,6 @@ import gregtech.api.enchants.Enchantment_EnderDamage;
 import gregtech.api.enchants.Enchantment_Radioactivity;
 import gregtech.api.enums.*;
 import gregtech.api.interfaces.internal.IGT_Mod;
-import gregtech.api.objects.ItemData;
-import gregtech.api.objects.XSTR;
 import gregtech.api.util.*;
 import gregtech.common.GT_DummyWorld;
 import gregtech.common.GT_Network;
@@ -34,13 +32,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -48,7 +41,10 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.PrintStream;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -64,24 +60,12 @@ public class GT_Mod implements IGT_Mod {
     public static GT_Achievements achievements;
 
     static {
-        if ((509 != GregTech_API.VERSION) || (509 != GT_ModHandler.VERSION) || (509 != MatUnifier.VERSION) || (509 != GT_Recipe.VERSION) || (509 != GT_Utility.VERSION) || (509 != GT_RecipeRegistrator.VERSION) || (509 != Element.VERSION) || (509 != Materials.VERSION) || (509 != OrePrefixes.VERSION)) {
+        if ((509 != GregTech_API.VERSION) || (509 != GT_ModHandler.VERSION) || (509 != GT_OreDictUnificator.VERSION) || (509 != GT_Recipe.VERSION) || (509 != GT_Utility.VERSION) || (509 != GT_RecipeRegistrator.VERSION) || (509 != Element.VERSION) || (509 != Materials.VERSION) || (509 != OrePrefixes.VERSION)) {
             throw new GT_ItsNotMyFaultException("One of your Mods included GregTech-API Files inside it's download, mention this to the Mod Author, who does this bad thing, and tell him/her to use reflection. I have added a Version check, to prevent Authors from breaking my Mod that way.");
         }
     }
 
     public GT_Mod() {
-        try {
-            Class.forName("ic2.core.IC2").getField("enableOreDictCircuit").set(null, Boolean.FALSE);
-        } catch (Throwable e) {
-        }
-        try {
-            Class.forName("ic2.core.IC2").getField("enableCraftingBucket").set(null, Boolean.FALSE);
-        } catch (Throwable e) {
-        }
-        try {
-            Class.forName("ic2.core.IC2").getField("enableEnergyInStorageBlockItems").set(null, Boolean.FALSE);
-        } catch (Throwable e) {
-        }
         GT_Values.GT = this;
         GT_Values.DW = new GT_DummyWorld();
         GT_Values.NW = new GT_Network();
@@ -97,11 +81,9 @@ public class GT_Mod implements IGT_Mod {
         if (GregTech_API.sPreloadStarted) {
             return;
         }
-        try {
-            for (Runnable tRunnable : GregTech_API.sBeforeGTPreload) {
-                tRunnable.run();
-            }
-        } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
+        for (Runnable tRunnable : GregTech_API.sBeforeGTPreload) {
+            tRunnable.run();
+        }
         File tFile = new File(new File(aEvent.getModConfigurationDirectory(), "GregTech"), "GregTech.cfg");
         Configuration tMainConfig = new Configuration(tFile);
         tMainConfig.load();
@@ -120,43 +102,23 @@ public class GT_Mod implements IGT_Mod {
         GregTech_API.sModularArmor = new GT_Config(new Configuration(new File(new File(aEvent.getModConfigurationDirectory(), "GregTech"), "ModularArmor.cfg")));
 
         GregTech_API.sClientDataFile = new GT_Config(new Configuration(new File(aEvent.getModConfigurationDirectory().getParentFile(), "GregTech.cfg")));
+
         GT_Log.mLogFile = new File(aEvent.getModConfigurationDirectory().getParentFile(), "logs/GregTech.log");
-        if (!GT_Log.mLogFile.exists()) {
-            try {
+        String aTextGeneral = "general";
+        try {
+            if (!GT_Log.mLogFile.exists()) {
                 GT_Log.mLogFile.createNewFile();
-            } catch (Throwable e) {
             }
-        }
-        try {
             GT_Log.out = GT_Log.err = new PrintStream(GT_Log.mLogFile);
-        } catch (FileNotFoundException e) {
-        }
-        GT_Log.mOreDictLogFile = new File(aEvent.getModConfigurationDirectory().getParentFile(), "logs/OreDict.log");
-        if (!GT_Log.mOreDictLogFile.exists()) {
-            try {
+            GT_Log.mOreDictLogFile = new File(aEvent.getModConfigurationDirectory().getParentFile(), "logs/OreDict.log");
+            if (!GT_Log.mOreDictLogFile.exists()) {
                 GT_Log.mOreDictLogFile.createNewFile();
-            } catch (Throwable e) {
             }
-        }
-        
-        try {
-            List<String> tList = ((GT_Log.LogBuffer) GT_Log.ore).mBufferedOreDictLog;
-            GT_Log.ore.println("******************************************************************************");
-            GT_Log.ore.println("* This is the complete log of the GT5-Unofficial OreDictionary Handler. It   *");
-            GT_Log.ore.println("* processes all OreDictionary entries and can sometimes cause errors. All    *");
-            GT_Log.ore.println("* entries and errors are being logged. If you see an error please raise an   *");
-            GT_Log.ore.println("* issue at https://github.com/Blood-Asp/GT5-Unofficial.                      *");
-            GT_Log.ore.println("******************************************************************************");
-            String tString;
-            for (Iterator i$ = tList.iterator(); i$.hasNext(); GT_Log.ore.println(tString)) {
-                tString = (String) i$.next();
-            }
-        } catch (Throwable e) {
-        }
+        } catch (Throwable e) {}
+
         gregtechproxy.onPreLoad();
 
         GT_Log.out.println("GT_Mod: Setting Configs");
-        String aTextGeneral = "general";
         GT_Values.D1 = tMainConfig.get(aTextGeneral, "Debug", false).getBoolean(false);
         GT_Values.D2 = tMainConfig.get(aTextGeneral, "Debug2", false).getBoolean(false);
 
@@ -277,25 +239,13 @@ public class GT_Mod implements IGT_Mod {
         GT_LanguageManager.sEnglishFile = new Configuration(new File(aEvent.getModConfigurationDirectory().getParentFile(), "GregTech.lang"));
         GT_LanguageManager.sEnglishFile.load();
 
-        GT_Log.out.println("GT_Mod: Removing all original Scrapbox Drops.");
-        try {
-            GT_Utility.getField("ic2.core.item.ItemScrapbox$Drop", "topChance", true, true).set(null, 0);
-            ((List) GT_Utility.getFieldContent(GT_Utility.getFieldContent("ic2.api.recipe.Recipes", "scrapboxDrops", true, true), "drops", true, true)).clear();
-        } catch (Throwable e) {
-            if (GT_Values.D1) {
-                e.printStackTrace(GT_Log.err);
-            }
-        }
-        GT_Log.out.println("GT_Mod: Adding Scrap with a Weight of 200.0F to the Scrapbox Drops.");
-
         EntityRegistry.registerModEntity(GT_Entity_Arrow.class, "GT_Entity_Arrow", 1, GT_Values.GT, 160, 1, true);
         EntityRegistry.registerModEntity(GT_Entity_Arrow_Potion.class, "GT_Entity_Arrow_Potion", 2, GT_Values.GT, 160, 1, true);
 
-        System.out.println("preReader");
         List<String> oreTags = new ArrayList<String>();
-        if(Loader.isModLoaded("MineTweaker3")){
+        if (Loader.isModLoaded("MineTweaker3")) {
             File globalDir = new File("scripts");
-            if (globalDir.exists()){
+            if (globalDir.exists()) {
                 List<String> scripts = new ArrayList<String>();
                 for (File file : globalDir.listFiles()) {
                     if (file.getName().endsWith(".zs")) {
@@ -304,42 +254,49 @@ public class GT_Mod implements IGT_Mod {
                             while ((line = br.readLine()) != null) {
                                 scripts.add(line);
                             }
-                        } catch (Exception e) {e.printStackTrace();}
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
                 String pattern1 = "<";
                 String pattern2 = ">";
 
                 Pattern p = Pattern.compile(Pattern.quote(pattern1) + "(.*?)" + Pattern.quote(pattern2));
-                for(String text : scripts){
+                for (String text : scripts) {
                     Matcher m = p.matcher(text);
                     while (m.find()) {
                         String hit = m.group(1);
-                        if(hit.startsWith("ore:")){
+                        if (hit.startsWith("ore:")) {
                             hit = hit.substring(4);
-                            if(!oreTags.contains(hit)) oreTags.add(hit);
-                        }else if(hit.startsWith("gregtech:gt.metaitem.0")){
+                            if (!oreTags.contains(hit)) {
+                                oreTags.add(hit);
+                            }
+                        } else if(hit.startsWith("gregtech:gt.metaitem.0")) {
                             hit = hit.substring(22);
                             int mIt = Integer.parseInt(hit.substring(0, 1));
-                            if(mIt>0){
+                            if (mIt>0) {
                                 int meta = 0;
-                                try{
+                                try {
                                     hit = hit.substring(2);
                                     meta = Integer.parseInt(hit);
-                                }catch(Exception e){System.out.println("parseError: "+hit);}
-                                if(meta>0&&meta<32000){
+                                } catch(Exception e){
+                                    if (GT_Values.D1) System.out.println("parseError: "+hit);
+                                }
+                                if (meta>0&&meta<32000) {
                                     int prefix = meta/1000;
                                     int material = meta % 1000;
                                     String tag = "";
                                     String[] tags = new String[]{};
-                                    if(mIt==1)tags = new String[]{"dustTiny","dustSmall","dust","dustImpure","dustPure","crushed","crushedPurified","crushedCentrifuged","gem","nugget",null,"ingot","ingotHot","ingotDouble","ingotTriple","ingotQuadruple","ingotQuintuple","plate","plateDouble","plateTriple","plateQuadruple","plateQuintuple","plateDense","stick","lens","round","bolt","screw","ring","foil","cell","cellPlasma"};
-                                    if(mIt==2)tags = new String[]{"toolHeadSword", "toolHeadPickaxe", "toolHeadShovel", "toolHeadAxe", "toolHeadHoe", "toolHeadHammer", "toolHeadFile", "toolHeadSaw", "toolHeadDrill", "toolHeadChainsaw", "toolHeadWrench", "toolHeadUniversalSpade", "toolHeadSense", "toolHeadPlow", "toolHeadArrow", "toolHeadBuzzSaw", "turbineBlade", null, null, "wireFine", "gearGtSmall", "rotor", "stickLong", "springSmall", "spring", "arrowGtWood", "arrowGtPlastic", "gemChipped", "gemFlawed", "gemFlawless", "gemExquisite", "gearGt"};
-                                    if(mIt==3)tags = new String[]{"crateGtDust", "crateGtIngot", "crateGtGem", "crateGtPlate"};
-                                    if(tags.length>prefix) tag = tags[prefix];
-                                    if(GregTech_API.sGeneratedMaterials[material]!=null){
+                                    if (mIt==1)tags = new String[]{"dustTiny","dustSmall","dust","dustImpure","dustPure","crushed","crushedPurified","crushedCentrifuged","gem","nugget",null,"ingot","ingotHot",null,null,null,null,"plate",null,null,null,null,"plateDense","stick","lens",null,"bolt","screw","ring","foil","cell","cellPlasma"};
+                                    if (mIt==2)tags = new String[]{"toolHeadSword", "toolHeadPickaxe", "toolHeadShovel", "toolHeadAxe", "toolHeadHoe", "toolHeadHammer", "toolHeadFile", "toolHeadSaw", "toolHeadDrill", "toolHeadChainsaw", "toolHeadWrench", "toolHeadUniversalSpade", "toolHeadSense", "toolHeadPlow", "toolHeadArrow", "toolHeadBuzzSaw", "turbineBlade", null, null, "wireFine", "gearGtSmall", "rotor", null, null, "spring", null, null, "gemChipped", "gemFlawed", "gemFlawless", "gemExquisite", "gearGt"};
+                                    if (tags.length>prefix) tag = tags[prefix];
+                                    if (GregTech_API.sGeneratedMaterials[material]!=null){
                                         tag += GregTech_API.sGeneratedMaterials[material].mName;
                                         if(!oreTags.contains(tag)) oreTags.add(tag);
-                                    }else if(material>0){System.out.println("MaterialDisabled: "+material+" "+m.group(1));}
+                                    }else if(material>0) {
+                                        if (GT_Values.D1) System.out.println("MaterialDisabled: "+material+" "+m.group(1));
+                                    }
                                 }
                             }
                         }
@@ -347,40 +304,43 @@ public class GT_Mod implements IGT_Mod {
                 }
             }
         }
-        String[] preS = new String[]{"dustTiny","dustSmall","dust","dustImpure","dustPure","crushed","crushedPurified","crushedCentrifuged","gem","nugget","ingot","ingotHot","ingotDouble","ingotTriple","ingotQuadruple","ingotQuintuple","plate","plateDouble","plateTriple","plateQuadruple","plateQuintuple","plateDense","stick","lens","round","bolt","screw","ring","foil","cell","cellPlasma","toolHeadSword", "toolHeadPickaxe", "toolHeadShovel", "toolHeadAxe", "toolHeadHoe", "toolHeadHammer", "toolHeadFile", "toolHeadSaw", "toolHeadDrill", "toolHeadChainsaw", "toolHeadWrench", "toolHeadUniversalSpade", "toolHeadSense", "toolHeadPlow", "toolHeadArrow", "toolHeadBuzzSaw", "turbineBlade", "wireFine", "gearGtSmall", "rotor", "stickLong", "springSmall", "spring", "arrowGtWood", "arrowGtPlastic", "gemChipped", "gemFlawed", "gemFlawless", "gemExquisite", "gearGt","crateGtDust", "crateGtIngot", "crateGtGem", "crateGtPlate"};
+        String[] preS = new String[]{"dustTiny","dustSmall","dust","dustImpure","dustPure","crushed","crushedPurified","crushedCentrifuged","gem","nugget","ingot","ingotHot","plate","plateDense","stick","lens","bolt","screw","ring","foil","cell","cellPlasma","toolHeadSword", "toolHeadPickaxe", "toolHeadShovel", "toolHeadAxe", "toolHeadHoe", "toolHeadHammer", "toolHeadFile", "toolHeadSaw", "toolHeadDrill", "toolHeadChainsaw", "toolHeadWrench", "toolHeadUniversalSpade", "toolHeadSense", "toolHeadPlow", "toolHeadArrow", "toolHeadBuzzSaw", "turbineBlade", "wireFine", "gearGtSmall", "rotor", "springSmall", "spring", "gemChipped", "gemFlawed", "gemFlawless", "gemExquisite"};
 
         List<String> mMTTags = new ArrayList<String>();
-        for(String test : oreTags){
-            if(StringUtils.startsWithAny(test, preS)){
+        for (String test : oreTags){
+            if (StringUtils.startsWithAny(test, preS)){
                 mMTTags.add(test);
-                if(GT_Values.D1)
-                    System.out.println("oretag: "+test);
-            }}
+                if (GT_Values.D1) System.out.println("oretag: "+test);
+            }
+        }
 
         System.out.println("reenableMetaItems");
-        for(String reEnable : mMTTags){
+        for (String reEnable : mMTTags){ //TODO FIX WITH NEW SYSTEM
             OrePrefixes tPrefix = OrePrefixes.getOrePrefix(reEnable);
-            if(tPrefix!=null){
+            if (tPrefix != null){
                 Materials tName = Materials.get(reEnable.replaceFirst(tPrefix.toString(), ""));
-                if(tName!=null){
+                if (tName != null){
                     tPrefix.mDisabledItems.remove(tName);
                     tPrefix.mGeneratedItems.add(tName);
-                    if(tPrefix == OrePrefixes.screw){
+                    if (tPrefix == OrePrefixes.screw){
                         OrePrefixes.bolt.mDisabledItems.remove(tName);
                         OrePrefixes.bolt.mGeneratedItems.add(tName);
                         OrePrefixes.stick.mDisabledItems.remove(tName);
                         OrePrefixes.stick.mGeneratedItems.add(tName);
-                    }
-                    if(tPrefix == OrePrefixes.spring){
+                    } else if (tPrefix == OrePrefixes.spring){
                         OrePrefixes.stick.mDisabledItems.remove(tName);
                         OrePrefixes.stick.mGeneratedItems.add(tName);
-                    }
-                    if(tPrefix == OrePrefixes.rotor){
+                    } else if (tPrefix == OrePrefixes.rotor){
                         OrePrefixes.ring.mDisabledItems.remove(tName);
                         OrePrefixes.ring.mGeneratedItems.add(tName);
                     }
-                }else{System.out.println("noMaterial "+reEnable);}
-            }else{System.out.println("noPrefix "+reEnable);}}
+                } else {
+                    System.out.println("noMaterial "+reEnable);
+                }
+            } else {
+                System.out.println("noPrefix "+reEnable);
+            }
+        }
 
         new Enchantment_EnderDamage();
         new Enchantment_Radioactivity();
@@ -394,10 +354,11 @@ public class GT_Mod implements IGT_Mod {
         new GT_Loader_CircuitBehaviors().run();
         new GT_SonictronLoader().run();
         new GT_SpawnEventHandler();
+
         if (GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.gregtechrecipes, "SolarPanel", true)) {
             GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel.get(1),    GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"SGS", "CPC", 'C', OrePrefixes.circuit.get(Materials.Basic), 'G', new ItemStack(Blocks.glass_pane, 1), 'P', ItemList.Plate_CarbonAlloy.get(1), 'S', ItemList.Circuit_Silicon_Wafer});
             GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_8V.get(1), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"SGS", "CPC","R R", 'C', OrePrefixes.circuit.get(Materials.Advanced), 'G', new ItemStack(Blocks.glass_pane, 1), 'P', OrePrefixes.wireGt04.get(Materials.Graphene), 'S', ItemList.Circuit_Silicon_Wafer2,'R', OrePrefixes.plate.get(Materials.GalliumArsenide)});
-            GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_LV.get(1), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"SGS", "CPC","R R", 'C', OrePrefixes.circuit.get(Materials.Master), 'G', new ItemStack(Blocks.glass, 1), 'P', OrePrefixes.wireGt16.get(Materials.Graphene), 'S', ItemList.Circuit_Silicon_Wafer3,'R', OrePrefixes.plate.get(Materials.IndiumGalliumPhosphide)});
+            GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_LV.get(1), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"SGS", "CPC","R R", 'C', OrePrefixes.circuit.get(Materials.Master), 'G', new ItemStack(Blocks.glass, 1)/*TODO GT_ModHandler.getIC2Item("reinforcedGlass", 1)*/, 'P', OrePrefixes.wireGt16.get(Materials.Graphene), 'S', ItemList.Circuit_Silicon_Wafer3,'R', OrePrefixes.plate.get(Materials.IndiumGalliumPhosphide)});
         }
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "SolarPanel8V", false)) {
             GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_8V.get(1), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"SSS", "STS", "SSS", 'S', ItemList.Cover_SolarPanel, 'T', OrePrefixes.circuit.get(Materials.Advanced)});
@@ -430,28 +391,15 @@ public class GT_Mod implements IGT_Mod {
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "StoneDustCentrifugation", false)) {
             int fullChance = (int)(10000 * outputMultiplier);
             int[] chances = new int[]{fullChance, fullChance, fullChance, fullChance, fullChance, (int)(5500 * outputMultiplier)};
-            GT_Values.RA.addCentrifugeRecipe(Materials.Stone.getDust(1), GT_Values.NI, GT_Values.NF, GT_Values.NF,
-                    Materials.Quartzite.getDustSmall(1),Materials.PotassiumFeldspar.getDustSmall(1),Materials.Marble.getDustTiny(2),
-                    Materials.Biotite.getDustTiny(1), 	Materials.MetalMixture.getDustTiny(1), 		Materials.Sodalite.getDustTiny(1),
-                    chances, 500, 72);
-            GT_Values.RA.addCentrifugeRecipe(Materials.MetalMixture.getDust(1), GT_Values.NI, GT_Values.NF, GT_Values.NF,
-                    Materials.BandedIron.getDustSmall(1), 	Materials.Bauxite.getDustSmall(1), Materials.Pyrolusite.getDustTiny(2),
-                    Materials.Barite.getDustTiny(1), 		Materials.Chromite.getDustTiny(1), Materials.Ilmenite.getDustTiny(1),
-                    new int[]{10000, 10000, 10000, 10000, 10000, 6000}, 500, 120);
+            GT_Values.RA.addCentrifugeRecipe(Materials.Stone.getDust(1), GT_Values.NI, GT_Values.NF, GT_Values.NF, Materials.Quartzite.getDustSmall(1), Materials.PotassiumFeldspar.getDustSmall(1), Materials.Marble.getDustTiny(2), Materials.Biotite.getDustTiny(1), Materials.MetalMixture.getDustTiny(1), Materials.Sodalite.getDustTiny(1), chances, 500, 72);
+            GT_Values.RA.addCentrifugeRecipe(Materials.MetalMixture.getDust(1), GT_Values.NI, GT_Values.NF, GT_Values.NF, Materials.BandedIron.getDustSmall(1), Materials.Bauxite.getDustSmall(1), Materials.Pyrolusite.getDustTiny(2), Materials.Barite.getDustTiny(1), Materials.Chromite.getDustTiny(1), Materials.Ilmenite.getDustTiny(1), new int[]{10000, 10000, 10000, 10000, 10000, 6000}, 500, 120);
         }
         double ashOutputMultiplier = Math.min(GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "AshOutputMultiplier", 1.0), 1.0);
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "AshYieldsAlkaliMetalOxides", true)) {
-            int[] outputChances = new int[]{(int) (9900 * ashOutputMultiplier), (int) (6400 * ashOutputMultiplier),
-                    (int) (6000 * ashOutputMultiplier), (int) (500 * ashOutputMultiplier),
-                    (int) (5000 * ashOutputMultiplier), (int) (2500 * ashOutputMultiplier)};
-            GT_Values.RA.addCentrifugeRecipe(Materials.Ash.getDust(1), GT_Values.NI, GT_Values.NF, GT_Values.NF,
-                    Materials.Quicklime.getDustSmall(2),           Materials.Potash.getDustSmall(1), Materials.Magnesia.getDustSmall(1),
-                    Materials.PhosphorousPentoxide.getDustTiny(1), Materials.SodaAsh.getDustTiny(1), Materials.BandedIron.getDustTiny(1),
-                    outputChances, 240, 30);
+            int[] outputChances = new int[]{(int) (9900 * ashOutputMultiplier), (int) (6400 * ashOutputMultiplier), (int) (6000 * ashOutputMultiplier), (int) (500 * ashOutputMultiplier), (int) (5000 * ashOutputMultiplier), (int) (2500 * ashOutputMultiplier)};
+            GT_Values.RA.addCentrifugeRecipe(Materials.Ash.getDust(1), GT_Values.NI, GT_Values.NF, GT_Values.NF, Materials.Quicklime.getDustSmall(2), Materials.Potash.getDustSmall(1), Materials.Magnesia.getDustSmall(1), Materials.PhosphorousPentoxide.getDustTiny(1), Materials.SodaAsh.getDustTiny(1), Materials.BandedIron.getDustTiny(1), outputChances, 240, 30);
         } else {
-            GT_Values.RA.addCentrifugeRecipe(Materials.Ash.getDust(1), GT_Values.NI, GT_Values.NF, GT_Values.NF,
-                    Materials.Carbon.getDust(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI,
-                    new int[]{(int) (10000 * ashOutputMultiplier), 0, 0, 0, 0, 0}, 40, 16);
+            GT_Values.RA.addCentrifugeRecipe(Materials.Ash.getDust(1), GT_Values.NI, GT_Values.NF, GT_Values.NF, Materials.Carbon.getDust(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[]{(int) (10000 * ashOutputMultiplier), 0, 0, 0, 0, 0}, 40, 16);
         }
         if (gregtechproxy.mSortToTheEnd) {
             try {
@@ -462,7 +410,7 @@ public class GT_Mod implements IGT_Mod {
                 ModContainer tGregTech = null;
                 short tModList_sS= (short) tModList.size();
                 for (short i = 0; i < tModList_sS; i = (short) (i + 1)) {
-                    ModContainer tMod = (ModContainer) tModList.get(i);
+                    ModContainer tMod = tModList.get(i);
                     if (tMod.getModId().equalsIgnoreCase("gregtech")) {
                         tGregTech = tMod;
                     } else {
@@ -482,11 +430,9 @@ public class GT_Mod implements IGT_Mod {
         GregTech_API.sPreloadFinished = true;
         GT_Log.out.println("GT_Mod: Preload-Phase finished!");
         GT_Log.ore.println("GT_Mod: Preload-Phase finished!");
-        try {
-            for (Runnable tRunnable : GregTech_API.sAfterGTPreload) {
-                tRunnable.run();
-            }
-        } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
+        for (Runnable tRunnable : GregTech_API.sAfterGTPreload) {
+            tRunnable.run();
+        }
     }
 
     @Mod.EventHandler
@@ -494,18 +440,14 @@ public class GT_Mod implements IGT_Mod {
         if (GregTech_API.sLoadStarted) {
             return;
         }
-        try {
-            for (Runnable tRunnable : GregTech_API.sBeforeGTLoad) {
-                tRunnable.run();
-            }
-        } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
+        for (Runnable tRunnable : GregTech_API.sBeforeGTLoad) {
+            tRunnable.run();
+        }
 
         new GT_Bees();
 
         //Disable Low Grav regardless of config if Cleanroom is disabled.
-        if (!gregtechproxy.mEnableCleanroom){
-            gregtechproxy.mLowGravProcessing = false;
-        }
+        gregtechproxy.mLowGravProcessing = gregtechproxy.mEnableCleanroom;
 
         gregtechproxy.onLoad();
         if (gregtechproxy.mSortToTheEnd) {
@@ -516,11 +458,9 @@ public class GT_Mod implements IGT_Mod {
         GregTech_API.sLoadFinished = true;
         GT_Log.out.println("GT_Mod: Load-Phase finished!");
         GT_Log.ore.println("GT_Mod: Load-Phase finished!");
-        try {
-            for (Runnable tRunnable : GregTech_API.sAfterGTLoad) {
-                tRunnable.run();
-            }
-        } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
+        for (Runnable tRunnable : GregTech_API.sAfterGTLoad) {
+            tRunnable.run();
+        }
     }
 
     @Mod.EventHandler
@@ -528,17 +468,17 @@ public class GT_Mod implements IGT_Mod {
         if (GregTech_API.sPostloadStarted) {
             return;
         }
-        try {
-            for (Runnable tRunnable : GregTech_API.sBeforeGTPostload) {
-                tRunnable.run();
-            }
-        } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
-        gregtechproxy.onPostLoad();
+        for (Runnable tRunnable : GregTech_API.sBeforeGTPostload) {
+            tRunnable.run();
+        }
+
+        GregTech_API.sPostloadStarted = true;
+        //gregtechproxy.onPostLoad();
         if (gregtechproxy.mSortToTheEnd) {
-            gregtechproxy.registerUnificationEntries();
+            //gregtechproxy.registerUnificationEntries();
         } else {
-            new GT_ItemIterator().run();
-            gregtechproxy.registerUnificationEntries();
+            //new GT_ItemIterator().run();
+            //gregtechproxy.registerUnificationEntries();
             new GT_FuelLoader().run();
         }
         new GT_BookAndLootLoader().run();
@@ -549,18 +489,6 @@ public class GT_Mod implements IGT_Mod {
         new GT_CoverLoader().run();
         LoadArmorComponents.init();
 
-        GT_RecipeRegistrator.registerUsagesForMaterials(new ItemStack(Blocks.planks, 1), null, false);
-        GT_RecipeRegistrator.registerUsagesForMaterials(new ItemStack(Blocks.cobblestone, 1), null, false);
-        GT_RecipeRegistrator.registerUsagesForMaterials(new ItemStack(Blocks.stone, 1), null, false);
-        GT_RecipeRegistrator.registerUsagesForMaterials(new ItemStack(Items.leather, 1), null, false);
-
-        MatUnifier.addItemData(GT_ModHandler.getRecipeOutput(null, MatUnifier.get(OrePrefixes.ingot, Materials.Tin, 1), null, MatUnifier.get(OrePrefixes.ingot, Materials.Tin, 1), null, MatUnifier.get(OrePrefixes.ingot, Materials.Tin, 1), null, null, null), new ItemData(Materials.Tin, 10886400));
-        if (!GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.storageblockcrafting, "tile.glowstone", false)) {
-            GT_ModHandler.removeRecipe(new ItemStack(Items.glowstone_dust, 1), new ItemStack(Items.glowstone_dust, 1), null, new ItemStack(Items.glowstone_dust, 1), new ItemStack(Items.glowstone_dust, 1));
-        }
-        GT_ModHandler.removeRecipe(new ItemStack(Blocks.wooden_slab, 1, 0), new ItemStack(Blocks.wooden_slab, 1, 1), new ItemStack(Blocks.wooden_slab, 1, 2));
-        GT_ModHandler.addCraftingRecipe(new ItemStack(Blocks.wooden_slab, 6, 0), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"WWW", 'W', new ItemStack(Blocks.planks, 1, 0)});
-
         GT_Log.out.println("GT_Mod: Activating OreDictionary Handler, this can take some time, as it scans the whole OreDictionary");
         FMLLog.info("If your Log stops here, you were too impatient. Wait a bit more next time, before killing Minecraft with the Task Manager.");
         gregtechproxy.activateOreDictHandler();
@@ -570,14 +498,7 @@ public class GT_Mod implements IGT_Mod {
         GT_Log.out.println("GT_Mod: Vanilla Recipe List -> Outputs null or stackSize <=0: " + GT_ModHandler.sVanillaRecipeList_warntOutput.toString());
         GT_Log.out.println("GT_Mod: Single Non Block Damagable Recipe List -> Outputs null or stackSize <=0: " + GT_ModHandler.sSingleNonBlockDamagableRecipeList_warntOutput.toString());
 
-        if (GT_Values.D1) {
-            IRecipe tRecipe;
-            for (Iterator i$ = GT_ModHandler.sSingleNonBlockDamagableRecipeList.iterator(); i$.hasNext(); GT_Log.out.println("=> " + tRecipe.getRecipeOutput().getDisplayName())) {
-                tRecipe = (IRecipe) i$.next();
-            }
-        }
         new GT_CraftingRecipeLoader().run();
-
         ItemStack ISdata0 = new ItemStack(Items.potionitem, 1, 0);
         ItemStack ILdata0 = new ItemStack(Items.glass_bottle, 1);
         for (FluidContainerRegistry.FluidContainerData tData : FluidContainerRegistry.getRegisteredFluidContainerData()) {
@@ -589,36 +510,24 @@ public class GT_Mod implements IGT_Mod {
                 GT_Recipe.GT_Recipe_Map.sFluidCannerRecipes.addRecipe(true, new ItemStack[]{tData.filledContainer}, new ItemStack[]{GT_Utility.getContainerItem(tData.filledContainer, true)}, null, null, new FluidStack[]{tData.fluid}, tData.fluid.amount / 62, 1, 0);
             }
         }
-        try {
-            for (ICentrifugeRecipe tRecipe : RecipeManagers.centrifugeManager.recipes()) {
-                Map<ItemStack, Float> outputs = tRecipe.getAllProducts();
-                ItemStack[] tOutputs = new ItemStack[outputs.size()];
-                int[] tChances = new int[outputs.size()];
-                int i = 0;
-                for (Map.Entry<ItemStack, Float> entry : outputs.entrySet()) {
-                    tChances[i] = (int) (entry.getValue() * 10000);
-                    tOutputs[i] = entry.getKey().copy();
-                    i++;
-                }
-                GT_Recipe.GT_Recipe_Map.sCentrifugeRecipes.addRecipe(true, new ItemStack[]{tRecipe.getInput()}, tOutputs, null, tChances, null, null, 128, 5, 0);
+        for (ICentrifugeRecipe tRecipe : RecipeManagers.centrifugeManager.recipes()) {
+            Map<ItemStack, Float> outputs = tRecipe.getAllProducts();
+            ItemStack[] tOutputs = new ItemStack[outputs.size()];
+            int[] tChances = new int[outputs.size()];
+            int i = 0;
+            for (Map.Entry<ItemStack, Float> entry : outputs.entrySet()) {
+                tChances[i] = (int) (entry.getValue() * 10000);
+                tOutputs[i] = entry.getKey().copy();
+                i++;
             }
-        } catch (Throwable e) {
-            if (GT_Values.D1) {
-                e.printStackTrace(GT_Log.err);
+            GT_Recipe.GT_Recipe_Map.sCentrifugeRecipes.addRecipe(true, new ItemStack[]{tRecipe.getInput()}, tOutputs, null, tChances, null, null, 128, 5, 0);
+        }
+        for (ISqueezerRecipe tRecipe : RecipeManagers.squeezerManager.recipes()) {
+            if ((tRecipe.getResources().length == 1) && (tRecipe.getFluidOutput() != null)) {
+                GT_Recipe.GT_Recipe_Map.sFluidExtractionRecipes.addRecipe(true, new ItemStack[]{tRecipe.getResources()[0]}, new ItemStack[]{tRecipe.getRemnants()}, null, new int[]{(int) (tRecipe.getRemnantsChance() * 10000)}, null, new FluidStack[]{tRecipe.getFluidOutput()}, 400, 2, 0);
             }
         }
-        try {
-            for (ISqueezerRecipe tRecipe : RecipeManagers.squeezerManager.recipes()) {
-                if ((tRecipe.getResources().length == 1) && (tRecipe.getFluidOutput() != null)) {
-                    GT_Recipe.GT_Recipe_Map.sFluidExtractionRecipes.addRecipe(true, new ItemStack[]{tRecipe.getResources()[0]}, new ItemStack[]{tRecipe.getRemnants()}, null, new int[]{(int) (tRecipe.getRemnantsChance() * 10000)}, null, new FluidStack[]{tRecipe.getFluidOutput()}, 400, 2, 0);
-                }
-            }
-        } catch (Throwable e) {
-            if (GT_Values.D1) {
-                e.printStackTrace(GT_Log.err);
-            }
-        }
-        
+
         if (gregtechproxy.mNerfedVanillaTools) {
             GT_Log.out.println("GT_Mod: Nerfing Vanilla Tool Durability");
             Items.wooden_sword.setMaxDamage(12);
@@ -659,11 +568,9 @@ public class GT_Mod implements IGT_Mod {
         GregTech_API.sPostloadFinished = true;
         GT_Log.out.println("GT_Mod: PostLoad-Phase finished!");
         GT_Log.ore.println("GT_Mod: PostLoad-Phase finished!");
-        try {
-            for (Runnable tRunnable : GregTech_API.sAfterGTPostload) {
-                tRunnable.run();
-            }
-        } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
+        for (Runnable tRunnable : GregTech_API.sAfterGTPostload) {
+            tRunnable.run();
+        }
         GT_Log.out.println("GT_Mod: Adding Fake Recipes for NEI");
         if (ItemList.FR_Bee_Drone.get(1) != null) {
             GT_Recipe.GT_Recipe_Map.sScannerFakeRecipes.addFakeRecipe(false, new ItemStack[]{ItemList.FR_Bee_Drone.getWildcard(1)}, new ItemStack[]{ItemList.FR_Bee_Drone.getWithName(1, "Scanned Drone")}, null, new FluidStack[]{Materials.Honey.getFluid(100)}, null, 500, 2, 0);
@@ -702,17 +609,15 @@ public class GT_Mod implements IGT_Mod {
         GT_Recipe.GT_Recipe_Map.sMassFabFakeRecipes.addFakeRecipe(false, null, null, null, new FluidStack[]{Materials.UUAmplifier.getFluid(GT_MetaTileEntity_Massfabricator.sUUAperUUM)}, new FluidStack[]{Materials.UUMatter.getFluid(1)}, GT_MetaTileEntity_Massfabricator.sDurationMultiplier / GT_MetaTileEntity_Massfabricator.sUUASpeedBonus, 256, 0);
         GT_Recipe.GT_Recipe_Map.sRockBreakerFakeRecipes.addFakeRecipe(false, new ItemStack[]{ItemList.Display_ITS_FREE.getWithName(0, "Place Lava on Side")}, new ItemStack[]{new ItemStack(Blocks.cobblestone, 1)}, null, null, null, 16, 32, 0);
         GT_Recipe.GT_Recipe_Map.sRockBreakerFakeRecipes.addFakeRecipe(false, new ItemStack[]{ItemList.Display_ITS_FREE.getWithName(0, "Place Lava on Top")}, new ItemStack[]{new ItemStack(Blocks.stone, 1)}, null, null, null, 16, 32, 0);
-        GT_Recipe.GT_Recipe_Map.sRockBreakerFakeRecipes.addFakeRecipe(false, new ItemStack[]{MatUnifier.get(OrePrefixes.dust, Materials.Redstone, 1)}, new ItemStack[]{new ItemStack(Blocks.obsidian, 1)}, null, null, null, 128, 32, 0);
+        GT_Recipe.GT_Recipe_Map.sRockBreakerFakeRecipes.addFakeRecipe(false, new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone)}, new ItemStack[]{new ItemStack(Blocks.obsidian, 1)}, null, null, null, 128, 32, 0);
 
-        if(GregTech_API.mOutputRF||GregTech_API.mInputRF){
+        if (GregTech_API.mOutputRF || GregTech_API.mInputRF) {
             GT_Utility.checkAvailabilities();
-            if(!GT_Utility.RF_CHECK){
+            if (!GT_Utility.RF_CHECK) {
                 GregTech_API.mOutputRF = false;
                 GregTech_API.mInputRF = false;
             }
         }
-
-        addSolidFakeLargeBoilerFuels(); //TODO MOVE TO BETTER PLACE
 
         achievements = new GT_Achievements();
         GT_Log.out.println("GT_Mod: Loading finished, deallocating temporary Init Variables.");
@@ -726,91 +631,16 @@ public class GT_Mod implements IGT_Mod {
 
     @Mod.EventHandler
     public void onServerStarting(FMLServerStartingEvent aEvent) {
-        try {
-            for (Runnable tRunnable : GregTech_API.sBeforeGTServerstart) {
-                tRunnable.run();
-            }
-        } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
+        for (Runnable tRunnable : GregTech_API.sBeforeGTServerstart) {
+            tRunnable.run();
+        }
         gregtechproxy.onServerStarting();
-        //Check for more IC2 recipes on ServerStart to also catch MineTweaker additions
-
-        GT_Log.out.println("GT_Mod: Unificating outputs of all known Recipe Types.");
-        ArrayList<ItemStack> tStacks = new ArrayList<>(10000);
-
-        GT_Log.out.println("GT_Mod: Dungeon Loot");
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("dungeonChest").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("bonusChest").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("villageBlacksmith").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("strongholdCrossing").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("strongholdLibrary").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("strongholdCorridor").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("pyramidJungleDispenser").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("pyramidJungleChest").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("pyramidDesertyChest").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        for (WeightedRandomChestContent tContent : ChestGenHooks.getInfo("mineshaftCorridor").getItems(new XSTR())) {
-            tStacks.add(tContent.theItemId);
-        }
-        GT_Log.out.println("GT_Mod: Smelting");
-        Object tStack;
-        for (Iterator i$ = FurnaceRecipes.smelting().getSmeltingList().values().iterator(); i$.hasNext(); tStacks.add((ItemStack) tStack)) {
-            tStack = i$.next();
-        }
-        if (gregtechproxy.mCraftingUnification) {
-            GT_Log.out.println("GT_Mod: Crafting Recipes");
-            for (Object tRecipe : CraftingManager.getInstance().getRecipeList()) {
-                if ((tRecipe instanceof IRecipe)) {
-                    tStacks.add(((IRecipe) tRecipe).getRecipeOutput());
-                }
-            }
-        }
-        for (ItemStack tOutput : tStacks) {
-            if (gregtechproxy.mRegisteredOres.contains(tOutput)) {
-                FMLLog.severe("GT-ERR-01: @ " + tOutput.getUnlocalizedName() + "   " + tOutput.getDisplayName());
-                FMLLog.severe("A Recipe used an OreDict Item as Output directly, without copying it before!!! This is a typical CallByReference/CallByValue Error");
-                FMLLog.severe("Said Item will be renamed to make the invalid Recipe visible, so that you can report it properly.");
-                FMLLog.severe("Please check all Recipes outputting this Item, and report the Recipes to their Owner.");
-                FMLLog.severe("The Owner of the ==>RECIPE<==, NOT the Owner of the Item, which has been mentioned above!!!");
-                FMLLog.severe("And ONLY Recipes which are ==>OUTPUTTING<== the Item, sorry but I don't want failed Bug Reports.");
-                FMLLog.severe("GregTech just reports this Error to you, so you can report it to the Mod causing the Problem.");
-                FMLLog.severe("Even though I make that Bug visible, I can not and will not fix that for you, that's for the causing Mod to fix.");
-                FMLLog.severe("And speaking of failed Reports:");
-                FMLLog.severe("Both IC2 and GregTech CANNOT be the CAUSE of this Problem, so don't report it to either of them.");
-                FMLLog.severe("I REPEAT, BOTH, IC2 and GregTech CANNOT be the source of THIS BUG. NO MATTER WHAT.");
-                FMLLog.severe("Asking in the IC2 Forums, which Mod is causing that, won't help anyone, since it is not possible to determine, which Mod it is.");
-                FMLLog.severe("If it would be possible, then I would have had added the Mod which is causing it to the Message already. But it is not possible.");
-                FMLLog.severe("Sorry, but this Error is serious enough to justify this Wall-O-Text and the partially allcapsed Language.");
-                FMLLog.severe("Also it is a Ban Reason on the IC2-Forums to post this seriously.");
-                tOutput.setStackDisplayName("ERROR! PLEASE CHECK YOUR LOG FOR 'GT-ERR-01'!");
-            } else {
-                MatUnifier.setStack(tOutput);
-            }
-        }
         GregTech_API.mServerStarted = true;
         GT_Log.out.println("GT_Mod: ServerStarting-Phase finished!");
         GT_Log.ore.println("GT_Mod: ServerStarting-Phase finished!");
-        try {
-            for (Runnable tRunnable : GregTech_API.sAfterGTServerstart) {
-                tRunnable.run();
-            }
-        } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
+        for (Runnable tRunnable : GregTech_API.sAfterGTServerstart) {
+            tRunnable.run();
+        }
     }
 
     @Mod.EventHandler
@@ -822,94 +652,81 @@ public class GT_Mod implements IGT_Mod {
     public void onIDChangingEvent(FMLModIdMappingEvent aEvent) {
         GT_Utility.reInit();
         GT_Recipe.reInit();
-        try {
-            for (Iterator i$ = GregTech_API.sItemStackMappings.iterator(); i$.hasNext(); ) {
-                Map tMap = (Map) i$.next();
-                GT_Utility.reMap(tMap);
-            }
-        } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
-
+        for (Iterator i$ = GregTech_API.sItemStackMappings.iterator(); i$.hasNext(); ) {
+            Map tMap = (Map) i$.next();
+            GT_Utility.reMap(tMap);
+        }
     }
 
     @Mod.EventHandler
     public void onServerStopping(FMLServerStoppingEvent aEvent) {
-        try {
-            for (Runnable tRunnable : GregTech_API.sBeforeGTServerstop) {
-                tRunnable.run();
-            }
-        } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
-        gregtechproxy.onServerStopping();
-        try {
-            if ((GT_Values.D1) || (GT_Log.out != System.out)) {
-                GT_Log.out.println("*");
-                GT_Log.out.println("Printing List of all registered Objects inside the OreDictionary, now with free extra Sorting:");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-
-                String[] tList = OreDictionary.getOreNames();
-                Arrays.sort(tList);
-                for (String tOreName : tList) {
-                    int tAmount = OreDictionary.getOres(tOreName).size();
-                    if (tAmount > 0) {
-                        GT_Log.out.println((tAmount < 10 ? " " : "") + tAmount + "x " + tOreName);
-                    }
-                }
-                GT_Log.out.println("*");
-                GT_Log.out.println("Printing List of all registered Objects inside the Fluid Registry, now with free extra Sorting:");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-
-                tList = (String[]) FluidRegistry.getRegisteredFluids().keySet().toArray(new String[FluidRegistry.getRegisteredFluids().keySet().size()]);
-                Arrays.sort(tList);
-                for (String tFluidName : tList) {
-                    GT_Log.out.println(tFluidName);
-                }
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                GT_Log.out.println("Outputting all the Names inside the Biomeslist");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                for (int i = 0; i < BiomeGenBase.getBiomeGenArray().length; i++) {
-                    if (BiomeGenBase.getBiomeGenArray()[i] != null) {
-                        GT_Log.out.println(BiomeGenBase.getBiomeGenArray()[i].biomeID + " = " + BiomeGenBase.getBiomeGenArray()[i].biomeName);
-                    }
-                }
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                GT_Log.out.println("Printing List of generatable Materials");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                for (int i = 0; i < GregTech_API.sGeneratedMaterials.length; i++) {
-                    if (GregTech_API.sGeneratedMaterials[i] == null) {
-                        GT_Log.out.println("Index " + i + ":" + null);
-                    } else {
-                        GT_Log.out.println("Index " + i + ":" + GregTech_API.sGeneratedMaterials[i]);
-                    }
-                }
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                GT_Log.out.println("END GregTech-Debug");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-                GT_Log.out.println("*");
-            }
-        } catch (Throwable e) {
-            if (GT_Values.D1) {
-                e.printStackTrace(GT_Log.err);
-            }
+        for (Runnable tRunnable : GregTech_API.sBeforeGTServerstop) {
+            tRunnable.run();
         }
-        try {
-            for (Runnable tRunnable : GregTech_API.sAfterGTServerstop) {
-                tRunnable.run();
+        gregtechproxy.onServerStopping();
+        if (GT_Values.D1 || GT_Log.out != System.out) {
+            GT_Log.out.println("*");
+            GT_Log.out.println("Printing List of all registered Objects inside the OreDictionary, now with free extra Sorting:");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+
+            String[] tList = OreDictionary.getOreNames();
+            Arrays.sort(tList);
+            for (String tOreName : tList) {
+                int tAmount = OreDictionary.getOres(tOreName).size();
+                if (tAmount > 0) {
+                    GT_Log.out.println((tAmount < 10 ? " " : "") + tAmount + "x " + tOreName);
+                }
             }
-        } catch (Throwable e) {e.printStackTrace(GT_Log.err);}
+            GT_Log.out.println("*");
+            GT_Log.out.println("Printing List of all registered Objects inside the Fluid Registry, now with free extra Sorting:");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+
+            tList = FluidRegistry.getRegisteredFluids().keySet().toArray(new String[FluidRegistry.getRegisteredFluids().keySet().size()]);
+            Arrays.sort(tList);
+            for (String tFluidName : tList) {
+                GT_Log.out.println(tFluidName);
+            }
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            GT_Log.out.println("Outputting all the Names inside the Biomeslist");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            for (int i = 0; i < BiomeGenBase.getBiomeGenArray().length; i++) {
+                if (BiomeGenBase.getBiomeGenArray()[i] != null) {
+                    GT_Log.out.println(BiomeGenBase.getBiomeGenArray()[i].biomeID + " = " + BiomeGenBase.getBiomeGenArray()[i].biomeName);
+                }
+            }
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            GT_Log.out.println("Printing List of generatable Materials");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            for (int i = 0; i < GregTech_API.sGeneratedMaterials.length; i++) {
+                if (GregTech_API.sGeneratedMaterials[i] == null) {
+                    GT_Log.out.println("Index " + i + ":" + null);
+                } else {
+                    GT_Log.out.println("Index " + i + ":" + GregTech_API.sGeneratedMaterials[i]);
+                }
+            }
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            GT_Log.out.println("END GregTech-Debug");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+            GT_Log.out.println("*");
+        }
+        for (Runnable tRunnable : GregTech_API.sAfterGTServerstop) {
+            tRunnable.run();
+        }
     }
 
     public boolean isServerSide() {
@@ -934,41 +751,6 @@ public class GT_Mod implements IGT_Mod {
 
     public void doSonictronSound(ItemStack aStack, World aWorld, double aX, double aY, double aZ) {
         gregtechproxy.doSonictronSound(aStack, aWorld, aX, aY, aZ);
-    }
-
-    private void addSolidFakeLargeBoilerFuels(){
-        GT_Recipe.GT_Recipe_Map.sLargeBoilerFakeFuels.addSolidRecipes(
-                MatUnifier.get(OrePrefixes.dust, Materials.Charcoal, 1),
-                MatUnifier.get(OrePrefixes.gem, Materials.Charcoal, 1),
-                MatUnifier.get(OrePrefixes.block, Materials.Charcoal, 1),
-                MatUnifier.get(OrePrefixes.dust, Materials.Coal, 1),
-                MatUnifier.get(OrePrefixes.gem, Materials.Coal, 1),
-                MatUnifier.get(OrePrefixes.block, Materials.Coal, 1),
-                MatUnifier.get(OrePrefixes.crushed, Materials.Coal, 1),
-                MatUnifier.get(OrePrefixes.dust, Materials.Carbon, 1),
-                MatUnifier.get(OrePrefixes.dust, Materials.Lignite, 1),
-                MatUnifier.get(OrePrefixes.gem, Materials.Lignite, 1),
-                MatUnifier.get(OrePrefixes.block, Materials.Lignite, 1),
-                MatUnifier.get(OrePrefixes.crushed, Materials.Lignite, 1),
-                MatUnifier.get(OrePrefixes.log, Materials.Wood, 1),
-                MatUnifier.get(OrePrefixes.plank, Materials.Wood, 1),
-                MatUnifier.get(OrePrefixes.stick, Materials.Wood, 1),
-                MatUnifier.get(OrePrefixes.slab, Materials.Wood, 1),
-                MatUnifier.get(OrePrefixes.dust, Materials.Wood, 1),
-                MatUnifier.get(OrePrefixes.dust, Materials.Sodium, 1),
-                MatUnifier.get(OrePrefixes.dust, Materials.Lithium, 1),
-                MatUnifier.get(OrePrefixes.dust, Materials.Caesium, 1),
-                MatUnifier.get(OrePrefixes.dust, Materials.Sulfur, 1),
-                MatUnifier.get(ItemList.Block_SSFUEL.get(1)),
-                MatUnifier.get(ItemList.Block_MSSFUEL.get(1)),
-                MatUnifier.get(OrePrefixes.bucket, Materials.Lava, 1));
-        if (Loader.isModLoaded("Thaumcraft")) {
-            GT_Recipe.GT_Recipe_Map.sLargeBoilerFakeFuels.addSolidRecipe(GT_ModHandler.getModItem("Thaumcraft", "ItemResource", 1));
-        }
-    }
-
-    public static int calculateTotalGTVersion(int minorVersion){
-        return calculateTotalGTVersion(VERSION, minorVersion);
     }
 
     public static int calculateTotalGTVersion(int majorVersion, int minorVersion){

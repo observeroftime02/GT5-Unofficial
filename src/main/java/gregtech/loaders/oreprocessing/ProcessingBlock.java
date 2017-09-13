@@ -3,7 +3,7 @@ package gregtech.loaders.oreprocessing;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.*;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.MatUnifier;
+import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.item.ItemStack;
 
@@ -13,9 +13,9 @@ public class ProcessingBlock implements gregtech.api.interfaces.IOreRecipeRegist
     }
 
     public void registerOre(OrePrefixes aPrefix, Materials aMaterial, String aOreDictName, String aModName, ItemStack aStack) {
-        ItemStack aIngotStack = MatUnifier.get(OrePrefixes.ingot, aMaterial);
-        ItemStack aGemStack = MatUnifier.get(OrePrefixes.gem, aMaterial);
-        ItemStack aDustStack = MatUnifier.get(OrePrefixes.dust, aMaterial);
+        ItemStack aIngotStack = GT_OreDictUnificator.get(OrePrefixes.ingot, aMaterial);
+        ItemStack aGemStack = GT_OreDictUnificator.get(OrePrefixes.gem, aMaterial);
+        ItemStack aDustStack = GT_OreDictUnificator.get(OrePrefixes.dust, aMaterial);
 
         GT_ModHandler.removeRecipe(aStack);
 

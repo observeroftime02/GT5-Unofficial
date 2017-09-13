@@ -410,11 +410,6 @@ public interface IGT_RecipeAdder {
     boolean addCutterRecipe(ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2, int aDuration, int aEUt);
 
     /**
-     * Adds a Boxing Recipe
-     */
-    boolean addBoxingRecipe(ItemStack aContainedItem, ItemStack aEmptyBox, ItemStack aFullBox, int aDuration, int aEUt);
-
-    /**
      *
      * @param aInput   must be != null
      * @param aOutput1  must be != null

@@ -9,7 +9,7 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.MatUnifier;
+import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.common.GT_Pollution;
 import gregtech.common.gui.GT_Container_Boiler;
 import gregtech.common.gui.GT_GUIContainer_Boiler;
@@ -115,10 +115,10 @@ public class GT_MetaTileEntity_Boiler_Lava
                 this.mSteam.amount = 24000;
             }
             if ((this.mProcessingEnergy <= 0) && (aBaseMetaTileEntity.isAllowedToWork()) &&
-                    (MatUnifier.isItemStackInstanceOf(this.mInventory[2], OrePrefixes.bucket.get(Materials.Lava)))) {
+                    (GT_OreDictUnificator.isItemStackInstanceOf(this.mInventory[2], OrePrefixes.bucket.get(Materials.Lava)))) {
                 this.mProcessingEnergy += 1000;
                 aBaseMetaTileEntity.decrStackSize(2, 1);
-                aBaseMetaTileEntity.addStackToSlot(3, MatUnifier.get(OrePrefixes.bucket, Materials.Empty));
+                aBaseMetaTileEntity.addStackToSlot(3, GT_OreDictUnificator.get(OrePrefixes.bucket, Materials.Empty));
             }
             if ((this.mTemperature < 1000) && (this.mProcessingEnergy > 0) && (aTick % 8L == 0L)) {
                 this.mProcessingEnergy -= 3;

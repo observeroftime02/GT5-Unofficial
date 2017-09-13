@@ -30,34 +30,34 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         int tLastID = 0;
 
         ItemList.GelledToluene.set(addItem(tLastID = 10, "Gelled Toluene", "Raw Explosive", new Object[]{}));
-        ItemList.Bottle_Purple_Drink.set(addItem(tLastID = 100, "Purple Drink", "How about Lemonade. Or some Ice Tea? I got Purple Drink!", new Object[]{new GT_FoodStat(8, 0.2F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.moveSlowdown.id, 400, 1, 90), new Aspects.AspectStack(Aspects.VITREUS, 1), new Aspects.AspectStack(Aspects.AQUA, 1), new Aspects.AspectStack(Aspects.VINCULUM, 1)}));
+        ItemList.Bottle_Purple_Drink.set(addItem(tLastID = 100, "Purple Drink", "How about Lemonade. Or some Ice Tea? I got Purple Drink!", new Object[]{new GT_FoodStat(8, 0.2F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.moveSlowdown.id, 400, 1, 90), new TC_Aspects.TC_AspectStack(TC_Aspects.VITREUS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.VINCULUM, 1)}));
 
-        ItemList.Dye_Indigo.set(addItem(tLastID = 410, "Indigo Dye", "Blue Dye", new Object[]{new Aspects.AspectStack(Aspects.SENSUS, 1), Dyes.dyeBlue}));
+        ItemList.Dye_Indigo.set(addItem(tLastID = 410, "Indigo Dye", "Blue Dye", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.SENSUS, 1), Dyes.dyeBlue}));
         for (byte i = 0; i < 16; i = (byte) (i + 1)) {
-            ItemList.DYE_ONLY_ITEMS[i].set(addItem(tLastID = 414 + i, Dyes.get(i).mName + " Dye", "", new Object[]{Dyes.get(i).name(), new Aspects.AspectStack(Aspects.SENSUS, 1)}));
+            ItemList.DYE_ONLY_ITEMS[i].set(addItem(tLastID = 414 + i, Dyes.get(i).mName + " Dye", "", new Object[]{Dyes.get(i).name(), new TC_Aspects.TC_AspectStack(TC_Aspects.SENSUS, 1)}));
         }
 
-        ItemList.Bottle_Dragon_Blood.set(addItem(tLastID = 114, "Dragon Blood", "FUS RO DAH!", new Object[]{SubTag.INVISIBLE, new GT_FoodStat(4, 0.4F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.confusion.id, 300, 2, 90, Potion.damageBoost.id, 300, 2, 90, Potion.poison.id, 200, 2, 10, Potion.harm.id, 0, 2, 5), new Aspects.AspectStack(Aspects.VITREUS, 1), new Aspects.AspectStack(Aspects.VENENUM, 2), new Aspects.AspectStack(Aspects.POTENTIA, 2)}));
+        ItemList.Bottle_Dragon_Blood.set(addItem(tLastID = 114, "Dragon Blood", "FUS RO DAH!", new Object[]{SubTag.INVISIBLE, new GT_FoodStat(4, 0.4F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.confusion.id, 300, 2, 90, Potion.damageBoost.id, 300, 2, 90, Potion.poison.id, 200, 2, 10, Potion.harm.id, 0, 2, 5), new TC_Aspects.TC_AspectStack(TC_Aspects.VITREUS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.VENENUM, 2), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 2)}));
 
         ItemList.SFMixture.set(addItem(tLastID = 270, "Super Fuel Binder", "Raw Material", new Object[]{}));
         ItemList.MSFMixture.set(addItem(tLastID = 271, "Magic Super Fuel Binder", "Raw Material", new Object[]{}));
 
-        ItemList.Crop_Drop_Plumbilia.set(addItem(tLastID = 500, "Plumbilia Leaf", "Source of Lead", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1), new Aspects.AspectStack(Aspects.METALLUM, 1), new Aspects.AspectStack(Aspects.ORDO, 1)}));
-        ItemList.Crop_Drop_Argentia.set(addItem(tLastID = 501, "Argentia Leaf", "Source of Silver", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1), new Aspects.AspectStack(Aspects.METALLUM, 1), new Aspects.AspectStack(Aspects.LUCRUM, 1)}));
-        ItemList.Crop_Drop_Indigo.set(addItem(tLastID = 502, "Indigo Blossom", "Used for making Blue Dye", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1), new Aspects.AspectStack(Aspects.SENSUS, 1)}));
-        ItemList.Crop_Drop_Ferru.set(addItem(tLastID = 503, "Ferru Leaf", "Source of Iron", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1), new Aspects.AspectStack(Aspects.METALLUM, 2)}));
-        ItemList.Crop_Drop_Aurelia.set(addItem(tLastID = 504, "Aurelia Leaf", "Source of Gold", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1), new Aspects.AspectStack(Aspects.METALLUM, 1), new Aspects.AspectStack(Aspects.LUCRUM, 1)}));
+        ItemList.Crop_Drop_Plumbilia.set(addItem(tLastID = 500, "Plumbilia Leaf", "Source of Lead", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 1)}));
+        ItemList.Crop_Drop_Argentia.set(addItem(tLastID = 501, "Argentia Leaf", "Source of Silver", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.LUCRUM, 1)}));
+        ItemList.Crop_Drop_Indigo.set(addItem(tLastID = 502, "Indigo Blossom", "Used for making Blue Dye", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.SENSUS, 1)}));
+        ItemList.Crop_Drop_Ferru.set(addItem(tLastID = 503, "Ferru Leaf", "Source of Iron", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 2)}));
+        ItemList.Crop_Drop_Aurelia.set(addItem(tLastID = 504, "Aurelia Leaf", "Source of Gold", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.LUCRUM, 1)}));
 
-        ItemList.Crop_Drop_OilBerry.set(addItem(tLastID = 510, "Oil Berry", "Oil in Berry form", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1), new Aspects.AspectStack(Aspects.AQUA, 1), new Aspects.AspectStack(Aspects.POTENTIA, 1)}));
-        ItemList.Crop_Drop_BobsYerUncleRanks.set(addItem(tLastID = 511, "Bobs-Yer-Uncle-Berry", "Source of Emeralds", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1), new Aspects.AspectStack(Aspects.VITREUS, 1), new Aspects.AspectStack(Aspects.LUCRUM, 1)}));
-        ItemList.Crop_Drop_UUMBerry.set(addItem(tLastID = 512, "UUM Berry", "UUM in Berry form", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1), new Aspects.AspectStack(Aspects.AQUA, 1), new Aspects.AspectStack(Aspects.POTENTIA, 1)}));
-        ItemList.Crop_Drop_UUABerry.set(addItem(tLastID = 513, "UUA Berry", "UUA in Berry form", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1), new Aspects.AspectStack(Aspects.AQUA, 1), new Aspects.AspectStack(Aspects.POTENTIA, 1)}));
+        ItemList.Crop_Drop_OilBerry.set(addItem(tLastID = 510, "Oil Berry", "Oil in Berry form", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 1)}));
+        ItemList.Crop_Drop_BobsYerUncleRanks.set(addItem(tLastID = 511, "Bobs-Yer-Uncle-Berry", "Source of Emeralds", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.VITREUS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.LUCRUM, 1)}));
+        ItemList.Crop_Drop_UUMBerry.set(addItem(tLastID = 512, "UUM Berry", "UUM in Berry form", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 1)}));
+        ItemList.Crop_Drop_UUABerry.set(addItem(tLastID = 513, "UUA Berry", "UUA in Berry form", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 1)}));
 
-        ItemList.Crop_Drop_MilkWart.set(addItem(tLastID = 520, "Milk Wart", "Source of Milk", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1), new Aspects.AspectStack(Aspects.AQUA, 1), new Aspects.AspectStack(Aspects.SANO, 1)}));
+        ItemList.Crop_Drop_MilkWart.set(addItem(tLastID = 520, "Milk Wart", "Source of Milk", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.SANO, 1)}));
 
-        ItemList.Crop_Drop_Coppon.set(addItem(tLastID = 530, "Coppon Fiber", "ORANGE WOOOOOOOL!!!", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1), new Aspects.AspectStack(Aspects.METALLUM, 1), new Aspects.AspectStack(Aspects.PERMUTATIO, 1)}));
+        ItemList.Crop_Drop_Coppon.set(addItem(tLastID = 530, "Coppon Fiber", "ORANGE WOOOOOOOL!!!", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.PERMUTATIO, 1)}));
 
-        ItemList.Crop_Drop_Tine.set(addItem(tLastID = 540, "Tine Twig", "Source of Tin", new Object[]{new Aspects.AspectStack(Aspects.MESSIS, 1), new Aspects.AspectStack(Aspects.METALLUM, 1), new Aspects.AspectStack(Aspects.ARBOR, 1)}));
+        ItemList.Crop_Drop_Tine.set(addItem(tLastID = 540, "Tine Twig", "Source of Tin", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.ARBOR, 1)}));
         setBurnValue(32000 + tLastID, 100);
 
         ItemList.Crop_Drop_Bauxite.set(addItem(tLastID = 521, "Bauxia Leaf", "Source of Aluminium", new Object[]{}));
@@ -88,12 +88,12 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.double_plant, 1, 1), new ItemStack(Items.dye, 3, 13));
         GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.double_plant, 1, 4), new ItemStack(Items.dye, 3, 1));
         GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.double_plant, 1, 5), new ItemStack(Items.dye, 3, 9));
-        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Plumbilia.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Lead));
-        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Argentia.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Silver));
+        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Plumbilia.get(1), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Lead));
+        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Argentia.get(1), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Silver));
         GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Indigo.get(1), ItemList.Dye_Indigo.get(1));
-        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_MilkWart.get(1), MatUnifier.get(OrePrefixes.dustSmall, Materials.Milk));
-        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Coppon.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Copper));
-        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Tine.get(1), MatUnifier.get(OrePrefixes.dustTiny, Materials.Tin));
+        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_MilkWart.get(1), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Milk));
+        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Coppon.get(1), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Copper));
+        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Tine.get(1), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Tin));
 
         GT_ModHandler.addCompressionRecipe(ItemList.Crop_Drop_Coppon.get(4), new ItemStack(Blocks.wool, 1, 1));
         /*TODO
@@ -108,13 +108,13 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         GT_ModHandler.addCompressionRecipe(new ItemStack(Blocks.red_flower, 8, 32767), ItemList.IC2_PlantballCompressed.get(1));
         GT_ModHandler.addCompressionRecipe(new ItemStack(Blocks.yellow_flower, 8, 32767), ItemList.IC2_PlantballCompressed.get(1));*/
 
-        GT_ModHandler.addPulverisationRecipe(ItemList.Crop_Drop_Tine.get(1), MatUnifier.get(OrePrefixes.dustSmall, Materials.Wood, 2));
+        GT_ModHandler.addPulverisationRecipe(ItemList.Crop_Drop_Tine.get(1), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Wood, 2));
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.reeds, 1), new ItemStack(Items.sugar, 1), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.melon_block, 1, 0), new ItemStack(Items.melon, 8, 0), new ItemStack(Items.melon_seeds, 1), 80, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.pumpkin, 1, 0), new ItemStack(Items.pumpkin_seeds, 4, 0), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.melon, 1, 0), new ItemStack(Items.melon_seeds, 1, 0), null, 0, false);
-        GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.wheat, 1, 0), MatUnifier.get(OrePrefixes.dust, Materials.Wheat), null, 0, false);
-        GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.stick, 1), MatUnifier.get(OrePrefixes.dustSmall, Materials.Wood, 2), null, 0, false);
+        GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.wheat, 1, 0), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Wheat), null, 0, false);
+        GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.stick, 1), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Wood, 2), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.wool, 1, 32767), new ItemStack(Items.string, 2), new ItemStack(Items.string, 1), 50, false);
         try {
             Object tCrop;
@@ -125,7 +125,7 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
                 e.printStackTrace(GT_Log.err);
             }
         }
-        ItemList.Display_ITS_FREE.set(addItem(tLastID = 766, "ITS FREE", "(or at least almost free)", new Object[]{SubTag.INVISIBLE, new Aspects.AspectStack(Aspects.LUCRUM, 1)}));
+        ItemList.Display_ITS_FREE.set(addItem(tLastID = 766, "ITS FREE", "(or at least almost free)", new Object[]{SubTag.INVISIBLE, new TC_Aspects.TC_AspectStack(TC_Aspects.LUCRUM, 1)}));
     }
 
     public boolean onLeftClickEntity(ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {

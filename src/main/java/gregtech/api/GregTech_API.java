@@ -6,7 +6,6 @@ import gregtech.api.enums.Materials;
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.IDamagableItem;
 import gregtech.api.interfaces.ITexture;
-import gregtech.api.interfaces.internal.IGT_RecipeAdder;
 import gregtech.api.interfaces.internal.IThaumcraftCompat;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.items.GT_CoolantCellIC_Item;
@@ -264,7 +263,7 @@ public class GregTech_API {
     public static ItemStack getUnificatedOreDictStack(ItemStack aOreStack) {
         if (!GregTech_API.sPreloadFinished)
             GT_Log.err.println("GregTech_API ERROR: " + aOreStack.getItem() + "." + aOreStack.getItemDamage() + " - OreDict Unification Entries are not registered now, please call it in the postload phase.");
-        return MatUnifier.get(true, aOreStack);
+        return GT_OreDictUnificator.get(true, aOreStack);
     }
 
     /**

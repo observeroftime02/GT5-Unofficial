@@ -40,7 +40,7 @@ public class GT_FluidDisplayItem
                 aList.add(EnumChatFormatting.BLUE + "Amount: " + tToolTipAmount + EnumChatFormatting.GRAY);
             }
             aList.add(EnumChatFormatting.RED + "Temperature: " + aNBT.getLong("mFluidDisplayHeat") + " K" + EnumChatFormatting.GRAY);
-            aList.add(EnumChatFormatting.GREEN + "State: " + (aNBT.getBoolean("mFluidState") ? "RefineryGas" : "Liquid") + EnumChatFormatting.GRAY);
+            aList.add(EnumChatFormatting.GREEN + "State: " + (aNBT.getBoolean("mFluidState") ? "Gas" : "Liquid") + EnumChatFormatting.GRAY);
         }
     }
 

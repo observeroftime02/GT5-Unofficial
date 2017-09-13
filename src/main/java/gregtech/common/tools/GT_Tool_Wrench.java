@@ -67,7 +67,7 @@ public class GT_Tool_Wrench
     }
 
     public String getCraftingSound() {
-        return GregTech_API.sSoundList.get(Integer.valueOf(100));
+        return GregTech_API.sSoundList.get(100);
     }
 
     public String getEntityHitSound() {
@@ -75,11 +75,11 @@ public class GT_Tool_Wrench
     }
 
     public String getBreakingSound() {
-        return GregTech_API.sSoundList.get(Integer.valueOf(0));
+        return GregTech_API.sSoundList.get(0);
     }
 
     public String getMiningSound() {
-        return GregTech_API.sSoundList.get(Integer.valueOf(100));
+        return GregTech_API.sSoundList.get(100);
     }
 
     public boolean canBlock() {
@@ -119,13 +119,3 @@ public class GT_Tool_Wrench
         return new ChatComponentText(EnumChatFormatting.GREEN + aPlayer.getCommandSenderName() + EnumChatFormatting.WHITE + " threw a Monkey Wrench into the Plans of " + EnumChatFormatting.RED + aEntity.getCommandSenderName() + EnumChatFormatting.WHITE);
     }
 }
-
-
-
-/* Location:           F:\Torrent\minecraft\jd-gui-0.3.6.windows\gregtech_1.7.10-5.07.07-dev.jar
-
- * Qualified Name:     gregtech.common.tools.GT_Tool_Wrench
-
- * JD-Core Version:    0.7.0.1
-
- */

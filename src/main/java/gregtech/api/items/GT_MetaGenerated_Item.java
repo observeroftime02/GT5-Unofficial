@@ -5,7 +5,7 @@ import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.GregTech_API;
-import gregtech.api.enums.Aspects.AspectStack;
+import gregtech.api.enums.TC_Aspects.TC_AspectStack;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.SubTag;
 import gregtech.api.interfaces.IFoodStat;
@@ -16,7 +16,7 @@ import gregtech.api.objects.ItemData;
 import gregtech.api.util.GT_Config;
 import gregtech.api.util.GT_LanguageManager;
 import gregtech.api.util.GT_Utility;
-import gregtech.api.util.MatUnifier;
+import gregtech.api.util.GT_OreDictUnificator;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -108,7 +108,7 @@ public abstract class GT_MetaGenerated_Item extends GT_MetaBase_Item implements 
             mVisibleItems.set(aID);
             GT_LanguageManager.addStringLocalization(getUnlocalizedName(rStack) + ".name", aEnglish);
             GT_LanguageManager.addStringLocalization(getUnlocalizedName(rStack) + ".tooltip", aToolTip);
-            List<AspectStack> tAspects = new ArrayList<AspectStack>();
+            List<TC_AspectStack> tAspects = new ArrayList<TC_AspectStack>();
             // Important Stuff to do first
             for (Object tRandomData : aRandomData)
                 if (tRandomData instanceof SubTag) {
@@ -117,7 +117,7 @@ public abstract class GT_MetaGenerated_Item extends GT_MetaBase_Item implements 
                         continue;
                     }
                     if (tRandomData == SubTag.NO_UNIFICATION) {
-                        MatUnifier.addToBlacklist(rStack);
+                        GT_OreDictUnificator.addToBlacklist(rStack);
                         continue;
                     }
                 }
@@ -136,18 +136,18 @@ public abstract class GT_MetaGenerated_Item extends GT_MetaBase_Item implements 
                     if (tRandomData instanceof SubTag) {
                         continue;
                     }
-                    if (tRandomData instanceof AspectStack) {
-                        ((AspectStack) tRandomData).addToAspectList(tAspects);
+                    if (tRandomData instanceof TC_AspectStack) {
+                        ((TC_AspectStack) tRandomData).addToAspectList(tAspects);
                         continue;
                     }
                     if (tRandomData instanceof ItemData) {
                         if (GT_Utility.isStringValid(tRandomData))
-                            MatUnifier.registerOre(tRandomData, rStack);
-                        else MatUnifier.addItemData(rStack, (ItemData) tRandomData);
+                            GT_OreDictUnificator.registerOre(tRandomData, rStack);
+                        else GT_OreDictUnificator.addItemData(rStack, (ItemData) tRandomData);
                         continue;
                     }
                     if (tUseOreDict) {
-                        MatUnifier.registerOre(tRandomData, rStack);
+                        GT_OreDictUnificator.registerOre(tRandomData, rStack);
                         continue;
                     }
                 }
