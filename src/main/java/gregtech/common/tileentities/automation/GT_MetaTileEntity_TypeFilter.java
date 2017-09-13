@@ -8,7 +8,7 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Buffer;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.objects.ItemData;
-import gregtech.api.util.MatUnifier;
+import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.gui.GT_Container_TypeFilter;
 import gregtech.common.gui.GT_GUIContainer_TypeFilter;
@@ -119,7 +119,7 @@ public class GT_MetaTileEntity_TypeFilter
     public boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack) {
         boolean tAllowPrefix = this.mPrefix.contains(aStack);
         if (this.mPrefix == OrePrefixes.ore) {
-            ItemData tData = MatUnifier.getItemData(aStack);
+            ItemData tData = GT_OreDictUnificator.getItemData(aStack);
             if (tData != null && tData.mPrefix != null) {
                 OrePrefixes tFix = tData.mPrefix;
                 if (tFix == OrePrefixes.oreBlackgranite ||

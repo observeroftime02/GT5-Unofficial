@@ -28,7 +28,7 @@ import static gregtech.api.enums.GT_Values.*;
  * <p/>
  * P.S. It is intended to be named "Unificator" and not "Unifier", because that sounds more awesome.
  */
-public class MatUnifier {
+public class GT_OreDictUnificator {
     private static final /*ConcurrentHash*/Map<String, ItemStack> sName2StackMap = new /*ConcurrentHash*/HashMap<String, ItemStack>();
     private static final /*ConcurrentHash*/Map<GT_ItemStack, ItemData> sItemStack2DataMap = new /*ConcurrentHash*/HashMap<GT_ItemStack, ItemData>();
     private static final GT_HashSet<GT_ItemStack> sNoUnificationList = new GT_HashSet<GT_ItemStack>();
@@ -45,8 +45,9 @@ public class MatUnifier {
      * Useful if you have things like the Industrial Diamond, which is better than regular Diamond, but also usable in absolutely all Diamond Recipes.
      */
     public static void addToBlacklist(ItemStack aStack) {
-        if (GT_Utility.isStackValid(aStack) && !GT_Utility.isStackInList(aStack, sNoUnificationList))
+        if (GT_Utility.isStackValid(aStack) && !GT_Utility.isStackInList(aStack, sNoUnificationList)) {
             sNoUnificationList.add(aStack);
+        }
     }
 
     public static boolean isBlacklisted(ItemStack aStack) {

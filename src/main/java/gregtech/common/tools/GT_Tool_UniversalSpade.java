@@ -58,7 +58,7 @@ public class GT_Tool_UniversalSpade
     }
 
     public String getBreakingSound() {
-        return GregTech_API.sSoundList.get(Integer.valueOf(0));
+        return GregTech_API.sSoundList.get(0);
     }
 
     public String getMiningSound() {
@@ -101,10 +101,7 @@ public class GT_Tool_UniversalSpade
     public void onToolCrafted(ItemStack aStack, EntityPlayer aPlayer) {
         super.onToolCrafted(aStack, aPlayer);
         aPlayer.triggerAchievement(AchievementList.buildSword);
-        try {
-            GT_Mod.instance.achievements.issueAchievement(aPlayer, "unitool");
-        } catch (Exception e) {
-        }
+        GT_Mod.achievements.issueAchievement(aPlayer, "unitool");
     }
 
     public IChatComponent getDeathMessage(EntityLivingBase aPlayer, EntityLivingBase aEntity) {

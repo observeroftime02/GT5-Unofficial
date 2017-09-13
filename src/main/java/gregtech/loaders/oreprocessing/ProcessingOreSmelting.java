@@ -6,7 +6,7 @@ import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.SubTag;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.MatUnifier;
+import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -22,7 +22,7 @@ public class ProcessingOreSmelting implements gregtech.api.interfaces.IOreRecipe
 		GT_ModHandler.removeFurnaceSmelting(aStack);
 		if (!aMaterial.contains(SubTag.NO_SMELTING)) {
 			if ((aMaterial.mBlastFurnaceRequired) || (aMaterial.mDirectSmelting.mBlastFurnaceRequired)) {
-				GT_Values.RA.addBlastRecipe(GT_Utility.copyAmount(1, aStack), null, null, null, aMaterial.mBlastFurnaceTemp > 1750 ? MatUnifier.get(OrePrefixes.ingotHot, aMaterial, MatUnifier.get(OrePrefixes.ingot, aMaterial), 1L) : MatUnifier.get(OrePrefixes.ingot, aMaterial), null, (int) Math.max(aMaterial.getMass() / 4L, 1L) * aMaterial.mBlastFurnaceTemp, 120, aMaterial.mBlastFurnaceTemp);
+				GT_Values.RA.addBlastRecipe(GT_Utility.copyAmount(1, aStack), null, null, null, aMaterial.mBlastFurnaceTemp > 1750 ? GT_OreDictUnificator.get(OrePrefixes.ingotHot, aMaterial, GT_OreDictUnificator.get(OrePrefixes.ingot, aMaterial), 1L) : GT_OreDictUnificator.get(OrePrefixes.ingot, aMaterial), null, (int) Math.max(aMaterial.getMass() / 4L, 1L) * aMaterial.mBlastFurnaceTemp, 120, aMaterial.mBlastFurnaceTemp);
 			} else {
 				OrePrefixes outputPrefix;
 				int outputSize;
@@ -78,11 +78,11 @@ public class ProcessingOreSmelting implements gregtech.api.interfaces.IOreRecipe
 						outputSize = 1;
 						break;
 				}
-				ItemStack tStack = MatUnifier.get(outputPrefix, aMaterial.mDirectSmelting, outputSize);
+				ItemStack tStack = GT_OreDictUnificator.get(outputPrefix, aMaterial.mDirectSmelting, outputSize);
 				if (tStack == null)
-					tStack = MatUnifier.get(aMaterial.contains(SubTag.SMELTING_TO_GEM) ? OrePrefixes.gem : OrePrefixes.ingot, aMaterial.mDirectSmelting);
+					tStack = GT_OreDictUnificator.get(aMaterial.contains(SubTag.SMELTING_TO_GEM) ? OrePrefixes.gem : OrePrefixes.ingot, aMaterial.mDirectSmelting);
 				if ((tStack == null) && (!aMaterial.contains(SubTag.SMELTING_TO_GEM)))
-					tStack = MatUnifier.get(OrePrefixes.ingot, aMaterial.mDirectSmelting);
+					tStack = GT_OreDictUnificator.get(OrePrefixes.ingot, aMaterial.mDirectSmelting);
 				GT_ModHandler.addSmeltingRecipe(aStack, tStack);
 			}
 		}

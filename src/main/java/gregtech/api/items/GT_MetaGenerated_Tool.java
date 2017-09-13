@@ -9,14 +9,14 @@ import forestry.api.arboriculture.IToolGrafter;
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
 import gregtech.api.enchants.Enchantment_Radioactivity;
-import gregtech.api.enums.Aspects.AspectStack;
+import gregtech.api.enums.TC_Aspects.TC_AspectStack;
 import gregtech.api.enums.Materials;
 import gregtech.api.interfaces.IDamagableItem;
 import gregtech.api.interfaces.IToolStats;
 import gregtech.api.util.GT_LanguageManager;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_Utility;
-import gregtech.api.util.MatUnifier;
+import gregtech.api.util.GT_OreDictUnificator;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -154,12 +154,12 @@ public abstract class GT_MetaGenerated_Tool extends GT_MetaBase_Item implements 
             mToolStats.put((short) (aID + 1), aToolStats);
             aToolStats.onStatsAddedToTool(this, aID);
             ItemStack rStack = new ItemStack(this, 1, aID);
-            List<AspectStack> tAspects = new ArrayList<AspectStack>();
+            List<TC_AspectStack> tAspects = new ArrayList<TC_AspectStack>();
             for (Object tOreDictNameOrAspect : aOreDictNamesAndAspects) {
-                if (tOreDictNameOrAspect instanceof AspectStack)
-                    ((AspectStack) tOreDictNameOrAspect).addToAspectList(tAspects);
+                if (tOreDictNameOrAspect instanceof TC_AspectStack)
+                    ((TC_AspectStack) tOreDictNameOrAspect).addToAspectList(tAspects);
                 else
-                    MatUnifier.registerOre(tOreDictNameOrAspect, rStack);
+                    GT_OreDictUnificator.registerOre(tOreDictNameOrAspect, rStack);
             }
             if (GregTech_API.sThaumcraftCompat != null)
                 GregTech_API.sThaumcraftCompat.registerThaumcraftAspectsToItem(rStack, tAspects, false);

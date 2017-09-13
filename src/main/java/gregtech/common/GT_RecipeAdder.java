@@ -13,7 +13,7 @@ import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Recipe.GT_Recipe_AssemblyLine;
 import gregtech.api.util.GT_Utility;
-import gregtech.api.util.MatUnifier;
+import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.common.items.GT_IntegratedCircuit_Item;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -281,7 +281,7 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
     }
 
     public boolean addAssemblerRecipe(ItemStack aInput1, Object aOreDict, int aAmount, FluidStack aFluidInput, ItemStack aOutput1, int aDuration, int aEUt) {
-        for (ItemStack tStack : MatUnifier.getOres(aOreDict)) {
+        for (ItemStack tStack : GT_OreDictUnificator.getOres(aOreDict)) {
             if (GT_Utility.isStackValid(tStack))
                 addAssemblerRecipe(aInput1, GT_Utility.copyAmount(aAmount, tStack), aFluidInput, aOutput1, aDuration, aEUt);
         }
@@ -289,7 +289,7 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
     }
 
     public boolean addAssemblerRecipe(ItemStack[] aInputs, Object aOreDict, int aAmount, FluidStack aFluidInput, ItemStack aOutput1, int aDuration, int aEUt){
-    	for(ItemStack tStack : MatUnifier.getOres(aOreDict)){
+    	for(ItemStack tStack : GT_OreDictUnificator.getOres(aOreDict)){
     		if(GT_Utility.isStackValid(tStack)) {
     			ItemStack[] extendedInputs = new ItemStack[aInputs.length + 1];
     			System.arraycopy(aInputs, 0, extendedInputs, 0, aInputs.length);
@@ -485,17 +485,6 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
         return true;
     }
 
-    public boolean addBoxingRecipe(ItemStack aContainedItem, ItemStack aEmptyBox, ItemStack aFullBox, int aDuration, int aEUt) {
-        if ((aContainedItem == null) || (aFullBox == null)) {
-            return false;
-        }
-        if (!GregTech_API.sRecipeFile.get("boxing", aFullBox, true)) {
-            return false;
-        }
-        GT_Recipe.GT_Recipe_Map.sBoxinatorRecipes.addRecipe(true, new ItemStack[]{aContainedItem, aEmptyBox}, new ItemStack[]{aFullBox}, null, null, null, aDuration, aEUt, 0);
-        return true;
-    }
-
     public boolean addThermalCentrifugeRecipe(ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, int aDuration, int aEUt) {
         if ((aInput == null) || (aOutput1 == null)) {
             return false;
@@ -573,9 +562,9 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
             aInput = new FluidStack(aInput.getFluid(), (aInput.amount + tScale - 1) / tScale);
             aOutput = new FluidStack(aOutput.getFluid(), aOutput.amount / tScale);
             if (aSolidOutput != null) {
-                ItemData tData = MatUnifier.getItemData(aSolidOutput);
+                ItemData tData = GT_OreDictUnificator.getItemData(aSolidOutput);
                 if (tData != null && (tData.mPrefix == OrePrefixes.dust || OrePrefixes.dust.mFamiliarPrefixes.contains(tData.mPrefix)))
-                    aSolidOutput = MatUnifier.getDust(tData.mMaterial.mMaterial, tData.mMaterial.mAmount * aSolidOutput.stackSize / tScale);
+                    aSolidOutput = GT_OreDictUnificator.getDust(tData.mMaterial.mMaterial, tData.mMaterial.mAmount * aSolidOutput.stackSize / tScale);
                 else {
                     if (aSolidOutput.stackSize / tScale == 0) aSolidOutput = GT_Values.NI;
                     else aSolidOutput = new ItemStack(aSolidOutput.getItem(), aSolidOutput.stackSize / tScale);

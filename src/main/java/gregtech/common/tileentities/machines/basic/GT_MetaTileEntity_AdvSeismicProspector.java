@@ -10,7 +10,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicMachine;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.objects.ItemData;
-import gregtech.api.util.MatUnifier;
+import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.GT_UndergroundOil;
 import gregtech.common.blocks.GT_Block_Ores_Abstract;
@@ -210,7 +210,7 @@ public class GT_MetaTileEntity_AdvSeismicProspector extends GT_MetaTileEntity_Ba
             }
         } else {
             int tMetaID = getBaseMetaTileEntity().getWorld().getBlockMetadata(x, y, z);
-            ItemData tAssotiation = MatUnifier.getAssociation(new ItemStack(tBlock, 1, tMetaID));
+            ItemData tAssotiation = GT_OreDictUnificator.getAssociation(new ItemStack(tBlock, 1, tMetaID));
 
             if ((tAssotiation != null) && (tAssotiation.mPrefix.toString().startsWith("ore")))
                 return tAssotiation.mMaterial.mMaterial.mDefaultLocalName;

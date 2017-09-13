@@ -2,7 +2,7 @@ package gregtech.common;
 
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.ConfigCategories;
-import gregtech.api.enums.Aspects;
+import gregtech.api.enums.TC_Aspects;
 import gregtech.api.interfaces.internal.IThaumcraftCompat;
 import gregtech.api.util.GT_LanguageManager;
 import gregtech.api.util.GT_Utility;
@@ -29,61 +29,61 @@ import java.util.List;
 
 public class GT_ThaumcraftCompat implements IThaumcraftCompat {
     public GT_ThaumcraftCompat() {
-        Aspects.AER.mAspect = Aspect.AIR;
-        Aspects.ALIENIS.mAspect = Aspect.ELDRITCH;
-        Aspects.AQUA.mAspect = Aspect.WATER;
-        Aspects.ARBOR.mAspect = Aspect.TREE;
-        Aspects.AURAM.mAspect = Aspect.AURA;
-        Aspects.BESTIA.mAspect = Aspect.BEAST;
-        Aspects.COGNITIO.mAspect = Aspect.MIND;
-        Aspects.CORPUS.mAspect = Aspect.FLESH;
-        Aspects.EXANIMIS.mAspect = Aspect.UNDEAD;
-        Aspects.FABRICO.mAspect = Aspect.CRAFT;
-        Aspects.FAMES.mAspect = Aspect.HUNGER;
-        Aspects.GELUM.mAspect = Aspect.COLD;
-        Aspects.GRANUM.mAspect = Aspect.PLANT;
-        Aspects.HERBA.mAspect = Aspect.PLANT;
-        Aspects.HUMANUS.mAspect = Aspect.MAN;
-        Aspects.IGNIS.mAspect = Aspect.FIRE;
-        Aspects.INSTRUMENTUM.mAspect = Aspect.TOOL;
-        Aspects.ITER.mAspect = Aspect.TRAVEL;
-        Aspects.LIMUS.mAspect = Aspect.SLIME;
-        Aspects.LUCRUM.mAspect = Aspect.GREED;
-        Aspects.LUX.mAspect = Aspect.LIGHT;
-        Aspects.MACHINA.mAspect = Aspect.MECHANISM;
-        Aspects.MESSIS.mAspect = Aspect.CROP;
-        Aspects.METALLUM.mAspect = Aspect.METAL;
-        Aspects.METO.mAspect = Aspect.HARVEST;
-        Aspects.MORTUUS.mAspect = Aspect.DEATH;
-        Aspects.MOTUS.mAspect = Aspect.MOTION;
-        Aspects.ORDO.mAspect = Aspect.ORDER;
-        Aspects.PANNUS.mAspect = Aspect.CLOTH;
-        Aspects.PERDITIO.mAspect = Aspect.ENTROPY;
-        Aspects.PERFODIO.mAspect = Aspect.MINE;
-        Aspects.PERMUTATIO.mAspect = Aspect.EXCHANGE;
-        Aspects.POTENTIA.mAspect = Aspect.ENERGY;
-        Aspects.PRAECANTATIO.mAspect = Aspect.MAGIC;
-        Aspects.SANO.mAspect = Aspect.HEAL;
-        Aspects.SENSUS.mAspect = Aspect.SENSES;
-        Aspects.SPIRITUS.mAspect = Aspect.SOUL;
-        Aspects.TELUM.mAspect = Aspect.WEAPON;
-        Aspects.TERRA.mAspect = Aspect.EARTH;
-        Aspects.TEMPESTAS.mAspect = Aspect.WEATHER;
-        Aspects.TENEBRAE.mAspect = Aspect.DARKNESS;
-        Aspects.TUTAMEN.mAspect = Aspect.ARMOR;
-        Aspects.VACUOS.mAspect = Aspect.VOID;
-        Aspects.VENENUM.mAspect = Aspect.POISON;
-        Aspects.VICTUS.mAspect = Aspect.LIFE;
-        Aspects.VINCULUM.mAspect = Aspect.TRAP;
-        Aspects.VITIUM.mAspect = Aspect.TAINT;
-        Aspects.VITREUS.mAspect = Aspect.CRYSTAL;
-        Aspects.VOLATUS.mAspect = Aspect.FLIGHT;
+        TC_Aspects.AER.mAspect = Aspect.AIR;
+        TC_Aspects.ALIENIS.mAspect = Aspect.ELDRITCH;
+        TC_Aspects.AQUA.mAspect = Aspect.WATER;
+        TC_Aspects.ARBOR.mAspect = Aspect.TREE;
+        TC_Aspects.AURAM.mAspect = Aspect.AURA;
+        TC_Aspects.BESTIA.mAspect = Aspect.BEAST;
+        TC_Aspects.COGNITIO.mAspect = Aspect.MIND;
+        TC_Aspects.CORPUS.mAspect = Aspect.FLESH;
+        TC_Aspects.EXANIMIS.mAspect = Aspect.UNDEAD;
+        TC_Aspects.FABRICO.mAspect = Aspect.CRAFT;
+        TC_Aspects.FAMES.mAspect = Aspect.HUNGER;
+        TC_Aspects.GELUM.mAspect = Aspect.COLD;
+        TC_Aspects.GRANUM.mAspect = Aspect.PLANT;
+        TC_Aspects.HERBA.mAspect = Aspect.PLANT;
+        TC_Aspects.HUMANUS.mAspect = Aspect.MAN;
+        TC_Aspects.IGNIS.mAspect = Aspect.FIRE;
+        TC_Aspects.INSTRUMENTUM.mAspect = Aspect.TOOL;
+        TC_Aspects.ITER.mAspect = Aspect.TRAVEL;
+        TC_Aspects.LIMUS.mAspect = Aspect.SLIME;
+        TC_Aspects.LUCRUM.mAspect = Aspect.GREED;
+        TC_Aspects.LUX.mAspect = Aspect.LIGHT;
+        TC_Aspects.MACHINA.mAspect = Aspect.MECHANISM;
+        TC_Aspects.MESSIS.mAspect = Aspect.CROP;
+        TC_Aspects.METALLUM.mAspect = Aspect.METAL;
+        TC_Aspects.METO.mAspect = Aspect.HARVEST;
+        TC_Aspects.MORTUUS.mAspect = Aspect.DEATH;
+        TC_Aspects.MOTUS.mAspect = Aspect.MOTION;
+        TC_Aspects.ORDO.mAspect = Aspect.ORDER;
+        TC_Aspects.PANNUS.mAspect = Aspect.CLOTH;
+        TC_Aspects.PERDITIO.mAspect = Aspect.ENTROPY;
+        TC_Aspects.PERFODIO.mAspect = Aspect.MINE;
+        TC_Aspects.PERMUTATIO.mAspect = Aspect.EXCHANGE;
+        TC_Aspects.POTENTIA.mAspect = Aspect.ENERGY;
+        TC_Aspects.PRAECANTATIO.mAspect = Aspect.MAGIC;
+        TC_Aspects.SANO.mAspect = Aspect.HEAL;
+        TC_Aspects.SENSUS.mAspect = Aspect.SENSES;
+        TC_Aspects.SPIRITUS.mAspect = Aspect.SOUL;
+        TC_Aspects.TELUM.mAspect = Aspect.WEAPON;
+        TC_Aspects.TERRA.mAspect = Aspect.EARTH;
+        TC_Aspects.TEMPESTAS.mAspect = Aspect.WEATHER;
+        TC_Aspects.TENEBRAE.mAspect = Aspect.DARKNESS;
+        TC_Aspects.TUTAMEN.mAspect = Aspect.ARMOR;
+        TC_Aspects.VACUOS.mAspect = Aspect.VOID;
+        TC_Aspects.VENENUM.mAspect = Aspect.POISON;
+        TC_Aspects.VICTUS.mAspect = Aspect.LIFE;
+        TC_Aspects.VINCULUM.mAspect = Aspect.TRAP;
+        TC_Aspects.VITIUM.mAspect = Aspect.TAINT;
+        TC_Aspects.VITREUS.mAspect = Aspect.CRYSTAL;
+        TC_Aspects.VOLATUS.mAspect = Aspect.FLIGHT;
 
-        Aspects.STRONTIO.mAspect = new Aspect("strontio", 15647411, new Aspect[]{Aspect.MIND, Aspect.ENTROPY}, new ResourceLocation("gregtech:textures/aspects/" + Aspects.STRONTIO.name() + ".png"), 1);
-        Aspects.NEBRISUM.mAspect = new Aspect("nebrisum", 15658622, new Aspect[]{Aspect.MINE, Aspect.GREED}, new ResourceLocation("gregtech:textures/aspects/" + Aspects.NEBRISUM.name() + ".png"), 1);
-        Aspects.ELECTRUM.mAspect = new Aspect("electrum", 12644078, new Aspect[]{Aspect.ENERGY, Aspect.MECHANISM}, new ResourceLocation("gregtech:textures/aspects/" + Aspects.ELECTRUM.name() + ".png"), 1);
-        Aspects.MAGNETO.mAspect = new Aspect("magneto", 12632256, new Aspect[]{Aspect.METAL, Aspect.TRAVEL}, new ResourceLocation("gregtech:textures/aspects/" + Aspects.MAGNETO.name() + ".png"), 1);
-        Aspects.RADIO.mAspect = new Aspect("radio", 12648384, new Aspect[]{Aspect.LIGHT, Aspect.ENERGY}, new ResourceLocation("gregtech:textures/aspects/" + Aspects.RADIO.name() + ".png"), 1);
+        TC_Aspects.STRONTIO.mAspect = new Aspect("strontio", 15647411, new Aspect[]{Aspect.MIND, Aspect.ENTROPY}, new ResourceLocation("gregtech:textures/aspects/" + TC_Aspects.STRONTIO.name() + ".png"), 1);
+        TC_Aspects.NEBRISUM.mAspect = new Aspect("nebrisum", 15658622, new Aspect[]{Aspect.MINE, Aspect.GREED}, new ResourceLocation("gregtech:textures/aspects/" + TC_Aspects.NEBRISUM.name() + ".png"), 1);
+        TC_Aspects.ELECTRUM.mAspect = new Aspect("electrum", 12644078, new Aspect[]{Aspect.ENERGY, Aspect.MECHANISM}, new ResourceLocation("gregtech:textures/aspects/" + TC_Aspects.ELECTRUM.name() + ".png"), 1);
+        TC_Aspects.MAGNETO.mAspect = new Aspect("magneto", 12632256, new Aspect[]{Aspect.METAL, Aspect.TRAVEL}, new ResourceLocation("gregtech:textures/aspects/" + TC_Aspects.MAGNETO.name() + ".png"), 1);
+        TC_Aspects.RADIO.mAspect = new Aspect("radio", 12648384, new Aspect[]{Aspect.LIGHT, Aspect.ENERGY}, new ResourceLocation("gregtech:textures/aspects/" + TC_Aspects.RADIO.name() + ".png"), 1);
 
         GT_LanguageManager.addStringLocalization("tc.aspect.strontio", "Stupidness, Incompetence");
         GT_LanguageManager.addStringLocalization("tc.aspect.nebrisum", "Cheatyness, Raiding");
@@ -92,16 +92,16 @@ public class GT_ThaumcraftCompat implements IThaumcraftCompat {
         GT_LanguageManager.addStringLocalization("tc.aspect.radio", "Radiation");
     }
 
-    private static final AspectList getAspectList(List<Aspects.AspectStack> aAspects) {
+    private static final AspectList getAspectList(List<TC_Aspects.TC_AspectStack> aAspects) {
         AspectList rAspects = new AspectList();
-        Aspects.AspectStack tAspect;
+        TC_Aspects.TC_AspectStack tAspect;
         for (Iterator i$ = aAspects.iterator(); i$.hasNext(); rAspects.add((Aspect) tAspect.mAspect.mAspect, (int) tAspect.mAmount)) {
-            tAspect = (Aspects.AspectStack) i$.next();
+            tAspect = (TC_Aspects.TC_AspectStack) i$.next();
         }
         return rAspects;
     }
 
-    public Object addResearch(String aResearch, String aName, String aText, String[] aParentResearches, String aCategory, ItemStack aIcon, int aComplexity, int aType, int aX, int aY, List<Aspects.AspectStack> aAspects, ItemStack[] aResearchTriggers, Object[] aPages) {
+    public Object addResearch(String aResearch, String aName, String aText, String[] aParentResearches, String aCategory, ItemStack aIcon, int aComplexity, int aType, int aX, int aY, List<TC_Aspects.TC_AspectStack> aAspects, ItemStack[] aResearchTriggers, Object[] aPages) {
         if (!GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.researches, aResearch, true)) {
             return null;
         }
@@ -176,27 +176,27 @@ public class GT_ThaumcraftCompat implements IThaumcraftCompat {
         return rResearch.registerResearchItem();
     }
 
-    public Object addCrucibleRecipe(String aResearch, Object aInput, ItemStack aOutput, List<Aspects.AspectStack> aAspects) {
+    public Object addCrucibleRecipe(String aResearch, Object aInput, ItemStack aOutput, List<TC_Aspects.TC_AspectStack> aAspects) {
         if ((GT_Utility.isStringInvalid(aResearch)) || (aInput == null) || (aOutput == null) || (aAspects == null) || (aAspects.isEmpty())) {
             return null;
         }
         return ThaumcraftApi.addCrucibleRecipe(aResearch, GT_Utility.copy(aOutput), ((aInput instanceof ItemStack)) || ((aInput instanceof ArrayList)) ? aInput : aInput.toString(), getAspectList(aAspects));
     }
 
-    public Object addInfusionRecipe(String aResearch, ItemStack aMainInput, ItemStack[] aSideInputs, ItemStack aOutput, int aInstability, List<Aspects.AspectStack> aAspects) {
+    public Object addInfusionRecipe(String aResearch, ItemStack aMainInput, ItemStack[] aSideInputs, ItemStack aOutput, int aInstability, List<TC_Aspects.TC_AspectStack> aAspects) {
         if ((GT_Utility.isStringInvalid(aResearch)) || (aMainInput == null) || (aSideInputs == null) || (aOutput == null) || (aAspects == null) || (aAspects.isEmpty())) {
             return null;
         }
         return ThaumcraftApi.addInfusionCraftingRecipe(aResearch, GT_Utility.copy(aOutput), aInstability, getAspectList(aAspects), aMainInput, aSideInputs);
     }
     
-	public boolean registerThaumcraftAspectsToItem(ItemStack aExampleStack, List<Aspects.AspectStack> aAspects, String aOreDict) {
+	public boolean registerThaumcraftAspectsToItem(ItemStack aExampleStack, List<TC_Aspects.TC_AspectStack> aAspects, String aOreDict) {
 		if (aAspects.isEmpty()) return false;
 		ThaumcraftApi.registerObjectTag(aOreDict, getAspectList(aAspects));
 		return true;
 	}
 
-	public boolean registerThaumcraftAspectsToItem(ItemStack aStack, List<Aspects.AspectStack> aAspects, boolean aAdditive) {
+	public boolean registerThaumcraftAspectsToItem(ItemStack aStack, List<TC_Aspects.TC_AspectStack> aAspects, boolean aAdditive) {
 		if (aAspects.isEmpty()) return false;
 		if (aAdditive) {
 			ThaumcraftApi.registerComplexObjectTag(aStack, getAspectList(aAspects));

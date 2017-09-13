@@ -206,7 +206,7 @@ public abstract class GT_CoverBehavior {
      * @return the ItemStack dropped by this Cover
      */
     public ItemStack getDrop(byte aSide, int aCoverID, int aCoverVariable, ICoverable aTileEntity) {
-        return MatUnifier.get(true, aTileEntity.getCoverItemAtSide(aSide));
+        return GT_OreDictUnificator.get(true, aTileEntity.getCoverItemAtSide(aSide));
     }
 
     /**

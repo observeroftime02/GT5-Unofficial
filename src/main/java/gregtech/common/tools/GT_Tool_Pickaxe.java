@@ -57,7 +57,7 @@ public class GT_Tool_Pickaxe
     }
 
     public String getBreakingSound() {
-        return GregTech_API.sSoundList.get(Integer.valueOf(0));
+        return GregTech_API.sSoundList.get(0);
     }
 
     public String getMiningSound() {
@@ -96,10 +96,7 @@ public class GT_Tool_Pickaxe
         super.onToolCrafted(aStack, aPlayer);
         aPlayer.triggerAchievement(AchievementList.buildPickaxe);
         aPlayer.triggerAchievement(AchievementList.buildBetterPickaxe);
-        try {
-            GT_Mod.instance.achievements.issueAchievement(aPlayer, "flintpick");
-        } catch (Exception e) {
-        }
+        GT_Mod.achievements.issueAchievement(aPlayer, "flintpick");
     }
 
     public IChatComponent getDeathMessage(EntityLivingBase aPlayer, EntityLivingBase aEntity) {

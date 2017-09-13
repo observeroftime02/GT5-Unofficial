@@ -3,7 +3,7 @@ package gregtech.common.tileentities.generators;
 import cpw.mods.fml.common.Loader;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.ConfigCategories;
-import gregtech.api.enums.Aspects;
+import gregtech.api.enums.TC_Aspects;
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
@@ -168,7 +168,7 @@ public class GT_MetaTileEntity_MagicalEnergyAbsorber extends GT_MetaTileEntity_B
                 if ((this.mInventory[0] != null) && (this.mInventory[1] == null)) {
                     if (isThaumcraftLoaded && this.mInventory[0].getItem() instanceof IEssentiaContainerItem) {
                         AspectList tAspect = ((IEssentiaContainerItem) this.mInventory[0].getItem()).getAspects(this.mInventory[0]);
-                        Aspects tValue = Aspects.valueOf(tAspect.getAspects()[0].getTag().toUpperCase(Locale.ENGLISH));
+                        TC_Aspects tValue = TC_Aspects.valueOf(tAspect.getAspects()[0].getTag().toUpperCase(Locale.ENGLISH));
                         int tEU = (tValue.mValue * tAspect.getAmount((Aspect) tValue.mAspect) * 100);
                         getBaseMetaTileEntity().increaseStoredEnergyUnits(tEU * getEfficiency() / 100, true);
                         ItemStack tStack = this.mInventory[0].copy();

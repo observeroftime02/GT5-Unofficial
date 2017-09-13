@@ -85,11 +85,8 @@ public class GT_Tool_Chainsaw_LV
 
     public void onToolCrafted(ItemStack aStack, EntityPlayer aPlayer) {
         super.onToolCrafted(aStack, aPlayer);
-        try {
-            GT_Mod.instance.achievements.issueAchievement(aPlayer, "brrrr");
-            GT_Mod.instance.achievements.issueAchievement(aPlayer, "buildChainsaw");
-        } catch (Exception e) {
-        }
+        GT_Mod.achievements.issueAchievement(aPlayer, "brrrr");
+        GT_Mod.achievements.issueAchievement(aPlayer, "buildChainsaw");
     }
     @Override
     public int convertBlockDrops(List<ItemStack> aDrops, ItemStack aStack, EntityPlayer aPlayer, Block aBlock, int aX, int aY, int aZ, byte aMetaData, int aFortune, boolean aSilkTouch, BlockEvent.HarvestDropsEvent aEvent) {

@@ -1,7 +1,7 @@
 package gregtech.api.enums;
 
 import gregtech.api.GregTech_API;
-import gregtech.api.enums.Aspects.AspectStack;
+import gregtech.api.enums.TC_Aspects.TC_AspectStack;
 import gregtech.api.interfaces.ICondition;
 import gregtech.api.interfaces.IMaterialHandler;
 import gregtech.api.interfaces.IOreRecipeRegistrator;
@@ -60,7 +60,6 @@ public enum OrePrefixes {
     cellPlasma("Cells of Plasma", "", " Plasma Cell", true, true, true, true, false, false, false, true, false, false, MaterialFlags.PLASMA.bit, M, 64, 31), // Hot Cell full of Plasma, which can be used in the Plasma Generator.
     cell("Cells", "", " Cell", true, true, true, true, false, false, true, true, false, false, MaterialFlags.CELL.bit, M, 64, 30), // Regular RefineryGas/Fluid Cell. Introduced by Calclavia
     bucket("Buckets", "", " Bucket", true, true, true, true, false, false, true, false, false, false, B[4] | B[8], M, 16, -1), // A vanilla Iron Bucket filled with the Material.
-    bottle("Bottles", "", " Bottle", true, true, true, true, false, false, false, false, false, false, B[4] | B[8], -1, 16, -1), // Glass Bottle containing a Fluid.
     capsule("Capsules", "", " Capsule", false, true, true, true, false, false, false, false, false, false, B[4] | B[8], M, 16, -1),
     toolHeadSword("Sword Blades", "", " Sword Blade", true, true, false, false, false, false, true, true, false, false, MaterialFlags.TOOL.bit, M * 2, 16, 32), // consisting out of 2 Ingots.
     toolHeadPickaxe("Pickaxe Heads", "", " Pickaxe Head", true, true, false, false, false, false, true, true, false, false, MaterialFlags.TOOL.bit, M * 3, 16, 33), // consisting out of 3 Ingots.
@@ -79,7 +78,7 @@ public enum OrePrefixes {
     toolHeadChainsaw("Chainsaw Tips", "", " Chainsaw Tip", true, true, false, false, false, false, true, true, false, false, MaterialFlags.TOOL.bit, M * 2, 16, 41), // consisting out of 2 Ingots.
     toolHeadWrench("Wrench Tips", "", " Wrench Tip", true, true, false, false, false, false, true, true, false, false, MaterialFlags.TOOL.bit, M * 4, 16, 42), // consisting out of 4 Ingots.
     toolHeadMallet("Mallet Heads", "", " Mallet Head", true, true, false, false, false, false, true, true, false, false, MaterialFlags.TOOL.bit, M * 6, 16, 127), // Reverse Head consisting out of 6 Ingots.
-    turbineBlade("Turbine Blades", "", " Turbine Blade", true, true, false, false, false, false, true, true, false, false, MaterialFlags.TOOL.bit, M * 6, 64, 100), // consisting out of 6 Ingots.
+    turbineBlade("Turbine Blades", "", " Turbine Blade", true, true, false, false, false, false, true, true, false, false, MaterialFlags.TOOL.bit, M * 3, 64, 100), // consisting out of 6 Ingots.
     handleMallet("Mallet Handle", "", " Handle", true, true, false, false, false, false, true, true, false, false, MaterialFlags.SOLID.bit | MaterialFlags.GEM.bit, M / 2, 64, 126), // Reverse Stick made of half an Ingot. Introduced by Eloraam
     compressed("Compressed Materials", "Compressed ", "", true, true, false, false, false, false, true, false, false, false, 0, M * 2, 64, -1), // Compressed Material, worth 1 Unit. Introduced by Galacticraft
     glass("Glasses", "", "", false, false, true, false, true, false, false, false, false, false, 0, -1, 64, -1),
@@ -200,9 +199,6 @@ public enum OrePrefixes {
         bucket.mNotGeneratedItems.add(Materials.Lava);
         bucket.mNotGeneratedItems.add(Materials.Milk);
         bucket.mNotGeneratedItems.add(Materials.Water);
-        bottle.mNotGeneratedItems.add(Materials.Empty);
-        bottle.mNotGeneratedItems.add(Materials.Water);
-        bottle.mNotGeneratedItems.add(Materials.Milk);
         block.mNotGeneratedItems.add(Materials.Iron);
         block.mNotGeneratedItems.add(Materials.Gold);
         block.mNotGeneratedItems.add(Materials.Lapis);
@@ -303,7 +299,7 @@ public enum OrePrefixes {
     public final short mTextureIndex;
     public final String mRegularLocalName, mLocalizedMaterialPre, mLocalizedMaterialPost;
     public final boolean mIsUsedForOreProcessing, mIsEnchantable, mIsUnificatable, mIsMaterialBased, mIsSelfReferencing, mIsContainer, mDontUnificateActively, mIsUsedForBlocks, mAllowNormalRecycling, mGenerateDefaultItem;
-    public final List<AspectStack> mAspects = new ArrayList<AspectStack>();
+    public final List<TC_AspectStack> mAspects = new ArrayList<TC_AspectStack>();
     public final Collection<OrePrefixes> mFamiliarPrefixes = new HashSet<OrePrefixes>();
     /**
      * Used to determine the amount of Material this Prefix contains.
@@ -345,38 +341,38 @@ public enum OrePrefixes {
         mTextureIndex = (short) aTextureindex;
 
         if (name().startsWith("ore")) {
-            new AspectStack(Aspects.TERRA, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.TERRA, 1).addToAspectList(mAspects);
         } else if (name().startsWith("wire") || name().startsWith("cable")) {
-            new AspectStack(Aspects.ELECTRUM, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.ELECTRUM, 1).addToAspectList(mAspects);
         } else if (name().startsWith("dust")) {
-            new AspectStack(Aspects.PERDITIO, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.PERDITIO, 1).addToAspectList(mAspects);
         } else if (name().startsWith("crushed")) {
-            new AspectStack(Aspects.PERFODIO, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.PERFODIO, 1).addToAspectList(mAspects);
         } else if (name().startsWith("ingot") || name().startsWith("nugget")) {
-            new AspectStack(Aspects.METALLUM, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.METALLUM, 1).addToAspectList(mAspects);
         } else if (name().startsWith("armor")) {
-            new AspectStack(Aspects.TUTAMEN, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.TUTAMEN, 1).addToAspectList(mAspects);
         } else if (name().startsWith("stone")) {
-            new AspectStack(Aspects.TERRA, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.TERRA, 1).addToAspectList(mAspects);
         } else if (name().startsWith("pipe")) {
-            new AspectStack(Aspects.ITER, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.ITER, 1).addToAspectList(mAspects);
         } else if (name().startsWith("gear")) {
-            new AspectStack(Aspects.MOTUS, 1).addToAspectList(mAspects);
-            new AspectStack(Aspects.MACHINA, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.MOTUS, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.MACHINA, 1).addToAspectList(mAspects);
         } else if (name().startsWith("frame") || name().startsWith("plate")) {
-            new AspectStack(Aspects.FABRICO, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.FABRICO, 1).addToAspectList(mAspects);
         } else if (name().startsWith("tool")) {
-            new AspectStack(Aspects.INSTRUMENTUM, 2).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.INSTRUMENTUM, 2).addToAspectList(mAspects);
         } else if (name().startsWith("gem") || name().startsWith("crystal") || name().startsWith("lens")) {
-            new AspectStack(Aspects.VITREUS, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.VITREUS, 1).addToAspectList(mAspects);
         } else if (name().startsWith("crate")) {
-            new AspectStack(Aspects.ITER, 2).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.ITER, 2).addToAspectList(mAspects);
         } else if (name().startsWith("circuit")) {
-            new AspectStack(Aspects.COGNITIO, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.COGNITIO, 1).addToAspectList(mAspects);
         } else if (name().startsWith("computer")) {
-            new AspectStack(Aspects.COGNITIO, 4).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.COGNITIO, 4).addToAspectList(mAspects);
         } else if (name().startsWith("battery")) {
-            new AspectStack(Aspects.ELECTRUM, 1).addToAspectList(mAspects);
+            new TC_AspectStack(TC_Aspects.ELECTRUM, 1).addToAspectList(mAspects);
         }
     }
 

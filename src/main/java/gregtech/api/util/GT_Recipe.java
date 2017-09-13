@@ -107,8 +107,8 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
         aFluidInputs = GT_Utility.getArrayListWithoutNulls(aFluidInputs).toArray(new FluidStack[0]);
         aFluidOutputs = GT_Utility.getArrayListWithoutNulls(aFluidOutputs).toArray(new FluidStack[0]);
 
-        MatUnifier.setStackArray(true, aInputs);
-        MatUnifier.setStackArray(true, aOutputs);
+        GT_OreDictUnificator.setStackArray(true, aInputs);
+        GT_OreDictUnificator.setStackArray(true, aOutputs);
 
         for (ItemStack tStack : aOutputs) GT_Utility.updateItemStack(tStack);
 
@@ -352,7 +352,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
                 amt = tStack.stackSize;
                 boolean temp = true;
                 for (ItemStack aStack : aInputs) {
-                    if ((GT_Utility.areUnificationsEqual(aStack, tStack, true) || GT_Utility.areUnificationsEqual(MatUnifier.get(false, aStack), tStack, true))) {
+                    if ((GT_Utility.areUnificationsEqual(aStack, tStack, true) || GT_Utility.areUnificationsEqual(GT_OreDictUnificator.get(false, aStack), tStack, true))) {
                         if (aDontCheckStackSizes) {
                             temp = false;
                             break;
@@ -397,7 +397,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
                     if (tStack != null) {
                         amt = tStack.stackSize;
                         for (ItemStack aStack : aInputs) {
-                            if ((GT_Utility.areUnificationsEqual(aStack, tStack, true) || GT_Utility.areUnificationsEqual(MatUnifier.get(false, aStack), tStack, true))) {
+                            if ((GT_Utility.areUnificationsEqual(aStack, tStack, true) || GT_Utility.areUnificationsEqual(GT_OreDictUnificator.get(false, aStack), tStack, true))) {
                                 if (aDontCheckStackSizes) {
                                     aStack.stackSize -= amt;
                                     break;
@@ -698,8 +698,8 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
             Map<GT_ItemStack, Collection<GT_Recipe>> tMap = mRecipeItemMap;
             if (tMap != null) tMap.clear();
             for (GT_Recipe tRecipe : mRecipeList) {
-                MatUnifier.setStackArray(true, tRecipe.mInputs);
-                MatUnifier.setStackArray(true, tRecipe.mOutputs);
+                GT_OreDictUnificator.setStackArray(true, tRecipe.mInputs);
+                GT_OreDictUnificator.setStackArray(true, tRecipe.mOutputs);
                 if (tMap != null) addToItemMap(tRecipe);
             }
         }
@@ -779,7 +779,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
             }
 
             // Unification happens here in case the Input isn't already unificated.
-            if (aNotUnificated) aInputs = MatUnifier.getStackArray(true, aInputs);
+            if (aNotUnificated) aInputs = GT_OreDictUnificator.getStackArray(true, aInputs);
 
             // Check the Recipe which has been used last time in order to not have to search for it again, if possible.
             if (aRecipe != null)
@@ -980,7 +980,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
                             ((IGregTechTileEntity) aTileEntity).doExplosion(aVoltage * 4);
                         return null;
                     }
-                    ItemData tData = MatUnifier.getItemData(tStack);
+                    ItemData tData = GT_OreDictUnificator.getItemData(tStack);
 
 
                     if (tData != null) {
@@ -1448,7 +1448,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
                     }
                     adjustedFluidInputs.add(inputFluidContent);
                 } else {
-                    ItemData itemData = MatUnifier.getItemData(input);
+                    ItemData itemData = GT_OreDictUnificator.getItemData(input);
                     if (itemData != null && itemData.hasValidPrefixMaterialData() && itemData.mMaterial.mMaterial == Materials.Empty) {
                         continue;
                     } else {
@@ -1486,7 +1486,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
                     }
                     adjustedFluidOutputs.add(outputFluidContent);
                 } else {
-                    ItemData itemData = MatUnifier.getItemData(output);
+                    ItemData itemData = GT_OreDictUnificator.getItemData(output);
                     if (itemData != null && itemData.hasValidPrefixMaterialData() && itemData.mMaterial.mMaterial == Materials.Empty) {
                         continue;
                     } else {

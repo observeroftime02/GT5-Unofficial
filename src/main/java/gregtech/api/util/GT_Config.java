@@ -32,7 +32,7 @@ public class GT_Config implements Runnable {
 
     public static String getStackConfigName(ItemStack aStack) {
         if (GT_Utility.isStackInvalid(aStack)) return E;
-        Object rName = MatUnifier.getAssociation(aStack);
+        Object rName = GT_OreDictUnificator.getAssociation(aStack);
         if (rName != null) return rName.toString();
         try {
             if (GT_Utility.isStringValid(rName = aStack.getUnlocalizedName())) return rName.toString();
