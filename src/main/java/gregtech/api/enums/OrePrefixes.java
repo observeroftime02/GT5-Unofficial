@@ -14,7 +14,6 @@ import net.minecraft.item.ItemStack;
 
 import java.util.*;
 
-import static gregtech.api.enums.GT_Values.B;
 import static gregtech.api.enums.GT_Values.M;
 
 public enum OrePrefixes {
@@ -59,8 +58,6 @@ public enum OrePrefixes {
     lens("Lenses", "", " Lens", true, true, false, false, false, false, true, true, false, false, MaterialFlags.GEM.bit, (M * 3) / 4, 64, 24), // 3/4 of a Plate or Gem used to shape a Lense. Normally only used on Transparent Materials.
     cellPlasma("Cells of Plasma", "", " Plasma Cell", true, true, true, true, false, false, false, true, false, false, MaterialFlags.PLASMA.bit, M, 64, 31), // Hot Cell full of Plasma, which can be used in the Plasma Generator.
     cell("Cells", "", " Cell", true, true, true, true, false, false, true, true, false, false, MaterialFlags.CELL.bit, M, 64, 30), // Regular RefineryGas/Fluid Cell. Introduced by Calclavia
-    bucket("Buckets", "", " Bucket", true, true, true, true, false, false, true, false, false, false, B[4] | B[8], M, 16, -1), // A vanilla Iron Bucket filled with the Material.
-    capsule("Capsules", "", " Capsule", false, true, true, true, false, false, false, false, false, false, B[4] | B[8], M, 16, -1),
     toolHeadSword("Sword Blades", "", " Sword Blade", true, true, false, false, false, false, true, true, false, false, MaterialFlags.TOOL.bit, M * 2, 16, 32), // consisting out of 2 Ingots.
     toolHeadPickaxe("Pickaxe Heads", "", " Pickaxe Head", true, true, false, false, false, false, true, true, false, false, MaterialFlags.TOOL.bit, M * 3, 16, 33), // consisting out of 3 Ingots.
     toolHeadShovel("Shovel Heads", "", " Shovel Head", true, true, false, false, false, false, true, true, false, false, MaterialFlags.TOOL.bit, M, 16, 34), // consisting out of 1 Ingots.
@@ -195,10 +192,6 @@ public enum OrePrefixes {
         ingot.mNotGeneratedItems.add(Materials.Wood);
         nugget.mNotGeneratedItems.add(Materials.Gold);
         plate.mNotGeneratedItems.add(Materials.Paper);
-        bucket.mNotGeneratedItems.add(Materials.Empty);
-        bucket.mNotGeneratedItems.add(Materials.Lava);
-        bucket.mNotGeneratedItems.add(Materials.Milk);
-        bucket.mNotGeneratedItems.add(Materials.Water);
         block.mNotGeneratedItems.add(Materials.Iron);
         block.mNotGeneratedItems.add(Materials.Gold);
         block.mNotGeneratedItems.add(Materials.Lapis);
@@ -276,7 +269,6 @@ public enum OrePrefixes {
         cableGt04.mSecondaryMaterial = new MaterialStack(Materials.Ash, dustSmall.mMaterialAmount * 2);
         cableGt02.mSecondaryMaterial = new MaterialStack(Materials.Ash, dustSmall.mMaterialAmount);
         cableGt01.mSecondaryMaterial = new MaterialStack(Materials.Ash, dustSmall.mMaterialAmount);
-        bucket.mSecondaryMaterial = new MaterialStack(Materials.Iron, ingot.mMaterialAmount * 3);
         cell.mSecondaryMaterial = new MaterialStack(Materials.Tin, plate.mMaterialAmount * 2);
         cellPlasma.mSecondaryMaterial = new MaterialStack(Materials.Tin, plate.mMaterialAmount * 2);
         oreRedgranite.mSecondaryMaterial = new MaterialStack(Materials.GraniteRed, dust.mMaterialAmount);
@@ -381,7 +373,7 @@ public enum OrePrefixes {
         for (IMaterialHandler aRegistrator : Materials.mMaterialHandlers) {
             aRegistrator.onComponentInit();
         }
-        for (Materials aMaterial : Materials.values()) {
+        for (Materials aMaterial : Materials.MATERIALS_ALL) {
             if (aMaterial.mMetaItemSubID > 0) {
                 for (IMaterialHandler aRegistrator : Materials.mMaterialHandlers) {
                     aRegistrator.onComponentIteration(aMaterial);

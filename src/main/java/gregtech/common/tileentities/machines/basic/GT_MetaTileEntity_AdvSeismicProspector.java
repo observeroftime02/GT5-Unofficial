@@ -200,20 +200,20 @@ public class GT_MetaTileEntity_AdvSeismicProspector extends GT_MetaTileEntity_Ba
         if (tBlock instanceof GT_Block_Ores_Abstract) {
             TileEntity tTileEntity = getBaseMetaTileEntity().getWorld().getTileEntity(x, y, z);
 
-            if ((tTileEntity instanceof GT_TileEntity_Ores)
-                && (((GT_TileEntity_Ores) tTileEntity).mMetaData < 16000)) { // Filtering small ores
-                Materials tMaterial
-                    = GregTech_API.sGeneratedMaterials[((GT_TileEntity_Ores) tTileEntity).mMetaData % 1000];
+            if ((tTileEntity instanceof GT_TileEntity_Ores) && (((GT_TileEntity_Ores) tTileEntity).mMetaData < 16000)) { // Filtering small ores
+                Materials tMaterial = GregTech_API.sGeneratedMaterials[((GT_TileEntity_Ores) tTileEntity).mMetaData % 1000];
 
-                if ((tMaterial != null) && (tMaterial != Materials._NULL))
+                if ((tMaterial != null) && (tMaterial != Materials._NULL)) {
                     return tMaterial.mDefaultLocalName;
+                }
             }
         } else {
             int tMetaID = getBaseMetaTileEntity().getWorld().getBlockMetadata(x, y, z);
             ItemData tAssotiation = GT_OreDictUnificator.getAssociation(new ItemStack(tBlock, 1, tMetaID));
 
-            if ((tAssotiation != null) && (tAssotiation.mPrefix.toString().startsWith("ore")))
+            if ((tAssotiation != null) && (tAssotiation.mPrefix.toString().startsWith("ore"))) {
                 return tAssotiation.mMaterial.mMaterial.mDefaultLocalName;
+            }
         }
 
         return null;

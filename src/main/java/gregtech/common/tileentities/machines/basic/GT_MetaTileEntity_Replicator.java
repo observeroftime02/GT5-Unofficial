@@ -91,7 +91,7 @@ public class GT_MetaTileEntity_Replicator
 
     public int getCapacity() {
         if ((sHeaviestElementMass == 0) && (GregTech_API.sPostloadFinished)) {
-            for (Materials aMaterial : Materials.values()) {
+            for (Materials aMaterial : Materials.MATERIALS_ALL) {
                 sHeaviestElementMass = Math.max(sHeaviestElementMass, (int) aMaterial.getMass());
             }
         }

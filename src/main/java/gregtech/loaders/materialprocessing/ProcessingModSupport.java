@@ -26,8 +26,6 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
             Materials.InfusedWater.mHasParentMod = false;
             Materials.InfusedEntropy.mHasParentMod = false;
             Materials.InfusedOrder.mHasParentMod = false;
-            Materials.InfusedVis.mHasParentMod = false;
-            Materials.InfusedDull.mHasParentMod = false;
         }
         if (!aEnableGCMarsMats) {
             Materials.Desh.mHasParentMod = false;

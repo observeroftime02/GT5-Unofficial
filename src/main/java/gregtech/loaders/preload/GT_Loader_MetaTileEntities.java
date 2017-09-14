@@ -1311,7 +1311,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {
     private static void run4() {
     	long bitsd = GT_ModHandler.RecipeBits.DISMANTLEABLE | GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED;
 
-        for (Materials aMaterial : GT_Loader_MaterialRecipes.aSolidAndDustList) {
+        for (Materials aMaterial : Materials.MATERIALS_SOLID) {
             if (aMaterial.hasFlag(MaterialFlags.FRAME)) {
                 new GT_MetaPipeEntity_Frame(4096 + aMaterial.mMetaItemSubID, "GT_Frame_" + aMaterial, aMaterial.mDefaultLocalName + " Frame Box", aMaterial);
             }

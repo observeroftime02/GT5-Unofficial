@@ -426,8 +426,9 @@ public class GT_MachineRecipeLoader implements Runnable {
         GT_Values.RA.addFormingPressRecipe(GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Diamond), GT_ModHandler.getModItem(aTextAE, aTextAEMM, 0, 14), GT_ModHandler.getModItem(aTextAE, aTextAEMM, 1, 17), 200, 16);
         GT_Values.RA.addFormingPressRecipe(GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Gold), GT_ModHandler.getModItem(aTextAE, aTextAEMM, 0, 15), GT_ModHandler.getModItem(aTextAE, aTextAEMM, 1, 18), 200, 16);
         GT_Values.RA.addFormingPressRecipe(GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Silicon), GT_ModHandler.getModItem(aTextAE, aTextAEMM, 0, 19), GT_ModHandler.getModItem(aTextAE, aTextAEMM, 1, 20), 200, 16);
-        
-        for (Materials tMat : Materials.values()) {
+
+        //TODO MOVE?
+        for (Materials tMat : Materials.MATERIALS_ALL) {
             if (tMat.mStandardMoltenFluid != null && tMat.contains(SubTag.SOLDERING_MATERIAL) && !(GregTech_API.mUseOnlyGoodSolderingMaterials && !tMat.contains(SubTag.SOLDERING_MATERIAL_GOOD))) {
                 int tMultiplier = tMat.contains(SubTag.SOLDERING_MATERIAL_GOOD) ? 1 : tMat.contains(SubTag.SOLDERING_MATERIAL_BAD) ? 4 : 2;
                 //Circuit soldering
@@ -1865,7 +1866,7 @@ public class GT_MachineRecipeLoader implements Runnable {
 
             tKey = "GT_FILL_WATER_BUCKET";
             GT_LanguageManager.addStringLocalization(aTextTCGTPage + tKey, "You have discovered a way of filling a bucket with aqua essentia in order to simply get water.");
-            GregTech_API.sThaumcraftCompat.addResearch(tKey, "Water Transmutation", "Filling buckets with water", null, "ALCHEMY", GT_OreDictUnificator.get(OrePrefixes.bucket, Materials.Water), 2, 0, 16, 5, Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.PERMUTATIO, 4), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 4)), null, new Object[]{aTextTCGTPage + tKey, GregTech_API.sThaumcraftCompat.addCrucibleRecipe(tKey, GT_OreDictUnificator.get(OrePrefixes.bucket, Materials.Empty, 1), GT_OreDictUnificator.get(OrePrefixes.bucket, Materials.Water), Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 4))), GregTech_API.sThaumcraftCompat.addCrucibleRecipe(tKey, GT_OreDictUnificator.get(OrePrefixes.capsule, Materials.Empty, 1), GT_OreDictUnificator.get(OrePrefixes.capsule, Materials.Water, 1), Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 4))), GregTech_API.sThaumcraftCompat.addCrucibleRecipe(tKey, GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Empty, 1), GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Water, 1), Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 4)))});
+            GregTech_API.sThaumcraftCompat.addResearch(tKey, "Water Transmutation", "Filling buckets with water", null, "ALCHEMY", new ItemStack(Items.water_bucket, 1), 2, 0, 16, 5, Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.PERMUTATIO, 4), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 4)), null, new Object[]{aTextTCGTPage + tKey, GregTech_API.sThaumcraftCompat.addCrucibleRecipe(tKey, new ItemStack(Items.bucket, 1), new ItemStack(Items.water_bucket, 1), Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 4))), GregTech_API.sThaumcraftCompat.addCrucibleRecipe(tKey, new ItemStack(Items.bucket, 1), new ItemStack(Items.water_bucket, 1), Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 4))), GregTech_API.sThaumcraftCompat.addCrucibleRecipe(tKey, new ItemStack(Items.bucket, 1), GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Water, 1), Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 4)))});
 
             tKey = "GT_TRANSZINC";
             GT_LanguageManager.addStringLocalization(aTextTCGTPage + tKey, "You have discovered a way to multiply zinc by steeping zinc nuggets in metallum harvested from other metals.");

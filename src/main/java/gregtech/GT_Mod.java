@@ -33,12 +33,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.oredict.OreDictionary;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
@@ -453,7 +450,7 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.onLoad();
         if (gregtechproxy.mSortToTheEnd) {
             new GT_ItemIterator().run();
-            gregtechproxy.registerUnificationEntries();
+            gregtechproxy.registerUnificationEntries(); //TODO REALLY?!
             new GT_FuelLoader().run();
         }
         GregTech_API.sLoadFinished = true;
@@ -666,66 +663,6 @@ public class GT_Mod implements IGT_Mod {
             tRunnable.run();
         }
         gregtechproxy.onServerStopping();
-        if (GT_Values.D1 || GT_Log.out != System.out) {
-            GT_Log.out.println("*");
-            GT_Log.out.println("Printing List of all registered Objects inside the OreDictionary, now with free extra Sorting:");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-
-            String[] tList = OreDictionary.getOreNames();
-            Arrays.sort(tList);
-            for (String tOreName : tList) {
-                int tAmount = OreDictionary.getOres(tOreName).size();
-                if (tAmount > 0) {
-                    GT_Log.out.println((tAmount < 10 ? " " : "") + tAmount + "x " + tOreName);
-                }
-            }
-            GT_Log.out.println("*");
-            GT_Log.out.println("Printing List of all registered Objects inside the Fluid Registry, now with free extra Sorting:");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-
-            tList = FluidRegistry.getRegisteredFluids().keySet().toArray(new String[FluidRegistry.getRegisteredFluids().keySet().size()]);
-            Arrays.sort(tList);
-            for (String tFluidName : tList) {
-                GT_Log.out.println(tFluidName);
-            }
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            GT_Log.out.println("Outputting all the Names inside the Biomeslist");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            for (int i = 0; i < BiomeGenBase.getBiomeGenArray().length; i++) {
-                if (BiomeGenBase.getBiomeGenArray()[i] != null) {
-                    GT_Log.out.println(BiomeGenBase.getBiomeGenArray()[i].biomeID + " = " + BiomeGenBase.getBiomeGenArray()[i].biomeName);
-                }
-            }
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            GT_Log.out.println("Printing List of generatable Materials");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            for (int i = 0; i < GregTech_API.sGeneratedMaterials.length; i++) {
-                if (GregTech_API.sGeneratedMaterials[i] == null) {
-                    GT_Log.out.println("Index " + i + ":" + null);
-                } else {
-                    GT_Log.out.println("Index " + i + ":" + GregTech_API.sGeneratedMaterials[i]);
-                }
-            }
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            GT_Log.out.println("END GregTech-Debug");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-            GT_Log.out.println("*");
-        }
         for (Runnable tRunnable : GregTech_API.sAfterGTServerstop) {
             tRunnable.run();
         }

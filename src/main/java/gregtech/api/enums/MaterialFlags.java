@@ -28,7 +28,8 @@ public enum MaterialFlags {
     CGAS(CFLUID.bit*2),
     LIQUID(CGAS.bit*2),
     FRAME(LIQUID.bit*2),
-    REF(FRAME.bit*2);
+    SORE(FRAME.bit*2),
+    REF(SORE.bit*2);
 
     public int bit;
 

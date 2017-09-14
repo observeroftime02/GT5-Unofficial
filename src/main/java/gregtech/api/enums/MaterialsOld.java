@@ -24,7 +24,7 @@
 //import static gregtech.api.enums.GT_Values.M;
 //
 //public class MaterialsOld implements IColorModulationContainer, ISubTagContainer {
-//    private static Materials[] MATERIALS_ARRAY = new Materials[]{};
+//    private static Materials[] MATERIALS_ALL = new Materials[]{};
 //    private static final Map<String, Materials> MATERIALS_MAP = new LinkedHashMap<String, Materials>();
 //    public static final List<IMaterialHandler> mMaterialHandlers = new ArrayList<IMaterialHandler>();
 //
@@ -1060,10 +1060,10 @@
 //            aRegistrator.onMaterialsInit(); //This is where addon mods can add/manipulate materials
 //        }
 //        initMaterialProperties(); //No more material addition or manipulation should be done past this point!
-//        MATERIALS_ARRAY = MATERIALS_MAP.values().toArray(new Materials[MATERIALS_MAP.size()]); //Generate standard object array. This is a lot faster to loop over.
-//        VALUES = Arrays.asList(MATERIALS_ARRAY);
+//        MATERIALS_ALL = MATERIALS_MAP.values().toArray(new Materials[MATERIALS_MAP.size()]); //Generate standard object array. This is a lot faster to loop over.
+//        VALUES = Arrays.asList(MATERIALS_ALL);
 //        if (!GT_Mod.gregtechproxy.mEnableAllComponents) OrePrefixes.initMaterialComponents();
-//        for (Materials aMaterial : MATERIALS_ARRAY) {
+//        for (Materials aMaterial : MATERIALS_ALL) {
 //            if (aMaterial.mMetaItemSubID >= 0) {
 //                if (aMaterial.mMetaItemSubID < 1000) {
 //                    if (aMaterial.mHasParentMod) {
@@ -1209,7 +1209,7 @@
 //                        }
 //                    }
 //                }
-//                /** Moved the harvest level changes from GT_Mod to have less things iterating over MATERIALS_ARRAY **/
+//                /** Moved the harvest level changes from GT_Mod to have less things iterating over MATERIALS_ALL **/
 //                if (GT_Mod.gregtechproxy.mChangeHarvestLevels && aMaterial.mToolQuality > 0 && aMaterial.mMetaItemSubID < GT_Mod.gregtechproxy.mHarvestLevel.length && aMaterial.mMetaItemSubID >= 0) {
 //                    GT_Mod.gregtechproxy.mHarvestLevel[aMaterial.mMetaItemSubID] = GregTech_API.sMaterialProperties.get(aConfigPath, "HarvestLevel", aMaterial.mToolQuality);
 //                }
@@ -1384,7 +1384,7 @@
 //     * This is for keeping compatibility with addons mods (Such as TinkersGregworks etc) that looped over the old materials enum
 //     */
 //    public static Materials[] values() {
-//        return MATERIALS_ARRAY;
+//        return MATERIALS_ALL;
 //    }
 //
 //    /**

@@ -60,7 +60,6 @@ public class GT_FuelLoader
                 GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Sulfur),
                 GT_OreDictUnificator.get(ItemList.Block_SSFUEL.get(1)),
                 GT_OreDictUnificator.get(ItemList.Block_MSSFUEL.get(1)),
-                GT_OreDictUnificator.get(OrePrefixes.bucket, Materials.Lava),
                 GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Blaze));
         if (Loader.isModLoaded("Thaumcraft")) {
             GT_Recipe.GT_Recipe_Map.sLargeBoilerFakeFuels.addSolidRecipe(GT_ModHandler.getModItem("Thaumcraft", "ItemResource", 1));
