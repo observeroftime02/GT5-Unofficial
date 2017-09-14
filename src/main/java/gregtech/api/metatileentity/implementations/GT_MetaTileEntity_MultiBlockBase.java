@@ -36,7 +36,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
     public ItemStack[] mOutputItems = null;
     public FluidStack[] mOutputFluids = null;
     public String mNEI;
-        public int damageFactorLow = 5;
+    public int damageFactorLow = 5;
     public float damageFactorHigh = 0.6f;
 
     public ArrayList<GT_MetaTileEntity_Hatch_Input> mInputHatches = new ArrayList<GT_MetaTileEntity_Hatch_Input>();
@@ -264,7 +264,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                                             addOutput(tStack);
                                         }
                                     if (mOutputFluids != null) {
-                                    	addFluidOutputs(mOutputFluids);
+                                        addFluidOutputs(mOutputFluids);
                                     }
                                     mEfficiency = Math.max(0, Math.min(mEfficiency + mEfficiencyIncrease, getMaxEfficiency(mInventory[1]) - ((getIdealStatus() - getRepairStatus()) * 1000)));
                                     mOutputItems = null;
@@ -431,7 +431,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                         if (!tNBT.getBoolean("mDis")) {
                             tNBT2 = new NBTTagCompound();
                             Materials tMaterial = GT_MetaGenerated_Tool.getPrimaryMaterial(mInventory[1]);
-                            ItemStack tTurbine = GT_OreDictUnificator.get(OrePrefixes.turbineBlade, tMaterial);
+                            ItemStack tTurbine = GT_OreDictUnificator.get(OrePrefixes.turbineBlade, tMaterial, 1);
                             int i = mInventory[1].getItemDamage();
                             if (i == 170) {
                                 ItemStack tStack = GT_Utility.copyAmount(1, tTurbine);
@@ -439,7 +439,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                                 tNBT2.setTag("Ingredient.1", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.2", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.3", tStack.writeToNBT(new NBTTagCompound()));
-                                tStack = GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Magnalium);
+                                tStack = GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Magnalium, 1);
                                 tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
                             } else if (i == 172) {
                                 ItemStack tStack = GT_Utility.copyAmount(1, tTurbine);
@@ -451,7 +451,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                                 tNBT2.setTag("Ingredient.6", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.7", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.8", tStack.writeToNBT(new NBTTagCompound()));
-                                tStack = GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Titanium);
+                                tStack = GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Titanium, 1);
                                 tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
                             } else if (i == 174) {
                                 ItemStack tStack = GT_Utility.copyAmount(2, tTurbine);
@@ -461,7 +461,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                                 tNBT2.setTag("Ingredient.3", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.5", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.6", tStack.writeToNBT(new NBTTagCompound()));
-                                tStack = GT_OreDictUnificator.get(OrePrefixes.stick, Materials.TungstenSteel);
+                                tStack = GT_OreDictUnificator.get(OrePrefixes.stick, Materials.TungstenSteel, 1);
                                 tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
                             } else if (i == 176) {
                                 ItemStack tStack = GT_Utility.copyAmount(2, tTurbine);
@@ -473,7 +473,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                                 tNBT2.setTag("Ingredient.6", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.7", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.8", tStack.writeToNBT(new NBTTagCompound()));
-                                tStack = GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Americium);
+                                tStack = GT_OreDictUnificator.get(OrePrefixes.stick, Materials.Americium, 1);
                                 tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
                             }
                             tNBT.setTag("GT.CraftingComponents", tNBT2);
@@ -534,25 +534,25 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
 
     private boolean dumpFluid(FluidStack copiedFluidStack, boolean restrictiveHatchesOnly){
         for (GT_MetaTileEntity_Hatch_Output tHatch : mOutputHatches) {
-        	if (!isValidMetaTileEntity(tHatch) || (restrictiveHatchesOnly && tHatch.mMode == 0)) {
-        		continue;
-        	}
-        	if (GT_ModHandler.isSteam(copiedFluidStack)) {
-        		if (!tHatch.outputsSteam()) {
-        			continue;
-        		}
-        	} else {
-        		if (!tHatch.outputsLiquids()) {
-        			continue;
-        		}
-        		if (tHatch.isFluidLocked() && tHatch.getLockedFluidName() != null && !tHatch.getLockedFluidName().equals(copiedFluidStack.getUnlocalizedName())) {
-        			continue;
-        		}
-        	}
+            if (!isValidMetaTileEntity(tHatch) || (restrictiveHatchesOnly && tHatch.mMode == 0)) {
+                continue;
+            }
+            if (GT_ModHandler.isSteam(copiedFluidStack)) {
+                if (!tHatch.outputsSteam()) {
+                    continue;
+                }
+            } else {
+                if (!tHatch.outputsLiquids()) {
+                    continue;
+                }
+                if (tHatch.isFluidLocked() && tHatch.getLockedFluidName() != null && !tHatch.getLockedFluidName().equals(copiedFluidStack.getUnlocalizedName())) {
+                    continue;
+                }
+            }
             int tAmount = tHatch.fill(copiedFluidStack, false);
             if (tAmount >= copiedFluidStack.amount) {
-            	boolean filled = tHatch.fill(copiedFluidStack, true) >= copiedFluidStack.amount;
-            	tHatch.onEmptyingContainerWhenEmpty();
+                boolean filled = tHatch.fill(copiedFluidStack, true) >= copiedFluidStack.amount;
+                tHatch.onEmptyingContainerWhenEmpty();
                 return filled;
             } else if (tAmount > 0) {
                 copiedFluidStack.amount = copiedFluidStack.amount - tHatch.fill(copiedFluidStack, true);
@@ -561,19 +561,19 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
         }
         return false;
     }
-    
+
     public boolean addOutput(FluidStack aLiquid) {
         if (aLiquid == null) return false;
         FluidStack copiedFluidStack = aLiquid.copy();
         if (!dumpFluid(copiedFluidStack, true)){
-            dumpFluid(copiedFluidStack, false);        	
+            dumpFluid(copiedFluidStack, false);
         }
         return false;
     }
 
     protected void addFluidOutputs(FluidStack[] mOutputFluids2) {
         for (FluidStack outputFluidStack : mOutputFluids2) {
-        	addOutput(outputFluidStack);
+            addOutput(outputFluidStack);
         }
     }
 

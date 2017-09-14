@@ -174,6 +174,7 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.mDisableIC2Cables = tMainConfig.get(aTextGeneral, "DisableIC2Cables", true).getBoolean(true);
         gregtechproxy.mAchievements = tMainConfig.get(aTextGeneral, "EnableAchievements", true).getBoolean(true);
         gregtechproxy.mAE2Integration = GregTech_API.sSpecialFile.get(ConfigCategories.general, "EnableAE2Integration", Loader.isModLoaded("appliedenergistics2"));
+        gregtechproxy.mAE2Tunnel = GregTech_API.sSpecialFile.get(ConfigCategories.general, "EnableAE2Tunnel", false);
         gregtechproxy.mNerfedCombs = tMainConfig.get(aTextGeneral, "NerfCombs", true).getBoolean(true);
         gregtechproxy.mNerfedCrops = tMainConfig.get(aTextGeneral, "NerfCrops", true).getBoolean(true);
         gregtechproxy.mHideUnusedOres = tMainConfig.get(aTextGeneral, "HideUnusedOres", true).getBoolean(true);
@@ -210,7 +211,7 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.enableBasaltOres = GregTech_API.sWorldgenFile.get("general", "enableBasaltOres", gregtechproxy.enableBasaltOres);
         gregtechproxy.enableGCOres = GregTech_API.sWorldgenFile.get("general", "enableGCOres", gregtechproxy.enableGCOres);
         gregtechproxy.enableUBOres = GregTech_API.sWorldgenFile.get("general", "enableUBOres", gregtechproxy.enableUBOres);
-
+        
         GregTech_API.mUseOnlyGoodSolderingMaterials = GregTech_API.sRecipeFile.get(ConfigCategories.Recipes.harderrecipes, "useonlygoodsolderingmaterials", GregTech_API.mUseOnlyGoodSolderingMaterials);
 
         if (tMainConfig.get("general", "hardermobspawners", true).getBoolean(true)) {
@@ -487,6 +488,7 @@ public class GT_Mod implements IGT_Mod {
         new GT_MachineRecipeLoader().run();
         new GT_Worldgenloader().run();
         new GT_CoverLoader().run();
+        new GT_AE2EnergyTunnelLoader().run();
         LoadArmorComponents.init();
 
         GT_Log.out.println("GT_Mod: Activating OreDictionary Handler, this can take some time, as it scans the whole OreDictionary");

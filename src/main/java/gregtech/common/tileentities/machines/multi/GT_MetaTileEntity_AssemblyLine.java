@@ -76,78 +76,78 @@ public class GT_MetaTileEntity_AssemblyLine
     }
 
     public boolean checkRecipe(ItemStack aStack) {
-    	if(GT_Values.D1)System.out.println("Start ALine recipe check");
+        if(GT_Values.D1)System.out.println("Start ALine recipe check");
         ArrayList<ItemStack> tDataStickList = getDataItems(2);
-    	if (tDataStickList.size() == 0) return false;
-    	if(GT_Values.D1)System.out.println("Stick accepted, " + tDataStickList.size() + " Data Sticks found");
+        if (tDataStickList.size() == 0) return false;
+        if(GT_Values.D1)System.out.println("Stick accepted, " + tDataStickList.size() + " Data Sticks found");
 
         ItemStack tStack[] = new ItemStack[15];
-    	FluidStack[] tFluids = new FluidStack[4];
-    	boolean recipeNA = false;
-    	boolean findRecipe = false;
-    	for (ItemStack tDataStick : tDataStickList){
-    		recipeNA = false;
-    		NBTTagCompound tTag = tDataStick.getTagCompound();
-    		if (tTag == null) continue;
-    		for (int i = 0; i < 15; i++) {
+        FluidStack[] tFluids = new FluidStack[4];
+        boolean recipeNA = false;
+        boolean findRecipe = false;
+        for (ItemStack tDataStick : tDataStickList){
+            recipeNA = false;
+            NBTTagCompound tTag = tDataStick.getTagCompound();
+            if (tTag == null) continue;
+            for (int i = 0; i < 15; i++) {
                 if (!tTag.hasKey("" + i)) continue;
                 if (mInputBusses.get(i) == null) {
-                	recipeNA = true;
-                	break;
+                    recipeNA = true;
+                    break;
                 }
                 tStack[i] = GT_Utility.loadItem(tTag, "" + i);
                 if (tStack[i] == null) continue;
-            	if(GT_Values.D1)System.out.println("Item "+i+" : "+tStack[i].getUnlocalizedName());
+                if(GT_Values.D1)System.out.println("Item "+i+" : "+tStack[i].getUnlocalizedName());
                 ItemStack stackInSlot = mInputBusses.get(i).getBaseMetaTileEntity().getStackInSlot(0);
                 if (!GT_Utility.areStacksEqual(tStack[i], stackInSlot, true) || tStack[i].stackSize > stackInSlot.stackSize) {
-                	if(GT_Values.D1)System.out.println(i +" not accepted");
-                	recipeNA = true;
+                    if(GT_Values.D1)System.out.println(i +" not accepted");
+                    recipeNA = true;
                     break;
                 }
-            	if(GT_Values.D1)System.out.println(i+" accepted");
+                if(GT_Values.D1)System.out.println(i+" accepted");
             }
-    		if (recipeNA) continue;
-    		
-    		if(GT_Values.D1)System.out.println("All Items done, start fluid check");
+            if (recipeNA) continue;
+
+            if(GT_Values.D1)System.out.println("All Items done, start fluid check");
             for (int i = 0; i < 4; i++) {
                 if (!tTag.hasKey("f" + i)) continue;
                 tFluids[i] = GT_Utility.loadFluid(tTag, "f" + i);
                 if (tFluids[i] == null) continue;
-            	if(GT_Values.D1)System.out.println("Fluid "+i+" "+tFluids[i].getUnlocalizedName());
+                if(GT_Values.D1)System.out.println("Fluid "+i+" "+tFluids[i].getUnlocalizedName());
                 if (mInputHatches.get(i) == null) {
-                	recipeNA = true;
-                	break;
+                    recipeNA = true;
+                    break;
                 }
                 FluidStack fluidInHatch = mInputHatches.get(i).mFluid;
                 if (fluidInHatch == null || !GT_Utility.areFluidsEqual(fluidInHatch, tFluids[i], true) || fluidInHatch.amount < tFluids[i].amount) {
-                	if(GT_Values.D1)System.out.println(i+" not accepted");
-                	recipeNA = true;
+                    if(GT_Values.D1)System.out.println(i+" not accepted");
+                    recipeNA = true;
                     break;
                 }
-            	if(GT_Values.D1)System.out.println(i+" accepted");
+                if(GT_Values.D1)System.out.println(i+" accepted");
             }
             if (recipeNA) continue;
-            
+
             if(GT_Values.D1)System.out.println("Input accepted, check other values");
             if (!tTag.hasKey("output")) continue;
             mOutputItems = new ItemStack[]{GT_Utility.loadItem(tTag, "output")};
             if (mOutputItems[0] == null || !GT_Utility.isStackValid(mOutputItems[0]))
                 continue;
-            
+
             if (!tTag.hasKey("time")) continue;
             mMaxProgresstime = tTag.getInteger("time");
             if (mMaxProgresstime <= 0) continue;
-            
+
             if (!tTag.hasKey("eu")) continue;
             mEUt = tTag.getInteger("eu");
-            
+
             if(GT_Values.D1)System.out.println("Find avaiable recipe");
             findRecipe = true;
             break;
-    	}
-    	if (!findRecipe) return false;
+        }
+        if (!findRecipe) return false;
 
-    	if(GT_Values.D1)System.out.println("All checked start consuming inputs");
+        if(GT_Values.D1)System.out.println("All checked start consuming inputs");
         for (int i = 0; i < 15; i++) {
             if (tStack[i] == null) continue;
             ItemStack stackInSlot = mInputBusses.get(i).getBaseMetaTileEntity().getStackInSlot(0);
@@ -161,7 +161,7 @@ public class GT_MetaTileEntity_AssemblyLine
                 mInputHatches.get(i).mFluid = null;
             }
         }
-    	if(GT_Values.D1)System.out.println("Check overclock");
+        if(GT_Values.D1)System.out.println("Check overclock");
 
         byte tTier = (byte) Math.max(1, GT_Utility.getTier(getMaxInputVoltage()));
         this.mEfficiency = (10000 - (getIdealStatus() - getRepairStatus()) * 1000);
@@ -180,7 +180,7 @@ public class GT_MetaTileEntity_AssemblyLine
         }
         this.mMaxProgresstime = Math.max(1, this.mMaxProgresstime);
         updateSlots();
-    	if(GT_Values.D1)System.out.println("Recipe sucessfull");
+        if(GT_Values.D1)System.out.println("Recipe sucessfull");
         return true;
     }
 
@@ -201,7 +201,7 @@ public class GT_MetaTileEntity_AssemblyLine
                 IGregTechTileEntity tTileEntity = aBaseMetaTileEntity.getIGregTechTileEntityOffset(0, 0, i);
                 if (i != 0 && !(aBaseMetaTileEntity.getBlockOffset(0, 0, i) == GregTech_API.sBlockCasings3 && aBaseMetaTileEntity.getMetaIDOffset(0, 0, i) == 10)) {
                     if(r == 1 && !addDataAccessToMachineList(tTileEntity, 16)){
-                    	return false;
+                        return false;
                     }
                 }
                 if (!aBaseMetaTileEntity.getBlockOffset(0, -1, i).getUnlocalizedName().equals("blockAlloyGlass")) {
@@ -260,8 +260,8 @@ public class GT_MetaTileEntity_AssemblyLine
 
                 IGregTechTileEntity tTileEntity = aBaseMetaTileEntity.getIGregTechTileEntityOffset(i, 0, 0);
                 if (i != 0 && !(aBaseMetaTileEntity.getBlockOffset(i, 0, 0) == GregTech_API.sBlockCasings3 && aBaseMetaTileEntity.getMetaIDOffset(i, 0, 0) == 10)) {
-                	if(r == 1 && !addDataAccessToMachineList(tTileEntity, 16)){
-                    	return false;
+                    if(r == 1 && !addDataAccessToMachineList(tTileEntity, 16)){
+                        return false;
                     }
                 }
                 if (!aBaseMetaTileEntity.getBlockOffset(i, -1, 0).getUnlocalizedName().equals("blockAlloyGlass")) {
@@ -317,29 +317,30 @@ public class GT_MetaTileEntity_AssemblyLine
         }
         return false;
     }
-        
+
     /**
      * @param state using bitmask, 1 for IntegratedCircuit, 2 for DataStick, 4 for DataOrb
      */
     private boolean isCorrectDataItem(ItemStack aStack, int state){
-    	if ((state & 1) != 0 && ItemList.Circuit_Integrated.isStackEqual(aStack, false, true)) return true;
-    	if ((state & 2) != 0 && ItemList.Tool_DataStick.isStackEqual(aStack, false, true)) return true;
-        return (state & 4) != 0 && ItemList.Tool_DataOrb.isStackEqual(aStack, false, true);
+        if ((state & 1) != 0 && ItemList.Circuit_Integrated.isStackEqual(aStack, true, true)) return true;
+        if ((state & 2) != 0 && ItemList.Tool_DataStick.isStackEqual(aStack, false, true)) return true;
+        if ((state & 4) != 0 && ItemList.Tool_DataOrb.isStackEqual(aStack, false, true)) return true;
+        return false;
     }
-    
+
     /**
      * @param state using bitmask, 1 for IntegratedCircuit, 2 for DataStick, 4 for DataOrb
      */
     public ArrayList<ItemStack> getDataItems(int state) {
         ArrayList<ItemStack> rList = new ArrayList<ItemStack>();
         if (GT_Utility.isStackValid(mInventory[1]) && isCorrectDataItem(mInventory[1], state)) {
-        	rList.add(mInventory[1]);
+            rList.add(mInventory[1]);
         }
         for (GT_MetaTileEntity_Hatch_DataAccess tHatch : mDataAccessHatches) {
             if (isValidMetaTileEntity(tHatch)) {
                 for (int i = 0; i < tHatch.getBaseMetaTileEntity().getSizeInventory(); i++) {
                     if (tHatch.getBaseMetaTileEntity().getStackInSlot(i) != null
-                    		&& isCorrectDataItem(tHatch.getBaseMetaTileEntity().getStackInSlot(i), state))
+                            && isCorrectDataItem(tHatch.getBaseMetaTileEntity().getStackInSlot(i), state))
                         rList.add(tHatch.getBaseMetaTileEntity().getStackInSlot(i));
                 }
             }
