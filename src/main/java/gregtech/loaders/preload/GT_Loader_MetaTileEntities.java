@@ -1055,8 +1055,17 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         GT_ModHandler.addCraftingRecipe(ItemList.Seismic_Prospector.get(1), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.Hull_Steel, 'W', aPlateSteel, 'E', aCircuitBasic, 'C', ItemList.Sensor_LV});
         GT_ModHandler.addCraftingRecipe(ItemList.Seismic_Prospector_Adv.get(1), bitsd, new Object[] { "WWW", "EME", "CCC", 'M', ItemList.Hull_EV, 'W', OrePrefixes.plate.get(Materials.VanadiumSteel),'E', aCircuitData, 'C', ItemList.Sensor_EV });
 
-        ItemList.OilDrill.set(new GT_MetaTileEntity_OilDrill(1157, "multimachine.oildrill", "Oil Drilling Rig").getStackForm(1));
-        GT_ModHandler.addCraftingRecipe(ItemList.OilDrill.get(1), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.Hull_MV, 'W', OrePrefixes.frameGt.get(Materials.Steel), 'E', aCircuitGood, 'C', ItemList.Electric_Motor_MV});
+        ItemList.OilDrill1.set(new GT_MetaTileEntity_OilDrill1(1157, "multimachine.oildrill1", "Oil Drilling Rig").getStackForm(1));
+        ItemList.OilDrill2.set(new GT_MetaTileEntity_OilDrill2(133, "multimachine.oildrill2", "Oil Drilling Rig II").getStackForm(1));
+        ItemList.OilDrill3.set(new GT_MetaTileEntity_OilDrill3(134, "multimachine.oildrill3", "Oil Drilling Rig III").getStackForm(1));
+        GT_ModHandler.addCraftingRecipe(ItemList.OilDrill1.get(1), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.Hull_MV, 'W', OrePrefixes.frameGt.get(Materials.Steel), 'E', OrePrefixes.circuit.get(Materials.Good), 'C', ItemList.Electric_Motor_MV});
+        GT_ModHandler.addCraftingRecipe(ItemList.OilDrill2.get(1), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.OilDrill1, 'W', OrePrefixes.frameGt.get(Materials.Titanium), 'E', OrePrefixes.circuit.get(Materials.Advanced), 'C', ItemList.Electric_Motor_HV});
+        GT_ModHandler.addCraftingRecipe(ItemList.OilDrill3.get(1), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.OilDrill2, 'W', OrePrefixes.frameGt.get(Materials.TungstenSteel), 'E', OrePrefixes.circuit.get(Materials.Data), 'C', ItemList.Electric_Motor_EV});
+        
+        ItemList.ConcreteBackfiller1.set(new GT_MetaTileEntity_ConcreteBackfiller1(135, "multimachine.concretebackfiller1", "Concrete Backfiller").getStackForm(1));
+        ItemList.ConcreteBackfiller2.set(new GT_MetaTileEntity_ConcreteBackfiller2(136, "multimachine.concretebackfiller3", "Advanced Concrete Backfiller").getStackForm(1));
+        GT_ModHandler.addCraftingRecipe(ItemList.ConcreteBackfiller1.get(1), bitsd, new Object[]{"WPW", "EME", "CQC", 'M', ItemList.Hull_MV, 'W', OrePrefixes.frameGt.get(Materials.Steel), 'E', OrePrefixes.circuit.get(Materials.Good), 'C', ItemList.Electric_Motor_MV, 'P', OrePrefixes.pipeLarge.get(Materials.Steel), 'Q', ItemList.Electric_Pump_MV});
+        GT_ModHandler.addCraftingRecipe(ItemList.ConcreteBackfiller2.get(1), bitsd, new Object[]{"WPW", "EME", "CQC", 'M', ItemList.ConcreteBackfiller1, 'W', OrePrefixes.frameGt.get(Materials.Titanium), 'E', OrePrefixes.circuit.get(Materials.Data), 'C', ItemList.Electric_Motor_EV, 'P', OrePrefixes.pipeLarge.get(Materials.Steel), 'Q', ItemList.Electric_Pump_EV});
 
         ItemList.OreDrill1.set(new GT_MetaTileEntity_OreDrillingPlant1(1158, "multimachine.oredrill1", "Ore Drilling Plant").getStackForm(1));
         GT_ModHandler.addCraftingRecipe(ItemList.OreDrill1.get(1), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.Hull_EV, 'W', OrePrefixes.frameGt.get(Materials.Titanium), 'E', aCircuitData, 'C', ItemList.Electric_Motor_EV});
@@ -1137,7 +1146,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {
     private static void run4() {
     	long bitsd = GT_ModHandler.RecipeBits.DISMANTLEABLE | GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED;
 
-        for (Materials aMaterial : GT_Loader_MaterialRecipes.aSolidAndDustList) {
+        for (Materials aMaterial : Materials.MATERIALS_SOLID) {
             if (aMaterial.hasFlag(MaterialFlags.FRAME)) {
                 new GT_MetaPipeEntity_Frame(4096 + aMaterial.mMetaItemSubID, "GT_Frame_" + aMaterial, aMaterial.mDefaultLocalName + " Frame Box", aMaterial);
             }

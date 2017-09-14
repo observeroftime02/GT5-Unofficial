@@ -126,7 +126,7 @@ public abstract class GT_MetaGenerated_Item_X32 extends GT_MetaGenerated_Item {
         int aDamage = aStack.getItemDamage();
         if (aDamage < 32000 && aDamage >= 0) {
             Materials aMaterial = GregTech_API.sGeneratedMaterials[aDamage % 1000];
-            if (aMaterial != null && aMaterial != Materials.Empty && aMaterial != Materials._NULL) {
+            if (aMaterial != null && aMaterial != Materials._NULL) {
                 OrePrefixes aPrefix = mGeneratedPrefixList[aDamage / 1000];
                 if (aPrefix != null) return GT_Utility.copyAmount(1, aPrefix.mContainerItem);
             }

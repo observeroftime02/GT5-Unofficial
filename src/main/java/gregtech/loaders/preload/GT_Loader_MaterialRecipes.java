@@ -15,37 +15,18 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static gregtech.common.GT_Proxy.tBits;
 
 public class GT_Loader_MaterialRecipes implements Runnable {
-    private boolean aNoSmelting;
-    private boolean aNoWorking;
-    private boolean aNoSmashing;
-    private boolean aWashingMercury;
-    private boolean aWashingSodium;
-
-    private ItemStack aNormalDustStack = null;
-    private ItemStack aSmallDustStack = null;
-    private ItemStack aTinyDustStack = null;
-    private ItemStack aIngotStack = null;
-    private ItemStack aNuggetStack = null;
-    private ItemStack aPlateStack = null;
-
-    public static List<Materials> aSolidAndDustList = new ArrayList<>();
+    private boolean aNoSmelting, aNoWorking, aNoSmashing, aWashingMercury, aWashingSodium;
+    private ItemStack aNormalDustStack, aSmallDustStack, aTinyDustStack, aIngotStack, aNuggetStack, aPlateStack = null;
 
     public void run() {
-        Materials[] aSolidAndDustArray = aSolidAndDustList.toArray(new Materials[aSolidAndDustList.size()]);
-        ProgressManager.ProgressBar progressBar = ProgressManager.push("Registering Material Recipes: ", aSolidAndDustArray.length);
-        for (Materials aMaterial : aSolidAndDustArray) {
+        ProgressManager.ProgressBar progressBar = ProgressManager.push("Registering Material Recipes: ", Materials.MATERIALS_SOLID_AND_DUST.length);
+        for (Materials aMaterial : Materials.MATERIALS_SOLID_AND_DUST) {
             progressBar.step(aMaterial.mName);
-            aNormalDustStack = null;
-            aSmallDustStack = null;
-            aTinyDustStack = null;
-            aIngotStack = null;
-            aNuggetStack = null;
-            aPlateStack = null;
+            aNormalDustStack = aSmallDustStack = aTinyDustStack = aIngotStack = aNuggetStack = aPlateStack = null;
             if (aMaterial.mElement != null && !aMaterial.mElement.mIsIsotope && aMaterial.mMetaItemSubID != -128 && aMaterial.getMass() > 0) {
                 ItemStack tOutput = ItemList.Tool_DataOrb.get(1);
                 Behaviour_DataOrb.setDataTitle(tOutput, "Elemental-Scan");
@@ -766,7 +747,6 @@ public class GT_Loader_MaterialRecipes implements Runnable {
         GT_Values.RA.addPrimitiveBlastRecipe(Materials.Chalcopyrite.getDust(2), Materials.SiliconDioxide.getDust(2), 2, Materials.Chalcopyrite.mDirectSmelting.getIngots(outputAmount), Materials.Ferrosilite.getDust(outputAmount), 2400);
         GT_Values.RA.addPrimitiveBlastRecipe(Materials.Tetrahedrite.getDust(2), GT_Values.NI, 2, Materials.Tetrahedrite.mDirectSmelting.getIngots(outputAmount), Materials.Antimony.getNuggets(3 * outputAmount), 2400);
         GT_Values.RA.addPrimitiveBlastRecipe(Materials.Galena.getDust(2), GT_Values.NI, 2, Materials.Galena.mDirectSmelting.getIngots(outputAmount), Materials.Silver.getNuggets(6 * outputAmount), 2400);
-
 
 
         GT_ModHandler.addSmeltingRecipe(GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Iron), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.WroughtIron));

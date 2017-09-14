@@ -47,10 +47,10 @@ public abstract class GT_MetaGenerated_Item_X01 extends GT_MetaGenerated_Item {
         mPrefix = aGeneratedPrefix;
         mIconSetIndex = aIconSetIndex >= 0 ? aIconSetIndex : aGeneratedPrefix.mTextureIndex >= 0 ? aGeneratedPrefix.mTextureIndex : 0;
 
-        for (int i = 0; i < GregTech_API.sGeneratedMaterials.length; i++) {
+        for (int i = 0; i < Materials.MATERIALS_ALL.length; i++) {
             OrePrefixes tPrefix = mPrefix;
             if (tPrefix == null) continue;
-            Materials tMaterial = GregTech_API.sGeneratedMaterials[i];
+            Materials tMaterial = Materials.MATERIALS_ALL[i];
             if (tMaterial == null) continue;
             if (mPrefix.doGenerateItem(tMaterial)) {
                 ItemStack tStack = new ItemStack(this, 1, i);
@@ -107,7 +107,7 @@ public abstract class GT_MetaGenerated_Item_X01 extends GT_MetaGenerated_Item {
         int aMetaData = aStack.getItemDamage();
         if (aMetaData < GregTech_API.sGeneratedMaterials.length && aMetaData >= 0) {
             Materials aMaterial = GregTech_API.sGeneratedMaterials[aMetaData];
-            if (aMaterial != null && aMaterial != Materials.Empty && aMaterial != Materials._NULL) {
+            if (aMaterial != null && aMaterial != Materials._NULL) {
                 return GT_Utility.copyAmount(1, mPrefix.mContainerItem);
             }
         }
@@ -128,12 +128,14 @@ public abstract class GT_MetaGenerated_Item_X01 extends GT_MetaGenerated_Item {
     @Override
     @SideOnly(Side.CLIENT)
     public final void getSubItems(Item var1, CreativeTabs aCreativeTab, List aList) {
-        for (int i = 0; i < GregTech_API.sGeneratedMaterials.length; i++)
-            if (mPrefix.doGenerateItem(GregTech_API.sGeneratedMaterials[i]) && doesShowInCreative(mPrefix, GregTech_API.sGeneratedMaterials[i], GregTech_API.sDoShowAllItemsInCreative)) {
+        for (int i = 0; i < Materials.MATERIALS_ALL.length; i++) {
+            Materials aMaterial = Materials.MATERIALS_ALL[i];
+            if (mPrefix.doGenerateItem(aMaterial) && doesShowInCreative(mPrefix, aMaterial, GregTech_API.sDoShowAllItemsInCreative)) {
                 ItemStack tStack = new ItemStack(this, 1, i);
                 isItemStackUsable(tStack);
                 aList.add(tStack);
             }
+        }
         super.getSubItems(var1, aCreativeTab, aList);
     }
 

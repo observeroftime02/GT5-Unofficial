@@ -667,7 +667,7 @@ public class GT_MetaGenerated_Item_01 extends GT_MetaGenerated_Item_X32 {
         int aDamage = aItemEntity.getEntityItem().getItemDamage();
         if ((aDamage < 32000) && (aDamage >= 0) && (!aItemEntity.worldObj.isRemote)) {
             Materials aMaterial = GregTech_API.sGeneratedMaterials[(aDamage % 1000)];
-            if ((aMaterial != null) && (aMaterial != Materials.Empty) && (aMaterial != Materials._NULL)) {
+            if (aMaterial != null && aMaterial != Materials._NULL) {
                 int tX = MathHelper.floor_double(aItemEntity.posX);
                 int tY = MathHelper.floor_double(aItemEntity.posY);
                 int tZ = MathHelper.floor_double(aItemEntity.posZ);
@@ -699,9 +699,9 @@ public class GT_MetaGenerated_Item_01 extends GT_MetaGenerated_Item_X32 {
         int aDamage = aStack.getItemDamage();
         if ((aDamage < 32000) && (aDamage >= 0)) {
             Materials aMaterial = GregTech_API.sGeneratedMaterials[(aDamage % 1000)];
-            if ((aMaterial != null) && (aMaterial != Materials.Empty) && (aMaterial != Materials._NULL)) {
+            if (aMaterial != null && aMaterial != Materials._NULL) {
                 OrePrefixes aPrefix = this.mGeneratedPrefixList[(aDamage / 1000)];
-                if ((aPrefix == OrePrefixes.dustImpure) || (aPrefix == OrePrefixes.dustPure)) {
+                if (aPrefix == OrePrefixes.dustImpure || aPrefix == OrePrefixes.dustPure) {
                     aList.add(this.mToolTipPurify);
                 }
             }

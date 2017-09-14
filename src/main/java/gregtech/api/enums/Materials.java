@@ -9,11 +9,10 @@ import gregtech.api.interfaces.IMaterialHandler;
 import gregtech.api.interfaces.ISubTagContainer;
 import gregtech.api.objects.GT_FluidStack;
 import gregtech.api.objects.MaterialStack;
-import gregtech.api.util.GT_Utility;
 import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.GT_Utility;
 import gregtech.loaders.materialprocessing.ProcessingConfig;
 import gregtech.loaders.materialprocessing.ProcessingModSupport;
-import gregtech.loaders.preload.GT_Loader_MaterialRecipes;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
@@ -27,10 +26,12 @@ import static gregtech.api.enums.MaterialFlags.*;
 import static gregtech.api.enums.TextureSet.*;
 
 public class Materials implements IColorModulationContainer, ISubTagContainer {
-    private static Materials[] MATERIALS_ARRAY = new Materials[]{};
-    private static final Map<String, Materials> MATERIALS_MAP = new LinkedHashMap<String, Materials>();
-    public static final List<IMaterialHandler> mMaterialHandlers = new ArrayList<IMaterialHandler>();
-
+    public static Materials[] MATERIALS_ALL = new Materials[]{};
+    public static Materials[] MATERIALS_SOLID = new Materials[]{};
+    public static Materials[] MATERIALS_SOLID_AND_DUST = new Materials[]{};
+    public static Materials[] MATERIALS_ORE = new Materials[]{};
+    private static final Map<String, Materials> MATERIALS_MAP = new LinkedHashMap<>();
+    public static final List<IMaterialHandler> mMaterialHandlers = new ArrayList<>();
     /**
      * This is for keeping compatibility with addons mods (Such as TinkersGregworks etc) that looped over the old materials enum
      */
@@ -41,11 +42,9 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
      * This is the Default Material returned in case no Material has been found or a NullPointer has been inserted at a location where it shouldn't happen.
      */
     public static Materials _NULL = new Materials(-1, "NULL", 255, 255, 255, 0, dyeNULL, NONE, Element._NULL);
-    public static Materials Empty = new Materials(0, "Empty", 255, 255, 255, 255, dyeNULL, NONE);
+    //public static Materials Empty = new Materials(0, "Empty", 255, 255, 255, 255, dyeNULL, NONE);
 
-    //TODO SEPERATE SMALL AND MORMAL ORES?
-    //TODO FIX EMPTY FLAG
-    //TODO JACKHAMMER USE NORMAL STICK
+    //TODO REMOVE EMPTY FLAG AND MAT
     //TODO FIX REPLICATOR OUTPUTIING CELLS? MAYBE ONLY FLUID?
     //TODO POSSIBLE MISSED ADDING -1 FOR MELTING POINTS?
     //TODO CRASH IF GETTING NULL COMP VIA GTOREDICTUNI.GET TO CHECK BROKEN RECIPES
@@ -287,8 +286,6 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials InfusedWater = new Materials(543, "Infused Water", 0, 0, 255, dyeYellow, SHARDS).asGemOre(false, true).addTools(8.0F, 64, 3);
     public static Materials InfusedEntropy = new Materials(544, "Infused Entropy", 62, 62, 62, dyeBlack, SHARDS).asGemOre(false, true).addTools(32.0F, 64, 4);
     public static Materials InfusedOrder = new Materials(545, "Infused Order", 252, 252, 252, dyeWhite, SHARDS).asGemOre(false, true).addTools(8.0F, 64, 3);
-    public static Materials InfusedVis = new Materials(-1, "Infused Vis", 255, 0, 255, dyePurple, SHARDS).asGemOre(false, true).addTools(8.0F, 64, 3);
-    public static Materials InfusedDull = new Materials(-1, "Infused Dull", 100, 100, 100, dyeLightGray, SHARDS).asGemOre(false, true).addTools(32.0F, 64, 3);
     public static Materials Jasper = new Materials(/*511*/-1, "Jasper", 200, 80, 80, 100, dyeRed, EMERALD).asGem(true);
     public static Materials MeteoricIron = new Materials(340, "Meteoric Iron", 100, 50, 80, dyeGray, METALLIC).asMetalOre(false, 1811).addTools(6.0F, 384, 2);
     public static Materials MeteoricSteel = new Materials(341, "Meteoric Steel", 50, 25, 40, dyeGray, METALLIC).asMetal(1811, 1000).addTools(6.0F, 768, 2);
@@ -550,6 +547,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public int mTypes = 0;
     public int mDurability = 16, mFuelPower = 0, mFuelType = 0, mOreMultiplier = 1, mByProductMultiplier = 1, mSmeltingMultiplier = 1;
     public long mDensity = M;
+    public long mMass, mProtons, mNeutrons = 0;
     public Element mElement = null;
     public Materials mDirectSmelting = this, mOreReplacement = this, mMacerateInto = this, mSmeltInto = this, mArcSmeltInto = this, mHandleMaterial = this;
     public byte mToolQuality = 0;
@@ -621,8 +619,6 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         InfusedWater			.setOreMultiplier( 2).setSmeltingMultiplier( 2);
         InfusedEntropy			.setOreMultiplier( 2).setSmeltingMultiplier( 2);
         InfusedOrder			.setOreMultiplier( 2).setSmeltingMultiplier( 2);
-        InfusedVis				.setOreMultiplier( 2).setSmeltingMultiplier( 2);
-        InfusedDull				.setOreMultiplier( 2).setSmeltingMultiplier( 2);
         Salt					.setOreMultiplier( 2).setSmeltingMultiplier( 2);
         RockSalt				.setOreMultiplier( 2).setSmeltingMultiplier( 2);
         Scheelite				.setOreMultiplier( 2).setSmeltingMultiplier( 2);
@@ -659,7 +655,6 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         Gold					.setEnchantmentForTools(Enchantment.smite, 3);
         RoseGold				.setEnchantmentForTools(Enchantment.smite, 4);
         Platinum				.setEnchantmentForTools(Enchantment.smite, 5);
-        InfusedVis				.setEnchantmentForTools(Enchantment.smite, 5);
         Lead					.setEnchantmentForTools(Enchantment.baneOfArthropods, 2);
         Nickel					.setEnchantmentForTools(Enchantment.baneOfArthropods, 2);
         Invar					.setEnchantmentForTools(Enchantment.baneOfArthropods, 3);
@@ -689,8 +684,6 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         InfusedEntropy			.setEnchantmentForArmors(Enchantment.thorns, 3);
         InfusedWater			.setEnchantmentForArmors(Enchantment.aquaAffinity, 1);
         InfusedOrder			.setEnchantmentForArmors(Enchantment.projectileProtection, 4);
-        InfusedDull				.setEnchantmentForArmors(Enchantment.blastProtection, 4);
-        InfusedVis				.setEnchantmentForArmors(Enchantment.protection, 4);
         Lava					.setHeatDamage(3.0F);
         Chalcopyrite			.addOreByProducts(Pyrite				, Cobalt				, Cadmium				, Gold			);
         Sphalerite				.addOreByProducts(GarnetYellow			, Cadmium				, Gallium				, Zinc			);
@@ -962,8 +955,6 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         InfusedWater.add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.MAGICAL, SubTag.UNBURNABLE);
         InfusedEntropy.add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.MAGICAL, SubTag.UNBURNABLE);
         InfusedOrder.add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.MAGICAL, SubTag.UNBURNABLE);
-        InfusedVis.add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.MAGICAL, SubTag.UNBURNABLE);
-        InfusedDull.add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.MAGICAL, SubTag.UNBURNABLE);
         NetherStar.add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.MAGICAL, SubTag.UNBURNABLE);
         EnderPearl.add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.MAGICAL, SubTag.PEARL);
         EnderEye.add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.MAGICAL, SubTag.PEARL);
@@ -992,19 +983,34 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
             aRegistrator.onMaterialsInit(); //This is where addon mods can add/manipulate materials
         }
         initMaterialProperties(); //No more material addition or manipulation should be done past this point!
-        MATERIALS_ARRAY = MATERIALS_MAP.values().toArray(new Materials[MATERIALS_MAP.size()]); //Generate standard object array. This is a lot faster to loop over.
-        VALUES = Arrays.asList(MATERIALS_ARRAY);
-        for (Materials aMaterial : MATERIALS_ARRAY) {
+        MATERIALS_ALL = MATERIALS_MAP.values().toArray(new Materials[MATERIALS_MAP.size()]); //Generate standard object array. This is a lot faster to loop over.
+        List<Materials> aSolidAndDustList = new ArrayList<>();
+        List<Materials> aSolidList = new ArrayList<>();
+        List<Materials> aOreList = new ArrayList<>();
+        for (Materials aMaterial : MATERIALS_ALL) {
             if (aMaterial.mMetaItemSubID >= 0) {
                 if (aMaterial.mMetaItemSubID < 1000) {
                     if (aMaterial.mHasParentMod) {
                         if (GregTech_API.sGeneratedMaterials[aMaterial.mMetaItemSubID] == null) {
                             GregTech_API.sGeneratedMaterials[aMaterial.mMetaItemSubID] = aMaterial;
+                            if (aMaterial.hasFlag(MaterialFlags.DUST) || aMaterial.hasFlag(MaterialFlags.SOLID)) {
+                                aSolidAndDustList.add(aMaterial);
+                            }
+                            if (aMaterial.hasFlag(MaterialFlags.SOLID)) {
+                                aSolidList.add(aMaterial);
+                            }
+                            if (aMaterial.hasFlag(MaterialFlags.ORE)) {
+                                aOreList.add(aMaterial);
+                            }
                         } else throw new IllegalArgumentException("The Material Index " + aMaterial.mMetaItemSubID + " for " + aMaterial.mName + " is already used!");
                     }
                 } else throw new IllegalArgumentException("The Material Index " + aMaterial.mMetaItemSubID + " for " + aMaterial.mName + " is/over the maximum of 1000");
             }
         }
+        MATERIALS_SOLID_AND_DUST = aSolidAndDustList.toArray(new Materials[aSolidAndDustList.size()]);
+        MATERIALS_SOLID = aSolidList.toArray(new Materials[aSolidList.size()]);
+        MATERIALS_ORE = aOreList.toArray(new Materials[aOreList.size()]);
+        VALUES = Arrays.asList(MATERIALS_ALL);
     }
 
     public static void initMaterialProperties() {
@@ -1013,7 +1019,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         GT_Mod.gregtechproxy.mGraniteHavestLevel = GregTech_API.sMaterialProperties.get("harvestlevel", "GraniteHarvestLevel", 3);
         StringBuilder aConfigPathSB = new StringBuilder();
         for (Materials aMaterial : MATERIALS_MAP.values()) { /** The only place where MATERIALS_MAP should be used to loop over all materials. **/
-            if (aMaterial != null && aMaterial != Materials._NULL && aMaterial != Materials.Empty) {
+            if (aMaterial != null && aMaterial != Materials._NULL) {
                 aConfigPathSB.append("materials.").append(aMaterial.mConfigSection).append(".").append(aMaterial.mCustomOre ? aMaterial.mCustomID : aMaterial.mName);
                 String aConfigPath = aConfigPathSB.toString();
                 aMaterial.mMetaItemSubID = GregTech_API.sMaterialProperties.get(aConfigPath, "MaterialID", aMaterial.mCustomOre ? -1 : aMaterial.mMetaItemSubID);
@@ -1128,12 +1134,11 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
                         for (int i = 0; i < aAspects.size(); i++) {
                             String aAspectString = aAspects.get(i);
                             int aAspectAmount = Integer.parseInt(aAspectAmounts.get(i));
-                            TC_AspectStack aTCAspectStack = new TC_AspectStack(TC_Aspects.valueOf(aAspectString), aAspectAmount);
-                            if (aTCAspectStack != null) aMaterial.mAspects.add(aTCAspectStack);
+                            aMaterial.mAspects.add(new TC_AspectStack(TC_Aspects.valueOf(aAspectString), aAspectAmount));
                         }
                     }
                 }
-                /** Moved the harvest level changes from GT_Mod to have less things iterating over MATERIALS_ARRAY **/
+                /** Moved the harvest level changes from GT_Mod to have less things iterating over MATERIALS_ALL **/
                 if (GT_Mod.gregtechproxy.mChangeHarvestLevels && aMaterial.mToolQuality > 0 && aMaterial.mMetaItemSubID < GT_Mod.gregtechproxy.mHarvestLevel.length && aMaterial.mMetaItemSubID >= 0) {
                     GT_Mod.gregtechproxy.mHarvestLevel[aMaterial.mMetaItemSubID] = GregTech_API.sMaterialProperties.get(aConfigPath, "HarvestLevel", aMaterial.mToolQuality);
                 }
@@ -1207,10 +1212,9 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public Materials asDust(int... temps) { //Dust, Small Dust, Tiny Dust
         add(DUST);
         if (temps.length >= 1) mMeltingPoint = (short) temps[0];
-        if (mMetaItemSubID >= 0) GT_Loader_MaterialRecipes.aSolidAndDustList.add(this);
         return this;
     }
-    
+
     public Materials asSolid(int... temps) { //Block, Ingot, Nugget
         asDust();
         add(SOLID);
@@ -1346,7 +1350,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
      * This is for keeping compatibility with addons mods (Such as TinkersGregworks etc) that looped over the old materials enum
      */
     public static Materials[] values() {
-        return MATERIALS_ARRAY;
+        return MATERIALS_ALL;
     }
 
     /**
@@ -1373,36 +1377,45 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     }
 
     public long getProtons() {
-        if (mElement != null) return mElement.getProtons();
-        if (mMaterialList.size() <= 0) return Element.Tc.getProtons();
-        long rAmount = 0, tAmount = 0;
-        for (MaterialStack tMaterial : mMaterialList) {
-            tAmount += tMaterial.mAmount;
-            rAmount += tMaterial.mAmount * tMaterial.mMaterial.getProtons();
+        if (mProtons == 0) {
+            if (mElement != null) return mElement.getProtons();
+            if (mMaterialList.size() <= 0) return Element.Tc.getProtons();
+            long rAmount = 0, tAmount = 0;
+            for (MaterialStack tMaterial : mMaterialList) {
+                tAmount += tMaterial.mAmount;
+                rAmount += tMaterial.mAmount * tMaterial.mMaterial.getProtons();
+            }
+            mProtons = (getDensity() * rAmount) / (tAmount * M);
         }
-        return (getDensity() * rAmount) / (tAmount * M);
+        return mProtons;
     }
 
     public long getNeutrons() {
-        if (mElement != null) return mElement.getNeutrons();
-        if (mMaterialList.size() <= 0) return Element.Tc.getNeutrons();
-        long rAmount = 0, tAmount = 0;
-        for (MaterialStack tMaterial : mMaterialList) {
-            tAmount += tMaterial.mAmount;
-            rAmount += tMaterial.mAmount * tMaterial.mMaterial.getNeutrons();
+        if (mNeutrons == 0) {
+            if (mElement != null) return mElement.getNeutrons();
+            if (mMaterialList.size() <= 0) return Element.Tc.getNeutrons();
+            long rAmount = 0, tAmount = 0;
+            for (MaterialStack tMaterial : mMaterialList) {
+                tAmount += tMaterial.mAmount;
+                rAmount += tMaterial.mAmount * tMaterial.mMaterial.getNeutrons();
+            }
+            mNeutrons = (getDensity() * rAmount) / (tAmount * M);
         }
-        return (getDensity() * rAmount) / (tAmount * M);
+        return mNeutrons;
     }
 
     public long getMass() {
-        if (mElement != null) return mElement.getMass();
-        if (mMaterialList.size() <= 0) return Element.Tc.getMass();
-        long rAmount = 0, tAmount = 0;
-        for (MaterialStack tMaterial : mMaterialList) {
-            tAmount += tMaterial.mAmount;
-            rAmount += tMaterial.mAmount * tMaterial.mMaterial.getMass();
+        if (mMass == 0) {
+            if (mElement != null) return mElement.getMass();
+            if (mMaterialList.size() <= 0) return Element.Tc.getMass();
+            long rAmount = 0, tAmount = 0;
+            for (MaterialStack tMaterial : mMaterialList) {
+                tAmount += tMaterial.mAmount;
+                rAmount += tMaterial.mAmount * tMaterial.mMaterial.getMass();
+            }
+            mMass = (getDensity() * rAmount) / (tAmount * M);
         }
-        return (getDensity() * rAmount) / (tAmount * M);
+        return mMass;
     }
 
     public long getDensity() {

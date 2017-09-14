@@ -148,6 +148,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     public boolean mDisableIC2Cables = false;
     public boolean mAchievements = true;
     public boolean mAE2Integration = true;
+    public boolean mAE2Tunnel = true;
     public boolean mArcSmeltIntoAnnealed = true;
     private boolean isFirstServerWorldTick = true;
     private boolean mOreDictActivated = false;
@@ -268,8 +269,6 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
         ItemList.Dye_Cocoa.set(new ItemStack(Items.dye, 1, 3));
 
         ItemList.Book_Written_00.set(new ItemStack(Items.written_book, 1, 0));
-
-        OrePrefixes.bucket.mContainerItem = new ItemStack(Items.bucket, 1);
 
         GregTech_API.sElectroHazmatList.add(new ItemStack(Items.chainmail_helmet, 1, 32767));
         GregTech_API.sElectroHazmatList.add(new ItemStack(Items.chainmail_chestplate, 1, 32767));

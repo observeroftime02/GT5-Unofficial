@@ -11,6 +11,7 @@ import gregtech.api.enums.OrePrefixes;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.items.GT_Generic_Block;
 import gregtech.api.util.GT_LanguageManager;
+import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.common.render.GT_Renderer_Block;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -32,34 +33,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GT_Block_Ores_Abstract extends GT_Generic_Block implements ITileEntityProvider {
-    public static ThreadLocal<GT_TileEntity_Ores> mTemporaryTileEntity = new ThreadLocal();
+    public static ThreadLocal<GT_TileEntity_Ores> mTemporaryTileEntity = new ThreadLocal<>();
     public static boolean FUCKING_LOCK = false;
     public static boolean tHideOres;
     private final String aTextName = ".name";
-    private final String aTextSmall = "Small ";
 
-    protected GT_Block_Ores_Abstract(String aUnlocalizedName, int aOreMetaCount, boolean aHideFirstMeta, Material aMaterial) {
-        super(GT_Item_Ores.class, aUnlocalizedName, aMaterial);
+    protected GT_Block_Ores_Abstract(String aUnlocalizedName, int aOreMetaCount, boolean aHideFirstMeta, Material aBlockMaterial) {
+        super(GT_Item_Ores.class, aUnlocalizedName, aBlockMaterial);
         this.isBlockContainer = true;
         setStepSound(soundTypeStone);
         setCreativeTab(GregTech_API.TAB_GREGTECH_ORES);
         tHideOres = Loader.isModLoaded("NotEnoughItems") && GT_Mod.gregtechproxy.mHideUnusedOres;
         if(aOreMetaCount > 8 || aOreMetaCount < 0) aOreMetaCount = 8;
 
-        for (int i = 1; i < GregTech_API.sGeneratedMaterials.length; i++) {
-            if (GregTech_API.sGeneratedMaterials[i] != null) {
-                for (int j = 0; j < aOreMetaCount; j++) {
-                    if (!this.getEnabledMetas()[j]) continue;
-                    GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + (i + (j * 1000)) + aTextName, getLocalizedName(GregTech_API.sGeneratedMaterials[i]));
-                    if (GregTech_API.sGeneratedMaterials[i].hasFlag(MaterialFlags.SORE)) {
-                        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + ((i + 16000) + (j * 1000)) + aTextName, aTextSmall + getLocalizedName(GregTech_API.sGeneratedMaterials[i]));
+        for (int i = 1; i < Materials.MATERIALS_ORE.length; i++) {
+            Materials aMaterial = Materials.MATERIALS_ORE[i];
+            if (aMaterial != null) {
+                for (int aCurrMeta = 0; aCurrMeta < aOreMetaCount; aCurrMeta++) {
+                    if (!this.getEnabledMetas()[aCurrMeta]) continue;
+                    GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + (aMaterial.mMetaItemSubID + (aCurrMeta * 1000)) + aTextName, getLocalizedName(aMaterial));
+                    if (aMaterial.hasFlag(MaterialFlags.SORE)) {
+                        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + ((aMaterial.mMetaItemSubID + 16000) + (aCurrMeta * 1000)) + aTextName, "Small " + getLocalizedName(aMaterial));
                     }
+                    GT_OreDictUnificator.registerOre(this.getProcessingPrefix()[aCurrMeta] != null ? this.getProcessingPrefix()[aCurrMeta].get(aMaterial) : "", new ItemStack(this, 1, aMaterial.mMetaItemSubID + (aCurrMeta * 1000)));
                     if (tHideOres) {
-                        if (!(j == 0 && !aHideFirstMeta)) {
-                            codechicken.nei.api.API.hideItem(new ItemStack(this, 1, i + (j * 1000)));
+                        if (!(aCurrMeta == 0 && !aHideFirstMeta)) {
+                            codechicken.nei.api.API.hideItem(new ItemStack(this, 1, aMaterial.mMetaItemSubID + (aCurrMeta * 1000)));
                         }
-                        if (GregTech_API.sGeneratedMaterials[i].hasFlag(MaterialFlags.SORE)) {
-                            codechicken.nei.api.API.hideItem(new ItemStack(this, 1, (i + 16000) + (j * 1000)));
+                        if (aMaterial.hasFlag(MaterialFlags.SORE)) {
+                            codechicken.nei.api.API.hideItem(new ItemStack(this, 1, (aMaterial.mMetaItemSubID + 16000) + (aCurrMeta * 1000)));
                         }
                     }
                 }
@@ -96,25 +98,19 @@ public abstract class GT_Block_Ores_Abstract extends GT_Generic_Block implements
     public String getLocalizedName(Materials aMaterial) {
         switch (aMaterial.mName) {
             case "InfusedAir":
-            case "InfusedDull":
             case "InfusedEarth":
             case "InfusedEntropy":
             case "InfusedFire":
             case "InfusedOrder":
-            case "InfusedVis":
             case "InfusedWater":
                 return aMaterial.mDefaultLocalName + " Infused Stone";
             case "Bentonite":
-            case "Kaolinite":
             case "Talc":
             case "BasalticMineralSand":
             case "GraniticMineralSand":
             case "GlauconiteSand":
             case "CassiteriteSand":
-            case "GarnetSand":
-            case "QuartzSand":
             case "Pitchblende":
-            case "FullersEarth":
                 return aMaterial.mDefaultLocalName;
             default:
                 return aMaterial.mDefaultLocalName + OrePrefixes.ore.mLocalizedMaterialPost;
@@ -241,26 +237,25 @@ public abstract class GT_Block_Ores_Abstract extends GT_Generic_Block implements
 
     @Override
     public void getSubBlocks(Item aItem, CreativeTabs aTab, List aList) {
-        for (int i = 0; i < GregTech_API.sGeneratedMaterials.length; i++) {
-            Materials tMaterial = GregTech_API.sGeneratedMaterials[i];
-            if ((tMaterial != null) && tMaterial.hasFlag(MaterialFlags.ORE)) {
-                if (!(new ItemStack(aItem, 1, i).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i));
-                if (!(new ItemStack(aItem, 1, i + 1000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 1000));
-                if (!(new ItemStack(aItem, 1, i + 2000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 2000));
-                if (!(new ItemStack(aItem, 1, i + 3000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 3000));
-                if (!(new ItemStack(aItem, 1, i + 4000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 4000));
-                if (!(new ItemStack(aItem, 1, i + 5000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 5000));
-                if (!(new ItemStack(aItem, 1, i + 6000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 6000));
-                if (!(new ItemStack(aItem, 1, i + 7000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 7000));
+        for (Materials tMaterial : Materials.MATERIALS_ORE) {
+            if (tMaterial != null) {
+                if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID));
+                if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 1000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 1000));
+                if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 2000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 2000));
+                if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 3000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 3000));
+                if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 4000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 4000));
+                if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 5000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 5000));
+                if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 6000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 6000));
+                if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 7000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 7000));
                 if (tMaterial.hasFlag(MaterialFlags.SORE)) {
-                    if (!(new ItemStack(aItem, 1, i + 16000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 16000));
-                    if (!(new ItemStack(aItem, 1, i + 17000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 17000));
-                    if (!(new ItemStack(aItem, 1, i + 18000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 18000));
-                    if (!(new ItemStack(aItem, 1, i + 19000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 19000));
-                    if (!(new ItemStack(aItem, 1, i + 20000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 20000));
-                    if (!(new ItemStack(aItem, 1, i + 21000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 21000));
-                    if (!(new ItemStack(aItem, 1, i + 22000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 22000));
-                    if (!(new ItemStack(aItem, 1, i + 23000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, i + 23000));
+                    if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 16000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 16000));
+                    if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 17000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 17000));
+                    if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 18000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 18000));
+                    if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 19000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 19000));
+                    if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 20000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 20000));
+                    if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 21000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 21000));
+                    if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 22000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 22000));
+                    if (!(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 23000).getDisplayName().contains(aTextName))) aList.add(new ItemStack(aItem, 1, tMaterial.mMetaItemSubID + 23000));
                 }
             }
         }

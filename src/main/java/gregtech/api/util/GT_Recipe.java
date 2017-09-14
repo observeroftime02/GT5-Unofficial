@@ -1449,19 +1449,15 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
                     adjustedFluidInputs.add(inputFluidContent);
                 } else {
                     ItemData itemData = GT_OreDictUnificator.getItemData(input);
-                    if (itemData != null && itemData.hasValidPrefixMaterialData() && itemData.mMaterial.mMaterial == Materials.Empty) {
-                        continue;
-                    } else {
-                        if (itemData != null && itemData.hasValidPrefixMaterialData() && itemData.mPrefix == OrePrefixes.cell) {
-                            ItemStack dustStack = itemData.mMaterial.mMaterial.getDust(input.stackSize);
-                            if (dustStack != null) {
-                                adjustedInputs.add(dustStack);
-                            } else {
-                                adjustedInputs.add(input);
-                            }
+                    if (itemData != null && itemData.hasValidPrefixMaterialData() && itemData.mPrefix == OrePrefixes.cell) {
+                        ItemStack dustStack = itemData.mMaterial.mMaterial.getDust(input.stackSize);
+                        if (dustStack != null) {
+                            adjustedInputs.add(dustStack);
                         } else {
                             adjustedInputs.add(input);
                         }
+                    } else {
+                        adjustedInputs.add(input);
                     }
                 }
             }
@@ -1487,9 +1483,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
                     adjustedFluidOutputs.add(outputFluidContent);
                 } else {
                     ItemData itemData = GT_OreDictUnificator.getItemData(output);
-                    if (itemData != null && itemData.hasValidPrefixMaterialData() && itemData.mMaterial.mMaterial == Materials.Empty) {
-                        continue;
-                    } else {
+                    if (itemData == null || !itemData.hasValidPrefixMaterialData()) {
                         adjustedOutputs.add(output);
                     }
                 }
