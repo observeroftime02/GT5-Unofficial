@@ -6,8 +6,6 @@ import gregtech.api.enums.Materials;
 
 public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHandler {
     public static boolean aEnableThaumcraftMats = Loader.isModLoaded("Thaumcraft");
-    public static boolean aEnableThermalFoundationMats = Loader.isModLoaded("ThermalFoundation");
-    public static boolean aEnableEnderIOMats = Loader.isModLoaded("EnderIO");
     public static boolean aEnableGCMarsMats = Loader.isModLoaded("GalacticraftMars");
 
     public ProcessingModSupport() {
@@ -31,12 +29,6 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
             Materials.Desh.mHasParentMod = false;
             Materials.MeteoricIron.mHasParentMod = false;
             Materials.MeteoricSteel.mHasParentMod = false;
-        }
-        if (!aEnableThermalFoundationMats) {
-            Materials.Enderium.mHasParentMod = false;
-        }
-        if (!aEnableEnderIOMats) {
-            Materials.DarkSteel.mHasParentMod = false;
         }
     }
 

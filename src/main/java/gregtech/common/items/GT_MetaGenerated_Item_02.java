@@ -91,7 +91,6 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Plumbilia.get(1), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Lead));
         GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Argentia.get(1), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Silver));
         GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Indigo.get(1), ItemList.Dye_Indigo.get(1));
-        GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_MilkWart.get(1), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Milk));
         GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Coppon.get(1), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Copper));
         GT_ModHandler.addExtractionRecipe(ItemList.Crop_Drop_Tine.get(1), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Tin));
 
@@ -113,7 +112,6 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.melon_block, 1, 0), new ItemStack(Items.melon, 8, 0), new ItemStack(Items.melon_seeds, 1), 80, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.pumpkin, 1, 0), new ItemStack(Items.pumpkin_seeds, 4, 0), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.melon, 1, 0), new ItemStack(Items.melon_seeds, 1, 0), null, 0, false);
-        GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.wheat, 1, 0), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Wheat), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.stick, 1), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Wood, 2), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.wool, 1, 32767), new ItemStack(Items.string, 2), new ItemStack(Items.string, 1), 50, false);
         try {

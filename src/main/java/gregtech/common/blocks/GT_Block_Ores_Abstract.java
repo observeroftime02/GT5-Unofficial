@@ -11,7 +11,6 @@ import gregtech.api.enums.OrePrefixes;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.items.GT_Generic_Block;
 import gregtech.api.util.GT_LanguageManager;
-import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.common.render.GT_Renderer_Block;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
@@ -55,7 +54,6 @@ public abstract class GT_Block_Ores_Abstract extends GT_Generic_Block implements
                     if (aMaterial.hasFlag(MaterialFlags.SORE)) {
                         GT_LanguageManager.addStringLocalization(getUnlocalizedName() + "." + ((aMaterial.mMetaItemSubID + 16000) + (aCurrMeta * 1000)) + aTextName, "Small " + getLocalizedName(aMaterial));
                     }
-                    GT_OreDictUnificator.registerOre(this.getProcessingPrefix()[aCurrMeta] != null ? this.getProcessingPrefix()[aCurrMeta].get(aMaterial) : "", new ItemStack(this, 1, aMaterial.mMetaItemSubID + (aCurrMeta * 1000)));
                     if (tHideOres) {
                         if (!(aCurrMeta == 0 && !aHideFirstMeta)) {
                             codechicken.nei.api.API.hideItem(new ItemStack(this, 1, aMaterial.mMetaItemSubID + (aCurrMeta * 1000)));

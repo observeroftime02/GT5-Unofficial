@@ -26,7 +26,7 @@ import net.minecraftforge.fluids.FluidContainerRegistry;
 
 public class GT_Loader_Item_Block_And_Fluid implements Runnable {
     public void run() {
-        Materials.Water.mFluid = (Materials.Ice.mFluid = GT_ModHandler.getWater(1000).getFluid());
+        Materials.Water.mFluid = GT_ModHandler.getWater(1000).getFluid();
         Materials.Lava.mFluid = GT_ModHandler.getLava(1000).getFluid();
 
         GT_Log.out.println("GT_Mod: Register Books.");
@@ -178,16 +178,15 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.Duranium,
                 Materials.Dysprosium,
                 Materials.Electrum,
-                Materials.Enderium,
                 Materials.Europium,
                 Materials.Gallium,
                 Materials.Invar,
                 Materials.Iridium,
-                Materials.IronMagnetic
+                Materials.IronMagnetic,
+                Materials.Kanthal
         }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS2);
 
         GregTech_API.sBlockMetal3 = new GT_Block_Metal("gt.blockmetal3", new Materials[]{
-                Materials.Kanthal,
                 Materials.Lead,
                 Materials.Lutetium,
                 Materials.Magnalium,
@@ -203,10 +202,10 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.Neodymium,
                 Materials.NeodymiumMagnetic,
                 Materials.Neutronium,
+                Materials.Nichrome
         }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS3);
 
         GregTech_API.sBlockMetal4 = new GT_Block_Metal("gt.blockmetal4", new Materials[]{
-                Materials.Nichrome,
                 Materials.Nickel,
                 Materials.Niobium,
                 Materials.NiobiumTitanium,
@@ -221,11 +220,11 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.RedSteel,
                 Materials.RoseGold,
                 Materials.Silicon,
-                Materials.Silver
+                Materials.Silver,
+                Materials.SolderingAlloy
         }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS4);
 
         GregTech_API.sBlockMetal5 = new GT_Block_Metal("gt.blockmetal5", new Materials[]{
-                Materials.SolderingAlloy,
                 Materials.StainlessSteel,
                 Materials.Steel,
                 Materials.SteelMagnetic,
@@ -240,11 +239,11 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.TungstenSteel,
                 Materials.Ultimet,
                 Materials.Uranium,
-                Materials.Uranium235
+                Materials.Uranium235,
+                Materials.Vanadium
         }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS5);
 
         GregTech_API.sBlockMetal6 = new GT_Block_Metal("gt.blockmetal6", new Materials[]{
-                Materials.Vanadium,
                 Materials.VanadiumGallium,
                 Materials.WroughtIron,
                 Materials.Yttrium,
@@ -266,19 +265,17 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
                 Materials.Dilithium,
                 Materials.EnderEye,
                 Materials.EnderPearl,
-                Materials.FoolsRuby,
                 Materials.GreenSapphire,
                 Materials.InfusedFire,
-                Materials.Jasper, //TODO REMOVE
                 Materials.Lazurite,
                 Materials.Lignite,
                 Materials.Monazite,
-                Materials.Olivine
+                Materials.Olivine,
+                Materials.Opal,
+                Materials.InfusedOrder
         }, OrePrefixes.block, gregtech.api.enums.Textures.BlockIcons.STORAGE_BLOCKS7);
 
         GregTech_API.sBlockGem2 = new GT_Block_Metal("gt.blockgem2", new Materials[]{
-                Materials.Opal,
-                Materials.InfusedOrder,
                 Materials.InfusedEntropy,
                 Materials.Phosphorus,
                 Materials.Quartzite,
@@ -338,7 +335,6 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
         GT_Mod.gregtechproxy.addFluid("UUMatter", "UUMatter", Materials.UUMatter, 1, 375, GT_OreDictUnificator.get(OrePrefixes.cell, Materials.UUMatter), ItemList.Cell_Empty.get(1), 1000);
         GT_Mod.gregtechproxy.addFluid("Coolant", "Coolant", Materials.Coolant, 1, 375, GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Coolant), ItemList.Cell_Empty.get(1), 1000);
         GT_Values.RA.addFluidCannerRecipe(ItemList.Cell_Empty.get(1), ItemList.Cell_Steam.get(1), GT_ModHandler.getSteam(1000), null);
-        Materials.Ice.mGas = Materials.Water.mGas;
         Materials.Water.mGas.setTemperature(375).setGaseous(true);
 
         ItemList.sOilExtraHeavy = GT_Mod.gregtechproxy.addFluid("liquid_extra_heavy_oil", "Very Heavy Oil", null, 1, 295);
@@ -382,7 +378,6 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
         GT_Mod.gregtechproxy.addFluid("biomass", "Biomass", Materials.Biomass, 1, 295, GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Biomass), ItemList.Cell_Empty.get(1), 1000);
         GT_Mod.gregtechproxy.addFluid("bioethanol", "Bio Ethanol", Materials.Ethanol, 1, 295, GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Ethanol), ItemList.Cell_Empty.get(1), 1000);
         GT_Mod.gregtechproxy.addFluid("sulfuricacid", "Sulfuric Acid", Materials.SulfuricAcid, 1, 295, GT_OreDictUnificator.get(OrePrefixes.cell, Materials.SulfuricAcid), ItemList.Cell_Empty.get(1), 1000);
-        GT_Mod.gregtechproxy.addFluid("milk", "Milk", Materials.Milk, 1, 290, GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Milk), ItemList.Cell_Empty.get(1), 1000);
         GT_Mod.gregtechproxy.addFluid("glue", "Glue", Materials.Glue, 1, 295, GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Glue), ItemList.Cell_Empty.get(1), 1000);
 
         //TODO ? NNEDED ?GT_Mod.gregtechproxy.addFluid("fieryblood", "Fiery Blood", Materials.FierySteel, 1, 6400, MatUnifier.get(OrePrefixes.cell, Materials.FierySteel), ItemList.Cell_Empty.get(1), 1000);
@@ -390,13 +385,8 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
             //FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.FierySteel.getFluid(250L), ItemList.TF_Vial_FieryBlood.get(1), ItemList.Bottle_Empty.get(1)));
         //}
 
-        FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Milk.getFluid(1000), new ItemStack(Items.milk_bucket, 1), new ItemStack(Items.bucket, 1)));
         FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Fuel.getFluid(100), ItemList.Tool_Lighter_Invar_Full.get(1), ItemList.Tool_Lighter_Invar_Empty.get(1)));
         FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Fuel.getFluid(1000), ItemList.Tool_Lighter_Platinum_Full.get(1), ItemList.Tool_Lighter_Platinum_Empty.get(1)));
-
-        GT_Mod.gregtechproxy.addFluid("ice", "Crushed Ice", Materials.Ice, 0, 270, GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Ice), ItemList.Cell_Empty.get(1), 1000);
-        Materials.Water.mSolid = Materials.Ice.mSolid;
-
 
         GT_Mod.gregtechproxy.addFluid("molten.glass", "Molten Glass", Materials.Glass, 4, 1500);
         GT_Mod.gregtechproxy.addFluid("molten.redstone", "Molten Redstone", Materials.Redstone, 4, 500);

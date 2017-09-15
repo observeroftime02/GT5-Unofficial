@@ -98,7 +98,7 @@ public class GT_MetaTileEntity_PotionBrewer
                     }
                     return setOutput("potion.mundane");
                 }
-                if (GT_Utility.areStacksEqual(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Gunpowder), getInputAt(0))) {
+                if (GT_Utility.areStacksEqual(new ItemStack(Items.gunpowder, 1), getInputAt(0))) {
                     if (!tInputName.endsWith(".splash")) {
                         return setOutput("potion." + tInputName + ".splash");
                     }

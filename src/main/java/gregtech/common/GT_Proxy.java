@@ -663,8 +663,6 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                                         GT_OreDictUnificator.registerOre("itemSalt", aEvent.Ore);
                                     } else if (aMaterial == Materials.Wood) {
                                         GT_OreDictUnificator.registerOre("pulpWood", aEvent.Ore);
-                                    } else if (aMaterial == Materials.Wheat) {
-                                        GT_OreDictUnificator.registerOre("foodFlour", aEvent.Ore);
                                     }
                                     break;
                                 case ingot:

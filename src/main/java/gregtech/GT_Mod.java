@@ -21,7 +21,6 @@ import gregtech.common.entities.GT_Entity_Arrow_Potion;
 import gregtech.common.items.armor.components.LoadArmorComponents;
 import gregtech.common.tileentities.machines.basic.GT_MetaTileEntity_Massfabricator;
 import gregtech.loaders.load.GT_FuelLoader;
-import gregtech.loaders.load.GT_ItemIterator;
 import gregtech.loaders.load.GT_SonictronLoader;
 import gregtech.loaders.misc.GT_Achievements;
 import gregtech.loaders.misc.GT_Bees;
@@ -449,7 +448,7 @@ public class GT_Mod implements IGT_Mod {
 
         gregtechproxy.onLoad();
         if (gregtechproxy.mSortToTheEnd) {
-            new GT_ItemIterator().run();
+            //new GT_ItemIterator().run();
             gregtechproxy.registerUnificationEntries(); //TODO REALLY?!
             new GT_FuelLoader().run();
         }

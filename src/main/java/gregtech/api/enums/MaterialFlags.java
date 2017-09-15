@@ -2,7 +2,8 @@ package gregtech.api.enums;
 
 public enum MaterialFlags {
     DUST(1),
-    SOLID(DUST.bit*2),
+    BDUST(DUST.bit*2),
+    SOLID(BDUST.bit*2),
     GEM(SOLID.bit*2),
     ORE(GEM.bit*2),
     CELL(ORE.bit*2),
@@ -28,8 +29,7 @@ public enum MaterialFlags {
     CGAS(CFLUID.bit*2),
     LIQUID(CGAS.bit*2),
     FRAME(LIQUID.bit*2),
-    SORE(FRAME.bit*2),
-    REF(SORE.bit*2);
+    SORE(FRAME.bit*2);
 
     public int bit;
 

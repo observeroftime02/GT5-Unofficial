@@ -5,15 +5,14 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemSmeltedEvent;
 import gregtech.GT_Mod;
-import gregtech.api.GregTech_API;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.objects.ItemData;
 import gregtech.api.util.GT_Log;
-import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.GT_Recipe;
 import gregtech.common.items.GT_MetaGenerated_Tool_01;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -259,8 +258,7 @@ public class GT_Achievements {
     public Achievement registerOreAchievement(Materials aMaterial) {
         if (this.achievementList.get(aMaterial.mName) == null) {
             oreReg++;
-            return registerAchievement(aMaterial.mName, -(6 + oreReg % 5), ((oreReg) / 5) - 8, new ItemStack(GregTech_API.sBlockOres1, 1,
-                    aMaterial.mMetaItemSubID), AchievementList.openInventory, false);
+            return registerAchievement(aMaterial.mName, -(6 + oreReg % 5), ((oreReg) / 5) - 8, GT_OreDictUnificator.get(OrePrefixes.oreChunk, aMaterial), AchievementList.openInventory, false);
         }
         return null;
     }
@@ -507,9 +505,7 @@ public class GT_Achievements {
                 if (data.mMaterial.mMaterial == Materials.Lutetium) {
                     issueAchievement(player, "newmetal");
                 }
-                if (data.mMaterial.mMaterial != Materials.Gunpowder) {
-                    issueAchievement(player, "cleandust");
-                }
+                issueAchievement(player, "cleandust");
             } else if (data.mPrefix.name().startsWith("ore")) {
                 int data_getAllMaterialStacks_sS = data.getAllMaterialStacks().size();
                 for (int i = 0; i < data_getAllMaterialStacks_sS; i++) {

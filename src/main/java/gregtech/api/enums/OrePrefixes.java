@@ -38,11 +38,11 @@ public enum OrePrefixes {
     gemFlawless("Flawless Gemstones", "Flawless ", "", true, true, true, false, false, false, true, true, false, false, MaterialFlags.GEM.bit, M * 2, 32, 61), // A regular Gem worth two Dusts. Introduced by TerraFirmaCraft
     gemExquisite("Exquisite Gemstones", "Exquisite ", "", true, true, true, false, false, false, true, true, false, false, MaterialFlags.GEM.bit, M * 4, 16, 62), // A regular Gem worth four Dusts. Introduced by TerraFirmaCraft
     gem("Gemstones", "", "", true, true, true, false, false, false, true, true, false, false, MaterialFlags.GEM.bit, M, 64, 8), // A regular Gem worth one Dust. Introduced by Eloraam
-    dustTiny("Tiny Dusts", "Tiny Pile of ", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit, M / 9, 64, 0), // 1/9th of a Dust.
-    dustSmall("Small Dusts", "Small Pile of ", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit, M / 4, 64, 1), // 1/4th of a Dust.
+    dustTiny("Tiny Dusts", "Tiny Pile of ", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit | MaterialFlags.BDUST.bit, M / 9, 64, 0), // 1/9th of a Dust.
+    dustSmall("Small Dusts", "Small Pile of ", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit | MaterialFlags.BDUST.bit, M / 4, 64, 1), // 1/4th of a Dust.
     dustImpure("Impure Dusts", "Impure Pile of ", " Dust", true, true, false, false, false, false, false, true, false, true, MaterialFlags.ORE.bit, M, 64, 3), // Dust with impurities. 1 Unit of Main Material and 1/9 - 1/4 Unit of secondary Material
     dustPure("Purified Dusts", "Purified Pile of ", " Dust", true, true, false, false, false, false, false, true, false, true, MaterialFlags.ORE.bit, M, 64, 4),
-    dust("Dusts", "", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit, M, 64, 2), // Pure Dust worth of one Ingot or Gem. Introduced by Alblaka.
+    dust("Dusts", "", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit | MaterialFlags.BDUST.bit, M, 64, 2), // Pure Dust worth of one Ingot or Gem. Introduced by Alblaka.
     nugget("Nuggets", "", " Nugget", true, true, false, false, false, false, false, true, false, false, MaterialFlags.SOLID.bit, M / 9, 64, 9), // A Nugget. Introduced by Eloraam
     plateDense("Dense Plates", "Dense ", " Plate", true, true, false, false, false, false, true, true, false, false, MaterialFlags.DPLATE.bit, M * 9, 8, 22), // 9 Plates combined in one Item.
     plate("Plates", "", " Plate", true, true, false, false, false, false, true, true, false, false, MaterialFlags.PLATE.bit, M, 64, 17), // Regular Plate made of one Ingot/Dust. Introduced by Calclavia
@@ -139,8 +139,8 @@ public enum OrePrefixes {
         ingotHot.mHeatDamage = 3.0F;
         cellPlasma.mHeatDamage = 6.0F;
 
-        block.ignoreMaterials(Materials.Ice, Materials.Snow, Materials.Concrete, Materials.Glass, Materials.Glowstone, Materials.Marble, Materials.Quartz, Materials.CertusQuartz);
-        ingot.ignoreMaterials(Materials.Brick, Materials.NetherBrick);
+        block.ignoreMaterials(Materials.Concrete, Materials.Glass, Materials.Glowstone, Materials.Marble, Materials.Quartz, Materials.CertusQuartz);
+        ingot.ignoreMaterials(Materials.Brick);
 
         dust.addFamiliarPrefix(dustTiny);
         dust.addFamiliarPrefix(dustSmall);
@@ -179,8 +179,6 @@ public enum OrePrefixes {
         dust.mNotGeneratedItems.add(Materials.Bone);
         dust.mNotGeneratedItems.add(Materials.Redstone);
         dust.mNotGeneratedItems.add(Materials.Glowstone);
-        dust.mNotGeneratedItems.add(Materials.Gunpowder);
-        dust.mNotGeneratedItems.add(Materials.Sugar);
         dust.mNotGeneratedItems.add(Materials.Blaze);
         stick.mNotGeneratedItems.add(Materials.Wood);
         stick.mNotGeneratedItems.add(Materials.Bone);
