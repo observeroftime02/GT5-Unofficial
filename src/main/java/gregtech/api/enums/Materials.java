@@ -11,6 +11,7 @@ import gregtech.api.objects.GT_FluidStack;
 import gregtech.api.objects.MaterialStack;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
+import gregtech.common.blocks.GT_Block_Ores;
 import gregtech.loaders.materialprocessing.ProcessingConfig;
 import gregtech.loaders.materialprocessing.ProcessingModSupport;
 import net.minecraft.enchantment.Enchantment;
@@ -54,14 +55,14 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     /**
      * Direct Elements
      */
-    public static Materials Aluminium = new Materials(19, "Aluminium", 128, 200, 240, dyeLightBlue, DULL, Element.Al).asMetalOre(false, 933, 1700).addTools(10.0F, 128, 2).add(RING, FOIL, SGEAR, GEAR, FRAME);
+    public static Materials Aluminium = new Materials(19, "Aluminium", 128, 200, 240, dyeLightBlue, DULL, Element.Al).asMetal(933, 1700).addTools(10.0F, 128, 2).add(RING, FOIL, SGEAR, GEAR, FRAME, ORE);
     public static Materials Americium = new Materials(103, "Americium", 200, 200, 200, dyeLightGray, METALLIC, Element.Am).asMetal(1149, 0).add(PLATE, STICK);
     public static Materials Antimony = new Materials(58, "Antimony", 220, 220, 240, dyeLightGray, SHINY, Element.Sb).asMetal(1449, 0);
     public static Materials Argon = new Materials(24, "Argon", 0, 255, 0, 240, dyeGreen, FLUID, Element.Ar).asGas();
     public static Materials Arsenic = new Materials(39, "Arsenic", 255, 255, 255, dyeOrange, DULL, Element.As).asSolid(1090).add(PLATE, CELL);
     public static Materials Barium = new Materials(63, "Barium", 255, 255, 255, dyeNULL, METALLIC, Element.Ba).asDustBasic(1000).add(FOIL);
-    public static Materials Beryllium = new Materials(8, "Beryllium", 100, 180, 100, dyeGreen, METALLIC, Element.Be).asMetalOre(false, 1560).addTools(14.0F, 64, 2);
-    public static Materials Bismuth = new Materials(90, "Bismuth", 100, 160, 160, dyeCyan, METALLIC, Element.Bi).asMetalOre(true, 544).addTools(6.0F, 64, 1);
+    public static Materials Beryllium = new Materials(8, "Beryllium", 100, 180, 100, dyeGreen, METALLIC, Element.Be).asMetal(1560).addTools(14.0F, 64, 2).add(ORE);
+    public static Materials Bismuth = new Materials(90, "Bismuth", 100, 160, 160, dyeCyan, METALLIC, Element.Bi).asMetal(544).addTools(6.0F, 64, 1).add(SORE);
     public static Materials Boron = new Materials(9, "Boron", 250, 250, 250, dyeWhite, DULL, Element.B).asDustBasic(2349);
     public static Materials Caesium = new Materials(62, "Caesium", 0, 0, 301, dyeNULL, METALLIC, Element.Cs).asMetal(2349);
     public static Materials Calcium = new Materials(26, "Calcium", 255, 245, 245, dyePink, METALLIC, Element.Ca).asDustBasic(1115);
@@ -69,59 +70,59 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials Cadmium = new Materials(55, "Cadmium", 50, 50, 60, dyeGray, SHINY, Element.Cd).asDustBasic(594);
     public static Materials Cerium = new Materials(65, "Cerium", 255, 255, 255, dyeNULL, METALLIC, Element.Ce).asSolid(1068, 1068);
     public static Materials Chlorine = new Materials(23, "Chlorine", 255, 255, 255, dyeCyan, FLUID, Element.Cr).asFluid();
-    public static Materials Chrome = new Materials(30, "Chrome", 255, 230, 230, dyePink, SHINY, Element.Cr).asMetalOre(false, 2180, 1700).addTools(11.0F, 256, 3).add(SCREW, RING, PLATE, ROTOR);
+    public static Materials Chrome = new Materials(30, "Chrome", 255, 230, 230, dyePink, SHINY, Element.Cr).asMetal(2180, 1700).addTools(11.0F, 256, 3).add(SCREW, RING, PLATE, ROTOR);
     public static Materials Cobalt = new Materials(33, "Cobalt", 80, 80, 250, dyeBlue, METALLIC, Element.Co).asMetal(1768).addTools(8.0F, 512, 3);
-    public static Materials Copper = new Materials(35, "Copper", 255, 100, 0, dyeOrange, SHINY, Element.Cu).asMetalOre(true, 1357).add(PLATE, DPLATE, STICK, FOIL, FWIRE, GEAR);
+    public static Materials Copper = new Materials(35, "Copper", 255, 100, 0, dyeOrange, SHINY, Element.Cu).asMetal(1357).add(PLATE, DPLATE, STICK, FOIL, FWIRE, GEAR, ORE, SORE);
     public static Materials Deuterium = new Materials(2, "Deuterium", 255, 255, 0, 240, dyeYellow, FLUID, Element.D).asFluid();
     public static Materials Dysprosium = new Materials(-1/*73*/, "Dysprosium", 255, 255, 255, dyeNULL, METALLIC, Element.D).asMetal(1680, 1680);
     public static Materials Europium = new Materials(70, "Europium", 255, 255, 255, dyeNULL, METALLIC, Element.Eu).asMetal(1099, 1099).add(PLATE, STICK);
     public static Materials Fluorine = new Materials(14, "Fluorine", 255, 255, 255, 127, dyeGreen, FLUID, Element.F).asFluid();
     public static Materials Gallium = new Materials(37, "Gallium", 220, 220, 255, dyeLightGray, SHINY, Element.Ga).asMetal(302).add(PLATE);
-    public static Materials Gold = new Materials(86, "Gold", 255, 255, 30, dyeYellow, SHINY, Element.Au).asMetalOre(true, 1337).addTools(12.0F, 64, 2).add(FOIL, FWIRE, GEAR);
-    public static Materials Hydrogen = new Materials(1, "Hydrogen", 0, 0, 255, 240, dyeBlue, FLUID, Element.H).asFluid();
-    public static Materials Helium = new Materials(4, "Helium", 255, 255, 0, 240, dyeYellow, FLUID, Element.He).asFluid();
-    public static Materials Helium3 = new Materials(5, "Helium-3", 255, 255, 255, 240, dyeYellow, FLUID, Element.He_3).asFluid();
+    public static Materials Gold = new Materials(86, "Gold", 255, 255, 30, dyeYellow, SHINY, Element.Au).asMetal(1337).addTools(12.0F, 64, 2).add(FOIL, FWIRE, GEAR, ORE, SORE);
+    public static Materials Hydrogen = new Materials(1, "Hydrogen", 0, 0, 255, 240, dyeBlue, FLUID, Element.H).asGas();
+    public static Materials Helium = new Materials(4, "Helium", 255, 255, 0, 240, dyeYellow, FLUID, Element.He).asGas();
+    public static Materials Helium3 = new Materials(5, "Helium-3", 255, 255, 255, 240, dyeYellow, FLUID, Element.He_3).asGas();
     public static Materials Indium = new Materials(56, "Indium", 64, 0, 128, dyeGray, METALLIC, Element.In).asSolid(429);
-    public static Materials Iridium = new Materials(84, "Iridium", 240, 240, 245, dyeWhite, DULL, Element.Ir).asMetalOre(true, 2719, 2719).add(FRAME).addTools(6.0F, 2560, 3);
-    public static Materials Iron = new Materials(32, "Iron", 200, 200, 200, dyeLightGray, METALLIC, Element.Fe).asMetalOre(true, 1811).addTools(6.0F, 256, 2).add(RING, GEAR, FRAME);
+    public static Materials Iridium = new Materials(84, "Iridium", 240, 240, 245, dyeWhite, DULL, Element.Ir).asMetal(2719, 2719).add(FRAME, ORE, SORE).addTools(6.0F, 2560, 3);
+    public static Materials Iron = new Materials(32, "Iron", 200, 200, 200, dyeLightGray, METALLIC, Element.Fe).asMetal(1811).addTools(6.0F, 256, 2).add(RING, GEAR, FRAME, ORE, SORE);
     public static Materials Lanthanum = new Materials(64, "Lanthanum", 255, 255, 255, dyeNULL, METALLIC, Element.La).asSolid(1193, 1193);
-    public static Materials Lead = new Materials(89, "Lead", 140, 100, 140, dyePurple, DULL, Element.Pb).asMetalOre(true, 600).addTools(8.0F, 64, 1).add(PLATE, FOIL, FWIRE, DPLATE);
-    public static Materials Lithium = new Materials(6, "Lithium", 225, 220, 255, dyeLightBlue, DULL, Element.Li).asSolidOre(false, 454);
+    public static Materials Lead = new Materials(89, "Lead", 140, 100, 140, dyePurple, DULL, Element.Pb).asMetal(600).addTools(8.0F, 64, 1).add(PLATE, FOIL, FWIRE, DPLATE, ORE, SORE);
+    public static Materials Lithium = new Materials(6, "Lithium", 225, 220, 255, dyeLightBlue, DULL, Element.Li).asSolid(454).add(ORE);
     public static Materials Lutetium = new Materials(78, "Lutetium", 225, 220, 255, dyeLightBlue, DULL, Element.Lu).asMetal(1925, 1925);
     public static Materials Magic = new Materials(-128, "Magic", 100, 0, 200, dyePurple, SHINY, Element.Ma).asGas(512);
     public static Materials Magnesium = new Materials(18, "Magnesium", 255, 200, 200, dyePink, METALLIC, Element.Mg).asMetal(923);
-    public static Materials Manganese = new Materials(31, "Manganese", 250, 250, 250, dyeWhite, DULL, Element.Mn).asMetalOre(false, 1519).addTools(7.0F, 512, 2).add(FOIL);
+    public static Materials Manganese = new Materials(31, "Manganese", 250, 250, 250, dyeWhite, DULL, Element.Mn).asMetal(1519).addTools(7.0F, 512, 2).add(FOIL, ORE);
     public static Materials Mercury = new Materials(87, "Mercury", 255, 220, 220, dyeLightGray, SHINY, Element.Hg).asFluid();
-    public static Materials Molybdenum = new Materials(48, "Molybdenum", 180, 180, 220, dyeBlue, SHINY, Element.Mo).asMetalOre(false, 2896).addTools(7.0F, 512, 2);
-    public static Materials Neodymium = new Materials(67, "Neodymium", 100, 100, 100, dyeNULL, METALLIC, Element.Nd).asMetalOre(false, 1297, 1297).addTools(7.0F, 512, 2);
+    public static Materials Molybdenum = new Materials(48, "Molybdenum", 180, 180, 220, dyeBlue, SHINY, Element.Mo).asMetal(2896).addTools(7.0F, 512, 2).add(ORE);
+    public static Materials Neodymium = new Materials(67, "Neodymium", 100, 100, 100, dyeNULL, METALLIC, Element.Nd).asMetal(1297, 1297).addTools(7.0F, 512, 2).add(ORE);
     public static Materials Neutronium = new Materials(129, "Neutronium", 250, 250, 250, dyeWhite, DULL, Element.Nt).asMetal(10000, 10000).addTools(24.0F, 655360, 6).add(SCREW, RING, GEAR, SGEAR, FRAME);
-    public static Materials Nickel = new Materials(34, "Nickel", 200, 200, 250, dyeLightBlue, METALLIC, Element.Ni).asMetalOre(true, 1728).addTools(6.0F, 64, 2);
+    public static Materials Nickel = new Materials(34, "Nickel", 200, 200, 250, dyeLightBlue, METALLIC, Element.Ni).asMetal(1728).addTools(6.0F, 64, 2).add(ORE, SORE);
     public static Materials Niobium = new Materials(47, "Niobium", 190, 180, 200, dyeNULL, METALLIC, Element.Nb).asMetal(2750, 2750);
     public static Materials Nitrogen = new Materials(12, "Nitrogen", 0, 150, 200, 240, dyeCyan, FLUID, Element.N).asGas();
     public static Materials Osmium = new Materials(83, "Osmium", 50, 50, 255, dyeBlue, METALLIC, Element.Os).asMetal(3306, 3306).addTools(16.0F, 1280, 4).add(SCREW, RING, PLATE, FOIL, FWIRE);
     public static Materials Oxygen = new Materials(13, "Oxygen", 0, 100, 200, 240, dyeWhite, FLUID, Element.O).asGas();
-    public static Materials Palladium = new Materials(52, "Palladium", 128, 128, 128, dyeGray, SHINY, Element.Pd).asMetalOre(false, 1828, 1828).addTools(8.0F, 512, 2);
+    public static Materials Palladium = new Materials(52, "Palladium", 128, 128, 128, dyeGray, SHINY, Element.Pd).asMetal(1828, 1828).addTools(8.0F, 512, 2).add(ORE);
     public static Materials Phosphor = new Materials(21, "Phosphor", 255, 255, 0, dyeYellow, DULL, Element.P).asDustBasic(317);
-    public static Materials Platinum = new Materials(85, "Platinum", 255, 255, 200, dyeOrange, SHINY, Element.Pt).asMetalOre(true, 2041).addTools(12.0F, 64, 2).add(PLATE, FOIL, FWIRE);
-    public static Materials Plutonium = new Materials(100, "Plutonium 239", 240, 50, 50, dyeLime, METALLIC, Element.Pu).asMetalOre(false, 912).addTools(6.0F, 512, 3);
+    public static Materials Platinum = new Materials(85, "Platinum", 255, 255, 200, dyeOrange, SHINY, Element.Pt).asMetal(2041).addTools(12.0F, 64, 2).add(PLATE, FOIL, FWIRE, ORE, SORE);
+    public static Materials Plutonium = new Materials(100, "Plutonium 239", 240, 50, 50, dyeLime, METALLIC, Element.Pu).asMetal(912).addTools(6.0F, 512, 3).add(ORE);
     public static Materials Plutonium241 = new Materials(101, "Plutonium 241", 250, 70, 70, dyeLime, SHINY, Element.Pu_241).asMetal(912).addTools(6.0F, 512, 3);
     public static Materials Potassium = new Materials(25, "Potassium", 250, 250, 250, dyeWhite, METALLIC, Element.K).asSolid(336);
     public static Materials Radon = new Materials(93, "Radon", 255, 0, 255, 240, dyePurple, FLUID, Element.Rn).asGas();
     public static Materials Silicon = new Materials(20, "Silicon", 60, 60, 80, dyeBlack, METALLIC, Element.Si).asMetal(1687, 1687).add(PLATE, FOIL);
-    public static Materials Silver = new Materials(54, "Silver", 220, 220, 255, dyeLightGray, SHINY, Element.Ag).asMetalOre(true, 1234).addTools(10.0F, 64, 2);
+    public static Materials Silver = new Materials(54, "Silver", 220, 220, 255, dyeLightGray, SHINY, Element.Ag).asMetal(1234).addTools(10.0F, 64, 2).add(ORE, SORE);
     public static Materials Sodium = new Materials(17, "Sodium", 0, 0, 150, dyeBlue, METALLIC, Element.Na).asDust(370);
-    public static Materials Sulfur = new Materials(22, "Sulfur", 200, 200, 0, dyeYellow, DULL, Element.S).asDustOreBasic(true, 388);
+    public static Materials Sulfur = new Materials(22, "Sulfur", 200, 200, 0, dyeYellow, DULL, Element.S).asDustBasic(388).add(ORE, SORE);
     public static Materials Tantalum = new Materials(80, "Tantalum", 255, 255, 255, dyeNULL, METALLIC, Element.Ta).asSolid(3290);
-    public static Materials Thorium = new Materials(96, "Thorium", 0, 30, 0, dyeBlack, SHINY, Element.Th).asMetalOre(false, 2115).addTools(6.0F, 512, 2);
-    public static Materials Tin = new Materials(57, "Tin", 220, 220, 220, dyeWhite, DULL, Element.Sn).asMetalOre(true, 505, 505).add(PLATE, STICK, BOLT, SCREW, RING, GEAR, FOIL, FWIRE, FRAME);
-    public static Materials Titanium = new Materials(28, "Titanium", 220, 160, 240, dyePurple, METALLIC, Element.Ti).asMetalOre(false, 1941, 1940).addTools(7.0F, 1600, 3).add(SCREW, RING, FOIL, GEAR, SGEAR, SPRING, FRAME);
+    public static Materials Thorium = new Materials(96, "Thorium", 0, 30, 0, dyeBlack, SHINY, Element.Th).asMetal(2115).addTools(6.0F, 512, 2).add(ORE);
+    public static Materials Tin = new Materials(57, "Tin", 220, 220, 220, dyeWhite, DULL, Element.Sn).asMetal(505, 505).add(PLATE, STICK, BOLT, SCREW, RING, GEAR, FOIL, FWIRE, FRAME, ORE, SORE);
+    public static Materials Titanium = new Materials(28, "Titanium", 220, 160, 240, dyePurple, METALLIC, Element.Ti).asMetal(1941, 1940).addTools(7.0F, 1600, 3).add(SCREW, RING, FOIL, GEAR, SGEAR, SPRING, FRAME, ORE);
     public static Materials Tritium = new Materials(3, "Tritium", 255, 0, 0, 240, dyeRed, METALLIC, Element.T).asFluid();
     public static Materials Tungsten = new Materials(81, "Tungsten", 50, 50, 50, dyeBlack, METALLIC, Element.W).asMetal(3695, 3000).addTools(7.0F, 2560, 3).add(FOIL);
-    public static Materials Uranium = new Materials(98, "Uranium 238", 50, 240, 50, dyeGreen, METALLIC, Element.U).asMetalOre(false, 1405).addTools(6.0F, 512, 3);
-    public static Materials Uranium235 = new Materials(97, "Uranium 235", 70, 250, 70, dyeGreen, METALLIC, Element.U_235).asMetalOre(false, 1405).addTools(6.0F, 512, 3);
+    public static Materials Uranium = new Materials(98, "Uranium 238", 50, 240, 50, dyeGreen, METALLIC, Element.U).asMetal(1405).addTools(6.0F, 512, 3).add(ORE);
+    public static Materials Uranium235 = new Materials(97, "Uranium 235", 70, 250, 70, dyeGreen, METALLIC, Element.U_235).asMetal(1405).addTools(6.0F, 512, 3).add(ORE);
     public static Materials Vanadium = new Materials(29, "Vanadium", 50, 50, 50, dyeBlack, METALLIC, Element.V).asMetal(2183, 2183);
     public static Materials Yttrium = new Materials(45, "Yttrium", 220, 250, 220, dyeNULL, METALLIC, Element.Y).asMetal(1799, 1799);
-    public static Materials Zinc = new Materials(36, "Zinc", 250, 240, 240, dyeWhite, METALLIC, Element.Zn).asMetalOre(true, 692).add(PLATE, FOIL);
+    public static Materials Zinc = new Materials(36, "Zinc", 250, 240, 240, dyeWhite, METALLIC, Element.Zn).asMetal(692).add(PLATE, FOIL, SORE);
 
     //Gases
     public static Materials WoodGas = new Materials(660, "Wood Gas", 222, 205, 135, dyeBrown, FLUID).asGas(24);
@@ -235,55 +236,55 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials IridiumSodiumOxide = new Materials(-1, "Iridium Sodium Oxide", 255, 255, 255, dyeNULL, NONE).asDustBasic();
     public static Materials PlatinumGroupSludge = new Materials(241, "Platinum Group Sludge", 0, 30, 0, dyeNULL, POWDER).asDustBasic();
     public static Materials Glowstone = new Materials(811, "Glowstone", 255, 255, 0, dyeYellow, SHINY).asDustBasic().add(CELL);
-    public static Materials Graphite = new Materials(865, "Graphite", 128, 128, 128, dyeGray, DULL).asDustOreBasic(false).add(CELL).addTools(5.0F, 32, 2);
+    public static Materials Graphite = new Materials(865, "Graphite", 128, 128, 128, dyeGray, DULL).asDustBasic().add(CELL, ORE).addTools(5.0F, 32, 2);
     public static Materials Graphene = new Materials(819, "Graphene", 128, 128, 128, dyeGray, DULL).asDustBasic();
-    public static Materials Oilsands = new Materials(878, "Oilsands", 10, 10, 10, dyeNULL, NONE).asDustOreBasic(false);
+    public static Materials Oilsands = new Materials(878, "Oilsands", 10, 10, 10, dyeNULL, NONE).asDustBasic().add(ORE);
     public static Materials Paper = new Materials(879, "Paper", 250, 250, 250, dyeWhite, PAPER).asDustBasic();
     public static Materials RareEarth = new Materials(891, "Rare Earth", 128, 128, 100, dyeGray, FINE).asDustBasic();
     public static Materials Stone = new Materials(299, "Stone", 205, 205, 205, dyeLightGray, ROUGH).asDustBasic().add(GEAR).addTools(4.0F, 32, 1);
     public static Materials Endstone = new Materials(808, "Endstone", 255, 255, 255, dyeYellow, DULL).asDustBasic();
     public static Materials Netherrack = new Materials(807, "Netherrack", 200, 0, 0, dyeRed, DULL).asDustBasic();
-    public static Materials Almandine = new Materials(820, "Almandine", 255, 0, 0, dyeRed, ROUGH).asDustOreBasic(false).add(new MaterialStack(Aluminium, 2), new MaterialStack(Iron, 3), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12));
+    public static Materials Almandine = new Materials(820, "Almandine", 255, 0, 0, dyeRed, ROUGH).asDustBasic().add(ORE).add(new MaterialStack(Aluminium, 2), new MaterialStack(Iron, 3), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12));
     public static Materials Andradite = new Materials(821, "Andradite", 150, 120, 0, dyeYellow, ROUGH).asDustBasic().add(new MaterialStack(Calcium, 3), new MaterialStack(Iron, 2), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12));
     public static Materials Asbestos = new Materials(946, "Asbestos", 230, 230, 230, dyeWhite, DULL).asDustBasic().add(new MaterialStack(Magnesium, 3), new MaterialStack(Silicon, 2), new MaterialStack(Hydrogen, 4), new MaterialStack(Oxygen, 9));
     public static Materials Ash = new Materials(815, "Ash", 150, 150, 150, dyeLightGray, DULL).asDustBasic();
-    public static Materials BandedIron = new Materials(917, "Banded Iron", 145, 90, 90, dyeBrown, DULL).asDustOreBasic(false).add(new MaterialStack(Iron, 2), new MaterialStack(Oxygen, 3));
+    public static Materials BandedIron = new Materials(917, "Banded Iron", 145, 90, 90, dyeBrown, DULL).asDustBasic().add(ORE).add(new MaterialStack(Iron, 2), new MaterialStack(Oxygen, 3));
     public static Materials Bone = new Materials(806, "Bone", 250, 250, 250, dyeWhite, DULL).asDustBasic().add(new MaterialStack(Calcium, 1));
-    public static Materials BrownLimonite = new Materials(930, "Brown Limonite", 200, 100, 0, dyeBrown, METALLIC).asDustOreBasic(false).add(new MaterialStack(Iron, 1), new MaterialStack(Hydrogen, 1), new MaterialStack(Oxygen, 2));
-    public static Materials Calcite = new Materials(823, "Calcite", 250, 230, 220, dyeOrange, DULL).asDustOreBasic(false).add(new MaterialStack(Calcium, 1), new MaterialStack(Carbon, 1), new MaterialStack(Oxygen, 3));
-    public static Materials Cassiterite = new Materials(824, "Cassiterite", 220, 220, 220, dyeWhite, METALLIC).asDustOreBasic(false).add(new MaterialStack(Tin, 1), new MaterialStack(Oxygen, 2));
-    public static Materials CassiteriteSand = new Materials(937, "Cassiterite Sand", 220, 220, 220, dyeWhite, SAND).asDustOreBasic(false).add(new MaterialStack(Tin, 1), new MaterialStack(Oxygen, 2));
-    public static Materials Chalcopyrite = new Materials(855, "Chalcopyrite", 160, 120, 40, dyeYellow, DULL).asDustOreBasic(false).add(new MaterialStack(Copper, 1), new MaterialStack(Iron, 1), new MaterialStack(Sulfur, 2));
+    public static Materials BrownLimonite = new Materials(930, "Brown Limonite", 200, 100, 0, dyeBrown, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Iron, 1), new MaterialStack(Hydrogen, 1), new MaterialStack(Oxygen, 2));
+    public static Materials Calcite = new Materials(823, "Calcite", 250, 230, 220, dyeOrange, DULL).asDustBasic().add(ORE).add(new MaterialStack(Calcium, 1), new MaterialStack(Carbon, 1), new MaterialStack(Oxygen, 3));
+    public static Materials Cassiterite = new Materials(824, "Cassiterite", 220, 220, 220, dyeWhite, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Tin, 1), new MaterialStack(Oxygen, 2));
+    public static Materials CassiteriteSand = new Materials(937, "Cassiterite Sand", 220, 220, 220, dyeWhite, SAND).asDustBasic().add(ORE).add(new MaterialStack(Tin, 1), new MaterialStack(Oxygen, 2));
+    public static Materials Chalcopyrite = new Materials(855, "Chalcopyrite", 160, 120, 40, dyeYellow, DULL).asDustBasic().add(ORE).add(new MaterialStack(Copper, 1), new MaterialStack(Iron, 1), new MaterialStack(Sulfur, 2));
     public static Materials Chromite = new Materials(825, "Chromite", 30, 20, 15, dyePink, METALLIC).asDust(1700, 1700).add(new MaterialStack(Iron, 1), new MaterialStack(Chrome, 2), new MaterialStack(Oxygen, 4));
-    public static Materials Cinnabar = new Materials(826, "Cinnabar", 150, 0, 0, dyeBrown, ROUGH).asDustOreBasic(false).add(new MaterialStack(Mercury, 1), new MaterialStack(Sulfur, 1));
+    public static Materials Cinnabar = new Materials(826, "Cinnabar", 150, 0, 0, dyeBrown, ROUGH).asDustBasic().add(ORE).add(new MaterialStack(Mercury, 1), new MaterialStack(Sulfur, 1));
     public static Materials Clay = new Materials(805, "Clay", 200, 200, 220, dyeLightBlue, ROUGH).asDustBasic().add(new MaterialStack(Sodium, 2), new MaterialStack(Lithium, 1), new MaterialStack(Aluminium, 2), new MaterialStack(Silicon, 2), new MaterialStack(Water, 6));
-    public static Materials Cobaltite = new Materials(827, "Cobaltite", 80, 80, 250, dyeBlue, METALLIC).asDustOreBasic(false).add(new MaterialStack(Cobalt, 1), new MaterialStack(Arsenic, 1), new MaterialStack(Sulfur, 1));
-    public static Materials Cooperite = new Materials(828, "Cooperite", 255, 255, 200, dyeYellow, METALLIC).asDustOreBasic(false).add(new MaterialStack(Platinum, 3), new MaterialStack(Nickel, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Palladium, 1));
+    public static Materials Cobaltite = new Materials(827, "Cobaltite", 80, 80, 250, dyeBlue, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Cobalt, 1), new MaterialStack(Arsenic, 1), new MaterialStack(Sulfur, 1));
+    public static Materials Cooperite = new Materials(828, "Cooperite", 255, 255, 200, dyeYellow, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Platinum, 3), new MaterialStack(Nickel, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Palladium, 1));
     public static Materials DarkAsh = new Materials(816, "Dark Ash", 50, 50, 50, dyeGray, DULL).asDustBasic();
-    public static Materials Galena = new Materials(830, "Galena", 100, 60, 100, dyePurple, DULL).asDustOreBasic(false).add(new MaterialStack(Lead, 3), new MaterialStack(Silver, 3), new MaterialStack(Sulfur, 2));
-    public static Materials Garnierite = new Materials(906, "Garnierite", 50, 200, 70, dyeLightBlue, METALLIC).asDustOreBasic(false).add(new MaterialStack(Nickel, 1), new MaterialStack(Oxygen, 1));
-    public static Materials Grossular = new Materials(831, "Grossular", 200, 100, 0, dyeOrange, ROUGH).asDustOreBasic(false).add(new MaterialStack(Calcium, 3), new MaterialStack(Aluminium, 2), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12));
-    public static Materials Ilmenite = new Materials(918, "Ilmenite", 70, 55, 50, dyePurple, METALLIC).asDustOreBasic(false).add(new MaterialStack(Iron, 1), new MaterialStack(Titanium, 1), new MaterialStack(Oxygen, 3));
+    public static Materials Galena = new Materials(830, "Galena", 100, 60, 100, dyePurple, DULL).asDustBasic().add(ORE).add(new MaterialStack(Lead, 3), new MaterialStack(Silver, 3), new MaterialStack(Sulfur, 2));
+    public static Materials Garnierite = new Materials(906, "Garnierite", 50, 200, 70, dyeLightBlue, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Nickel, 1), new MaterialStack(Oxygen, 1));
+    public static Materials Grossular = new Materials(831, "Grossular", 200, 100, 0, dyeOrange, ROUGH).asDustBasic().add(ORE).add(new MaterialStack(Calcium, 3), new MaterialStack(Aluminium, 2), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12));
+    public static Materials Ilmenite = new Materials(918, "Ilmenite", 70, 55, 50, dyePurple, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Iron, 1), new MaterialStack(Titanium, 1), new MaterialStack(Oxygen, 3));
     public static Materials Rutile = new Materials(375, "Rutile", 212, 13, 92, dyeRed, GEMH).asDustBasic().add(new MaterialStack(Titanium, 1), new MaterialStack(Oxygen, 2));
-    public static Materials Bauxite = new Materials(822, "Bauxite", 200, 100, 0, dyeBrown, DULL).asDustOreBasic(false).add(new MaterialStack(Rutile, 2), new MaterialStack(Aluminium, 16), new MaterialStack(Hydrogen, 10), new MaterialStack(Oxygen, 11));
+    public static Materials Bauxite = new Materials(822, "Bauxite", 200, 100, 0, dyeBrown, DULL).asDustBasic().add(ORE).add(new MaterialStack(Rutile, 2), new MaterialStack(Aluminium, 16), new MaterialStack(Hydrogen, 10), new MaterialStack(Oxygen, 11));
     public static Materials Magnesiumchloride = new Materials(377, "Magnesiumchloride", 212, 13, 92, dyeRed, DULL).asDustBasic().add(CELL).add(new MaterialStack(Magnesium, 1), new MaterialStack(Chlorine, 2));
-    public static Materials Magnesite = new Materials(908, "Magnesite", 250, 250, 180, dyePink, METALLIC).asDustOreBasic(false).add(new MaterialStack(Magnesium, 1), new MaterialStack(Carbon, 1), new MaterialStack(Oxygen, 3));
-    public static Materials Magnetite = new Materials(870, "Magnetite", 30, 30, 30, dyeGray, METALLIC).asDustOreBasic(false).add(new MaterialStack(Iron, 3), new MaterialStack(Oxygen, 4));
-    public static Materials Molybdenite = new Materials(942, "Molybdenite", 25, 25, 25, dyeBlue, METALLIC).asDustOreBasic(false).add(new MaterialStack(Molybdenum, 1), new MaterialStack(Sulfur, 2));
+    public static Materials Magnesite = new Materials(908, "Magnesite", 250, 250, 180, dyePink, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Magnesium, 1), new MaterialStack(Carbon, 1), new MaterialStack(Oxygen, 3));
+    public static Materials Magnetite = new Materials(870, "Magnetite", 30, 30, 30, dyeGray, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Iron, 3), new MaterialStack(Oxygen, 4));
+    public static Materials Molybdenite = new Materials(942, "Molybdenite", 25, 25, 25, dyeBlue, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Molybdenum, 1), new MaterialStack(Sulfur, 2));
     public static Materials Obsidian = new Materials(804, "Obsidian", 80, 50, 100, dyeBlack, DULL).asDustBasic().add(new MaterialStack(Magnesium, 1), new MaterialStack(Iron, 1), new MaterialStack(Silicon, 2), new MaterialStack(Oxygen, 8));
-    public static Materials Phosphate = new Materials(833, "Phosphate", 255, 255, 0, dyeYellow, DULL).asDustOreBasic(false).add(CELL).add(new MaterialStack(Phosphor, 1), new MaterialStack(Oxygen, 4));
+    public static Materials Phosphate = new Materials(833, "Phosphate", 255, 255, 0, dyeYellow, DULL).asDustBasic().add(CELL, ORE).add(new MaterialStack(Phosphor, 1), new MaterialStack(Oxygen, 4));
     public static Materials Polydimethylsiloxane = new Materials(633, "Polydimethylsiloxane", 245, 245, 245, dyeWhite, FLUID).asDust().add(ELEC).add(new MaterialStack(Carbon, 2), new MaterialStack(Hydrogen, 6), new MaterialStack(Oxygen, 1), new MaterialStack(Silicon, 1));
-    public static Materials Powellite = new Materials(883, "Powellite", 255, 255, 0, dyeYellow, DULL).asDustOreBasic(false).add(new MaterialStack(Calcium, 1), new MaterialStack(Molybdenum, 1), new MaterialStack(Oxygen, 4));
-    public static Materials Pyrite = new Materials(834, "Pyrite", 150, 120, 40, dyeOrange, ROUGH).asDustOreBasic(false).add(new MaterialStack(Iron, 1), new MaterialStack(Sulfur, 2));
-    public static Materials Pyrolusite = new Materials(943, "Pyrolusite", 150, 150, 170, dyeLightGray, DULL).asDustOreBasic(false).add(new MaterialStack(Manganese, 1), new MaterialStack(Oxygen, 2));
-    public static Materials Pyrope = new Materials(835, "Pyrope", 120, 50, 100, dyePurple, METALLIC).asDustOreBasic(false).add(new MaterialStack(Aluminium, 2), new MaterialStack(Magnesium, 3), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12));
-    public static Materials RockSalt = new Materials(944, "Rock Salt", 240, 200, 200, dyeWhite, FINE).asDustOreBasic(false).add(new MaterialStack(Potassium, 1), new MaterialStack(Chlorine, 1));
+    public static Materials Powellite = new Materials(883, "Powellite", 255, 255, 0, dyeYellow, DULL).asDustBasic().add(ORE).add(new MaterialStack(Calcium, 1), new MaterialStack(Molybdenum, 1), new MaterialStack(Oxygen, 4));
+    public static Materials Pyrite = new Materials(834, "Pyrite", 150, 120, 40, dyeOrange, ROUGH).asDustBasic().add(ORE).add(new MaterialStack(Iron, 1), new MaterialStack(Sulfur, 2));
+    public static Materials Pyrolusite = new Materials(943, "Pyrolusite", 150, 150, 170, dyeLightGray, DULL).asDustBasic().add(ORE).add(new MaterialStack(Manganese, 1), new MaterialStack(Oxygen, 2));
+    public static Materials Pyrope = new Materials(835, "Pyrope", 120, 50, 100, dyePurple, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Aluminium, 2), new MaterialStack(Magnesium, 3), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12));
+    public static Materials RockSalt = new Materials(944, "Rock Salt", 240, 200, 200, dyeWhite, FINE).asDustBasic().add(ORE).add(new MaterialStack(Potassium, 1), new MaterialStack(Chlorine, 1));
     public static Materials RawRubber = new Materials(896, "Raw Rubber", 0, 0, 400, dyeWhite, DULL).asDustBasic().add(new MaterialStack(Carbon, 5), new MaterialStack(Hydrogen, 8));
-    public static Materials Salt = new Materials(817, "Salt", 250, 250, 250, dyeWhite, FINE).asDustOreBasic(false).add(new MaterialStack(Sodium, 1), new MaterialStack(Chlorine, 1));
-    public static Materials Saltpeter = new Materials(836, "Saltpeter", 230, 230, 230, dyeWhite, FINE).asDustOreBasic(true).add(new MaterialStack(Potassium, 1), new MaterialStack(Nitrogen, 1), new MaterialStack(Oxygen, 3));
-    public static Materials Scheelite = new Materials(910, "Scheelite", 200, 140, 20, dyeBlack, DULL).asDustOreBasic(false, 2500, 2500).add(new MaterialStack(Tungsten, 1), new MaterialStack(Calcium, 2), new MaterialStack(Oxygen, 4));
+    public static Materials Salt = new Materials(817, "Salt", 250, 250, 250, dyeWhite, FINE).asDustBasic().add(ORE).add(new MaterialStack(Sodium, 1), new MaterialStack(Chlorine, 1));
+    public static Materials Saltpeter = new Materials(836, "Saltpeter", 230, 230, 230, dyeWhite, FINE).asDustBasic().add(SORE).add(new MaterialStack(Potassium, 1), new MaterialStack(Nitrogen, 1), new MaterialStack(Oxygen, 3));
+    public static Materials Scheelite = new Materials(910, "Scheelite", 200, 140, 20, dyeBlack, DULL).asDustBasic(2500, 2500).add(ORE).add(new MaterialStack(Tungsten, 1), new MaterialStack(Calcium, 2), new MaterialStack(Oxygen, 4));
     public static Materials SiliconDioxide = new Materials(837, "Silicon Dioxide", 200, 200, 200, dyeLightGray, QUARTZ).asDustBasic().add(CELL).add(new MaterialStack(Silicon, 1), new MaterialStack(Oxygen, 2));
-    public static Materials Pyrochlore = new Materials(607, "Pyrochlore", 43, 17, 0, dyeBlack, METALLIC).asDustOre(false).add(ELEC).add(new MaterialStack(Calcium, 2), new MaterialStack(Niobium, 2), new MaterialStack(Oxygen, 7));
+    public static Materials Pyrochlore = new Materials(607, "Pyrochlore", 43, 17, 0, dyeBlack, METALLIC).asDust().add(ELEC, ORE).add(new MaterialStack(Calcium, 2), new MaterialStack(Niobium, 2), new MaterialStack(Oxygen, 7));
     public static Materials FerriteMixture = new Materials(612, "Ferrite Mixture", 180, 180, 180, dyeGray, METALLIC).asDustBasic().add(new MaterialStack(Nickel, 1), new MaterialStack(Zinc, 1), new MaterialStack(Iron, 4));
     public static Materials Massicot = new Materials(614, "Massicot", 255, 221, 85, dyeYellow, DULL).asDust().add(ELEC).add(new MaterialStack(Lead, 1), new MaterialStack(Oxygen, 1));
     public static Materials ArsenicTrioxide = new Materials(615, "Arsenic Trioxide", 255, 255, 255, dyeGreen, SHINY).asDust().add(ELEC).add(new MaterialStack(Arsenic, 2), new MaterialStack(Oxygen, 3));
@@ -300,16 +301,16 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials PhosphorousPentoxide = new Materials(665, "Phosphorous Pentoxide", 220, 220, 0, dyeYellow, FLUID).asDust().add(CELL, ELEC).add(new MaterialStack(Phosphor, 4), new MaterialStack(Oxygen, 10));
     public static Materials MetalMixture = new Materials(676, "Metal Mixture", 80, 45, 22, dyeBrown, METALLIC).asDustBasic();
     public static Materials SodiumHydroxide = new Materials(685, "Sodium Hydroxide", 0, 51, 128, dyeBlue, DULL).asDust().add(ELEC).add(new MaterialStack(Sodium, 1), new MaterialStack(Oxygen, 1), new MaterialStack(Hydrogen, 1))/*TODO FIX?.setName("SodiumHydroxide_GT5U")*/;
-    public static Materials Spessartine = new Materials(838, "Spessartine", 255, 100, 100, dyeRed, DULL).asDustOreBasic(false).add(new MaterialStack(Aluminium, 2), new MaterialStack(Manganese, 3), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12));
-    public static Materials Sphalerite = new Materials(839, "Sphalerite", 255, 255, 255, dyeYellow, DULL).asDustOreBasic(false).add(new MaterialStack(Zinc, 1), new MaterialStack(Sulfur, 1));
-    public static Materials Stibnite = new Materials(945, "Stibnite", 70, 70, 70, dyeWhite, METALLIC).asDustOreBasic(false).add(new MaterialStack(Antimony, 2), new MaterialStack(Sulfur, 3));
-    public static Materials Tetrahedrite = new Materials(840, "Tetrahedrite", 200, 32, 0, dyeRed, DULL).asDustOreBasic(false).add(new MaterialStack(Copper, 3), new MaterialStack(Antimony, 1), new MaterialStack(Sulfur, 3), new MaterialStack(Iron, 1));
-    public static Materials Tungstate = new Materials(841, "Tungstate", 55, 50, 35, dyeBlack, DULL).asDustOreBasic(false).add(new MaterialStack(Tungsten, 1), new MaterialStack(Lithium, 2), new MaterialStack(Oxygen, 4));
-    public static Materials Uraninite = new Materials(922, "Uraninite", 35, 35, 35, dyeLime, METALLIC).asDustOreBasic(false).add(new MaterialStack(Uranium, 1), new MaterialStack(Oxygen, 2));
+    public static Materials Spessartine = new Materials(838, "Spessartine", 255, 100, 100, dyeRed, DULL).asDustBasic().add(ORE).add(new MaterialStack(Aluminium, 2), new MaterialStack(Manganese, 3), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12));
+    public static Materials Sphalerite = new Materials(839, "Sphalerite", 255, 255, 255, dyeYellow, DULL).asDustBasic().add(ORE).add(new MaterialStack(Zinc, 1), new MaterialStack(Sulfur, 1));
+    public static Materials Stibnite = new Materials(945, "Stibnite", 70, 70, 70, dyeWhite, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Antimony, 2), new MaterialStack(Sulfur, 3));
+    public static Materials Tetrahedrite = new Materials(840, "Tetrahedrite", 200, 32, 0, dyeRed, DULL).asDustBasic().add(ORE).add(new MaterialStack(Copper, 3), new MaterialStack(Antimony, 1), new MaterialStack(Sulfur, 3), new MaterialStack(Iron, 1));
+    public static Materials Tungstate = new Materials(841, "Tungstate", 55, 50, 35, dyeBlack, DULL).asDustBasic().add(ORE).add(new MaterialStack(Tungsten, 1), new MaterialStack(Lithium, 2), new MaterialStack(Oxygen, 4));
+    public static Materials Uraninite = new Materials(922, "Uraninite", 35, 35, 35, dyeLime, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Uranium, 1), new MaterialStack(Oxygen, 2));
     public static Materials Uvarovite = new Materials(842, "Uvarovite", 180, 255, 180, dyeGreen, DIAMOND).asDustBasic().add(new MaterialStack(Calcium, 3), new MaterialStack(Chrome, 2), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12));
-    public static Materials Wood = new Materials(809, "Wood", 100, 50, 0, dyeBrown, WOOD).asDustBasic().addTools(2.0F, 16, 0).add(GEAR).add(new MaterialStack(Carbon, 1), new MaterialStack(Oxygen, 1), new MaterialStack(Hydrogen, 1));
-    public static Materials Wulfenite = new Materials(882, "Wulfenite", 255, 128, 0, dyeOrange, DULL).asDustOreBasic(false).add(new MaterialStack(Lead, 1), new MaterialStack(Molybdenum, 1), new MaterialStack(Oxygen, 4));
-    public static Materials YellowLimonite = new Materials(931, "Yellow Limonite", 200, 200, 0, dyeYellow, METALLIC).asDustOreBasic(false).add(new MaterialStack(Iron, 1), new MaterialStack(Hydrogen, 1), new MaterialStack(Oxygen, 2));
+    public static Materials Wood = new Materials(809, "Wood", 100, 50, 0, dyeBrown, WOOD).asDustBasic().addTools(2.0F, 16, 0).add(PLATE, GEAR).add(new MaterialStack(Carbon, 1), new MaterialStack(Oxygen, 1), new MaterialStack(Hydrogen, 1));
+    public static Materials Wulfenite = new Materials(882, "Wulfenite", 255, 128, 0, dyeOrange, DULL).asDustBasic().add(ORE).add(new MaterialStack(Lead, 1), new MaterialStack(Molybdenum, 1), new MaterialStack(Oxygen, 4));
+    public static Materials YellowLimonite = new Materials(931, "Yellow Limonite", 200, 200, 0, dyeYellow, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Iron, 1), new MaterialStack(Hydrogen, 1), new MaterialStack(Oxygen, 2));
     public static Materials WoodSealed = new Materials(889, "Sealed Wood", 80, 40, 0, dyeBrown, WOOD).asDustBasic().addTools(3.0F, 24, 0).add(new MaterialStack(Wood, 1));
     public static Materials Blaze = new Materials(801, "Blaze", 255, 200, 0, dyeYellow, POWDER).asDustBasic().add(new MaterialStack(DarkAsh, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Magic, 1));
     public static Materials Flint = new Materials(802, "Flint", 0, 32, 64, dyeGray, FLINT).asDustBasic().addTools(2.5F, 64, 1).add(new MaterialStack(SiliconDioxide, 1));
@@ -318,66 +319,67 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials Biotite = new Materials(848, "Biotite", 20, 30, 20, dyeGray, METALLIC).asDustBasic().add(new MaterialStack(Potassium, 1), new MaterialStack(Magnesium, 3), new MaterialStack(Aluminium, 3), new MaterialStack(Fluorine, 2), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 10));
     public static Materials GraniteBlack = new Materials(849, "Black Granite", 10, 10, 10, dyeBlack, ROUGH).asDustBasic().addTools(4.0F, 64, 3).add(new MaterialStack(SiliconDioxide, 4), new MaterialStack(Biotite, 1));
     public static Materials GraniteRed = new Materials(850, "Red Granite", 255, 0, 128, dyeMagenta, ROUGH).asDustBasic().addTools(4.0F, 64, 3).add(new MaterialStack(Aluminium, 2), new MaterialStack(PotassiumFeldspar, 1), new MaterialStack(Oxygen, 3));
-    public static Materials VanadiumMagnetite = new Materials(923, "Vanadium Magnetite", 35, 35, 60, dyeBlack, METALLIC).asDustOreBasic(false).add(new MaterialStack(Magnetite, 1), new MaterialStack(Vanadium, 1));
+    public static Materials VanadiumMagnetite = new Materials(923, "Vanadium Magnetite", 35, 35, 60, dyeBlack, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Magnetite, 1), new MaterialStack(Vanadium, 1));
     public static Materials GraniticMineralSand = new Materials(936, "Granitic Mineral Sand", 40, 60, 60, dyeBlack, SAND).asDustBasic().add(new MaterialStack(Magnetite, 1), new MaterialStack(GraniteBlack, 1));
-    public static Materials Bastnasite = new Materials(905, "Bastnasite", 200, 110, 45, dyeNULL, FINE).asDustOreBasic(false).add(new MaterialStack(Cerium, 1), new MaterialStack(Carbon, 1), new MaterialStack(Fluorine, 1), new MaterialStack(Oxygen, 3));
-    public static Materials Pentlandite = new Materials(909, "Pentlandite", 165, 150, 5, dyeNULL, DULL).asDustOreBasic(false).add(new MaterialStack(Nickel, 9), new MaterialStack(Sulfur, 8));
-    public static Materials Spodumene = new Materials(920, "Spodumene", 190, 170, 170, dyeNULL, DULL).asDustOreBasic(false).add(new MaterialStack(Lithium, 1), new MaterialStack(Aluminium, 1), new MaterialStack(Silicon, 2), new MaterialStack(Oxygen, 6));
-    public static Materials Tantalite = new Materials(921, "Tantalite", 145, 80, 40, dyeNULL, METALLIC).asDustOreBasic(false).add(new MaterialStack(Manganese, 1), new MaterialStack(Tantalum, 2), new MaterialStack(Oxygen, 6));
-    public static Materials Lepidolite = new Materials(907, "Lepidolite", 240, 50, 140, dyeNULL, FINE).asDustOreBasic(false).add(new MaterialStack(Potassium, 1), new MaterialStack(Lithium, 3), new MaterialStack(Aluminium, 4), new MaterialStack(Fluorine, 2), new MaterialStack(Oxygen, 10));
-    public static Materials Glauconite = new Materials(933, "Glauconite", 130, 180, 60, dyeNULL, DULL).asDustOreBasic(false).add(new MaterialStack(Potassium, 1), new MaterialStack(Magnesium, 2), new MaterialStack(Aluminium, 4), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 12));
+    public static Materials Bastnasite = new Materials(905, "Bastnasite", 200, 110, 45, dyeNULL, FINE).asDustBasic().add(ORE).add(new MaterialStack(Cerium, 1), new MaterialStack(Carbon, 1), new MaterialStack(Fluorine, 1), new MaterialStack(Oxygen, 3));
+    public static Materials Pentlandite = new Materials(909, "Pentlandite", 165, 150, 5, dyeNULL, DULL).asDustBasic().add(ORE).add(new MaterialStack(Nickel, 9), new MaterialStack(Sulfur, 8));
+    public static Materials Spodumene = new Materials(920, "Spodumene", 190, 170, 170, dyeNULL, DULL).asDustBasic().add(ORE).add(new MaterialStack(Lithium, 1), new MaterialStack(Aluminium, 1), new MaterialStack(Silicon, 2), new MaterialStack(Oxygen, 6));
+    public static Materials Tantalite = new Materials(921, "Tantalite", 145, 80, 40, dyeNULL, METALLIC).asDustBasic().add(ORE).add(new MaterialStack(Manganese, 1), new MaterialStack(Tantalum, 2), new MaterialStack(Oxygen, 6));
+    public static Materials Lepidolite = new Materials(907, "Lepidolite", 240, 50, 140, dyeNULL, FINE).asDustBasic().add(ORE).add(new MaterialStack(Potassium, 1), new MaterialStack(Lithium, 3), new MaterialStack(Aluminium, 4), new MaterialStack(Fluorine, 2), new MaterialStack(Oxygen, 10));
+    public static Materials Glauconite = new Materials(933, "Glauconite", 130, 180, 60, dyeNULL, DULL).asDustBasic().add(ORE).add(new MaterialStack(Potassium, 1), new MaterialStack(Magnesium, 2), new MaterialStack(Aluminium, 4), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 12));
     public static Materials GlauconiteSand = new Materials(949, "Glauconite Sand", 130, 180, 60, dyeNULL, DULL).asDustBasic().add(new MaterialStack(Potassium, 1), new MaterialStack(Magnesium, 2), new MaterialStack(Aluminium, 4), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 12));
-    public static Materials Bentonite = new Materials(927, "Bentonite", 245, 215, 210, dyeNULL, ROUGH).asDustOreBasic(false).add(new MaterialStack(Sodium, 1), new MaterialStack(Magnesium, 6), new MaterialStack(Silicon, 12), new MaterialStack(Hydrogen, 6), new MaterialStack(Water, 5), new MaterialStack(Oxygen, 36));
-    public static Materials Pitchblende = new Materials(873, "Pitchblende", 200, 210, 0, dyeYellow, DULL).asDustOreBasic(false).add(new MaterialStack(Uraninite, 3), new MaterialStack(Thorium, 1), new MaterialStack(Lead, 1));
-    public static Materials Malachite = new Materials(871, "Malachite", 5, 95, 5, dyeGreen, DULL).asDustOreBasic(false).add(new MaterialStack(Copper, 2), new MaterialStack(Carbon, 1), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 5));
-    public static Materials Barite = new Materials(904, "Barite", 230, 235, 255, dyeNULL, DULL).asDustOreBasic(false).add(new MaterialStack(Barium, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Oxygen, 4));
-    public static Materials Talc = new Materials(902, "Talc", 90, 180, 90, dyeNULL, DULL).asDustOreBasic(false).add(new MaterialStack(Magnesium, 3), new MaterialStack(Silicon, 4), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 12));
-    public static Materials Soapstone = new Materials(877, "Soapstone", 95, 145, 95, 9, dyeNULL, DULL).asDustOreBasic(false).add(new MaterialStack(Magnesium, 3), new MaterialStack(Silicon, 4), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 12));
+    public static Materials Bentonite = new Materials(927, "Bentonite", 245, 215, 210, dyeNULL, ROUGH).asDustBasic().add(ORE).add(new MaterialStack(Sodium, 1), new MaterialStack(Magnesium, 6), new MaterialStack(Silicon, 12), new MaterialStack(Hydrogen, 6), new MaterialStack(Water, 5), new MaterialStack(Oxygen, 36));
+    public static Materials Pitchblende = new Materials(873, "Pitchblende", 200, 210, 0, dyeYellow, DULL).asDustBasic().add(ORE).add(new MaterialStack(Uraninite, 3), new MaterialStack(Thorium, 1), new MaterialStack(Lead, 1));
+    public static Materials Malachite = new Materials(871, "Malachite", 5, 95, 5, dyeGreen, DULL).asDustBasic().add(ORE).add(new MaterialStack(Copper, 2), new MaterialStack(Carbon, 1), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 5));
+    public static Materials Barite = new Materials(904, "Barite", 230, 235, 255, dyeNULL, DULL).asDustBasic().add(ORE).add(new MaterialStack(Barium, 1), new MaterialStack(Sulfur, 1), new MaterialStack(Oxygen, 4));
+    public static Materials Talc = new Materials(902, "Talc", 90, 180, 90, dyeNULL, DULL).asDustBasic().add(ORE).add(new MaterialStack(Magnesium, 3), new MaterialStack(Silicon, 4), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 12));
+    public static Materials Soapstone = new Materials(877, "Soapstone", 95, 145, 95, 9, dyeNULL, DULL).asDustBasic().add(ORE).add(new MaterialStack(Magnesium, 3), new MaterialStack(Silicon, 4), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 12));
     public static Materials Concrete = new Materials(947, "Concrete", 100, 100, 100, dyeGray, ROUGH).asDustBasic(300).add(new MaterialStack(Stone, 1));
     public static Materials AntimonyTrioxide = new Materials(618, "Antimony Trioxide", 230, 230, 240, dyeWhite, DULL).asDust().add(ELEC).add(new MaterialStack(Antimony, 2), new MaterialStack(Oxygen, 3));
     public static Materials CupricOxide = new Materials(619, "Cupric Oxide", 15, 15, 15, dyeBlack, DULL).asDust().add(ELEC).add(new MaterialStack(Copper, 1), new MaterialStack(Oxygen, 1));
     public static Materials Ferrosilite = new Materials(620, "Ferrosilite", 151, 99, 42, dyeBrown, DULL).asDust().add(ELEC).add(new MaterialStack(Iron, 1), new MaterialStack(Silicon, 1), new MaterialStack(Oxygen, 3));
 
     //Gems
-    public static Materials Amber = new Materials(514, "Amber", 255, 128, 0, 127, dyeOrange, RUBY).asGemOre(true, true).addTools(4.0F, 128, 2);
-    public static Materials CertusQuartz = new Materials(516, "Certus Quartz", 210, 210, 230, dyeLightGray, QUARTZ).asGemOre(false, false).addTools(5.0F, 32, 1);
-    public static Materials Dilithium = new Materials(515, "Dilithium", 255, 250, 250, 127, dyeWhite, DIAMOND).asGem(true).add(CELL);
-    public static Materials InfusedAir = new Materials(540, "Infused Air", 255, 255, 0, dyeYellow, SHARDS).asGemOre(false, true).addTools(8.0F, 64, 3);
-    public static Materials InfusedFire = new Materials(541, "Infused Fire", 255, 0, 0, dyeRed, SHARDS).asGemOre(false, true).addTools(8.0F, 64, 3);
-    public static Materials InfusedEarth = new Materials(542, "Infused Earth", 0, 255, 0, dyeGreen, SHARDS).asGemOre(false, true).addTools(8.0F, 256, 3);
-    public static Materials InfusedWater = new Materials(543, "Infused Water", 0, 0, 255, dyeYellow, SHARDS).asGemOre(false, true).addTools(8.0F, 64, 3);
-    public static Materials InfusedEntropy = new Materials(544, "Infused Entropy", 62, 62, 62, dyeBlack, SHARDS).asGemOre(false, true).addTools(32.0F, 64, 4);
-    public static Materials InfusedOrder = new Materials(545, "Infused Order", 252, 252, 252, dyeWhite, SHARDS).asGemOre(false, true).addTools(8.0F, 64, 3);
-    public static Materials NetherQuartz = new Materials(522, "Nether Quartz", 230, 210, 210, dyeWhite, QUARTZ).asGemOre(true, false).addTools(1.0F, 32, 1);
-    public static Materials NetherStar = new Materials(506, "Nether Star", 255, 255, 255, dyeWhite, NETHERSTAR).asGem(false).addTools(1.0F, 5120, 4);
-    public static Materials Quartzite = new Materials(523, "Quartzite", 210, 230, 210, dyeWhite, QUARTZ).asGemOre(false, false).add(new MaterialStack(Silicon, 1), new MaterialStack(Oxygen, 2));
-    public static Materials BlueTopaz = new Materials(513, "Blue Topaz", 0, 0, 255, 127, dyeBlue, GEMH).asGemOre(true, true).addTools(7.0F, 256, 3).add(new MaterialStack(Aluminium, 2), new MaterialStack(Silicon, 1), new MaterialStack(Fluorine, 2), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 6));
-    public static Materials Charcoal = new Materials(536, "Charcoal", 100, 70, 70, dyeBlack, FINE).asGem(false).add(new MaterialStack(Carbon, 1));
-    public static Materials Coal = new Materials(535, "Coal", 70, 70, 70, dyeBlack, ROUGH).asGemOre(true, false).add(new MaterialStack(Carbon, 1));
-    public static Materials Diamond = new Materials(500, "Diamond", 200, 255, 255, 127, dyeWhite, DIAMOND).asGemOre(true, true).add(GEAR).addTools(8.0F, 1280, 3).add(new MaterialStack(Carbon, 1));
-    public static Materials Emerald = new Materials(501, "Emerald", 80, 255, 80, 127, dyeGreen, EMERALD).asGemOre(true, true).addTools(7.0F, 256, 2).add(new MaterialStack(Silver, 1), new MaterialStack(Gold, 1));
-    public static Materials GreenSapphire = new Materials(504, "Green Sapphire", 100, 200, 130, 127, dyeCyan, GEMH).asGemOre(true, true).addTools(7.0F, 256, 2).add(new MaterialStack(Aluminium, 2), new MaterialStack(Oxygen, 3));
-    public static Materials Lazurite = new Materials(524, "Lazurite", 100, 120, 255, dyeCyan, LAPIS).asGemOre(false, false).add(new MaterialStack(Aluminium, 6), new MaterialStack(Silicon, 6), new MaterialStack(Calcium, 8), new MaterialStack(Sodium, 8));
-    public static Materials Ruby = new Materials(502, "Ruby", 255, 100, 100, 127, dyeRed, RUBY).asGemOre(true, true).addTools(7.0F, 256, 2);
-    public static Materials Sapphire = new Materials(503, "Sapphire", 100, 100, 200, 127, dyeBlue, GEMV).asGemOre(true, true).addTools(7.0F, 256, 2).add(new MaterialStack(Aluminium, 2), new MaterialStack(Oxygen, 3));
-    public static Materials Sodalite = new Materials(525, "Sodalite", 20, 20, 255, dyeBlue, LAPIS).asGemOre(false, false).add(new MaterialStack(Aluminium, 3), new MaterialStack(Silicon, 3), new MaterialStack(Sodium, 4), new MaterialStack(Chlorine, 1));
-    public static Materials Tanzanite = new Materials(508, "Tanzanite", 64, 0, 200, 127, dyePurple, GEMV).asGemOre(true, true).addTools(7.0F, 256, 2).add(new MaterialStack(Calcium, 2), new MaterialStack(Aluminium, 3), new MaterialStack(Silicon, 3), new MaterialStack(Hydrogen, 1), new MaterialStack(Oxygen, 13));
-    public static Materials Topaz = new Materials(507, "Topaz", 255, 128, 0, 127, dyePurple, GEMH).asGemOre(true, true).addTools(7.0F, 256, 3).add(new MaterialStack(Aluminium, 2), new MaterialStack(Silicon, 1), new MaterialStack(Fluorine, 2), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 6));
+    public static Materials Amber = new Materials(514, "Amber", 255, 128, 0, 127, dyeOrange, RUBY).asGem(true).addTools(4.0F, 128, 2).add(SORE);
+    public static Materials CertusQuartz = new Materials(516, "Certus Quartz", 210, 210, 230, dyeLightGray, QUARTZ).asGemBasic(false).addTools(5.0F, 32, 1).add(ORE);
+    public static Materials Dilithium = new Materials(515, "Dilithium", 255, 250, 250, 127, dyeWhite, DIAMOND).asGemBasic(true).add(CELL);
+    public static Materials InfusedAir = new Materials(540, "Infused Air", 255, 255, 0, dyeYellow, SHARDS).asGem(true).addTools(8.0F, 64, 3).add(ORE);
+    public static Materials InfusedFire = new Materials(541, "Infused Fire", 255, 0, 0, dyeRed, SHARDS).asGem(true).addTools(8.0F, 64, 3).add(ORE);
+    public static Materials InfusedEarth = new Materials(542, "Infused Earth", 0, 255, 0, dyeGreen, SHARDS).asGem(true).addTools(8.0F, 256, 3).add(ORE);
+    public static Materials InfusedWater = new Materials(543, "Infused Water", 0, 0, 255, dyeYellow, SHARDS).asGem(true).addTools(8.0F, 64, 3).add(ORE);
+    public static Materials InfusedEntropy = new Materials(544, "Infused Entropy", 62, 62, 62, dyeBlack, SHARDS).asGem(true).addTools(32.0F, 64, 4).add(ORE);
+    public static Materials InfusedOrder = new Materials(545, "Infused Order", 252, 252, 252, dyeWhite, SHARDS).asGem(true).addTools(8.0F, 64, 3).add(ORE);
+    public static Materials NetherQuartz = new Materials(522, "Nether Quartz", 230, 210, 210, dyeWhite, QUARTZ).asGemBasic(false).addTools(1.0F, 32, 1).add(ORE, SORE);
+    public static Materials NetherStar = new Materials(506, "Nether Star", 255, 255, 255, dyeWhite, NETHERSTAR).asGemBasic(false).addTools(1.0F, 5120, 4);
+    public static Materials Quartzite = new Materials(523, "Quartzite", 210, 230, 210, dyeWhite, QUARTZ).asGemBasic(false).add(ORE).add(new MaterialStack(Silicon, 1), new MaterialStack(Oxygen, 2));
+    public static Materials BlueTopaz = new Materials(513, "Blue Topaz", 0, 0, 255, 127, dyeBlue, GEMH).asGemBasic(true).add(SORE).addTools(7.0F, 256, 3).add(new MaterialStack(Aluminium, 2), new MaterialStack(Silicon, 1), new MaterialStack(Fluorine, 2), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 6));
+    public static Materials Charcoal = new Materials(536, "Charcoal", 100, 70, 70, dyeBlack, FINE).asGemBasic(false).add(new MaterialStack(Carbon, 1));
+    public static Materials Coal = new Materials(535, "Coal", 70, 70, 70, dyeBlack, ROUGH).asGemBasic(false).add(ORE, SORE).add(new MaterialStack(Carbon, 1));
+    public static Materials Diamond = new Materials(500, "Diamond", 200, 255, 255, 127, dyeWhite, DIAMOND).asGem(true).add(ORE, SORE).add(GEAR).addTools(8.0F, 1280, 3).add(new MaterialStack(Carbon, 1));
+    public static Materials Emerald = new Materials(501, "Emerald", 80, 255, 80, 127, dyeGreen, EMERALD).asGem(true).add(ORE, SORE).addTools(7.0F, 256, 2).add(new MaterialStack(Silver, 1), new MaterialStack(Gold, 1));
+    public static Materials GreenSapphire = new Materials(504, "Green Sapphire", 100, 200, 130, 127, dyeCyan, GEMH).asGem(true).add(ORE, SORE).addTools(7.0F, 256, 2).add(new MaterialStack(Aluminium, 2), new MaterialStack(Oxygen, 3));
+    public static Materials Lazurite = new Materials(524, "Lazurite", 100, 120, 255, dyeCyan, LAPIS).asGemBasic(false).add(ORE, SORE).add(new MaterialStack(Aluminium, 6), new MaterialStack(Silicon, 6), new MaterialStack(Calcium, 8), new MaterialStack(Sodium, 8));
+    public static Materials Ruby = new Materials(502, "Ruby", 255, 100, 100, 127, dyeRed, RUBY).asGem(true).add(ORE, SORE).addTools(7.0F, 256, 2);
+    public static Materials Sapphire = new Materials(503, "Sapphire", 100, 100, 200, 127, dyeBlue, GEMV).asGem(true).add(ORE, SORE).addTools(7.0F, 256, 2).add(new MaterialStack(Aluminium, 2), new MaterialStack(Oxygen, 3));
+    public static Materials Sodalite = new Materials(525, "Sodalite", 20, 20, 255, dyeBlue, LAPIS).asGemBasic(false).add(ORE).add(new MaterialStack(Aluminium, 3), new MaterialStack(Silicon, 3), new MaterialStack(Sodium, 4), new MaterialStack(Chlorine, 1));
+    public static Materials Tanzanite = new Materials(508, "Tanzanite", 64, 0, 200, 127, dyePurple, GEMV).asGem(true).add(SORE).addTools(7.0F, 256, 2).add(new MaterialStack(Calcium, 2), new MaterialStack(Aluminium, 3), new MaterialStack(Silicon, 3), new MaterialStack(Hydrogen, 1), new MaterialStack(Oxygen, 13));
+    public static Materials Topaz = new Materials(507, "Topaz", 255, 128, 0, 127, dyePurple, GEMH).asGem(true).add(SORE).addTools(7.0F, 256, 3).add(new MaterialStack(Aluminium, 2), new MaterialStack(Silicon, 1), new MaterialStack(Fluorine, 2), new MaterialStack(Hydrogen, 2), new MaterialStack(Oxygen, 6));
     public static Materials Glass = new Materials(890, "Glass", 250, 250, 250, 220, dyeWhite, GLASS).asGem(true).add(new MaterialStack(SiliconDioxide, 1));
     public static Materials BorosilicateGlass = new Materials(611, "Borosilicate Glass", 230, 243, 230, dyeWhite, GLASS).asSolid().add(CENT).add(new MaterialStack(Boron, 1), new MaterialStack(Glass, 7));
-    public static Materials Lignite = new Materials(538, "Lignite Coal", 100, 70, 70, dyeBlack, LIGNITE).asGemOre(false, false).add(new MaterialStack(Carbon, 3), new MaterialStack(Water, 1));
-    public static Materials Olivine = new Materials(505, "Olivine", 150, 255, 150, 127, dyeLime, RUBY).asGemOre(true, true).addTools(7.0F, 256, 2).add(new MaterialStack(Magnesium, 2), new MaterialStack(Iron, 1), new MaterialStack(SiliconDioxide, 2));
-    public static Materials Opal = new Materials (510, "Opal", 0, 0, 255, dyeBlue, OPAL).asGemOre(true, true).addTools(7.0F, 256, 2).add(new MaterialStack(SiliconDioxide, 1));
-    public static Materials Amethyst = new Materials(509, "Amethyst", 210, 50, 210, 127, dyePink, FLINT).asGemOre(true, true).addTools(7.0F, 256, 3).add(new MaterialStack(SiliconDioxide, 4), new MaterialStack(Iron, 1));
-    public static Materials Lapis = new Materials(526, "Lapis", 70, 70, 220, dyeBlue, LAPIS).asGemOre(true, false).add(new MaterialStack(Lazurite, 12), new MaterialStack(Sodalite, 2), new MaterialStack(Pyrite, 1), new MaterialStack(Calcite, 1));
-    public static Materials EnderPearl = new Materials(532, "Enderpearl", 108, 220, 200, dyeGreen, SHINY).asGem(false).add(STICK, PLATE).add(new MaterialStack(Beryllium, 1), new MaterialStack(Potassium, 4), new MaterialStack(Nitrogen, 5), new MaterialStack(Magic, 6));
-    public static Materials EnderEye = new Materials(533, "Endereye", 160, 250, 230, dyeGreen, SHINY).asGem(false).add(STICK, PLATE).add(new MaterialStack(EnderPearl, 1), new MaterialStack(Blaze, 1));
-    public static Materials Apatite = new Materials(530, "Apatite", 200, 200, 255, dyeCyan, DIAMOND).asGemOre(false, false).add(new MaterialStack(Calcium, 5), new MaterialStack(Phosphate, 3), new MaterialStack(Chlorine, 1));
-    public static Materials Phosphorus = new Materials(534, "Phosphorus", 255, 255, 0, dyeYellow, FLINT).asGemOre(false, false).add(CELL).add(new MaterialStack(Calcium, 3), new MaterialStack(Phosphate, 2));
-    public static Materials GarnetRed = new Materials(527, "Red Garnet", 200, 80, 80, 127, dyeRed, RUBY).asGemOre(true, true).addTools(7.0F, 128, 2).add(new MaterialStack(Pyrope, 3), new MaterialStack(Almandine, 5), new MaterialStack(Spessartine, 8));
-    public static Materials GarnetYellow = new Materials(528, "Yellow Garnet", 200, 200, 80, 127, dyeYellow, RUBY).asGemOre(true, true).addTools(7.0F, 128, 2).add(new MaterialStack(Andradite, 5), new MaterialStack(Grossular, 8), new MaterialStack(Uvarovite, 3));
-    public static Materials Monazite = new Materials(520, "Monazite", 50, 70, 50, dyeGreen, DIAMOND).asGemOre(false, false).add(new MaterialStack(RareEarth, 1), new MaterialStack(Phosphate, 1));
-    public static Materials Redstone = new Materials(810, "Redstone", 200, 0, 0, dyeRed, ROUGH).asDustOreBasic(true).add(new MaterialStack(Silicon, 1), new MaterialStack(Pyrite, 5), new MaterialStack(Ruby, 1), new MaterialStack(Mercury, 3));
+    public static Materials Lignite = new Materials(538, "Lignite Coal", 100, 70, 70, dyeBlack, LIGNITE).asGemBasic(false).add(ORE).add(new MaterialStack(Carbon, 3), new MaterialStack(Water, 1));
+    public static Materials Olivine = new Materials(505, "Olivine", 150, 255, 150, 127, dyeLime, RUBY).asGem(true).add(ORE, SORE).addTools(7.0F, 256, 2).add(new MaterialStack(Magnesium, 2), new MaterialStack(Iron, 1), new MaterialStack(SiliconDioxide, 2));
+    public static Materials Opal = new Materials (510, "Opal", 0, 0, 255, dyeBlue, OPAL).asGem(true).add(SORE).addTools(7.0F, 256, 2).add(new MaterialStack(SiliconDioxide, 1));
+    public static Materials Amethyst = new Materials(509, "Amethyst", 210, 50, 210, 127, dyePink, FLINT).asGem(true).add(SORE).addTools(7.0F, 256, 3).add(new MaterialStack(SiliconDioxide, 4), new MaterialStack(Iron, 1));
+    public static Materials Lapis = new Materials(526, "Lapis", 70, 70, 220, dyeBlue, LAPIS).asGemBasic(false).add(ORE, SORE).add(new MaterialStack(Lazurite, 12), new MaterialStack(Sodalite, 2), new MaterialStack(Pyrite, 1), new MaterialStack(Calcite, 1));
+    public static Materials EnderPearl = new Materials(532, "Enderpearl", 108, 220, 200, dyeGreen, SHINY).asGemBasic(false).add(STICK, PLATE).add(new MaterialStack(Beryllium, 1), new MaterialStack(Potassium, 4), new MaterialStack(Nitrogen, 5), new MaterialStack(Magic, 6));
+    public static Materials EnderEye = new Materials(533, "Endereye", 160, 250, 230, dyeGreen, SHINY).asGemBasic(false).add(STICK, PLATE).add(new MaterialStack(EnderPearl, 1), new MaterialStack(Blaze, 1));
+    public static Materials Apatite = new Materials(530, "Apatite", 200, 200, 255, dyeCyan, DIAMOND).asGemBasic(false).add(ORE).add(new MaterialStack(Calcium, 5), new MaterialStack(Phosphate, 3), new MaterialStack(Chlorine, 1));
+    public static Materials Phosphorus = new Materials(534, "Phosphorus", 255, 255, 0, dyeYellow, FLINT).asGemBasic(false).add(CELL, ORE).add(new MaterialStack(Calcium, 3), new MaterialStack(Phosphate, 2));
+    public static Materials GarnetRed = new Materials(527, "Red Garnet", 200, 80, 80, 127, dyeRed, RUBY).asGem(true).add(SORE).addTools(7.0F, 128, 2).add(new MaterialStack(Pyrope, 3), new MaterialStack(Almandine, 5), new MaterialStack(Spessartine, 8));
+    public static Materials GarnetYellow = new Materials(528, "Yellow Garnet", 200, 200, 80, 127, dyeYellow, RUBY).asGem(true).add(SORE).addTools(7.0F, 128, 2).add(new MaterialStack(Andradite, 5), new MaterialStack(Grossular, 8), new MaterialStack(Uvarovite, 3));
+    public static Materials Monazite = new Materials(520, "Monazite", 50, 70, 50, dyeGreen, DIAMOND).asGemBasic(false).add(ORE).add(new MaterialStack(RareEarth, 1), new MaterialStack(Phosphate, 1));
+
+    public static Materials Redstone = new Materials(810, "Redstone", 200, 0, 0, dyeRed, ROUGH).asDustBasic().add(ORE, SORE).add(new MaterialStack(Silicon, 1), new MaterialStack(Pyrite, 5), new MaterialStack(Ruby, 1), new MaterialStack(Mercury, 3));
     public static Materials Basalt = new Materials(844, "Basalt", 30, 20, 20, dyeBlack, ROUGH).asDustBasic().add(new MaterialStack(Olivine, 1), new MaterialStack(Calcite, 3), new MaterialStack(Flint, 8), new MaterialStack(DarkAsh, 4));
     public static Materials BasalticMineralSand = new Materials(935, "Basaltic Mineral Sand", 40, 50, 40, dyeBlack, SAND).asDustBasic().add(new MaterialStack(Magnetite, 1), new MaterialStack(Basalt, 1));
 
@@ -395,8 +397,8 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials NiobiumTitanium = new Materials(360, "Niobium Titanium", 29, 29, 41, dyeBlack, DULL).asMetal(4500, 4500).add(PLATE, FOIL, FWIRE).add(new MaterialStack(Nickel, 4), new MaterialStack(Chrome, 1));
     public static Materials PigIron = new Materials(307, "Pig Iron", 200, 180, 180, dyePink, METALLIC).asMetal().addTools(6.0F, 384, 2).add(new MaterialStack(Iron, 1));
     public static Materials SolderingAlloy = new Materials(314, "Soldering Alloy", 220, 220, 230, dyeWhite, DULL).asMetal(400, 400).add(PLATE, FOIL, FWIRE).add(new MaterialStack(Tin, 9), new MaterialStack(Antimony, 1));
-    public static Materials StainlessSteel = new Materials(306, "Stainless Steel", 200, 200, 220, dyeWhite, SHINY).asMetal(-1, 1700).add(GEAR, SGEAR, FRAME).addTools(7.0F, 480, 2).add(new MaterialStack(Iron, 6), new MaterialStack(Chrome, 1), new MaterialStack(Manganese, 1), new MaterialStack(Nickel, 1));
-    public static Materials Steel = new Materials(305, "Steel", 128, 128, 128, dyeGray, METALLIC).asMetal(1811, 1000).add(GEAR, SGEAR, PLATE, FOIL, FWIRE, FRAME).addTools(6.0F, 512, 2).add(new MaterialStack(Iron, 50), new MaterialStack(Carbon, 1));
+    public static Materials StainlessSteel = new Materials(306, "Stainless Steel", 200, 200, 220, dyeWhite, SHINY).asMetal(-1, 1700).add(SCREW, GEAR, SGEAR, FRAME).addTools(7.0F, 480, 2).add(new MaterialStack(Iron, 6), new MaterialStack(Chrome, 1), new MaterialStack(Manganese, 1), new MaterialStack(Nickel, 1));
+    public static Materials Steel = new Materials(305, "Steel", 128, 128, 128, dyeGray, METALLIC).asMetal(1811, 1000).add(GEAR, SGEAR, PLATE, FOIL, FWIRE, SCREW, RING, FRAME).addTools(6.0F, 512, 2).add(new MaterialStack(Iron, 50), new MaterialStack(Carbon, 1));
     public static Materials Ultimet = new Materials(344, "Ultimet", 180, 180, 230, dyeLightBlue, SHINY).asMetal(2700, 2700).add(new MaterialStack(Cobalt, 5), new MaterialStack(Chrome, 2), new MaterialStack(Nickel, 1), new MaterialStack(Molybdenum, 1));
     public static Materials VanadiumGallium = new Materials(357, "Vanadium Gallium", 128, 128, 140, dyeGray, SHINY).asMetal(4500, 4500).add(STICK).add(new MaterialStack(Vanadium, 3), new MaterialStack(Gallium, 1));
     public static Materials WroughtIron = new Materials(304, "Wrought Iron", 200, 180, 180, dyeLightGray, METALLIC).asMetal(1811, 0).add(FRAME).addTools(6.0F, 384, 2).add(new MaterialStack(Iron, 1));
@@ -409,7 +411,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials RedSteel = new Materials(348, "Red Steel", 140, 100, 100, dyeRed, METALLIC).asMetal(-1, 1300).addTools(7.0F, 896, 2).add(new MaterialStack(SterlingSilver, 1), new MaterialStack(BismuthBronze, 1), new MaterialStack(Steel, 2), new MaterialStack(BlackSteel, 4));
     public static Materials BlueSteel = new Materials(349, "Blue Steel", 100, 100, 140, dyeBlue, METALLIC).asMetal(-1, 1400).add(FRAME).addTools(7.5F, 1024, 2).add(new MaterialStack(RoseGold, 1), new MaterialStack(Brass, 1), new MaterialStack(Steel, 2), new MaterialStack(BlackSteel, 4));
     public static Materials DamascusSteel = new Materials(335, "Damascus Steel", 110, 110, 110, dyeGray, METALLIC).asMetal(2500, 1500).addTools(8.0F, 1280, 2).add(new MaterialStack(Steel, 1));
-    public static Materials TungstenSteel = new Materials(316, "Tungstensteel", 100, 100, 160, dyeBlue, METALLIC).asMetal(-1, 3000).add(GEAR, SGEAR, FRAME).addTools(8.0F, 2560, 4).add(new MaterialStack(Steel, 1), new MaterialStack(Tungsten, 1));
+    public static Materials TungstenSteel = new Materials(316, "Tungstensteel", 100, 100, 160, dyeBlue, METALLIC).asMetal(-1, 3000).add(SCREW, GEAR, SGEAR, FRAME).addTools(8.0F, 2560, 4).add(new MaterialStack(Steel, 1), new MaterialStack(Tungsten, 1));
     public static Materials RedAlloy = new Materials(308, "Red Alloy", 200, 0, 0, dyeRed, DULL).asMetal().add(PLATE, FOIL, FWIRE).add(new MaterialStack(Copper, 1), new MaterialStack(Redstone, 4));
     public static Materials CobaltBrass = new Materials(343, "Cobalt Brass", 180, 180, 160, dyeOrange, METALLIC).asMetal().add(GEAR).addTools(8.0F, 256, 2).add(new MaterialStack(Brass, 7), new MaterialStack(Aluminium, 1), new MaterialStack(Cobalt, 1));
     public static Materials Thaumium = new Materials(330, "Thaumium", 150, 100, 200, dyePurple, METALLIC).asMetal().addTools(12.0F, 256, 3).add(new MaterialStack(Iron, 1), new MaterialStack(Magic, 1));
@@ -423,27 +425,27 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials HSSE = new Materials(373, "HSSE", 51, 102, 0, dyeBlue, METALLIC).asMetal(5400, 5400).add(GEAR, SGEAR, FRAME).addTools(10.0F, 5120, 4).add(new MaterialStack(HSSG, 6), new MaterialStack(Cobalt, 1), new MaterialStack(Manganese, 1), new MaterialStack(Silicon, 1));
     public static Materials HSSS = new Materials(374, "HSSS", 102, 0, 51, dyeRed, METALLIC).asMetal(5400, 5400).addTools(14.0F, 3000, 4).add(new MaterialStack(HSSG, 6), new MaterialStack(Iridium, 2), new MaterialStack(Osmium, 1));
     public static Materials Osmiridium = new Materials(317, "Osmiridium", 100, 100, 255, dyeLightBlue, METALLIC).asMetal(3333, 2500).add(FRAME).addTools(7.0F, 1600, 3);
-    public static Materials Desh = new Materials(884, "Desh", 40, 40, 40, dyeBlack, DULL).asMetalOre(false).addTools(1.0F, 1280, 3);
+    public static Materials Desh = new Materials(884, "Desh", 40, 40, 40, dyeBlack, DULL).asMetal().addTools(1.0F, 1280, 3).add(ORE);
     public static Materials Duranium = new Materials(328, "Duranium", 255, 255, 255, dyeLightGray, METALLIC).asMetal().addTools(16.0F, 5120, 5);
-    public static Materials MeteoricIron = new Materials(340, "Meteoric Iron", 100, 50, 80, dyeGray, METALLIC).asMetalOre(false, 1811).addTools(6.0F, 384, 2);
+    public static Materials MeteoricIron = new Materials(340, "Meteoric Iron", 100, 50, 80, dyeGray, METALLIC).asMetal(1811).addTools(6.0F, 384, 2).add(ORE);
     public static Materials MeteoricSteel = new Materials(341, "Meteoric Steel", 50, 25, 40, dyeGray, METALLIC).asMetal(1811, 1000).addTools(6.0F, 768, 2);
-    public static Materials Naquadah = new Materials(324, "Naquadah", 50, 50, 50, dyeBlack, METALLIC).asMetalOre(false, 5400, 5400).add(CELL).addTools(6.0F, 1280, 4);
+    public static Materials Naquadah = new Materials(324, "Naquadah", 50, 50, 50, dyeBlack, METALLIC).asMetal(5400, 5400).add(CELL).addTools(6.0F, 1280, 4).add(ORE);
     public static Materials NaquadahAlloy = new Materials(325, "Naquadah Alloy", 40, 40, 40, dyeBlack, METALLIC).asMetal(7200, 7200).addTools(8.0F, 5120, 5);
     public static Materials NaquadahEnriched = new Materials(326, "Naquadah Enriched", 50, 50, 50, dyeBlack, METALLIC).asMetal(4500, 4500).add(CELL).addTools(6.0F, 1280, 4);
-    public static Materials Naquadria = new Materials(327, "Naqiadria", 30, 30, 30, dyeBlack, SHINY).asMetalOre(false, 9000, 9000).add(CELL).addTools(1.0F, 512, 4);
+    public static Materials Naquadria = new Materials(327, "Naqiadria", 30, 30, 30, dyeBlack, SHINY).asMetal(9000, 9000).add(CELL).addTools(1.0F, 512, 4).add(ORE);
     public static Materials Tritanium = new Materials(329, "Tritanium", 255, 255, 255, dyeWhite, METALLIC).asMetal().add(FRAME).addTools(20.0F, 10240, 6);
 
     //Solids
     public static Materials Plastic = new Materials(874, "Plastic", 200, 200, 200, dyeWhite, DULL).asSolid().add(new MaterialStack(Carbon, 1), new MaterialStack(Hydrogen, 2));
     public static Materials Epoxid = new Materials(470, "Epoxid", 200, 140, 20, dyeWhite, DULL).asSolid(400).addTools(3.0F, 32, 1).add(new MaterialStack(Carbon, 2), new MaterialStack(Hydrogen, 4), new MaterialStack(Oxygen, 1));
-    public static Materials Silicone = new Materials(471, "Silicone", 220, 220, 220, dyeWhite, DULL).asSolid(900).addTools(3.0F, 128, 1).add(new MaterialStack(Carbon, 2), new MaterialStack(Hydrogen, 6), new MaterialStack(Oxygen, 1), new MaterialStack(Silicon, 1));
+    public static Materials Silicone = new Materials(471, "Silicone", 220, 220, 220, dyeWhite, DULL).asSolid(900)/*.addTools(3.0F, 128, 1)*/.add(new MaterialStack(Carbon, 2), new MaterialStack(Hydrogen, 6), new MaterialStack(Oxygen, 1), new MaterialStack(Silicon, 1));
     public static Materials Polycaprolactam = new Materials(472, "Polycaprolactam", 50, 50, 50, dyeWhite, DULL).asSolid(500).addTools(3.0F, 32, 1).add(new MaterialStack(Carbon, 6), new MaterialStack(Hydrogen, 11), new MaterialStack(Nitrogen, 1), new MaterialStack(Oxygen, 1));
     public static Materials Polytetrafluoroethylene = new Materials(473, "Polytetrafluoroethylene", 100, 100, 100, dyeWhite, DULL).asSolid(1400).add(FRAME).addTools(3.0F, 32, 1).add(new MaterialStack(Carbon, 2), new MaterialStack(Fluorine, 4));
-    public static Materials Rubber = new Materials(880, "Rubber", 0, 0, 0, dyeBlack, SHINY).asSolid().addTools(1.5F, 32, 0).add(new MaterialStack(Carbon, 5), new MaterialStack(Hydrogen, 8));
+    public static Materials Rubber = new Materials(880, "Rubber", 0, 0, 0, dyeBlack, SHINY).asSolid().add(PLATE, RING)/*.addTools(1.5F, 32, 0)*/.add(new MaterialStack(Carbon, 5), new MaterialStack(Hydrogen, 8));
     public static Materials PolyphenyleneSulfide = new Materials(631, "PolyphenyleneSulfide", 170, 136, 0, dyeBrown, DULL).asSolid().addTools(3.0F, 32, 1).add(new MaterialStack(Carbon, 6), new MaterialStack(Hydrogen, 4), new MaterialStack(Sulfur, 1));
-    public static Materials Polystyrene = new Materials(636, "Polystyrene", 190, 180, 170, dyeLightGray, DULL).asSolid().addTools(3.0F, 32, 1).add(new MaterialStack(Carbon, 8), new MaterialStack(Hydrogen, 8));
-    public static Materials StyreneButadieneRubber = new Materials(635, "Styrene-Butadiene Rubber", 33, 26, 24, dyeBlack, SHINY).asSolid().addTools(3.0F, 128, 1).add(new MaterialStack(Styrene, 1), new MaterialStack(Butadiene, 3));
-    public static Materials PolyvinylChloride = new Materials(649, "Polyvinyl Chloride", 215, 230, 230, dyeLightGray, FLUID).asSolid().addTools(3.0F, 32, 1).add(new MaterialStack(Carbon, 2), new MaterialStack(Hydrogen, 3), new MaterialStack(Chlorine, 1));
+    public static Materials Polystyrene = new Materials(636, "Polystyrene", 190, 180, 170, dyeLightGray, DULL).asSolid()/*.addTools(3.0F, 32, 1)*/.add(new MaterialStack(Carbon, 8), new MaterialStack(Hydrogen, 8));
+    public static Materials StyreneButadieneRubber = new Materials(635, "Styrene-Butadiene Rubber", 33, 26, 24, dyeBlack, SHINY).asSolid()/*.addTools(3.0F, 128, 1)*/.add(new MaterialStack(Styrene, 1), new MaterialStack(Butadiene, 3));
+    public static Materials PolyvinylChloride = new Materials(649, "Polyvinyl Chloride", 215, 230, 230, dyeLightGray, FLUID).asSolid()/*.addTools(3.0F, 32, 1)*/.add(new MaterialStack(Carbon, 2), new MaterialStack(Hydrogen, 3), new MaterialStack(Chlorine, 1));
     public static Materials GalliumArsenide = new Materials(980, "Gallium Arsenide", 160, 160, 160, dyeGray, DULL).asSolid(-1, 1200).add(new MaterialStack(Arsenic, 1), new MaterialStack(Gallium, 1));
     public static Materials IndiumGalliumPhosphide = new Materials(981, "Indium Gallium Phosphide", 160, 140, 190, dyeLightGray, DULL).asSolid().add(new MaterialStack(Indium, 1), new MaterialStack(Gallium, 1), new MaterialStack(Phosphor, 1));
     public static Materials EpoxidFiberReinforced = new Materials(610, "Fiber-Reinforced Epoxy Resin", 160, 112, 16, dyeBrown, DULL).asSolid(400).addTools(3.0F, 64, 1).add(new MaterialStack(Epoxid, 1));
@@ -504,11 +506,12 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public long mDensity = M;
     public long mMass, mProtons, mNeutrons = 0;
     public Element mElement = null;
-    public Materials mDirectSmelting = this, mOreReplacement = this, mMacerateInto = this, mSmeltInto = this, mArcSmeltInto = this, mHandleMaterial = this;
+    public Materials mDirectSmelting = this, mMacerateInto = this, mSmeltInto = this, mArcSmeltInto = this, mHandleMaterial = Materials.Wood;
     public byte mToolQuality = 0;
     public boolean mHasParentMod = true, mHasPlasma = false, mHasGas = false, mCustomOre = false;
-    public Fluid mSolid = null, mFluid = null, mGas = null, mPlasma = null;
-    private Fluid[] hydroCrackedFluids = new Fluid[3], steamCrackedFluids = new Fluid[3];
+    public Fluid mFluid = null, mGas = null, mPlasma = null;
+    public Fluid[] hydroCrackedFluids = new Fluid[3], steamCrackedFluids = new Fluid[3];
+    public GT_Block_Ores aOreBlock = null;
 
     /**
      * This Fluid is used as standard Unit for Molten Materials. 1296 is a Molten Block, that means 144 is one Material Unit worth of fluid.
@@ -937,7 +940,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
                             if (aMaterial.hasFlag(MaterialFlags.SOLID)) {
                                 aSolidList.add(aMaterial);
                             }
-                            if (aMaterial.hasFlag(MaterialFlags.ORE)) {
+                            if (aMaterial.hasFlag(MaterialFlags.ORE) || aMaterial.hasFlag(MaterialFlags.SORE)) {
                                 aOreList.add(aMaterial);
                             }
                         } else throw new IllegalArgumentException("The Material Index " + aMaterial.mMetaItemSubID + " for " + aMaterial.mName + " is already used!");
@@ -1126,25 +1129,26 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public Materials asFluid(int... fuelPower) {
         add(CFLUID, CELL);
         if (fuelPower.length >= 1) mFuelPower = fuelPower[0];
+        mFuelType = 1;
         return this;
     }
 
     public Materials asSemi(int fuelPower) {
         asFluid(fuelPower);
-        mFuelType = 3;
+        mFuelType = 1;
         return this;
     }
 
     public Materials asDiesel(int fuelPower) {
         asFluid(fuelPower);
-        mFuelType = 0;
+        mFuelType = 1;
         return this;
     }
 
     public Materials asGas(int... fuelPower) {
-        if (fuelPower.length >= 1) mFuelPower = fuelPower[0];
         add(CGAS, CELL);
-        mFuelType = 1;
+        if (fuelPower.length >= 1) mFuelPower = fuelPower[0];
+        mFuelType = 2;
         return this;
     }
 
@@ -1179,50 +1183,20 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         return this;
     }
 
-    public Materials asGem(boolean transparent) {
-        asDust();
-        add(GEM);
-        mTransparent = transparent;
+    public Materials asGemBasic(boolean transparent) {
+        asDust(); //TODO BASIC DUST?
+        add(BGEM);
         if (transparent) {
+            mTransparent = true;
             add(PLATE);
             add(SubTag.TRANSPARENT);
         }
         return this;
     }
 
-    public Materials asOre(boolean small) {
-        add(ORE);
-        if (small) add(SORE);
-        return this;
-    }
-
-    public Materials asDustOre(boolean small, int... temps) {
-        asDust(temps);
-        asOre(small);
-        return this;
-    }
-
-    public Materials asDustOreBasic(boolean small, int... temps) {
-        asDustBasic(temps);
-        asOre(small);
-        return this;
-    }
-
-    public Materials asSolidOre(boolean small, int... temps) {
-        asSolid(temps);
-        asOre(small);
-        return this;
-    }
-
-    public Materials asMetalOre(boolean small, int... temps) {
-        asMetal(temps);
-        asOre(small);
-        return this;
-    }
-
-    public Materials asGemOre(boolean small, boolean transparent) {
-        asGem(transparent);
-        asOre(small);
+    public Materials asGem(boolean transparent) {
+        asGemBasic(transparent);
+        add(GEM);
         return this;
     }
 
@@ -1259,7 +1233,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     }
 
     public Materials addTools(float toolSpeed, int toolDurability, int toolQuality) {
-        if (hasFlag(SOLID) && !hasFlag(GEM)) {
+        if (hasFlag(SOLID) && !hasFlag(BGEM)) {
             add(TOOL, PLATE, STICK, BOLT);
         }
         mToolSpeed = toolSpeed;
@@ -1525,15 +1499,6 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     }
 
     /**
-     * This Material should be the Main Material this Ore gets ground into.
-     * Example, Chromite giving Chrome or Tungstate giving Tungsten.
-     */
-    public Materials setOreReplacement(Materials aMaterial) {
-        if (aMaterial != null) mOreReplacement = aMaterial.mMaterialInto.mOreReplacement;
-        return this;
-    }
-
-    /**
      * This Material smelts always into an instance of aMaterial. Used for Magnets.
      */
     public Materials setSmeltingInto(Materials aMaterial) {
@@ -1567,11 +1532,6 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         mEnchantmentArmors = aEnchantment;
         mEnchantmentArmorsLevel = (byte) aEnchantmentLevel;
         return this;
-    }
-
-    public FluidStack getSolid(int aAmount) {
-        if (mSolid == null) return null;
-        return new GT_FluidStack(mSolid, aAmount);
     }
 
     public FluidStack getFluid(int aAmount) {

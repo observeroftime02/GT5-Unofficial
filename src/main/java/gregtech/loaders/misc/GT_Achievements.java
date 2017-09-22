@@ -41,8 +41,8 @@ public class GT_Achievements {
     public int adjY = 9;
 
     public GT_Achievements() {
-        this.achievementList = new ConcurrentHashMap();
-        this.issuedAchievements = new ConcurrentHashMap();
+        this.achievementList = new ConcurrentHashMap<>();
+        this.issuedAchievements = new ConcurrentHashMap<>();
         int oreList_sS = oreList.size();
         for (int i = 0; i < oreList_sS; i++) {
             if (oreList.get(i) != null) {

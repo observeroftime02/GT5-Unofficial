@@ -37,7 +37,7 @@ public enum OrePrefixes {
     gemFlawed("Flawed Gemstones", "Flawed ", "", true, true, true, false, false, false, true, true, false, false, MaterialFlags.GEM.bit, M / 2, 64, 60), // A regular Gem worth two small Dusts. Introduced by TerraFirmaCraft
     gemFlawless("Flawless Gemstones", "Flawless ", "", true, true, true, false, false, false, true, true, false, false, MaterialFlags.GEM.bit, M * 2, 32, 61), // A regular Gem worth two Dusts. Introduced by TerraFirmaCraft
     gemExquisite("Exquisite Gemstones", "Exquisite ", "", true, true, true, false, false, false, true, true, false, false, MaterialFlags.GEM.bit, M * 4, 16, 62), // A regular Gem worth four Dusts. Introduced by TerraFirmaCraft
-    gem("Gemstones", "", "", true, true, true, false, false, false, true, true, false, false, MaterialFlags.GEM.bit, M, 64, 8), // A regular Gem worth one Dust. Introduced by Eloraam
+    gem("Gemstones", "", "", true, true, true, false, false, false, true, true, false, false, MaterialFlags.GEM.bit | MaterialFlags.BGEM.bit, M, 64, 8), // A regular Gem worth one Dust. Introduced by Eloraam
     dustTiny("Tiny Dusts", "Tiny Pile of ", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit | MaterialFlags.BDUST.bit, M / 9, 64, 0), // 1/9th of a Dust.
     dustSmall("Small Dusts", "Small Pile of ", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit | MaterialFlags.BDUST.bit, M / 4, 64, 1), // 1/4th of a Dust.
     dustImpure("Impure Dusts", "Impure Pile of ", " Dust", true, true, false, false, false, false, false, true, false, true, MaterialFlags.ORE.bit, M, 64, 3), // Dust with impurities. 1 Unit of Main Material and 1/9 - 1/4 Unit of secondary Material
@@ -98,7 +98,7 @@ public enum OrePrefixes {
     item("Items", "", "", false, false, false, false, false, false, false, false, false, false, 0, -1, 64, -1), // Random Item. Introduced by Alblaka
     paper("Papers", "", "", false, false, false, false, false, false, false, false, false, false, 0, -1, 64, -1), // Used for Papers of any kind.
     dye("Dyes", "", "", false, false, true, false, false, false, false, false, false, false, 0, -1, 64, -1), // Used for the 16 dyes. Introduced by Eloraam
-    frameGt("Frame Boxes", "", "", true, true, false, false, true, false, true, false, false, false, 0, M * 2, 64, 83),
+    frameGt("Frame Boxes", "", "", true, true, false, false, true, false, true, false, false, false, MaterialFlags.FRAME.bit, M * 2, 64, 83),
     pipeTiny("Tiny Pipes", "Tiny ", " Pipe", true, true, false, false, true, false, true, false, false, false, 0, M / 2, 64, 78),
     pipeSmall("Small Pipes", "Small ", " Pipe", true, true, false, false, true, false, true, false, false, false, 0, M, 64, 79),
     pipeMedium("Medium Pipes", "Medium ", " Pipe", true, true, false, false, true, false, true, false, false, false, 0, M * 3, 64, 80),
