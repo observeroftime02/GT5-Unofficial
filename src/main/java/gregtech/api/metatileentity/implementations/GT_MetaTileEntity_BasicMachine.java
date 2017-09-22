@@ -141,7 +141,7 @@ public abstract class GT_MetaTileEntity_BasicMachine extends GT_MetaTileEntity_B
     }
 
     @Override
-    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex, boolean aActive, boolean aRedstone) {
+    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, int aSide, int aFacing, int aColorIndex, boolean aActive, boolean aRedstone) {
         return mTextures[mMainFacing < 2 ? aSide == aFacing ? aActive ? 2 : 3 : aSide == 0 ? aActive ? 6 : 7 : aSide == 1 ? aActive ? 4 : 5 : aActive ? 0 : 1 : aSide == mMainFacing ? aActive ? 2 : 3 : (showPipeFacing() && aSide == aFacing) ? aSide == 0 ? aActive ? 8 : 9 : aSide == 1 ? aActive ? 10 : 11 : aActive ? 12 : 13 : aSide == 0 ? aActive ? 6 : 7 : aSide == 1 ? aActive ? 4 : 5 : aActive ? 0 : 1][aColorIndex + 1];
     }
 
@@ -171,7 +171,7 @@ public abstract class GT_MetaTileEntity_BasicMachine extends GT_MetaTileEntity_B
     }
 
     @Override
-    public boolean isFacingValid(byte aFacing) {
+    public boolean isFacingValid(int aFacing) {
         return mMainFacing > 1 || aFacing > 1;
     }
 
@@ -196,12 +196,12 @@ public abstract class GT_MetaTileEntity_BasicMachine extends GT_MetaTileEntity_B
     }
 
     @Override
-    public boolean isLiquidInput(byte aSide) {
+    public boolean isLiquidInput(int aSide) {
         return aSide != mMainFacing && (mAllowInputFromOutputSide || aSide != getBaseMetaTileEntity().getFrontFacing());
     }
 
     @Override
-    public boolean isLiquidOutput(byte aSide) {
+    public boolean isLiquidOutput(int aSide) {
         return aSide != mMainFacing;
     }
 
@@ -618,7 +618,7 @@ public abstract class GT_MetaTileEntity_BasicMachine extends GT_MetaTileEntity_B
     }
 
     @Override
-    public void onValueUpdate(byte aValue) {
+    public void onValueUpdate(int aValue) {
         mMainFacing = aValue;
     }
 
@@ -705,7 +705,7 @@ public abstract class GT_MetaTileEntity_BasicMachine extends GT_MetaTileEntity_B
     }
 
     @Override
-    public void onScrewdriverRightClick(byte aSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {
+    public void onScrewdriverRightClick(int aSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {
         if (aSide == getBaseMetaTileEntity().getFrontFacing() || aSide == mMainFacing) {
             mAllowInputFromOutputSide = !mAllowInputFromOutputSide;
             GT_Utility.sendChatToPlayer(aPlayer, mAllowInputFromOutputSide ? trans("095","Input from Output Side allowed") : trans("096","Input from Output Side forbidden"));
@@ -713,17 +713,17 @@ public abstract class GT_MetaTileEntity_BasicMachine extends GT_MetaTileEntity_B
     }
 
     @Override
-    public boolean allowCoverOnSide(byte aSide, GT_ItemStack aCoverID) {
+    public boolean allowCoverOnSide(int aSide, GT_ItemStack aCoverID) {
         return (aSide != mMainFacing || GregTech_API.getCoverBehavior(aCoverID.toStack()).isGUIClickable(aSide, GT_Utility.stackToInt(aCoverID.toStack()), 0, getBaseMetaTileEntity()));
     }
 
     @Override
-    public boolean allowPullStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack) {
+    public boolean allowPullStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, int aSide, ItemStack aStack) {
         return aSide != mMainFacing && aIndex >= getOutputSlot() && aIndex < getOutputSlot() + mOutputItems.length;
     }
 
     @Override
-    public boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack) {
+    public boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, int aSide, ItemStack aStack) {
         if (aSide == mMainFacing || aIndex < getInputSlot() || aIndex >= getInputSlot() + mInputSlotCount || (!mAllowInputFromOutputSide && aSide == aBaseMetaTileEntity.getFrontFacing()))
             return false;
         for (int i = getInputSlot(), j = i + mInputSlotCount; i < j; i++)

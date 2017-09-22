@@ -120,7 +120,7 @@ public class GT_Tool_Axe
         return aIsToolHead ? GT_MetaGenerated_Tool.getPrimaryMaterial(aStack).mIconSet.mTextures[OrePrefixes.toolHeadAxe.mTextureIndex] : GT_MetaGenerated_Tool.getSecondaryMaterial(aStack).mIconSet.mTextures[OrePrefixes.stick.mTextureIndex];
     }
 
-    public short[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
+    public int[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
         return aIsToolHead ? GT_MetaGenerated_Tool.getPrimaryMaterial(aStack).mRGBa : GT_MetaGenerated_Tool.getSecondaryMaterial(aStack).mRGBa;
     }
 

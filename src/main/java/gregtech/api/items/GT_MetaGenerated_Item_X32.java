@@ -72,7 +72,7 @@ public abstract class GT_MetaGenerated_Item_X32 extends GT_MetaGenerated_Item {
      * @return the Color Modulation the Material is going to be rendered with.
      */
     @Override
-    public short[] getRGBa(ItemStack aStack) {
+    public int[] getRGBa(ItemStack aStack) {
         Materials tMaterial = GregTech_API.sGeneratedMaterials[getDamage(aStack) % 1000];
         return tMaterial == null ? Materials._NULL.mRGBa : tMaterial.mRGBa;
     }

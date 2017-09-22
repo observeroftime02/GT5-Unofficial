@@ -1,6 +1,5 @@
 package gregtech.api.metatileentity.implementations;
 
-import gregtech.GT_Mod;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.ITexture;
@@ -43,7 +42,7 @@ public abstract class GT_MetaTileEntity_Hatch extends GT_MetaTileEntity_BasicTan
     public abstract ITexture[] getTexturesInactive(ITexture aBaseTexture);
 
     @Override
-    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex, boolean aActive, boolean aRedstone) {
+    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, int aSide, int aFacing, int aColorIndex, boolean aActive, boolean aRedstone) {
         int textureIndex=actualTexture|(mTexturePage<<7);//Shift seven since one page is 128 textures!
         int texturePointer=(byte)(actualTexture&0x7F);//just to be sure, from my testing the 8th bit cannot be set clientside
         return aSide != aFacing ?
@@ -88,7 +87,7 @@ public abstract class GT_MetaTileEntity_Hatch extends GT_MetaTileEntity_BasicTan
     }
 
     @Override
-    public final void onValueUpdate(byte aValue) {
+    public final void onValueUpdate(int aValue) {
         actualTexture=(byte)(aValue & 0x7F);
         mMachineBlock=actualTexture;
         mTexturePage=0;

@@ -510,10 +510,10 @@ public class GT_Block_Machines
     public boolean recolourBlock(World aWorld, int aX, int aY, int aZ, ForgeDirection aSide, int aColor) {
         TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
         if ((tTileEntity instanceof IGregTechTileEntity)) {
-            if (((IGregTechTileEntity) tTileEntity).getColorization() == (byte) ((aColor ^ 0xFFFFFFFF) & 0xF)) {
+            if (((IGregTechTileEntity) tTileEntity).getColorization() == (byte) ((~aColor) & 0xF)) {
                 return false;
             }
-            ((IGregTechTileEntity) tTileEntity).setColorization((byte) ((aColor ^ 0xFFFFFFFF) & 0xF));
+            ((IGregTechTileEntity) tTileEntity).setColorization((byte) ((~aColor) & 0xF));
             return true;
         }
         return false;

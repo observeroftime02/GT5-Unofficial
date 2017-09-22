@@ -84,7 +84,7 @@ public class GT_MetaTileEntity_Regulator
     }
 
     @Override
-    public void onScrewdriverRightClick(byte aSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {
+    public void onScrewdriverRightClick(int aSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {
     	//Regulation per Screwdriver is overridden by GUI regulation.
     }
 

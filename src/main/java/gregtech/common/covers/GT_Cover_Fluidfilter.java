@@ -60,7 +60,7 @@ public class GT_Cover_Fluidfilter
     }
     
     @Override
-    public boolean letsFluidIn(byte aSide, int aCoverID, int aCoverVariable, Fluid aFluid, ICoverable aTileEntity) {
+    public boolean letsFluidIn(int aSide, int aCoverID, int aCoverVariable, Fluid aFluid, ICoverable aTileEntity) {
         if(aFluid==null){return true;}
         int aFilterMode = aCoverVariable & 7;
         int aFilterFluid = aCoverVariable >>> 3;
@@ -68,7 +68,7 @@ public class GT_Cover_Fluidfilter
     }
     
     @Override
-    public boolean letsFluidOut(byte aSide, int aCoverID, int aCoverVariable, Fluid aFluid, ICoverable aTileEntity) {
+    public boolean letsFluidOut(int aSide, int aCoverID, int aCoverVariable, Fluid aFluid, ICoverable aTileEntity) {
         int aFilterMode = aCoverVariable & 7;
         return !(aFilterMode == 0 || aFilterMode == 1);
     }

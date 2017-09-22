@@ -17,9 +17,9 @@ public class GT_CopiedBlockTexture implements ITexture {
      * Just set this variable to another different Array instead.
      * Otherwise some colored things will get Problems.
      */
-    public short[] mRGBa;
+    public int[] mRGBa;
 
-    public GT_CopiedBlockTexture(Block aBlock, int aSide, int aMeta, short[] aRGBa, boolean aAllowAlpha) {
+    public GT_CopiedBlockTexture(Block aBlock, int aSide, int aMeta, int[] aRGBa, boolean aAllowAlpha) {
         if (aRGBa.length != 4) throw new IllegalArgumentException("RGBa doesn't have 4 Values @ GT_CopiedBlockTexture");
         mBlock = aBlock;
         mRGBa = aRGBa;
@@ -28,7 +28,7 @@ public class GT_CopiedBlockTexture implements ITexture {
         mAllowAlpha = aAllowAlpha;
     }
 
-    public GT_CopiedBlockTexture(Block aBlock, int aSide, int aMeta, short[] aRGBa) {
+    public GT_CopiedBlockTexture(Block aBlock, int aSide, int aMeta, int[] aRGBa) {
         this(aBlock, aSide, aMeta, aRGBa, true);
     }
 

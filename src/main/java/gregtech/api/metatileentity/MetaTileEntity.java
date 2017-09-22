@@ -140,17 +140,17 @@ public abstract class MetaTileEntity implements IMetaTileEntity {
     public void registerIcons(IIconRegister aBlockIconRegister) {/*Do nothing*/}
 
     @Override
-    public boolean allowCoverOnSide(byte aSide, GT_ItemStack aStack) {
+    public boolean allowCoverOnSide(int aSide, GT_ItemStack aStack) {
         return true;
     }
 
     @Override
-    public void onScrewdriverRightClick(byte aSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {/*Do nothing*/}
+    public void onScrewdriverRightClick(int aSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {/*Do nothing*/}
 
     @Override
-    public boolean onWrenchRightClick(byte aSide, byte aWrenchingSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {
+    public boolean onWrenchRightClick(int aSide, int aWrenchingSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {
         if (getBaseMetaTileEntity().isValidFacing(aWrenchingSide)) {
-            getBaseMetaTileEntity().setFrontFacing(aWrenchingSide);
+            getBaseMetaTileEntity().setFrontFacing((byte) aWrenchingSide);
             return true;
         }
         return false;
@@ -196,7 +196,7 @@ public abstract class MetaTileEntity implements IMetaTileEntity {
     }
 
     @Override
-    public boolean onRightclick(IGregTechTileEntity aBaseMetaTileEntity, EntityPlayer aPlayer, byte aSide, float aX, float aY, float aZ) {
+    public boolean onRightclick(IGregTechTileEntity aBaseMetaTileEntity, EntityPlayer aPlayer, int aSide, float aX, float aY, float aZ) {
         return onRightclick(aBaseMetaTileEntity, aPlayer);
     }
 
@@ -204,7 +204,7 @@ public abstract class MetaTileEntity implements IMetaTileEntity {
     public void onLeftclick(IGregTechTileEntity aBaseMetaTileEntity, EntityPlayer aPlayer) {/*Do nothing*/}
 
     @Override
-    public void onValueUpdate(byte aValue) {/*Do nothing*/}
+    public void onValueUpdate(int aValue) {/*Do nothing*/}
 
     @Override
     public byte getUpdateData() {
@@ -328,7 +328,7 @@ public abstract class MetaTileEntity implements IMetaTileEntity {
     }
 
     @Override
-    public boolean isFacingValid(byte aFacing) {
+    public boolean isFacingValid(int aFacing) {
         return false;
     }
 
@@ -445,12 +445,12 @@ public abstract class MetaTileEntity implements IMetaTileEntity {
     }
 
     @Override
-    public boolean isLiquidInput(byte aSide) {
+    public boolean isLiquidInput(int aSide) {
         return true;
     }
 
     @Override
-    public boolean isLiquidOutput(byte aSide) {
+    public boolean isLiquidOutput(int aSide) {
         return true;
     }
 
@@ -563,7 +563,7 @@ public abstract class MetaTileEntity implements IMetaTileEntity {
      * Gets the Output for the comparator on the given Side
      */
     @Override
-    public byte getComparatorValue(byte aSide) {
+    public byte getComparatorValue(int aSide) {
         return 0;
     }
 
@@ -659,9 +659,9 @@ public abstract class MetaTileEntity implements IMetaTileEntity {
     public int[] getAccessibleSlotsFromSide(int aSide) {
         ArrayList<Integer> tList = new ArrayList<Integer>();
         IGregTechTileEntity tTileEntity = getBaseMetaTileEntity();
-        boolean tSkip = tTileEntity.getCoverBehaviorAtSide((byte) aSide).letsItemsIn((byte) aSide, tTileEntity.getCoverIDAtSide((byte) aSide), tTileEntity.getCoverDataAtSide((byte) aSide), -2, tTileEntity) || tTileEntity.getCoverBehaviorAtSide((byte) aSide).letsItemsOut((byte) aSide, tTileEntity.getCoverIDAtSide((byte) aSide), tTileEntity.getCoverDataAtSide((byte) aSide), -2, tTileEntity);
+        boolean tSkip = tTileEntity.getCoverBehaviorAtSide(aSide).letsItemsIn(aSide, tTileEntity.getCoverIDAtSide(aSide), tTileEntity.getCoverDataAtSide(aSide), -2, tTileEntity) || tTileEntity.getCoverBehaviorAtSide(aSide).letsItemsOut(aSide, tTileEntity.getCoverIDAtSide(aSide), tTileEntity.getCoverDataAtSide(aSide), -2, tTileEntity);
         for (int i = 0; i < getSizeInventory(); i++)
-            if (isValidSlot(i) && (tSkip || tTileEntity.getCoverBehaviorAtSide((byte) aSide).letsItemsOut((byte) aSide, tTileEntity.getCoverIDAtSide((byte) aSide), tTileEntity.getCoverDataAtSide((byte) aSide), i, tTileEntity) || tTileEntity.getCoverBehaviorAtSide((byte) aSide).letsItemsIn((byte) aSide, tTileEntity.getCoverIDAtSide((byte) aSide), tTileEntity.getCoverDataAtSide((byte) aSide), i, tTileEntity)))
+            if (isValidSlot(i) && (tSkip || tTileEntity.getCoverBehaviorAtSide(aSide).letsItemsOut(aSide, tTileEntity.getCoverIDAtSide(aSide), tTileEntity.getCoverDataAtSide(aSide), i, tTileEntity) || tTileEntity.getCoverBehaviorAtSide(aSide).letsItemsIn(aSide, tTileEntity.getCoverIDAtSide(aSide), tTileEntity.getCoverDataAtSide(aSide), i, tTileEntity)))
                 tList.add(i);
         int[] rArray = new int[tList.size()];
         for (int i = 0; i < rArray.length; i++) rArray[i] = tList.get(i);
@@ -670,12 +670,12 @@ public abstract class MetaTileEntity implements IMetaTileEntity {
 
     @Override
     public boolean canInsertItem(int aIndex, ItemStack aStack, int aSide) {
-        return isValidSlot(aIndex) && aStack != null && aIndex < mInventory.length && (mInventory[aIndex] == null || GT_Utility.areStacksEqual(aStack, mInventory[aIndex])) && allowPutStack(getBaseMetaTileEntity(), aIndex, (byte) aSide, aStack);
+        return isValidSlot(aIndex) && aStack != null && aIndex < mInventory.length && (mInventory[aIndex] == null || GT_Utility.areStacksEqual(aStack, mInventory[aIndex])) && allowPutStack(getBaseMetaTileEntity(), aIndex, aSide, aStack);
     }
 
     @Override
     public boolean canExtractItem(int aIndex, ItemStack aStack, int aSide) {
-        return isValidSlot(aIndex) && aStack != null && aIndex < mInventory.length && allowPullStack(getBaseMetaTileEntity(), aIndex, (byte) aSide, aStack);
+        return isValidSlot(aIndex) && aStack != null && aIndex < mInventory.length && allowPullStack(getBaseMetaTileEntity(), aIndex, aSide, aStack);
     }
 
     @Override
@@ -785,12 +785,12 @@ public abstract class MetaTileEntity implements IMetaTileEntity {
     }
 
     @Override
-    public boolean connectsToItemPipe(byte aSide) {
+    public boolean connectsToItemPipe(int aSide) {
         return false;
     }
 
     @Override
-    public float getExplosionResistance(byte aSide) {
+    public float getExplosionResistance(int aSide) {
         return 10.0F;
     }
 

@@ -29,5 +29,5 @@ public interface ITurnable {
     /**
      * Determine if the wrench can be used to set the block's facing.
      */
-    boolean isValidFacing(byte aSide);
+    boolean isValidFacing(int aSide);
 }

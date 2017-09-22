@@ -42,7 +42,7 @@ public class GT_MetaTileEntity_Hatch_Input extends GT_MetaTileEntity_Hatch {
     }
 
     @Override
-    public boolean isFacingValid(byte aFacing) {
+    public boolean isFacingValid(int aFacing) {
         return true;
     }
 
@@ -104,12 +104,12 @@ public class GT_MetaTileEntity_Hatch_Input extends GT_MetaTileEntity_Hatch {
     }
 
     @Override
-    public boolean allowPullStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack) {
+    public boolean allowPullStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, int aSide, ItemStack aStack) {
         return aSide == aBaseMetaTileEntity.getFrontFacing() && aIndex == 1;
     }
 
     @Override
-    public boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack) {
+    public boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, int aSide, ItemStack aStack) {
         return aSide == aBaseMetaTileEntity.getFrontFacing() && aIndex == 0 && (mRecipeMap == null || mRecipeMap.containsInput(aStack) || mRecipeMap.containsInput(GT_Utility.getFluidForFilledItem(aStack, true)));
     }
 

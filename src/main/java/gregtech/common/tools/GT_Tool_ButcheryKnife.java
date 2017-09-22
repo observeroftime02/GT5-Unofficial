@@ -66,7 +66,7 @@ public class GT_Tool_ButcheryKnife
         return aIsToolHead ? Textures.ItemIcons.BUTCHERYKNIFE : null;
     }
 
-    public short[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
+    public int[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
         return aIsToolHead ? GT_MetaGenerated_Tool.getPrimaryMaterial(aStack).mRGBa : GT_MetaGenerated_Tool.getSecondaryMaterial(aStack).mRGBa;
     }
 

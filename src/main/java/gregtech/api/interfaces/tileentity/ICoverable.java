@@ -10,19 +10,19 @@ public interface ICoverable extends IRedstoneTileEntity, IHasInventory, IBasicEn
 
     boolean dropCover(byte aSide, byte aDroppedSide, boolean aForced);
 
-    void setCoverDataAtSide(byte aSide, int aData);
+    void setCoverDataAtSide(int aSide, int aData);
 
-    void setCoverIDAtSide(byte aSide, int aID);
+    void setCoverIDAtSide(int aSide, int aID);
 
-    void setCoverItemAtSide(byte aSide, ItemStack aCover);
+    void setCoverItemAtSide(int aSide, ItemStack aCover);
 
-    int getCoverDataAtSide(byte aSide);
+    int getCoverDataAtSide(int aSide);
 
-    int getCoverIDAtSide(byte aSide);
+    int getCoverIDAtSide(int aSide);
 
-    ItemStack getCoverItemAtSide(byte aSide);
+    ItemStack getCoverItemAtSide(int aSide);
 
-    GT_CoverBehavior getCoverBehaviorAtSide(byte aSide);
+    GT_CoverBehavior getCoverBehaviorAtSide(int aSide);
 
     /**
      * For use by the regular MetaTileEntities. Returns the Cover Manipulated input Redstone.
@@ -40,5 +40,5 @@ public interface ICoverable extends IRedstoneTileEntity, IHasInventory, IBasicEn
      * Causes a general Cover Texture update.
      * Sends 6 Integers to Client + causes @issueTextureUpdate()
      */
-    void issueCoverUpdate(byte aSide);
+    void issueCoverUpdate(int aSide);
 }

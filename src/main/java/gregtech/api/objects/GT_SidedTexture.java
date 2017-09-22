@@ -18,16 +18,16 @@ public class GT_SidedTexture implements ITexture, IColorModulationContainer {
      * Just set this variable to another different Array instead.
      * Otherwise some colored things will get Problems.
      */
-    public short[] mRGBa;
+    public int[] mRGBa;
 
-    public GT_SidedTexture(IIconContainer aIcon0, IIconContainer aIcon1, IIconContainer aIcon2, IIconContainer aIcon3, IIconContainer aIcon4, IIconContainer aIcon5, short[] aRGBa, boolean aAllowAlpha) {
+    public GT_SidedTexture(IIconContainer aIcon0, IIconContainer aIcon1, IIconContainer aIcon2, IIconContainer aIcon3, IIconContainer aIcon4, IIconContainer aIcon5, int[] aRGBa, boolean aAllowAlpha) {
         if (aRGBa.length != 4) throw new IllegalArgumentException("RGBa doesn't have 4 Values @ GT_RenderedTexture");
         mIconContainer = new IIconContainer[]{aIcon0, aIcon1, aIcon2, aIcon3, aIcon4, aIcon5};
         mAllowAlpha = aAllowAlpha;
         mRGBa = aRGBa;
     }
 
-    public GT_SidedTexture(IIconContainer aIcon0, IIconContainer aIcon1, IIconContainer aIcon2, IIconContainer aIcon3, IIconContainer aIcon4, IIconContainer aIcon5, short[] aRGBa) {
+    public GT_SidedTexture(IIconContainer aIcon0, IIconContainer aIcon1, IIconContainer aIcon2, IIconContainer aIcon3, IIconContainer aIcon4, IIconContainer aIcon5, int[] aRGBa) {
         this(aIcon0, aIcon1, aIcon2, aIcon3, aIcon4, aIcon5, aRGBa, true);
     }
 
@@ -35,7 +35,7 @@ public class GT_SidedTexture implements ITexture, IColorModulationContainer {
         this(aIcon0, aIcon1, aIcon2, aIcon3, aIcon4, aIcon5, Dyes.dyeNULL.mRGBa);
     }
 
-    public GT_SidedTexture(IIconContainer aBottom, IIconContainer aTop, IIconContainer aSides, short[] aRGBa) {
+    public GT_SidedTexture(IIconContainer aBottom, IIconContainer aTop, IIconContainer aSides, int[] aRGBa) {
         this(aBottom, aTop, aSides, aSides, aSides, aSides, aRGBa);
     }
 
@@ -157,7 +157,7 @@ public class GT_SidedTexture implements ITexture, IColorModulationContainer {
     }
 
     @Override
-    public short[] getRGBA() {
+    public int[] getRGBA() {
         return mRGBa;
     }
 

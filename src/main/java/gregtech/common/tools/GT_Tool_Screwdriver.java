@@ -103,7 +103,7 @@ public class GT_Tool_Screwdriver
         return !aIsToolHead ? GT_MetaGenerated_Tool.getPrimaryMaterial(aStack).mIconSet.mTextures[gregtech.api.enums.OrePrefixes.toolHeadScrewdriver.mTextureIndex] : Textures.ItemIcons.HANDLE_SCREWDRIVER;
     }
 
-    public short[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
+    public int[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
         return !aIsToolHead ? GT_MetaGenerated_Tool.getPrimaryMaterial(aStack).mRGBa : GT_MetaGenerated_Tool.getSecondaryMaterial(aStack).mRGBa;
     }
 

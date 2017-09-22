@@ -1,6 +1,5 @@
 package gregtech.common.tileentities.machines.multi;
 
-import java.util.ArrayList;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.ItemList;
@@ -21,8 +20,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 
-public class GT_MetaTileEntity_AssemblyLine
-        extends GT_MetaTileEntity_MultiBlockBase {
+import java.util.ArrayList;
+
+public class GT_MetaTileEntity_AssemblyLine extends GT_MetaTileEntity_MultiBlockBase {
 
     public ArrayList<GT_MetaTileEntity_Hatch_DataAccess> mDataAccessHatches = new ArrayList<GT_MetaTileEntity_Hatch_DataAccess>();
 
@@ -52,7 +52,7 @@ public class GT_MetaTileEntity_AssemblyLine
                 "Optional 1x Data Access Hatch next to the Controller"};
     }
 
-    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex, boolean aActive, boolean aRedstone) {
+    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, int aSide, int aFacing, int aColorIndex, boolean aActive, boolean aRedstone) {
         if (aSide == aFacing) {
             return new ITexture[]{Textures.BlockIcons.CASING_BLOCKS[16], new GT_RenderedTexture(aActive ? Textures.BlockIcons.OVERLAY_FRONT_ASSEMBLY_LINE_ACTIVE : Textures.BlockIcons.OVERLAY_FRONT_ASSEMBLY_LINE)};
         }

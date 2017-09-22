@@ -7,7 +7,6 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.MetaPipeEntity;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.util.GT_ModHandler;
-import gregtech.api.util.GT_ModHandler.RecipeBits;
 import gregtech.api.util.GT_OreDictUnificator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -22,7 +21,7 @@ public class GT_MetaPipeEntity_Frame extends MetaPipeEntity {
         mMaterial = aMaterial;
 
         GT_OreDictUnificator.registerOre(OrePrefixes.frameGt, aMaterial, getStackForm(1));
-        GT_ModHandler.addCraftingRecipe(getStackForm(2), RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.BUFFERED, new Object[]{"SSS", "SwS", "SSS", 'S', OrePrefixes.stick.get(mMaterial)});
+        GT_ModHandler.addShapedToolRecipe(getStackForm(2), "SSS", "SwS", "SSS", 'S', GT_OreDictUnificator.get(OrePrefixes.stick, mMaterial));
         RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.stick, aMaterial, 4), ItemList.Circuit_Integrated.getWithDamage(0, 4), getStackForm(1), 64, 8);
     }
 
@@ -42,7 +41,7 @@ public class GT_MetaPipeEntity_Frame extends MetaPipeEntity {
     }
 
     @Override
-    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aConnections, byte aColorIndex, boolean aConnected, boolean aRedstone) {
+    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, int aSide, int aConnections, int aColorIndex, boolean aConnected, boolean aRedstone) {
         return new ITexture[]{new GT_RenderedTexture(mMaterial.mIconSet.mTextures[OrePrefixes.frameGt.mTextureIndex], Dyes.getModulation(aColorIndex, mMaterial.mRGBa))};
     }
 
@@ -57,7 +56,7 @@ public class GT_MetaPipeEntity_Frame extends MetaPipeEntity {
     }
 
     @Override
-    public final boolean isFacingValid(byte aFacing) {
+    public final boolean isFacingValid(int aFacing) {
         return false;
     }
 
@@ -83,12 +82,12 @@ public class GT_MetaPipeEntity_Frame extends MetaPipeEntity {
     public final void loadNBTData(NBTTagCompound aNBT) {/*Do nothing*/}
 
     @Override
-    public final boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack) {
+    public final boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, int aSide, ItemStack aStack) {
         return false;
     }
 
     @Override
-    public final boolean allowPullStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack) {
+    public final boolean allowPullStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, int aSide, ItemStack aStack) {
         return false;
     }
 }

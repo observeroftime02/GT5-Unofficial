@@ -70,12 +70,12 @@ public class GT_MetaTileEntity_ItemDistributor extends GT_MetaTileEntity_Buffer 
 	}
     
     @Override
-    public boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack) {
+    public boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, int aSide, ItemStack aStack) {
         return aSide == aBaseMetaTileEntity.getFrontFacing();
     }
     
 	@Override
-    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex, boolean aActive, boolean aRedstone) {
+    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, int aSide, int aFacing, int aColorIndex, boolean aActive, boolean aRedstone) {
     	if (aSide == aFacing) {
     		return mTextures[0][aColorIndex + 1];
     	} else {
@@ -149,7 +149,7 @@ public class GT_MetaTileEntity_ItemDistributor extends GT_MetaTileEntity_Buffer 
 	}
 
     @Override
-	public void onScrewdriverRightClick(byte aSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {
+	public void onScrewdriverRightClick(int aSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {
 		//Adjust items per side by 1 or -1, constrained to the cyclic interval [0, 127]
 		itemsPerSide[aSide] += aPlayer.isSneaking() ? -1 : 1;
 		itemsPerSide[aSide] = (byte) ((itemsPerSide[aSide] + 128) % 128);

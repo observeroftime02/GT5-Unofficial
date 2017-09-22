@@ -76,7 +76,7 @@ public class GT_MetaGenerated_Item_Renderer implements IItemRenderer {
             Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationItemsTexture);
             GL11.glBlendFunc(770, 771);
             if (tFluidIcon == null) {
-                short[] tModulation = aItem.getRGBa(aStack);
+                int[] tModulation = aItem.getRGBa(aStack);
                 GL11.glColor3f(tModulation[0] / 255.0F, tModulation[1] / 255.0F, tModulation[2] / 255.0F);
             }
             if (type.equals(IItemRenderer.ItemRenderType.INVENTORY)) {

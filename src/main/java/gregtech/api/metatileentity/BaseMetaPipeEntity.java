@@ -384,7 +384,7 @@ public class BaseMetaPipeEntity extends BaseTileEntity implements IGregTechTileE
     }
 
     @Override
-    public void issueCoverUpdate(byte aSide) {
+    public void issueCoverUpdate(int aSide) {
         issueClientUpdate();
     }
 
@@ -403,7 +403,7 @@ public class BaseMetaPipeEntity extends BaseTileEntity implements IGregTechTileE
         return getInternalInputRedstoneSignal(aSide) > 0;
     }
 
-    public ITexture getCoverTexture(byte aSide) {
+    public ITexture getCoverTexture(int aSide) {
         return GregTech_API.sCovers.get(new GT_ItemStack(getCoverIDAtSide(aSide)));
     }
 
@@ -414,7 +414,7 @@ public class BaseMetaPipeEntity extends BaseTileEntity implements IGregTechTileE
     }
 
     @Override
-    public boolean isValidFacing(byte aSide) {
+    public boolean isValidFacing(int aSide) {
         if (canAccessData()) return mMetaTileEntity.isFacingValid(aSide);
         return false;
     }
@@ -673,10 +673,10 @@ public class BaseMetaPipeEntity extends BaseTileEntity implements IGregTechTileE
     }
 
     @Override
-    public ITexture[] getTexture(Block aBlock, byte aSide) {
+    public ITexture[] getTexture(Block aBlock, int aSide) {
         ITexture rIcon = getCoverTexture(aSide);
         if (rIcon != null) return new ITexture[]{rIcon};
-        return getTextureUncovered(aSide);
+        return getTextureUncovered((byte) aSide);
     }
 
     @Override
@@ -969,12 +969,12 @@ public class BaseMetaPipeEntity extends BaseTileEntity implements IGregTechTileE
     }
 
     @Override
-    public GT_CoverBehavior getCoverBehaviorAtSide(byte aSide) {
+    public GT_CoverBehavior getCoverBehaviorAtSide(int aSide) {
         return aSide >= 0 && aSide < mCoverBehaviors.length ? mCoverBehaviors[aSide] : GregTech_API.sNoBehavior;
     }
 
     @Override
-    public void setCoverIDAtSide(byte aSide, int aID) {
+    public void setCoverIDAtSide(int aSide, int aID) {
         if (aSide >= 0 && aSide < 6) {
             mCoverSides[aSide] = aID;
             mCoverData[aSide] = 0;
@@ -985,18 +985,18 @@ public class BaseMetaPipeEntity extends BaseTileEntity implements IGregTechTileE
     }
 
     @Override
-    public void setCoverItemAtSide(byte aSide, ItemStack aCover) {
+    public void setCoverItemAtSide(int aSide, ItemStack aCover) {
         GregTech_API.getCoverBehavior(aCover).placeCover(aSide, aCover, this);
     }
 
     @Override
-    public int getCoverIDAtSide(byte aSide) {
+    public int getCoverIDAtSide(int aSide) {
         if (aSide >= 0 && aSide < 6) return mCoverSides[aSide];
         return 0;
     }
 
     @Override
-    public ItemStack getCoverItemAtSide(byte aSide) {
+    public ItemStack getCoverItemAtSide(int aSide) {
         return GT_Utility.intToStack(getCoverIDAtSide(aSide));
     }
 
@@ -1011,12 +1011,12 @@ public class BaseMetaPipeEntity extends BaseTileEntity implements IGregTechTileE
     }
 
     @Override
-    public void setCoverDataAtSide(byte aSide, int aData) {
+    public void setCoverDataAtSide(int aSide, int aData) {
         if (aSide >= 0 && aSide < 6) mCoverData[aSide] = aData;
     }
 
     @Override
-    public int getCoverDataAtSide(byte aSide) {
+    public int getCoverDataAtSide(int aSide) {
         if (aSide >= 0 && aSide < 6) return mCoverData[aSide];
         return 0;
     }

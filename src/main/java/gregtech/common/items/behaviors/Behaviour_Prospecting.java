@@ -55,11 +55,9 @@ public class Behaviour_Prospecting
 		    	aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone) ||
 		    	aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, GregTech_API.sBlockStones) ||
 		    	aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, GregTech_API.sBlockGranites) ||
-		    	(aBlock == GregTech_API.sBlockOresUb1)  || 
-		    	(aBlock == GregTech_API.sBlockOresUb2)  ||  
-		    	(aBlock == GregTech_API.sBlockOresUb3)  || 
-		    	(aBlock == GregTech_API.sBlockOres1)  ||
-		    	(aBlock == GregTech_API.sBlockOresGC)){
+		    	(aBlock instanceof GT_Block_Ores) /*TODO ||
+		    	(aBlock instanceof GT_Block_Ores_UB1)  ||
+		    	(aBlock instanceof GT_Block_Ores_UB2)*/){
 	            if (GT_ModHandler.damageOrDechargeItem(aStack, this.mVanillaCosts, this.mEUCosts, aPlayer)) {
               GT_Utility.sendSoundToPlayers(aWorld, GregTech_API.sSoundList.get(1), 1.0F, -1.0F, aX, aY, aZ);
               int tMetaID = 0;

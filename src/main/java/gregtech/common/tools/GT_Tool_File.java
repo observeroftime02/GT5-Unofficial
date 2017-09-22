@@ -86,7 +86,7 @@ public class GT_Tool_File
         return !aIsToolHead ? GT_MetaGenerated_Tool.getPrimaryMaterial(aStack).mIconSet.mTextures[gregtech.api.enums.OrePrefixes.toolHeadFile.mTextureIndex] : Textures.ItemIcons.HANDLE_FILE;
     }
 
-    public short[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
+    public int[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
         return !aIsToolHead ? GT_MetaGenerated_Tool.getPrimaryMaterial(aStack).mRGBa : GT_MetaGenerated_Tool.getSecondaryMaterial(aStack).mRGBa;
     }
 

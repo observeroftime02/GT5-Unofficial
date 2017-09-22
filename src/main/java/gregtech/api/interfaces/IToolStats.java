@@ -156,7 +156,7 @@ public interface IToolStats {
 
     IIconContainer getIcon(boolean aIsToolHead, ItemStack aStack);
 
-    short[] getRGBa(boolean aIsToolHead, ItemStack aStack);
+    int[] getRGBa(boolean aIsToolHead, ItemStack aStack);
 
 	float getMiningSpeed(Block aBlock, byte aMetaData, float aDefault, EntityPlayer aPlayer, World worldObj, int aX, int aY, int aZ);
 }

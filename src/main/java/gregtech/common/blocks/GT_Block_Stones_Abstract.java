@@ -67,6 +67,7 @@ public class GT_Block_Stones_Abstract
     }
 
     public void registerOre(OrePrefixes aPrefix, Materials aMaterial, String aOreDictName, String aModName, ItemStack aStack) {
+        //TODO MOVE
         if (aOreDictName.equals(OreDictNames.craftingLensWhite.toString())) {
             GT_Values.RA.addLaserEngraverRecipe(new ItemStack(this, 1, 7), GT_Utility.copyAmount(0, aStack), new ItemStack(this, 1, 6), 50, 16);
             GT_Values.RA.addLaserEngraverRecipe(new ItemStack(this, 1, 15), GT_Utility.copyAmount(0, aStack), new ItemStack(this, 1, 14), 50, 16);

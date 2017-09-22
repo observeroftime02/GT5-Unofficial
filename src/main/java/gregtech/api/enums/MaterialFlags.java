@@ -29,8 +29,7 @@ public enum MaterialFlags {
     CFLUID(CRACK.bit*2), //Add a Fluid for this Material
     CGAS(CFLUID.bit*2), //Add a Gas for this Material
     LIQUID(CGAS.bit*2),
-    FRAME(LIQUID.bit*2), //Add Frame Blocks
-    SORE(FRAME.bit*2); //Add Small Ore Blocks
+    FRAME(LIQUID.bit*2); //Add Frame Blocks
 
     public int bit;
 

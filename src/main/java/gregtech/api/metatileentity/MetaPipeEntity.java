@@ -191,15 +191,15 @@ public abstract class MetaPipeEntity implements IMetaTileEntity {
     public void registerIcons(IIconRegister aBlockIconRegister) {/*Do nothing*/}
 
     @Override
-    public boolean allowCoverOnSide(byte aSide, GT_ItemStack aCoverID) {
+    public boolean allowCoverOnSide(int aSide, GT_ItemStack aCoverID) {
         return true;
     }
 
     @Override
-    public void onScrewdriverRightClick(byte aSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {/*Do nothing*/}
+    public void onScrewdriverRightClick(int aSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {/*Do nothing*/}
 
     @Override
-    public boolean onWrenchRightClick(byte aSide, byte aWrenchingSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {
+    public boolean onWrenchRightClick(int aSide, int aWrenchingSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {
         return false;
     }
 
@@ -239,7 +239,7 @@ public abstract class MetaPipeEntity implements IMetaTileEntity {
      * Sneaky rightclicks are not getting passed to this!
      */
     @Override
-    public boolean onRightclick(IGregTechTileEntity aBaseMetaTileEntity, EntityPlayer aPlayer, byte aSide, float aX, float aY, float aZ) {
+    public boolean onRightclick(IGregTechTileEntity aBaseMetaTileEntity, EntityPlayer aPlayer, int aSide, float aX, float aY, float aZ) {
         return false;
     }
 
@@ -247,7 +247,7 @@ public abstract class MetaPipeEntity implements IMetaTileEntity {
     public void onLeftclick(IGregTechTileEntity aBaseMetaTileEntity, EntityPlayer aPlayer) {/*Do nothing*/}
 
     @Override
-    public void onValueUpdate(byte aValue) {/*Do nothing*/}
+    public void onValueUpdate(int aValue) {/*Do nothing*/}
 
     @Override
     public byte getUpdateData() {
@@ -279,7 +279,7 @@ public abstract class MetaPipeEntity implements IMetaTileEntity {
     }
 
     @Override
-    public boolean isFacingValid(byte aFacing) {
+    public boolean isFacingValid(int aFacing) {
         return false;
     }
 
@@ -304,12 +304,12 @@ public abstract class MetaPipeEntity implements IMetaTileEntity {
     }
 
     @Override
-    public boolean isLiquidInput(byte aSide) {
+    public boolean isLiquidInput(int aSide) {
         return true;
     }
 
     @Override
-    public boolean isLiquidOutput(byte aSide) {
+    public boolean isLiquidOutput(int aSide) {
         return true;
     }
 
@@ -385,7 +385,7 @@ public abstract class MetaPipeEntity implements IMetaTileEntity {
     }
 
     @Override
-    public byte getComparatorValue(byte aSide) {
+    public byte getComparatorValue(int aSide) {
         return 0;
     }
 
@@ -568,7 +568,7 @@ public abstract class MetaPipeEntity implements IMetaTileEntity {
     }
 
     @Override
-    public boolean connectsToItemPipe(byte aSide) {
+    public boolean connectsToItemPipe(int aSide) {
         return false;
     }
 
@@ -593,7 +593,7 @@ public abstract class MetaPipeEntity implements IMetaTileEntity {
     }
 
     @Override
-    public float getExplosionResistance(byte aSide) {
+    public float getExplosionResistance(int aSide) {
         return 10.0F;
     }
 

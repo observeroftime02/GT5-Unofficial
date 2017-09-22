@@ -121,17 +121,17 @@ public interface IMetaTileEntity extends ISidedInventory, IFluidTank, IFluidHand
      * If a Cover of that Type can be placed on this Side.
      * Also Called when the Facing of the Block Changes and a Cover is on said Side.
      */
-    boolean allowCoverOnSide(byte aSide, GT_ItemStack aStack);
+    boolean allowCoverOnSide(int aSide, GT_ItemStack aStack);
 
     /**
      * When a Player rightclicks the Facing with a Screwdriver.
      */
-    void onScrewdriverRightClick(byte aSide, EntityPlayer aPlayer, float aX, float aY, float aZ);
+    void onScrewdriverRightClick(int aSide, EntityPlayer aPlayer, float aX, float aY, float aZ);
 
     /**
      * When a Player rightclicks the Facing with a Wrench.
      */
-    boolean onWrenchRightClick(byte aSide, byte aWrenchingSide, EntityPlayer aPlayer, float aX, float aY, float aZ);
+    boolean onWrenchRightClick(int aSide, int aWrenchingSide, EntityPlayer aPlayer, float aX, float aY, float aZ);
 
     /**
      * Called right before this Machine explodes
@@ -171,7 +171,7 @@ public interface IMetaTileEntity extends ISidedInventory, IFluidTank, IFluidHand
      * @param aFacing
      * @return if aFacing would be a valid Facing for this Device. Used for wrenching.
      */
-    boolean isFacingValid(byte aFacing);
+    boolean isFacingValid(int aFacing);
 
     /**
      * @return the Server Side Container
@@ -186,12 +186,12 @@ public interface IMetaTileEntity extends ISidedInventory, IFluidTank, IFluidHand
     /**
      * From new ISidedInventory
      */
-    boolean allowPullStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack);
+    boolean allowPullStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, int aSide, ItemStack aStack);
 
     /**
      * From new ISidedInventory
      */
-    boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack);
+    boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, int aSide, ItemStack aStack);
 
     /**
      * @return if aIndex is a valid Slot. false for things like HoloSlots. Is used for determining if an Item is dropped upon Block destruction and for Inventory Access Management
@@ -206,12 +206,12 @@ public interface IMetaTileEntity extends ISidedInventory, IFluidTank, IFluidHand
     /**
      * If this Side can connect to inputting pipes
      */
-    boolean isLiquidInput(byte aSide);
+    boolean isLiquidInput(int aSide);
 
     /**
      * If this Side can connect to outputting pipes
      */
-    boolean isLiquidOutput(byte aSide);
+    boolean isLiquidOutput(int aSide);
 
     /**
      * Just an Accessor for the Name variable.
@@ -234,7 +234,7 @@ public interface IMetaTileEntity extends ISidedInventory, IFluidTank, IFluidHand
      *
      * @return
      */
-    boolean onRightclick(IGregTechTileEntity aBaseMetaTileEntity, EntityPlayer aPlayer, byte aSide, float aX, float aY, float aZ);
+    boolean onRightclick(IGregTechTileEntity aBaseMetaTileEntity, EntityPlayer aPlayer, int aSide, float aX, float aY, float aZ);
 
     /**
      * a Player leftclicks the Machine
@@ -245,7 +245,7 @@ public interface IMetaTileEntity extends ISidedInventory, IFluidTank, IFluidHand
     /**
      * Called Clientside with the Data got from @getUpdateData
      */
-    void onValueUpdate(byte aValue);
+    void onValueUpdate(int aValue);
 
     /**
      * return a small bit of Data, like a secondary Facing for example with this Function, for the Client.
@@ -331,7 +331,7 @@ public interface IMetaTileEntity extends ISidedInventory, IFluidTank, IFluidHand
      * @param aActive     if the Machine is currently active (use this instead of calling mBaseMetaTileEntity.mActive!!!). Note: In case of Pipes this means if this Side is connected to something or not.
      * @param aRedstone   if the Machine is currently outputting a RedstoneSignal (use this instead of calling mBaseMetaTileEntity.mRedstone!!!)
      */
-    ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex, boolean aActive, boolean aRedstone);
+    ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, int aSide, int aFacing, int aColorIndex, boolean aActive, boolean aRedstone);
 
     /**
      * The Textures used for the Item rendering. Return null if you want the regular 3D Block Rendering.
@@ -362,9 +362,9 @@ public interface IMetaTileEntity extends ISidedInventory, IFluidTank, IFluidHand
     /**
      * Gets the Output for the comparator on the given Side
      */
-    byte getComparatorValue(byte aSide);
+    byte getComparatorValue(int aSide);
 
-    float getExplosionResistance(byte aSide);
+    float getExplosionResistance(int aSide);
 
     String[] getInfoData();
 
@@ -372,7 +372,7 @@ public interface IMetaTileEntity extends ISidedInventory, IFluidTank, IFluidHand
 
     ItemStack[] getRealInventory();
 
-    boolean connectsToItemPipe(byte aSide);
+    boolean connectsToItemPipe(int aSide);
 
     void onColorChangeServer(byte aColor);
 

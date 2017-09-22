@@ -43,13 +43,13 @@ public enum Dyes implements IColorModulationContainer {
 
     public final byte mIndex;
     public final String mName;
-    public final short[] mRGBa;
+    public final int[] mRGBa;
     private final ArrayList<Fluid> mFluidDyes = new GT_ArrayList<Fluid>(false, 1);
 
     Dyes(int aIndex, int aR, int aG, int aB, String aName) {
         mIndex = (byte) aIndex;
         mName = aName;
-        mRGBa = new short[]{(short) aR, (short) aG, (short) aB, 0};
+        mRGBa = new int[]{aR, aG, aB, 0};
     }
 
     public static Dyes get(int aColor) {
@@ -57,7 +57,7 @@ public enum Dyes implements IColorModulationContainer {
         return dyeNULL;
     }
 
-    public static short[] getModulation(int aColor, short[] aDefaultModulation) {
+    public static int[] getModulation(int aColor, int[] aDefaultModulation) {
         if (aColor >= 0 && aColor < 16) return VALUES[aColor].mRGBa;
         return aDefaultModulation;
     }
@@ -104,7 +104,7 @@ public enum Dyes implements IColorModulationContainer {
     }
 
     @Override
-    public short[] getRGBA() {
+    public int[] getRGBA() {
         return mRGBa;
     }
 }

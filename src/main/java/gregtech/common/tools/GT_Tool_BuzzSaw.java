@@ -53,7 +53,7 @@ public class GT_Tool_BuzzSaw
         return !aIsToolHead ? GT_MetaGenerated_Tool.getPrimaryMaterial(aStack).mIconSet.mTextures[gregtech.api.enums.OrePrefixes.toolHeadBuzzSaw.mTextureIndex] : Textures.ItemIcons.HANDLE_BUZZSAW;
     }
 
-    public short[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
+    public int[] getRGBa(boolean aIsToolHead, ItemStack aStack) {
         return !aIsToolHead ? GT_MetaGenerated_Tool.getPrimaryMaterial(aStack).mRGBa : GT_MetaGenerated_Tool.getSecondaryMaterial(aStack).mRGBa;
     }
 

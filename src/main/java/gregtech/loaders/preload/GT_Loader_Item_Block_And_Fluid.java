@@ -10,6 +10,9 @@ import gregtech.api.items.GT_Generic_Item;
 import gregtech.api.items.GT_RadioactiveCellIC_Item;
 import gregtech.api.metatileentity.BaseMetaPipeEntity;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
+import gregtech.api.objects.GT_CopiedBlockTexture;
+import gregtech.api.objects.GT_RenderedTexture;
+import gregtech.api.objects.OreGenContainer;
 import gregtech.api.util.GT_Log;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
@@ -18,6 +21,7 @@ import gregtech.common.blocks.*;
 import gregtech.common.items.*;
 import gregtech.common.items.armor.ElectricModularArmor1;
 import gregtech.common.items.armor.ModularArmor_Item;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -139,20 +143,60 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
         GregTech_API.sBlockGranites = new GT_Block_Granites();
         GregTech_API.sBlockConcretes = new GT_Block_Concretes();
         GregTech_API.sBlockStones = new GT_Block_Stones();
-        //GregTech_API.sBlockOres1 = new GT_Block_Ores();
+
+        /*if (BlockName.equals("tile.igneousStone")) {
+            if (GregTech_API.sBlockOresUb1 != null) {
+                tOreBlock = GregTech_API.sBlockOresUb1;
+                aBlockMeta += (BlockMeta * 1000);
+            }
+        } else if (BlockName.equals("tile.metamorphicStone")) {
+            if (GregTech_API.sBlockOresUb2 != null) {
+                tOreBlock = GregTech_API.sBlockOresUb2;
+                aBlockMeta += (BlockMeta * 1000);
+            }
+        } else if (BlockName.equals("tile.sedimentaryStone")) {
+            if (GregTech_API.sBlockOresUb3 != null) {
+                tOreBlock = GregTech_API.sBlockOresUb3;
+                aBlockMeta += (BlockMeta * 1000);
+            }
+        } else if (BlockName.equals("tile.moonBlock") && (BlockMeta == 3 || BlockMeta == 4)) {
+            if (GregTech_API.sBlockOresGC != null) {
+                switch (BlockMeta) {
+                    case 3: tOreBlock = GregTech_API.sBlockOresGC; break;
+                    case 4: aBlockMeta += 1000; tOreBlock = GregTech_API.sBlockOresGC; break;
+                }
+            }
+        } else if (BlockName.equals("tile.mars") && (BlockMeta == 6 || BlockMeta == 9)) {
+            if (GregTech_API.sBlockOresGC != null) {
+                switch (BlockMeta) {
+                    case 6: aBlockMeta += 2000; tOreBlock = GregTech_API.sBlockOresGC; break;
+                    case 9: aBlockMeta += 3000; tOreBlock = GregTech_API.sBlockOresGC; break;
+                }
+            }
+        } else*/
+
+        Block aMoonBlock = GT_Block_Ores.enableGCOres ? GameRegistry.findBlock("GalacticraftCore", "tile.moonBlock") : null;
+        Block aMarsBlock = GT_Block_Ores.enableGCOres ? GameRegistry.findBlock("GalacticraftMars", "tile.mars") : null;
+
+        GT_Block_Ores.aContainerArray = new OreGenContainer[]{
+                new OreGenContainer(Blocks.stone, 0, new GT_CopiedBlockTexture(Blocks.stone, 0, 0)),
+                new OreGenContainer(GregTech_API.sBlockGranites, 0, new GT_RenderedTexture(Textures.BlockIcons.GRANITE_BLACK_STONE)),
+                new OreGenContainer(GregTech_API.sBlockGranites, 8, new GT_RenderedTexture(Textures.BlockIcons.GRANITE_RED_STONE)),
+                new OreGenContainer(GregTech_API.sBlockStones, 0, new GT_RenderedTexture(Textures.BlockIcons.MARBLE_STONE)),
+                new OreGenContainer(GregTech_API.sBlockStones, 8, new GT_RenderedTexture(Textures.BlockIcons.BASALT_STONE)),
+                new OreGenContainer(Blocks.netherrack, 0, new GT_CopiedBlockTexture(Blocks.netherrack, 0, 0)),
+                new OreGenContainer(Blocks.end_stone, 0, new GT_CopiedBlockTexture(Blocks.end_stone, 0, 0)),
+                GT_Block_Ores.enableGCOres ? new OreGenContainer(aMoonBlock, 0, new GT_CopiedBlockTexture(aMoonBlock, 0, 3)) : new OreGenContainer(Blocks.stone, 0, new GT_CopiedBlockTexture(Blocks.stone, 0, 0)),
+                GT_Block_Ores.enableGCOres ? new OreGenContainer(aMoonBlock, 0, new GT_CopiedBlockTexture(aMoonBlock, 0, 4)) : new OreGenContainer(Blocks.stone, 0, new GT_CopiedBlockTexture(Blocks.stone, 0, 0)),
+                GT_Block_Ores.enableGCOres ? new OreGenContainer(aMoonBlock, 0, new GT_CopiedBlockTexture(aMoonBlock, 0, 6)) : new OreGenContainer(Blocks.stone, 0, new GT_CopiedBlockTexture(Blocks.stone, 0, 0)),
+                GT_Block_Ores.enableGCOres ? new OreGenContainer(aMoonBlock, 0, new GT_CopiedBlockTexture(aMarsBlock, 0, 9)) : new OreGenContainer(Blocks.stone, 0, new GT_CopiedBlockTexture(Blocks.stone, 0, 0))
+        };
+        GT_Block_Ores.aContainerCount = GT_Block_Ores.enableGCOres ? GT_Block_Ores.aContainerArray.length : GT_Block_Ores.aContainerArray.length - 4;
 
         for (Materials aMaterial : Materials.MATERIALS_ORE) {
             aMaterial.aOreBlock = new GT_Block_Ores(aMaterial);
         }
 
-        /*if(Loader.isModLoaded("UndergroundBiomes") && GT_Mod.gregtechproxy.enableUBOres) {
-            GregTech_API.sBlockOresUb1 = new GT_Block_Ores_UB1();
-            GregTech_API.sBlockOresUb2 = new GT_Block_Ores_UB2();
-            GregTech_API.sBlockOresUb3 = new GT_Block_Ores_UB3();
-        }
-        if(Loader.isModLoaded("GalacticraftCore") && Loader.isModLoaded("GalacticraftMars") && GT_Mod.gregtechproxy.enableGCOres) {
-            GregTech_API.sBlockOresGC = new GT_Block_Ores_GC();
-        }*/
         GregTech_API.sBlockMetal1 = new GT_Block_Metal("gt.blockmetal1", new Materials[]{
                 Materials.Aluminium,
                 Materials.Americium,

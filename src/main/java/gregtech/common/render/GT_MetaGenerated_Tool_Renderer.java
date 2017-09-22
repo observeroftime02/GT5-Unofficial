@@ -59,7 +59,7 @@ public class GT_MetaGenerated_Tool_Renderer
                 if (tIcon != null) {
                     Minecraft.getMinecraft().renderEngine.bindTexture(aIcon.getTextureFile());
                     GL11.glBlendFunc(770, 771);
-                    short[] tModulation = tToolStats.getRGBa(false, aStack);
+                    int[] tModulation = tToolStats.getRGBa(false, aStack);
                     GL11.glColor3f(tModulation[0] / 255.0F, tModulation[1] / 255.0F, tModulation[2] / 255.0F);
                     if (aType.equals(IItemRenderer.ItemRenderType.INVENTORY)) {
                         GT_RenderUtil.renderItemIcon(tIcon, 16.0D, 0.001D, 0.0F, 0.0F, -1.0F);
@@ -85,7 +85,7 @@ public class GT_MetaGenerated_Tool_Renderer
                 if (tIcon != null) {
                     Minecraft.getMinecraft().renderEngine.bindTexture(aIcon.getTextureFile());
                     GL11.glBlendFunc(770, 771);
-                    short[] tModulation = tToolStats.getRGBa(true, aStack);
+                    int[] tModulation = tToolStats.getRGBa(true, aStack);
                     GL11.glColor3f(tModulation[0] / 255.0F, tModulation[1] / 255.0F, tModulation[2] / 255.0F);
                     if (aType.equals(IItemRenderer.ItemRenderType.INVENTORY)) {
                         GT_RenderUtil.renderItemIcon(tIcon, 16.0D, 0.001D, 0.0F, 0.0F, -1.0F);

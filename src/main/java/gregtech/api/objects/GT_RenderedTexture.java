@@ -18,16 +18,16 @@ public class GT_RenderedTexture implements ITexture, IColorModulationContainer {
      * Just set this variable to another different Array instead.
      * Otherwise some colored things will get Problems.
      */
-    public short[] mRGBa;
+    public int[] mRGBa;
 
-    public GT_RenderedTexture(IIconContainer aIcon, short[] aRGBa, boolean aAllowAlpha) {
+    public GT_RenderedTexture(IIconContainer aIcon, int[] aRGBa, boolean aAllowAlpha) {
         if (aRGBa.length != 4) throw new IllegalArgumentException("RGBa doesn't have 4 Values @ GT_RenderedTexture");
         mIconContainer = aIcon;
         mAllowAlpha = aAllowAlpha;
         mRGBa = aRGBa;
     }
 
-    public GT_RenderedTexture(IIconContainer aIcon, short[] aRGBa) {
+    public GT_RenderedTexture(IIconContainer aIcon, int[] aRGBa) {
         this(aIcon, aRGBa, true);
     }
 
@@ -128,7 +128,7 @@ public class GT_RenderedTexture implements ITexture, IColorModulationContainer {
     }
 
     @Override
-    public short[] getRGBA() {
+    public int[] getRGBA() {
         return mRGBa;
     }
 

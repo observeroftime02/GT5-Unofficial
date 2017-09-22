@@ -17,7 +17,7 @@ public abstract class GT_MetaTileEntity_BasicHull_NonElectric extends GT_MetaTil
     }
 
     @Override
-    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aConnections, byte aColorIndex, boolean aConnected, boolean aRedstone) {
+    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, int aSide, int aConnections, int aColorIndex, boolean aConnected, boolean aRedstone) {
         return mTextures[Math.min(2, aSide)][aColorIndex + 1];
     }
 

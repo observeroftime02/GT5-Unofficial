@@ -7,9 +7,9 @@ import static gregtech.api.enums.GT_Values.RES_PATH_BLOCK;
 
 public class GT_Fluid extends Fluid implements Runnable {
     public final String mTextureName;
-    private final short[] mRGBa;
+    private final int[] mRGBa;
 
-    public GT_Fluid(String aName, String aTextureName, short[] aRGBa) {
+    public GT_Fluid(String aName, String aTextureName, int[] aRGBa) {
         super(aName);
         mRGBa = aRGBa;
         mTextureName = aTextureName;
