@@ -8,15 +8,13 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicMachine;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.objects.ItemData;
-import gregtech.api.util.GT_Utility;
 import gregtech.api.util.GT_OreDictUnificator;
-import gregtech.common.blocks.GT_Block_Ores_Abstract;
-import gregtech.common.blocks.GT_TileEntity_Ores;
+import gregtech.api.util.GT_Utility;
+import gregtech.common.blocks.GT_Block_Ores;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 
 import java.util.ArrayList;
 
@@ -110,12 +108,9 @@ public class GT_MetaTileEntity_Miner extends GT_MetaTileEntity_BasicMachine {
                     while (drillX <= RADIUS[mTier]) {
                         Block block = aBaseMetaTileEntity.getBlockOffset(drillX, drillY, drillZ);
                         int blockMeta = aBaseMetaTileEntity.getMetaIDOffset(drillX, drillY, drillZ);
-                        if (block instanceof GT_Block_Ores_Abstract) {
-                            TileEntity tTileEntity = getBaseMetaTileEntity().getTileEntityOffset(drillX, drillY, drillZ);
-                            if (tTileEntity != null && tTileEntity instanceof GT_TileEntity_Ores && ((GT_TileEntity_Ores) tTileEntity).mNatural) {
-                                mineBlock(aBaseMetaTileEntity, drillX, drillY, drillZ);
-                                return;
-                            }
+                        if (block instanceof GT_Block_Ores) {
+                            mineBlock(aBaseMetaTileEntity, drillX, drillY, drillZ);
+                            return;
                         } else {
                             ItemData association = GT_OreDictUnificator.getAssociation(new ItemStack(block, 1, blockMeta));
                             if (association != null && association.mPrefix.toString().startsWith("ore")) {

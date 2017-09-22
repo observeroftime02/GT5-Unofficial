@@ -1,6 +1,5 @@
 package gregtech.common.tileentities.machines.basic;
 
-import gregtech.api.GregTech_API;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.Textures;
@@ -13,15 +12,13 @@ import gregtech.api.objects.ItemData;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.GT_UndergroundOil;
-import gregtech.common.blocks.GT_Block_Ores_Abstract;
-import gregtech.common.blocks.GT_TileEntity_Ores;
+import gregtech.common.blocks.GT_Block_Ores;
 import ic2.core.Ic2Items;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.ChunkPosition;
 import net.minecraftforge.fluids.FluidStack;
@@ -197,13 +194,11 @@ public class GT_MetaTileEntity_AdvSeismicProspector extends GT_MetaTileEntity_Ba
     private String checkForOre(int x, int y, int z) {
         Block tBlock = this.getBaseMetaTileEntity().getBlock(x, y, z);
 
-        if (tBlock instanceof GT_Block_Ores_Abstract) {
-            TileEntity tTileEntity = getBaseMetaTileEntity().getWorld().getTileEntity(x, y, z);
-
-            if ((tTileEntity instanceof GT_TileEntity_Ores) && (((GT_TileEntity_Ores) tTileEntity).mMetaData < 16000)) { // Filtering small ores
-                Materials tMaterial = GregTech_API.sGeneratedMaterials[((GT_TileEntity_Ores) tTileEntity).mMetaData % 1000];
-
-                if ((tMaterial != null) && (tMaterial != Materials._NULL)) {
+        if (tBlock instanceof GT_Block_Ores) {
+            GT_Block_Ores aBlockOresAsb = (GT_Block_Ores) tBlock;
+            if (getBaseMetaTileEntity().getMetaID(x, y, z) == 0) { // Filtering small ores
+                Materials tMaterial = aBlockOresAsb.aMaterial;
+                if (tMaterial != null && tMaterial != Materials._NULL) {
                     return tMaterial.mDefaultLocalName;
                 }
             }

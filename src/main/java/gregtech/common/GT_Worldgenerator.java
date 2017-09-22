@@ -7,7 +7,7 @@ import gregtech.api.enums.GT_Values;
 import gregtech.api.objects.XSTR;
 import gregtech.api.util.GT_Log;
 import gregtech.api.world.GT_Worldgen;
-import gregtech.common.blocks.GT_TileEntity_Ores;
+import gregtech.common.blocks.GT_Block_Ores;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.ChunkCoordIntPair;
@@ -209,13 +209,13 @@ public class GT_Worldgenerator implements IWorldGenerator {
                                             if ((var39 * var39 + var42 * var42 + var45 * var45 < 1.0D) && (mWorld.getBlock(tX, tY, tZ).isAir(mWorld, tX, tY, tZ))) {
                                                 int ranOre = aRandom.nextInt(50);
                                                 if (ranOre < 3) {
-                                                    GT_TileEntity_Ores.setOreBlock(mWorld, eX, eY, eZ, primaryMeta, false, true);
+                                                    GT_Block_Ores.setOreBlock(mWorld, eX, eY, eZ, primaryMeta, false, true);
                                                 } else if (ranOre < 6) {
-                                                    GT_TileEntity_Ores.setOreBlock(mWorld, eX, eY, eZ, secondaryMeta, false, true);
+                                                    GT_Block_Ores.setOreBlock(mWorld, eX, eY, eZ, secondaryMeta, false, true);
                                                 } else if (ranOre < 8) {
-                                                    GT_TileEntity_Ores.setOreBlock(mWorld, eX, eY, eZ, betweenMeta, false, true);
+                                                    GT_Block_Ores.setOreBlock(mWorld, eX, eY, eZ, betweenMeta, false, true);
                                                 } else if (ranOre < 10) {
-                                                    GT_TileEntity_Ores.setOreBlock(mWorld, eX, eY, eZ, sporadicMeta, false, true);
+                                                    GT_Block_Ores.setOreBlock(mWorld, eX, eY, eZ, sporadicMeta, false, true);
                                                 } else {
                                                     if (tDimensionType == 1) {
                                                         mWorld.setBlock(eX, eY, eZ, Blocks.end_stone, 0, 2);
