@@ -7,7 +7,7 @@ import gregtech.api.enums.ConfigCategories;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.objects.ItemData;
-import gregtech.common.blocks.GT_Block_Ores;
+import gregtech.common.blocks.GT_Block_Ores_Abstract;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
@@ -184,8 +184,8 @@ public class GT_BaseCrop extends CropCard implements ICropCardInfo {
         }
         for (int i = 1; i < this.getrootslength(aCrop); i++) {
             Block tBlock = aCrop.getWorld().getBlock(aCrop.getLocation().posX, aCrop.getLocation().posY - i, aCrop.getLocation().posZ);
-            if ((tBlock instanceof GT_Block_Ores)) {
-                GT_Block_Ores aBlockOresAsb = (GT_Block_Ores) tBlock;
+            if ((tBlock instanceof GT_Block_Ores_Abstract)) {
+                GT_Block_Ores_Abstract aBlockOresAsb = (GT_Block_Ores_Abstract) tBlock;
                 Materials tMaterial = aBlockOresAsb.aMaterial;
                 if (tMaterial != null && tMaterial != Materials._NULL) {
                     return tMaterial == mBlock;

@@ -4,9 +4,11 @@ import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.GT_Values;
+import gregtech.api.objects.OreGenContainer;
 import gregtech.api.objects.XSTR;
 import gregtech.api.util.GT_Log;
 import gregtech.api.world.GT_Worldgen;
+import gregtech.common.blocks.GT_Block_Ores_Abstract;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.ChunkCoordIntPair;
@@ -177,6 +179,7 @@ public class GT_Worldgenerator implements IWorldGenerator {
                     mSize = aRandom.nextInt(gcMaxSize - gcMinSize);
                 }
                 if ((mWorld.getBlock(tX, tY, tZ).isAir(mWorld, tX, tY, tZ))) {
+                    OreGenContainer[] aContainer = GT_Block_Ores_Abstract.aDimContainerArray[GT_Worldgen_GT_Ore_Layer.getFixedDimID(-30)];
                     float var6 = aRandom.nextFloat() * 3.141593F;
                     double var7 = tX + 8 + MathHelper.sin(var6) * mSize / 8.0F;
                     double var9 = tX + 8 - MathHelper.sin(var6) * mSize / 8.0F;
@@ -208,13 +211,13 @@ public class GT_Worldgenerator implements IWorldGenerator {
                                             if ((var39 * var39 + var42 * var42 + var45 * var45 < 1.0D) && (mWorld.getBlock(tX, tY, tZ).isAir(mWorld, tX, tY, tZ))) {
                                                 int ranOre = aRandom.nextInt(50);
                                                 if (ranOre < 3) {
-                                                    GT_Worldgen_GT_Ore_Layer.setOreBlock(mWorld, eX, eY, eZ, primaryMeta, true);
+                                                    GT_Worldgen_GT_Ore_Layer.setOreBlock(mWorld, eX, eY, eZ, primaryMeta, true, aContainer);
                                                 } else if (ranOre < 6) {
-                                                    GT_Worldgen_GT_Ore_Layer.setOreBlock(mWorld, eX, eY, eZ, secondaryMeta, true);
+                                                    GT_Worldgen_GT_Ore_Layer.setOreBlock(mWorld, eX, eY, eZ, secondaryMeta, true, aContainer);
                                                 } else if (ranOre < 8) {
-                                                    GT_Worldgen_GT_Ore_Layer.setOreBlock(mWorld, eX, eY, eZ, betweenMeta, true);
+                                                    GT_Worldgen_GT_Ore_Layer.setOreBlock(mWorld, eX, eY, eZ, betweenMeta, true, aContainer);
                                                 } else if (ranOre < 10) {
-                                                    GT_Worldgen_GT_Ore_Layer.setOreBlock(mWorld, eX, eY, eZ, sporadicMeta, true);
+                                                    GT_Worldgen_GT_Ore_Layer.setOreBlock(mWorld, eX, eY, eZ, sporadicMeta, true, aContainer);
                                                 } else {
                                                     if (tDimensionType == 1) {
                                                         mWorld.setBlock(eX, eY, eZ, Blocks.end_stone, 0, 2);

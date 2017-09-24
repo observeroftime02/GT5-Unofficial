@@ -12,7 +12,7 @@ import gregtech.api.objects.ItemData;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.GT_UndergroundOil;
-import gregtech.common.blocks.GT_Block_Ores;
+import gregtech.common.blocks.GT_Block_Ores_Abstract;
 import ic2.core.Ic2Items;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -194,8 +194,8 @@ public class GT_MetaTileEntity_AdvSeismicProspector extends GT_MetaTileEntity_Ba
     private String checkForOre(int x, int y, int z) {
         Block tBlock = this.getBaseMetaTileEntity().getBlock(x, y, z);
 
-        if (tBlock instanceof GT_Block_Ores) {
-            GT_Block_Ores aBlockOresAsb = (GT_Block_Ores) tBlock;
+        if (tBlock instanceof GT_Block_Ores_Abstract) {
+            GT_Block_Ores_Abstract aBlockOresAsb = (GT_Block_Ores_Abstract) tBlock;
             if (getBaseMetaTileEntity().getMetaID(x, y, z) == 0) { // Filtering small ores
                 Materials tMaterial = aBlockOresAsb.aMaterial;
                 if (tMaterial != null && tMaterial != Materials._NULL) {

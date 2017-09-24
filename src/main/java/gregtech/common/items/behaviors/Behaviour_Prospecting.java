@@ -10,7 +10,7 @@ import gregtech.api.util.GT_LanguageManager;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
-import gregtech.common.blocks.GT_Block_Ores;
+import gregtech.common.blocks.GT_Block_Ores_Abstract;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.entity.player.EntityPlayer;
@@ -55,7 +55,7 @@ public class Behaviour_Prospecting
 		    	aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, Blocks.end_stone) ||
 		    	aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, GregTech_API.sBlockStones) ||
 		    	aBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, GregTech_API.sBlockGranites) ||
-		    	(aBlock instanceof GT_Block_Ores) /*TODO ||
+		    	(aBlock instanceof GT_Block_Ores_Abstract) /*TODO ||
 		    	(aBlock instanceof GT_Block_Ores_UB1)  ||
 		    	(aBlock instanceof GT_Block_Ores_UB2)*/){
 	            if (GT_ModHandler.damageOrDechargeItem(aStack, this.mVanillaCosts, this.mEUCosts, aPlayer)) {
@@ -94,8 +94,8 @@ public class Behaviour_Prospecting
 					tY = aY-4-tQuality+tRandom.nextInt(j);
 					tZ = aZ-4-tQuality+tRandom.nextInt(j);
 					tBlock = aWorld.getBlock(tX, tY, tZ);
-                    if ((tBlock instanceof GT_Block_Ores)) {
-                        GT_Block_Ores aBlockOresAsb = (GT_Block_Ores) tBlock;
+                    if ((tBlock instanceof GT_Block_Ores_Abstract)) {
+                        GT_Block_Ores_Abstract aBlockOresAsb = (GT_Block_Ores_Abstract) tBlock;
                         Materials tMaterial = aBlockOresAsb.aMaterial;
                         if (tMaterial != null && tMaterial != Materials._NULL) {
                             GT_Utility.sendChatToPlayer(aPlayer, trans("106","Found traces of ") + tMaterial.mDefaultLocalName + trans("101"," Ore."));

@@ -11,7 +11,7 @@ import gregtech.api.objects.GT_FluidStack;
 import gregtech.api.objects.MaterialStack;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
-import gregtech.common.blocks.GT_Block_Ores;
+import gregtech.common.blocks.GT_Block_Ores_Abstract;
 import gregtech.loaders.materialprocessing.ProcessingConfig;
 import gregtech.loaders.materialprocessing.ProcessingModSupport;
 import net.minecraft.enchantment.Enchantment;
@@ -511,7 +511,9 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public boolean mHasParentMod = true, mHasPlasma = false, mHasGas = false, mCustomOre = false;
     public Fluid mFluid = null, mGas = null, mPlasma = null;
     public Fluid[] hydroCrackedFluids = new Fluid[3], steamCrackedFluids = new Fluid[3];
-    public GT_Block_Ores aOreBlock = null;
+    public GT_Block_Ores_Abstract aDefOreBlock = null;
+    public GT_Block_Ores_Abstract aUB1OreBlock = null;
+    public GT_Block_Ores_Abstract aUB2OreBlock = null;
 
     /**
      * This Fluid is used as standard Unit for Molten Materials. 1296 is a Molten Block, that means 144 is one Material Unit worth of fluid.

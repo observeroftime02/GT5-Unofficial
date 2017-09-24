@@ -2,8 +2,9 @@ package gregtech.common;
 
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.Materials;
+import gregtech.api.objects.OreGenContainer;
 import gregtech.api.world.GT_Worldgen;
-import gregtech.common.blocks.GT_Block_Ores;
+import gregtech.common.blocks.GT_Block_Ores_Abstract;
 import gregtech.loaders.misc.GT_Achievements;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -35,6 +36,8 @@ public class GT_Worldgen_GT_Ore_Layer extends GT_Worldgen {
     public final boolean mMars;
     public final boolean mAsteroid;
     public final String aTextWorldgen = "worldgen.";
+    public static OreGenContainer[] aContainer = GT_Block_Ores_Abstract.aDimContainerArray[0];
+    public static int aLastDimID = 0;
 
     public GT_Worldgen_GT_Ore_Layer(String aName, boolean aDefault, int aMinY, int aMaxY, int aWeight, int aDensity, int aSize, boolean aOverworld, boolean aNether, boolean aEnd, boolean aMoon, boolean aMars, boolean aAsteroid, Materials aPrimary, Materials aSecondary, Materials aBetween, Materials aSporadic) {
         super(aName, sList, aDefault);
@@ -69,8 +72,10 @@ public class GT_Worldgen_GT_Ore_Layer extends GT_Worldgen {
         if (!isGenerationAllowed(aWorld, aDimensionType, aDimensionType == -1 && this.mNether || aDimensionType == 0 && this.mOverworld || aDimensionType == 1 && this.mEnd || aWorld.provider.getDimensionName().equals("Moon") && this.mMoon || aWorld.provider.getDimensionName().equals("Mars") && this.mMars ? aDimensionType : aDimensionType ^ 0xFFFFFFFF)) {
             return false;
         }
-        int tMinY = this.mMinY + aRandom.nextInt(this.mMaxY - this.mMinY - 5);
 
+        if (aLastDimID != aDimensionType) aContainer = GT_Block_Ores_Abstract.aDimContainerArray[getFixedDimID(aDimensionType)];
+
+        int tMinY = this.mMinY + aRandom.nextInt(this.mMaxY - this.mMinY - 5);
         int cX = aChunkX - aRandom.nextInt(this.mSize);
         int eX = aChunkX + 16 + aRandom.nextInt(this.mSize);
         for (int tX = cX; tX <= eX; tX++) {
@@ -79,39 +84,50 @@ public class GT_Worldgen_GT_Ore_Layer extends GT_Worldgen {
             for (int tZ = cZ; tZ <= eZ; tZ++) {
                 for (int i = tMinY - 1; i < tMinY + 2; i++) {
                     if (aRandom.nextInt(Math.max(1, Math.max(MathHelper.abs_int(cZ - tZ), MathHelper.abs_int(eZ - tZ)) / this.mDensity)) == 0 || aRandom.nextInt(Math.max(1, Math.max(MathHelper.abs_int(cX - tX), MathHelper.abs_int(eX - tX)) / this.mDensity)) == 0) {
-                        setOreBlock(aWorld, tX, i, tZ, this.mSecondaryMeta, false);
+                        setOreBlock(aWorld, tX, i, tZ, this.mSecondaryMeta, false, aContainer);
                     }
                 }
                 if (aRandom.nextInt(Math.max(1, Math.max(MathHelper.abs_int(cZ - tZ), MathHelper.abs_int(eZ - tZ)) / this.mDensity)) == 0 || aRandom.nextInt(Math.max(1, Math.max(MathHelper.abs_int(cX - tX), MathHelper.abs_int(eX - tX)) / this.mDensity)) == 0) {
-                    setOreBlock(aWorld, tX, tMinY + 2 + aRandom.nextInt(2), tZ, this.mBetweenMeta, false);
+                    setOreBlock(aWorld, tX, tMinY + 2 + aRandom.nextInt(2), tZ, this.mBetweenMeta, false, aContainer);
                 }
                 for (int i = tMinY + 3; i < tMinY + 6; i++) {
                     if (aRandom.nextInt(Math.max(1, Math.max(MathHelper.abs_int(cZ - tZ), MathHelper.abs_int(eZ - tZ)) / this.mDensity)) == 0 || aRandom.nextInt(Math.max(1, Math.max(MathHelper.abs_int(cX - tX), MathHelper.abs_int(eX - tX)) / this.mDensity)) == 0) {
-                        setOreBlock(aWorld, tX, i, tZ, this.mPrimaryMeta, false);
+                        setOreBlock(aWorld, tX, i, tZ, this.mPrimaryMeta, false, aContainer);
                     }
                 }
                 if (aRandom.nextInt(Math.max(1, Math.max(MathHelper.abs_int(cZ - tZ), MathHelper.abs_int(eZ - tZ)) / this.mDensity)) == 0 || aRandom.nextInt(Math.max(1, Math.max(MathHelper.abs_int(cX - tX), MathHelper.abs_int(eX - tX)) / this.mDensity)) == 0) {
-                    setOreBlock(aWorld, tX, tMinY - 1 + aRandom.nextInt(7), tZ, this.mSporadicMeta, false);
+                    setOreBlock(aWorld, tX, tMinY - 1 + aRandom.nextInt(7), tZ, this.mSporadicMeta, false, aContainer);
                 }
             }
         }
         return true;
     }
 
-    public static boolean setOreBlock(World aWorld, int aX, int aY, int aZ, int aMaterialID, boolean air) {
+    public static boolean setOreBlock(World aWorld, int aX, int aY, int aZ, int aMaterialID, boolean air, OreGenContainer[] aContainer) {
         if (!air) aY = Math.min(aWorld.getActualHeight(), Math.max(aY, 1));
         Block aTargetBlock = aWorld.getBlock(aX, aY, aZ);
         int aTargetMeta = aWorld.getBlockMetadata(aX, aY, aZ);
         if (aTargetBlock != Blocks.air || air) {
-            //TODO IMPROVE TO BE DIMENSION BASED
-            for (int aMeta = 0; aMeta < GT_Block_Ores.aContainerCount; aMeta++) {
-                if (GT_Block_Ores.aContainerArray[aMeta].tTargetBlock == aTargetBlock && GT_Block_Ores.aContainerArray[aMeta].tTargetMeta == aTargetMeta) {
-                    if (aTargetBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, GT_Block_Ores.aContainerArray[aMeta].tTargetBlock)) {
-                        return aWorld.setBlock(aX, aY, aZ, GregTech_API.sGeneratedMaterials[aMaterialID].aOreBlock, aMeta, 0);
+            if (aContainer != null) {
+                for (int i = 0; i < aContainer.length; i++) {
+                    if (aContainer[i].tTargetBlock == aTargetBlock) {
+                        for (int j = 0; j < aContainer[i].tTargetMeta.length; j++) {
+                            if (aTargetMeta == aContainer[i].tTargetMeta[j] && aTargetBlock.isReplaceableOreGen(aWorld, aX, aY, aZ, aContainer[i].tTargetBlock)) {
+                                return aWorld.setBlock(aX, aY, aZ, aContainer[i].getOreBlock(GregTech_API.sGeneratedMaterials[aMaterialID]), aContainer[i].tOreMeta[j], 0);
+                            }
+                        }
                     }
                 }
             }
         }
         return false;
+    }
+
+    public static int getFixedDimID(int aRealDimID) {
+        if (aRealDimID == -1) return 500;
+        if (aRealDimID == -28) return 501;
+        if (aRealDimID == -29) return 502;
+        if (aRealDimID == -30) return 503;
+        return aRealDimID;
     }
 }

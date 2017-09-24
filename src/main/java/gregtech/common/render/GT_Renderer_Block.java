@@ -10,19 +10,27 @@ import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.interfaces.tileentity.IPipeRenderedTileEntity;
 import gregtech.api.interfaces.tileentity.ITexturedTileEntity;
+import gregtech.api.objects.GT_CopiedBlockTexture;
+import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.common.blocks.GT_Block_Machines;
-import gregtech.common.blocks.GT_Block_Ores;
+import gregtech.common.blocks.GT_Block_Ores_Abstract;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
+import scala.actors.threadpool.Arrays;
+
+import java.util.ArrayList;
 
 public class GT_Renderer_Block implements ISimpleBlockRenderingHandler {
     public static GT_Renderer_Block INSTANCE;
     public final int mRenderID;
+
+    public static ArrayList<String> aOreRepList = new ArrayList<>(Arrays.asList(new String[]{"tile.whiteStone", "tile.stone", "gt.blockgranites", "gt.blockstones"}));
 
     public GT_Renderer_Block() {
         this.mRenderID = RenderingRegistry.getNextAvailableRenderId();
@@ -129,21 +137,92 @@ public class GT_Renderer_Block implements ISimpleBlockRenderingHandler {
         aRenderer.setRenderBoundsFromBlock(aBlock);
         aRenderer.renderStandardBlockWithAmbientOcclusion(aBlock, aX, aY, aZ, 1, 1, 1);
 
-        IIcon aIcon = aMaterial.mIconSet.mTextures[OrePrefixes.ore.mTextureIndex].getIcon();
+        IIcon aOreIcon = aMaterial.mIconSet.mTextures[OrePrefixes.ore.mTextureIndex].getIcon();
         Tessellator.instance.setColorRGBA((int) (aMaterial.mRGBa[0] * 0.6F), (int) (aMaterial.mRGBa[1] * 0.6F), (int) (aMaterial.mRGBa[2] * 0.6F), 255);
+        if (aWorld.getBlock(aX - 1, aY, aZ) == Blocks.air) {
+            Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX - 1, aY, aZ));
+            aRenderer.renderFaceXNeg(aBlock, aX, aY, aZ, aOreIcon);
+        }
+        if (aWorld.getBlock(aX + 1, aY, aZ) == Blocks.air) {
+            Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX + 1, aY, aZ));
+            aRenderer.renderFaceXPos(aBlock, aX, aY, aZ, aOreIcon);
+        }
+        if (aWorld.getBlock(aX, aY, aZ - 1) == Blocks.air) {
+            Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aY, aZ - 1));
+            aRenderer.renderFaceZNeg(aBlock, aX, aY, aZ, aOreIcon);
+        }
+        if (aWorld.getBlock(aX, aY, aZ + 1) == Blocks.air) {
+            Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aY, aZ + 1));
+            aRenderer.renderFaceZPos(aBlock, aX, aY, aZ, aOreIcon);
+        }
+        if (aWorld.getBlock(aX, aY - 1, aZ) == Blocks.air) {
+            Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aY - 1, aZ));
+            aRenderer.renderFaceYNeg(aBlock, aX, aY, aZ, aOreIcon);
+        }
+        if (aWorld.getBlock(aX, aY + 1, aZ) == Blocks.air) {
+            Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aY + 1, aZ));
+            aRenderer.renderFaceYPos(aBlock, aX, aY, aZ, aOreIcon);
+        }
+        return true;
+    }
 
-        Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX - 1, aY, aZ));
+    public static boolean renderOreBlockDynamic(IBlockAccess aWorld, int aX, int aY, int aZ, Block aBlock, RenderBlocks aRenderer, Materials aMaterial) {
+        aBlock.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+        aRenderer.setRenderBoundsFromBlock(aBlock);
+        aRenderer.renderStandardBlockWithAmbientOcclusion(aBlock, aX, aY, aZ, 1, 1, 1);
+
+        IIcon aIcon = null;
+        for (int x = aX -1; x < aX + 2; x++) {
+            for (int y = aY -1; y < aY + 2; y++) {
+                for (int z = aZ -1; z < aZ + 2; z++) {
+                    Block aRefBlock = aWorld.getBlock(x, y, z);
+                    //System.out.println(aRefBlock.getUnlocalizedName());
+                    if (aRefBlock != null && aOreRepList.contains(aRefBlock.getUnlocalizedName())) {
+                        aIcon = aRefBlock.getIcon(aWorld.getBlockMetadata(x, y, z), 0);
+                        break;
+                    }
+                }
+            }
+        }
+
+        int aLXNeg = aBlock.getMixedBrightnessForBlock(aWorld, aX - 1, aY, aZ);
+        int aLXPos = aBlock.getMixedBrightnessForBlock(aWorld, aX + 1, aY, aZ);
+        int aLZNeg = aBlock.getMixedBrightnessForBlock(aWorld, aX, aY, aZ - 1);
+        int aLZPos = aBlock.getMixedBrightnessForBlock(aWorld, aX, aY, aZ + 1);
+        int aLYNeg = aBlock.getMixedBrightnessForBlock(aWorld, aX, aY - 1, aZ);
+        int aLYPos = aBlock.getMixedBrightnessForBlock(aWorld, aX, aY + 1, aZ);
+
+        if (aIcon == null) aIcon = Blocks.diamond_block.getIcon(0, 0);
+
+        Tessellator.instance.setBrightness(aLXNeg);
         aRenderer.renderFaceXNeg(aBlock, aX, aY, aZ, aIcon);
-        Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX + 1, aY, aZ));
+        Tessellator.instance.setBrightness(aLXPos);
         aRenderer.renderFaceXPos(aBlock, aX, aY, aZ, aIcon);
-        Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aY, aZ - 1));
+        Tessellator.instance.setBrightness(aLZNeg);
         aRenderer.renderFaceZNeg(aBlock, aX, aY, aZ, aIcon);
-        Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aY, aZ + 1));
+        Tessellator.instance.setBrightness(aLZPos);
         aRenderer.renderFaceZPos(aBlock, aX, aY, aZ, aIcon);
-        Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aY - 1, aZ));
+        Tessellator.instance.setBrightness(aLYNeg);
         aRenderer.renderFaceYNeg(aBlock, aX, aY, aZ, aIcon);
-        Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aY + 1, aZ));
+        Tessellator.instance.setBrightness(aLYPos);
         aRenderer.renderFaceYPos(aBlock, aX, aY, aZ, aIcon);
+
+        Tessellator.instance.setColorRGBA((int) (aMaterial.mRGBa[0] * 0.6F), (int) (aMaterial.mRGBa[1] * 0.6F), (int) (aMaterial.mRGBa[2] * 0.6F), 255);
+        IIcon aOreIcon = aMaterial.mIconSet.mTextures[OrePrefixes.ore.mTextureIndex].getIcon();
+
+        Tessellator.instance.setBrightness(aLXNeg);
+        aRenderer.renderFaceXNeg(aBlock, aX, aY, aZ, aOreIcon);
+        Tessellator.instance.setBrightness(aLXPos);
+        aRenderer.renderFaceXPos(aBlock, aX, aY, aZ, aOreIcon);
+        Tessellator.instance.setBrightness(aLZNeg);
+        aRenderer.renderFaceZNeg(aBlock, aX, aY, aZ, aOreIcon);
+        Tessellator.instance.setBrightness(aLZPos);
+        aRenderer.renderFaceZPos(aBlock, aX, aY, aZ, aOreIcon);
+        Tessellator.instance.setBrightness(aLYNeg);
+        aRenderer.renderFaceYNeg(aBlock, aX, aY, aZ, aOreIcon);
+        Tessellator.instance.setBrightness(aLYPos);
+        aRenderer.renderFaceYPos(aBlock, aX, aY, aZ, aOreIcon);
+
         return true;
     }
 
@@ -449,7 +528,7 @@ public class GT_Renderer_Block implements ISimpleBlockRenderingHandler {
             if (aFullBlock && !aBlock.shouldSideBeRendered(aWorld, aX, aY - 1, aZ, 0)) {
                 return;
             }
-            //Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aFullBlock ? aY - 1 : aY, aZ));
+            Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aFullBlock ? aY - 1 : aY, aZ));
         }
         if (aIcon != null) {
             for (int i = 0; i < aIcon.length; i++) {
@@ -553,8 +632,9 @@ public class GT_Renderer_Block implements ISimpleBlockRenderingHandler {
             if (aMeta > 0 && aMeta < GregTech_API.METATILEENTITIES.length && GregTech_API.METATILEENTITIES[aMeta] != null && !GregTech_API.METATILEENTITIES[aMeta].renderInInventory(aBlock, aMeta, aRenderer)) {
                 renderNormalInventoryMetaTileEntity(aBlock, aMeta, aRenderer);
             }
-        } else if (aBlock instanceof GT_Block_Ores) {
-            ITexture[] aTexture = ((GT_Block_Ores) aBlock).getTexture(aMeta);
+        } else if (aBlock instanceof GT_Block_Ores_Abstract) {
+            Materials aMaterial = ((GT_Block_Ores_Abstract) aBlock).aMaterial;
+            ITexture[] aTexture = new ITexture[]{new GT_CopiedBlockTexture(Blocks.stone, 0, 0), new GT_RenderedTexture(aMaterial.mIconSet.mTextures[OrePrefixes.ore.mTextureIndex], aMaterial.mRGBa)};
 
             aBlock.setBlockBoundsForItemRender();
             aRenderer.setRenderBoundsFromBlock(aBlock);
@@ -598,8 +678,9 @@ public class GT_Renderer_Block implements ISimpleBlockRenderingHandler {
     }
 
     public boolean renderWorldBlock(IBlockAccess aWorld, int aX, int aY, int aZ, Block aBlock, int aModelID, RenderBlocks aRenderer) {
-        if (aBlock instanceof GT_Block_Ores) {
-            return renderOreBlock(aWorld, aX, aY, aZ, aBlock, aRenderer, ((GT_Block_Ores) aBlock).aMaterial);
+        if (aBlock instanceof GT_Block_Ores_Abstract) {
+            return renderOreBlock(aWorld, aX, aY, aZ, aBlock, aRenderer, ((GT_Block_Ores_Abstract) aBlock).aMaterial);
+            //return renderOreBlockDynamic(aWorld, aX, aY, aZ, aBlock, aRenderer, ((GT_Block_Ores) aBlock).aMaterial);
         }
         TileEntity aTileEntity = aWorld.getTileEntity(aX, aY, aZ);
         if (aTileEntity == null) {
