@@ -47,7 +47,7 @@ public final class SubTag implements ICondition<ISubTagContainer> {
     public static final SubTag WASHING_SODIUMPERSULFATE = getNewSubTag("WASHING_SODIUMPERSULFATE");
     /**
      * Add this to your Material if you want to have its Ore Mercury washed. Already listed are:
-     * Gold, Silver, Osmium, Mithril, Platinum, Midasium, Cooperite and AstralSilver.
+     * Gold, Silver, Osmium, Mithril, Platinum, Midasium, Sheldonite and AstralSilver.
      */
     public static final SubTag WASHING_MERCURY = getNewSubTag("WASHING_MERCURY");
     /**

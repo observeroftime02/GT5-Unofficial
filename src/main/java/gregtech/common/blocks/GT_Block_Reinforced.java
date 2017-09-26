@@ -64,12 +64,12 @@ public class GT_Block_Reinforced extends GT_Generic_Block {
         ItemList.Block_MSSFUEL.set(new ItemStack(this.setHardness(2.5f).setResistance(2.0f), 1, 7));
         ItemList.Block_MiningPipe.set(new ItemStack(this.setHardness(1.0f).setResistance(1.5f), 1, 8));
         ItemList.Block_MiningPipeTip.set(new ItemStack(this.setHardness(1.0f).setResistance(1.5f), 1, 9));
-        GT_ModHandler.addCraftingRecipe(ItemList.Block_BronzePlate.get(1),GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"hP ", "PBP", " P ", 'P', OrePrefixes.plate.get(Materials.Bronze), 'B', OrePrefixes.stone.get(Materials.GraniteBlack)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Block_BronzePlate.get(1),GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"hP ", "PBP", " P ", 'P', OrePrefixes.plate.get(Materials.Bronze), 'B', OrePrefixes.stone.get(Materials.GraniteRed)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Block_IridiumTungstensteel.get(1),GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"hBP", 'P', OrePrefixes.plate.get(Materials.Iridium), 'B', ItemList.Block_TungstenSteelReinforced.get(1)});
-        GT_OreDictUnificator.setItemData(ItemList.Block_IridiumTungstensteel.get(1), new ItemData(new MaterialStack(Materials.Iridium, OrePrefixes.plate.mMaterialAmount), new MaterialStack(Materials.TungstenSteel, 2*OrePrefixes.plate.mMaterialAmount),new MaterialStack(Materials.Concrete, OrePrefixes.dust.mMaterialAmount)));
-        GT_ModHandler.addShapelessCraftingRecipe(new ItemStack(Items.coal, 1, 1), new Object[]{ItemList.Block_BrittleCharcoal.get(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Block_Powderbarrel.get(1),GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{"WSW","GGG","WGW", 'W', OrePrefixes.plank.get(Materials.Wood), 'G', new ItemStack(Items.gunpowder,1),'S',new ItemStack(Items.string,1)});
+        GT_ModHandler.addShapedToolRecipe(ItemList.Block_BronzePlate.get(1), "hP ", "PBP", " P ", 'P', GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Bronze), 'B', new ItemStack(GregTech_API.sBlockGranites, 1, 0));
+        GT_ModHandler.addShapedToolRecipe(ItemList.Block_BronzePlate.get(1), "hP ", "PBP", " P ", 'P', GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Bronze), 'B', new ItemStack(GregTech_API.sBlockGranites, 1, 8));
+        GT_ModHandler.addShapedToolRecipe(ItemList.Block_IridiumTungstensteel.get(1), "hBP", "   ", "   ", 'P', GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iridium), 'B', ItemList.Block_TungstenSteelReinforced.get(1));
+        GT_OreDictUnificator.setItemData(ItemList.Block_IridiumTungstensteel.get(1), new ItemData(new MaterialStack(Materials.Iridium, OrePrefixes.plate.mMaterialAmount), new MaterialStack(Materials.TungstenSteel, 2 * OrePrefixes.plate.mMaterialAmount),new MaterialStack(Materials.Concrete, OrePrefixes.dust.mMaterialAmount)));
+        GT_ModHandler.addBasicShapelessRecipe(new ItemStack(Items.coal, 1, 1), ItemList.Block_BrittleCharcoal.get(1));
+        GT_ModHandler.addCraftingRecipe(ItemList.Block_Powderbarrel.get(1), "WSW","GGG","WGW", 'W', OrePrefixes.plank.get(Materials.Wood), 'G', new ItemStack(Items.gunpowder,1),'S',new ItemStack(Items.string,1));
         
     }
 

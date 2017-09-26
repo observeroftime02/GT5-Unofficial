@@ -523,7 +523,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     }
 
     @SubscribeEvent
-    public void registerOre(OreDictionary.OreRegisterEvent aEvent) {
+    public void registerOre(OreDictionary.OreRegisterEvent aEvent) { //TODO CLEAN...
         ModContainer tContainer = Loader.instance().activeModContainer();
         String aMod = tContainer == null ? "UNKNOWN" : tContainer.getModId();
         String aOriginalMod = aMod;
@@ -1282,7 +1282,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                         if ((tOutput != null) && (tOutput.stackSize >= 3)) {
                             GT_Values.RA.addCutterRecipe(GT_Utility.copyAmount(1, tStack), GT_Utility.copyAmount(tOutput.stackSize / 3, tOutput), null, 25, 4);
                             GT_ModHandler.removeRecipe(tStack, tStack, tStack);
-                            GT_ModHandler.addCraftingRecipe(GT_Utility.copyAmount(tOutput.stackSize / 3, tOutput), new Object[]{"sP", Character.valueOf('P'), tStack});
+                            GT_ModHandler.addShapedToolRecipe(GT_Utility.copyAmount(tOutput.stackSize / 3, tOutput), "sP ", "   ", "   ", 'P', tStack);
                         }
                         if((tStack == null) && (i >= 16)) break;
                     }
@@ -1291,7 +1291,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                     if ((tOutput != null) && (tOutput.stackSize >= 3)) {
                         GT_Values.RA.addCutterRecipe(GT_Utility.copyAmount(1, aEvent.mEvent.Ore), GT_Utility.copyAmount(tOutput.stackSize / 3, tOutput), null, 25, 4);
                         GT_ModHandler.removeRecipe(aEvent.mEvent.Ore, aEvent.mEvent.Ore, aEvent.mEvent.Ore);
-                        GT_ModHandler.addCraftingRecipe(GT_Utility.copyAmount(tOutput.stackSize / 3, tOutput), new Object[]{"sP", Character.valueOf('P'), aEvent.mEvent.Ore});
+                        GT_ModHandler.addShapedToolRecipe(GT_Utility.copyAmount(tOutput.stackSize / 3, tOutput), "sP ", "   ", "   ", 'P', aEvent.mEvent.Ore);
                     }
                 }
             } else if (aEvent.mEvent.Name.equals("logWood")) {
@@ -1322,8 +1322,8 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                             GT_Values.RA.addCutterRecipe(new ItemStack(aEvent.mEvent.Ore.getItem(), 1, i), Materials.Lubricant.getFluid(1), GT_Utility.copy(tPlanks), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Wood), 200, 8);
                             GT_Values.RA.addCutterRecipe(new ItemStack(aEvent.mEvent.Ore.getItem(), 1, i), GT_Utility.copyAmount(GT_Mod.gregtechproxy.mNerfedWoodPlank ? tStack.stackSize : tStack.stackSize * 5 / 4, tStack), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Wood, 2), 200, 8);
                             GT_ModHandler.removeRecipe(new ItemStack(aEvent.mEvent.Ore.getItem(), 1, i));
-                            GT_ModHandler.addCraftingRecipe(GT_Utility.copyAmount(GT_Mod.gregtechproxy.mNerfedWoodPlank ? tStack.stackSize : tStack.stackSize * 5 / 4, tStack), new Object[]{"s", "L", 'L', new ItemStack(aEvent.mEvent.Ore.getItem(), 1, i)});
-                            GT_ModHandler.addShapelessCraftingRecipe(GT_Utility.copyAmount(tStack.stackSize / (GT_Mod.gregtechproxy.mNerfedWoodPlank ? 2 : 1), tStack), new Object[]{new ItemStack(aEvent.mEvent.Ore.getItem(), 1, i)});
+                            GT_ModHandler.addShapedToolRecipe(GT_Utility.copyAmount(GT_Mod.gregtechproxy.mNerfedWoodPlank ? tStack.stackSize : tStack.stackSize * 5 / 4, tStack), "s  ", "L  ", "   ", 'L', new ItemStack(aEvent.mEvent.Ore.getItem(), 1, i));
+                            GT_ModHandler.addBasicShapelessRecipe(GT_Utility.copyAmount(tStack.stackSize / (GT_Mod.gregtechproxy.mNerfedWoodPlank ? 2 : 1), tStack), new ItemStack(aEvent.mEvent.Ore.getItem(), 1, i));
                         }
                     }
                 } else {
@@ -1340,8 +1340,8 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                         GT_Values.RA.addCutterRecipe(aEvent.mEvent.Ore, Materials.Lubricant.getFluid(1), GT_Utility.copy(tPlanks), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Wood), 200, 8);
                         GT_Values.RA.addCutterRecipe(aEvent.mEvent.Ore, GT_Utility.copyAmount(GT_Mod.gregtechproxy.mNerfedWoodPlank ? tStack.stackSize : tStack.stackSize * 5 / 4, tStack), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Wood, 2), 200, 8);
                         GT_ModHandler.removeRecipe(aEvent.mEvent.Ore);
-                        GT_ModHandler.addCraftingRecipe(GT_Utility.copyAmount(GT_Mod.gregtechproxy.mNerfedWoodPlank ? tStack.stackSize : tStack.stackSize * 5 / 4, tStack), new Object[]{"s", "L", 'L', aEvent.mEvent.Ore});
-                        GT_ModHandler.addShapelessCraftingRecipe(GT_Utility.copyAmount(tStack.stackSize / (GT_Mod.gregtechproxy.mNerfedWoodPlank ? 2 : 1), tStack), new Object[]{aEvent.mEvent.Ore});
+                        GT_ModHandler.addShapedToolRecipe(GT_Utility.copyAmount(GT_Mod.gregtechproxy.mNerfedWoodPlank ? tStack.stackSize : tStack.stackSize * 5 / 4, tStack), "s  ", "L  ", "   ", 'L', aEvent.mEvent.Ore);
+                        GT_ModHandler.addBasicShapelessRecipe(GT_Utility.copyAmount(tStack.stackSize / (GT_Mod.gregtechproxy.mNerfedWoodPlank ? 2 : 1), tStack), aEvent.mEvent.Ore);
                     }
                 }
 

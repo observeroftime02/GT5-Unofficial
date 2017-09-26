@@ -117,10 +117,15 @@ public class GT_ModHandler {
     /**
      * Returns a Liquid Stack with given amount of distilled Water.
      */
+    private static FluidStack aDistilledStack = null;
     public static FluidStack getDistilledWater(int aAmount) {
-    	FluidStack tFluid = FluidRegistry.getFluidStack("ic2distilledwater", aAmount);
-    	if(tFluid==null)tFluid = getWater(aAmount);
-        return tFluid;
+        if (aDistilledStack == null) {
+            FluidStack aFluidStack = FluidRegistry.getFluidStack("ic2distilledwater", aAmount);
+            if (aFluidStack == null) aFluidStack = getWater(aAmount);
+            return aFluidStack;
+        } else {
+            return new FluidStack(aDistilledStack, aAmount);
+        }
     }
 
     /**
@@ -134,8 +139,13 @@ public class GT_ModHandler {
     /**
      * Returns a Liquid Stack with given amount of Lava.
      */
+    private static FluidStack aLavaStack = null;
     public static FluidStack getLava(int aAmount) {
-        return FluidRegistry.getFluidStack("lava", aAmount);
+        if (aLavaStack == null) {
+            return FluidRegistry.getFluidStack("lava", aAmount);
+        } else {
+            return new FluidStack(aLavaStack, aAmount);
+        }
     }
 
     /**
@@ -149,15 +159,25 @@ public class GT_ModHandler {
     /**
      * Returns a Liquid Stack with given amount of Steam.
      */
+    private static FluidStack aSteamStack = null;
     public static FluidStack getSteam(int aAmount) {
-        return FluidRegistry.getFluidStack("steam", aAmount);
+        if (aSteamStack == null) {
+            return FluidRegistry.getFluidStack("steam", aAmount);
+        } else {
+            return new FluidStack(aSteamStack, aAmount);
+        }
     }
 
     /**
      * Returns a Liquid Stack with given amount of Milk.
      */
+    private static FluidStack aMilkStack = null;
     public static FluidStack getMilk(int aAmount) {
-        return FluidRegistry.getFluidStack("milk", aAmount);
+        if (aMilkStack == null) {
+            return FluidRegistry.getFluidStack("milk", aAmount);
+        } else {
+            return new FluidStack(aMilkStack, aAmount);
+        }
     }
 
     /**
@@ -238,20 +258,20 @@ public class GT_ModHandler {
         ItemStack aNewLogStack = GT_Utility.copyAmount(16, aLogStack);
         ItemStack aCharcoalStack = Materials.Charcoal.getGems(20);
         FluidStack aCreosote = Materials.Creosote.getFluid(4000);
-        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF,                    1,  aCharcoalStack, aCreosote,         640, 64);
-        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 2,  aCharcoalStack, aCreosote,         320, 96);
-        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF,                    3,  Materials.Ash.getDust(4),       Materials.OilHeavy.getFluid(200),          320, 192);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF, 1, aCharcoalStack, aCreosote, 640, 64);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 2, aCharcoalStack, aCreosote, 320, 96);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF, 3, Materials.Ash.getDust(4), Materials.OilHeavy.getFluid(200), 320, 192);
         FluidStack aCharcoalByproducts = Materials.CharcoalByproducts.getGas(4000);
-        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF,                    3,  aCharcoalStack, aCharcoalByproducts, 640, 64);
-        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 4,  aCharcoalStack, aCharcoalByproducts, 320, 96);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF, 3, aCharcoalStack, aCharcoalByproducts, 640, 64);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 4, aCharcoalStack, aCharcoalByproducts, 320, 96);
         FluidStack aWoodGas = Materials.WoodGas.getGas(1500);
-        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF,                    5,  aCharcoalStack, aWoodGas, 640, 64);
-        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 6,  aCharcoalStack, aWoodGas, 320, 96);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF, 5, aCharcoalStack, aWoodGas, 640, 64);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 6, aCharcoalStack, aWoodGas, 320, 96);
         FluidStack aWoodVinegar = Materials.WoodVinegar.getFluid(3000);
-        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF,                    7,  aCharcoalStack, aWoodVinegar, 640, 64);
-        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 8,  aCharcoalStack, aWoodVinegar, 320, 96);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF, 7, aCharcoalStack, aWoodVinegar, 640, 64);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 8, aCharcoalStack, aWoodVinegar, 320, 96);
         FluidStack aWoodTar = Materials.WoodTar.getFluid(1500);
-        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF,                    9,  aCharcoalStack, aWoodTar, 640, 64);
+        GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), GT_Values.NF, 9, aCharcoalStack, aWoodTar, 640, 64);
         GT_Values.RA.addPyrolyseRecipe(GT_Utility.copyAmount(16, aNewLogStack), Materials.Nitrogen.getGas(1000), 10, aCharcoalStack, aWoodTar, 320, 96);
     }
 
@@ -487,7 +507,7 @@ public class GT_ModHandler {
      * 'w' ToolDictNames.craftingToolWrench,
      * 'x' ToolDictNames.craftingToolWireCutter,
      */
-    public static boolean addCraftingRecipe(ItemStack aResult, Object... aRecipe) {
+    public static boolean addCraftingRecipe(ItemStack aResult, Object... aRecipe) { //TODO LOTS
         return addCraftingRecipe(aResult, new Enchantment[0], new int[0], false, false, false, false, false, false, false, false, false, false, false, false, false, aRecipe);
     }
 
@@ -515,7 +535,7 @@ public class GT_ModHandler {
      * 'w' ToolDictNames.craftingToolWrench,
      * 'x' ToolDictNames.craftingToolWireCutter,
      */
-    public static boolean addCraftingRecipe(ItemStack aResult, long aBitMask, Object... aRecipe) {
+    public static boolean addCraftingRecipe(ItemStack aResult, long aBitMask, Object... aRecipe) { //TODO LOTS...
         return addCraftingRecipe(aResult, new Enchantment[0], new int[0], (aBitMask & RecipeBits.MIRRORED) != 0, (aBitMask & RecipeBits.BUFFERED) != 0, (aBitMask & RecipeBits.KEEPNBT) != 0, (aBitMask & RecipeBits.DISMANTLEABLE) != 0, (aBitMask & RecipeBits.NOT_REMOVABLE) == 0, (aBitMask & RecipeBits.REVERSIBLE) != 0, (aBitMask & RecipeBits.DELETE_ALL_OTHER_RECIPES) != 0, (aBitMask & RecipeBits.DELETE_ALL_OTHER_RECIPES_IF_SAME_NBT) != 0, (aBitMask & RecipeBits.DELETE_ALL_OTHER_SHAPED_RECIPES) != 0, (aBitMask & RecipeBits.DELETE_ALL_OTHER_NATIVE_RECIPES) != 0, (aBitMask & RecipeBits.DO_NOT_CHECK_FOR_COLLISIONS) == 0, (aBitMask & RecipeBits.ONLY_ADD_IF_THERE_IS_ANOTHER_RECIPE_FOR_IT) != 0, (aBitMask & RecipeBits.ONLY_ADD_IF_RESULT_IS_NOT_NULL) != 0, aRecipe);
     }
 
@@ -1195,7 +1215,7 @@ public class GT_ModHandler {
                 int tTier = ((ic2.api.item.IElectricItem) aStack.getItem()).getTier(aStack);
                 if (tTier < 0 || tTier == aTier || aTier == Integer.MAX_VALUE) {
                     if (!aIgnoreLimit && tTier >= 0)
-                        aCharge = (int) Math.min(aCharge, V[Math.max(0, Math.min(V.length - 1, tTier))]);
+                        aCharge = Math.min(aCharge, V[Math.max(0, Math.min(V.length - 1, tTier))]);
                     if (aCharge > 0) {
                         int rCharge = (int) Math.max(0.0, ic2.api.item.ElectricItem.manager.charge(aStack, aCharge, tTier, true, aSimulate));
                         return rCharge + (rCharge * 4 > aTier ? aTier : 0);
@@ -1219,7 +1239,7 @@ public class GT_ModHandler {
                 int tTier = ((ic2.api.item.IElectricItem) aStack.getItem()).getTier(aStack);
                 if (tTier < 0 || tTier == aTier || aTier == Integer.MAX_VALUE) {
                     if (!aIgnoreLimit && tTier >= 0)
-                        aCharge = (int) Math.min(aCharge, V[Math.max(0, Math.min(V.length - 1, tTier))]);
+                        aCharge = Math.min(aCharge, V[Math.max(0, Math.min(V.length - 1, tTier))]);
                     if (aCharge > 0) {
                         int rCharge = (int) Math.max(0, ic2.api.item.ElectricItem.manager.discharge(aStack, aCharge + (aCharge * 4 > aTier ? aTier : 0), tTier, true, !aIgnoreDischargability, aSimulate));
                         return rCharge - (rCharge * 4 > aTier ? aTier : 0);

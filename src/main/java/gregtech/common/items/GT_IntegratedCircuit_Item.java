@@ -10,6 +10,7 @@ import gregtech.api.items.GT_Generic_Item;
 import gregtech.api.util.GT_LanguageManager;
 import gregtech.api.util.GT_Log;
 import gregtech.api.util.GT_ModHandler;
+import gregtech.api.util.GT_OreDictUnificator;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,35 +27,32 @@ public class GT_IntegratedCircuit_Item extends GT_Generic_Item {
         setMaxDamage(0);
 
         ItemList.Circuit_Integrated.set(this);
+        GT_ModHandler.addBasicShapelessRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 0), GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Basic));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 1), "d  ", " P ", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 2), " d ", " P ", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 3), "  d", " P ", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 4), aTextEmptyRow, " Pd", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 5), aTextEmptyRow, " P ", "  d", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 6), aTextEmptyRow, " P ", " d ", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 7), aTextEmptyRow, " P ", "d  ", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 8), aTextEmptyRow, "dP ", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1));
 
-
-        GT_ModHandler.addShapelessCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 0), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{OrePrefixes.circuit.get(Materials.Basic)});
-        long bits = GT_ModHandler.RecipeBits.BUFFERED | GT_ModHandler.RecipeBits.NOT_REMOVABLE;
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 1), bits, new Object[]{"d  ", " P ", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 2), bits, new Object[]{" d ", " P ", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 3), bits, new Object[]{"  d", " P ", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 4), bits, new Object[]{aTextEmptyRow, " Pd", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 5), bits, new Object[]{aTextEmptyRow, " P ", "  d", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 6), bits, new Object[]{aTextEmptyRow, " P ", " d ", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 7), bits, new Object[]{aTextEmptyRow, " P ", "d  ", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 8), bits, new Object[]{aTextEmptyRow, "dP ", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 9), bits, new Object[]{"P d", aTextEmptyRow, aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 10), bits, new Object[]{"P  ", "  d", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 11), bits, new Object[]{"P  ", aTextEmptyRow, "  d", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 12), bits, new Object[]{"P  ", aTextEmptyRow, " d ", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 13), bits, new Object[]{"  P", aTextEmptyRow, "  d", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 14), bits, new Object[]{"  P", aTextEmptyRow, " d ", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 15), bits, new Object[]{"  P", aTextEmptyRow, "d  ", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 16), bits, new Object[]{"  P", "d  ", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 17), bits, new Object[]{aTextEmptyRow, aTextEmptyRow, "d P", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 18), bits, new Object[]{aTextEmptyRow, "d  ", "  P", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 19), bits, new Object[]{"d  ", aTextEmptyRow, "  P", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 20), bits, new Object[]{" d ", aTextEmptyRow, "  P", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 21), bits, new Object[]{"d  ", aTextEmptyRow, "P  ", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 22), bits, new Object[]{" d ", aTextEmptyRow, "P  ", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 23), bits, new Object[]{"  d", aTextEmptyRow, "P  ", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 24), bits, new Object[]{aTextEmptyRow, "  d", "P  ", 'P', ItemList.Circuit_Integrated.getWildcard(1)});
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 9), "P d", aTextEmptyRow, aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 10), "P  ", "  d", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 11), "P  ", aTextEmptyRow, "  d", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 12), "P  ", aTextEmptyRow, " d ", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 13), "  P", aTextEmptyRow, "  d", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 14), "  P", aTextEmptyRow, " d ", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 15), "  P", aTextEmptyRow, "d  ", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 16), "  P", "d  ", aTextEmptyRow, 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 17), aTextEmptyRow, aTextEmptyRow, "d P", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 18), aTextEmptyRow, "d  ", "  P", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 19), "d  ", aTextEmptyRow, "  P", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 20), " d ", aTextEmptyRow, "  P", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 21), "d  ", aTextEmptyRow, "P  ", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 22), " d ", aTextEmptyRow, "P  ", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 23), "  d", aTextEmptyRow, "P  ", 'P', ItemList.Circuit_Integrated.getWildcard(1));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.Circuit_Integrated.getWithDamage(1, 24), aTextEmptyRow, "  d", "P  ", 'P', ItemList.Circuit_Integrated.getWildcard(1));
     }
 
     private static String getModeString(int aMetaData) {

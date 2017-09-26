@@ -104,10 +104,10 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
         ItemList.ThoriumCell_1.set(new GT_RadioactiveCellIC_Item("Thoriumcell", "Fuel Rod (Thorium)", 1, 50000, 0.4F, 0, 0.25F, ItemList.Depleted_Thorium_1.get(1),false));
 
         ItemList.ThoriumCell_2.set(new GT_RadioactiveCellIC_Item("Double_Thoriumcell", "Dual Fuel Rod (Thorium)", 2, 50000, 0.4F, 0, 0.25F, ItemList.Depleted_Thorium_2.get(1),false));
-        GT_ModHandler.addCraftingRecipe(ItemList.ThoriumCell_2.get(1), "RPR", "   ", "   ", 'R', ItemList.ThoriumCell_1, 'P', OrePrefixes.plate.get(Materials.Iron));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.ThoriumCell_2.get(1), "RPR", "   ", "   ", 'R', ItemList.ThoriumCell_1.get(1), 'P', GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iron));
 
         ItemList.ThoriumCell_4.set(new GT_RadioactiveCellIC_Item("Quad_Thoriumcell", "Quad Fuel Rod (Thorium)", 4, 50000, 0.4F, 0, 0.25F, ItemList.Depleted_Thorium_4.get(1),false));
-        GT_ModHandler.addCraftingRecipe(ItemList.ThoriumCell_4.get(1), "RPR", "CPC", "RPR", 'R', ItemList.ThoriumCell_1, 'P', OrePrefixes.plate.get(Materials.Iron), 'C', OrePrefixes.plate.get(Materials.Copper));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.ThoriumCell_4.get(1), "RPR", "CPC", "RPR", 'R', ItemList.ThoriumCell_1.get(1), 'P', GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iron), 'C', GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Copper));
 
         ItemList.Depleted_Naquadah_1.set(new GT_DepletetCell_Item("NaquadahcellDep", "Fuel Rod (Depleted Naquadah)", 1));
         ItemList.Depleted_Naquadah_2.set(new GT_DepletetCell_Item("Double_NaquadahcellDep", "Dual Fuel Rod (Depleted Naquadah)", 1));
@@ -116,10 +116,10 @@ public class GT_Loader_Item_Block_And_Fluid implements Runnable {
         ItemList.NaquadahCell_1.set(new GT_RadioactiveCellIC_Item("Naquadahcell", "Fuel Rod (Naquadah)", 1, 100000, 2F, 1, 1F, ItemList.Depleted_Naquadah_1.get(1),true));
 
         ItemList.NaquadahCell_2.set(new GT_RadioactiveCellIC_Item("Double_Naquadahcell", "Dual Fuel Rod (Naquadah)", 2, 100000, 2F, 1, 1F, ItemList.Depleted_Naquadah_2.get(1),true));
-        GT_ModHandler.addCraftingRecipe(ItemList.NaquadahCell_2.get(1), "RPR", "   ", "   ", 'R', ItemList.NaquadahCell_1, 'P', OrePrefixes.plate.get(Materials.Iron));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.NaquadahCell_2.get(1), "RPR", "   ", "   ", 'R', ItemList.NaquadahCell_1.get(1), 'P', GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iron));
 
         ItemList.NaquadahCell_4.set(new GT_RadioactiveCellIC_Item("Quad_Naquadahcell", "Quad Fuel Rod (Naquadah)", 4, 100000, 2F, 1, 1F, ItemList.Depleted_Naquadah_4.get(1),true));
-        GT_ModHandler.addCraftingRecipe(ItemList.NaquadahCell_4.get(1), "RPR", "CPC", "RPR", 'R', ItemList.NaquadahCell_1, 'P', OrePrefixes.plate.get(Materials.Iron), 'C', OrePrefixes.plate.get(Materials.Copper));
+        GT_ModHandler.addBasicShapedRecipe(ItemList.NaquadahCell_4.get(1), "RPR", "CPC", "RPR", 'R', ItemList.NaquadahCell_1.get(1), 'P', GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iron), 'C', GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Copper));
         
 //        ItemList.Uraniumcell_1.set(new GT_RadioactiveCellIC_Item("reactorUraniumSimple", "Fuel Rod (Uranium)"       , 1, 20000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedUraniumSimple", 1),false));
 //        ItemList.Uraniumcell_2.set(new GT_RadioactiveCellIC_Item("reactorUraniumDual", "Dual Fuel Rod (Uranium)"  , 2, 20000, 2F, 1, 1F, GT_ModHandler.getIC2Item("reactorDepletedUraniumDual", 1),false));

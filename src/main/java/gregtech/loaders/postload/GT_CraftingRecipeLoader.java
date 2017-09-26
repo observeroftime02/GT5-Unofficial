@@ -190,7 +190,7 @@ public class GT_CraftingRecipeLoader implements Runnable {
         GT_ModHandler.addCraftingRecipe(new ItemStack(Blocks.piston, 1), "WWW", "CBC", "CRC", 'W', OrePrefixes.plank.get(Materials.Wood), 'C', OrePrefixes.stoneCobble, 'R', GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone), 'B', OrePrefixes.ingot.get(Materials.Titanium));
 
         if (!Materials.Steel.mBlastFurnaceRequired) {
-            GT_ModHandler.addShapelessCraftingRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Steel), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Iron), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Coal), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Coal));
+            GT_ModHandler.addBasicShapelessRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Steel), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Iron), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Coal), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Coal));
         }
         if (GT_Mod.gregtechproxy.mNerfDustCrafting) {
             GT_ModHandler.removeRecipeByOutput(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Brass));
@@ -283,6 +283,6 @@ public class GT_CraftingRecipeLoader implements Runnable {
         GT_ModHandler.addCraftingRecipe(ItemList.ModularElectric2Leggings.getWildcard(1), "BCB", "A A", "A A", 'A', OrePrefixes.stick.get(Materials.TungstenSteel), 'B', ItemList.Plate_CarbonAlloy.get(1), 'C', OrePrefixes.battery.get(Materials.Master));
         GT_ModHandler.addCraftingRecipe(ItemList.ModularElectric2Boots.getWildcard(1), "A A", "BCB", "A A", 'A', OrePrefixes.stick.get(Materials.TungstenSteel), 'B', ItemList.Plate_CarbonAlloy.get(1), 'C', OrePrefixes.battery.get(Materials.Master));
 
-        GT_ModHandler.addShapelessCraftingRecipe(Materials.Fireclay.getDust(2), Materials.Brick.getDust(1), Materials.Clay.getDust(1));
+        GT_ModHandler.addBasicShapelessRecipe(Materials.Fireclay.getDust(2), Materials.Brick.getDust(1), Materials.Clay.getDust(1));
     }
 }

@@ -1410,11 +1410,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
             double titaniumBurnTime = baseBurnTime * 1.3;
             double tungstensteelBurnTime = baseBurnTime * 1.2;
 
-            recipe.setNeiDesc("Burn time in seconds:",
-                    String.format("Bronze Boiler: %.4f", bronzeBurnTime),
-                    String.format("Steel Boiler: %.4f", steelBurnTime),
-                    String.format("Titanium Boiler: %.4f", titaniumBurnTime),
-                    String.format("Tungstensteel Boiler: %.4f", tungstensteelBurnTime));
+            recipe.setNeiDesc("Burn time in seconds:", String.format("Bronze Boiler: %.4f", bronzeBurnTime), String.format("Steel Boiler: %.4f", steelBurnTime), String.format("Titanium Boiler: %.4f", titaniumBurnTime), String.format("Tungstensteel Boiler: %.4f", tungstensteelBurnTime));
             return super.addRecipe(recipe);
         }
     }
@@ -1464,9 +1460,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
             if (aFluidInputs == null) {
                 aFluidInputs = new FluidStack[0];
             }
-            for (FluidStack fluidInput : aFluidInputs) {
-                adjustedFluidInputs.add(fluidInput);
-            }
+            Collections.addAll(adjustedFluidInputs, aFluidInputs);
             aInputs = adjustedInputs.toArray(new ItemStack[adjustedInputs.size()]);
             aFluidInputs = adjustedFluidInputs.toArray(new FluidStack[adjustedFluidInputs.size()]);
 
@@ -1492,16 +1486,14 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
             if (aFluidOutputs == null) {
                 aFluidOutputs = new FluidStack[0];
             }
-            for (FluidStack fluidOutput : aFluidOutputs) {
-                adjustedFluidOutputs.add(fluidOutput);
-            }
+            Collections.addAll(adjustedFluidOutputs, aFluidOutputs);
             aOutputs = adjustedOutputs.toArray(new ItemStack[adjustedOutputs.size()]);
             aFluidOutputs = adjustedFluidOutputs.toArray(new FluidStack[adjustedFluidOutputs.size()]);
 
             return addRecipe(new GT_Recipe_LargeChemicalReactor(aOptimize, aInputs, aOutputs, aSpecial, aOutputChances, aFluidInputs, aFluidOutputs, aDuration, aEUt, aSpecialValue));
         }
 
-        private static class GT_Recipe_LargeChemicalReactor extends GT_Recipe{
+        private static class GT_Recipe_LargeChemicalReactor extends GT_Recipe {
 
             protected GT_Recipe_LargeChemicalReactor(boolean aOptimize, ItemStack[] aInputs, ItemStack[] aOutputs, Object aSpecialItems, int[] aChances, FluidStack[] aFluidInputs, FluidStack[] aFluidOutputs, int aDuration, int aEUt, int aSpecialValue) {
                 super(aOptimize, aInputs, aOutputs, aSpecialItems, aChances, aFluidInputs, aFluidOutputs, aDuration, aEUt, aSpecialValue);
@@ -1511,7 +1503,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
             public ArrayList<PositionedStack> getInputPositionedStacks() {
                 int itemLimit = Math.min(mInputs.length, INPUT_COUNT);
                 int fluidLimit = Math.min(mFluidInputs.length, FLUID_INPUT_COUNT);
-                ArrayList<PositionedStack> inputStacks = new ArrayList<PositionedStack>(itemLimit + fluidLimit);
+                ArrayList<PositionedStack> inputStacks = new ArrayList<>(itemLimit + fluidLimit);
 
                 for (int i = 0; i < itemLimit; i++) {
                     inputStacks.add(new FixedPositionedStack(this.mInputs[i].copy(), 48 - i * 18, 5));
@@ -1532,7 +1524,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
             public ArrayList<PositionedStack> getOutputPositionedStacks() {
                 int itemLimit = Math.min(mOutputs.length, OUTPUT_COUNT);
                 int fluidLimit = Math.min(mFluidOutputs.length, FLUID_OUTPUT_COUNT);
-                ArrayList<PositionedStack> outputStacks = new ArrayList<PositionedStack>(itemLimit + fluidLimit);
+                ArrayList<PositionedStack> outputStacks = new ArrayList<>(itemLimit + fluidLimit);
 
                 for (int i = 0; i < itemLimit; i++) {
                     outputStacks.add(new FixedPositionedStack(this.mOutputs[i].copy(), 102 + i * 18, 5));
@@ -1544,8 +1536,6 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
 
                 return outputStacks;
             }
-
-
         }
     }
 
@@ -1575,7 +1565,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
 
             @Override
             public ArrayList<PositionedStack> getInputPositionedStacks() {
-                ArrayList<PositionedStack> inputStacks = new ArrayList<PositionedStack>(1);
+                ArrayList<PositionedStack> inputStacks = new ArrayList<>(1);
 
                 if (this.mFluidInputs.length > 0 && this.mFluidInputs[0] != null) {
                     inputStacks.add(new FixedPositionedStack(GT_Utility.getFluidDisplayStack(this.mFluidInputs[0], true), 48, 52));
@@ -1586,7 +1576,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
             @Override
             public ArrayList<PositionedStack> getOutputPositionedStacks() {
                 int fluidLimit = Math.min(mFluidOutputs.length, FLUID_OUTPUT_COUNT);
-                ArrayList<PositionedStack> outputStacks = new ArrayList<PositionedStack>(1 + fluidLimit);
+                ArrayList<PositionedStack> outputStacks = new ArrayList<>(1 + fluidLimit);
 
                 if (this.mOutputs.length > 0 && this.mOutputs[0] != null) {
                     outputStacks.add(new FixedPositionedStack(this.getOutput(0), 102, 52));
@@ -1594,13 +1584,12 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
 
                 for (int i = 0; i < fluidLimit; i++) {
                     int x = 102 + ((i + 1) % ROW_SIZE) * 18;
-                    int y =  52 - ((i + 1) / ROW_SIZE) * 18;
+                    int y = 52 - ((i + 1) / ROW_SIZE) * 18;
                     outputStacks.add(new FixedPositionedStack(GT_Utility.getFluidDisplayStack(this.mFluidOutputs[i], true), x, y));
                 }
 
                 return outputStacks;
             }
-
         }
     }
 }

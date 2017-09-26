@@ -38,11 +38,11 @@ public enum OrePrefixes {
     gemFlawless("Flawless Gemstones", "Flawless ", "", true, true, true, false, false, false, true, true, false, false, MaterialFlags.GEM.bit, M * 2, 32, 61), // A regular Gem worth two Dusts. Introduced by TerraFirmaCraft
     gemExquisite("Exquisite Gemstones", "Exquisite ", "", true, true, true, false, false, false, true, true, false, false, MaterialFlags.GEM.bit, M * 4, 16, 62), // A regular Gem worth four Dusts. Introduced by TerraFirmaCraft
     gem("Gemstones", "", "", true, true, true, false, false, false, true, true, false, false, MaterialFlags.GEM.bit | MaterialFlags.BGEM.bit, M, 64, 8), // A regular Gem worth one Dust. Introduced by Eloraam
-    dustTiny("Tiny Dusts", "Tiny Pile of ", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit | MaterialFlags.BDUST.bit, M / 9, 64, 0), // 1/9th of a Dust.
-    dustSmall("Small Dusts", "Small Pile of ", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit | MaterialFlags.BDUST.bit, M / 4, 64, 1), // 1/4th of a Dust.
+    dustTiny("Tiny Dusts", "Tiny Pile of ", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit, M / 9, 64, 0), // 1/9th of a Dust.
+    dustSmall("Small Dusts", "Small Pile of ", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit, M / 4, 64, 1), // 1/4th of a Dust.
     dustImpure("Impure Dusts", "Impure Pile of ", " Dust", true, true, false, false, false, false, false, true, false, true, MaterialFlags.ORE.bit, M, 64, 3), // Dust with impurities. 1 Unit of Main Material and 1/9 - 1/4 Unit of secondary Material
     dustPure("Purified Dusts", "Purified Pile of ", " Dust", true, true, false, false, false, false, false, true, false, true, MaterialFlags.ORE.bit, M, 64, 4),
-    dust("Dusts", "", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit | MaterialFlags.BDUST.bit, M, 64, 2), // Pure Dust worth of one Ingot or Gem. Introduced by Alblaka.
+    dust("Dusts", "", " Dust", true, true, false, false, false, false, false, true, false, false, MaterialFlags.DUST.bit, M, 64, 2), // Pure Dust worth of one Ingot or Gem. Introduced by Alblaka.
     nugget("Nuggets", "", " Nugget", true, true, false, false, false, false, false, true, false, false, MaterialFlags.SOLID.bit, M / 9, 64, 9), // A Nugget. Introduced by Eloraam
     plateDense("Dense Plates", "Dense ", " Plate", true, true, false, false, false, false, true, true, false, false, MaterialFlags.DPLATE.bit, M * 9, 8, 22), // 9 Plates combined in one Item.
     plate("Plates", "", " Plate", true, true, false, false, false, false, true, true, false, false, MaterialFlags.PLATE.bit, M, 64, 17), // Regular Plate made of one Ingot/Dust. Introduced by Calclavia
@@ -56,7 +56,7 @@ public enum OrePrefixes {
     rotor("Rotors", "", " Rotor", true, true, false, false, false, false, true, true, false, false, MaterialFlags.ROTOR.bit, M * 4 + M / 4, 16, 53), // consisting out of 4 Plates, 1 Ring and 1 Screw.
     gearGtSmall("Small Gears", "Small ", " Gear", true, true, false, false, false, false, true, true, false, false, MaterialFlags.SGEAR.bit, M, 64, 52),
     gearGt("Gears", "", " Gear", true, true, false, false, false, false, true, true, false, false, MaterialFlags.GEAR.bit, M * 4, 16, 63), // Introduced by me because BuildCraft has ruined the gear Prefix...
-    lens("Lenses", "", " Lens", true, true, false, false, false, false, true, true, false, false, MaterialFlags.GEM.bit, (M * 3) / 4, 64, 24), // 3/4 of a Plate or Gem used to shape a Lense. Normally only used on Transparent Materials.
+    lens("Lenses", "", " Lens", true, true, false, false, false, false, true, true, false, false, MaterialFlags.GEM.bit | MaterialFlags.BGEM.bit, (M * 3) / 4, 64, 24), // 3/4 of a Plate or Gem used to shape a Lense. Normally only used on Transparent Materials.
     cellPlasma("Cells of Plasma", "", " Plasma Cell", true, true, true, true, false, false, false, true, false, false, MaterialFlags.PLASMA.bit, M, 64, 31), // Hot Cell full of Plasma, which can be used in the Plasma Generator.
     cell("Cells", "", " Cell", true, true, true, true, false, false, true, true, false, false, MaterialFlags.CELL.bit, M, 64, 30), // Regular RefineryGas/Fluid Cell. Introduced by Calclavia
     toolHeadSword("Sword Blades", "", " Sword Blade", true, true, false, false, false, false, true, true, false, false, MaterialFlags.TOOL.bit, M * 2, 16, 32), // consisting out of 2 Ingots.

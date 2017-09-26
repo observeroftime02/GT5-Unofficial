@@ -8,8 +8,7 @@ public class GT_GUIContainer_PrimitiveBlastFurnace extends GT_GUIContainerMetaTi
 	private String name;
 	
 	public GT_GUIContainer_PrimitiveBlastFurnace(InventoryPlayer inventoryPlayer, IGregTechTileEntity tileEntity, String name) {
-		super(new GT_Container_PrimitiveBlastFurnace(inventoryPlayer, tileEntity), 
-				String.format("gregtech:textures/gui/%s.png", name.replace(" ", "")));
+		super(new GT_Container_PrimitiveBlastFurnace(inventoryPlayer, tileEntity), String.format("gregtech:textures/gui/%s.png", name.replace(" ", "")));
 		this.name = name;
 	}
 
@@ -23,9 +22,7 @@ public class GT_GUIContainer_PrimitiveBlastFurnace extends GT_GUIContainerMetaTi
 		int y = (this.height - this.ySize) / 2;
 		drawTexturedModalRect(x, y, 0, 0, this.xSize, this.ySize);
 		if ((this.mContainer != null) && (this.mContainer.mProgressTime > 0)) {
-			drawTexturedModalRect(x + 58, y + 28, 176, 0, Math.max(0, Math.min(20, (1)
-					+ this.mContainer.mProgressTime * 20 / (this.mContainer.mMaxProgressTime < 1 ? 1 : this.mContainer.mMaxProgressTime))),
-					11);
+			drawTexturedModalRect(x + 58, y + 28, 176, 0, Math.max(0, Math.min(20, (1) + this.mContainer.mProgressTime * 20 / (this.mContainer.mMaxProgressTime < 1 ? 1 : this.mContainer.mMaxProgressTime))), 11);
 		}
 	}
 }

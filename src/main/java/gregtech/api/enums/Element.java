@@ -264,7 +264,7 @@ public enum Element {
     $Nt(0, -10000, 0, -1, null, "Anti-Neutronium", false);
 
     public static volatile int VERSION = 509;
-    public final long mProtons, mNeutrons, mAdditionalMass, mHalfLifeSeconds;
+    public final int mProtons, mNeutrons, mAdditionalMass, mHalfLifeSeconds;
     public final String mName, mDecayTo;
     public final boolean mIsIsotope;
 
@@ -280,7 +280,7 @@ public enum Element {
      * @param aDecayTo         String representing the Elements it decays to. Separated by an '&' Character.
      * @param aName            Name of the Element
      */
-    Element(long aProtons, long aNeutrons, long aAdditionalMass, long aHalfLifeSeconds, String aDecayTo, String aName, boolean aIsIsotope) {
+    Element(int aProtons, int aNeutrons, int aAdditionalMass, int aHalfLifeSeconds, String aDecayTo, String aName, boolean aIsIsotope) {
         mProtons = aProtons;
         mNeutrons = aNeutrons;
         mAdditionalMass = aAdditionalMass;
@@ -296,15 +296,15 @@ public enum Element {
         return _NULL;
     }
 
-    public long getProtons() {
+    public int getProtons() {
         return mProtons;
     }
 
-    public long getNeutrons() {
+    public int getNeutrons() {
         return mNeutrons;
     }
 
-    public long getMass() {
+    public int getMass() {
         return mProtons + mNeutrons + mAdditionalMass;
     }
 }

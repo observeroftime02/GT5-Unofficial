@@ -34,7 +34,7 @@ public class MaterialStack implements Cloneable {
          if (mAmount > 1) {
              temp4 = String.valueOf(mAmount);
              
-             if (mMaterial.mMaterialList.size() > 1 || isMaterialListComplex(this)) {
+             if (mMaterial.mProcessInto.size() > 1 || isMaterialListComplex(this)) {
                 temp1 = "(";
                 temp3 = ")";
              }
@@ -43,7 +43,7 @@ public class MaterialStack implements Cloneable {
     }
 
     private boolean isMaterialListComplex(MaterialStack materialStack) {
-        return materialStack.mMaterial.mMaterialList.size() > 1 || materialStack.mMaterial.mMaterialList.size() != 0 && isMaterialListComplex(materialStack.mMaterial.mMaterialList.get(0));
+        return materialStack.mMaterial.mProcessInto.size() > 1 || materialStack.mMaterial.mProcessInto.size() != 0 && isMaterialListComplex(materialStack.mMaterial.mProcessInto.get(0));
     }
     
     @Override

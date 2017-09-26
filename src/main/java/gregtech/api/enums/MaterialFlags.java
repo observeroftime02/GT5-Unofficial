@@ -1,8 +1,7 @@
 package gregtech.api.enums;
 
 public enum MaterialFlags {
-    BDUST(1),
-    DUST(BDUST.bit*2),
+    DUST(1),
     SOLID(DUST.bit*2),
     BGEM(SOLID.bit*2),
     GEM(BGEM.bit*2),
@@ -46,5 +45,3 @@ public enum MaterialFlags {
         return null;
     }
 }
-
-

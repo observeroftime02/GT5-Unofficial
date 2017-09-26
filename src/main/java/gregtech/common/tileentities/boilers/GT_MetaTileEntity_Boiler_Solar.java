@@ -15,8 +15,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 
-public class GT_MetaTileEntity_Boiler_Solar
-        extends GT_MetaTileEntity_Boiler {
+public class GT_MetaTileEntity_Boiler_Solar extends GT_MetaTileEntity_Boiler {
     public GT_MetaTileEntity_Boiler_Solar(int aID, String aName, String aNameRegional) {
         super(aID, aName, aNameRegional, new String[]{
                 "Steam Power by the Sun",
@@ -48,8 +47,8 @@ public class GT_MetaTileEntity_Boiler_Solar
         return rTextures;
     }
 
-    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex, boolean aActive, boolean aRedstone) {
-        return mTextures[aSide >= 2 ? ((byte) (aSide != aFacing ? 2 : 3)) : aSide][aColorIndex + 1];
+    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, int aSide, int aFacing, int aColorIndex, boolean aActive, boolean aRedstone) {
+        return mTextures[aSide >= 2 ? aSide != aFacing ? 2 : 3 : aSide][aColorIndex + 1];
     }
 
     public int maxProgresstime() {

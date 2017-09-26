@@ -98,8 +98,8 @@ public class GT_Utility {
     }
 
     public static int safeInt(long number){
-        return number>GT_Values.V[GT_Values.V.length-1] ? safeInt(GT_Values.V[GT_Values.V.length-1],1) : number<Integer.MIN_VALUE ? Integer.MIN_VALUE : (int)number;
-}
+        return number > GT_Values.V[GT_Values.V.length-1] ? safeInt(GT_Values.V[GT_Values.V.length-1],1) : number < Integer.MIN_VALUE ? Integer.MIN_VALUE : (int) number;
+    }
 
     public static Field getPublicField(Object aObject, String aField) {
         Field rField = null;

@@ -59,7 +59,7 @@ public abstract class GT_MetaBase_Item extends GT_Generic_Item implements ISpeci
         if (aMetaValue < 0 || aMetaValue >= 32766 || aBehavior == null) return this;
         ArrayList<IItemBehaviour<GT_MetaBase_Item>> tList = mItemBehaviors.get((short) aMetaValue);
         if (tList == null) {
-            tList = new ArrayList<IItemBehaviour<GT_MetaBase_Item>>(1);
+            tList = new ArrayList<>(1);
             mItemBehaviors.put((short) aMetaValue, tList);
         }
         tList.add(aBehavior);
@@ -194,8 +194,7 @@ public abstract class GT_MetaBase_Item extends GT_Generic_Item implements ISpeci
         for (String tString : tStrings)
         	if (GT_Utility.isStringValid(tString) && !tKey.equals(tString)) aList.add(tString);
 
-        Long[]
-                tStats = getElectricStats(aStack);
+        Long[] tStats = getElectricStats(aStack);
         if (tStats != null) {
             if (tStats[3] > 0) {
                 aList.add(EnumChatFormatting.AQUA + "Contains " + GT_Utility.formatNumbers(tStats[3]) + " EU   Tier: " + (tStats[2] >= 0 ? tStats[2] : 0) + EnumChatFormatting.GRAY);

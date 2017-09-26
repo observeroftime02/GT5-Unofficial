@@ -361,28 +361,28 @@ public class GT_Mod implements IGT_Mod {
             GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_8V.get(1), "SSS", "STS", "SSS", 'S', ItemList.Cover_SolarPanel, 'T', OrePrefixes.circuit.get(Materials.Advanced));
         }
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "SolarPanelLV", false)) {
-            GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_LV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_8V, 'T', ItemList.Transformer_LV_ULV);
+            GT_ModHandler.addBasicShapedRecipe(ItemList.Cover_SolarPanel_LV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_8V.get(1), 'T', ItemList.Transformer_LV_ULV.get(1));
         }
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "SolarPanelMV", false)) {
-            GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_MV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_LV, 'T', ItemList.Transformer_MV_LV);
+            GT_ModHandler.addBasicShapedRecipe(ItemList.Cover_SolarPanel_MV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_LV.get(1), 'T', ItemList.Transformer_MV_LV.get(1));
         }
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "SolarPanelHV", false)) {
-            GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_HV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_MV, 'T', ItemList.Transformer_HV_MV);
+            GT_ModHandler.addBasicShapedRecipe(ItemList.Cover_SolarPanel_HV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_MV.get(1), 'T', ItemList.Transformer_HV_MV.get(1));
         }
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "SolarPanelEV", false)) {
-            GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_EV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_HV, 'T', ItemList.Transformer_EV_HV);
+            GT_ModHandler.addBasicShapedRecipe(ItemList.Cover_SolarPanel_EV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_HV.get(1), 'T', ItemList.Transformer_EV_HV.get(1));
         }
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "SolarPanelIV", false)) {
-            GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_IV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_EV, 'T', ItemList.Transformer_IV_EV);
+            GT_ModHandler.addBasicShapedRecipe(ItemList.Cover_SolarPanel_IV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_EV.get(1), 'T', ItemList.Transformer_IV_EV.get(1));
         }
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "SolarPanelLuV", false)) {
-            GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_LuV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_IV, 'T', ItemList.Transformer_LuV_IV);
+            GT_ModHandler.addBasicShapedRecipe(ItemList.Cover_SolarPanel_LuV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_IV.get(1), 'T', ItemList.Transformer_LuV_IV.get(1));
         }
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "SolarPanelZPM", false)) {
-            GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_ZPM.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_LuV, 'T', ItemList.Transformer_ZPM_LuV);
+            GT_ModHandler.addBasicShapedRecipe(ItemList.Cover_SolarPanel_ZPM.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_LuV.get(1), 'T', ItemList.Transformer_ZPM_LuV.get(1));
         }
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "SolarPanelUV", false)) {
-            GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_UV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_ZPM, 'T', ItemList.Transformer_UV_ZPM);
+            GT_ModHandler.addBasicShapedRecipe(ItemList.Cover_SolarPanel_UV.get(1), " S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_ZPM.get(1), 'T', ItemList.Transformer_UV_ZPM.get(1));
         }
         double outputMultiplier = Math.min(GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "StoneDustOutputMultiplier", 0.6), 1.0);
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "StoneDustCentrifugation", false)) {

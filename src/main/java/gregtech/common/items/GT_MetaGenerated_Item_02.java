@@ -2,23 +2,17 @@ package gregtech.common.items;
 
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.*;
+import gregtech.api.enums.TC_Aspects.TC_AspectStack;
 import gregtech.api.items.GT_MetaGenerated_Item_X32;
 import gregtech.api.util.*;
-import gregtech.common.items.behaviors.Behaviour_Arrow;
-import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
-import net.minecraft.world.World;
 
 public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
     public static GT_MetaGenerated_Item_02 INSTANCE;
@@ -29,50 +23,50 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
 
         int tLastID = 0;
 
-        ItemList.GelledToluene.set(addItem(tLastID = 10, "Gelled Toluene", "Raw Explosive", new Object[]{}));
-        ItemList.Bottle_Purple_Drink.set(addItem(tLastID = 100, "Purple Drink", "How about Lemonade. Or some Ice Tea? I got Purple Drink!", new Object[]{new GT_FoodStat(8, 0.2F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.moveSlowdown.id, 400, 1, 90), new TC_Aspects.TC_AspectStack(TC_Aspects.VITREUS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.VINCULUM, 1)}));
+        ItemList.GelledToluene.set(addItem(10, "Gelled Toluene", "Raw Explosive"));
+        ItemList.Bottle_Purple_Drink.set(addItem(100, "Purple Drink", "How about Lemonade. Or some Ice Tea? I got Purple Drink!", new GT_FoodStat(8, 0.2F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.moveSlowdown.id, 400, 1, 90), new TC_AspectStack(TC_Aspects.VITREUS, 1), new TC_AspectStack(TC_Aspects.AQUA, 1), new TC_AspectStack(TC_Aspects.VINCULUM, 1)));
 
-        ItemList.Dye_Indigo.set(addItem(tLastID = 410, "Indigo Dye", "Blue Dye", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.SENSUS, 1), Dyes.dyeBlue}));
+        ItemList.Dye_Indigo.set(addItem(410, "Indigo Dye", "Blue Dye", new TC_AspectStack(TC_Aspects.SENSUS, 1), Dyes.dyeBlue));
         for (byte i = 0; i < 16; i = (byte) (i + 1)) {
-            ItemList.DYE_ONLY_ITEMS[i].set(addItem(tLastID = 414 + i, Dyes.get(i).mName + " Dye", "", new Object[]{Dyes.get(i).name(), new TC_Aspects.TC_AspectStack(TC_Aspects.SENSUS, 1)}));
+            ItemList.DYE_ONLY_ITEMS[i].set(addItem(414 + i, Dyes.get(i).mName + " Dye", "", Dyes.get(i).name(), new TC_AspectStack(TC_Aspects.SENSUS, 1)));
         }
 
-        ItemList.Bottle_Dragon_Blood.set(addItem(tLastID = 114, "Dragon Blood", "FUS RO DAH!", new Object[]{SubTag.INVISIBLE, new GT_FoodStat(4, 0.4F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.confusion.id, 300, 2, 90, Potion.damageBoost.id, 300, 2, 90, Potion.poison.id, 200, 2, 10, Potion.harm.id, 0, 2, 5), new TC_Aspects.TC_AspectStack(TC_Aspects.VITREUS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.VENENUM, 2), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 2)}));
+        ItemList.Bottle_Dragon_Blood.set(addItem(114, "Dragon Blood", "FUS RO DAH!", SubTag.INVISIBLE, new GT_FoodStat(4, 0.4F, EnumAction.drink, new ItemStack(Items.glass_bottle, 1), GregTech_API.sDrinksAlwaysDrinkable, false, false, Potion.confusion.id, 300, 2, 90, Potion.damageBoost.id, 300, 2, 90, Potion.poison.id, 200, 2, 10, Potion.harm.id, 0, 2, 5), new TC_AspectStack(TC_Aspects.VITREUS, 1), new TC_AspectStack(TC_Aspects.VENENUM, 2), new TC_AspectStack(TC_Aspects.POTENTIA, 2)));
 
-        ItemList.SFMixture.set(addItem(tLastID = 270, "Super Fuel Binder", "Raw Material", new Object[]{}));
-        ItemList.MSFMixture.set(addItem(tLastID = 271, "Magic Super Fuel Binder", "Raw Material", new Object[]{}));
+        ItemList.SFMixture.set(addItem(270, "Super Fuel Binder", "Raw Material"));
+        ItemList.MSFMixture.set(addItem(271, "Magic Super Fuel Binder", "Raw Material"));
 
-        ItemList.Crop_Drop_Plumbilia.set(addItem(tLastID = 500, "Plumbilia Leaf", "Source of Lead", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 1)}));
-        ItemList.Crop_Drop_Argentia.set(addItem(tLastID = 501, "Argentia Leaf", "Source of Silver", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.LUCRUM, 1)}));
-        ItemList.Crop_Drop_Indigo.set(addItem(tLastID = 502, "Indigo Blossom", "Used for making Blue Dye", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.SENSUS, 1)}));
-        ItemList.Crop_Drop_Ferru.set(addItem(tLastID = 503, "Ferru Leaf", "Source of Iron", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 2)}));
-        ItemList.Crop_Drop_Aurelia.set(addItem(tLastID = 504, "Aurelia Leaf", "Source of Gold", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.LUCRUM, 1)}));
+        ItemList.Crop_Drop_Plumbilia.set(addItem(500, "Plumbilia Leaf", "Source of Lead", new TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_AspectStack(TC_Aspects.ORDO, 1)));
+        ItemList.Crop_Drop_Argentia.set(addItem(501, "Argentia Leaf", "Source of Silver", new TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_AspectStack(TC_Aspects.LUCRUM, 1)));
+        ItemList.Crop_Drop_Indigo.set(addItem(502, "Indigo Blossom", "Used for making Blue Dye", new TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_AspectStack(TC_Aspects.SENSUS, 1)));
+        ItemList.Crop_Drop_Ferru.set(addItem(503, "Ferru Leaf", "Source of Iron", new TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_AspectStack(TC_Aspects.METALLUM, 2)));
+        ItemList.Crop_Drop_Aurelia.set(addItem(504, "Aurelia Leaf", "Source of Gold", new TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_AspectStack(TC_Aspects.LUCRUM, 1)));
 
-        ItemList.Crop_Drop_OilBerry.set(addItem(tLastID = 510, "Oil Berry", "Oil in Berry form", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 1)}));
-        ItemList.Crop_Drop_BobsYerUncleRanks.set(addItem(tLastID = 511, "Bobs-Yer-Uncle-Berry", "Source of Emeralds", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.VITREUS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.LUCRUM, 1)}));
-        ItemList.Crop_Drop_UUMBerry.set(addItem(tLastID = 512, "UUM Berry", "UUM in Berry form", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 1)}));
-        ItemList.Crop_Drop_UUABerry.set(addItem(tLastID = 513, "UUA Berry", "UUA in Berry form", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 1)}));
+        ItemList.Crop_Drop_OilBerry.set(addItem(510, "Oil Berry", "Oil in Berry form", new TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_AspectStack(TC_Aspects.AQUA, 1), new TC_AspectStack(TC_Aspects.POTENTIA, 1)));
+        ItemList.Crop_Drop_BobsYerUncleRanks.set(addItem(511, "Bobs-Yer-Uncle-Berry", "Source of Emeralds", new TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_AspectStack(TC_Aspects.VITREUS, 1), new TC_AspectStack(TC_Aspects.LUCRUM, 1)));
+        ItemList.Crop_Drop_UUMBerry.set(addItem(512, "UUM Berry", "UUM in Berry form", new TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_AspectStack(TC_Aspects.AQUA, 1), new TC_AspectStack(TC_Aspects.POTENTIA, 1)));
+        ItemList.Crop_Drop_UUABerry.set(addItem(513, "UUA Berry", "UUA in Berry form", new TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_AspectStack(TC_Aspects.AQUA, 1), new TC_AspectStack(TC_Aspects.POTENTIA, 1)));
 
-        ItemList.Crop_Drop_MilkWart.set(addItem(tLastID = 520, "Milk Wart", "Source of Milk", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.AQUA, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.SANO, 1)}));
+        ItemList.Crop_Drop_MilkWart.set(addItem(520, "Milk Wart", "Source of Milk", new TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_AspectStack(TC_Aspects.AQUA, 1), new TC_AspectStack(TC_Aspects.SANO, 1)));
 
-        ItemList.Crop_Drop_Coppon.set(addItem(tLastID = 530, "Coppon Fiber", "ORANGE WOOOOOOOL!!!", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.PERMUTATIO, 1)}));
+        ItemList.Crop_Drop_Coppon.set(addItem(530, "Coppon Fiber", "ORANGE WOOOOOOOL!!!", new TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_AspectStack(TC_Aspects.PERMUTATIO, 1)));
 
-        ItemList.Crop_Drop_Tine.set(addItem(tLastID = 540, "Tine Twig", "Source of Tin", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_Aspects.TC_AspectStack(TC_Aspects.ARBOR, 1)}));
+        ItemList.Crop_Drop_Tine.set(addItem(tLastID = 540, "Tine Twig", "Source of Tin", new TC_AspectStack(TC_Aspects.MESSIS, 1), new TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_AspectStack(TC_Aspects.ARBOR, 1)));
         setBurnValue(32000 + tLastID, 100);
 
-        ItemList.Crop_Drop_Bauxite.set(addItem(tLastID = 521, "Bauxia Leaf", "Source of Aluminium", new Object[]{}));
-        ItemList.Crop_Drop_Ilmenite.set(addItem(tLastID = 522, "Titania Leaf", "Source of Titanium", new Object[]{}));
-        ItemList.Crop_Drop_Pitchblende.set(addItem(tLastID = 523, "Reactoria Leaf", "Source of Uranium", new Object[]{}));
-        ItemList.Crop_Drop_Uraninite.set(addItem(tLastID = 524, "Uranium Leaf", "Source of Uranite", new Object[]{}));
-        ItemList.Crop_Drop_Thorium.set(addItem(tLastID = 526, "Thunder Leaf", "Source of Thorium", new Object[]{}));
-        ItemList.Crop_Drop_Nickel.set(addItem(tLastID = 527, "Nickelback Leaf", "Source of Nickel", new Object[]{}));
-        ItemList.Crop_Drop_Zinc.set(addItem(tLastID = 528, "Galvania Leaf", "Source of Zinc", new Object[]{}));
-        ItemList.Crop_Drop_Manganese.set(addItem(tLastID = 529, "Pyrolusium Leaf", "Source of Manganese", new Object[]{}));
-        ItemList.Crop_Drop_Scheelite.set(addItem(tLastID = 531, "Scheelinium Leaf", "Source of Tungsten", new Object[]{}));
-        ItemList.Crop_Drop_Platinum.set(addItem(tLastID = 532, "Platina Leaf", "Source of Platinum", new Object[]{}));
-        ItemList.Crop_Drop_Iridium.set(addItem(tLastID = 533, "Quantaria Leaf", "Source of Iridium", new Object[]{}));
-        ItemList.Crop_Drop_Osmium.set(addItem(tLastID = 534, "Quantaria Leaf", "Source of Osmium", new Object[]{}));
-        ItemList.Crop_Drop_Naquadah.set(addItem(tLastID = 535, "Stargatium Leaf", "Source of Naquadah", new Object[]{}));
+        ItemList.Crop_Drop_Bauxite.set(addItem(521, "Bauxia Leaf", "Source of Aluminium"));
+        ItemList.Crop_Drop_Ilmenite.set(addItem(522, "Titania Leaf", "Source of Titanium"));
+        ItemList.Crop_Drop_Pitchblende.set(addItem(523, "Reactoria Leaf", "Source of Uranium"));
+        ItemList.Crop_Drop_Uraninite.set(addItem(524, "Uranium Leaf", "Source of Uranite"));
+        ItemList.Crop_Drop_Thorium.set(addItem(526, "Thunder Leaf", "Source of Thorium"));
+        ItemList.Crop_Drop_Nickel.set(addItem(527, "Nickelback Leaf", "Source of Nickel"));
+        ItemList.Crop_Drop_Zinc.set(addItem(528, "Galvania Leaf", "Source of Zinc"));
+        ItemList.Crop_Drop_Manganese.set(addItem(529, "Pyrolusium Leaf", "Source of Manganese"));
+        ItemList.Crop_Drop_Scheelite.set(addItem(531, "Scheelinium Leaf", "Source of Tungsten"));
+        ItemList.Crop_Drop_Platinum.set(addItem(532, "Platina Leaf", "Source of Platinum"));
+        ItemList.Crop_Drop_Iridium.set(addItem(533, "Quantaria Leaf", "Source of Iridium"));
+        ItemList.Crop_Drop_Osmium.set(addItem(534, "Quantaria Leaf", "Source of Osmium"));
+        ItemList.Crop_Drop_Naquadah.set(addItem(535, "Stargatium Leaf", "Source of Naquadah"));
 
         GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.red_flower, 1, 0), new ItemStack(Items.dye, 2, 1));
         GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.red_flower, 1, 1), new ItemStack(Items.dye, 2, 12));
@@ -114,57 +108,11 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.melon, 1, 0), new ItemStack(Items.melon_seeds, 1, 0), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Items.stick, 1), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Wood, 2), null, 0, false);
         GT_ModHandler.addPulverisationRecipe(new ItemStack(Blocks.wool, 1, 32767), new ItemStack(Items.string, 2), new ItemStack(Items.string, 1), 50, false);
-        try {
-            Object tCrop;
-            GT_Utility.getField(tCrop = ic2.api.crops.Crops.instance.getCropList()[13], "mDrop").set(tCrop, ItemList.Crop_Drop_Ferru.get(1));
-            GT_Utility.getField(tCrop = ic2.api.crops.Crops.instance.getCropList()[14], "mDrop").set(tCrop, ItemList.Crop_Drop_Aurelia.get(1));
-        } catch (Throwable e) {
-            if (GT_Values.D1) {
-                e.printStackTrace(GT_Log.err);
-            }
-        }
-        ItemList.Display_ITS_FREE.set(addItem(tLastID = 766, "ITS FREE", "(or at least almost free)", new Object[]{SubTag.INVISIBLE, new TC_Aspects.TC_AspectStack(TC_Aspects.LUCRUM, 1)}));
+        
+        ItemList.Display_ITS_FREE.set(addItem(766, "ITS FREE", "(or at least almost free)", SubTag.INVISIBLE, new TC_AspectStack(TC_Aspects.LUCRUM, 1)));
     }
 
-    public boolean onLeftClickEntity(ItemStack aStack, EntityPlayer aPlayer, Entity aEntity) {
-        super.onLeftClickEntity(aStack, aPlayer, aEntity);
-        int aDamage = aStack.getItemDamage();
-        if ((aDamage >= 25000) && (aDamage < 27000)) {
-            if (aDamage >= 26000) {
-                return Behaviour_Arrow.DEFAULT_PLASTIC.onLeftClickEntity(this, aStack, aPlayer, aEntity);
-            }
-            return Behaviour_Arrow.DEFAULT_WOODEN.onLeftClickEntity(this, aStack, aPlayer, aEntity);
-        }
-        return false;
-    }
-
-    public boolean hasProjectile(SubTag aProjectileType, ItemStack aStack) {
-        int aDamage = aStack.getItemDamage();
-        return ((aDamage >= 25000) && (aDamage < 27000)) || (super.hasProjectile(aProjectileType, aStack));
-    }
-
-    public EntityArrow getProjectile(SubTag aProjectileType, ItemStack aStack, World aWorld, double aX, double aY, double aZ) {
-        int aDamage = aStack.getItemDamage();
-        if ((aDamage >= 25000) && (aDamage < 27000)) {
-            if (aDamage >= 26000) {
-                return Behaviour_Arrow.DEFAULT_PLASTIC.getProjectile(this, aProjectileType, aStack, aWorld, aX, aY, aZ);
-            }
-            return Behaviour_Arrow.DEFAULT_WOODEN.getProjectile(this, aProjectileType, aStack, aWorld, aX, aY, aZ);
-        }
-        return super.getProjectile(aProjectileType, aStack, aWorld, aX, aY, aZ);
-    }
-
-    public EntityArrow getProjectile(SubTag aProjectileType, ItemStack aStack, World aWorld, EntityLivingBase aEntity, float aSpeed) {
-        int aDamage = aStack.getItemDamage();
-        if ((aDamage >= 25000) && (aDamage < 27000)) {
-            if (aDamage >= 26000) {
-                return Behaviour_Arrow.DEFAULT_PLASTIC.getProjectile(this, aProjectileType, aStack, aWorld, aEntity, aSpeed);
-            }
-            return Behaviour_Arrow.DEFAULT_WOODEN.getProjectile(this, aProjectileType, aStack, aWorld, aEntity, aSpeed);
-        }
-        return super.getProjectile(aProjectileType, aStack, aWorld, aEntity, aSpeed);
-    }
-
+    @Override
     public boolean isItemStackUsable(ItemStack aStack) {
         int aDamage = aStack.getItemDamage();
         Materials aMaterial = GregTech_API.sGeneratedMaterials[(aDamage % 1000)];
@@ -182,21 +130,12 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         return super.isItemStackUsable(aStack);
     }
 
+    @Override
     public boolean doesShowInCreative(OrePrefixes aPrefix, Materials aMaterial, boolean aDoShowAllItems) {
         return (aDoShowAllItems) || (!aPrefix.name().startsWith("toolHead"));
     }
 
-    public ItemStack onDispense(IBlockSource aSource, ItemStack aStack) {
-        int aDamage = aStack.getItemDamage();
-        if ((aDamage >= 25000) && (aDamage < 27000)) {
-            if (aDamage >= 26000) {
-                return Behaviour_Arrow.DEFAULT_PLASTIC.onDispense(this, aSource, aStack);
-            }
-            return Behaviour_Arrow.DEFAULT_WOODEN.onDispense(this, aSource, aStack);
-        }
-        return super.onDispense(aSource, aStack);
-    }
-
+    @Override
     public final ItemStack getContainerItem(ItemStack aStack) {
         int aDamage = aStack.getItemDamage();
         if (aDamage < 32000) {

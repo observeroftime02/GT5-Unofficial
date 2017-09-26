@@ -58,7 +58,7 @@ public abstract class GT_MetaTileEntity_ConcreteBackfillerBase extends GT_MetaTi
         this.mMaxProgresstime = (isPickingPipes ? 240: 80) / (1 << getMinTier());
 
         long voltage = getMaxInputVoltage();
-        long overclockEu = V[Math.max(1, GT_Utility.getTier(voltage)) - 1];
+        int overclockEu = V[Math.max(1, GT_Utility.getTier(voltage)) - 1];
         while (this.mEUt <= overclockEu) {
             this.mEUt *= 4;
             this.mMaxProgresstime /= 2;

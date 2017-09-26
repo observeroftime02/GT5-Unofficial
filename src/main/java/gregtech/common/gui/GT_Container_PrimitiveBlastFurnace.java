@@ -23,8 +23,7 @@ public class GT_Container_PrimitiveBlastFurnace extends GT_ContainerMetaTile_Mac
 	}
 
 	public int getSlotCount() {
-		return GT_MetaTileEntity_PrimitiveBlastFurnace.INPUT_SLOTS
-				+ GT_MetaTileEntity_PrimitiveBlastFurnace.OUTPUT_SLOTS;
+		return GT_MetaTileEntity_PrimitiveBlastFurnace.INPUT_SLOTS + GT_MetaTileEntity_PrimitiveBlastFurnace.OUTPUT_SLOTS;
 	}
 
 	public int getShiftClickSlotCount() {
