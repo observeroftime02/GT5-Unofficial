@@ -41,17 +41,17 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
     public int damageFactorLow = 5;
     public float damageFactorHigh = 0.6f;
 
-    public ArrayList<GT_MetaTileEntity_Hatch_Input> mInputHatches = new ArrayList<GT_MetaTileEntity_Hatch_Input>();
-    public ArrayList<GT_MetaTileEntity_Hatch_Output> mOutputHatches = new ArrayList<GT_MetaTileEntity_Hatch_Output>();
-    public ArrayList<GT_MetaTileEntity_Hatch_InputBus> mInputBusses = new ArrayList<GT_MetaTileEntity_Hatch_InputBus>();
-    public ArrayList<GT_MetaTileEntity_Hatch_OutputBus> mOutputBusses = new ArrayList<GT_MetaTileEntity_Hatch_OutputBus>();
-    public ArrayList<GT_MetaTileEntity_Hatch_Dynamo> mDynamoHatches = new ArrayList<GT_MetaTileEntity_Hatch_Dynamo>();
-    public ArrayList<GT_MetaTileEntity_Hatch_Muffler> mMufflerHatches = new ArrayList<GT_MetaTileEntity_Hatch_Muffler>();
-    public ArrayList<GT_MetaTileEntity_Hatch_Energy> mEnergyHatches = new ArrayList<GT_MetaTileEntity_Hatch_Energy>();
-    public ArrayList<GT_MetaTileEntity_Hatch_Maintenance> mMaintenanceHatches = new ArrayList<GT_MetaTileEntity_Hatch_Maintenance>();
+    public ArrayList<GT_MetaTileEntity_Hatch_Input> mInputHatches = new ArrayList<>();
+    public ArrayList<GT_MetaTileEntity_Hatch_Output> mOutputHatches = new ArrayList<>();
+    public ArrayList<GT_MetaTileEntity_Hatch_InputBus> mInputBusses = new ArrayList<>();
+    public ArrayList<GT_MetaTileEntity_Hatch_OutputBus> mOutputBusses = new ArrayList<>();
+    public ArrayList<GT_MetaTileEntity_Hatch_Dynamo> mDynamoHatches = new ArrayList<>();
+    public ArrayList<GT_MetaTileEntity_Hatch_Muffler> mMufflerHatches = new ArrayList<>();
+    public ArrayList<GT_MetaTileEntity_Hatch_Energy> mEnergyHatches = new ArrayList<>();
+    public ArrayList<GT_MetaTileEntity_Hatch_Maintenance> mMaintenanceHatches = new ArrayList<>();
 
     public GT_MetaTileEntity_MultiBlockBase(int aID, String aName, String aNameRegional) {
-        super(aID, aName, aNameRegional, 2);
+        super(aID, aName, aNameRegional, 13);
         GT_MetaTileEntity_MultiBlockBase.disableMaintenance = GregTech_API.sMachineFile.get(ConfigCategories.machineconfig, "MultiBlockMachines.disableMaintenance", false);
         this.damageFactorLow = GregTech_API.sMachineFile.get(ConfigCategories.machineconfig, "MultiBlockMachines.damageFactorLow", 5);
         this.damageFactorHigh = (float) GregTech_API.sMachineFile.get(ConfigCategories.machineconfig, "MultiBlockMachines.damageFactorHigh", 0.6f);
@@ -91,7 +91,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
 
     @Override
     public boolean isValidSlot(int aIndex) {
-        return aIndex == 0;
+        return true;
     }
 
     @Override
@@ -619,16 +619,6 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                 }
             }
         }
-//		}else {
-//			for (GT_MetaTileEntity_Hatch_Output tHatch : mOutputHatches) {
-//				if (isValidMetaTileEntity(tHatch) && GT_ModHandler.isSteam(aLiquid)?tHatch.outputsSteam():tHatch.outputsLiquids()) {
-//					int tAmount = tHatch.fill(aLiquid, false);
-//					if (tAmount >= aLiquid.amount) {
-//						return tHatch.fill(aLiquid, true) >= aLiquid.amount;
-//					}
-//				}
-//			}
-//		}
         return outputSuccess;
     }
 
@@ -665,11 +655,6 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
 
     public ArrayList<ItemStack> getStoredOutputs() {
         ArrayList<ItemStack> rList = new ArrayList<ItemStack>();
-//        for (GT_MetaTileEntity_Hatch_Output tHatch : mOutputHatches) {
-//            if (isValidMetaTileEntity(tHatch)) {
-//                rList.add(tHatch.getBaseMetaTileEntity().getStackInSlot(1));
-//            }
-//        }
         for (GT_MetaTileEntity_Hatch_OutputBus tHatch : mOutputBusses) {
             if (isValidMetaTileEntity(tHatch)) {
                 for (int i = tHatch.getBaseMetaTileEntity().getSizeInventory() - 1; i >= 0; i--) {

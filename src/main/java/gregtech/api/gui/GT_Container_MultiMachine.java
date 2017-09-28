@@ -46,22 +46,20 @@ public class GT_Container_MultiMachine extends GT_ContainerMetaTile_Machine {
         if (mTileEntity.getMetaTileEntity() instanceof GT_MetaTileEntity_MultiBlockBase) {
             GT_MetaTileEntity_MultiBlockBase aMetaTile = (GT_MetaTileEntity_MultiBlockBase) mTileEntity.getMetaTileEntity();
             if (mActive == 1 && aMetaTile.mCurrentRecipe != null) {
-                int aIndex1, aIndex2;
-                for (int i = 0; i < 6; i++) {
-                    aIndex1 = i + 1;
-                    if (mTileEntity.getStackInSlot(aIndex1) == null && aMetaTile.mCurrentRecipe.mInputs.length >= aIndex1) {
-                        ItemStack aInputStack = aMetaTile.mCurrentRecipe.mInputs[i].copy().setStackDisplayName("Recipe Input " + aIndex1);
-                        mTileEntity.addStackToSlot(aIndex1, aInputStack, aInputStack.stackSize);
+                for (int i = 1; i < 7; i++) {
+                    if (/*mTileEntity.getStackInSlot(i) == null && */aMetaTile.mCurrentRecipe.mInputs.length >= i) {
+                        ItemStack aInputStack = aMetaTile.mCurrentRecipe.mInputs[i - 1].copy().setStackDisplayName("Recipe Input " + i);
+                        putStackInSlot(i + 1, aInputStack);
                     }
-                    aIndex2 = i + 7;
-                    if (mTileEntity.getStackInSlot(aIndex2) == null && aMetaTile.mCurrentRecipe.mOutputs.length >= aIndex1) {
-                        ItemStack aOutputStack = aMetaTile.mCurrentRecipe.mOutputs[i].copy().setStackDisplayName("Recipe Output " + aIndex1);
-                        mTileEntity.addStackToSlot(aIndex2, aOutputStack, aOutputStack.stackSize);
+                    if (/*mTileEntity.getStackInSlot(i) == null && */aMetaTile.mCurrentRecipe.mOutputs.length >= i) {
+                        ItemStack aOutputStack = aMetaTile.mCurrentRecipe.mOutputs[i - 1].copy().setStackDisplayName("Recipe Output " + i);
+                        System.out.println(aOutputStack.getUnlocalizedName());
+                        putStackInSlot(0, aOutputStack);
                     }
                 }
                 mTileEntity.markDirty();
             } else { //TODO mActive is 0 until the first network packet is gotten, so it clears the slots?
-                for (int i = 50; i < 61; i++) {
+                for (int i = 1; i < 13; i++) {
                     mTileEntity.setInventorySlotContents(i, null);
                 }
                 mTileEntity.markDirty();
@@ -93,23 +91,23 @@ public class GT_Container_MultiMachine extends GT_ContainerMetaTile_Machine {
     @Override
     public void addSlots(InventoryPlayer aInventoryPlayer) {
         addSlotToContainer(new Slot(mTileEntity, 0, 152, 5));
-        addSlotToContainer(new Slot(mTileEntity, 50, 17, 17));
-        addSlotToContainer(new Slot(mTileEntity, 51, 35, 17));
-        addSlotToContainer(new Slot(mTileEntity, 52, 53, 17));
-        addSlotToContainer(new Slot(mTileEntity, 53, 17, 35));
-        addSlotToContainer(new Slot(mTileEntity, 54, 35, 35));
-        addSlotToContainer(new Slot(mTileEntity, 55, 53, 35));
-        addSlotToContainer(new Slot(mTileEntity, 56, 107, 17));
-        addSlotToContainer(new Slot(mTileEntity, 57, 125, 17));
-        addSlotToContainer(new Slot(mTileEntity, 58, 143, 17));
-        addSlotToContainer(new Slot(mTileEntity, 59, 107, 35));
-        addSlotToContainer(new Slot(mTileEntity, 60, 125, 35));
-        addSlotToContainer(new Slot(mTileEntity, 61, 143, 35));
+        addSlotToContainer(new Slot(mTileEntity, 1, 18, 14));
+        addSlotToContainer(new Slot(mTileEntity, 2, 35, 14));
+        addSlotToContainer(new Slot(mTileEntity, 3, 52, 14));
+        addSlotToContainer(new Slot(mTileEntity, 4, 18, 31));
+        addSlotToContainer(new Slot(mTileEntity, 5, 35, 31));
+        addSlotToContainer(new Slot(mTileEntity, 6, 52, 31));
+        addSlotToContainer(new Slot(mTileEntity, 7, 108, 14));
+        addSlotToContainer(new Slot(mTileEntity, 8, 125, 14));
+        addSlotToContainer(new Slot(mTileEntity, 9, 142, 14));
+        addSlotToContainer(new Slot(mTileEntity, 10, 108, 31));
+        addSlotToContainer(new Slot(mTileEntity, 11, 125, 31));
+        addSlotToContainer(new Slot(mTileEntity, 12, 142, 31));
     }
 
     @Override
     public int getSlotCount() {
-        return 13;
+        return 1;
     }
 
     @Override
