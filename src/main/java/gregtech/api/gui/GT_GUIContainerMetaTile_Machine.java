@@ -2,6 +2,7 @@ package gregtech.api.gui;
 
 import gregtech.api.GregTech_API;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
+import gregtech.api.util.GT_LanguageManager;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemDye;
 import org.lwjgl.opengl.GL11;
@@ -34,5 +35,9 @@ public class GT_GUIContainerMetaTile_Machine extends GT_GUIContainer {
                 GL11.glColor4f(((tColor >> 16) & 255) / 255.0F, ((tColor >> 8) & 255) / 255.0F, (tColor & 255) / 255.0F, 1.0F);
             } else GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         } else GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+    }
+
+    public static String trans(String aKey, String aEnglish) {
+        return GT_LanguageManager.addStringLocalization("Interaction_DESCRIPTION_Index_" + aKey, aEnglish, false);
     }
 }

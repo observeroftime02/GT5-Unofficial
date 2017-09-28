@@ -14,6 +14,7 @@ import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Utility;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -21,12 +22,10 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 
-public class GT_MetaTileEntity_ElectricBlastFurnace
-        extends GT_MetaTileEntity_MultiBlockBase {
+public class GT_MetaTileEntity_ElectricBlastFurnace extends GT_MetaTileEntity_MultiBlockBase {
     private int mHeatingCapacity = 0;
     private int controllerY;
-    private FluidStack[] pollutionFluidStacks = new FluidStack[]{Materials.CarbonDioxide.getGas(1000), 
-    		Materials.CarbonMonoxide.getGas(1000), Materials.SulfurDioxide.getGas(1000)};
+    private static final FluidStack[] pollutionFluidStacks = new FluidStack[]{Materials.CarbonDioxide.getGas(1000), Materials.CarbonMonoxide.getGas(1000), Materials.SulfurDioxide.getGas(1000)};
 
     public GT_MetaTileEntity_ElectricBlastFurnace(int aID, String aName, String aNameRegional) {
         super(aID, aName, aNameRegional);
@@ -67,7 +66,7 @@ public class GT_MetaTileEntity_ElectricBlastFurnace
     }
 
     public Object getClientGUI(int aID, InventoryPlayer aPlayerInventory, IGregTechTileEntity aBaseMetaTileEntity) {
-        return new GT_GUIContainer_MultiMachine(aPlayerInventory, aBaseMetaTileEntity, getLocalName(), "ElectricBlastFurnace.png");
+        return new GT_GUIContainer_MultiMachine(aPlayerInventory, aBaseMetaTileEntity, getLocalName(), "ElectricBlastFurnace.png", GT_Recipe.GT_Recipe_Map.sBlastRecipes.mNEIName);
     }
 
     public GT_Recipe.GT_Recipe_Map getRecipeMap() {
@@ -80,6 +79,11 @@ public class GT_MetaTileEntity_ElectricBlastFurnace
 
     public boolean isFacingValid(byte aFacing) {
         return aFacing > 1;
+    }
+
+    @Override
+    public boolean isUseableByPlayer(EntityPlayer entityplayer) {
+        return true;
     }
 
     public boolean checkRecipe(ItemStack aStack) {
@@ -123,6 +127,7 @@ public class GT_MetaTileEntity_ElectricBlastFurnace
             byte tTier = (byte) Math.max(1, GT_Utility.getTier(tVoltage));
             GT_Recipe tRecipe = GT_Recipe.GT_Recipe_Map.sBlastRecipes.findRecipe(getBaseMetaTileEntity(), false, gregtech.api.enums.GT_Values.V[tTier], tFluids, tInputs);
             if ((tRecipe != null) && (this.mHeatingCapacity >= tRecipe.mSpecialValue) && (tRecipe.isRecipeInputEqual(true, tFluids, tInputs))) {
+                this.mCurrentRecipe = tRecipe;
                 this.mEfficiency = (10000 - (getIdealStatus() - getRepairStatus()) * 1000);
                 this.mEfficiencyIncrease = 10000;
                 int tHeatCapacityDivTiers = (mHeatingCapacity - tRecipe.mSpecialValue) / 900;
@@ -316,5 +321,4 @@ public class GT_MetaTileEntity_ElectricBlastFurnace
         }
         return false;
     }
-
 }

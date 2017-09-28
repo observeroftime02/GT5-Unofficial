@@ -14,6 +14,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.objects.GT_ItemStack;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Recipe.GT_Recipe_Map;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.GT_Pollution;
@@ -35,6 +36,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
     public int mPollution = 0, mProgresstime = 0, mMaxProgresstime = 0, mEUt = 0, mEfficiencyIncrease = 0, mUpdate = 0, mStartUpCheck = 100, mRuntime = 0, mEfficiency = 0;
     public ItemStack[] mOutputItems = null;
     public FluidStack[] mOutputFluids = null;
+    public GT_Recipe mCurrentRecipe = null;
     public String mNEI;
     public int damageFactorLow = 5;
     public float damageFactorHigh = 0.6f;
@@ -89,7 +91,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
 
     @Override
     public boolean isValidSlot(int aIndex) {
-        return aIndex > 0;
+        return aIndex == 0;
     }
 
     @Override
@@ -679,7 +681,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
     }
 
     public ArrayList<FluidStack> getStoredFluids() {
-        ArrayList<FluidStack> rList = new ArrayList<FluidStack>();
+        ArrayList<FluidStack> rList = new ArrayList<>();
         for (GT_MetaTileEntity_Hatch_Input tHatch : mInputHatches) {
             tHatch.mRecipeMap = getRecipeMap();
             if (isValidMetaTileEntity(tHatch) && tHatch.getFillableStack() != null) {
@@ -690,13 +692,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
     }
 
     public ArrayList<ItemStack> getStoredInputs() {
-        ArrayList<ItemStack> rList = new ArrayList<ItemStack>();
-//        for (GT_MetaTileEntity_Hatch_Input tHatch : mInputHatches) {
-//            tHatch.mRecipeMap = getRecipeMap();
-//            if (isValidMetaTileEntity(tHatch) && tHatch.getBaseMetaTileEntity().getStackInSlot(0) != null) {
-//                rList.add(tHatch.getBaseMetaTileEntity().getStackInSlot(0));
-//            }
-//        }
+        ArrayList<ItemStack> rList = new ArrayList<>();
         for (GT_MetaTileEntity_Hatch_InputBus tHatch : mInputBusses) {
             tHatch.mRecipeMap = getRecipeMap();
             if (isValidMetaTileEntity(tHatch)) {

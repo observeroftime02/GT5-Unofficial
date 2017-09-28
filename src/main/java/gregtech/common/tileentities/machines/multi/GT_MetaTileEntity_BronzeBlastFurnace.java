@@ -8,8 +8,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.objects.GT_RenderedTexture;
 import net.minecraft.block.Block;
 
-public class GT_MetaTileEntity_BronzeBlastFurnace
-        extends GT_MetaTileEntity_PrimitiveBlastFurnace {
+public class GT_MetaTileEntity_BronzeBlastFurnace extends GT_MetaTileEntity_PrimitiveBlastFurnace {
     private static final ITexture[] FACING_SIDE = {new GT_RenderedTexture(Textures.BlockIcons.MACHINE_BRONZEPLATEDBRICKS)};
     private static final ITexture[] FACING_FRONT = {new GT_RenderedTexture(Textures.BlockIcons.MACHINE_BRONZEBLASTFURNACE)};
     private static final ITexture[] FACING_ACTIVE = {new GT_RenderedTexture(Textures.BlockIcons.MACHINE_BRONZEBLASTFURNACE_ACTIVE)};
@@ -56,6 +55,4 @@ public class GT_MetaTileEntity_BronzeBlastFurnace
 	public String getName() {
 		return "Bronze Blast Furnace";
 	}
-
- 
 }
