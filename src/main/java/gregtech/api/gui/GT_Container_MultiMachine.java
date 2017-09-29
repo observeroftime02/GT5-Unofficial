@@ -43,26 +43,28 @@ public class GT_Container_MultiMachine extends GT_ContainerMetaTile_Machine {
             }
         }
 
-        if (mTileEntity.getMetaTileEntity() instanceof GT_MetaTileEntity_MultiBlockBase) {
+        if (mTileEntity!=null && mTileEntity.getMetaTileEntity() instanceof GT_MetaTileEntity_MultiBlockBase && mTileEntity.isServerSide()) {
             GT_MetaTileEntity_MultiBlockBase aMetaTile = (GT_MetaTileEntity_MultiBlockBase) mTileEntity.getMetaTileEntity();
             if (mActive == 1 && aMetaTile.mCurrentRecipe != null) {
-                for (int i = 1; i < 7; i++) {
-                    if (/*mTileEntity.getStackInSlot(i) == null && */aMetaTile.mCurrentRecipe.mInputs.length >= i) {
-                        ItemStack aInputStack = aMetaTile.mCurrentRecipe.mInputs[i - 1].copy().setStackDisplayName("Recipe Input " + i);
-                        putStackInSlot(i + 1, aInputStack);
+                for (int i = 1; i <= 6; i++) {
+                    if (aMetaTile.mCurrentRecipe.mInputs.length > i-1) {
+                        ItemStack aInputStack = aMetaTile.mCurrentRecipe.mInputs[i-1].copy().setStackDisplayName("Recipe Input " + i);
+                        putStackInSlot(i, aInputStack);
+                    }else{
+                        putStackInSlot(i,null);
                     }
-                    if (/*mTileEntity.getStackInSlot(i) == null && */aMetaTile.mCurrentRecipe.mOutputs.length >= i) {
-                        ItemStack aOutputStack = aMetaTile.mCurrentRecipe.mOutputs[i - 1].copy().setStackDisplayName("Recipe Output " + i);
+                    if (aMetaTile.mCurrentRecipe.mOutputs.length > i-1) {
+                        ItemStack aOutputStack = aMetaTile.mCurrentRecipe.mOutputs[i-1].copy().setStackDisplayName("Recipe Output " + i);
                         System.out.println(aOutputStack.getUnlocalizedName());
-                        putStackInSlot(0, aOutputStack);
+                        putStackInSlot(i+6, aOutputStack);
+                    }else{
+                        putStackInSlot(i+6,null);
                     }
                 }
-                mTileEntity.markDirty();
-            } else { //TODO mActive is 0 until the first network packet is gotten, so it clears the slots?
-                for (int i = 1; i < 13; i++) {
-                    mTileEntity.setInventorySlotContents(i, null);
+            } else {
+                for (int i = 1; i <= 12; i++) {
+                    putStackInSlot(i, null);
                 }
-                mTileEntity.markDirty();
             }
         }
 
@@ -91,6 +93,7 @@ public class GT_Container_MultiMachine extends GT_ContainerMetaTile_Machine {
     @Override
     public void addSlots(InventoryPlayer aInventoryPlayer) {
         addSlotToContainer(new Slot(mTileEntity, 0, 152, 5));
+
         addSlotToContainer(new Slot(mTileEntity, 1, 18, 14));
         addSlotToContainer(new Slot(mTileEntity, 2, 35, 14));
         addSlotToContainer(new Slot(mTileEntity, 3, 52, 14));
