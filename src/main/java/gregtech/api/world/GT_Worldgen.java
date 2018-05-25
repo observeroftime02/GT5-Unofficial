@@ -1,4 +1,5 @@
 package gregtech.api.world;
+import gregtech.api.util.GT_Log;
 
 import gregtech.api.GregTech_API;
 import net.minecraft.world.World;
@@ -67,6 +68,13 @@ public abstract class GT_Worldgen {
         Boolean tAllowed = mDimensionMap.get(aDimName);
         if (tAllowed == null) {
             boolean tValue = GregTech_API.sWorldgenFile.get("worldgen." + mWorldGenName, aDimName, aDimensionType == aAllowedDimensionType);
+            GT_Log.out.println(
+                "Adding GT Oremix to dimension map " + mWorldGenName +
+                " DimType " + aDimensionType + 
+                " aAllowedDimensionType " + aAllowedDimensionType +
+                " aDimName " + aDimName +
+                " tValue " + tValue
+            );
             mDimensionMap.put(aDimName, tValue);
             return tValue;
         }

@@ -60,6 +60,13 @@ public class GT_Worldgen_GT_Ore_Layer
         //this.mAsteroid = GregTech_API.sWorldgenFile.get(aTextWorldgen + this.mWorldGenName, "Asteroid", aAsteroid);
         this.mMinY = ((short) GregTech_API.sWorldgenFile.get(aTextWorldgen + this.mWorldGenName, "MinHeight", aMinY));
         short mMaxY = ((short) GregTech_API.sWorldgenFile.get(aTextWorldgen + this.mWorldGenName, "MaxHeight", aMaxY));
+        GT_Log.out.println(
+                "GT Oremix " + this.mWorldGenName +
+                " Overworld " + this.mOverworld + 
+                " Nether " + this.mNether +
+                " End " +this.mEnd
+            );
+        
         if (mMaxY < (this.mMinY + 7))    {
             GT_Log.out.println(
                     "Oremix " + this.mWorldGenName +
@@ -119,6 +126,13 @@ public class GT_Worldgen_GT_Ore_Layer
         if (!this.mRestrictBiome.equals("None") && !(this.mRestrictBiome.equals(aBiome))) {
             return WRONG_BIOME;
         }
+                GT_Log.out.println(
+                "GT Oremix " + this.mWorldGenName +
+                " DimType " + aDimensionType + 
+                " Overworld " + this.mOverworld + 
+                " Nether " + this.mNether +
+                " End " +this.mEnd
+            );
         // For optimal performance, this should be done upstream. Meh
         String tDimensionName = aWorld.provider.getDimensionName();
         boolean isUnderdark = tDimensionName.equals("Underdark");

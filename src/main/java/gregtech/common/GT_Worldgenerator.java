@@ -137,6 +137,14 @@ implements IWorldGenerator {
             this.mChunkGenerator = aChunkGenerator;
             this.mChunkProvider = aChunkProvider;
             this.mBiome = aBiome;
+            GT_Log.out.println(
+                " WorldgenContainer Constructor for biome " + this.mBiome + 
+                " mX="+ this.mX +
+                " mZ="+ this.mZ + 
+                " dimType "+this.mDimensionType +
+                " End? " + (aChunkGenerator instanceof ChunkProviderEnd) +
+                " Nether? " + (aChunkGenerator instanceof ChunkProviderHell)
+            );
         }
 
         // How to evaluate oregen distribution
