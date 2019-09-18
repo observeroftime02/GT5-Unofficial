@@ -126,6 +126,7 @@ public class GT_Worldgenloader
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.certusquartz",true,5,115,16,false, true, false, Materials.CertusQuartz);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.jade",true,5,250,8,false, false, false, Materials.Jade);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.deepiron",true,5,40,8,false, false, false, Materials.DeepIron);
+        new GT_Worldgen_GT_Ore_SmallPieces("ore.small.woodore",true,5,80,32,true, true, false, Materials.Wood);
 
         //GT Default Veins
 
@@ -270,6 +271,7 @@ public class GT_Worldgenloader
         new GT_Worldgen_GT_Ore_Layer("ore.mix.secondlanthanid", true, 10, 40, 10, 3, 24, false, false, false, Materials.Samarium, Materials.Neodymium, Materials.Tartarite, Materials.Tartarite);
         new GT_Worldgen_GT_Ore_Layer("ore.mix.quartzspace", true, 40, 80, 20, 3, 16, false, false, false, Materials.Quartzite, Materials.Barite, Materials.CertusQuartz, Materials.CertusQuartz);
         new GT_Worldgen_GT_Ore_Layer("ore.mix.rutile", true, 5, 20, 20, 4, 12, false, false, false, Materials.Rutile, Materials.Titanium, Materials.Bauxite, Materials.MeteoricIron);
+        new GT_Worldgen_GT_Ore_Layer("ore.mix.woodore", true, 30, 60, 80, 4, 32, true, false, false, Materials.Wood, Materials.Wood, Materials.Wood, Materials.Wood);
 
         /*
         
