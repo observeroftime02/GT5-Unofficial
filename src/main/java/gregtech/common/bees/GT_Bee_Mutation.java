@@ -30,7 +30,6 @@ public class GT_Bee_Mutation extends BeeMutation {
     }
 
     @Override
-    @Override
     public float getChance(IBeeHousing housing, IAlleleBeeSpecies allele0, IAlleleBeeSpecies allele1, IBeeGenome genome0, IBeeGenome genome1) {
         World world = housing != null ? housing.getWorld() : null;
         ChunkCoordinates housingCoordinates = housing != null ? housing.getCoordinates() : null;
