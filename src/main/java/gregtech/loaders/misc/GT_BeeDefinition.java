@@ -12,6 +12,7 @@ import forestry.apiculture.genetics.Bee;
 import forestry.apiculture.genetics.BeeVariation;
 import forestry.apiculture.genetics.IBeeDefinition;
 import forestry.apiculture.genetics.alleles.AlleleEffect;
+import forestry.core.genetics.alleles.Allele;
 import forestry.core.genetics.alleles.AlleleHelper;
 import forestry.core.genetics.alleles.EnumAllele;
 import gregtech.api.GregTech_API;
@@ -3118,11 +3119,11 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         }
     },
 
-    WEEBIUM(GT_BranchDefinition.METAL, "Weebium", true, 0xFFFFFF, 0xFFFFFF) {
+    WEEBIUM(GT_BranchDefinition.METAL, "Weebium", true, 0xF79EF7, 0xF5BAF5) {
         @Override
         protected void setSpeciesProperties(GT_AlleleBeeSpecies beeSpecies) {
             beeSpecies.addProduct(GT_Bees.combs.getStackForType(CombType.SLAG), 0.30f);
-            beeSpecies.addSpecialty(GT_Bees.combs.getStackForType(CombType.WEEBIUM), 0.15f);
+            beeSpecies.addSpecialty(GT_Bees.combs.getStackForType(CombType.WEEBIUM), 0.20f);
             beeSpecies.setHumidity(EnumHumidity.NORMAL);
             beeSpecies.setTemperature(EnumTemperature.NORMAL);
             beeSpecies.setNocturnal();
@@ -3132,13 +3133,45 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void setAlleles(IAllele[] template) {
             AlleleHelper.instance.set(template, EnumBeeChromosome.LIFESPAN, EnumAllele.Lifespan.LONGER);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.SPEED, EnumAllele.Speed.FASTER);
         }
 
         @Override
         protected void registerMutations() {
-            IBeeMutationCustom tMutation = registerMutation(getSpecies(FORRESTRY,"Common"), NAQUADAH.species, 2);
+            IBeeMutationCustom tMutation = registerMutation(getSpecies(FORRESTRY,"Common"), NAQUADAH.species, 5);
             tMutation.requireResource(GameRegistry.findBlock("gregtech", "gt.blockores"), 765);
         }
+    },
+
+    UUMATTER(GT_BranchDefinition.METAL, "UU-Matter", true, 0x7F00C4, 0xCC6EFF) {
+        @Override
+        protected void setSpeciesProperties(GT_AlleleBeeSpecies beeSpecies) {
+            beeSpecies.addProduct(GT_Bees.combs.getStackForType(CombType.SLAG), 0.30f);
+            beeSpecies.addSpecialty(GT_Bees.combs.getStackForType(CombType.UUMATTER), 0.20f);
+            beeSpecies.setHumidity(EnumHumidity.NORMAL);
+            beeSpecies.setTemperature(EnumTemperature.NORMAL);
+            beeSpecies.setNocturnal();
+            beeSpecies.setHasEffect();
+        }
+
+        @Override
+        protected void setAlleles(IAllele[] template) {
+            AlleleHelper.instance.set(template, EnumBeeChromosome.LIFESPAN, EnumAllele.Lifespan.LONGER);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.SPEED, EnumAllele.Speed.FASTER);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.TOLERANT_FLYER, true);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.TEMPERATURE_TOLERANCE, EnumAllele.Tolerance.UP_2);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.HUMIDITY_TOLERANCE, EnumAllele.Tolerance.UP_2);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.CAVE_DWELLING, true);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.FLOWER_PROVIDER, EnumAllele.Flowers.NETHER);
+        }
+
+        @Override
+        protected void registerMutations() {
+            IBeeMutationCustom tMutation = registerMutation(WEEBIUM.species, NAQUADAH.species, 1);
+            tMutation.requireResource(GameRegistry.findBlock("gregtech", "gt.blockores"), 703);
+        }
+
+
     };
     private final GT_BranchDefinition branch;
     private final GT_AlleleBeeSpecies species;

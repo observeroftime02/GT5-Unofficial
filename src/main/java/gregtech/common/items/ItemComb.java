@@ -22,6 +22,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
@@ -347,6 +348,10 @@ public class ItemComb extends Item {
         addProcessLV(tComb, Materials.Antimony, 70);
         tComb = getStackForType(CombType.WEEBIUM);
         addProcessLUV(tComb, Materials.Weebium, 80);
+        tComb = getStackForType(CombType.UUMATTER);
+        addProcessLUV(tComb, Materials.UUMatter, 80);
+        addSpecialCentLuV(tComb, GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.UUMatter, 1L), 45, Materials.UUMatter.getFluid(2L));
+
 
 	    // Rare Metals Line
 		tComb = getStackForType(CombType.BAUXITE);
@@ -567,6 +572,26 @@ public class ItemComb extends Item {
 
 	public void addSpecialCentHV(ItemStack tComb, ItemStack aOutput, int chance, ItemStack aOutput2, int chance2, ItemStack aOutput3, int chance3){
 		GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, aOutput,	aOutput2, aOutput3, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100, chance2 * 100, chance3 * 100 }, 196, 480);
+	}
+
+	public void addSpecialCentLuV(ItemStack tComb, ItemStack aOutput, int chance){
+		GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, aOutput,GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100, 7000 }, 160, 31100);
+	}
+
+	public void addSpecialCentLuV(ItemStack tComb, ItemStack aOutput, int chance, ItemStack aOutput2, int chance2){
+		GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, aOutput,	aOutput2, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100, chance2 * 100}, 160, 31100);
+	}
+
+	public void addSpecialCentLuV(ItemStack tComb, ItemStack aOutput, int chance, FluidStack fOutput1){
+		GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, fOutput1, aOutput,	GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100}, 160, 10288);
+	}
+
+	public void addSpecialCentUHV(ItemStack tComb, ItemStack aOutput, int chance){
+		GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, aOutput,GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100, 7000 }, 160, 1992294);
+	}
+
+	public void addSpecialCentUHV(ItemStack tComb, ItemStack aOutput, int chance, FluidStack fOutput1){
+		GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, fOutput1, aOutput,	GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100}, 160, 1992294);
 	}
 
 	public void addProcessLV(ItemStack tComb, Materials aMaterial, int chance){

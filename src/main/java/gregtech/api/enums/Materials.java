@@ -1283,6 +1283,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         Silicon                 .addOreByProducts(SiliconDioxide        );
         InfusedGold             .addOreByProduct(Gold);
         Weebium                 .addOreByProducts(Oriharukon, Silicon, Gallium);
+        UUMatter                .addOreByProducts(Weebium);
 
         Glue.mChemicalFormula = "No Horses were harmed for the Production";
         UUAmplifier.mChemicalFormula = "Accelerates the Mass Fabricator";
