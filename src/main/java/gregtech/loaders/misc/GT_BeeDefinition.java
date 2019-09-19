@@ -3137,7 +3137,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
             IBeeMutationCustom tMutation = registerMutation(getSpecies(FORRESTRY,"Common"), NAQUADAH.species, 2);
-            tMutation.requireResource(GregTech_API.sBlockMetal4, 15);
+            tMutation.requireResource(GameRegistry.findBlock("gregtech", "gt.blockores"), 765);
         }
     };
     private final GT_BranchDefinition branch;
