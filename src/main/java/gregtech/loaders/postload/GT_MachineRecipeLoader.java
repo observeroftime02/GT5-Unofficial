@@ -685,6 +685,7 @@ public class GT_MachineRecipeLoader implements Runnable {
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Weebium, 1L), null, Materials.Radon.getGas(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Weebium, 1L), null, 125, 498073, 9001);
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Weebium, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Weebium, 1L), 120, 480);
 
+
         GT_Values.RA.addMixerRecipe(Materials.MysteriousCrystal.getDust(16), Materials.Oriharukon.getDust(16), Materials.CosmicNeutronium.getDust(4),  Materials.Infinity.getDustTiny(1), GT_ModHandler.getModItem("dreamcraft", "item.TCetiESeaweedExtract", 16L, 0), GT_Values.NI, Materials.GrowthMediumRaw.getFluid(4000L), Materials.BioMediumRaw.getFluid(4000L), GT_Values.NI, 300, 500000);
         GT_Values.RA.addFluidHeaterRecipe(GT_Utility.getIntegratedCircuit(1), Materials.GrowthMediumRaw.getFluid(1000L), Materials.GrowthMediumSterilized.getFluid(1000L), 100, 7680);
         GT_Values.RA.addFluidHeaterRecipe(GT_Utility.getIntegratedCircuit(1), Materials.BioMediumRaw.getFluid(1000L), Materials.BioMediumSterilized.getFluid(1000L), 100, 30720);
@@ -1420,6 +1421,8 @@ public class GT_MachineRecipeLoader implements Runnable {
 	    GT_Values.RA.addFusionReactorRecipe(Materials.Caesium.getMolten(144), Materials.Carbon.getMolten(144), Materials.Promethium.getMolten(144), 64, 49152, 400000000);//FT3
         GT_Values.RA.addFusionReactorRecipe(Materials.Iridium.getMolten(144), Materials.Fluorine.getGas(500), Materials.Radon.getPlasma(144), 32, 98304, 450000000);//FT3 - utility
         GT_Values.RA.addFusionReactorRecipe(Materials.Plutonium241.getMolten(144), Materials.Hydrogen.getGas(2000), Materials.Americium.getPlasma(144), 64, 98304, 500000000);//FT3
+        GT_Values.RA.addFusionReactorRecipe(Materials.Plutonium241.getMolten(144), Materials.Hydrogen.getGas(2000), Materials.Weebium.getPlasma(144), 64, 98304, 500000000);//FT3
+        GT_Values.RA.addFusionReactorRecipe(Materials.Neutronium.getMolten(98), Materials.Neodymium.getMolten(98), Materials.Weebium.getPlasma(169), 64, 8192, 150000000);//FT3
         //GT_Values.RA.addFusionReactorRecipe(Materials.Neutronium.getMolten(144), Materials.Neutronium.getMolten(144), Materials.Neutronium.getPlasma(72), 64, 130000, 640000000);//FT3+ - yes it is a bit troll XD
 
         GT_ModHandler.removeRecipeByOutput(ItemList.IC2_Fertilizer.get(1L));

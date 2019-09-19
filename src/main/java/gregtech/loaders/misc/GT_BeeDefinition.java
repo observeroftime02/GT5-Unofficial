@@ -19,6 +19,7 @@ import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
+import gregtech.api.util.GT_LanguageManager;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.common.bees.GT_AlleleBeeSpecies;
@@ -3106,6 +3107,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void setAlleles(IAllele[] template) {
             AlleleHelper.instance.set(template, EnumBeeChromosome.LIFESPAN, EnumAllele.Lifespan.SHORTEST);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.SPEED, EnumAllele.Speed.FASTER);
         }
 
         @Override
@@ -3113,6 +3115,29 @@ public enum GT_BeeDefinition implements IBeeDefinition {
             IBeeMutationCustom tMutation = registerMutation(INFINITYCATALYST.species, COSMICNEUTRONIUM.species, 1, 100);
             if (Loader.isModLoaded("avaritiaddons"))
             tMutation.requireResource(GameRegistry.findBlock("avaritiaddons", "InfinityChest"), 0);
+        }
+    },
+
+    WEEBIUM(GT_BranchDefinition.METAL, "Weebium", true, 0xFFFFFF, 0xFFFFFF) {
+        @Override
+        protected void setSpeciesProperties(GT_AlleleBeeSpecies beeSpecies) {
+            beeSpecies.addProduct(GT_Bees.combs.getStackForType(CombType.SLAG), 0.30f);
+            beeSpecies.addSpecialty(GT_Bees.combs.getStackForType(CombType.WEEBIUM), 0.15f);
+            beeSpecies.setHumidity(EnumHumidity.NORMAL);
+            beeSpecies.setTemperature(EnumTemperature.NORMAL);
+            beeSpecies.setNocturnal();
+            beeSpecies.setHasEffect();
+        }
+
+        @Override
+        protected void setAlleles(IAllele[] template) {
+            AlleleHelper.instance.set(template, EnumBeeChromosome.LIFESPAN, EnumAllele.Lifespan.LONGER);
+        }
+
+        @Override
+        protected void registerMutations() {
+            IBeeMutationCustom tMutation = registerMutation(getSpecies(FORRESTRY,"Common"), NAQUADAH.species, 2);
+            tMutation.requireResource(GregTech_API.sBlockMetal4, 15);
         }
     };
     private final GT_BranchDefinition branch;
@@ -3134,6 +3159,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         String uid = "gregtech.bee.species" + species;
         String description = "for.description." + species;
         String name = "for.bees.species." + lowercaseName;
+        GT_LanguageManager.addStringLocalization("for.bees.species." + lowercaseName,species,true);
 
 
         this.branch = branch;

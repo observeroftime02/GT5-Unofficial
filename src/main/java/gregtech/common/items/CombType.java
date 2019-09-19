@@ -146,7 +146,10 @@ public enum CombType {
     //Infinity
     COSMICNEUTRONIUM("cosmicneutronium",true, Materials._NULL, 5),
     INFINITYCATALYST("infinitycatalyst",true, Materials._NULL, 2),
-    INFINITY("infinity",true, Materials._NULL, 1);
+    INFINITY("infinity",true, Materials._NULL, 1),
+
+    //Weeb
+    WEEBIUM("Weebium", true, Materials.Weebium, 50);
 
     private static int[][] colours = new int[][]{
             //organic
@@ -281,6 +284,8 @@ public enum CombType {
             {0x484848, 0x323232},
             {0xFFFFFF, 0xFFFFFF},
             {0xFFFFFF, 0xFFFFFF},
+            //Weeb Line
+            {0xFFFFFF, 0xFFFFFF}
     };
     public boolean showInList;
     public Materials material;

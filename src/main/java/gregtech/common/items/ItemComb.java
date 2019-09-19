@@ -345,6 +345,8 @@ public class ItemComb extends Item {
 		addProcessLV(tComb, Materials.Arsenic, 80);
         addProcessLV(tComb, Materials.Bismuth, 70);
         addProcessLV(tComb, Materials.Antimony, 70);
+        tComb = getStackForType(CombType.WEEBIUM);
+        addProcessLUV(tComb, Materials.Weebium, 80);
 
 	    // Rare Metals Line
 		tComb = getStackForType(CombType.BAUXITE);
