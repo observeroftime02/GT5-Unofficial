@@ -59,6 +59,8 @@ public class GT_Bee_Mutation extends BeeMutation {
         Field f = FieldUtils.getDeclaredField(Mutation.class,"mutationConditions",true);
         if (f == null)
             f = FieldUtils.getField(Mutation.class,"mutationConditions",true);
+        if (f == null)
+            return mutationChance;
         try {
             mutationConditions = f.get(this) instanceof List ? (List) f.get(this) : null ;
         } catch (IllegalAccessException e) {
