@@ -1446,7 +1446,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {//TODO CHECK CIRCUI
         generateFluidMultiPipes(Materials.Plastic, Materials.Plastic.mName, "Plastic", 5175, 360, 350, true);
         generateFluidPipes(Materials.Polytetrafluoroethylene, Materials.Polytetrafluoroethylene.mName, "PTFE", 5680, 480, 600, true);
         generateFluidMultiPipes(Materials.Polytetrafluoroethylene, Materials.Polytetrafluoroethylene.mName, "PTFE", 5685, 480, 600, true);
-        generateFluidPipes(Materials.Weebium, Materials.Weebium.mName, 18130, 6500, 10000, true);
+
 
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.pipeSmall, Materials.TungstenSteel, 1L), ItemList.Electric_Pump_EV.get(1L), GT_Utility.getIntegratedCircuit(5)}, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.pipeSmall, Materials.Ultimate, 1L), 300, 1920);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.pipeMedium, Materials.TungstenSteel, 1L), ItemList.Electric_Pump_IV.get(1L), GT_Utility.getIntegratedCircuit(5)}, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.pipeMedium, Materials.Ultimate, 1L), 400, 4096);
