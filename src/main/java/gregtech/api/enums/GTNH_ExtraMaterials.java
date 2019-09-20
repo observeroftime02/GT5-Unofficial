@@ -43,6 +43,8 @@ public class GTNH_ExtraMaterials implements IMaterialHandler {
     public static Materials SolutionNickelSulfate   = new Materials(  -1, TextureSet.SET_NONE              ,   1.0F,      0,  2, 0                         , 255, 255, 255,   0,   "SolutionNickelSulfate"   ,   "Nickel Sulfate Solution"       ,    0,       0,         -1,    0, false, false,   3,   1,   1, Dyes._NULL          );
     public static Materials Lodestone               = new Materials(  -1, TextureSet.SET_NONE              ,   1.0F,      0,  1, 1    |8                   , 255, 255, 255,   0,   "Lodestone"               ,   "Lodestone"                     ,    0,       0,         -1,    0, false, false,   1,   1,   1, Dyes._NULL          );
     public static Materials Luminite                = new Materials(  -1, TextureSet.SET_NONE              ,   1.0F,      0,  1, 1    |8                   , 250, 250, 250,   0,   "Luminite"                ,   "Luminite"                      ,    0,       0,         -1,    0, false, false,   3,   1,   1, Dyes.dyeWhite       );
+    public static Materials Bathwater               = new Materials(  766, TextureSet.SET_FLUID             ,  1.0F,      0,  1,  16,                       250, 250, 250,   0,   "GamerGirlBathWater"       ,   "Gamergirl Bathwater"     ,    0,       0,         -1,    0, false, false,   3,   1,   1, Dyes.dyeWhite       );
+
 
     private static void initSubTags() {
         SubTag.METAL.addTo(Signalum, Lumium, EnrichedCopper, DiamondCopper);
