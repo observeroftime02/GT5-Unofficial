@@ -387,6 +387,13 @@ public class GT_CropLoader
             }, Materials.Weebium, GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Weebium, 1L), new ItemStack[] {
                     ItemList.Circuit_Chip_Biocell.get(1)
             });
+            new GT_BaseCrop(179, "Micadia", "bartimaeusnek", null, 9, 3, 0, 2, 3, 2, 0, 3, 0, 0, new String[] {
+                    "Metal",
+                    "Pine",
+                    "Mica",
+                    "Bush"
+            }, Materials.Mica, ItemList.Crop_Drop_Mica.get(1L), null);
+
             //TODO: Add some unique texture for the Weebium crop, currenty is a duplicate of the Trollplant
         } catch (Throwable e) {
             GT_Log.err.println("GT_Mod: Failed to register Crops to IC2.");
