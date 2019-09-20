@@ -150,7 +150,9 @@ public enum CombType {
 
     //Weeb
     WEEBIUM("Weebium", true, Materials.Weebium, 50),
-    UUMATTER("UU-Matter", true, Materials.UUMatter, 30);
+    UUMATTER("UU-Matter", true, Materials.UUMatter, 30),
+    UUAMPLIFIER("UU-Amplifier", true, Materials.UUAmplifier, 30);
+
 
     private static int[][] colours = new int[][]{
             //organic
@@ -287,7 +289,8 @@ public enum CombType {
             {0xFFFFFF, 0xFFFFFF},
             //Weeb Line
             {0xF79EF7, 0xF5BAF5},
-            {0x7F00C4, 0xCC6EFF}
+            {0x7F00C4, 0xCC6EFF},
+            {0xCC6EFF, 0x7F00C4}
     };
     public boolean showInList;
     public Materials material;

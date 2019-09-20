@@ -3138,8 +3138,32 @@ public enum GT_BeeDefinition implements IBeeDefinition {
 
         @Override
         protected void registerMutations() {
-            IBeeMutationCustom tMutation = registerMutation(getSpecies(FORRESTRY,"Common"), NAQUADAH.species, 5);
+            IBeeMutationCustom tMutation = registerMutation(THAUMIUMSHARD.species, NAQUADAH.species, 5);
             tMutation.requireResource(GameRegistry.findBlock("gregtech", "gt.blockores"), 765);
+        }
+    },
+
+    UUAMPLIFIER(GT_BranchDefinition.METAL, "UU-Amplifier", true, 0xF5BAF5, 0xF79EF7) {
+        @Override
+        protected void setSpeciesProperties(GT_AlleleBeeSpecies beeSpecies) {
+            beeSpecies.addProduct(GT_Bees.combs.getStackForType(CombType.SLAG), 0.30f);
+            beeSpecies.addSpecialty(GT_Bees.combs.getStackForType(CombType.UUAMPLIFIER), 0.20f);
+            beeSpecies.setHumidity(EnumHumidity.NORMAL);
+            beeSpecies.setTemperature(EnumTemperature.NORMAL);
+            beeSpecies.setNocturnal();
+            beeSpecies.setHasEffect();
+        }
+
+        @Override
+        protected void setAlleles(IAllele[] template) {
+            AlleleHelper.instance.set(template, EnumBeeChromosome.LIFESPAN, EnumAllele.Lifespan.LONGER);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.SPEED, EnumAllele.Speed.FASTER);
+        }
+
+        @Override
+        protected void registerMutations() {
+            IBeeMutationCustom tMutation = registerMutation(NAQUADAH.species, UUMATTER.species, 5);
+            tMutation.requireResource(GameRegistry.findBlock("gregtech", "gt.blockores"), 721);
         }
     },
 

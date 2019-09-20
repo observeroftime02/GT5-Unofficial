@@ -129,6 +129,7 @@ public class GT_Worldgenloader
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.woodore",true,5,80,32,true, true, false, Materials.Wood);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.weebium",true,5,80,8,false, false, false, Materials.Weebium);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.UUMatter",true,5,80,2,false, false, false, Materials.UUMatter);
+        new GT_Worldgen_GT_Ore_SmallPieces("ore.small.UUAmplifier",true,5,80,2,false, false, false, Materials.UUAmplifier);
 
         //GT Default Veins
 
@@ -274,7 +275,7 @@ public class GT_Worldgenloader
         new GT_Worldgen_GT_Ore_Layer("ore.mix.quartzspace", true, 40, 80, 20, 3, 16, false, false, false, Materials.Quartzite, Materials.Barite, Materials.CertusQuartz, Materials.CertusQuartz);
         new GT_Worldgen_GT_Ore_Layer("ore.mix.rutile", true, 5, 20, 20, 4, 12, false, false, false, Materials.Rutile, Materials.Titanium, Materials.Bauxite, Materials.MeteoricIron);
         new GT_Worldgen_GT_Ore_Layer("ore.mix.woodore", true, 30, 60, 80, 4, 32, false, false, false, Materials.Wood, Materials.Wood, Materials.Wood, Materials.Wood);
-        new GT_Worldgen_GT_Ore_Layer("ore.mix.weebium", true, 5, 35, 40, 5, 32, false, false, false, Materials.Weebium, Materials.UUMatter, Materials.Weebium, Materials.Weebium);
+        new GT_Worldgen_GT_Ore_Layer("ore.mix.weebium", true, 5, 35, 40, 5, 32, false, false, false, Materials.Weebium, Materials.UUMatter, Materials.Weebium, Materials.UUAmplifier);
         /*
         
         Config Files - disabled 

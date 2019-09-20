@@ -351,7 +351,8 @@ public class ItemComb extends Item {
         tComb = getStackForType(CombType.UUMATTER);
         addProcessLUV(tComb, Materials.UUMatter, 80);
         addSpecialCentLuV(tComb, GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.UUMatter, 1L), 45, Materials.UUMatter.getFluid(2L));
-
+		tComb = getStackForType(CombType.UUAMPLIFIER);
+		addSpecialCentLuV(tComb, GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.UUAmplifier, 1L), 45, Materials.UUAmplifier.getFluid(2L));
 
 	    // Rare Metals Line
 		tComb = getStackForType(CombType.BAUXITE);
@@ -450,6 +451,7 @@ public class ItemComb extends Item {
 		tComb = getStackForType(CombType.NEUTRONIUM);
 		addProcessUV(tComb,Materials.Neutronium,15);
 		addProcessZPM(tComb,Materials.Americium,35);
+
 
 		// Twilight
 		tComb = getStackForType(CombType.NAGA);
