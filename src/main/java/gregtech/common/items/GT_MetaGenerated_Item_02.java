@@ -20,6 +20,7 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
@@ -336,6 +337,7 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         ItemList.Food_Sliced_Tomato.set(addItem(tLastID = 572, "Tomato Slice", "Solid Ketchup", new Object[]{new GT_FoodStat(1, 0.05F, EnumAction.eat, null, false, true, false, new int[0]), new TC_Aspects.TC_AspectStack(TC_Aspects.HERBA, 1L)}));
         ItemList.Food_Sliced_Onion.set(addItem(tLastID = 573, "Onion Slice", "ONIONS, UNITE!", new Object[]{new GT_FoodStat(1, 0.05F, EnumAction.eat, null, false, true, false, new int[0]), new TC_Aspects.TC_AspectStack(TC_Aspects.HERBA, 1L)}));
         ItemList.Food_Sliced_Cucumber.set(addItem(tLastID = 574, "Cucumber Slice", "QUEWWW-CUMMM-BERRR!!!", new Object[]{new GT_FoodStat(1, 0.05F, EnumAction.eat, null, false, true, false, new int[0]), new TC_Aspects.TC_AspectStack(TC_Aspects.HERBA, 1L)}));
+        ItemList.Gamergirl_Panties.set(addItem(tLastID = 579, "Gamer Girl Panties", "Worn for a week, slightly damp and still warm.", new Object[]{new GT_FoodStat(1, 0.05F, EnumAction.eat, null, false, true, false, new int[0]), new TC_Aspects.TC_AspectStack(TC_Aspects.HERBA, 1L)}));
 
         ItemList.Food_Sliced_Cheese.set(addItem(tLastID = 576, "Cheese Slice", "ALIEN ATTACK!!!, throw the CHEEEEESE!!!", new Object[]{new GT_FoodStat(1, 0.1F, EnumAction.eat, null, false, true, false, new int[0]), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L)}));
 
