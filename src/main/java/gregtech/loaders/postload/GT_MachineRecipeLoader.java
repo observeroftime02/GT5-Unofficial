@@ -687,7 +687,7 @@ public class GT_MachineRecipeLoader implements Runnable {
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Weebium, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Weebium, 1L), 120, 480);
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUAmplifier, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUAmplifier, 1L), 400, 13169);
         GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUAmplifier, 1L), GT_Values.NI, Materials.UUMatter.getFluid(16L),10000, 10, 32);
-
+        GT_Values.RA.addFluidExtractionRecipe(ItemList.Gamergirl_Panties.get(1L), GT_Values.NI, GTNH_ExtraMaterials.Bathwater.getFluid(144L), 10000, 250, 480);
 
         GT_Values.RA.addMixerRecipe(Materials.MysteriousCrystal.getDust(16), Materials.Oriharukon.getDust(16), Materials.CosmicNeutronium.getDust(4),  Materials.Infinity.getDustTiny(1), GT_ModHandler.getModItem("dreamcraft", "item.TCetiESeaweedExtract", 16L, 0), GT_Values.NI, Materials.GrowthMediumRaw.getFluid(4000L), Materials.BioMediumRaw.getFluid(4000L), GT_Values.NI, 300, 500000);
         GT_Values.RA.addFluidHeaterRecipe(GT_Utility.getIntegratedCircuit(1), Materials.GrowthMediumRaw.getFluid(1000L), Materials.GrowthMediumSterilized.getFluid(1000L), 100, 7680);
