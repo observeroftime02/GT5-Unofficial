@@ -86,15 +86,15 @@ import java.util.*;
 
 public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     private static final EnumSet<OreGenEvent.GenerateMinable.EventType> PREVENTED_ORES = EnumSet.of(OreGenEvent.GenerateMinable.EventType.COAL,
-            new OreGenEvent.GenerateMinable.EventType[]{OreGenEvent.GenerateMinable.EventType.IRON, OreGenEvent.GenerateMinable.EventType.GOLD,
-                    OreGenEvent.GenerateMinable.EventType.DIAMOND, OreGenEvent.GenerateMinable.EventType.REDSTONE, OreGenEvent.GenerateMinable.EventType.LAPIS,
-                    OreGenEvent.GenerateMinable.EventType.QUARTZ});
+            OreGenEvent.GenerateMinable.EventType.IRON, OreGenEvent.GenerateMinable.EventType.GOLD,
+            OreGenEvent.GenerateMinable.EventType.DIAMOND, OreGenEvent.GenerateMinable.EventType.REDSTONE, OreGenEvent.GenerateMinable.EventType.LAPIS,
+            OreGenEvent.GenerateMinable.EventType.QUARTZ);
     public final HashSet<ItemStack> mRegisteredOres = new HashSet<ItemStack>(10000);
     public final ArrayList<String> mSoundNames = new ArrayList<String>();
     public final ArrayList<ItemStack> mSoundItems = new ArrayList<ItemStack>();
     public final ArrayList<Integer> mSoundCounts = new ArrayList<Integer>();
     private final Collection<OreDictEventContainer> mEvents = new HashSet<OreDictEventContainer>();
-    private final Collection<String> mIgnoredItems = new HashSet<String>(Arrays.asList(new String[]{"itemGhastTear", "itemFlint", "itemClay", "itemBucketSaltWater",
+    private final Collection<String> mIgnoredItems = new HashSet<String>(Arrays.asList("itemGhastTear", "itemFlint", "itemClay", "itemBucketSaltWater",
             "itemBucketFreshWater", "itemBucketWater", "itemRock", "itemReed", "itemArrow", "itemSaw", "itemKnife", "itemHammer", "itemChisel", "itemRubber",
             "itemEssence", "itemIlluminatedPanel", "itemSkull", "itemRawRubber", "itemBacon", "itemJetpackAccelerator", "itemLazurite", "itemIridium",
             "itemTear", "itemClaw", "itemFertilizer", "itemTar", "itemSlimeball", "itemCoke", "itemBeeswax", "itemBeeQueen", "itemForcicium", "itemForcillium",
@@ -104,8 +104,8 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
             "itemCoal", "itemBoat", "itemHerbalMedicineCake", "itemCakeSponge", "itemFishandPumpkinCakeSponge", "itemSoulCleaver", "itemInstantCake",
             "itemWhippingCream", "itemGlisteningWhippingCream", "itemCleaver", "itemHerbalMedicineWhippingCream", "itemStrangeWhippingCream",
             "itemBlazeCleaver", "itemBakedCakeSponge", "itemMagmaCake", "itemGlisteningCake", "itemOgreCleaver", "itemFishandPumpkinCake",
-            "itemMagmaWhippingCream", "itemMultimeter", "itemSuperconductor"}));
-    private final Collection<String> mIgnoredNames = new HashSet<String>(Arrays.asList(new String[]{"grubBee", "chainLink", "candyCane", "bRedString", "bVial",
+            "itemMagmaWhippingCream", "itemMultimeter", "itemSuperconductor"));
+    private final Collection<String> mIgnoredNames = new HashSet<String>(Arrays.asList("grubBee", "chainLink", "candyCane", "bRedString", "bVial",
             "bFlask", "anorthositeSmooth", "migmatiteSmooth", "slateSmooth", "travertineSmooth", "limestoneSmooth", "orthogneissSmooth", "marbleSmooth",
             "honeyDrop", "lumpClay", "honeyEqualssugar", "flourEqualswheat", "bluestoneInsulated", "blockWaterstone", "blockSand", "blockTorch",
             "blockPumpkin", "blockClothRock", "blockStainedHardenedClay", "blockQuartzPillar", "blockQuartzChiselled", "blockSpawner", "blockCloth", "mobHead",
@@ -122,8 +122,8 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
             "unfinishedTank", "valvePart", "aquaRegia", "leatherSeal", "leatherSlimeSeal", "hambone", "slimeball", "clay", "enrichedUranium", "camoPaste",
             "antiBlock", "burntQuartz", "salmonRaw", "blockHopper", "blockEnderObsidian", "blockIcestone", "blockMagicWood", "blockEnderCore", "blockHeeEndium",
             "oreHeeEndPowder", "oreHeeStardust", "oreHeeIgneousRock", "oreHeeInstabilityOrb", "crystalPureFluix", "shardNether", "gemFluorite",
-            "stickObsidian", "caveCrystal", "shardCrystal", "dyeCrystal","shardFire","shardWater","shardAir","shardEarth","ingotRefinedIron","blockMarble","ingotUnstable"}));
-    private final Collection<String> mInvalidNames = new HashSet<String>(Arrays.asList(new String[]{"diamondShard", "redstoneRoot", "obsidianStick", "bloodstoneOre",
+            "stickObsidian", "caveCrystal", "shardCrystal", "dyeCrystal","shardFire","shardWater","shardAir","shardEarth","ingotRefinedIron","blockMarble","ingotUnstable"));
+    private final Collection<String> mInvalidNames = new HashSet<String>(Arrays.asList("diamondShard", "redstoneRoot", "obsidianStick", "bloodstoneOre",
             "universalCable", "bronzeTube", "ironTube", "netherTube", "obbyTube", "infiniteBattery", "eliteBattery", "advancedBattery", "10kEUStore",
             "blueDye", "MonazitOre", "quartzCrystal", "whiteLuminiteCrystal", "darkStoneIngot", "invisiumIngot", "demoniteOrb", "enderGem", "starconiumGem",
             "osmoniumIngot", "tapaziteGem", "zectiumIngot", "foolsRubyGem", "rubyGem", "meteoriteGem", "adamiteShard", "sapphireGem", "copperIngot",
@@ -135,7 +135,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
             "oilBucket", "petroleumOre", "dieselFuel", "diamondNugget", "planks", "wood", "stick", "sticks", "naquadah", "obsidianRod", "stoneRod",
             "thaumiumRod", "steelRod", "netherrackRod", "woodRod", "ironRod", "cactusRod", "flintRod", "copperRod", "cobaltRod", "alumiteRod", "blueslimeRod",
             "arditeRod", "manyullynRod", "bronzeRod", "boneRod", "slimeRod", "redalloyBundled", "bluestoneBundled", "infusedteslatiteInsulated",
-            "redalloyInsulated", "infusedteslatiteBundled"}));
+            "redalloyInsulated", "infusedteslatiteBundled"));
     private final DateFormat mDateFormat = DateFormat.getInstance();
     public ArrayList<String> mBufferedPlayerActivity = new ArrayList();
     public boolean mHardcoreCables = false;
@@ -1210,7 +1210,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
             e.printStackTrace(GT_Log.err);
         }
     }
-    
+
     @SubscribeEvent
     public void onLivingUpdate(LivingUpdateEvent aEvent) {
         if (aEvent.entityLiving.onGround) {
@@ -1236,12 +1236,12 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
 
     @SubscribeEvent
     public void onWorldTickEvent(TickEvent.WorldTickEvent aEvent) {
-    	if(aEvent.world.provider.dimensionId == 0)
-            mTicksUntilNextCraftSound--;   
+        if(aEvent.world.provider.dimensionId == 0)
+            mTicksUntilNextCraftSound--;
         if (aEvent.side.isServer()) {
             if (this.mUniverse == null) {
                 this.mUniverse = aEvent.world;
-            }         
+            }
             if (this.isFirstServerWorldTick) {
                 File tSaveDiretory = getSaveDirectory();
                 if (tSaveDiretory != null) {
@@ -1446,9 +1446,9 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                 }
             }
             if (aEvent.player.ticksExisted % 10 == 0) {
-        	int tPollution = 0;
-        	tPollution = GT_Pollution.getPollution(new ChunkCoordIntPair(aEvent.player.chunkCoordX,aEvent.player.chunkCoordZ), aEvent.player.dimension);
-        	if(aEvent.player instanceof EntityPlayerMP)GT_Values.NW.sendToPlayer(new GT_Packet_Pollution(tPollution), (EntityPlayerMP) aEvent.player);
+                int tPollution = 0;
+                tPollution = GT_Pollution.getPollution(new ChunkCoordIntPair(aEvent.player.chunkCoordX,aEvent.player.chunkCoordZ), aEvent.player.dimension);
+                if(aEvent.player instanceof EntityPlayerMP)GT_Values.NW.sendToPlayer(new GT_Packet_Pollution(tPollution), (EntityPlayerMP) aEvent.player);
             }
         }
     }
@@ -1465,23 +1465,23 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                     return new ContainerElectricArmor1(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getCurrentEquippedItem()));
                 case 10:
                     return new GT_ContainerVolumetricFlask(aPlayer.inventory);
-                    default:
+                default:
                     return getRightItem(aPlayer, ID);
             }
         }
         if(aID>=100){
-        	int tSlot = aID / 100;
+            int tSlot = aID / 100;
             int ID = aID%100;
             switch(ID){
-            case 0:
-                return new ContainerBasicArmor(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getEquipmentInSlot(tSlot)));
-            case 1:
-                return new ContainerElectricArmor1(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getEquipmentInSlot(tSlot)));
-            case 2:
-                return new ContainerElectricArmor1(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getEquipmentInSlot(tSlot)));
-                    default:
-                return getRightItem(aPlayer, ID);
-        }
+                case 0:
+                    return new ContainerBasicArmor(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getEquipmentInSlot(tSlot)));
+                case 1:
+                    return new ContainerElectricArmor1(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getEquipmentInSlot(tSlot)));
+                case 2:
+                    return new ContainerElectricArmor1(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getEquipmentInSlot(tSlot)));
+                default:
+                    return getRightItem(aPlayer, ID);
+            }
         }
         TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
         if ((tTileEntity instanceof IGregTechTileEntity)) {
@@ -1526,18 +1526,18 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
             }
         }
         if(aID>=100){
-        	int tSlot = aID / 100;
+            int tSlot = aID / 100;
             int ID = aID%100;
             switch(ID){
-            case 0:
-                return new GuiModularArmor(new ContainerBasicArmor(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getEquipmentInSlot(tSlot))), aPlayer);
-            case 1:
-                return new GuiElectricArmor1(new ContainerElectricArmor1(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getEquipmentInSlot(tSlot))), aPlayer);
-            case 2:
-                return new GuiElectricArmor1(new ContainerElectricArmor1(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getEquipmentInSlot(tSlot))), aPlayer);
-            default:
-                return getRightItem(aPlayer, ID);
-        }
+                case 0:
+                    return new GuiModularArmor(new ContainerBasicArmor(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getEquipmentInSlot(tSlot))), aPlayer);
+                case 1:
+                    return new GuiElectricArmor1(new ContainerElectricArmor1(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getEquipmentInSlot(tSlot))), aPlayer);
+                case 2:
+                    return new GuiElectricArmor1(new ContainerElectricArmor1(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getEquipmentInSlot(tSlot))), aPlayer);
+                default:
+                    return getRightItem(aPlayer, ID);
+            }
         }
         TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
         if ((tTileEntity instanceof IGregTechTileEntity)) {
@@ -1549,9 +1549,9 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
         return null;
     }
 
-	public Object getRightItemGui(EntityPlayer player, int ID){
-		ItemStack mStack = player.getEquipmentInSlot(ID/100);
-		if(mStack==null||!(mStack.getItem() instanceof ModularArmor_Item))return null;
+    public Object getRightItemGui(EntityPlayer player, int ID){
+        ItemStack mStack = player.getEquipmentInSlot(ID/100);
+        if(mStack==null||!(mStack.getItem() instanceof ModularArmor_Item))return null;
 
         switch(ID % 100){
             case 0:
@@ -1563,7 +1563,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
         }
         return null;
 
-	}
+    }
 
     public int getBurnTime(ItemStack aFuel) {
         if ((aFuel == null) || (aFuel.getItem() == null)) {
@@ -1685,23 +1685,23 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     }
 
     public Fluid addAutoGeneratedCorrespondingFluid(Materials aMaterial){
-        return addFluid(aMaterial.mName.toLowerCase(Locale.ENGLISH), "molten.autogenerated", aMaterial.mDefaultLocalName, aMaterial, 
-        		aMaterial.mRGBa, 1, aMaterial.getLiquidTemperature(), GT_OreDictUnificator.get(OrePrefixes.cell, aMaterial, 1L), ItemList.Cell_Empty.get(1L, new Object[0]), 1000);
+        return addFluid(aMaterial.mName.toLowerCase(Locale.ENGLISH), "molten.autogenerated", aMaterial.mDefaultLocalName, aMaterial,
+                aMaterial.mRGBa, 1, aMaterial.getLiquidTemperature(), GT_OreDictUnificator.get(OrePrefixes.cell, aMaterial, 1L), ItemList.Cell_Empty.get(1L, new Object[0]), 1000);
     }
 
-	public Fluid addAutoGeneratedCorrespondingGas(Materials aMaterial) {
-		return addFluid(aMaterial.mName.toLowerCase(Locale.ENGLISH), "molten.autogenerated", aMaterial.mDefaultLocalName, aMaterial, 
-        		aMaterial.mRGBa, 2, aMaterial.getGasTemperature(), GT_OreDictUnificator.get(OrePrefixes.cell, aMaterial, 1L), ItemList.Cell_Empty.get(1L, new Object[0]), 1000);
-	}
-    
+    public Fluid addAutoGeneratedCorrespondingGas(Materials aMaterial) {
+        return addFluid(aMaterial.mName.toLowerCase(Locale.ENGLISH), "molten.autogenerated", aMaterial.mDefaultLocalName, aMaterial,
+                aMaterial.mRGBa, 2, aMaterial.getGasTemperature(), GT_OreDictUnificator.get(OrePrefixes.cell, aMaterial, 1L), ItemList.Cell_Empty.get(1L, new Object[0]), 1000);
+    }
+
     public Fluid addAutogeneratedMoltenFluid(Materials aMaterial) {
         return addFluid("molten." + aMaterial.mName.toLowerCase(Locale.ENGLISH), "molten.autogenerated", "Molten " + aMaterial.mDefaultLocalName, aMaterial,
                 aMaterial.mMoltenRGBa, 4, aMaterial.mMeltingPoint <= 0 ? 1000 : aMaterial.mMeltingPoint, GT_OreDictUnificator.get(OrePrefixes.cellMolten, aMaterial, 1L), ItemList.Cell_Empty.get(1L, new Object[0]), 144);
     }
 
     public Fluid addAutogeneratedWetFluid(Materials aMaterial) {
-                return addFluid("wet." + aMaterial.mName.toLowerCase(Locale.ENGLISH), "wet.autogenerated", "Wet " + aMaterial.mDefaultLocalName, aMaterial,
-                                aMaterial.mMoltenRGBa, 4, aMaterial.mMeltingPoint <= 0 ? 1000 : aMaterial.mMeltingPoint, GT_OreDictUnificator.get(OrePrefixes.cell, aMaterial, 1L), ItemList.Cell_Empty.get(1L, new Object[0]), 144);
+        return addFluid("wet." + aMaterial.mName.toLowerCase(Locale.ENGLISH), "wet.autogenerated", "Wet " + aMaterial.mDefaultLocalName, aMaterial,
+                aMaterial.mMoltenRGBa, 4, aMaterial.mMeltingPoint <= 0 ? 1000 : aMaterial.mMeltingPoint, GT_OreDictUnificator.get(OrePrefixes.cell, aMaterial, 1L), ItemList.Cell_Empty.get(1L, new Object[0]), 144);
     }
 
     public Fluid addAutogeneratedPlasmaFluid(Materials aMaterial) {
@@ -1710,52 +1710,52 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     }
 
     public void addAutoGeneratedHydroCrackedFluids(Materials aMaterial){
-    	Fluid[] crackedFluids = new Fluid[3];
-    	String[] prefixes = {"lightlyhydrocracked.", "moderatelyhydrocracked.", "severelyhydrocracked."};
-    	String[] localPrefixes = {"Lightly Hydro-Cracked ", "Moderately Hydro-Cracked ", "Severely Hydro-Cracked "};
-    	GT_Fluid uncrackedFluid = null;
-    	if (aMaterial.mFluid != null) {
-    		uncrackedFluid = (GT_Fluid) aMaterial.mFluid;
-    	} else if (aMaterial.mGas != null) {
-    		uncrackedFluid = (GT_Fluid) aMaterial.mGas;
-    	}
-    	for (int i = 0; i < 3; i++) {
-    		crackedFluids[i] = addFluid(prefixes[i] + aMaterial.mName.toLowerCase(Locale.ENGLISH), uncrackedFluid.mTextureName, 
-    				localPrefixes[i] + aMaterial.mDefaultLocalName, null, aMaterial.mRGBa, 2, 775, null, null, 0);
-    		int hydrogenAmount = 2 * i + 2;
-    		GT_Values.RA.addCrackingRecipe(i + 1, new FluidStack(uncrackedFluid, 1000), Materials.Hydrogen.getGas(hydrogenAmount * 1000), 
-    				new FluidStack(crackedFluids[i], 1000), 40 + 20 * i, 120 + 60 * i);
-    		GT_Values.RA.addChemicalRecipe(Materials.Hydrogen.getCells(hydrogenAmount), GT_Utility.getIntegratedCircuit(i + 1), new FluidStack(uncrackedFluid, 1000), 
-    				new FluidStack(crackedFluids[i], 800), Materials.Empty.getCells(hydrogenAmount), 160 + 80 * i, 30);
-    		GT_Values.RA.addChemicalRecipe(aMaterial.getCells(1), GT_Utility.getIntegratedCircuit(i + 1), Materials.Hydrogen.getGas(hydrogenAmount * 1000), 
-    				new FluidStack(crackedFluids[i], 800), Materials.Empty.getCells(1), 160 + 80 * i, 30);
-    	}
-    	aMaterial.setHydroCrackedFluids(crackedFluids);
+        Fluid[] crackedFluids = new Fluid[3];
+        String[] prefixes = {"lightlyhydrocracked.", "moderatelyhydrocracked.", "severelyhydrocracked."};
+        String[] localPrefixes = {"Lightly Hydro-Cracked ", "Moderately Hydro-Cracked ", "Severely Hydro-Cracked "};
+        GT_Fluid uncrackedFluid = null;
+        if (aMaterial.mFluid != null) {
+            uncrackedFluid = (GT_Fluid) aMaterial.mFluid;
+        } else if (aMaterial.mGas != null) {
+            uncrackedFluid = (GT_Fluid) aMaterial.mGas;
+        }
+        for (int i = 0; i < 3; i++) {
+            crackedFluids[i] = addFluid(prefixes[i] + aMaterial.mName.toLowerCase(Locale.ENGLISH), uncrackedFluid.mTextureName,
+                    localPrefixes[i] + aMaterial.mDefaultLocalName, null, aMaterial.mRGBa, 2, 775, null, null, 0);
+            int hydrogenAmount = 2 * i + 2;
+            GT_Values.RA.addCrackingRecipe(i + 1, new FluidStack(uncrackedFluid, 1000), Materials.Hydrogen.getGas(hydrogenAmount * 1000),
+                    new FluidStack(crackedFluids[i], 1000), 40 + 20 * i, 120 + 60 * i);
+            GT_Values.RA.addChemicalRecipe(Materials.Hydrogen.getCells(hydrogenAmount), GT_Utility.getIntegratedCircuit(i + 1), new FluidStack(uncrackedFluid, 1000),
+                    new FluidStack(crackedFluids[i], 800), Materials.Empty.getCells(hydrogenAmount), 160 + 80 * i, 30);
+            GT_Values.RA.addChemicalRecipe(aMaterial.getCells(1), GT_Utility.getIntegratedCircuit(i + 1), Materials.Hydrogen.getGas(hydrogenAmount * 1000),
+                    new FluidStack(crackedFluids[i], 800), Materials.Empty.getCells(1), 160 + 80 * i, 30);
+        }
+        aMaterial.setHydroCrackedFluids(crackedFluids);
     }
-    
+
     public void addAutoGeneratedSteamCrackedFluids(Materials aMaterial){
-    	Fluid[] crackedFluids = new Fluid[3];
-    	String[] prefixes = {"lightlysteamcracked.", "moderatelysteamcracked.", "severelysteamcracked."};
-    	String[] localPrefixes = {"Lightly Steam-Cracked ", "Moderately Steam-Cracked ", "Severely Steam-Cracked "};
-    	GT_Fluid uncrackedFluid = null;
-    	if (aMaterial.mFluid != null) {
-    		uncrackedFluid = (GT_Fluid) aMaterial.mFluid;
-    	} else if (aMaterial.mGas != null) {
-    		uncrackedFluid = (GT_Fluid) aMaterial.mGas;
-    	}
-    	for (int i = 0; i < 3; i++) {
-    		crackedFluids[i] = addFluid(prefixes[i] + aMaterial.mName.toLowerCase(Locale.ENGLISH), uncrackedFluid.mTextureName, 
-    				localPrefixes[i] + aMaterial.mDefaultLocalName, null, aMaterial.mRGBa, 2, 775, null, null, 0);
-    		GT_Values.RA.addCrackingRecipe(i + 1, new FluidStack(uncrackedFluid, 1000), GT_ModHandler.getSteam(1000), 
-    				new FluidStack(crackedFluids[i], 1000), 40 + 20 * i, 240 + 120 * i);
-    		GT_Values.RA.addChemicalRecipe(GT_ModHandler.getIC2Item("steamCell", 1L), GT_Utility.getIntegratedCircuit(i + 1), new FluidStack(uncrackedFluid, 1000), 
-    				new FluidStack(crackedFluids[i], 800), Materials.Empty.getCells(1), 160 + 80 * i, 30);
-    		GT_Values.RA.addChemicalRecipe(aMaterial.getCells(1), GT_Utility.getIntegratedCircuit(i + 1), GT_ModHandler.getSteam(1000), 
-    				new FluidStack(crackedFluids[i], 800), Materials.Empty.getCells(1), 160 + 80 * i, 30);
-    	}
-    	aMaterial.setSteamCrackedFluids(crackedFluids);
+        Fluid[] crackedFluids = new Fluid[3];
+        String[] prefixes = {"lightlysteamcracked.", "moderatelysteamcracked.", "severelysteamcracked."};
+        String[] localPrefixes = {"Lightly Steam-Cracked ", "Moderately Steam-Cracked ", "Severely Steam-Cracked "};
+        GT_Fluid uncrackedFluid = null;
+        if (aMaterial.mFluid != null) {
+            uncrackedFluid = (GT_Fluid) aMaterial.mFluid;
+        } else if (aMaterial.mGas != null) {
+            uncrackedFluid = (GT_Fluid) aMaterial.mGas;
+        }
+        for (int i = 0; i < 3; i++) {
+            crackedFluids[i] = addFluid(prefixes[i] + aMaterial.mName.toLowerCase(Locale.ENGLISH), uncrackedFluid.mTextureName,
+                    localPrefixes[i] + aMaterial.mDefaultLocalName, null, aMaterial.mRGBa, 2, 775, null, null, 0);
+            GT_Values.RA.addCrackingRecipe(i + 1, new FluidStack(uncrackedFluid, 1000), GT_ModHandler.getSteam(1000),
+                    new FluidStack(crackedFluids[i], 1000), 40 + 20 * i, 240 + 120 * i);
+            GT_Values.RA.addChemicalRecipe(GT_ModHandler.getIC2Item("steamCell", 1L), GT_Utility.getIntegratedCircuit(i + 1), new FluidStack(uncrackedFluid, 1000),
+                    new FluidStack(crackedFluids[i], 800), Materials.Empty.getCells(1), 160 + 80 * i, 30);
+            GT_Values.RA.addChemicalRecipe(aMaterial.getCells(1), GT_Utility.getIntegratedCircuit(i + 1), GT_ModHandler.getSteam(1000),
+                    new FluidStack(crackedFluids[i], 800), Materials.Empty.getCells(1), 160 + 80 * i, 30);
+        }
+        aMaterial.setSteamCrackedFluids(crackedFluids);
     }
-    
+
     public Fluid addFluid(String aName, String aLocalized, Materials aMaterial, int aState, int aTemperatureK) {
         return addFluid(aName, aLocalized, aMaterial, aState, aTemperatureK, null, null, 0);
     }
@@ -1897,7 +1897,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
 
     public void activateOreDictHandler() {
         final Logger GT_FML_LOGGER = LogManager.getLogger("GregTech GTNH");
-        
+
         this.mOreDictActivated = true;
         ProgressManager.ProgressBar progressBar = ProgressManager.push("Register materials", mEvents.size());
         int sizeStep = mEvents.size()/20-1;
@@ -1908,20 +1908,20 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
             sizeStep--;
             progressBar.step(tEvent.mMaterial == null ? "" : tEvent.mMaterial.toString());
             if( sizeStep == 0 )
-                {
-                    GT_FML_LOGGER.info("Baking : " + size + "%", new Object[0]);
-                    sizeStep = mEvents.size()/20-1;
-                    size += 5;
-                }
+            {
+                GT_FML_LOGGER.info("Baking : " + size + "%", new Object[0]);
+                sizeStep = mEvents.size()/20-1;
+                size += 5;
+            }
         }
         ProgressManager.pop(progressBar);
     }
 
     public static final HashMap<Integer,HashMap<ChunkCoordIntPair,int []>> dimensionWiseChunkData = new HashMap<>(16);//stores chunk data that is loaded/saved
     public static final HashMap<Integer,GT_Pollution> dimensionWisePollution = new HashMap<>(16);//stores GT_Polluttors objects
-	public static final byte GTOIL=3,GTOILFLUID=2,GTPOLLUTION=1,GTMETADATA=0,NOT_LOADED=0,LOADED=1;//consts
+    public static final byte GTOIL=3,GTOILFLUID=2,GTPOLLUTION=1,GTMETADATA=0,NOT_LOADED=0,LOADED=1;//consts
     //@Deprecated
-	//public static final HashMap<ChunkPosition, int[]>  chunkData = new HashMap<>(0);
+    //public static final HashMap<ChunkPosition, int[]>  chunkData = new HashMap<>(0);
 
     private static final byte oilVer=(byte)20;//non zero plz
 
@@ -2003,20 +2003,20 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
         ////DO NOTHING - this chunk data was already loaded and stored in hash map
         //}
     }
-    
+
     @SubscribeEvent
     public void onBlockBreakSpeedEvent(PlayerEvent.BreakSpeed aEvent)
     {
-      if (aEvent.newSpeed > 0.0F)
-      {
-        if (aEvent.entityPlayer != null)
+        if (aEvent.newSpeed > 0.0F)
         {
-          ItemStack aStack = aEvent.entityPlayer.getCurrentEquippedItem();
-          if ((aStack != null) && ((aStack.getItem() instanceof GT_MetaGenerated_Tool))) {
-            aEvent.newSpeed = ((GT_MetaGenerated_Tool)aStack.getItem()).onBlockBreakSpeedEvent(aEvent.newSpeed, aStack, aEvent.entityPlayer, aEvent.block, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.metadata, aEvent);
-          }
+            if (aEvent.entityPlayer != null)
+            {
+                ItemStack aStack = aEvent.entityPlayer.getCurrentEquippedItem();
+                if ((aStack != null) && ((aStack.getItem() instanceof GT_MetaGenerated_Tool))) {
+                    aEvent.newSpeed = ((GT_MetaGenerated_Tool)aStack.getItem()).onBlockBreakSpeedEvent(aEvent.newSpeed, aStack, aEvent.entityPlayer, aEvent.block, aEvent.x, aEvent.y, aEvent.z, (byte)aEvent.metadata, aEvent);
+                }
+            }
         }
-      }
     }
 
     public static class OreDictEventContainer {
@@ -2034,7 +2034,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     }
 
     @SubscribeEvent
-     public void onBlockEvent(BlockEvent event) {
+    public void onBlockEvent(BlockEvent event) {
         if (event.block.getUnlocalizedName().equals("blockAlloyGlass"))
             GregTech_API.causeMachineUpdate(event.world, event.x, event.y, event.z);
     }

@@ -16,9 +16,9 @@ import java.util.List;
 
 public class GT_Bee_Mutation extends BeeMutation {
 
-    private int split = 1;
+    private float split = 1;
 
-    public GT_Bee_Mutation(IAlleleBeeSpecies bee0, IAlleleBeeSpecies bee1, IAllele[] result, int chance, int split) {
+    public GT_Bee_Mutation(IAlleleBeeSpecies bee0, IAlleleBeeSpecies bee1, IAllele[] result, int chance, float split) {
         super(bee0, bee1, result, chance);
         this.split = split;
         BeeManager.beeRoot.registerMutation(this);
@@ -26,7 +26,7 @@ public class GT_Bee_Mutation extends BeeMutation {
 
     @Override
     public float getBaseChance() {
-        return ((float) ((float)super.getBaseChance() / ((float)split)));
+        return super.getBaseChance() / split;
     }
 
     @Override
@@ -55,13 +55,13 @@ public class GT_Bee_Mutation extends BeeMutation {
     private float getBasicChance(World world, int x, int y, int z, IAllele allele0, IAllele allele1, IGenome genome0, IGenome genome1) {
         float mutationChance = this.getBaseChance();
         List<IMutationCondition> mutationConditions = null;
-        Field f = FieldUtils.getDeclaredField(Mutation.class,"mutationConditions",true);
+        Field f = FieldUtils.getDeclaredField(Mutation.class, "mutationConditions", true);
         if (f == null)
-            f = FieldUtils.getField(Mutation.class,"mutationConditions",true);
+            f = FieldUtils.getField(Mutation.class, "mutationConditions", true);
         if (f == null)
             return mutationChance;
         try {
-            mutationConditions = f.get(this) instanceof List ? (List) f.get(this) : null ;
+            mutationConditions = f.get(this) instanceof List ? (List) f.get(this) : null;
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }

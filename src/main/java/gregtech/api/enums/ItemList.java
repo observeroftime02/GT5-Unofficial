@@ -661,7 +661,7 @@ public enum ItemList implements IItemContainer {
     Depleted_Thorium_1, Depleted_Thorium_2, Depleted_Thorium_4,
     Processing_Array, Distillation_Tower, Energy_LapotronicOrb2,
     ZPM3,ZPM2, Energy_Module, Energy_Cluster,
-	Quantum_Tank_LV, Quantum_Tank_MV, Quantum_Tank_HV, Quantum_Tank_EV, Quantum_Tank_IV, Quantum_Chest_LV, Quantum_Chest_MV, Quantum_Chest_HV, Quantum_Chest_EV, Quantum_Chest_IV,
+    Quantum_Tank_LV, Quantum_Tank_MV, Quantum_Tank_HV, Quantum_Tank_EV, Quantum_Tank_IV, Quantum_Chest_LV, Quantum_Chest_MV, Quantum_Chest_HV, Quantum_Chest_EV, Quantum_Chest_IV,
     Super_Tank_LV, Super_Tank_MV, Super_Tank_HV, Super_Tank_EV, Super_Tank_IV, Super_Chest_LV, Super_Chest_MV, Super_Chest_HV, Super_Chest_EV, Super_Chest_IV,
 
     NULL, Cover_RedstoneTransmitterExternal, Cover_RedstoneTransmitterInternal, Cover_RedstoneReceiverExternal, Cover_RedstoneReceiverInternal,
@@ -676,7 +676,8 @@ public enum ItemList implements IItemContainer {
     Honeycomb, Charcoal_Pile, Block_BrittleCharcoal, Seismic_Prospector_LV, Seismic_Prospector_MV, Seismic_Prospector_HV, Seismic_Prospector_Adv_LV, Seismic_Prospector_Adv_MV, Seismic_Prospector_Adv_HV, Seismic_Prospector_Adv_EV, OilDrill1, OilDrill2, OilDrill3, ConcreteBackfiller1, ConcreteBackfiller2, OreDrill1, OreDrill2, OreDrill3, OreDrill4, PyrolyseOven, OilCracker, Crop_Drop_UUMBerry, Crop_Drop_UUABerry, Empty_Board_Basic, Empty_Board_Elite,
     Battery_Charger_4by4_ULV, Battery_Charger_4by4_LV, Battery_Charger_4by4_MV, Battery_Charger_4by4_HV, Battery_Charger_4by4_EV, Battery_Charger_4by4_IV, Battery_Charger_4by4_LuV, Battery_Charger_4by4_ZPM, Battery_Charger_4by4_UV, Battery_Charger_4by4_MAX,
     MicroTransmitter_HV, MicroTransmitter_EV, MicroTransmitter_IV, MicroTransmitter_LUV, MicroTransmitter_ZPM,  MicroTransmitter_UV,
-    Crop_Drop_Bauxite, Crop_Drop_Ilmenite, Crop_Drop_Pitchblende, Crop_Drop_Uraninite, Crop_Drop_Thorium, Crop_Drop_Nickel, Crop_Drop_Zinc, Crop_Drop_Manganese, Crop_Drop_Scheelite, Crop_Drop_Platinum, Crop_Drop_Iridium, Crop_Drop_Osmium, Crop_Drop_Naquadah, Crop_Drop_Mica, Uraniumcell_1, Uraniumcell_2, Uraniumcell_4, Moxcell_1, Moxcell_2, Moxcell_4, ModularBasicHelmet, ModularBasicChestplate, ModularBasicLeggings, ModularBasicBoots,
+    Crop_Drop_Bauxite, Crop_Drop_Ilmenite, Crop_Drop_Pitchblende, Crop_Drop_Uraninite, Crop_Drop_Thorium, Crop_Drop_Nickel, Crop_Drop_Zinc, Crop_Drop_Manganese, Crop_Drop_Scheelite, Crop_Drop_Platinum, Crop_Drop_Iridium, Crop_Drop_Osmium, Crop_Drop_Naquadah, Crop_Drop_Mica, Uraniumcell_1, Uraniumcell_2, Uraniumcell_4, Moxcell_1, Moxcell_2, Moxcell_4,
+    ModularBasicHelmet, ModularBasicChestplate, ModularBasicLeggings, ModularBasicBoots,
     ModularElectric1Helmet, ModularElectric1Chestplate, ModularElectric1Leggings, ModularElectric1Boots,
     ModularElectric2Helmet, ModularElectric2Chestplate, ModularElectric2Leggings, ModularElectric2Boots, Block_Powderbarrel, GelledToluene,
     FluidRegulator_LV, FluidRegulator_MV, FluidRegulator_HV, FluidRegulator_EV, FluidRegulator_IV, FluidRegulator_LuV, FluidRegulator_ZPM, FluidRegulator_UV, FluidFilter, CuringOven, Machine_Multi_Assemblyline, Machine_Multi_DieselEngine, QuantumEye, QuantumStar, Gravistar, Block_SSFUEL, Block_MSSFUEL, SFMixture, MSFMixture, Depleted_Naquadah_1, Depleted_Naquadah_2, Depleted_Naquadah_4, NaquadahCell_1, NaquadahCell_2, NaquadahCell_4, Hatch_AutoMaintenance,
