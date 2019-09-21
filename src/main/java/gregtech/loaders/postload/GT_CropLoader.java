@@ -1,5 +1,6 @@
 package gregtech.loaders.postload;
 
+import gregtech.api.enums.GTNH_ExtraMaterials;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
@@ -386,12 +387,12 @@ public class GT_CropLoader
                     "Mica",
                     "Bush"
             }, Materials.Mica, ItemList.Crop_Drop_Mica.get(1L), null);
-            new GT_BaseCrop(180, "Weebium", "MamiTomoe", null, 14, 4, 0, 2, 4, 1, 1, 0, 2, 0, new String[] {
+            new GT_BaseCrop(180, "Weebium", "MamiTomoe", ItemList.Gamer_girl_Panties.get(1), 1, 4, 0, 2, 4, 1, 1, 0, 2, 0, new String[] {
                     "Weeb",
                     "Depressed",
                     "Food"
-            }, ItemList.Gamergirl_Panties.get(1L), new ItemStack[] {
-                    ItemList.Circuit_Chip_Biocell.get(1)
+            }, ItemList.Gamer_girl_Panties.get(1L), new ItemStack[] {
+                    Materials.Weebium.getDustSmall(1), Materials.UUMatter.getDustTiny(1)
             });
 
 

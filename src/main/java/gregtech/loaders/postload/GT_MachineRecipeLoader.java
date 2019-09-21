@@ -22,6 +22,8 @@ import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import gregtech.api.enums.GTNH_ExtraMaterials;
+import static gregtech.api.enums.GTNH_ExtraMaterials.*;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -683,11 +685,15 @@ public class GT_MachineRecipeLoader implements Runnable {
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUAmplifier, 32), null, Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUAmplifier, 1), null, 400, 19753, 10800);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUMatter, 32), null, Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUMatter, 1), null, 400, 19753, 10800);
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUMatter, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUMatter, 1L), 400, 13169);
-        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Weebium, 1L), null, Materials.Radon.getGas(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Weebium, 1L), null, 125, 498073, 9001);
+        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Weebium, 1L), null, GGEssence.getFluid(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Weebium, 1L), null, 125, 498073, 9001);
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Weebium, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Weebium, 1L), 120, 480);
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUAmplifier, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUAmplifier, 1L), 400, 13169);
         GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUAmplifier, 1L), GT_Values.NI, Materials.UUMatter.getFluid(16L),10000, 10, 32);
-        GT_Values.RA.addFluidExtractionRecipe(ItemList.Gamergirl_Panties.get(1L), GT_Values.NI, GTNH_ExtraMaterials.Bathwater.getFluid(144L), 10000, 250, 480);
+        GT_Values.RA.addFluidExtractionRecipe(ItemList.Gamer_girl_Panties.get(1L), GT_Values.NI, GTNH_ExtraMaterials.Bathwater.getFluid(2500L), 10000, 250, 480);
+        GT_Values.RA.addCentrifugeRecipe(ItemList.Gamer_girl_Panties.get(1L), GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Water, 3L), GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.cell, Bathwater, 3L), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[]{10000,0,0,0,0,0}, 20, 480);
+        GT_Values.RA.addUniversalDistillationRecipe(GTNH_ExtraMaterials.Bathwater.getFluid(1000L), new FluidStack[]{GGEssence.getFluid(144L), Urine.getFluid(144L), Sweat.getFluid(144L), Materials.Water.getFluid(568)}, GGEssence.getDustTiny(1), 120, 480);
+        GT_Values.RA.addElectrolyzerRecipe(GT_OreDictUnificator.get(OrePrefixes.cell, Bathwater, 1L), GT_Values.NI, GT_Values.NF, GT_Values.NF, ItemList.Cell_Empty.get(1L), Materials.Salt.getDust(2), GGEssence.getDust(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[]{10000,9500,6500,0,0,0}, 20, 480);
+        GT_Values.RA.addFluidExtractionRecipe(GGEssence.getDust(1), GT_Values.NI, GGEssence.getFluid(144L), 10000, 20, 408);
 
         GT_Values.RA.addMixerRecipe(Materials.MysteriousCrystal.getDust(16), Materials.Oriharukon.getDust(16), Materials.CosmicNeutronium.getDust(4),  Materials.Infinity.getDustTiny(1), GT_ModHandler.getModItem("dreamcraft", "item.TCetiESeaweedExtract", 16L, 0), GT_Values.NI, Materials.GrowthMediumRaw.getFluid(4000L), Materials.BioMediumRaw.getFluid(4000L), GT_Values.NI, 300, 500000);
         GT_Values.RA.addFluidHeaterRecipe(GT_Utility.getIntegratedCircuit(1), Materials.GrowthMediumRaw.getFluid(1000L), Materials.GrowthMediumSterilized.getFluid(1000L), 100, 7680);
