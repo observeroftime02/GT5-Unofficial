@@ -2131,7 +2131,7 @@ public class GT_MachineRecipeLoader implements Runnable {
         tCrop = ItemList.Crop_Drop_Mica.get(1);
         this.addProcess(tCrop,Materials.Mica,75, true);
         tCrop = ItemList.Gamer_girl_Panties.get(1);
-        this.addProcess(tCrop,Materials.Weebium, 75, true);
+        this.addSpecialFluidProcess(tCrop,Materials.Weebium, 75, true);
 
 	    // Rare Metals Line
 		tCrop = ItemList.Crop_Drop_Bauxite.get(1);
@@ -2197,6 +2197,21 @@ public class GT_MachineRecipeLoader implements Runnable {
         this.addRecipesMay2017OilRefining();
         this.addPyrometallurgicalRecipes();
         this.addPolybenzimidazoleRecipes();
+    }
+
+
+    public void addSpecialFluidProcess(ItemStack tCrop, Materials aMaterial, int chance, boolean aMainOutput) {
+        if(tCrop==null||aMaterial==null||GT_OreDictUnificator.get(OrePrefixes.crushed, aMaterial,1)==null)return;
+        if (GT_Mod.gregtechproxy.mWeebCropToUUMEnabled) {
+            GT_Values.RA.addChemicalRecipe(GT_Utility.copyAmount(9, tCrop), GT_OreDictUnificator.get(OrePrefixes.crushed, aMaterial, 1), Materials.Water.getFluid(1000), aMaterial.mOreByProducts.isEmpty() ? null : aMaterial.mOreByProducts.get(0).getFluid(144), GT_OreDictUnificator.get(OrePrefixes.crushedPurified, aMaterial, 4), 96, 24);
+            GT_Values.RA.addAutoclaveRecipe(GT_Utility.copyAmount(16, tCrop), Materials.UUMatter.getFluid(Math.max(1, ((aMaterial.getMass()+9)/10))), GT_OreDictUnificator.get(OrePrefixes.crushedPurified, aMaterial, 1), 10000, (int) (aMaterial.getMass() * 128), 384);
+        } else {
+            if (aMainOutput) GT_Values.RA.addChemicalRecipe(GT_Utility.copyAmount(9, tCrop), GT_OreDictUnificator.get(OrePrefixes.crushed, aMaterial, 1), Materials.Water.getFluid(1000), aMaterial.mOreByProducts.isEmpty() ? null : aMaterial.mOreByProducts.get(2).getMolten(144), GT_OreDictUnificator.get(OrePrefixes.crushedPurified, aMaterial, 4), 96, 24);
+            if (aMainOutput) GT_Values.RA.addAutoclaveRecipe(GT_Utility.copyAmount(16, tCrop), Materials.UUMatter.getFluid(Math.max(1, ((aMaterial.getMass()+9)/10))), GT_OreDictUnificator.get(OrePrefixes.crushedPurified, aMaterial, 1), 10000, (int) (aMaterial.getMass() * 128), 384);
+
+        }
+
+
     }
 
     public void addProcess(ItemStack tCrop, Materials aMaterial, int chance, boolean aMainOutput) {
