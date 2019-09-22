@@ -391,7 +391,7 @@ public class GT_CropLoader
                     "Weeb",
                     "Depressed",
                     "Food"
-            }, ItemList.Gamer_girl_Panties.get(1L), new ItemStack[] {
+            },ItemList.Gamer_girl_Panties.get(1L), new ItemStack[] {
                     Materials.Weebium.getDustSmall(1), Materials.UUMatter.getDustTiny(1)
             });
 
