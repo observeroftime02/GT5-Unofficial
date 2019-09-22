@@ -484,7 +484,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                             tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
                         }
                             else if (i == 180) {
-                                ItemStack tStack = GT_Utility.copyAmount(2, tTurbine);
+                                ItemStack tStack = GT_Utility.copyAmount(3, tTurbine);
                                 tNBT2.setTag("Ingredient.0", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.1", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.2", tStack.writeToNBT(new NBTTagCompound()));
