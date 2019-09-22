@@ -471,6 +471,19 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                                 tStack = GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.TungstenSteel, 1);
                                 tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
                             } else if (i == 176) {
+                            ItemStack tStack = GT_Utility.copyAmount(2, tTurbine);
+                            tNBT2.setTag("Ingredient.0", tStack.writeToNBT(new NBTTagCompound()));
+                            tNBT2.setTag("Ingredient.1", tStack.writeToNBT(new NBTTagCompound()));
+                            tNBT2.setTag("Ingredient.2", tStack.writeToNBT(new NBTTagCompound()));
+                            tNBT2.setTag("Ingredient.3", tStack.writeToNBT(new NBTTagCompound()));
+                            tNBT2.setTag("Ingredient.5", tStack.writeToNBT(new NBTTagCompound()));
+                            tNBT2.setTag("Ingredient.6", tStack.writeToNBT(new NBTTagCompound()));
+                            tNBT2.setTag("Ingredient.7", tStack.writeToNBT(new NBTTagCompound()));
+                            tNBT2.setTag("Ingredient.8", tStack.writeToNBT(new NBTTagCompound()));
+                            tStack = GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Americium, 1);
+                            tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
+                        }
+                            else if (i == 180) {
                                 ItemStack tStack = GT_Utility.copyAmount(2, tTurbine);
                                 tNBT2.setTag("Ingredient.0", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.1", tStack.writeToNBT(new NBTTagCompound()));
@@ -480,9 +493,10 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                                 tNBT2.setTag("Ingredient.6", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.7", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.8", tStack.writeToNBT(new NBTTagCompound()));
-                                tStack = GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Americium, 1);
+                                tStack = GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Weebium, 1);
                                 tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
                             }
+
                             tNBT.setTag("GT.CraftingComponents", tNBT2);
                             tNBT.setBoolean("mDis", true);
                             mInventory[1].setTagCompound(tNBT);
