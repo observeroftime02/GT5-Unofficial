@@ -1277,7 +1277,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         Lithium                 .addOreByProducts(Lithium);
         Silicon                 .addOreByProducts(SiliconDioxide        );
         InfusedGold             .addOreByProduct(Gold);
-        Weebium                 .addOreByProducts(Oriharukon, Silicon, Gallium);
+        Weebium                 .addOreByProducts(UUMatter, Oriharukon, Indium);
         UUMatter                .addOreByProducts(Weebium);
         UUAmplifier             .addOreByProducts(Weebium);
 
@@ -1337,7 +1337,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         InfinityCatalyst.mChemicalFormula="If";
         //Pentacadmiummagneiumhexaoxid.mChemicalFormula="Cd5MgO6";
         CosmicNeutronium.mChemicalFormula="SpNt";
-        Weebium.mChemicalFormula="SpWb";
+        Weebium.mChemicalFormula="SpWbUwU";
     }
 
     private static void initSubTags() {

@@ -392,7 +392,7 @@ public class GT_CropLoader
                     "Depressed",
                     "Food"
             },ItemList.Gamer_girl_Panties.get(1L), new ItemStack[] {
-                    Materials.Weebium.getDustSmall(1), Materials.UUMatter.getDustTiny(1)
+                    Materials.Weebium.getDustSmall(1), Materials.UUMatter.getDustTiny(1), ItemList.Circuit_Chip_Biocell.get(1)
             });
 
 
