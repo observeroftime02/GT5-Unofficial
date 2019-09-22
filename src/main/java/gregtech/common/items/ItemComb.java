@@ -347,7 +347,7 @@ public class ItemComb extends Item {
         addProcessLV(tComb, Materials.Bismuth, 70);
         addProcessLV(tComb, Materials.Antimony, 70);
         tComb = getStackForType(CombType.WEEBIUM);
-        addProcessLUV(tComb, Materials.Weebium, 80);
+        addProcessSpecialLUV(tComb, Materials.Weebium, 80);
         tComb = getStackForType(CombType.UUMATTER);
         addProcessLUV(tComb, Materials.UUMatter, 80);
         addSpecialCentLuV(tComb, GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.UUMatter, 1L), 45, Materials.UUMatter.getFluid(2L));
@@ -645,6 +645,18 @@ public class ItemComb extends Item {
 			GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.dustTiny, aMaterial, 1),	ItemList.FR_Wax.get(1, new Object[0]), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[] { chance * 100, 3000 }, 288, 30720);
 		}
 	}
+
+	public void addProcessSpecialLUV(ItemStack tComb, Materials aMaterial, int chance){
+		if(GT_Mod.gregtechproxy.mWeebCropToUUMEnabled){
+			GT_Values.RA.addChemicalRecipe(GT_Utility.copyAmount(9, tComb), GT_OreDictUnificator.get(OrePrefixes.crushed, aMaterial, 1), FluidRegistry.getFluidStack("mutagen", 144), aMaterial.mOreByProducts.isEmpty() ? null : aMaterial.mOreByProducts.get(0).getFluid(144), GT_OreDictUnificator.get(OrePrefixes.crushedPurified, aMaterial, 4), GT_Values.NI,256, 24576, true);
+			GT_Values.RA.addAutoclaveRecipe(GT_Utility.copyAmount(9, tComb), Materials.UUMatter.getFluid(Math.max(1, ((aMaterial.getMass()+36)/10))), GT_OreDictUnificator.get(OrePrefixes.crushedPurified, aMaterial, 4), 10000, (int) (aMaterial.getMass() * 128), 24576, true);
+		}else{
+			GT_Values.RA.addChemicalRecipe(GT_Utility.copyAmount(9, tComb), GT_OreDictUnificator.get(OrePrefixes.crushed, aMaterial, 1), FluidRegistry.getFluidStack("mutagen", 144), aMaterial.mOreByProducts.isEmpty() ? null : aMaterial.mOreByProducts.get(2).getMolten(144), GT_OreDictUnificator.get(OrePrefixes.crushedPurified, aMaterial, 4), GT_Values.NI,256, 24576, true);
+			GT_Values.RA.addAutoclaveRecipe(GT_Utility.copyAmount(9, tComb), Materials.UUMatter.getFluid(Math.max(1, ((aMaterial.getMass()+36)/10))), GT_OreDictUnificator.get(OrePrefixes.crushedPurified, aMaterial, 4), 10000, (int) (aMaterial.getMass() * 128), 24576, true);
+		}
+	}
+
+
 	public void addProcessZPM(ItemStack tComb, Materials aMaterial, int chance){
 		if(GT_Mod.gregtechproxy.mNerfedCombs){
 			GT_Values.RA.addChemicalRecipe(GT_Utility.copyAmount(9, tComb), GT_OreDictUnificator.get(OrePrefixes.crushed, aMaterial, 1), FluidRegistry.getFluidStack("mutagen", 288), aMaterial.mOreByProducts.isEmpty() ? null : aMaterial.mOreByProducts.get(0).getMolten(144), GT_OreDictUnificator.get(OrePrefixes.crushedPurified, aMaterial, 4), GT_Values.NI,288, 100000, true);
