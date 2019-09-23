@@ -1,5 +1,6 @@
 package gregtech.common.items;
 
+import gregtech.api.enums.GTNH_ExtraMaterials;
 import gregtech.api.enums.Materials;
 import gregtech.api.util.GT_LanguageManager;
 
@@ -147,7 +148,7 @@ public enum CombType {
     COSMICNEUTRONIUM("cosmicneutronium",true, Materials._NULL, 5,0x484848, 0x323232),
     INFINITYCATALYST("infinitycatalyst",true, Materials._NULL, 2,0xFFFFFF, 0xFFFFFF),
     INFINITY("infinity",true, Materials._NULL, 1,0xFFFFFF, 0xFFFFFF),
-    WEEBIUM("Weebium", true, Materials.Weebium, 50, 0xF79EF7, 0xF5BAF5),
+    WEEBIUM("Weebium", true, GTNH_ExtraMaterials.Weebium, 50, 0xF79EF7, 0xF5BAF5),
     UUMATTER("UU-Matter", true, Materials.UUMatter, 30, 0x7F00C4, 0xCC6EFF),
     UUAMPLIFIER("UU-Amplifier", true, Materials.UUAmplifier, 30, 0xCC6EFF, 0x7F00C4);
     public boolean showInList;

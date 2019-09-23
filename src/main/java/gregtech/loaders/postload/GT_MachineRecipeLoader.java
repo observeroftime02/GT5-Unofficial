@@ -685,8 +685,8 @@ public class GT_MachineRecipeLoader implements Runnable {
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUAmplifier, 32), null, Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUAmplifier, 1), null, 400, 19753, 10800);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUMatter, 32), null, Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUMatter, 1), null, 400, 19753, 10800);
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUMatter, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUMatter, 1L), 400, 13169);
-        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Weebium, 1L), GT_Utility.getIntegratedCircuit(1), GGEssence.getFluid(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Weebium, 1L), null, 125, 498073, 9001);
-        GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Weebium, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Weebium, 1L), 120, 480);
+        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Weebium, 1L), GT_Utility.getIntegratedCircuit(1), GGEssence.getFluid(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Weebium, 1L), null, 125, 498073, 9001);
+        GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Weebium, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 1L), 120, 480);
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUAmplifier, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUAmplifier, 1L), 400, 13169);
         GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUAmplifier, 1L), GT_Values.NI, Materials.UUAmplifier.getFluid(16L),10000, 10, 32);
         GT_Values.RA.addFluidExtractionRecipe(ItemList.Gamer_girl_Panties.get(1L), GT_Values.NI, GTNH_ExtraMaterials.Bathwater.getFluid(2500L), 10000, 250, 480);
@@ -1430,7 +1430,7 @@ public class GT_MachineRecipeLoader implements Runnable {
 	    GT_Values.RA.addFusionReactorRecipe(Materials.Caesium.getMolten(144), Materials.Carbon.getMolten(144), Materials.Promethium.getMolten(144), 64, 49152, 400000000);//FT3
         GT_Values.RA.addFusionReactorRecipe(Materials.Iridium.getMolten(144), Materials.Fluorine.getGas(500), Materials.Radon.getPlasma(144), 32, 98304, 450000000);//FT3 - utility
         GT_Values.RA.addFusionReactorRecipe(Materials.Plutonium241.getMolten(144), Materials.Hydrogen.getGas(2000), Materials.Americium.getPlasma(144), 64, 98304, 500000000);//FT3
-        GT_Values.RA.addFusionReactorRecipe(Materials.Neutronium.getMolten(98), Materials.Europium.getMolten(98), Materials.Weebium.getPlasma(169), 16, 8192, 150000000);//FT3
+        GT_Values.RA.addFusionReactorRecipe(Materials.Neutronium.getMolten(98), Materials.Europium.getMolten(98), GTNH_ExtraMaterials.Weebium.getPlasma(169), 16, 8192, 150000000);//FT3
         //GT_Values.RA.addFusionReactorRecipe(Materials.Neutronium.getMolten(144), Materials.Neutronium.getMolten(144), Materials.Neutronium.getPlasma(72), 64, 130000, 640000000);//FT3+ - yes it is a bit troll XD
 
         GT_ModHandler.removeRecipeByOutput(ItemList.IC2_Fertilizer.get(1L));
@@ -2131,7 +2131,7 @@ public class GT_MachineRecipeLoader implements Runnable {
         tCrop = ItemList.Crop_Drop_Mica.get(1);
         this.addProcess(tCrop,Materials.Mica,75, true);
         tCrop = ItemList.Gamer_girl_Panties.get(1);
-        this.addSpecialFluidProcess(tCrop,Materials.Weebium, 75, true);
+        this.addSpecialFluidProcess(tCrop,Weebium, 75, true);
 
 	    // Rare Metals Line
 		tCrop = ItemList.Crop_Drop_Bauxite.get(1);

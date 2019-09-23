@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.ConfigCategories;
+import gregtech.api.enums.GTNH_ExtraMaterials;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.gui.GT_Container_MultiMachine;
@@ -493,7 +494,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                                 tNBT2.setTag("Ingredient.6", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.7", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.8", tStack.writeToNBT(new NBTTagCompound()));
-                                tStack = GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Weebium, 1);
+                                tStack = GT_OreDictUnificator.get(OrePrefixes.stickLong, GTNH_ExtraMaterials.Weebium, 1);
                                 tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
                             }
 

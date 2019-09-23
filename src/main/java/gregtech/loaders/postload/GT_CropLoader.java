@@ -391,8 +391,8 @@ public class GT_CropLoader
                     "Weeb",
                     "Depressed",
                     "Food"
-            }, Materials.Weebium, ItemList.Gamer_girl_Panties.get(1L), new ItemStack[] {
-                    Materials.Weebium.getDustSmall(1), Materials.UUMatter.getDustTiny(1), ItemList.Circuit_Chip_Biocell.get(1)
+            }, GTNH_ExtraMaterials.Weebium, ItemList.Gamer_girl_Panties.get(1L), new ItemStack[] {
+                    GTNH_ExtraMaterials.Weebium.getDustSmall(1), Materials.UUMatter.getDustTiny(1), ItemList.Circuit_Chip_Biocell.get(1)
             });
 
 
