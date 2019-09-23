@@ -64,6 +64,7 @@ public class GT_MetaGenerated_Tool_01  extends GT_MetaGenerated_Tool {
     public static final short TURBINE_LARGE = 174;
     public static final short TURBINE_HUGE = 176;
     public static final short TURBINE_GIANT = 180;
+    public static final short TURBINE_RIDICULOUS = 182;
 
     @Deprecated
     public static final short TURBINE_BLADE = 178;
@@ -122,6 +123,7 @@ public class GT_MetaGenerated_Tool_01  extends GT_MetaGenerated_Tool {
         addTool(TURBINE_LARGE, "Large Turbine", "Turbine Rotors for your power station", new GT_Tool_Turbine_Large());
         addTool(TURBINE_HUGE, "Huge Turbine", "Turbine Rotors for your power station", new GT_Tool_Turbine_Huge());
         addTool(TURBINE_GIANT, "Giant Turbine", "Turbine Rotors for your power station", new GT_Tool_Turbine_Giant());
+        addTool(TURBINE_RIDICULOUS, "Ridiculous Turbine", "Turbine Rotors for your power station", new GT_Tool_Turbine_Ridiculous());
 
         GT_ModHandler.addCraftingRecipe(INSTANCE.getToolWithStats(MORTAR, 1, Materials.Flint, Materials.Stone, null), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{" I ", "SIS", "SSS", 'I', new ItemStack(Items.flint, 1), 'S', OrePrefixes.stone});
         GT_ModHandler.addCraftingRecipe(INSTANCE.getToolWithStats(MORTAR, 1, Materials.Bronze, Materials.Stone, null), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{" I ", "SIS", "SSS", 'I', OrePrefixes.ingot.get(Materials.Bronze), 'S', OrePrefixes.stone});
