@@ -4,6 +4,7 @@ import gregtech.GT_Mod;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
+import gregtech.api.interfaces.internal.IGT_Mod;
 import gregtech.api.util.GT_Log;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
@@ -60,7 +61,9 @@ public class GT_ScrapboxDropLoader
             GT_ModHandler.addScrapboxDrop(0.4F, GT_ModHandler.getIC2Item("insulatedGoldCableItem", 1L));
         }
         GT_ModHandler.addScrapboxDrop(0.9F, GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 1L));
-        GT_ModHandler.addScrapboxDrop(0.0001F, GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Infinity, 1L));
+        if (GT_Mod.gregtechproxy.mWeebCropToUUMEnabled) {
+            GT_ModHandler.addScrapboxDrop(0.00001F, GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Infinity, 1L));
+        }
         GT_ModHandler.addScrapboxDrop(0.8F, GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Glowstone, 1L));
         GT_ModHandler.addScrapboxDrop(0.8F, GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Coal, 1L));
         GT_ModHandler.addScrapboxDrop(2.5F, GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Charcoal, 1L));

@@ -337,7 +337,10 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         ItemList.Food_Sliced_Cucumber.set(addItem(tLastID = 574, "Cucumber Slice", "QUEWWW-CUMMM-BERRR!!!", new GT_FoodStat(1, 0.05F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.HERBA, 1L)));
         ItemList.Consumed_Gamer_Girl_Panties.set(addItem(tLastID = 580, "Chewed Up Gamer Girl Panties", "Moistened with saliva, a chunk seems to be missing. These aren't good for anything anymore...", new Object[]{new ItemData(GTNH_ExtraMaterials.Bathwater, 7257600L, new MaterialStack[0]), new TC_Aspects.TC_AspectStack(TC_Aspects.COGNITIO, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 1L)}));
         ItemList.Gamer_girl_Panties.set(addItem(tLastID = 579, "Gamer Girl Panties", "Worn for a week, slightly damp and still warm.", new Object[]{new GT_FoodStat(1, 10.0F, EnumAction.eat, ItemList.Consumed_Gamer_Girl_Panties.get(1L), true, true, false, Potion.confusion.id, 2000, 2, 400, Potion.regeneration.id, 2000, 3, 400), new TC_Aspects.TC_AspectStack(TC_Aspects.VICTUS, 5L), new TC_Aspects.TC_AspectStack(TC_Aspects.SANO, 5L)}));
-         ItemList.Food_Sliced_Cheese.set(addItem(tLastID = 576, "Cheese Slice", "ALIEN ATTACK!!!, throw the CHEEEEESE!!!", new GT_FoodStat(1, 0.1F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L)));
+        ItemList.Food_Sliced_Cheese.set(addItem(tLastID = 576, "Cheese Slice", "ALIEN ATTACK!!!, throw the CHEEEEESE!!!", new GT_FoodStat(1, 0.1F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L)));
+        ItemList.Doritos_Empty.set(addItem(tLastID = 583, "Empty bag of Doritos", "This bag is empty. You should recycle it.", new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L)));
+        ItemList.Doritos.set(addItem(tLastID = 581, "Doritos", "Enlightened Triangles made from Corn, with just the right amount of cheese!", new GT_FoodStat(1, 20.0F, EnumAction.eat, ItemList.Doritos_Empty.get(1), true, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L)));
+
 
         GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.red_flower, 1, 0), new ItemStack(Items.dye, 2, 1));
         GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.red_flower, 1, 1), new ItemStack(Items.dye, 2, 12));
