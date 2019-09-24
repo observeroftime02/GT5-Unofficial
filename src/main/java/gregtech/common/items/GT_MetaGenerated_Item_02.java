@@ -340,6 +340,7 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         ItemList.Food_Sliced_Cheese.set(addItem(tLastID = 576, "Cheese Slice", "ALIEN ATTACK!!!, throw the CHEEEEESE!!!", new GT_FoodStat(1, 0.1F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L)));
         ItemList.Doritos_Empty.set(addItem(tLastID = 583, "Empty bag of Doritos", "This bag is empty. You should recycle it.", new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L)));
         ItemList.Doritos.set(addItem(tLastID = 581, "Doritos", "Enlightened Triangles made from Corn, with just the right amount of cheese!", new GT_FoodStat(1, 20.0F, EnumAction.eat, ItemList.Doritos_Empty.get(1), true, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L)));
+        ItemList.Dorito_Chip.set(addItem(tLastID = 582, "Doritos", "A single triangular Dorito Chip", new GT_FoodStat(1, 20.0F, EnumAction.eat, null, true, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.MESSIS, 1L)));
 
 
         GT_ModHandler.addExtractionRecipe(new ItemStack(Blocks.red_flower, 1, 0), new ItemStack(Items.dye, 2, 1));
