@@ -339,12 +339,13 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.mEnableAllMaterials = tMainConfig.get("general", "EnableAllMaterials", false).getBoolean(false);
         gregtechproxy.mEnableAllComponents = tMainConfig.get("general", "EnableAllComponents", false).getBoolean(false);
         gregtechproxy.mPollution = tMainConfig.get("Pollution", "EnablePollution", true).getBoolean(true);
-        gregtechproxy.mVeinDensityModifier = tMainConfig.get("general", "VeinDensityModifier", 8).getInt(8);
+        gregtechproxy.mVeinDensityModifier = tMainConfig.get("Oreveinmodification", "VeinDensityModifier", 8).getInt(8);
         gregtechproxy.mPollutionSmogLimit = tMainConfig.get("Pollution", "SmogLimit", 500000).getInt(500000);
         gregtechproxy.mPollutionPoisonLimit = tMainConfig.get("Pollution", "PoisonLimit", 750000).getInt(750000);
         gregtechproxy.mPollutionVegetationLimit = tMainConfig.get("Pollution", "VegetationLimit", 1000000).getInt(1000000);
         gregtechproxy.mPollutionSourRainLimit = tMainConfig.get("Pollution", "SourRainLimit", 2000000).getInt(2000000);
         gregtechproxy.mExplosionItemDrop = tMainConfig.get("general", "ExplosionItemDrops", false).getBoolean(false);
+        gregtechproxy.mKeepOriginalVeins = tMainConfig.get("Oreveinmodification", "KeepOriginalUnmodifiedVeins", true).getBoolean(true);
         gregtechproxy.mAddGTRecipesToIC2Machines = tMainConfig.get("general", "AddGTRecipesToIC2Machines", true).getBoolean(true);
         gregtechproxy.mUndergroundOil.getConfig(tMainConfig, "undergroundfluid");
         gregtechproxy.mEnableCleanroom = tMainConfig.get("general", "EnableCleanroom", true).getBoolean(true);
