@@ -5,6 +5,7 @@ import gregtech.api.enums.*;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -16,9 +17,9 @@ public class GT_CustomRecipeLoader implements Runnable {
     public void run() {
 
         // Blast Furnace Recipes
-        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUAmplifier, 32), null, Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUAmplifier, 1), null, 400, 19753, 10800);
-        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUMatter, 32), null, Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUMatter, 1), null, 400, 19753, 10800);
-        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Weebium, 1L), GT_Utility.getIntegratedCircuit(1), GGEssence.getFluid(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Weebium, 1L), null, 125, 498073, 9001);
+        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUAmplifier, 32), GT_Utility.getIntegratedCircuit(11), Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUAmplifier, 1), null, 400, 19753, 10800);
+        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUMatter, 32), GT_Utility.getIntegratedCircuit(11), Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUMatter, 1), null, 400, 19753, 10800);
+        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Weebium, 11L), GT_Utility.getIntegratedCircuit(1), GGEssence.getFluid(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Weebium, 1L), null, 125, 498073, 9001);
         GT_Values.RA.addBlastRecipe(PMagium.getDust(1), GT_Utility.getIntegratedCircuit(11), GGEssence.getFluid(144), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, PMagium, 1L), null, 12500, 2000000, 10800);
 
 
@@ -64,5 +65,22 @@ public class GT_CustomRecipeLoader implements Runnable {
         }
 
 
+        // Fusion Reactor Recipes
+        GT_Values.RA.addFusionReactorRecipe(Materials.Neutronium.getMolten(98), Materials.Europium.getMolten(98), GTNH_ExtraMaterials.Weebium.getPlasma(169), 16, 8192, 150000000);//FT1
+
+
+        //Assline Recipes
+        GT_Values.RA.addAssemblylineRecipe(ItemList.Dorito_Chip.get(1L, new Object[]{}),288000,new ItemStack[]{
+                GT_ModHandler.getModItem("harvestcraft", "cornmealItem", 16L, 16),
+                GT_ModHandler.getModItem("harvestcraft", "cheeseItem", 1L, 0),
+                GT_ModHandler.getModItem("harvestcraft", "chilipepperItem", 1L, 0),
+                Materials.Salt.getDustSmall(1),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Aluminium, 1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 1L)}, new FluidStack[]{
+                Materials.FryingOilHot.getFluid(144)},
+                ItemList.Doritos.get(16), 1200, 32000);
+
     }
+
 }
+
