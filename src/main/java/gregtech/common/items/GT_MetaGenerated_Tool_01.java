@@ -48,6 +48,7 @@ public class GT_MetaGenerated_Tool_01  extends GT_MetaGenerated_Tool {
     public static final short WRENCH_LV = 120;
     public static final short WRENCH_MV = 122;
     public static final short WRENCH_HV = 124;
+    public static final short WRENCH_LUV = 126;
     public static final short JACKHAMMER = 130;
     public static final short BUZZSAW_LV = 140;
     public static final short BUZZSAW_MV = 142;
@@ -118,7 +119,9 @@ public class GT_MetaGenerated_Tool_01  extends GT_MetaGenerated_Tool {
         GregTech_API.registerTool(addTool(SCREWDRIVER_HV, "Screwdriver (HV)", "Adjusts Covers and Machines", new GT_Tool_Screwdriver_LV(), ToolDictNames.craftingToolScrewdriver, new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sScrewdriverList);
 
         if (Loader.isModLoaded("dreamcraft")) {
-            GregTech_API.registerTool(addTool(SCREWDRIVER_LUV, "Screwdriver (LuV)", "Adjusts Covers and Machines", new GT_Tool_Screwdriver_LV(), ToolDictNames.craftingToolScrewdriver, new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sScrewdriverList);
+            GregTech_API.registerTool(addTool(SCREWDRIVER_LUV, "Screwdriver (LuV)", "Adjusts Covers and Machines", new GT_Tool_Screwdriver_LV(), ToolDictNames.craftingToolScrewdriver, new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 16L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 16L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 16L)), GregTech_API.sScrewdriverList);
+            GregTech_API.registerTool(addTool(WRENCH_LUV, "Wrench (LuV)", "Hold Left Button to dismantle Machines", new GT_Tool_Wrench_LUV(), ToolDictNames.craftingToolWrench, new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 16L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 16L)), GregTech_API.sWrenchList);
+
         }
 
         GregTech_API.registerTool(addTool(SOLDERING_IRON_LV, "Soldering Iron (LV)", "Fixes burned out Circuits. Needs soldering materials in inventory.", new GT_Tool_Soldering_Iron(), ToolDictNames.craftingToolSolderingIron, new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sSolderingToolList);
