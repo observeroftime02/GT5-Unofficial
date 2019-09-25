@@ -64,8 +64,9 @@ public class GTNH_ExtraMaterials implements IMaterialHandler {
         SubTag.NO_SMASHING.addTo(TarPitch);
 
 
-        Weebium                 .addOreByProducts(UUMatter, Oriharukon, Indium);
 
+        Weebium                 .addOreByProducts(UUMatter, Oriharukon, Indium);
+        Weebium                .setOreMultiplier( 5).setSmeltingMultiplier( 5);
 
 
 
