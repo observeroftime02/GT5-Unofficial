@@ -340,6 +340,7 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.mEnableAllComponents = tMainConfig.get("general", "EnableAllComponents", false).getBoolean(false);
         gregtechproxy.mPollution = tMainConfig.get("Pollution", "EnablePollution", true).getBoolean(true);
         gregtechproxy.mVeinDensityModifier = tMainConfig.get("Oreveinmodification", "VeinDensityModifier", 8).getInt(8);
+        gregtechproxy.mCropProcessingCleanroomReq = tMainConfig.get("general", "CropAndCombProcessCleanroomRequ", true).getBoolean(true);
         gregtechproxy.mSizeModifier = tMainConfig.get("Oreveinmodification", "VeinSizeModifier", 16).getInt(16);
         gregtechproxy.mKeepOriginalVeins = tMainConfig.get("Oreveinmodification", "KeepOriginalUnmodifiedVeins", true).getBoolean(true);
         gregtechproxy.mPollutionSmogLimit = tMainConfig.get("Pollution", "SmogLimit", 500000).getInt(500000);
