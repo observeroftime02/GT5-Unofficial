@@ -1,5 +1,6 @@
 package gregtech.common.items;
 
+import cpw.mods.fml.common.Loader;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.*;
 import gregtech.api.items.GT_MetaGenerated_Tool;
@@ -56,6 +57,7 @@ public class GT_MetaGenerated_Tool_01  extends GT_MetaGenerated_Tool {
     public static final short SCREWDRIVER_LV = 150;
     public static final short SCREWDRIVER_MV = 152;
     public static final short SCREWDRIVER_HV = 154;
+    public static final short SCREWDRIVER_LUV = 156;
     public static final short SOLDERING_IRON_LV = 160;
     public static final short SOLDERING_IRON_MV = 162;
     public static final short SOLDERING_IRON_HV = 164;
@@ -114,6 +116,11 @@ public class GT_MetaGenerated_Tool_01  extends GT_MetaGenerated_Tool {
         GregTech_API.registerTool(addTool(SCREWDRIVER_LV, "Screwdriver (LV)", "Adjusts Covers and Machines", new GT_Tool_Screwdriver_LV(), ToolDictNames.craftingToolScrewdriver, new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sScrewdriverList);
         GregTech_API.registerTool(addTool(SCREWDRIVER_MV, "Screwdriver (MV)", "Adjusts Covers and Machines", new GT_Tool_Screwdriver_LV(), ToolDictNames.craftingToolScrewdriver, new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sScrewdriverList);
         GregTech_API.registerTool(addTool(SCREWDRIVER_HV, "Screwdriver (HV)", "Adjusts Covers and Machines", new GT_Tool_Screwdriver_LV(), ToolDictNames.craftingToolScrewdriver, new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sScrewdriverList);
+
+        if (Loader.isModLoaded("dreamcraft")) {
+            GregTech_API.registerTool(addTool(SCREWDRIVER_LUV, "Screwdriver (LuV)", "Adjusts Covers and Machines", new GT_Tool_Screwdriver_LV(), ToolDictNames.craftingToolScrewdriver, new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sScrewdriverList);
+        }
+
         GregTech_API.registerTool(addTool(SOLDERING_IRON_LV, "Soldering Iron (LV)", "Fixes burned out Circuits. Needs soldering materials in inventory.", new GT_Tool_Soldering_Iron(), ToolDictNames.craftingToolSolderingIron, new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sSolderingToolList);
         GregTech_API.registerTool(addTool(SOLDERING_IRON_MV, "Soldering Iron (MV)", "Fixes burned out Circuits. Needs soldering materials in inventory.", new GT_Tool_Soldering_Iron(), ToolDictNames.craftingToolSolderingIron, new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sSolderingToolList);
         GregTech_API.registerTool(addTool(SOLDERING_IRON_HV, "Soldering Iron (HV)", "Fixes burned out Circuits. Needs soldering materials in inventory.", new GT_Tool_Soldering_Iron(), ToolDictNames.craftingToolSolderingIron, new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sSolderingToolList);
