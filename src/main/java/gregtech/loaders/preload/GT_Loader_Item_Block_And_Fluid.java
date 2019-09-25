@@ -386,6 +386,8 @@ public class GT_Loader_Item_Block_And_Fluid
 
         GregTech_API.sBlockMetal9 = new GT_Block_Metal("gt.blockmetal9", new Materials[]{
                 GTNH_ExtraMaterials.Weebium,
+                UUMatter,
+                UUAmplifier
                         }, OrePrefixes.block, Textures.BlockIcons.STORAGE_BLOCKS12);
 
         GregTech_API.sBlockGem1 = new GT_Block_Metal("gt.blockgem1", new Materials[]{
