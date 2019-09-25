@@ -68,6 +68,7 @@ public class GT_MetaGenerated_Tool_01  extends GT_MetaGenerated_Tool {
     public static final short TURBINE_HUGE = 176;
     public static final short TURBINE_GIANT = 180;
     public static final short TURBINE_RIDICULOUS = 182;
+    public static final short CROWBAR_LV = 184;
 
     @Deprecated
     public static final short TURBINE_BLADE = 178;
@@ -87,6 +88,7 @@ public class GT_MetaGenerated_Tool_01  extends GT_MetaGenerated_Tool {
         GregTech_API.registerTool(addTool(WRENCH, "Wrench", "Hold Leftclick to dismantle Machines", new GT_Tool_Wrench(), ToolDictNames.craftingToolWrench, new TC_Aspects.TC_AspectStack(TC_Aspects.INSTRUMENTUM, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.MACHINA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sWrenchList);
         addTool(FILE, "File", "", new GT_Tool_File(), ToolDictNames.craftingToolFile, new TC_Aspects.TC_AspectStack(TC_Aspects.INSTRUMENTUM, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L));
         GregTech_API.registerTool(addTool(CROWBAR, "Crowbar", "Dismounts Covers and Rotates Rails", new GT_Tool_Crowbar(), ToolDictNames.craftingToolCrowbar, new TC_Aspects.TC_AspectStack(TC_Aspects.INSTRUMENTUM, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.TELUM, 2L)), GregTech_API.sCrowbarList);
+        GregTech_API.registerTool(addTool(CROWBAR_LV, "Crowbar (LV)", "Dismounts Covers and Rotates Rails", new GT_Tool_Crowbar_LV(), ToolDictNames.craftingToolCrowbar, new TC_Aspects.TC_AspectStack(TC_Aspects.INSTRUMENTUM, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.TELUM, 2L)), GregTech_API.sCrowbarList);
         GregTech_API.registerTool(addTool(SCREWDRIVER, "Screwdriver", "Adjusts Covers and Machines", new GT_Tool_Screwdriver(), ToolDictNames.craftingToolScrewdriver, new TC_Aspects.TC_AspectStack(TC_Aspects.INSTRUMENTUM, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sScrewdriverList);
         addTool(MORTAR, "Mortar", "", new GT_Tool_Mortar(), ToolDictNames.craftingToolMortar, new TC_Aspects.TC_AspectStack(TC_Aspects.INSTRUMENTUM, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.PERDITIO, 2L));
         GregTech_API.registerTool(addTool(WIRECUTTER, "Wire Cutter", "", new GT_Tool_WireCutter(), ToolDictNames.craftingToolWireCutter, new TC_Aspects.TC_AspectStack(TC_Aspects.INSTRUMENTUM, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FABRICO, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.ORDO, 2L)), GregTech_API.sWireCutterList);
