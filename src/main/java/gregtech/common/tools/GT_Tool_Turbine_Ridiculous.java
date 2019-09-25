@@ -21,6 +21,6 @@ public class GT_Tool_Turbine_Ridiculous extends GT_Tool_Turbine {
 
     @Override
     public IIconContainer getTurbineIcon() {
-        return Textures.ItemIcons.TURBINE_HUGE;
+        return Textures.ItemIcons.TURBINE_RIDICULOUS;
     }
 }
