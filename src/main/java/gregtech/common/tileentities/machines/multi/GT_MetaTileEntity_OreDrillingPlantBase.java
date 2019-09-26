@@ -6,6 +6,7 @@ import gregtech.api.enums.OrePrefixes;
 import gregtech.api.gui.GT_GUIContainer_MultiMachine;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.objects.ItemData;
+import gregtech.api.util.GT_Log;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Utility;
@@ -20,6 +21,7 @@ import net.minecraft.world.ChunkPosition;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import static gregtech.api.enums.GT_Values.VN;
 

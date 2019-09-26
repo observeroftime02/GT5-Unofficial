@@ -9,12 +9,12 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 public class GT_MetaTileEntity_OreDrillingPlant5 extends GT_MetaTileEntity_OreDrillingPlantBase {
     public GT_MetaTileEntity_OreDrillingPlant5(int aID, String aName, String aNameRegional) {
         super(aID, aName, aNameRegional);
-        mTier=5;
+        mTier=15;
     }
 
     public GT_MetaTileEntity_OreDrillingPlant5(String aName) {
         super(aName);
-        mTier=5;
+        mTier=15;
     }
 
     @Override
@@ -54,6 +54,9 @@ public class GT_MetaTileEntity_OreDrillingPlant5 extends GT_MetaTileEntity_OreDr
 
     @Override
     protected int getBaseProgressTime() {
-        return 320;
+        return 80;
     }
+
+
 }
+
