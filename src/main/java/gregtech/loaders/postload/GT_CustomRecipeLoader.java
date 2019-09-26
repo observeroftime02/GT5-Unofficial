@@ -69,16 +69,22 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addFusionReactorRecipe(Materials.Neutronium.getMolten(98), Materials.Europium.getMolten(98), GTNH_ExtraMaterials.Weebium.getPlasma(169), 16, 8192, 150000000);//FT1
 
 
+    }
+
+    public void run2(){
+
         //Assline Recipes
         GT_Values.RA.addAssemblylineRecipe(ItemList.Dorito_Chip.get(1L, new Object[]{}),288000,new ItemStack[]{
-                GT_ModHandler.getModItem("harvestcraft", "cornmealItem", 16L, 16),
-                GT_ModHandler.getModItem("harvestcraft", "cheeseItem", 1L, 0),
-                GT_ModHandler.getModItem("harvestcraft", "chilipepperItem", 1L, 0),
-                Materials.Salt.getDustSmall(1),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Aluminium, 1L),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 1L)}, new FluidStack[]{
-                Materials.FryingOilHot.getFluid(144)},
+                        GT_ModHandler.getModItem("harvestcraft", "cornmealItem", 16L, 16),
+                        GT_ModHandler.getModItem("harvestcraft", "cheeseItem", 1L, 0),
+                        GT_ModHandler.getModItem("harvestcraft", "chilipepperItem", 1L, 0),
+                        Materials.Salt.getDustSmall(1),
+                        GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Aluminium, 1L),
+                        GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 1L)}, new FluidStack[]{
+                        Materials.FryingOilHot.getFluid(1440),
+                        Materials.Nitrogen.getGas(1440)},
                 ItemList.Doritos.get(16), 1200, 32000);
+
 
     }
 

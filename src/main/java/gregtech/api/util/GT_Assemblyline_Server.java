@@ -264,7 +264,8 @@ public class GT_Assemblyline_Server {
 						mMats=new Materials[]{
 								GTNH_ExtraMaterials.Weebium,
                                 Materials.UUMatter,
-                                Materials.UUAmplifier
+                                Materials.UUAmplifier,
+								GTNH_ExtraMaterials.GGEssence
 						};
 						break;
 				}
