@@ -40,6 +40,7 @@ public class GT_Block_Casings4
         GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".14.name", "Mining Osmiridium Casing");
         GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".15.name", "Firebricks");
 
+
         ItemList.Casing_RobustTungstenSteel.set(new ItemStack(this, 1, 0));
         ItemList.Casing_CleanStainlessSteel.set(new ItemStack(this, 1, 1));
         ItemList.Casing_StableTitanium.set(new ItemStack(this, 1, 2));
