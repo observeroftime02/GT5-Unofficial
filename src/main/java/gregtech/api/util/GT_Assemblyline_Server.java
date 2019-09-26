@@ -10,6 +10,7 @@ import com.google.common.collect.ImmutableMap;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import gregtech.api.GregTech_API;
+import gregtech.api.enums.GTNH_ExtraMaterials;
 import gregtech.api.enums.Materials;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
@@ -258,6 +259,12 @@ public class GT_Assemblyline_Server {
 		                Materials.Ichorium
 					};
 					break;
+
+					case 9:
+						mMats=new Materials[]{
+								GTNH_ExtraMaterials.Weebium
+						};
+						break;
 				}
 				t = entry.getKey().substring("gt.blockmetal1.".length(), entry.getKey().length()-".name".length());
 				i = Integer.parseInt(t);
