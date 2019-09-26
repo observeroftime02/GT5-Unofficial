@@ -1237,6 +1237,10 @@ public class GT_Loader_MetaTileEntities implements Runnable {//TODO CHECK CIRCUI
         ItemList.OreDrill4.set(new GT_MetaTileEntity_OreDrillingPlant4(1179, "multimachine.oredrill4", "Ore Drilling Plant IV").getStackForm(1));
         GT_ModHandler.addCraftingRecipe(ItemList.OreDrill4.get(1L), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.OreDrill3, 'W', OrePrefixes.frameGt.get(Materials.Tritanium), 'E', OrePrefixes.circuit.get(Materials.Ultimate), 'C', ItemList.Electric_Motor_ZPM});
 
+        ItemList.OreDrill5.set(new GT_MetaTileEntity_OreDrillingPlant5(1980, "multimachine.oredrill5", "Ore Drilling Plant V").getStackForm(1));
+        GT_ModHandler.addCraftingRecipe(ItemList.OreDrill5.get(1L), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.OreDrill4, 'W', OrePrefixes.frameGt.get(GTNH_ExtraMaterials.Weebium), 'E', OrePrefixes.circuit.get(Materials.Superconductor), 'C', ItemList.Electric_Motor_UV});
+
+
         ItemList.PyrolyseOven.set(new GT_MetaTileEntity_PyrolyseOven(1159, "multimachine.pyro", "Pyrolyse Oven").getStackForm(1));
         GT_ModHandler.addCraftingRecipe(ItemList.PyrolyseOven.get(1L), bitsd, new Object[]{"WEP", "EME", "WCP", 'M', ItemList.Hull_MV, 'W', ItemList.Electric_Piston_MV, 'P', OrePrefixes.wireGt04.get(Materials.Cupronickel), 'E', OrePrefixes.circuit.get(Materials.Good), 'C', ItemList.Electric_Pump_MV});
 
