@@ -19,7 +19,7 @@ public class GT_CustomRecipeLoader implements Runnable {
         // Blast Furnace Recipes
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUAmplifier, 32), GT_Utility.getIntegratedCircuit(11), Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUAmplifier, 1), null, 400, 19753, 10800);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUMatter, 32), GT_Utility.getIntegratedCircuit(11), Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUMatter, 1), null, 400, 19753, 10800);
-        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Weebium, 11L), GT_Utility.getIntegratedCircuit(1), GGEssence.getFluid(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Weebium, 1L), null, 125, 498073, 9001);
+        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Weebium, 1L), GT_Utility.getIntegratedCircuit(11), GGEssence.getFluid(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Weebium, 1L), null, 125, 498073, 9001);
         GT_Values.RA.addBlastRecipe(PMagium.getDust(1), GT_Utility.getIntegratedCircuit(11), GGEssence.getFluid(144), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, PMagium, 1L), null, 12500, 2000000, 10800);
 
 
