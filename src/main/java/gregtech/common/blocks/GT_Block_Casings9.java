@@ -17,7 +17,7 @@ public class GT_Block_Casings9
     public GT_Block_Casings9() {
         super(GT_Item_Casings9.class, "gt.blockcasings9", GT_Material_Casings.INSTANCE);
         for (int i = 0; i < 2; i = (i + 1)) {
-            Textures.BlockIcons.CASING_BLOCKS[(i + 126)] = new GT_CopiedBlockTexture(this, 6, i);
+            Textures.BlockIcons.CASING_BLOCKS[(i + 64)] = new GT_CopiedBlockTexture(this, 6, i);
         }
         GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".0.name", "UUM Machine Casing");
         GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".1.name", "Smug Weebium Casing");
