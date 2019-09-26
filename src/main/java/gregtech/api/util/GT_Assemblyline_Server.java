@@ -262,7 +262,9 @@ public class GT_Assemblyline_Server {
 
 					case 9:
 						mMats=new Materials[]{
-								GTNH_ExtraMaterials.Weebium
+								GTNH_ExtraMaterials.Weebium,
+                                Materials.UUMatter,
+                                Materials.UUAmplifier
 						};
 						break;
 				}
