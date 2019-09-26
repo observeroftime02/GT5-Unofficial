@@ -5,6 +5,7 @@ import gregtech.api.util.GT_ModHandler;
 import gregtech.common.items.GT_MetaGenerated_Tool_01;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import com.github.bartimaeusnek.bartworks.system.material.WerkstoffLoader;
 
 public class ProcessingToolOther implements gregtech.api.interfaces.IOreRecipeRegistrator {
     public ProcessingToolOther() {
