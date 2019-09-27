@@ -124,6 +124,7 @@ public class GT_CustomRecipeLoader implements Runnable {
 
         //Ore Drilling Control Circuit
         GT_Values.RA.addAssemblylineRecipe(CustomItemList.QuantumCircuit.get(1L, new Object[]{}), 576000, new ItemStack[]{
+                    ItemList.Gamer_girl_Panties.get(64L),
                     CustomItemList.QuantumCircuit.get(8L),
                     CustomItemList.PikoCircuit.get(16L),
                     CustomItemList.NanoCircuit.get(32L),
