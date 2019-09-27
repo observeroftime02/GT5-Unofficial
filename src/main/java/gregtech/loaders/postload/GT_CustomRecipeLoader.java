@@ -10,6 +10,7 @@ import gregtech.api.util.GT_Utility;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+import com.github.bartimaeusnek.bartworks.system.material.WerkstoffLoader;
 
 import static gregtech.api.enums.GTNH_ExtraMaterials.*;
 
@@ -37,6 +38,10 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUAmplifier, 1L), GT_Values.NI, Materials.UUAmplifier.getFluid(16L),10000, 10, 32);
         GT_Values.RA.addFluidExtractionRecipe(ItemList.Gamer_girl_Panties.get(1L), GT_Values.NI, GTNH_ExtraMaterials.Bathwater.getFluid(2500L), 10000, 250, 480);
         GT_Values.RA.addFluidExtractionRecipe(GGEssence.getDust(1), GT_Values.NI, GGEssence.getFluid(144L), 10000, 20, 408);
+        GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(OrePrefixes.block, Weebium, 1L), null, Weebium.getMolten(1296L), 10000, 1200, 524000);
+        GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 1L), null, Weebium.getMolten(144L), 10000, 1200, 524000);
+        GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 1L), null, Weebium.getMolten(144L), 10000, 1200, 524000);
+        GT_Values.RA.addFluidExtractionRecipe(ItemList.Casing_Weebium.get(1L), null, Weebium.getMolten(144L), 10000, 1200, 524000);
 
 
         // Mixer Recipes
@@ -46,6 +51,9 @@ public class GT_CustomRecipeLoader implements Runnable {
 
         // Chem Reactor Recipes
         GT_Values.RA.addMultiblockChemicalRecipe(new ItemStack[]{GT_Utility.getIntegratedCircuit(1), ItemList.Circuit_Chip_Stemcell.get(64L), Materials.MysteriousCrystal.getDust(16)}, new FluidStack[]{Materials.BioMediumRaw.getFluid(4000L)}, null, new ItemStack[]{ItemList.Circuit_Chip_Biocell.get(32L)}, 300, 30700);
+        if (Loader.isModLoaded("bartworks")) {
+            GT_Values.RA.addChemicalRecipe(GT_Utility.getIntegratedCircuit(1), GT_Values.NI,  WerkstoffLoader.AcidicOsmiumSolution.getFluidOrGas(1000), WerkstoffLoader.OsmiumSolution.getFluidOrGas(100), GT_Values.NI, 150, 7680);
+        }
 
 
         // Centrifuge Recipes
@@ -55,6 +63,11 @@ public class GT_CustomRecipeLoader implements Runnable {
 
         // Distillation Recipes
         GT_Values.RA.addUniversalDistillationRecipe(GTNH_ExtraMaterials.Bathwater.getFluid(1000L), new FluidStack[]{GGEssence.getFluid(144L), Urine.getFluid(144L), Sweat.getFluid(144L), Materials.Water.getFluid(568)}, GGEssence.getDustTiny(1), 120, 480);
+        if (Loader.isModLoaded("bartworks")) {
+            GT_Values.RA.addUniversalDistillationRecipe(WerkstoffLoader.AcidicOsmiumSolution.getFluidOrGas(1000), new FluidStack[]{WerkstoffLoader.OsmiumSolution.getFluidOrGas(100), Materials.Water.getFluid(900L)}, GT_Values.NI, 150, 7680);
+            GT_Values.RA.addUniversalDistillationRecipe(WerkstoffLoader.HotRutheniumTetroxideSollution.getFluidOrGas(9000), new FluidStack[]{Materials.Water.getFluid(1800L), WerkstoffLoader.RutheniumTetroxide.getFluidOrGas(7200)}, GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Salt, 6L), 1500, 480);
+        }
+
 
 
         // Electrolyzer Recipes
@@ -69,6 +82,8 @@ public class GT_CustomRecipeLoader implements Runnable {
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_ModHandler.getModItem("harvestcraft", "cornmealItem", 16L, 0), GT_ModHandler.getModItem("harvestcraft", "cheeseItem", 1L, 0), GT_ModHandler.getModItem("harvestcraft", "chilipepperItem", 1L, 0), Materials.Salt.getDustSmall(1), GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Aluminium, 1L), GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 1L)}, Materials.Nitrogen.getGas(16L), ItemList.Doritos.get(4L), 20, 120);
         }
 
+        // Compressor Recipes
+        GT_Values.RA.addCompressorRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 9L), GT_OreDictUnificator.get(OrePrefixes.block, Weebium, 1L), 1200, 524000);
 
         // Fusion Reactor Recipes
         GT_Values.RA.addFusionReactorRecipe(Materials.Neutronium.getMolten(98), Materials.Europium.getMolten(98), GTNH_ExtraMaterials.Weebium.getPlasma(169), 16, 8192, 150000000);//FT1
@@ -80,6 +95,21 @@ public class GT_CustomRecipeLoader implements Runnable {
 
         // Bending Machine
         GT_Values.RA.addBenderRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 1L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 1L), 1200, 524000);
+
+        // Extruder
+        GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 9L), ItemList.Shape_Extruder_Block.get(0L), GT_OreDictUnificator.get(OrePrefixes.block, Weebium, 1L), 1200, 524000);
+        GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 1L), ItemList.Shape_Extruder_Plate.get(0L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 1L), 1200, 524000);
+
+
+        // Alloy Smelter
+        GT_Values.RA.addAlloySmelterRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 9L), ItemList.Shape_Mold_Block.get(0), GT_OreDictUnificator.get(OrePrefixes.block, Weebium, 1L), 1200, 524000);
+        GT_Values.RA.addAlloySmelterRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 2L), ItemList.Shape_Mold_Plate.get(0), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 1L), 1200, 524000);
+
+        // Cutting Machine
+        GT_Values.RA.addCutterRecipe(GT_OreDictUnificator.get(OrePrefixes.block, Weebium, 1L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 9L), null, 1200, 524000);
+
+        // Forge Hammer
+        GT_Values.RA.addForgeHammerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 3L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L), 1200, 524000);
 
     }
 
