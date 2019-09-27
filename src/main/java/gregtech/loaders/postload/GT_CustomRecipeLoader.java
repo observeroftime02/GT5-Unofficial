@@ -1,6 +1,8 @@
 package gregtech.loaders.postload;
 
+import com.dreammaster.gthandler.CustomItemList;
 import cpw.mods.fml.common.Loader;
+import gregtech.GT_Mod;
 import gregtech.api.enums.*;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
@@ -72,6 +74,13 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addFusionReactorRecipe(Materials.Neutronium.getMolten(98), Materials.Europium.getMolten(98), GTNH_ExtraMaterials.Weebium.getPlasma(169), 16, 8192, 150000000);//FT1
 
 
+        // Wiremill Recipes
+        GT_Values.RA.addWiremillRecipe(GT_OreDictUnificator.get(OrePrefixes.wireGt01, Weebium, 1L), GT_OreDictUnificator.get(OrePrefixes.wireFine, Weebium, 4L), 1200, 524000);
+        GT_Values.RA.addWiremillRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 1L), GT_OreDictUnificator.get(OrePrefixes.wireFine, Weebium, 8L), 2300, 524000);
+
+        // Bending Machine
+        GT_Values.RA.addBenderRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 1L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 1L), 1200, 524000);
+
     }
 
     public void run2(){
@@ -90,7 +99,38 @@ public class GT_CustomRecipeLoader implements Runnable {
                     ItemList.Doritos.get(16), 1200, 32000);
         }
 
+        //T5 Drilling Rig
+        GT_Values.RA.addAssemblylineRecipe(ItemList.OreDrill4.get(1L, new Object[]{}), 288000, new ItemStack[]{
+                        ItemList.OreDrill4.get(1L),
+                        GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 32L),
+                        GT_OreDictUnificator.get(OrePrefixes.stick, Weebium, 32L),
+                        GT_OreDictUnificator.get(OrePrefixes.gearGt, Weebium, 8L),
+                        GT_OreDictUnificator.get(OrePrefixes.gearGtSmall, Materials.Infinity, 16L),
+                        ItemList.Electric_Motor_UHV.get(9L),
+                        CustomItemList.QuantumCircuit.get(4L),
+                        CustomItemList.PikoCircuit.get(8L),
+                        CustomItemList.NanoCircuit.get(16L),
+                        GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Tritanium, 64L),
+                        GT_OreDictUnificator.get(OrePrefixes.wireFine, Weebium, 64L),
+                        GT_OreDictUnificator.get(OrePrefixes.wireFine, Weebium, 64L),
+                        GT_OreDictUnificator.get(OrePrefixes.wireFine, Weebium, 64L),
+                        GT_OreDictUnificator.get(OrePrefixes.wireFine, Weebium, 64L),}, new FluidStack[]{
+                        Materials.Lubricant.getFluid(9216L),
+                        Materials.SolderingAlloy.getMolten(9216L),
+                        Materials.Neutronium.getMolten(18432),
+                        Materials.UUMatter.getFluid(128000L)},
+                ItemList.OreDrill5.get(1L), 36000, 1992000);
+
+
+
+
+
+
+        }
+
+
+
     }
 
-}
+
 
