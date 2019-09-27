@@ -102,15 +102,16 @@ public class GT_CustomRecipeLoader implements Runnable {
         //T5 Drilling Rig
         GT_Values.RA.addAssemblylineRecipe(ItemList.OreDrill4.get(1L, new Object[]{}), 288000, new ItemStack[]{
                         ItemList.OreDrill4.get(1L),
+                        GT_OreDictUnificator.get(OrePrefixes.frameGt, Weebium, 16L),
                         GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 32L),
                         GT_OreDictUnificator.get(OrePrefixes.stick, Weebium, 32L),
                         GT_OreDictUnificator.get(OrePrefixes.gearGt, Weebium, 8L),
                         GT_OreDictUnificator.get(OrePrefixes.gearGtSmall, Materials.Infinity, 16L),
-                        ItemList.Electric_Motor_UHV.get(9L),
+                        ItemList.Special_Oredrill_Circuit.get(1L),
                         CustomItemList.QuantumCircuit.get(4L),
                         CustomItemList.PikoCircuit.get(8L),
                         CustomItemList.NanoCircuit.get(16L),
-                        GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Tritanium, 64L),
+                        GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Tritanium, 8L),
                         GT_OreDictUnificator.get(OrePrefixes.wireFine, Weebium, 64L),
                         GT_OreDictUnificator.get(OrePrefixes.wireFine, Weebium, 64L),
                         GT_OreDictUnificator.get(OrePrefixes.wireFine, Weebium, 64L),
@@ -120,6 +121,27 @@ public class GT_CustomRecipeLoader implements Runnable {
                         Materials.Neutronium.getMolten(18432),
                         Materials.UUMatter.getFluid(128000L)},
                 ItemList.OreDrill5.get(1L), 36000, 1992000);
+
+        //Ore Drilling Control Circuit
+        GT_Values.RA.addAssemblylineRecipe(CustomItemList.QuantumCircuit.get(1L, new Object[]{}), 576000, new ItemStack[]{
+                    CustomItemList.QuantumCircuit.get(8L),
+                    CustomItemList.PikoCircuit.get(16L),
+                    CustomItemList.NanoCircuit.get(32L),
+                    ItemList.Circuit_Wetwaremainframe.get(64L),
+                    ItemList.Circuit_Wetwaresupercomputer.get(64L),
+                    ItemList.Circuit_Wetwaresupercomputer.get(64L),
+                    ItemList.Robot_Arm_UEV.get(32L),
+                    ItemList.Sensor_UEV.get(32L),
+                    ItemList.Emitter_UEV.get(32L),
+                    ItemList.Circuit_Board_Wetware_Extreme.get(64),
+                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Infinity, 64L),
+                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Infinity, 64L),
+                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Infinity, 64L),
+                    GT_OreDictUnificator.get(OrePrefixes.plateDense, Weebium, 8L),}, new FluidStack[]{
+                    Materials.SolderingAlloy.getMolten(1440L),
+                    Materials.BioMediumSterilized.getFluid(64000L),
+                    Bathwater.getFluid(64000L)},
+                ItemList.Special_Oredrill_Circuit.get(1L), 72000, 1992000);
 
 
 

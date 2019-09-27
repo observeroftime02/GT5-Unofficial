@@ -1238,6 +1238,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {//TODO CHECK CIRCUI
         GT_ModHandler.addCraftingRecipe(ItemList.OreDrill4.get(1L), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.OreDrill3, 'W', OrePrefixes.frameGt.get(Materials.Tritanium), 'E', OrePrefixes.circuit.get(Materials.Ultimate), 'C', ItemList.Electric_Motor_ZPM});
 
         ItemList.OreDrill5.set(new GT_MetaTileEntity_OreDrillingPlant5(1980, "multimachine.oredrill5", "Ore Drilling Plant V").getStackForm(1));
+        // Disabled standard crafting recipe in favor of my assline recipe
         GT_ModHandler.addCraftingRecipe(ItemList.OreDrill5.get(1L), bitsd, new Object[]{"WWW", "EME", "CCC", 'M', ItemList.OreDrill4, 'W', OrePrefixes.frameGt.get(GTNH_ExtraMaterials.Weebium), 'E', OrePrefixes.circuit.get(Materials.Quantum), 'C', ItemList.Electric_Motor_UHV});
 
 
