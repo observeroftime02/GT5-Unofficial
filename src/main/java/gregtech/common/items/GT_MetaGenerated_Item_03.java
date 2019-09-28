@@ -5,6 +5,7 @@ import gregtech.api.enums.*;
 import gregtech.api.items.GT_MetaGenerated_Item_X32;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.common.covers.GT_Cover_SolarPanel;
+import net.minecraft.item.Item;
 
 public class GT_MetaGenerated_Item_03
         extends GT_MetaGenerated_Item_X32 {
@@ -202,7 +203,12 @@ public class GT_MetaGenerated_Item_03
         ItemList.Circuit_Biowaresupercomputer.set(addItem(tLastID = 99, "Bioware Supercomputer", "An Infinite Circuit",  new Object[]{OrePrefixes.circuit.get(Materials.Infinite), SubTag.NO_UNIFICATION}));
 
         ItemList.Circuit_Bioprocessor.set(addItem(tLastID = 97, "Bioprocessor", "An Ultimate Circuit",  new Object[]{OrePrefixes.circuit.get(Materials.Ultimate), SubTag.NO_UNIFICATION}));
-        ItemList.Special_Oredrill_Circuit.set(addItem(170, "Ore Drilling Controll Circuit", "Special control circuit for the Ore Drilling Plant V", o));
+        ItemList.Special_Oredrill_Circuit.set(addItem(tLastID = 170, "Ore Drilling Controll Circuit", "Special control circuit for the Ore Drilling Plant V", o));
+        ItemList.Weebium_Wafer.set(addItem(tLastID = 171, "Weebium Wafer", "A Raw Weebium Wafer", o));
+        ItemList.Weebium_Chip.set(addItem(tLastID = 172,"Weebium Chip", "A cut and processed Weebium Chip",o));
+        ItemList.Weebium_Silicon_Boule.set(addItem(tLastID = 173, "Weebium Doped Silicon Boule", "A raw Silicon boule Doped with Weebium", o));
+        ItemList.Engraved_Weebium_Wafer.set(addItem(tLastID = 174, "Engraved Weebium Wafer", "An engraved Weebium Wafer", o));
+
 
         ItemList.Circuit_Board_Coated_Basic.set(addItem(tLastID = 100, "Circuit Board", "A basic Circuit Board", o));
         ItemList.Circuit_Board_Phenolic_Good.set(addItem(tLastID = 101, "Good Circuit Board", "A good Circuit Board", o));

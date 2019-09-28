@@ -13,6 +13,7 @@ import net.minecraftforge.fluids.FluidStack;
 import com.github.bartimaeusnek.bartworks.system.material.WerkstoffLoader;
 
 import static gregtech.api.enums.GTNH_ExtraMaterials.*;
+import static gregtech.api.enums.OrePrefixes.*;
 
 
 public class GT_CustomRecipeLoader implements Runnable {
@@ -24,7 +25,7 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUMatter, 32), GT_Utility.getIntegratedCircuit(11), Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUMatter, 1), null, 400, 19753, 10800);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Weebium, 1L), GT_Utility.getIntegratedCircuit(11), GGEssence.getFluid(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Weebium, 1L), null, 125, 498073, 9001);
         GT_Values.RA.addBlastRecipe(PMagium.getDust(1), GT_Utility.getIntegratedCircuit(11), GGEssence.getFluid(144), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, PMagium, 1L), null, 12500, 2000000, 10800);
-
+        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.block, Materials.Silicon, 64), GT_OreDictUnificator.get(ingot, Weebium, 16), GGEssence.getFluid(32000), null, ItemList.Weebium_Silicon_Boule.get(1), null, 36000, 2000000, 10800);
 
         // Vacuum Freezer Recipes
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUMatter, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUMatter, 1L), 400, 13169);
@@ -59,7 +60,9 @@ public class GT_CustomRecipeLoader implements Runnable {
         // Centrifuge Recipes
         GT_Values.RA.addCentrifugeRecipe(ItemList.Gamer_girl_Panties.get(1L), GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Water, 3L), GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.cell, Bathwater, 3L), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[]{10000,0,0,0,0,0}, 20, 480);
         GT_Values.RA.addCentrifugeRecipe(ItemList.Doritos_Empty.get(1L), GT_Utility.getIntegratedCircuit(12), Materials.HydrochloricAcid.getFluid(16L), Materials.DilutedHydrochloricAcid.getFluid(16L), GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 1L), GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Aluminium, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[]{2500,2500,0,0,0,0}, 20, 120);
-
+        if (Loader.isModLoaded("bartworks")){
+            GT_Values.RA.addCentrifugeRecipe(GT_Utility.getIntegratedCircuit(8), WerkstoffLoader.PTMetallicPowder.get(dust, 8), GT_Values.NF, GT_Values.NF, Materials.Platinum.getDust(2), Materials.Palladium.getDust(2), Materials.Osmium.getDust(1), Materials.Iridium.getDust(1), WerkstoffLoader.Rhodium.get(dust, 1), WerkstoffLoader.Ruthenium.get(dust, 1), new int[]{10000,10000,10000,10000,10000,10000,}, 1400, 7690);
+        }
 
         // Distillation Recipes
         GT_Values.RA.addUniversalDistillationRecipe(GTNH_ExtraMaterials.Bathwater.getFluid(1000L), new FluidStack[]{GGEssence.getFluid(144L), Urine.getFluid(144L), Sweat.getFluid(144L), Materials.Water.getFluid(568)}, GGEssence.getDustTiny(1), 120, 480);
@@ -107,13 +110,21 @@ public class GT_CustomRecipeLoader implements Runnable {
 
         // Cutting Machine
         GT_Values.RA.addCutterRecipe(GT_OreDictUnificator.get(OrePrefixes.block, Weebium, 1L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 9L), null, 1200, 524000);
+        GT_Values.RA.addCutterRecipe(ItemList.Weebium_Silicon_Boule.get(1), GT_Values.NI, ItemList.Weebium_Wafer.get(64), ItemList.Weebium_Wafer.get(64), 18000, 2000000, true);
+        GT_Values.RA.addCutterRecipe(ItemList.Engraved_Weebium_Wafer.get(1), GT_Values.NI, ItemList.Weebium_Chip.get(8), GT_Values.NI, 3200, 2000000, true);
+
+
 
         // Forge Hammer
         GT_Values.RA.addForgeHammerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 3L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L), 1200, 524000);
 
+        // Laser Engraver
+        GT_Values.RA.addLaserEngraverRecipe(ItemList.Weebium_Wafer.get(1L), GT_Utility.copyAmount(0, GT_OreDictUnificator.get(OrePrefixes.lens, Materials.Amethyst, 1)), ItemList.Engraved_Weebium_Wafer.get(1L), 48000, 8300000, true);
+
     }
 
     public void run2(){
+
 
         //Assline Recipes
         if (Loader.isModLoaded("harvestcraft")) {

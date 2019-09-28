@@ -11,12 +11,12 @@ import static gregtech.api.enums.GT_Values.VN;
 public class GT_MetaTileEntity_OreDrillingPlant5 extends GT_MetaTileEntity_OreDrillingPlantBase {
     public GT_MetaTileEntity_OreDrillingPlant5(int aID, String aName, String aNameRegional) {
         super(aID, aName, aNameRegional);
-        mTier=40;
+        mTier=80;
     }
 
     public GT_MetaTileEntity_OreDrillingPlant5(String aName) {
         super(aName);
-        mTier=40;
+        mTier=80;
     }
 
     @Override
