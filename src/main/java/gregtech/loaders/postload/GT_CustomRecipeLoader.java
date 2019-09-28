@@ -114,6 +114,9 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addCutterRecipe(ItemList.Engraved_Weebium_Wafer.get(1), GT_Values.NI, ItemList.Weebium_Chip.get(8), GT_Values.NI, 3200, 2000000, true);
 
 
+        // Circuit Assembler
+       // GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{ItemList.Circuit_Board_Wetware_Extreme.get(2L), ItemList.Circuit_Wetwarecomputer.get(2L), ItemList.Circuit_Parts_DiodeSMD.get(32L), ItemList.Weebium_Chip.get(16L), ItemList.Circuit_Chip_Ram.get(64L), GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.YttriumBariumCuprate, 24)}, Materials.SolderingAlloy.getMolten(144L), ItemList.Special_Oredrill_Circuit.get(1L), 600, 38400, true);
+
 
         // Forge Hammer
         GT_Values.RA.addForgeHammerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 3L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L), 1200, 524000);
