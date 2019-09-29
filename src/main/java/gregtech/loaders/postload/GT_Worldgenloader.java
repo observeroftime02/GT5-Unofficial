@@ -352,7 +352,7 @@ public class GT_Worldgenloader
             new GT_Worldgen_GT_Ore_Layer("ore.mix.rutile", true, 5, 20, 20, densitymodyfier, sizemodifier, false, false, false, Materials.Rutile, Materials.Titanium, Materials.Bauxite, Materials.MeteoricIron);
             new GT_Worldgen_GT_Ore_Layer("ore.mix.woodore", true, 30, 60, 80, densitymodyfier, sizemodifier, false, false, false, Materials.Wood, Materials.Wood, Materials.Wood, Materials.Wood);
             new GT_Worldgen_GT_Ore_Layer("ore.mix.weebium", true, 5, 35, 40, densitymodyfier, sizemodifier, false, false, false, GTNH_ExtraMaterials.Weebium, Materials.UUMatter, GTNH_ExtraMaterials.Weebium, Materials.UUAmplifier);
-            new GT_Worldgen_GT_Ore_Layer("ore.mix.nicetohave", false,20,60, 65, densitymodyfier, sizemodifier, false, false, false, Materials.Infinity, Materials.Europium, Materials.CosmicNeutronium, GTNH_ExtraMaterials.GGEssence);
+            new GT_Worldgen_GT_Ore_Layer("ore.mix.nicetohave", false,20,60, 65, densitymodyfier, sizemodifier, false, false, false, Materials.Infinity, Materials.Europium, Materials.CosmicNeutronium, GTNH_ExtraMaterials.AGEssence);
 
         }
 

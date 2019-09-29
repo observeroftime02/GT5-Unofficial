@@ -23,9 +23,9 @@ public class GT_CustomRecipeLoader implements Runnable {
         // Blast Furnace Recipes
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUAmplifier, 32), GT_Utility.getIntegratedCircuit(11), Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUAmplifier, 1), null, 400, 19753, 10800);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.UUMatter, 32), GT_Utility.getIntegratedCircuit(11), Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUMatter, 1), null, 400, 19753, 10800);
-        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Weebium, 1L), GT_Utility.getIntegratedCircuit(11), GGEssence.getFluid(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Weebium, 1L), null, 125, 498073, 9001);
-        GT_Values.RA.addBlastRecipe(PMagium.getDust(1), GT_Utility.getIntegratedCircuit(11), GGEssence.getFluid(144), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, PMagium, 1L), null, 12500, 2000000, 10800);
-        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.block, Materials.Silicon, 64), GT_OreDictUnificator.get(ingot, Weebium, 16), GGEssence.getFluid(32000), null, ItemList.Weebium_Silicon_Boule.get(1), null, 36000, 2000000, 10800);
+        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Weebium, 1L), GT_Utility.getIntegratedCircuit(11), AGEssence.getFluid(144L), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Weebium, 1L), null, 125, 498073, 9001);
+        GT_Values.RA.addBlastRecipe(PMagium.getDust(1), GT_Utility.getIntegratedCircuit(11), AGEssence.getFluid(144), null, GT_OreDictUnificator.get(OrePrefixes.ingotHot, PMagium, 1L), null, 12500, 2000000, 10800);
+        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.block, Materials.Silicon, 64), GT_OreDictUnificator.get(ingot, Weebium, 16), AGEssence.getFluid(32000), null, ItemList.Weebium_Silicon_Boule.get(1), null, 36000, 2000000, 10800);
 
         // Vacuum Freezer Recipes
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.UUMatter, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUMatter, 1L), 400, 13169);
@@ -38,7 +38,7 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUMatter, 1L), GT_Values.NI, Materials.UUMatter.getFluid(16L),10000, 10, 32);
         GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.UUAmplifier, 1L), GT_Values.NI, Materials.UUAmplifier.getFluid(16L),10000, 10, 32);
         GT_Values.RA.addFluidExtractionRecipe(ItemList.Gamer_girl_Panties.get(1L), GT_Values.NI, GTNH_ExtraMaterials.Bathwater.getFluid(2500L), 10000, 250, 480);
-        GT_Values.RA.addFluidExtractionRecipe(GGEssence.getDust(1), GT_Values.NI, GGEssence.getFluid(144L), 10000, 20, 408);
+        GT_Values.RA.addFluidExtractionRecipe(AGEssence.getDust(1), GT_Values.NI, AGEssence.getFluid(144L), 10000, 20, 408);
         GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(OrePrefixes.block, Weebium, 1L), null, Weebium.getMolten(1296L), 10000, 1200, 524000);
         GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 1L), null, Weebium.getMolten(144L), 10000, 1200, 524000);
         GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 1L), null, Weebium.getMolten(144L), 10000, 1200, 524000);
@@ -47,7 +47,7 @@ public class GT_CustomRecipeLoader implements Runnable {
 
         // Mixer Recipes
         GT_Values.RA.addMixerRecipe(Materials.Europium.getDust(16), Materials.Tartarite.getDust(8), Materials.ElectrumFlux.getDust(6), Materials.Infinity.getDustTiny(1), Materials.CosmicNeutronium.getDust(6), GT_ModHandler.getModItem("dreamcraft", "item.TCetiESeaweedExtract", 16L, 0), Materials.GrowthMediumRaw.getFluid(20000L), Materials.BioMediumRaw.getFluid(20000L), GT_Values.NI, 300, 500000);
-        GT_Values.RA.addMixerRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, GGEssence, 1L), GT_OreDictUnificator.get(OrePrefixes.dust, Weebium, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.dust, PMagium, 2L), 750, 131072);
+        GT_Values.RA.addMixerRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, AGEssence, 1L), GT_OreDictUnificator.get(OrePrefixes.dust, Weebium, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.dust, PMagium, 2L), 750, 131072);
 
 
         // Chem Reactor Recipes
@@ -65,7 +65,7 @@ public class GT_CustomRecipeLoader implements Runnable {
         }
 
         // Distillation Recipes
-        GT_Values.RA.addUniversalDistillationRecipe(GTNH_ExtraMaterials.Bathwater.getFluid(1000L), new FluidStack[]{GGEssence.getFluid(144L), Urine.getFluid(144L), Sweat.getFluid(144L), Materials.Water.getFluid(568)}, GGEssence.getDustTiny(1), 120, 480);
+        GT_Values.RA.addUniversalDistillationRecipe(GTNH_ExtraMaterials.Bathwater.getFluid(1000L), new FluidStack[]{AGEssence.getFluid(144L), Urine.getFluid(144L), Sweat.getFluid(144L), Materials.Water.getFluid(568)}, AGEssence.getDustTiny(1), 120, 480);
         if (Loader.isModLoaded("bartworks")) {
             GT_Values.RA.addUniversalDistillationRecipe(WerkstoffLoader.AcidicOsmiumSolution.getFluidOrGas(1000), new FluidStack[]{WerkstoffLoader.OsmiumSolution.getFluidOrGas(100), Materials.Water.getFluid(900L)}, GT_Values.NI, 150, 7680);
             GT_Values.RA.addUniversalDistillationRecipe(WerkstoffLoader.HotRutheniumTetroxideSollution.getFluidOrGas(9000), new FluidStack[]{Materials.Water.getFluid(1800L), WerkstoffLoader.RutheniumTetroxide.getFluidOrGas(7200)}, GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Salt, 6L), 1500, 480);
@@ -74,7 +74,7 @@ public class GT_CustomRecipeLoader implements Runnable {
 
 
         // Electrolyzer Recipes
-        GT_Values.RA.addElectrolyzerRecipe(GT_OreDictUnificator.get(OrePrefixes.cell, Bathwater, 1L), GT_Values.NI, GT_Values.NF, GT_Values.NF, ItemList.Cell_Empty.get(1L), Materials.Salt.getDust(2), GGEssence.getDust(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[]{10000,9500,6500,0,0,0}, 20, 480);
+        GT_Values.RA.addElectrolyzerRecipe(GT_OreDictUnificator.get(OrePrefixes.cell, Bathwater, 1L), GT_Values.NI, GT_Values.NF, GT_Values.NF, ItemList.Cell_Empty.get(1L), Materials.Salt.getDust(2), AGEssence.getDust(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[]{10000,9500,6500,0,0,0}, 20, 480);
 
 
         // Assembler Recipes
@@ -122,7 +122,7 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addForgeHammerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 3L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L), 1200, 524000);
 
         // Laser Engraver
-        GT_Values.RA.addLaserEngraverRecipe(ItemList.Weebium_Wafer.get(1L), GT_Utility.copyAmount(0, GT_OreDictUnificator.get(OrePrefixes.lens, Materials.Amethyst, 1)), ItemList.Engraved_Weebium_Wafer.get(1L), 48000, 8300000, true);
+        GT_Values.RA.addLaserEngraverRecipe(ItemList.Weebium_Wafer.get(1L), GT_Utility.copyAmount(0, GT_OreDictUnificator.get(OrePrefixes.lens, GTNH_ExtraMaterials.AGEssence, 1)), ItemList.Engraved_Weebium_Wafer.get(1L), 48000, 8300000, true);
 
     }
 

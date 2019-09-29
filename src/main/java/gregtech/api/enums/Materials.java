@@ -1464,6 +1464,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         GreenSapphire           .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING);
         Sapphire                .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING);
         Ruby                    .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING);
+
         FoolsRuby               .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING);
         Opal                    .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING);
         Olivine                 .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING);

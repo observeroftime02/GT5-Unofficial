@@ -9,6 +9,7 @@ import gregtech.api.enums.TextureSet;
 public class ProcessingConfig implements gregtech.api.interfaces.IMaterialHandler {
     public ProcessingConfig() {
         new GTNH_ExtraMaterials();
+
         Materials.add(this);
     }
 
