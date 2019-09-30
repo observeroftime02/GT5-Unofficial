@@ -3194,6 +3194,40 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         }
 
 
+    },
+
+    ANIMEGIRLESSENCE(GT_BranchDefinition.METAL, "Anime Girl Essence", true, 0x7F00C4, 0xCC6EFF) {
+        @Override
+        protected void setSpeciesProperties(GT_AlleleBeeSpecies beeSpecies) {
+            beeSpecies.addProduct(GT_Bees.combs.getStackForType(CombType.SLAG), 0.30f);
+            beeSpecies.addSpecialty(GT_Bees.combs.getStackForType(CombType.ANIMEGIRLESSENCE), 0.20f);
+            beeSpecies.addSpecialty(GT_ModHandler.getModItem("dreamcraft", "item.TCetiESeaweedExtract", 1, 0), 0.05f);
+            beeSpecies.addSpecialty(GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.MysteriousCrystal, 1L), 0.025f);
+            beeSpecies.setHumidity(EnumHumidity.NORMAL);
+            beeSpecies.setTemperature(EnumTemperature.NORMAL);
+            beeSpecies.setNocturnal();
+            beeSpecies.setHasEffect();
+        }
+
+        @Override
+        protected void setAlleles(IAllele[] template) {
+            AlleleHelper.instance.set(template, EnumBeeChromosome.LIFESPAN, EnumAllele.Lifespan.LONGER);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.SPEED, EnumAllele.Speed.FASTER);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.TOLERANT_FLYER, true);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.TEMPERATURE_TOLERANCE, EnumAllele.Tolerance.UP_2);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.HUMIDITY_TOLERANCE, EnumAllele.Tolerance.UP_2);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.CAVE_DWELLING, true);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.FLOWER_PROVIDER, EnumAllele.Flowers.END);
+        }
+
+        @Override
+        protected void registerMutations() {
+            IBeeMutationCustom tMutation = registerMutation(WEEBIUM.species, UUMATTER.species, 1);
+            tMutation.requireResource(GameRegistry.findBlock("gregtech", "gt.blockores"), 769);
+
+        }
+
+
     };
 
 

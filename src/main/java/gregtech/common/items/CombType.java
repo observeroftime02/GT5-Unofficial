@@ -150,7 +150,9 @@ public enum CombType {
     INFINITY("infinity",true, Materials._NULL, 1,0xFFFFFF, 0xFFFFFF),
     WEEBIUM("Weebium", true, GTNH_ExtraMaterials.Weebium, 50, 0xF79EF7, 0xF5BAF5),
     UUMATTER("UU-Matter", true, Materials.UUMatter, 30, 0x7F00C4, 0xCC6EFF),
-    UUAMPLIFIER("UU-Amplifier", true, Materials.UUAmplifier, 30, 0xCC6EFF, 0x7F00C4);
+    UUAMPLIFIER("UU-Amplifier", true, Materials.UUAmplifier, 30, 0xCC6EFF, 0x7F00C4),
+    ANIMEGIRLESSENCE("Anime Girl Essence", true, GTNH_ExtraMaterials.AGEssence, 30, 0xfbb5ff, 0xfccfff);
+
     public boolean showInList;
     public Materials material;
     public int chance;

@@ -83,15 +83,12 @@ public class GTNH_ExtraMaterials implements IMaterialHandler {
         SubTag.NO_WIRE_SNIPPING.addTo(Weebium);
         SubTag.NO_FOIL_SMASHING.addTo(Weebium);
         SubTag.NO_BLOCK_SMASHING.addTo(Weebium);
-        // SubTag.NO_WORKING.addTo(Weebium);
-        // SubTag.NO_SMASHING.addTo(Weebium);
-        // SubTag.NO_SMELTING.addTo(Weebium);
 
 
 
         Weebium                 .addOreByProducts(UUMatter, Oriharukon, Indium);
-        Weebium                .setOreMultiplier( 5).setSmeltingMultiplier( 5);
-
+        Weebium                 .setOreMultiplier( 5).setSmeltingMultiplier( 5);
+        AGEssence               .addOreByProducts(Weebium, PMagium);
 
 
         Weebium.mChemicalFormula=SpWbUwU;

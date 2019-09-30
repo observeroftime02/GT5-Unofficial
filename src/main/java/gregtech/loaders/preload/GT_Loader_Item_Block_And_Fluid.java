@@ -180,6 +180,19 @@ public class GT_Loader_Item_Block_And_Fluid
             ItemList.MNqCell_1.set(new GT_RadioactiveCellIC_Item("MNqCell", "Fuel Rod (Nq* - MOX like behaviour)", 1, 100000, 2F, 1, 1F, ItemList.Depleted_MNq_1.get(1, new Object[0]), true));
             ItemList.MNqCell_2.set(new GT_RadioactiveCellIC_Item("Double_MNqCell", "Dual Fuel Rod (Nq* - MOX like behaviour)", 2, 100000, 2F, 1, 1F, ItemList.Depleted_MNq_2.get(1, new Object[0]), true));
             ItemList.MNqCell_4.set(new GT_RadioactiveCellIC_Item("Quad_MNqCell", "Quad Fuel Rod (Nq* - MOX like behaviour)", 4, 100000, 2F, 1, 1F, ItemList.Depleted_MNq_4.get(1, new Object[0]), true));
+            ItemList.Test_Item_Depleted.set(new GT_DepletetCell_Item("Test_Item_Depleted", "Depleted Test Fuel Rod", 1));
+            ItemList.Test_Item.set(new GT_RadioactiveCellIC_Item("Test_Item", "Test Fuel Rod (Test* - MOX like behaviour)", 1, 1000000, 8F, 1, 2F, ItemList.Test_Item_Depleted.get(1, new Object[0]), true));
+
+            GT_Values.RA.addCentrifugeRecipe(ItemList.Test_Item_Depleted.get(1), GT_Utility.getIntegratedCircuit(12), null, AGEssence.getFluid(144L),
+                    ItemList.Large_Fluid_Cell_Neutronium.get(1L),
+                    GT_OreDictUnificator.get(OrePrefixes.dust, PMagium, 4L),
+                    GT_OreDictUnificator.get(OrePrefixes.dustSmall, AGEssence, 8L),
+                    GT_OreDictUnificator.get(OrePrefixes.dustSmall, Weebium, 4L),
+                    GT_Values.NI,
+                    GT_Values.NI,
+                    new int[]{10000,10000,6500,6500,0,0}, 500, 2000);
+
+
 
             GT_Values.RA.addCentrifugeRecipe(ItemList.Depleted_MNq_1.get(1), null,null,null,
                     GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Naquadah, 1L),

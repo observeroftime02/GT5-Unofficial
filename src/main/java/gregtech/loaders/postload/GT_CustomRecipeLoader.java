@@ -45,6 +45,9 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addFluidExtractionRecipe(ItemList.Casing_Weebium.get(1L), null, Weebium.getMolten(144L), 10000, 1200, 524000);
 
 
+        // Canner Recipes
+        GT_Values.RA.addCannerRecipe(ItemList.Large_Fluid_Cell_Neutronium.get(1L), GT_OreDictUnificator.get(dust, PMagium, 8L), ItemList.Test_Item.get(1L), GT_Values.NI, 120, 480);
+
         // Mixer Recipes
         GT_Values.RA.addMixerRecipe(Materials.Europium.getDust(16), Materials.Tartarite.getDust(8), Materials.ElectrumFlux.getDust(6), Materials.Infinity.getDustTiny(1), Materials.CosmicNeutronium.getDust(6), GT_ModHandler.getModItem("dreamcraft", "item.TCetiESeaweedExtract", 16L, 0), Materials.GrowthMediumRaw.getFluid(20000L), Materials.BioMediumRaw.getFluid(20000L), GT_Values.NI, 300, 500000);
         GT_Values.RA.addMixerRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, AGEssence, 3L), GT_OreDictUnificator.get(OrePrefixes.dust, Weebium, 7L), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.dust, PMagium, 10L), 750, 131072);
