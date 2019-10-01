@@ -46,7 +46,7 @@ public class GT_CustomRecipeLoader implements Runnable {
 
 
         // Canner Recipes
-        GT_Values.RA.addCannerRecipe(ItemList.Large_Fluid_Cell_Neutronium.get(1L), GT_OreDictUnificator.get(dust, ConcPMagium, 8L), ItemList.PmCell1.get(1L), GT_Values.NI, 120, 480);
+        GT_Values.RA.addCannerRecipe(ItemList.Large_Fluid_Cell_Neutronium.get(1L), GT_OreDictUnificator.get(gemExquisite, SoulGem, 2L), ItemList.PmCell1.get(1L), GT_Values.NI, 120, 480);
 
         // Mixer Recipes
         GT_Values.RA.addMixerRecipe(Materials.Europium.getDust(16), Materials.Tartarite.getDust(8), Materials.ElectrumFlux.getDust(6), Materials.Infinity.getDustTiny(1), Materials.CosmicNeutronium.getDust(6), GT_ModHandler.getModItem("dreamcraft", "item.TCetiESeaweedExtract", 16L, 0), Materials.GrowthMediumRaw.getFluid(20000L), Materials.BioMediumRaw.getFluid(20000L), GT_Values.NI, 300, 500000);
@@ -129,12 +129,16 @@ public class GT_CustomRecipeLoader implements Runnable {
 
         // Macerator Recipes
         GT_Values.RA.addPulveriserRecipe(ItemList.Gamer_girl_Panties.get(1L), new ItemStack[]{GT_OreDictUnificator.get(dust, GAGPanties, 1L)}, new int[]{10000}, 120, 480);
+        GT_Values.RA.addPulveriserRecipe(GT_OreDictUnificator.get(gemExquisite, SoulGem, 1L), new ItemStack[]{GT_OreDictUnificator.get(dust, SoulGem, 4L)}, new int[]{10000}, 120, 480);
 
         // Forge Hammer
         GT_Values.RA.addForgeHammerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 3L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L), 1200, 524000);
 
         // Laser Engraver
         GT_Values.RA.addLaserEngraverRecipe(ItemList.Weebium_Wafer.get(1L), GT_Utility.copyAmount(0, GT_OreDictUnificator.get(OrePrefixes.lens, GTNH_ExtraMaterials.AGEssence, 1)), ItemList.Engraved_Weebium_Wafer.get(1L), 48000, 8300000, true);
+
+        // Autoclave Recipes
+        GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dust, ConcPMagium, 16L), Bathwater.getFluid(144L), GT_OreDictUnificator.get(gemExquisite, SoulGem, 1L), 7500, 216000, 131000);
 
     }
 

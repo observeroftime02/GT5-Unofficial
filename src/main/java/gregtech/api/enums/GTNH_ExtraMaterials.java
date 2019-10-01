@@ -78,10 +78,10 @@ public class GTNH_ExtraMaterials implements IMaterialHandler {
 
         SubTag.METAL.addTo(Signalum, Lumium, EnrichedCopper, DiamondCopper, Weebium);
 
-       // Testmaterial                 .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING);
+        // Testmaterial                 .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING);
         Weebium                      .add(SubTag.NO_PLATE_SMASHING, SubTag.NO_WIRE_SNIPPING, SubTag.NO_FOIL_SMASHING, SubTag.NO_BLOCK_SMASHING);
         AGEssence                    .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.CRYSTALLISABLE);
-        SoulGem                      .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.CRYSTALLISABLE, SubTag.NO_GEM_RECIPE_GEN);
+        SoulGem                      .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.NO_GEM_RECIPE_GEN);
 
 
 

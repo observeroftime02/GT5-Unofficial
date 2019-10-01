@@ -180,12 +180,12 @@ public class GT_Loader_Item_Block_And_Fluid
             ItemList.MNqCell_1.set(new GT_RadioactiveCellIC_Item("MNqCell", "Fuel Rod (Nq* - MOX like behaviour)", 1, 100000, 2F, 1, 1F, ItemList.Depleted_MNq_1.get(1, new Object[0]), true));
             ItemList.MNqCell_2.set(new GT_RadioactiveCellIC_Item("Double_MNqCell", "Dual Fuel Rod (Nq* - MOX like behaviour)", 2, 100000, 2F, 1, 1F, ItemList.Depleted_MNq_2.get(1, new Object[0]), true));
             ItemList.MNqCell_4.set(new GT_RadioactiveCellIC_Item("Quad_MNqCell", "Quad Fuel Rod (Nq* - MOX like behaviour)", 4, 100000, 2F, 1, 1F, ItemList.Depleted_MNq_4.get(1, new Object[0]), true));
-            ItemList.PmCell1_Dep.set(new GT_DepletetCell_Item("PmCell1_Dep", "Depleted Test Fuel Rod", 1));
-            ItemList.PmCell1.set(new GT_RadioactiveCellIC_Item("PmCell1", "Test Fuel Rod (Test* - MOX like behaviour)", 1, 1000000, 4F, 1, 2F, ItemList.PmCell1_Dep.get(1, new Object[0]), false));
-            ItemList.PmCell2_Dep.set(new GT_DepletetCell_Item("PmCell2_Dep", "Dual Depleted Test Fuel Rod", 1));
-            ItemList.PmCell2.set(new GT_RadioactiveCellIC_Item("PmCell2", "Dual Test Fuel Rod (Test* - MOX like behaviour)", 2, 1000000, 4F, 1, 2F, ItemList.PmCell2_Dep.get(1, new Object[0]), false));
-            ItemList.PmCell4_Dep.set(new GT_DepletetCell_Item("PmCell4_Dep", "Quad Depleted Test Fuel Rod", 1));
-            ItemList.PmCell4.set(new GT_RadioactiveCellIC_Item("PmCell4", "Quad Test Fuel Rod (Test* - MOX like behaviour)", 4, 1000000, 4F, 1, 2F, ItemList.PmCell4_Dep.get(1, new Object[0]), false));
+            ItemList.PmCell1_Dep.set(new GT_DepletetCell_Item("PmCell1_Dep", "Depleted Mahou Shoujou Fuel Rod", 1));
+            ItemList.PmCell1.set(new GT_RadioactiveCellIC_Item("PmCell1", "Mahou Shoujou Fuel Rod", 1, 2678400, 8F, 1, 2F, ItemList.PmCell1_Dep.get(1, new Object[0]), false));
+            ItemList.PmCell2_Dep.set(new GT_DepletetCell_Item("PmCell2_Dep", "Dual Depleted Mahou Shoujou Fuel Rod", 1));
+            ItemList.PmCell2.set(new GT_RadioactiveCellIC_Item("PmCell2", "Dual Mahou Shoujou Fuel Rod", 2, 2678400, 8F, 1, 2F, ItemList.PmCell2_Dep.get(1, new Object[0]), false));
+            ItemList.PmCell4_Dep.set(new GT_DepletetCell_Item("PmCell4_Dep", "Quad Depleted Mahou Shoujou Fuel Rod", 1));
+            ItemList.PmCell4.set(new GT_RadioactiveCellIC_Item("PmCell4", "Quad Mahou Shoujou Fuel Rod", 4, 2678400, 8F, 1, 2F, ItemList.PmCell4_Dep.get(1, new Object[0]), false));
 
 
 
