@@ -143,6 +143,8 @@ public class GT_Worldgenloader
         //GT Default Veins
 
         if(GT_Mod.gregtechproxy.mKeepOriginalVeins){
+            //Load the default oreveins without modifications
+
             new GT_Worldgen_GT_Ore_Layer("ore.mix.naquadah", true, 10, 90, 30, 4, 32, false, false, false, Materials.Naquadah, Materials.Naquadah, Materials.Naquadah, Materials.NaquadahEnriched);
             new GT_Worldgen_GT_Ore_Layer("ore.mix.lignite", true, 80, 210, 160, 7, 32, true, false, false, Materials.Lignite, Materials.Lignite, Materials.Lignite, Materials.Coal);
             new GT_Worldgen_GT_Ore_Layer("ore.mix.coal", true, 30, 80, 80, 5, 32, true, false, false, Materials.Coal, Materials.Coal, Materials.Coal, Materials.Lignite);
@@ -279,7 +281,9 @@ public class GT_Worldgenloader
             new GT_Worldgen_GT_Ore_Layer("ore.mix.weebium", true, 5, 35, 40, 5, 32, false, false, false, GTNH_ExtraMaterials.Weebium, Materials.UUMatter, GTNH_ExtraMaterials.Weebium, Materials.UUAmplifier);
 
         }else{
-            //Second set of oreveins to load if the config permits it
+
+            //Loads the Second set of oreveins with size and density modifier
+
             new GT_Worldgen_GT_Ore_Layer("ore.mix.naquadah", true, 10, 90, 30, densitymodyfier, sizemodifier, false, false, false, Materials.Naquadah, Materials.Naquadah, Materials.Naquadah, Materials.NaquadahEnriched);
             new GT_Worldgen_GT_Ore_Layer("ore.mix.lignite", true, 80, 210, 160, densitymodyfier, sizemodifier, true, false, false, Materials.Lignite, Materials.Lignite, Materials.Lignite, Materials.Coal);
             new GT_Worldgen_GT_Ore_Layer("ore.mix.coal", true, 30, 80, 80, densitymodyfier, sizemodifier, true, false, false, Materials.Coal, Materials.Coal, Materials.Coal, Materials.Lignite);

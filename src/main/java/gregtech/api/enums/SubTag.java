@@ -108,6 +108,7 @@ public final class SubTag implements ICondition<ISubTagContainer> {
 
     public static final SubTag NO_BLOCK_SMASHING = getNewSubTag("NO_BLOCK_SMASHING");
 
+    public static final SubTag NO_GEM_RECIPE_GEN = getNewSubTag("NO_GEM_RECIPE_GEN");
 
     /**
      * This Material can be molten into a Fluid
