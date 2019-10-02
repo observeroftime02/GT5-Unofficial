@@ -141,6 +141,8 @@ public class GT_CustomRecipeLoader implements Runnable {
         // Autoclave Recipes
         GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dust, ConcPMagium, 16L), Bathwater.getFluid(144L), GT_OreDictUnificator.get(gemExquisite, SoulGem, 1L), 7500, 216000, 131000);
         GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dustTiny, SoulGem, 1L), Materials.Infinity.getMolten(8L), GT_OreDictUnificator.get(gemExquisite, SoulGem, 1L), 7500, 216000, 131000);
+        GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dust, CursedEntropy, 1L), Materials.Americium.getMolten(8L), GT_OreDictUnificator.get(gem, CursedEntropy, 1L), 7500, 216000,131000);
+
     }
 
     public void run2(){

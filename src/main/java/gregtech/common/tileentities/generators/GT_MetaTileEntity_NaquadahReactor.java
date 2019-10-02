@@ -86,12 +86,46 @@ public class GT_MetaTileEntity_NaquadahReactor extends GT_MetaTileEntity_BasicGe
 
     public long maxEUStore() {
 
-        return Math.max(getEUVar(), V[mTier] * 4000L + getMinimumStoredEU());
+        switch (this.mTier) {
+            case 4: {
+                return Math.max(getEUVar(), V[mTier] * 40L + getMinimumStoredEU());
+            }
+            case 5: {
+                return Math.max(getEUVar(), V[mTier] * 50L + getMinimumStoredEU());
+            }
+            case 6: {
+                return Math.max(getEUVar(), V[mTier] * 60L + getMinimumStoredEU());
+            }
+            case 7: {
+                return Math.max(getEUVar(), V[mTier] * 70L + getMinimumStoredEU());
+            }
+            case 8: {
+                return Math.max(getEUVar(), V[mTier] * 80L + getMinimumStoredEU());
+            }
+            case 9: {
+                return Long.MAX_VALUE-7;
+            }
+            default: {
+                return Math.max(getEUVar(), V[mTier] * 4100L + getMinimumStoredEU());
+            }
+        }
     }
 
 
-    private int getBaseEff(){
-        return mTier == 4 ? 80 : 100 + (50*(mTier-5));
+    private int getBaseEff() {
+
+        switch (this.mTier) {
+
+            case 9: {
+                return 300;
+            }
+            default: {
+                return mTier == 4 ? 80 : 100 + (50 * (mTier - 5));
+            }
+        }
+
+
+
     }
 
     public int onConfigLoad() {

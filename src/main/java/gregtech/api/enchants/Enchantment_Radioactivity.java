@@ -23,6 +23,7 @@ public class Enchantment_Radioactivity extends EnchantmentDamage {
         Materials.Plutonium241.setEnchantmentForTools(this, 3).setEnchantmentForArmors(this, 3);
         Materials.NaquadahEnriched.setEnchantmentForTools(this, 4).setEnchantmentForArmors(this, 4);
         Materials.Naquadria.setEnchantmentForTools(this, 5).setEnchantmentForArmors(this, 5);
+        GTNH_ExtraMaterials.CursedEntropy.setEnchantmentForTools(this, 5).setEnchantmentForArmors(this, 5);
         INSTANCE = this;
     }
 
