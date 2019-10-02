@@ -185,7 +185,7 @@ public class GT_Loader_Item_Block_And_Fluid
             ItemList.PmCell2_Dep.set(new GT_DepletetCell_Item("PmCell2_Dep", "Dual Depleted Mahou Shoujou Fuel Rod", 1));
             ItemList.PmCell2.set(new GT_RadioactiveCellIC_Item("PmCell2", "Dual Mahou Shoujou Fuel Rod", 2, 2678400, 8F, 1, 2F, ItemList.PmCell2_Dep.get(1, new Object[0]), false));
             ItemList.PmCell4_Dep.set(new GT_DepletetCell_Item("PmCell4_Dep", "Quad Depleted Mahou Shoujou Fuel Rod", 1));
-            ItemList.PmCell4.set(new GT_RadioactiveCellIC_Item("PmCell4", "Quad Mahou Shoujou Fuel Rod", 4, 2678400, 8F, 1, 2F, ItemList.PmCell4_Dep.get(1, new Object[0]), false));
+            ItemList.PmCell4.set(new GT_RadioactiveCellIC_Item("PmCell4", "Quad Mahou Shoujou Fuel Rod", 4, 2678400, 1600F, 1, 2F, ItemList.PmCell4_Dep.get(1, new Object[0]), false));
 
 
 
@@ -205,18 +205,18 @@ public class GT_Loader_Item_Block_And_Fluid
                     GT_OreDictUnificator.get(OrePrefixes.dust, PMagium, 8L),
                     GT_OreDictUnificator.get(OrePrefixes.dust, AGEssence, 4L),
                     GT_OreDictUnificator.get(OrePrefixes.dustTiny, CursedEntropy, 8L),
+                    GT_OreDictUnificator.get(OrePrefixes.dust, Neutronium, 4),
                     GT_Values.NI,
-                    GT_Values.NI,
-                    new int[]{10000,10000,6500,6500,0,0}, 500, 2000);
+                    new int[]{10000,10000,6500,6500,9500,0}, 500, 2000);
 
             GT_Values.RA.addCentrifugeRecipe(ItemList.PmCell4_Dep.get(1), GT_Utility.getIntegratedCircuit(12), null, AGEssence.getFluid(144L),
                     ItemList.Large_Fluid_Cell_Neutronium.get(4L),
                     GT_OreDictUnificator.get(OrePrefixes.dust, PMagium, 16L),
                     GT_OreDictUnificator.get(OrePrefixes.dust, AGEssence, 8L),
                     GT_OreDictUnificator.get(OrePrefixes.dustTiny, CursedEntropy, 16L),
+                    GT_OreDictUnificator.get(OrePrefixes.dust, Neutronium, 8),
                     GT_Values.NI,
-                    GT_Values.NI,
-                    new int[]{10000,10000,6500,6500,0,0}, 500, 2000);
+                    new int[]{10000,10000,6500,6500,9500,0}, 500, 2000);
 
 
 

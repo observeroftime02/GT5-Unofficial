@@ -88,8 +88,8 @@ public class GT_CustomRecipeLoader implements Runnable {
         // Assembler Recipes
         GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 6L), GT_OreDictUnificator.get(OrePrefixes.frameGt, Weebium, 1L), ItemList.Casing_Weebium.get(1L), 50, 16);
         GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.plate, Materials.UUMatter, 6L), GT_OreDictUnificator.get(OrePrefixes.frameGt, Materials.UUMatter, 1L), ItemList.Casing_UUM.get(1L), 50, 16);
-        GT_Values.RA.addAssemblerRecipe(ItemList.PmCell1.get(2L), GT_OreDictUnificator.get(stick, Materials.TungstenSteel, 4L), ItemList.PmCell2.get(1L), 2400, 7680);
-        GT_Values.RA.addAssemblerRecipe(ItemList.PmCell2.get(2L), GT_OreDictUnificator.get(stick, Materials.TungstenSteel, 4L), ItemList.PmCell4.get(1L), 2400, 7680);
+        GT_Values.RA.addAssemblerRecipe(ItemList.PmCell1.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.PmCell2.get(1L), 2400, 7680);
+        GT_Values.RA.addAssemblerRecipe(ItemList.PmCell2.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.PmCell4.get(1L), 2400, 7680);
 
         if (Loader.isModLoaded("harvestcraft")) {
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_ModHandler.getModItem("harvestcraft", "cornmealItem", 16L, 0), GT_ModHandler.getModItem("harvestcraft", "cheeseItem", 1L, 0), GT_ModHandler.getModItem("harvestcraft", "chilipepperItem", 1L, 0), Materials.Salt.getDustSmall(1), GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Aluminium, 1L), GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 1L)}, Materials.Nitrogen.getGas(16L), ItemList.Doritos.get(4L), 20, 120);
