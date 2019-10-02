@@ -194,8 +194,26 @@ public class GT_Loader_Item_Block_And_Fluid
             GT_Values.RA.addCentrifugeRecipe(ItemList.PmCell1_Dep.get(1), GT_Utility.getIntegratedCircuit(12), null, AGEssence.getFluid(144L),
                     ItemList.Large_Fluid_Cell_Neutronium.get(1L),
                     GT_OreDictUnificator.get(OrePrefixes.dust, PMagium, 4L),
-                    GT_OreDictUnificator.get(OrePrefixes.dustSmall, AGEssence, 8L),
-                    GT_OreDictUnificator.get(OrePrefixes.dustSmall, Weebium, 4L),
+                    GT_OreDictUnificator.get(OrePrefixes.dust, AGEssence, 2L),
+                    GT_OreDictUnificator.get(OrePrefixes.dustTiny, CursedEntropy, 4L),
+                    GT_Values.NI,
+                    GT_Values.NI,
+                    new int[]{10000,10000,6500,6500,0,0}, 500, 2000);
+
+            GT_Values.RA.addCentrifugeRecipe(ItemList.PmCell2_Dep.get(1), GT_Utility.getIntegratedCircuit(12), null, AGEssence.getFluid(144L),
+                    ItemList.Large_Fluid_Cell_Neutronium.get(2L),
+                    GT_OreDictUnificator.get(OrePrefixes.dust, PMagium, 8L),
+                    GT_OreDictUnificator.get(OrePrefixes.dust, AGEssence, 4L),
+                    GT_OreDictUnificator.get(OrePrefixes.dustTiny, CursedEntropy, 8L),
+                    GT_Values.NI,
+                    GT_Values.NI,
+                    new int[]{10000,10000,6500,6500,0,0}, 500, 2000);
+
+            GT_Values.RA.addCentrifugeRecipe(ItemList.PmCell4_Dep.get(1), GT_Utility.getIntegratedCircuit(12), null, AGEssence.getFluid(144L),
+                    ItemList.Large_Fluid_Cell_Neutronium.get(4L),
+                    GT_OreDictUnificator.get(OrePrefixes.dust, PMagium, 16L),
+                    GT_OreDictUnificator.get(OrePrefixes.dust, AGEssence, 8L),
+                    GT_OreDictUnificator.get(OrePrefixes.dustTiny, CursedEntropy, 16L),
                     GT_Values.NI,
                     GT_Values.NI,
                     new int[]{10000,10000,6500,6500,0,0}, 500, 2000);

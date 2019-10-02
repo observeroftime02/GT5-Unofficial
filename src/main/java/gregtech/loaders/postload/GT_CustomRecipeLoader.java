@@ -130,6 +130,7 @@ public class GT_CustomRecipeLoader implements Runnable {
         // Macerator Recipes
         GT_Values.RA.addPulveriserRecipe(ItemList.Gamer_girl_Panties.get(1L), new ItemStack[]{GT_OreDictUnificator.get(dust, GAGPanties, 1L)}, new int[]{10000}, 120, 480);
         GT_Values.RA.addPulveriserRecipe(GT_OreDictUnificator.get(gemExquisite, SoulGem, 1L), new ItemStack[]{GT_OreDictUnificator.get(dust, SoulGem, 4L)}, new int[]{10000}, 120, 480);
+        GT_Values.RA.addPulveriserRecipe(GT_OreDictUnificator.get(bolt, SoulGem, 1L), new ItemStack[]{GT_OreDictUnificator.get(dustTiny, SoulGem, 1)}, new int[]{10000}, 120, 480);
 
         // Forge Hammer
         GT_Values.RA.addForgeHammerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 3L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L), 1200, 524000);
@@ -139,7 +140,7 @@ public class GT_CustomRecipeLoader implements Runnable {
 
         // Autoclave Recipes
         GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dust, ConcPMagium, 16L), Bathwater.getFluid(144L), GT_OreDictUnificator.get(gemExquisite, SoulGem, 1L), 7500, 216000, 131000);
-
+        GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dustTiny, SoulGem, 1L), Materials.Infinity.getMolten(8L), GT_OreDictUnificator.get(gemExquisite, SoulGem, 1L), 7500, 216000, 131000);
     }
 
     public void run2(){

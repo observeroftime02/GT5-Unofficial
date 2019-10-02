@@ -10,6 +10,8 @@ import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicGenera
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.util.GT_Recipe;
 
+import static gregtech.api.enums.GT_Values.V;
+
 public class GT_MetaTileEntity_NaquadahReactor extends GT_MetaTileEntity_BasicGenerator {
 
     private int mEfficiency;
@@ -61,6 +63,10 @@ public class GT_MetaTileEntity_NaquadahReactor extends GT_MetaTileEntity_BasicGe
                 ret = GT_Recipe.GT_Recipe_Map.sUltraHugeNaquadahReactorFuels;
                 break;
             }
+            case 9:{
+                ret = GT_Recipe.GT_Recipe_Map.sRidiculousNaquadahReactorFuels;
+                break;
+            }
             default:{
                 ret = null;
                 break;
@@ -77,6 +83,12 @@ public class GT_MetaTileEntity_NaquadahReactor extends GT_MetaTileEntity_BasicGe
     public int getEfficiency() {
         return mEfficiency == 0 ? onConfigLoad() : mEfficiency;
     }
+
+    public long maxEUStore() {
+
+        return Math.max(getEUVar(), V[mTier] * 4000L + getMinimumStoredEU());
+    }
+
 
     private int getBaseEff(){
         return mTier == 4 ? 80 : 100 + (50*(mTier-5));
