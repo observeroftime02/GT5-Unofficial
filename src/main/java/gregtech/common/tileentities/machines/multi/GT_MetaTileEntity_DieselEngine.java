@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import gregtech.api.GregTech_API;
+import gregtech.api.enums.GTNH_ExtraMaterials;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.Textures;
 import gregtech.api.gui.GT_GUIContainer_MultiMachine;
@@ -30,6 +31,7 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
     protected int fuelValue = 0;
     protected int fuelRemaining = 0;
     protected boolean boostEu = false;
+    protected boolean superboostEU = false;
 
     public GT_MetaTileEntity_DieselEngine(int aID, String aName, String aNameRegional) {
         super(aID, aName, aNameRegional);
@@ -85,21 +87,54 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
                     FluidStack tLiquid;
                     if ((tLiquid = GT_Utility.getFluidForFilledItem(aFuel.getRepresentativeInput(0), true)) != null) { //Create fluidstack from current recipe
                         if (hatchFluid1.isFluidEqual(tLiquid)) { //Has a diesel fluid
-                            fuelConsumption = tLiquid.amount = boostEu ? (4096 / aFuel.mSpecialValue) : (2048 / aFuel.mSpecialValue); //Calc fuel consumption
+                           // fuelConsumption = tLiquid.amount = boostEu ? (4096 / aFuel.mSpecialValue) : (2048 / aFuel.mSpecialValue); //Calc fuel consumption
+                            if (superboostEU) {
+                                fuelConsumption = tLiquid.amount = (12288 / aFuel.mSpecialValue);
+                            } else if (boostEu) {
+                                fuelConsumption = tLiquid.amount = (4096 / aFuel.mSpecialValue);
+                            } else {
+                                fuelConsumption = tLiquid.amount = (2048 / aFuel.mSpecialValue);
+                            }
+
                             if(depleteInput(tLiquid)) { //Deplete that amount
                                 boostEu = depleteInput(Materials.Oxygen.getGas(2L));
+                                superboostEU = depleteInput(Materials.Infinity.getMolten(2L));
 
-                                if(tFluids.contains(Materials.Lubricant.getFluid(1L))) { //Has lubricant?
+                                /*if (tFluids.contains(Materials.Lubricant.getFluid(1L))) { //Has lubricant?
                                     //Deplete Lubricant. 1000L should = 1 hour of runtime (if baseEU = 2048)
-                                    if(mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(boostEu ? 2 : 1));
+                                    //if(mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(boostEu ? 2 : 1));
+                                    if(boostEu){
+                                        depleteInput(Materials.Lubricant.getFluid(200));
+                                    }  else {
+                                        depleteInput(Materials.Lubricant.getFluid(1));
+                                    }
+                                } else if (tFluids.contains(GTNH_ExtraMaterials.Bathwater.getFluid(1L))) { //Has lubricant?
+                                    //Deplete Lubricant. 1000L should = 1 hour of runtime (if baseEU = 2048)
+                                    //if(mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(boostEu ? 2 : 1));
+                                    if(superboostEU){
+                                        depleteInput(GTNH_ExtraMaterials.Bathwater.getFluid(200));
+                                    }
+                                } else return false;*/
+
+                                if (tFluids.contains(Materials.Lubricant.getFluid(1L)) && !boostEu && !superboostEU) {
+                                    depleteInput(Materials.Lubricant.getFluid(1));
+                                } else if (tFluids.contains(Materials.Lubricant.getFluid(1L)) && boostEu && !superboostEU) {
+                                    depleteInput(Materials.Lubricant.getFluid(2));
+                                } else if (tFluids.contains(GTNH_ExtraMaterials.Bathwater.getFluid(1L)) && !boostEu && superboostEU) {
+                                    depleteInput(GTNH_ExtraMaterials.Bathwater.getFluid(1));
                                 } else return false;
+
+
+
+
 
                                 fuelValue = aFuel.mSpecialValue;
                                 fuelRemaining = hatchFluid1.amount; //Record available fuel
                                 this.mEUt = mEfficiency < 2000 ? 0 : 2048; //Output 0 if startup is less than 20%
                                 this.mProgresstime = 1;
                                 this.mMaxProgresstime = 1;
-                                this.mEfficiencyIncrease = 15;
+                                this.mEfficiencyIncrease = 100;
+                                //this.mEfficiencyIncrease = 15;
                                 return true;
                             }
                         }
@@ -229,7 +264,16 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
     }
 
     public int getMaxEfficiency(ItemStack aStack) {
-        return boostEu ? 30000 : 10000;
+
+        if (superboostEU){
+            return 60000;
+        } else if (boostEu){
+            return 30000;
+        } else {
+            return 10000;
+        }
+
+        // return boostEu ? 30000 : 10000;
     }
 
     @Override
