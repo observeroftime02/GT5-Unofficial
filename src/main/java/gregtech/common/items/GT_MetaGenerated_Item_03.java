@@ -203,7 +203,7 @@ public class GT_MetaGenerated_Item_03
         ItemList.Circuit_Biowaresupercomputer.set(addItem(tLastID = 99, "Bioware Supercomputer", "An Infinite Circuit",  new Object[]{OrePrefixes.circuit.get(Materials.Infinite), SubTag.NO_UNIFICATION}));
 
         ItemList.Circuit_Bioprocessor.set(addItem(tLastID = 97, "Bioprocessor", "An Ultimate Circuit",  new Object[]{OrePrefixes.circuit.get(Materials.Ultimate), SubTag.NO_UNIFICATION}));
-        ItemList.Special_Oredrill_Circuit.set(addItem(tLastID = 170, "Ore Drilling Controll Circuit", "Special control circuit for the Ore Drilling Plant V", o));
+        ItemList.Special_Oredrill_Circuit.set(addItem(tLastID = 170, "Ore Drilling Controll Circuit", "Special control circuit for the Ore Drilling Plant V", new Object[]{OrePrefixes.circuit.get(Materials.Quantum), SubTag.NO_UNIFICATION}));
         ItemList.Weebium_Wafer.set(addItem(tLastID = 171, "Weebium Wafer", "A Raw Weebium Wafer", o));
         ItemList.Weebium_Chip.set(addItem(tLastID = 172,"Weebium Chip", "A cut and processed Weebium Chip",o));
         ItemList.Weebium_Silicon_Boule.set(addItem(tLastID = 173, "Weebium Doped Silicon Boule", "A raw Silicon boule Doped with Weebium", o));

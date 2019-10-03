@@ -131,7 +131,7 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         setFluidContainerStats(32000 + tLastID, 0L, 16L);
         ItemList.Food_Large_Sandwich_Bacon.set(addItem(tLastID = 243, "Large Bacon Sandwich", "For Men! (and manly Women)", new GT_FoodStat(20, 1.0F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.CORPUS, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.IGNIS, 1L)));
         setFluidContainerStats(32000 + tLastID, 0L, 16L);
-        ItemList.Food_Large_Sandwich_Steak.set(addItem(tLastID = 244, "Large Steak Sandwich", "Yes, I once accidentially called it 'Steam Sandwich'", new GT_FoodStat(20, 1.0F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.CORPUS, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.IGNIS, 1L)));
+        ItemList.Food_Large_Sandwich_Steak.set(addItem(tLastID = 244, "Large Steak Sandwich", "Yes, I once accidentally called it 'Steam Sandwich'", new GT_FoodStat(20, 1.0F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.CORPUS, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.IGNIS, 1L)));
         setFluidContainerStats(32000 + tLastID, 0L, 16L);
 
         ItemList.Food_Raw_Pizza_Veggie.set(addItem(tLastID = 250, "Raw Veggie Pizza", "Into the Oven with it!", new GT_FoodStat(1, 0.2F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.HERBA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.IGNIS, 1L)));
@@ -139,7 +139,7 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         ItemList.Food_Raw_Pizza_Meat.set(addItem(tLastID = 252, "Raw Mince Meat Pizza", "Into the Oven with it!", new GT_FoodStat(2, 0.2F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.CORPUS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.IGNIS, 1L)));
 
         ItemList.Food_Baked_Pizza_Veggie.set(addItem(tLastID = 260, "Veggie Pizza", "The next they want is Gluten Free Pizzas...", new GT_FoodStat(3, 0.3F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.HERBA, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.IGNIS, 1L)));
-        ItemList.Food_Baked_Pizza_Cheese.set(addItem(tLastID = 261, "Cheese Pizza", "Pizza Magarita", new GT_FoodStat(4, 0.4F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.HERBA, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.IGNIS, 1L)));
+        ItemList.Food_Baked_Pizza_Cheese.set(addItem(tLastID = 261, "Cheese Pizza", "Pizza Margarita", new GT_FoodStat(4, 0.4F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.HERBA, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 2L), new TC_Aspects.TC_AspectStack(TC_Aspects.IGNIS, 1L)));
         ItemList.Food_Baked_Pizza_Meat.set(addItem(tLastID = 262, "Mince Meat Pizza", "Emo Pizza, it cuts itself!", new GT_FoodStat(5, 0.5F, EnumAction.eat, null, false, true, false), new TC_Aspects.TC_AspectStack(TC_Aspects.CORPUS, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.FAMES, 1L), new TC_Aspects.TC_AspectStack(TC_Aspects.IGNIS, 1L)));
 
 
@@ -179,7 +179,7 @@ public class GT_MetaGenerated_Item_02 extends GT_MetaGenerated_Item_X32 {
         setBurnValue(32000 + tLastID, 75);
         ItemList.Plank_Ebony.set(addItem(tLastID = 485, "Ebony Plank", aTextCover, new TC_Aspects.TC_AspectStack(TC_Aspects.ARBOR, 1L)));
         setBurnValue(32000 + tLastID, 75);
-        ItemList.Plank_Mahagony.set(addItem(tLastID = 486, "Mahagony Plank", aTextCover, new TC_Aspects.TC_AspectStack(TC_Aspects.ARBOR, 1L)));
+        ItemList.Plank_Mahagony.set(addItem(tLastID = 486, "Mahogany Plank", aTextCover, new TC_Aspects.TC_AspectStack(TC_Aspects.ARBOR, 1L)));
         setBurnValue(32000 + tLastID, 75);
         ItemList.Plank_Balsa.set(addItem(tLastID = 487, "Balsa Plank", aTextCover, new TC_Aspects.TC_AspectStack(TC_Aspects.ARBOR, 1L)));
         setBurnValue(32000 + tLastID, 75);

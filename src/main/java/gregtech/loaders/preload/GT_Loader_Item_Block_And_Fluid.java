@@ -76,6 +76,7 @@ public class GT_Loader_Item_Block_And_Fluid
         new GT_MetaGenerated_Item_01();
         new GT_MetaGenerated_Item_02();
         new GT_MetaGenerated_Item_03();
+        new GT_MetaGenerated_Item_04();
         new GT_MetaGenerated_Item_99();
         new GT_MetaGenerated_Tool_01();
         new GT_FluidDisplayItem();
@@ -180,43 +181,45 @@ public class GT_Loader_Item_Block_And_Fluid
             ItemList.MNqCell_1.set(new GT_RadioactiveCellIC_Item("MNqCell", "Fuel Rod (Nq* - MOX like behaviour)", 1, 100000, 2F, 1, 1F, ItemList.Depleted_MNq_1.get(1, new Object[0]), true));
             ItemList.MNqCell_2.set(new GT_RadioactiveCellIC_Item("Double_MNqCell", "Dual Fuel Rod (Nq* - MOX like behaviour)", 2, 100000, 2F, 1, 1F, ItemList.Depleted_MNq_2.get(1, new Object[0]), true));
             ItemList.MNqCell_4.set(new GT_RadioactiveCellIC_Item("Quad_MNqCell", "Quad Fuel Rod (Nq* - MOX like behaviour)", 4, 100000, 2F, 1, 1F, ItemList.Depleted_MNq_4.get(1, new Object[0]), true));
+
             ItemList.PmCell1_Dep.set(new GT_DepletetCell_Item("PmCell1_Dep", "Depleted Mahou Shoujou Fuel Rod", 1));
-            ItemList.PmCell1.set(new GT_RadioactiveCellIC_Item("PmCell1", "Mahou Shoujou Fuel Rod", 1, 2678400, 3200F, 1, 2F, ItemList.PmCell1_Dep.get(1, new Object[0]), false));
+            ItemList.PmCell1.set(new GT_RadioactiveCellIC_Item("PmCell1", "Mahou Shoujou Fuel Rod", 1, 2678400, 6990F, 1, 0F, ItemList.PmCell1_Dep.get(1, new Object[0]), false));
             ItemList.PmCell2_Dep.set(new GT_DepletetCell_Item("PmCell2_Dep", "Dual Depleted Mahou Shoujou Fuel Rod", 1));
-            ItemList.PmCell2.set(new GT_RadioactiveCellIC_Item("PmCell2", "Dual Mahou Shoujou Fuel Rod", 2, 2678400, 3200F, 1, 2F, ItemList.PmCell2_Dep.get(1, new Object[0]), false));
+            ItemList.PmCell2.set(new GT_RadioactiveCellIC_Item("PmCell2", "Dual Mahou Shoujou Fuel Rod", 2, 2678400, 6990F, 1, 0F, ItemList.PmCell2_Dep.get(1, new Object[0]), false));
             ItemList.PmCell4_Dep.set(new GT_DepletetCell_Item("PmCell4_Dep", "Quad Depleted Mahou Shoujou Fuel Rod", 1));
-            ItemList.PmCell4.set(new GT_RadioactiveCellIC_Item("PmCell4", "Quad Mahou Shoujou Fuel Rod", 4, 2678400, 3200F, 1, 2F, ItemList.PmCell4_Dep.get(1, new Object[0]), false));
+            ItemList.PmCell4.set(new GT_RadioactiveCellIC_Item("PmCell4", "Quad Mahou Shoujou Fuel Rod", 4, 2678400, 6990F, 1, 0F, ItemList.PmCell4_Dep.get(1, new Object[0]), false));
+
+            ItemList.Grief_Seed.set(new GT_RadioactiveCellIC_Item("Grief_Seed", "Grief Seed", 8, 2678400, 2147200F, 1, 0.25F, GT_OreDictUnificator.get(OrePrefixes.gem, Diamond, 1L), false));
 
 
 
 
-
-            GT_Values.RA.addCentrifugeRecipe(ItemList.PmCell1_Dep.get(1), GT_Utility.getIntegratedCircuit(12), null, AGEssence.getFluid(144L),
+            GT_Values.RA.addCentrifugeRecipe(ItemList.PmCell1_Dep.get(1), GT_Utility.getIntegratedCircuit(12), null, AGEssence.getMolten(144L),
                     ItemList.Large_Fluid_Cell_Neutronium.get(1L),
                     GT_OreDictUnificator.get(OrePrefixes.dust, PMagium, 4L),
+                    ItemList.Grief_Seed.get(1L),
                     GT_OreDictUnificator.get(OrePrefixes.dust, AGEssence, 2L),
                     GT_OreDictUnificator.get(OrePrefixes.dustTiny, CursedEntropy, 4L),
-                    GT_Values.NI,
-                    GT_Values.NI,
-                    new int[]{10000,10000,6500,6500,0,0}, 500, 2000);
+                    GT_OreDictUnificator.get(OrePrefixes.dust, GAGPanties, 2L),
+                    new int[]{10000,10000,7500,6500,9500,9500}, 500, 2000);
 
-            GT_Values.RA.addCentrifugeRecipe(ItemList.PmCell2_Dep.get(1), GT_Utility.getIntegratedCircuit(12), null, AGEssence.getFluid(144L),
+            GT_Values.RA.addCentrifugeRecipe(ItemList.PmCell2_Dep.get(1), GT_Utility.getIntegratedCircuit(12), null, AGEssence.getMolten(144L),
                     ItemList.Large_Fluid_Cell_Neutronium.get(2L),
                     GT_OreDictUnificator.get(OrePrefixes.dust, PMagium, 8L),
-                    GT_OreDictUnificator.get(OrePrefixes.dust, AGEssence, 4L),
+                    ItemList.Grief_Seed.get(1L),
                     GT_OreDictUnificator.get(OrePrefixes.dustTiny, CursedEntropy, 8L),
                     GT_OreDictUnificator.get(OrePrefixes.dust, Neutronium, 4),
-                    GT_Values.NI,
-                    new int[]{10000,10000,6500,6500,9500,0}, 500, 2000);
+                    GT_OreDictUnificator.get(OrePrefixes.dust, GAGPanties, 4L),
+                    new int[]{10000,10000,7500,6500,9500,9500}, 500, 2000);
 
-            GT_Values.RA.addCentrifugeRecipe(ItemList.PmCell4_Dep.get(1), GT_Utility.getIntegratedCircuit(12), null, AGEssence.getFluid(144L),
+            GT_Values.RA.addCentrifugeRecipe(ItemList.PmCell4_Dep.get(1), GT_Utility.getIntegratedCircuit(12), null, AGEssence.getMolten(144L),
                     ItemList.Large_Fluid_Cell_Neutronium.get(4L),
                     GT_OreDictUnificator.get(OrePrefixes.dust, PMagium, 16L),
-                    GT_OreDictUnificator.get(OrePrefixes.dust, AGEssence, 8L),
+                    ItemList.Grief_Seed.get(1L),
                     GT_OreDictUnificator.get(OrePrefixes.dustTiny, CursedEntropy, 16L),
                     GT_OreDictUnificator.get(OrePrefixes.dust, Neutronium, 8),
-                    GT_Values.NI,
-                    new int[]{10000,10000,6500,6500,9500,0}, 500, 2000);
+                    GT_OreDictUnificator.get(OrePrefixes.dust, GAGPanties, 8L),
+                    new int[]{10000,10000,7500,6500,9500,9500}, 500, 2000);
 
 
 

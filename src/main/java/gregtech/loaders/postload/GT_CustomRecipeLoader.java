@@ -16,7 +16,11 @@ import static gregtech.api.enums.GTNH_ExtraMaterials.*;
 import static gregtech.api.enums.OrePrefixes.*;
 
 
+
 public class GT_CustomRecipeLoader implements Runnable {
+
+    private static final long bits = GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.DISMANTLEABLE | GT_ModHandler.RecipeBits.BUFFERED;
+
 
     public void run() {
 
@@ -46,7 +50,7 @@ public class GT_CustomRecipeLoader implements Runnable {
 
 
         // Canner Recipes
-        GT_Values.RA.addCannerRecipe(ItemList.Large_Fluid_Cell_Neutronium.get(1L), GT_OreDictUnificator.get(gemExquisite, SoulGem, 2L), ItemList.PmCell1.get(1L), GT_Values.NI, 120, 480);
+        //GT_Values.RA.addCannerRecipe(ItemList.Large_Fluid_Cell_Neutronium.get(1L), GT_OreDictUnificator.get(gemExquisite, SoulGem, 2L), ItemList.PmCell1.get(1L), GT_Values.NI, 120, 480);
 
         // Mixer Recipes
         GT_Values.RA.addMixerRecipe(Materials.Europium.getDust(16), Materials.Tartarite.getDust(8), Materials.ElectrumFlux.getDust(6), Materials.Infinity.getDustTiny(1), Materials.CosmicNeutronium.getDust(6), GT_ModHandler.getModItem("dreamcraft", "item.TCetiESeaweedExtract", 16L, 0), Materials.GrowthMediumRaw.getFluid(20000L), Materials.BioMediumRaw.getFluid(20000L), GT_Values.NI, 300, 500000);
@@ -88,12 +92,23 @@ public class GT_CustomRecipeLoader implements Runnable {
         // Assembler Recipes
         GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 6L), GT_OreDictUnificator.get(OrePrefixes.frameGt, Weebium, 1L), ItemList.Casing_Weebium.get(1L), 50, 16);
         GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.plate, Materials.UUMatter, 6L), GT_OreDictUnificator.get(OrePrefixes.frameGt, Materials.UUMatter, 1L), ItemList.Casing_UUM.get(1L), 50, 16);
-        GT_Values.RA.addAssemblerRecipe(ItemList.PmCell1.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.PmCell2.get(1L), 2400, 7680);
-        GT_Values.RA.addAssemblerRecipe(ItemList.PmCell2.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.PmCell4.get(1L), 2400, 7680);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Large_Fluid_Cell_Neutronium.get(1L), GT_OreDictUnificator.get(gemExquisite, SoulGem, 2L), ItemList.Gamer_girl_Panties.get(2L)}, GT_Values.NF, ItemList.PmCell1.get(1L), 2400, 7680);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.PmCell1.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.Gamer_girl_Panties.get(2L)}, GT_Values.NF, ItemList.PmCell2.get(1L), 2400, 7680);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.PmCell2.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.Gamer_girl_Panties.get(2L)}, GT_Values.NF, ItemList.PmCell4.get(1L), 2400, 7680);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Neutronium, 2L), ItemList.Field_Generator_UHV.get(2L), GT_OreDictUnificator.get(cableGt04, Materials.Bedrockium, 2L), GT_OreDictUnificator.get(circuit, Materials.Quantum, 2L), ItemList.Hull_MAX.get(1L)}, GT_Values.NF, ItemList.Generator_Naquadah_Mark_X.get(1L), 120, 480);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Iron, 4L)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12012), 120, 480);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Steel, 4L)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12013), 120, 480);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.HSSG, 4L)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12014), 120, 480);
+
+
 
         if (Loader.isModLoaded("harvestcraft")) {
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_ModHandler.getModItem("harvestcraft", "cornmealItem", 16L, 0), GT_ModHandler.getModItem("harvestcraft", "cheeseItem", 1L, 0), GT_ModHandler.getModItem("harvestcraft", "chilipepperItem", 1L, 0), Materials.Salt.getDustSmall(1), GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Aluminium, 1L), GT_OreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 1L)}, Materials.Nitrogen.getGas(16L), ItemList.Doritos.get(4L), 20, 120);
         }
+
+
+
+
 
         // Compressor Recipes
         GT_Values.RA.addCompressorRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 9L), GT_OreDictUnificator.get(OrePrefixes.block, Weebium, 1L), 1200, 524000);
@@ -141,7 +156,13 @@ public class GT_CustomRecipeLoader implements Runnable {
         // Autoclave Recipes
         GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dust, ConcPMagium, 16L), Bathwater.getFluid(144L), GT_OreDictUnificator.get(gemExquisite, SoulGem, 1L), 7500, 216000, 131000);
         GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dustTiny, SoulGem, 1L), Materials.Infinity.getMolten(8L), GT_OreDictUnificator.get(gemExquisite, SoulGem, 1L), 7500, 216000, 131000);
-        GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dust, CursedEntropy, 1L), Materials.Americium.getMolten(8L), GT_OreDictUnificator.get(gem, CursedEntropy, 1L), 7500, 216000,131000);
+        GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dust, CursedEntropy, 1L), Materials.Americium.getMolten(8L), GT_OreDictUnificator.get(gem, CursedEntropy, 1L), 7500, 1000,131000);
+        GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dust, CursedEntropy, 1L), WerkstoffLoader.Ruthenium.getMolten(16), GT_OreDictUnificator.get(gem, CursedEntropy, 1L), 7500, 1200,131000);
+
+
+        // Shaped Crafting Recipes
+        GT_ModHandler.addCraftingRecipe(ItemList.Generator_Naquadah_Mark_X.get(1L), bits, new Object[]{"NCN", "FMF", "WCW", 'M', ItemList.Hull_MAX, 'F', ItemList.Field_Generator_UHV, 'C', OrePrefixes.circuit.get(Materials.Quantum), 'W', OrePrefixes.cableGt04.get(Materials.Bedrockium), 'N', OrePrefixes.stick.get(Materials.Neutronium)});
+
 
     }
 

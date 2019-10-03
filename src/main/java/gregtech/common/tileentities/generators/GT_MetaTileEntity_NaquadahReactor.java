@@ -9,6 +9,8 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_BasicGenerator;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.util.GT_Recipe;
+import gregtech.api.util.GT_Utility;
+import net.minecraft.item.ItemStack;
 
 import static gregtech.api.enums.GT_Values.V;
 
