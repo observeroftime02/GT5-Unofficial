@@ -108,7 +108,7 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
 
                                     if (mRuntime % 50 == 0 || mRuntime == 0) {
                                         if (boostEu) {
-                                            depleteInput(Materials.Oxygen.getGas(2L));
+                                            depleteInput(Materials.Oxygen.getGas(96L));
                                         }
                                         else if (superboostEU){
                                             depleteInput(GTNH_ExtraMaterials.InfiniteDiesel.getFluid(1L));
