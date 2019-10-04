@@ -97,31 +97,24 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
                             }
 
                             if(depleteInput(tLiquid)) { //Deplete that amount
-                                boostEu = depleteInput(Materials.Oxygen.getGas(2L));
-                                superboostEU = depleteInput(Materials.Infinity.getMolten(2L));
+                                //boostEu = depleteInput(Materials.Oxygen.getGas(2L));
+                                //superboostEU = depleteInput(Materials.Infinity.getMolten(2L));
+                                boostEu = depleteInput(Materials.Oxygen.getGas(0L));
+                                superboostEU = depleteInput(Materials.Infinity.getMolten(0L));
 
-                                /*if (tFluids.contains(Materials.Lubricant.getFluid(1L))) { //Has lubricant?
-                                    //Deplete Lubricant. 1000L should = 1 hour of runtime (if baseEU = 2048)
-                                    //if(mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(boostEu ? 2 : 1));
-                                    if(boostEu){
-                                        depleteInput(Materials.Lubricant.getFluid(200));
-                                    }  else {
-                                        depleteInput(Materials.Lubricant.getFluid(1));
-                                    }
-                                } else if (tFluids.contains(GTNH_ExtraMaterials.Bathwater.getFluid(1L))) { //Has lubricant?
-                                    //Deplete Lubricant. 1000L should = 1 hour of runtime (if baseEU = 2048)
-                                    //if(mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(boostEu ? 2 : 1));
-                                    if(superboostEU){
-                                        depleteInput(GTNH_ExtraMaterials.Bathwater.getFluid(200));
-                                    }
-                                } else return false;*/
+
+                                    if (mRuntime % 72 == 0 || mRuntime == 0) {
+                                        depleteInput(Materials.Infinity.getMolten(2L));
+                                        depleteInput(Materials.Oxygen.getGas(2L));}
+
+
 
                                 if (tFluids.contains(Materials.Lubricant.getFluid(1L)) && !boostEu && !superboostEU) {
-                                    depleteInput(Materials.Lubricant.getFluid(1));
+                                   if (mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(1));
                                 } else if (tFluids.contains(Materials.Lubricant.getFluid(1L)) && boostEu && !superboostEU) {
-                                    depleteInput(Materials.Lubricant.getFluid(2));
+                                    if (mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(2));
                                 } else if (tFluids.contains(GTNH_ExtraMaterials.Bathwater.getFluid(1L)) && !boostEu && superboostEU) {
-                                    depleteInput(GTNH_ExtraMaterials.Bathwater.getFluid(1));
+                                    if (mRuntime % 72 == 0 || mRuntime == 0) depleteInput(GTNH_ExtraMaterials.Bathwater.getFluid(1));
                                 } else return false;
 
 
@@ -130,7 +123,11 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
 
                                 fuelValue = aFuel.mSpecialValue;
                                 fuelRemaining = hatchFluid1.amount; //Record available fuel
-                                this.mEUt = mEfficiency < 2000 ? 0 : 2048; //Output 0 if startup is less than 20%
+                                if (superboostEU){
+                                    this.mEUt = mEfficiency < 2000 ? 0 : 21845;
+                                } else {
+                                    this.mEUt = mEfficiency < 2000 ? 0 : 2048;
+                                }
                                 this.mProgresstime = 1;
                                 this.mMaxProgresstime = 1;
                                 this.mEfficiencyIncrease = 100;
@@ -306,6 +303,8 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
 
         
         return new String[]{
+                EnumChatFormatting.GOLD+"Boost: "+ boostEu + EnumChatFormatting.RESET,
+                EnumChatFormatting.GOLD+"Superboost: "+ superboostEU + EnumChatFormatting.RESET,
                 EnumChatFormatting.BLUE+"Diesel Engine"+EnumChatFormatting.RESET,
                 StatCollector.translateToLocal("GT5U.multiblock.energy")+": " +
                 EnumChatFormatting.GREEN + Long.toString(storedEnergy) + EnumChatFormatting.RESET +" EU / "+
