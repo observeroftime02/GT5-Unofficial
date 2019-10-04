@@ -55,7 +55,7 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
                 "Engine Intake Casings must not be obstructed in front (only air blocks)",
                 "Supply Flammable Fuels and 1000L of Lubricant per hour to run.",
                 "Supply 40L of Oxygen per second to boost output (optional).",
-                "Supply Infinity Fuel Booster for maximum overdrive",
+                "Supply 1L of Infinity Fuel Booster and 4L of bathwater instead of lube a second for maximum overdrive",
                 "Default: Produces 2048EU/t at 100% efficiency",
                 "Boosted: Produces 6144EU/t at 300% efficiency",
                 "Overdrive: Produces 2097152EU/t at 400% efficiency",
@@ -106,23 +106,22 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
 
                                 //depleteInput(Materials.Oxygen.getGas(2L));
 
-                                    if (mRuntime % 50 == 0 || mRuntime == 0) {
+                                    if (mRuntime % 20 == 0 || mRuntime == 0) {
                                         if (boostEu) {
-                                            depleteInput(Materials.Oxygen.getGas(96L));
-                                        }
-                                        else if (superboostEU){
+                                            depleteInput(Materials.Oxygen.getGas(40L));
+                                        } else if (superboostEU) {
                                             depleteInput(GTNH_ExtraMaterials.InfiniteDiesel.getFluid(1L));
                                         }
-                                    }
 
+                                    }
 
 
                                 if (tFluids.contains(Materials.Lubricant.getFluid(1L)) && !boostEu && !superboostEU) {
                                    if (mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(1));
                                 } else if (tFluids.contains(Materials.Lubricant.getFluid(1L)) && boostEu && !superboostEU) {
                                     if (mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(2));
-                                } else if (tFluids.contains(Materials.Lubricant.getFluid(1L)) && !boostEu && superboostEU) {
-                                    if (mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(4));
+                                } else if (tFluids.contains(GTNH_ExtraMaterials.Bathwater.getFluid(1L)) && !boostEu && superboostEU) {
+                                    if (mRuntime % 72 == 0 || mRuntime == 0) depleteInput(GTNH_ExtraMaterials.Bathwater.getFluid(4));
                                 } else return false;
 
 
@@ -138,8 +137,12 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
                                 }
                                 this.mProgresstime = 1;
                                 this.mMaxProgresstime = 1;
-                                this.mEfficiencyIncrease = 15;
                                 //this.mEfficiencyIncrease = 15;
+                                if (superboostEU){
+                                    this.mEfficiencyIncrease = 500;
+                                } else {
+                                    this.mEfficiencyIncrease = 15;
+                                }
                                 return true;
                             }
                         }
