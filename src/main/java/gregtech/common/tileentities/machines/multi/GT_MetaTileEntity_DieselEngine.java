@@ -55,8 +55,10 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
                 "Engine Intake Casings must not be obstructed in front (only air blocks)",
                 "Supply Flammable Fuels and 1000L of Lubricant per hour to run.",
                 "Supply 40L of Oxygen per second to boost output (optional).",
+                "Supply Infinity Fuel Booster for maximum overdrive",
                 "Default: Produces 2048EU/t at 100% efficiency",
-                "Boosted: Produces 6144EU/t at 150% efficiency",
+                "Boosted: Produces 6144EU/t at 300% efficiency",
+                "Overdrive: Produces 2097152EU/t at 400% efficiency",
                 "Causes " + 20 * getPollutionPerTick(null) + " Pollution per second"};
     }
 
@@ -89,7 +91,7 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
                         if (hatchFluid1.isFluidEqual(tLiquid)) { //Has a diesel fluid
                            // fuelConsumption = tLiquid.amount = boostEu ? (4096 / aFuel.mSpecialValue) : (2048 / aFuel.mSpecialValue); //Calc fuel consumption
                             if (superboostEU) {
-                                fuelConsumption = tLiquid.amount = (12288 / aFuel.mSpecialValue);
+                                fuelConsumption = tLiquid.amount = (6144 / aFuel.mSpecialValue);
                             } else if (boostEu) {
                                 fuelConsumption = tLiquid.amount = (4096 / aFuel.mSpecialValue);
                             } else {
@@ -100,12 +102,18 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
                                 //boostEu = depleteInput(Materials.Oxygen.getGas(2L));
                                 //superboostEU = depleteInput(Materials.Infinity.getMolten(2L));
                                 boostEu = depleteInput(Materials.Oxygen.getGas(0L));
-                                superboostEU = depleteInput(Materials.Infinity.getMolten(0L));
+                                superboostEU = depleteInput(GTNH_ExtraMaterials.InfiniteDiesel.getFluid(0L));
 
+                                depleteInput(Materials.Oxygen.getGas(2L));
 
                                     if (mRuntime % 72 == 0 || mRuntime == 0) {
-                                        depleteInput(Materials.Infinity.getMolten(2L));
-                                        depleteInput(Materials.Oxygen.getGas(2L));}
+                                        if (boostEu) {
+                                            //depleteInput(Materials.Oxygen.getGas(2L));
+                                        }
+                                        else if (superboostEU){
+                                            depleteInput(GTNH_ExtraMaterials.InfiniteDiesel.getFluid(1L));
+                                        }
+                                    }
 
 
 
@@ -113,8 +121,8 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
                                    if (mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(1));
                                 } else if (tFluids.contains(Materials.Lubricant.getFluid(1L)) && boostEu && !superboostEU) {
                                     if (mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(2));
-                                } else if (tFluids.contains(GTNH_ExtraMaterials.Bathwater.getFluid(1L)) && !boostEu && superboostEU) {
-                                    if (mRuntime % 72 == 0 || mRuntime == 0) depleteInput(GTNH_ExtraMaterials.Bathwater.getFluid(1));
+                                } else if (tFluids.contains(Materials.Lubricant.getFluid(1L)) && !boostEu && superboostEU) {
+                                    if (mRuntime % 72 == 0 || mRuntime == 0) depleteInput(Materials.Lubricant.getFluid(4));
                                 } else return false;
 
 
@@ -124,13 +132,13 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
                                 fuelValue = aFuel.mSpecialValue;
                                 fuelRemaining = hatchFluid1.amount; //Record available fuel
                                 if (superboostEU){
-                                    this.mEUt = mEfficiency < 2000 ? 0 : 21845;
+                                    this.mEUt = mEfficiency < 2000 ? 0 : 524288;
                                 } else {
                                     this.mEUt = mEfficiency < 2000 ? 0 : 2048;
                                 }
                                 this.mProgresstime = 1;
                                 this.mMaxProgresstime = 1;
-                                this.mEfficiencyIncrease = 100;
+                                this.mEfficiencyIncrease = 15;
                                 //this.mEfficiencyIncrease = 15;
                                 return true;
                             }
@@ -263,7 +271,7 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
     public int getMaxEfficiency(ItemStack aStack) {
 
         if (superboostEU){
-            return 60000;
+            return 40000;
         } else if (boostEu){
             return 30000;
         } else {
@@ -309,7 +317,8 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
                 StatCollector.translateToLocal("GT5U.multiblock.energy")+": " +
                 EnumChatFormatting.GREEN + Long.toString(storedEnergy) + EnumChatFormatting.RESET +" EU / "+
                 EnumChatFormatting.YELLOW + Long.toString(maxEnergy) + EnumChatFormatting.RESET +" EU",
-                StatCollector.translateToLocal("GT5U.engine.output")+": " +EnumChatFormatting.RED+(-mEUt*mEfficiency/10000)+EnumChatFormatting.RESET+" EU/t",
+                //StatCollector.translateToLocal("GT5U.engine.output")+": " +EnumChatFormatting.RED+(-mEUt*mEfficiency/10000)+EnumChatFormatting.RESET+" EU/t",
+                StatCollector.translateToLocal("GT5U.engine.output")+": " +EnumChatFormatting.RED+(mEUt*(mEfficiency/10000))+EnumChatFormatting.RESET+" EU/t",
                 StatCollector.translateToLocal("GT5U.engine.consumption")+": " +EnumChatFormatting.YELLOW+fuelConsumption+EnumChatFormatting.RESET+" L/t",
                 StatCollector.translateToLocal("GT5U.engine.value")+": " +EnumChatFormatting.YELLOW+fuelValue+EnumChatFormatting.RESET+" EU/L",
                 StatCollector.translateToLocal("GT5U.turbine.fuel")+": " +EnumChatFormatting.GOLD+fuelRemaining+EnumChatFormatting.RESET+" L",
