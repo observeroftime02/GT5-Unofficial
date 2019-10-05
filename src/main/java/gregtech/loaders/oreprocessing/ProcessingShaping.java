@@ -45,16 +45,22 @@ public class ProcessingShaping implements gregtech.api.interfaces.IOreRecipeRegi
 
                     GT_Values.RA.addExtruderRecipe(GT_Utility.copyAmount(12L, new Object[]{aStack}), ItemList.Shape_Extruder_Pipe_Huge.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.pipeHuge, aMaterial.mSmeltInto, tAmount), 96 * tAmount, 8 * tVoltageMultiplier);
                     GT_Values.RA.addExtruderRecipe(GT_Utility.copyAmount(1L, new Object[]{aStack}), ItemList.Shape_Extruder_Plate.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.plate, aMaterial.mSmeltInto, tAmount), (int) Math.max(aMaterialMass * 1L * tAmount, tAmount), 8 * tVoltageMultiplier);
-                    GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, aMaterial, 1L), ItemList.Shape_Extruder_Small_Gear.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.gearGtSmall, aMaterial.mSmeltInto, tAmount), (int) Math.max(aMaterialMass * 1L * tAmount, tAmount), 8 * tVoltageMultiplier);
+                   if (!aMaterial.contains(SubTag.NO_GEAR_RECIPE_GEN)) {
+                       GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, aMaterial, 1L), ItemList.Shape_Extruder_Small_Gear.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.gearGtSmall, aMaterial.mSmeltInto, tAmount), (int) Math.max(aMaterialMass * 1L * tAmount, tAmount), 8 * tVoltageMultiplier);
+                   }
+                if (!aMaterial.contains(SubTag.NO_ROTOR_RECIPE_GEN)) {
                     GT_Values.RA.addExtruderRecipe(GT_Utility.copyAmount(6L, new Object[]{aStack}), ItemList.Shape_Extruder_Turbine_Blade.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.turbineBlade, aMaterial.mSmeltInto, tAmount), (int) Math.max(aMaterialMass * 1L * tAmount, tAmount), 8 * tVoltageMultiplier);
-                if (!(aMaterial == Materials.AnnealedCopper || aMaterial == Materials.WroughtIron)) {
+                    }
+                    if (!(aMaterial == Materials.AnnealedCopper || aMaterial == Materials.WroughtIron)) {
                         GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Ring.get(0L, new Object[0]), aMaterial.getMolten(36L), GT_OreDictUnificator.get(OrePrefixes.ring, aMaterial, 1L), 100, 4 * tVoltageMultiplier);
                         GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Screw.get(0L, new Object[0]), aMaterial.getMolten(18L), GT_OreDictUnificator.get(OrePrefixes.screw, aMaterial, 1L), 50, 2 * tVoltageMultiplier);
                         GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Rod.get(0L, new Object[0]), aMaterial.getMolten(72L), GT_OreDictUnificator.get(OrePrefixes.stick, aMaterial, 1L), 150, 8 * tVoltageMultiplier);
                         GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Bolt.get(0L, new Object[0]), aMaterial.getMolten(18L), GT_OreDictUnificator.get(OrePrefixes.bolt, aMaterial, 1L), 50, 2 * tVoltageMultiplier);
                         GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Round.get(0L, new Object[0]), aMaterial.getMolten(18L), GT_OreDictUnificator.get(OrePrefixes.round, aMaterial, 1L), 50, 2 * tVoltageMultiplier);
                         GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Rod_Long.get(0L, new Object[0]), aMaterial.getMolten(144L), GT_OreDictUnificator.get(OrePrefixes.stickLong, aMaterial, 1L), 300, 8 * tVoltageMultiplier);
+                    if (!aMaterial.contains(SubTag.NO_ROTOR_RECIPE_GEN)) {
                         GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Turbine_Blade.get(0L, new Object[0]), aMaterial.getMolten(864L), GT_OreDictUnificator.get(OrePrefixes.turbineBlade, aMaterial, 1L), 400, 8 * tVoltageMultiplier);
+                         }
                         GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Pipe_Tiny.get(0L, new Object[0]), aMaterial.getMolten(72L), GT_OreDictUnificator.get(OrePrefixes.pipeTiny, aMaterial, 1L), 20, 8 * tVoltageMultiplier);
                         GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Pipe_Small.get(0L, new Object[0]), aMaterial.getMolten(144L), GT_OreDictUnificator.get(OrePrefixes.pipeSmall, aMaterial, 1L), 40, 8 * tVoltageMultiplier);
                         GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Pipe_Medium.get(0L, new Object[0]), aMaterial.getMolten(432L), GT_OreDictUnificator.get(OrePrefixes.pipeMedium, aMaterial, 1L), 80, 8 * tVoltageMultiplier);
@@ -80,10 +86,13 @@ public class ProcessingShaping implements gregtech.api.interfaces.IOreRecipeRegi
                 GT_Values.RA.addExtruderRecipe(GT_Utility.copyAmount(6L, new Object[]{aStack}), ItemList.Shape_Extruder_Hammer.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.toolHeadHammer, aMaterial.mSmeltInto, tAmount), (int) Math.max(aMaterialMass * 6L * tAmount, tAmount), 8 * tVoltageMultiplier);
                 GT_Values.RA.addExtruderRecipe(GT_Utility.copyAmount(2L, new Object[]{aStack}), ItemList.Shape_Extruder_File.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.toolHeadFile, aMaterial.mSmeltInto, tAmount), (int) Math.max(aMaterialMass * 2L * tAmount, tAmount), 8 * tVoltageMultiplier);
                 GT_Values.RA.addExtruderRecipe(GT_Utility.copyAmount(2L, new Object[]{aStack}), ItemList.Shape_Extruder_Saw.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.toolHeadSaw, aMaterial.mSmeltInto, tAmount), (int) Math.max(aMaterialMass * 2L * tAmount, tAmount), 8 * tVoltageMultiplier);
-                GT_Values.RA.addExtruderRecipe(GT_Utility.copyAmount(4L, new Object[]{aStack}), ItemList.Shape_Extruder_Gear.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.gearGt, aMaterial.mSmeltInto, tAmount), (int) Math.max(aMaterialMass * 5L * tAmount, tAmount), 8 * tVoltageMultiplier);
-
+                if (!aMaterial.contains(SubTag.NO_GEAR_RECIPE_GEN)) {
+                    GT_Values.RA.addExtruderRecipe(GT_Utility.copyAmount(4L, new Object[]{aStack}), ItemList.Shape_Extruder_Gear.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.gearGt, aMaterial.mSmeltInto, tAmount), (int) Math.max(aMaterialMass * 5L * tAmount, tAmount), 8 * tVoltageMultiplier);
+                }
                 GT_Values.RA.addAlloySmelterRecipe(GT_Utility.copyAmount(2L, new Object[]{aStack}), ItemList.Shape_Mold_Plate.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.plate, aMaterial.mSmeltInto, tAmount), (int) Math.max(aMaterialMass * 2L * tAmount, tAmount), 2 * tVoltageMultiplier);
-                GT_Values.RA.addAlloySmelterRecipe(GT_Utility.copyAmount(8L, new Object[]{aStack}), ItemList.Shape_Mold_Gear.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.gearGt, aMaterial.mSmeltInto, tAmount), (int) Math.max(aMaterialMass * 10L * tAmount, tAmount), 2 * tVoltageMultiplier);
+                if (!aMaterial.contains(SubTag.NO_GEAR_RECIPE_GEN)) {
+                    GT_Values.RA.addAlloySmelterRecipe(GT_Utility.copyAmount(8L, new Object[]{aStack}), ItemList.Shape_Mold_Gear.get(0L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.gearGt, aMaterial.mSmeltInto, tAmount), (int) Math.max(aMaterialMass * 10L * tAmount, tAmount), 2 * tVoltageMultiplier);
+                }
                 switch (aMaterial.mSmeltInto.mName) {
                     case "Glass":
                         GT_Values.RA.addExtruderRecipe(GT_Utility.copyAmount(1L, new Object[]{aStack}), ItemList.Shape_Extruder_Bottle.get(0L, new Object[0]), new ItemStack(Items.glass_bottle, 1), tAmount * 32, 16);

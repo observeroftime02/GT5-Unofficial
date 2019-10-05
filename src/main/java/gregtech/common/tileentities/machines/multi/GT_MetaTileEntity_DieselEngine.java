@@ -286,7 +286,12 @@ public class GT_MetaTileEntity_DieselEngine extends GT_MetaTileEntity_MultiBlock
 
     @Override
     public int getPollutionPerTick(ItemStack aStack) {
-        return 24;
+
+        if (superboostEU){
+        return 1;
+        } else {
+            return 24;
+        }
     }
     
     @Override

@@ -140,7 +140,7 @@ public enum Element {
        
     Ma(0, 0, 100, -1, null, "Magic", false),
     Nq(130, 200, 0, -1, null, "Naquadah", false),
-    Wb(124, 124, 0, -0, null, "Weebium", false),
+    Wb(400, 800, 0, -0, null, "Weebium", false),
     Nt(0, 1000, 0, -1, null, "Neutronium", false),
 
     $H(-1, -0, 0, -1, null, "Anti-Hydrogen", false),
@@ -274,7 +274,7 @@ public enum Element {
 
     $Ma(0, 0, -100, -1, null, "Anti-Magic", false),
     $Nq(-130, -200, 0, -1, null, "Anti-Naquadah", false),
-    $Wb(-124, -124, 0, -1, null, "Anti-Weebium", false),
+    $Wb(-400, -800, 0, -1, null, "Anti-Weebium", false),
     $Nt(0, -10000, 0, -1, null, "Anti-Neutronium", false);
 
     public static volatile int VERSION = 509;

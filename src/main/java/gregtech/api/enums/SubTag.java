@@ -110,6 +110,10 @@ public final class SubTag implements ICondition<ISubTagContainer> {
 
     public static final SubTag NO_GEM_RECIPE_GEN = getNewSubTag("NO_GEM_RECIPE_GEN");
 
+    public static final SubTag NO_GEAR_RECIPE_GEN = getNewSubTag("NO_GEAR_RECIPE_GEN");
+
+    public static final SubTag NO_ROTOR_RECIPE_GEN = getNewSubTag("NO_ROTOR_RECIPE_GEN");
+
     /**
      * This Material can be molten into a Fluid
      */

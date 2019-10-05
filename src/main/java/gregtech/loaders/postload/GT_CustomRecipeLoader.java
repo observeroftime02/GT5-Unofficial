@@ -109,14 +109,11 @@ public class GT_CustomRecipeLoader implements Runnable {
         }
 
 
-
-
-
         // Compressor Recipes
         GT_Values.RA.addCompressorRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 9L), GT_OreDictUnificator.get(OrePrefixes.block, Weebium, 1L), 1200, 524000);
 
         // Fusion Reactor Recipes
-        GT_Values.RA.addFusionReactorRecipe(Materials.Neutronium.getMolten(98), Materials.Europium.getMolten(98), GTNH_ExtraMaterials.Weebium.getPlasma(169), 16, 8192, 150000000);//FT1
+        GT_Values.RA.addFusionReactorRecipe(Materials.Neutronium.getMolten(32), Materials.Europium.getMolten(40), GTNH_ExtraMaterials.Weebium.getPlasma(72), 20, 95000, 500000000);//FT1
 
 
         // Wiremill Recipes
@@ -125,11 +122,13 @@ public class GT_CustomRecipeLoader implements Runnable {
 
         // Bending Machine
         GT_Values.RA.addBenderRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 1L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 1L), 1200, 524000);
+        GT_Values.RA.addBenderRecipe(GT_OreDictUnificator.get(plate, Weebium, 1L), GT_OreDictUnificator.get(foil, Weebium, 4L), 1200, 524000);
 
         // Extruder
-        GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 9L), ItemList.Shape_Extruder_Block.get(0L), GT_OreDictUnificator.get(OrePrefixes.block, Weebium, 1L), 1200, 524000);
-        GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 1L), ItemList.Shape_Extruder_Plate.get(0L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 1L), 1200, 524000);
-
+        GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(ingot, Weebium, 9L), ItemList.Shape_Extruder_Block.get(0L), GT_OreDictUnificator.get(block, Weebium, 1L), 1200, 524000);
+        GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(ingot, Weebium, 1L), ItemList.Shape_Extruder_Plate.get(0L), GT_OreDictUnificator.get(plate, Weebium, 1L), 1200, 524000);
+        GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(ingot, Weebium, 1), ItemList.Shape_Extruder_Small_Gear.get(0L), GT_OreDictUnificator.get(gearGtSmall, Weebium, 1L), 1200, 524000);
+        GT_Values.RA.addExtruderRecipe(GT_OreDictUnificator.get(ingot, Weebium, 6L), ItemList.Shape_Extruder_Turbine_Blade.get(0L), GT_OreDictUnificator.get(turbineBlade, Weebium, 1L), 1200, 524000);
 
         // Alloy Smelter
         GT_Values.RA.addAlloySmelterRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 9L), ItemList.Shape_Mold_Block.get(0), GT_OreDictUnificator.get(OrePrefixes.block, Weebium, 1L), 1200, 524000);

@@ -197,7 +197,7 @@ public class ProcessingToolHead implements gregtech.api.interfaces.IOreRecipeReg
                 GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.turbineBlade, aMaterial, 24L), GT_OreDictUnificator.get(OrePrefixes.stickLong, GTNH_ExtraMaterials.Weebium, 1L), GT_MetaGenerated_Tool_01.INSTANCE.getToolWithStats(180, 1, aMaterial, aMaterial, null), 2560, 12800);
                 GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.turbineBlade, aMaterial, 40L), GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Infinity, 4L), GTNH_ExtraMaterials.Weebium.getMolten(1152L), GT_MetaGenerated_Tool_01.INSTANCE.getToolWithStats(182, 1, aMaterial, aMaterial, null), 2560, 12800);
 
-                if (aSpecialRecipeReq2) {
+                if (aSpecialRecipeReq2 && !aMaterial.contains(SubTag.NO_ROTOR_RECIPE_GEN)) {
                     GT_ModHandler.addCraftingRecipe(GT_OreDictUnificator.get(OrePrefixes.turbineBlade, aMaterial, 1L), GT_Proxy.tBits, new Object[]{"fPd", "SPS", " P ", 'P', aMaterial == Materials.Wood ? OrePrefixes.plank.get(aMaterial) : OrePrefixes.plateDouble.get(aMaterial), 'R', OrePrefixes.ring.get(aMaterial), 'S', OrePrefixes.screw.get(aMaterial)});
                     GT_Values.RA.addFormingPressRecipe(GT_OreDictUnificator.get(OrePrefixes.plateDouble, aMaterial, 3L), GT_OreDictUnificator.get(OrePrefixes.screw, aMaterial, 2L), GT_OreDictUnificator.get(OrePrefixes.turbineBlade, aMaterial, 1L), 200, 60);
                 }
