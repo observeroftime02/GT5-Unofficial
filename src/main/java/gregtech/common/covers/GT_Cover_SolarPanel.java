@@ -15,6 +15,7 @@ public class GT_Cover_SolarPanel
         extends GT_CoverBehavior {
     private final int mVoltage;
     public boolean mMultiAmp;
+    public long mAmpere;
 
     public GT_Cover_SolarPanel(int aVoltage) {
         this.mVoltage = aVoltage;
@@ -23,8 +24,14 @@ public class GT_Cover_SolarPanel
     public GT_Cover_SolarPanel(int aVoltage, boolean aMultiAmp) {
         this.mVoltage = aVoltage;
         this.mMultiAmp = aMultiAmp;
+        mAmpere = 16L;
     }
 
+    public GT_Cover_SolarPanel(int aVoltage, boolean aMultiAmp, long aAmpere) {
+        this.mVoltage = aVoltage;
+        this.mMultiAmp = aMultiAmp;
+        this.mAmpere = aAmpere;
+    }
 
 
     public int doCoverThings(byte aSide, byte aInputRedstone, int aCoverID, int aCoverVariable, ICoverable aTileEntity, long aTimer) {
@@ -56,7 +63,7 @@ public class GT_Cover_SolarPanel
 
         if (mMultiAmp) {
             if (coverState == 1 || (coverState == 2 && aTimer % 8L == 0L)) {
-                aTileEntity.injectEnergyUnits((byte) 6, ((100L - (long) coverNum) * ((long) this.mVoltage)) / 100L, 16L);
+                aTileEntity.injectEnergyUnits((byte) 6, ((100L - (long) coverNum) * ((long) this.mVoltage)) / 100L, mAmpere);
             }
         } else {
             if (coverState == 1 || (coverState == 2 && aTimer % 8L == 0L)) {

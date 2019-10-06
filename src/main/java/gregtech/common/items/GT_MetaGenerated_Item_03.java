@@ -232,7 +232,7 @@ public class GT_MetaGenerated_Item_03
         GregTech_API.registerCover(ItemList.Cover_SolarPanel_UHV.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UHV), new GT_Cover_SolarPanel(2097152));
         GregTech_API.registerCover(ItemList.Cover_SolarPanel_UEV.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UEV), new GT_Cover_SolarPanel(8388608));
         GregTech_API.registerCover(ItemList.Cover_SolarPanel_UIV.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UIV), new GT_Cover_SolarPanel(33554432));
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UHVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UHVx16), new GT_Cover_SolarPanel(2097152, true));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UHVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UHVx16), new GT_Cover_SolarPanel(2097152, true, 8L));
         GregTech_API.registerCover(ItemList.Cover_SolarPanel_UMVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UHVx16), new GT_Cover_SolarPanel(134217728, true));
 
 
