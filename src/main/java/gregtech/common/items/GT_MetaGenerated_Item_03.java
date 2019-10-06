@@ -225,10 +225,16 @@ public class GT_MetaGenerated_Item_03
         ItemList.Cover_SolarPanel_UHV.set(addItem(tLastID = 130, "Solar Panel (UHV)", "Ultimate High Voltage Solar Panel (Needs cleaning with right click)", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.ELECTRUM, 128L), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 128L), new TC_Aspects.TC_AspectStack(TC_Aspects.TENEBRAE, 128L)}));
         ItemList.Cover_SolarPanel_UEV.set(addItem(tLastID = 131, "Solar Panel (UEV)", "Ultimate Extreme Voltage Solar Panel (Needs cleaning with right click)", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.ELECTRUM, 256L), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 256L), new TC_Aspects.TC_AspectStack(TC_Aspects.TENEBRAE, 256L)}));
         ItemList.Cover_SolarPanel_UIV.set(addItem(tLastID = 132, "Solar Panel (UIV)", "Ultimate Insane Voltage Solar Panel (Needs cleaning with right click)", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.ELECTRUM, 512L), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 512L), new TC_Aspects.TC_AspectStack(TC_Aspects.TENEBRAE, 512L)}));
+        ItemList.Cover_SolarPanel_UHVx16.set(addItem(tLastID = 133, "Solar Panel (UHV) 16A", "Hi-Amp Ultimate High Voltage Solar Panel (Needs cleaning with right click)", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.ELECTRUM, 1024L), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 1024L), new TC_Aspects.TC_AspectStack(TC_Aspects.TENEBRAE, 1024L)}));
+        ItemList.Cover_SolarPanel_UMVx16.set(addItem(tLastID = 134, "Solar Panel (UMV) 16A", "Hi-Amp Mega Ultimate Voltage Solar Panel (Needs cleaning with right click)", new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.ELECTRUM, 1024L), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 1024L), new TC_Aspects.TC_AspectStack(TC_Aspects.TENEBRAE, 1024L)}));
+
 
         GregTech_API.registerCover(ItemList.Cover_SolarPanel_UHV.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UHV), new GT_Cover_SolarPanel(2097152));
         GregTech_API.registerCover(ItemList.Cover_SolarPanel_UEV.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UEV), new GT_Cover_SolarPanel(8388608));
         GregTech_API.registerCover(ItemList.Cover_SolarPanel_UIV.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UIV), new GT_Cover_SolarPanel(33554432));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UHVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UHVx16), new GT_Cover_SolarPanel(2097152, true));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UMVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UHVx16), new GT_Cover_SolarPanel(134217728, true));
+
 
         ItemList.ULV_Coil.set(addItem(tLastID = 140, "Ultra Low Voltage Coil", "Primitive Coil", o));
         ItemList.LV_Coil.set(addItem(tLastID = 141, "Low Voltage Coil", "Basic Coil", o));
