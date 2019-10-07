@@ -84,7 +84,7 @@ public class GT_Cover_SolarPanel
     public boolean onCoverRightclick(byte aSide, int aCoverID, int aCoverVariable, ICoverable aTileEntity, EntityPlayer aPlayer, float aX, float aY, float aZ) {
         if(aPlayer.capabilities.isCreativeMode){
             GT_Utility.sendChatToPlayer(aPlayer,"Cleaned solar panel from "+(aCoverVariable>>2)+"% dirt");
-            GT_Utility.sendChatToPlayer(aPlayer,"Special Multi-Amp status: "+ EnumChatFormatting.GREEN + mMultiAmp + EnumChatFormatting.RESET +".");
+            GT_Utility.sendChatToPlayer(aPlayer,"Special Multi-Amp status: "+ EnumChatFormatting.GREEN + mMultiAmp + EnumChatFormatting.RESET + ", outputting " + EnumChatFormatting.RED + mAmpere + EnumChatFormatting.RESET +" Ampere.");
             aTileEntity.setCoverDataAtSide(aSide, (aCoverVariable & 0x3));
             return true;
         }
