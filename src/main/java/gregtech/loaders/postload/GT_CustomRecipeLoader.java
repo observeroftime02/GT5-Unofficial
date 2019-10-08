@@ -12,6 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import com.github.bartimaeusnek.bartworks.system.material.WerkstoffLoader;
 
+import java.util.function.LongToIntFunction;
+
 import static gregtech.api.enums.GTNH_ExtraMaterials.*;
 import static gregtech.api.enums.OrePrefixes.*;
 
@@ -102,6 +104,16 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Steel, 4L)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12013), 120, 480);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.HSSG, 4L)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12014), 120, 480);
 
+                // Solar Pannels
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_LV.get(14L), ItemList.Weebium_Chip.get(2L), ItemList.Gamer_girl_Panties.get(2L), ItemList.Circuit_Parts_DiodeSMD.get(2L), GT_OreDictUnificator.get(cableGt16, Materials.RedstoneAlloy, 2L)}, GT_Values.NF, ItemList.Cover_SolarPanel_LVx16.get(1L), 32, 32, true);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_MV.get(14L), ItemList.Weebium_Chip.get(4L), ItemList.Gamer_girl_Panties.get(4L), ItemList.Circuit_Parts_DiodeSMD.get(4L), GT_OreDictUnificator.get(wireGt16, Materials.SuperconductorMV, 4L)}, GT_Values.NF, ItemList.Cover_SolarPanel_MVx16.get(1L), 128, 128, true);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_HV.get(14L), ItemList.Weebium_Chip.get(8L), ItemList.Gamer_girl_Panties.get(8L), ItemList.Circuit_Parts_DiodeSMD.get(8L), GT_OreDictUnificator.get(wireGt16, Materials.SuperconductorHV, 8L)}, GT_Values.NF, ItemList.Cover_SolarPanel_HVx16.get(1L), 512, 512, true);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_EV.get(14L), ItemList.Weebium_Chip.get(12L), ItemList.Gamer_girl_Panties.get(12L), ItemList.Circuit_Parts_DiodeSMD.get(12L), GT_OreDictUnificator.get(wireGt16, Materials.SuperconductorEV, 12L)}, GT_Values.NF, ItemList.Cover_SolarPanel_EVx16.get(1L), 2048, 2048, true);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_IV.get(14L), ItemList.Weebium_Chip.get(20L), ItemList.Gamer_girl_Panties.get(20L), ItemList.Circuit_Parts_DiodeSMD.get(20L), GT_OreDictUnificator.get(wireGt16, Materials.SuperconductorIV, 20L)}, GT_Values.NF, ItemList.Cover_SolarPanel_IVx16.get(1L), 8192, 8192, true);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_LuV.get(14L), ItemList.Weebium_Chip.get(26L), ItemList.Gamer_girl_Panties.get(26L), ItemList.Circuit_Parts_DiodeSMD.get(26L), GT_OreDictUnificator.get(wireGt16, Materials.SuperconductorLuV, 26L)}, GT_Values.NF, ItemList.Cover_SolarPanel_LuVx16.get(1L), 32768, 32768, true);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_ZPM.get(14L), ItemList.Weebium_Chip.get(32L), ItemList.Gamer_girl_Panties.get(32L), ItemList.Circuit_Parts_DiodeSMD.get(32L), GT_OreDictUnificator.get(wireGt16, Materials.SuperconductorZPM, 32L)}, GT_Values.NF, ItemList.Cover_SolarPanel_ZPMx16.get(1L), 131072, 131072, true);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_UV.get(14L), ItemList.Weebium_Chip.get(40L), ItemList.Gamer_girl_Panties.get(40L), ItemList.Circuit_Parts_DiodeSMD.get(40L), GT_OreDictUnificator.get(wireGt16, Materials.SuperconductorUV, 40L)}, GT_Values.NF, ItemList.Cover_SolarPanel_UVx16.get(1L), 524288, 524288, true);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_UHV.get(14L), ItemList.Weebium_Chip.get(48L), ItemList.Gamer_girl_Panties.get(48L), ItemList.Circuit_Parts_DiodeSMD.get(48L), GT_OreDictUnificator.get(wireGt16, Materials.SuperconductorUHV, 48L)}, GT_Values.NF, ItemList.Cover_SolarPanel_UHVx16.get(1L), 2097152, 2097152, true);
 
 
         if (Loader.isModLoaded("harvestcraft")) {
