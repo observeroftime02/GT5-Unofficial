@@ -1,5 +1,7 @@
 package gregtech.common.covers;
 
+import com.dreammaster.lib.Refstrings;
+import eu.usrv.yamcore.auxiliary.LogHelper;
 import forestry.core.genetics.alleles.EnumAllele;
 import gregtech.api.interfaces.tileentity.ICoverable;
 import gregtech.api.util.GT_CoverBehavior;
@@ -16,6 +18,8 @@ public class GT_Cover_SolarPanel
     private final int mVoltage;
     public boolean mMultiAmp;
     public long mAmpere;
+    public static LogHelper Logger = new LogHelper("GT5U");
+
 
     public GT_Cover_SolarPanel(int aVoltage) {
         this.mVoltage = aVoltage;
@@ -30,9 +34,11 @@ public class GT_Cover_SolarPanel
 
 
     public int doCoverThings(byte aSide, byte aInputRedstone, int aCoverID, int aCoverVariable, ICoverable aTileEntity, long aTimer) {
-        if(aSide != 1)return 0;
+        //if(aSide != 1)return 0;
         int coverState=aCoverVariable&0x3;
         int coverNum=aCoverVariable>>2;
+
+        /*
         if (aTimer % 100L == 0L) {
             if (aTileEntity.getWorld().isThundering()) {
                 return aTileEntity.getBiome().rainfall > 0.0F && aTileEntity.getSkyAtSide(aSide) ? Math.min(20,coverNum)<<2 : coverNum<<2;
@@ -54,8 +60,32 @@ public class GT_Cover_SolarPanel
                     }
                 }
             }
+        } */
+
+        if (aTimer % 100 == 0) {
+            if (aTileEntity.getWorld().isDaytime()){
+                coverState=1;
+            } else {
+                coverState=2;
+            }
         }
 
+        if (mMultiAmp){
+            if (coverState == 1){
+                aTileEntity.injectEnergyUnits((byte) 6, mVoltage, mAmpere);
+            } else if (coverState == 2) {
+                if (aTimer % 4L == 0) aTileEntity.injectEnergyUnits((byte) 6, mVoltage, mAmpere);
+            }
+
+        } else {
+            if (coverState == 1){
+                aTileEntity.injectEnergyUnits((byte) 6, mVoltage, 1L);
+            } else if (coverState == 2) {
+                if (aTimer % 4L == 0) aTileEntity.injectEnergyUnits((byte) 6, mVoltage, 1L);
+            }
+        }
+
+        /*
         if (mMultiAmp) {
             if (coverState == 1 || (coverState == 2 && aTimer % 8L == 0L)) {
                 aTileEntity.injectEnergyUnits((byte) 6, ((100L - (long) coverNum) * ((long) this.mVoltage)) / 100L, mAmpere);
@@ -64,11 +94,12 @@ public class GT_Cover_SolarPanel
             if (coverState == 1 || (coverState == 2 && aTimer % 8L == 0L)) {
                 aTileEntity.injectEnergyUnits((byte) 6, ((100L - (long) coverNum) * ((long) this.mVoltage)) / 100L, 1L);
             }
-        }
+        }*/
 
        /* if (coverState == 1 || (coverState == 2 && aTimer % 8L == 0L)) {
             aTileEntity.injectEnergyUnits((byte) 6, ((100L-(long)coverNum)*((long)this.mVoltage))/100L, 1L);
         } */
+
 
         if(aTimer % 28800L == 0L && coverNum<100 && (coverNum>10 || XSTR_INSTANCE.nextInt(3)==2))
             coverNum++;
@@ -79,6 +110,7 @@ public class GT_Cover_SolarPanel
     public boolean onCoverRightclick(byte aSide, int aCoverID, int aCoverVariable, ICoverable aTileEntity, EntityPlayer aPlayer, float aX, float aY, float aZ) {
         if(aPlayer.capabilities.isCreativeMode){
             GT_Utility.sendChatToPlayer(aPlayer,"Cleaned solar panel from "+(aCoverVariable>>2)+"% dirt");
+
             if (mMultiAmp) {
                 GT_Utility.sendChatToPlayer(aPlayer, "Special Multi-Amp status: " + EnumChatFormatting.GREEN + mMultiAmp + EnumChatFormatting.RESET + ", outputting " + EnumChatFormatting.RED + mAmpere + EnumChatFormatting.RESET + " Ampere.");
             }
