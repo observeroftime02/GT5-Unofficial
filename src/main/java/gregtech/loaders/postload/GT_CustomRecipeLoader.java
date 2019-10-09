@@ -114,6 +114,7 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_ZPM.get(14L), ItemList.Weebium_Chip.get(32L), ItemList.Gamer_girl_Panties.get(32L), ItemList.Circuit_Parts_DiodeSMD.get(32L), GT_OreDictUnificator.get(wireGt16, Materials.SuperconductorZPM, 32L)}, GT_Values.NF, ItemList.Cover_SolarPanel_ZPMx16.get(1L), 131072, 131072, true);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_UV.get(14L), ItemList.Weebium_Chip.get(40L), ItemList.Gamer_girl_Panties.get(40L), ItemList.Circuit_Parts_DiodeSMD.get(40L), GT_OreDictUnificator.get(wireGt16, Materials.SuperconductorUV, 40L)}, GT_Values.NF, ItemList.Cover_SolarPanel_UVx16.get(1L), 524288, 524288, true);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_UHV.get(14L), ItemList.Weebium_Chip.get(48L), ItemList.Gamer_girl_Panties.get(48L), ItemList.Circuit_Parts_DiodeSMD.get(48L), GT_OreDictUnificator.get(wireGt16, Materials.SuperconductorUHV, 48L)}, GT_Values.NF, ItemList.Cover_SolarPanel_UHVx16.get(1L), 2097152, 2097152, true);
+        GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.wireGt02, PMagium, 8L), CustomItemList.MicaInsulatorFoil.get(40L), Materials.Infinity.getMolten(144L), ItemList.Casing_Coil_Infinity.get(1L), 1000, 2000000);
 
 
         if (Loader.isModLoaded("harvestcraft")) {

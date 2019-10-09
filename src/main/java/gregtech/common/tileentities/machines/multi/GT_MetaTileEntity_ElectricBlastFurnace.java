@@ -247,6 +247,9 @@ public class GT_MetaTileEntity_ElectricBlastFurnace
             case 8:
                 this.mHeatingCapacity = 10801;
                 break;
+            case 9:
+                this.mHeatingCapacity = 21602;
+                break;
             default:
                 return false;
         }
