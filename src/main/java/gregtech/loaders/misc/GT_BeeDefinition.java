@@ -72,6 +72,31 @@ public enum GT_BeeDefinition implements IBeeDefinition {
             tMutation.requireResource(Blocks.clay,0); //blockStainedHardenedClay
         }
     },
+
+    MICA(GT_BranchDefinition.ORGANIC, "Mica", true, 0xc3c3cd, 0xdfdfe6) {
+        @Override
+        protected void setSpeciesProperties(GT_AlleleBeeSpecies beeSpecies) {
+            beeSpecies.addProduct(GT_Bees.combs.getStackForType(CombType.MICA), 0.55f);
+            beeSpecies.addSpecialty(GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Mica, 1L), 0.15f);
+            beeSpecies.setHumidity(EnumHumidity.NORMAL);
+            beeSpecies.setTemperature(EnumTemperature.NORMAL);
+        }
+
+        @Override
+        protected void setAlleles(IAllele[] template) {
+            AlleleHelper.instance.set(template, EnumBeeChromosome.FLOWERING, EnumAllele.Flowering.SLOWER);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.HUMIDITY_TOLERANCE, EnumAllele.Tolerance.UP_1);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.TEMPERATURE_TOLERANCE, EnumAllele.Tolerance.UP_1);
+            AlleleHelper.instance.set(template, EnumBeeChromosome.FLOWER_PROVIDER, EnumAllele.Flowers.VANILLA);
+        }
+
+        @Override
+        protected void registerMutations() {
+            IBeeMutationCustom tMutation = registerMutation(ALUMINIUM.species, getSpecies(MAGICBEES,"Aluminium"), 15);
+            tMutation.requireResource(GameRegistry.findBlock("gregtech", "gt.blockores"), 901);
+        }
+    },
+
     SLIMEBALL(GT_BranchDefinition.ORGANIC, "SlimeBall", true, 0x4E9E55, 0x00FF15) {
         @Override
         protected void setSpeciesProperties(GT_AlleleBeeSpecies beeSpecies) {
@@ -3136,8 +3161,8 @@ public enum GT_BeeDefinition implements IBeeDefinition {
 
         @Override
         protected void registerMutations() {
-            IBeeMutationCustom tMutation = registerMutation(THAUMIUMSHARD.species, NAQUADAH.species, 5);
-            tMutation.requireResource(GameRegistry.findBlock("gregtech", "gt.blockores"), 765);
+            IBeeMutationCustom tMutation = registerMutation(THAUMIUMSHARD.species, NAQUADAH.species, 99);
+            tMutation.requireResource("blockWeebium");
         }
     },
 
@@ -3161,7 +3186,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
             IBeeMutationCustom tMutation = registerMutation(NAQUADAH.species, UUMATTER.species, 5);
-            tMutation.requireResource(GameRegistry.findBlock("gregtech", "gt.blockores"), 721);
+            tMutation.requireResource("blockUUAmplifier");
         }
     },
 
@@ -3190,7 +3215,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
             IBeeMutationCustom tMutation = registerMutation(WEEBIUM.species, NAQUADAH.species, 1);
-            tMutation.requireResource(GameRegistry.findBlock("gregtech", "gt.blockores"), 703);
+            tMutation.requireResource("blockUUMatter");
         }
 
 
@@ -3223,7 +3248,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
             IBeeMutationCustom tMutation = registerMutation(WEEBIUM.species, UUMATTER.species, 1);
-            tMutation.requireResource(GameRegistry.findBlock("gregtech", "gt.blockores"), 769);
+            tMutation.requireResource("blockAnimeGirlEssence");
 
         }
 

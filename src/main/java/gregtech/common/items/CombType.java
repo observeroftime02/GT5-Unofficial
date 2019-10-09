@@ -12,6 +12,7 @@ public enum CombType {
     OIL("oil", true, Materials._NULL, 100,0x333333, 0x4C4C4C),
     APATITE("apatite", true, Materials.Apatite, 100,0xc1c1f6, 0x676784),
     ASH("ash", true, Materials.Ash, 100,0x1e1a18, 0xc6c6c6),
+    MICA("mica", true, Materials.Mica, 100, 0xc3c3cd, 0xdfdfe6),
 
     //IC2 Line
     COOLANT("coolant", true, Materials._NULL, 100,0x144F5A, 0x2494A2),
@@ -148,6 +149,8 @@ public enum CombType {
     COSMICNEUTRONIUM("cosmicneutronium",true, Materials._NULL, 5,0x484848, 0x323232),
     INFINITYCATALYST("infinitycatalyst",true, Materials._NULL, 2,0xFFFFFF, 0xFFFFFF),
     INFINITY("infinity",true, Materials._NULL, 1,0xFFFFFF, 0xFFFFFF),
+
+    //Weeb lineage
     WEEBIUM("Weebium", true, GTNH_ExtraMaterials.Weebium, 50, 0xF79EF7, 0xF5BAF5),
     UUMATTER("UU-Matter", true, Materials.UUMatter, 30, 0x7F00C4, 0xCC6EFF),
     UUAMPLIFIER("UU-Amplifier", true, Materials.UUAmplifier, 30, 0xCC6EFF, 0x7F00C4),
