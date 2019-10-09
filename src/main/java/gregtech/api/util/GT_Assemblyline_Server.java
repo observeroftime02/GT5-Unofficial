@@ -265,7 +265,8 @@ public class GT_Assemblyline_Server {
 								GTNH_ExtraMaterials.Weebium,
                                 Materials.UUMatter,
                                 Materials.UUAmplifier,
-								GTNH_ExtraMaterials.AGEssence
+								GTNH_ExtraMaterials.AGEssence,
+								Materials.Mica
 						};
 						break;
 				}

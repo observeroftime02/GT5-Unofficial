@@ -27,7 +27,7 @@ public class GT_Block_Casings5
         GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".6.name", "Naquadah Alloy Coil Block");
         GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".7.name", "Electrum Flux Coil Block");
         GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".8.name", "Awakened Draconium Coil Block");
-        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".9.name", "Infinity Superconductor Coil Block");
+        GT_LanguageManager.addStringLocalization(getUnlocalizedName() + ".9.name", "Infinity Superpositioned Nanoconductor Coil Block");
 
         ItemList.Casing_Coil_Cupronickel.set(new ItemStack(this, 1, 0));
         ItemList.Casing_Coil_Kanthal.set(new ItemStack(this, 1, 1));
