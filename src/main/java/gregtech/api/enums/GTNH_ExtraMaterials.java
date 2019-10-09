@@ -86,6 +86,7 @@ public class GTNH_ExtraMaterials implements IMaterialHandler {
         AGEssence                    .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.CRYSTALLISABLE);
         SoulGem                      .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.NO_GEM_RECIPE_GEN);
         CursedEntropy                .add(SubTag.CRYSTAL, SubTag.NO_SMASHING, SubTag.NO_SMELTING, SubTag.NO_GEM_RECIPE_GEN);
+        Mica                         .add(SubTag.NO_PLATE_SMASHING, SubTag.NO_PLATE_CUTTING);
 
 
 

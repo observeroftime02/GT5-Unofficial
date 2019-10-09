@@ -93,7 +93,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
         @Override
         protected void registerMutations() {
             IBeeMutationCustom tMutation = registerMutation(ALUMINIUM.species, getSpecies(MAGICBEES,"Aluminium"), 15);
-            tMutation.requireResource(GameRegistry.findBlock("gregtech", "gt.blockores"), 901);
+            tMutation.requireResource("blockMica");
         }
     },
 

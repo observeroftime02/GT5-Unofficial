@@ -104,6 +104,8 @@ public final class SubTag implements ICondition<ISubTagContainer> {
 
     public static final SubTag NO_PLATE_SMASHING = getNewSubTag("NO_PLATE_SMASHING");
 
+    public static final SubTag NO_PLATE_CUTTING = getNewSubTag("NO_PLATE_CUTTING");
+
     public static final SubTag NO_FOIL_SMASHING = getNewSubTag("NO_FOIL_SMASHING");
 
     public static final SubTag NO_BLOCK_SMASHING = getNewSubTag("NO_BLOCK_SMASHING");

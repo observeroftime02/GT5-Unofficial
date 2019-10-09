@@ -159,6 +159,7 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addPulveriserRecipe(ItemList.Gamer_girl_Panties.get(1L), new ItemStack[]{GT_OreDictUnificator.get(dust, GAGPanties, 1L)}, new int[]{10000}, 120, 480);
         GT_Values.RA.addPulveriserRecipe(GT_OreDictUnificator.get(gemExquisite, SoulGem, 1L), new ItemStack[]{GT_OreDictUnificator.get(dust, SoulGem, 4L)}, new int[]{10000}, 120, 480);
         GT_Values.RA.addPulveriserRecipe(GT_OreDictUnificator.get(bolt, SoulGem, 1L), new ItemStack[]{GT_OreDictUnificator.get(dustTiny, SoulGem, 1)}, new int[]{10000}, 120, 480);
+        GT_Values.RA.addPulveriserRecipe(GT_OreDictUnificator.get(block, Materials.Mica, 1L), new ItemStack[]{GT_OreDictUnificator.get(dust, Materials.Mica, 9L)}, new int[]{10000}, 120, 32);
 
         // Forge Hammer
         GT_Values.RA.addForgeHammerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Weebium, 3L), GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L), 1200, 524000);
