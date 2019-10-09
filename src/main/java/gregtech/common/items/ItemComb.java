@@ -344,16 +344,7 @@ public class ItemComb extends Item {
 		addProcessLV(tComb, Materials.Arsenic, 80);
         addProcessLV(tComb, Materials.Bismuth, 70);
         addProcessLV(tComb, Materials.Antimony, 70);
-        tComb = getStackForType(CombType.WEEBIUM);
-        addProcessSpecialLUV(tComb, GTNH_ExtraMaterials.Weebium, 80);
-        tComb = getStackForType(CombType.UUMATTER);
-        addProcessLUV(tComb, Materials.UUMatter, 80);
-        addSpecialCentLuV(tComb, GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.UUMatter, 1L), 45, Materials.UUMatter.getFluid(2L));
-		tComb = getStackForType(CombType.UUAMPLIFIER);
-		addSpecialCentLuV(tComb, GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.UUAmplifier, 1L), 45, Materials.UUAmplifier.getFluid(2L));
-		tComb = getStackForType(CombType.ANIMEGIRLESSENCE);
-		addSpecialCentLuV(tComb, GT_OreDictUnificator.get(OrePrefixes.dustTiny, GTNH_ExtraMaterials.AGEssence, 1L), 45, Materials.UUAmplifier.getFluid(1L));
-		addProcessLUV(tComb, GTNH_ExtraMaterials.AGEssence, 80);
+
 
 	    // Rare Metals Line
 		tComb = getStackForType(CombType.BAUXITE);
@@ -541,6 +532,20 @@ public class ItemComb extends Item {
 		GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, ItemList.FR_Wax.get(1L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.InfinityCatalyst, 1L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Neutronium, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[]{5000, 5, 100, 0, 0, 0}, 48000, 8000000);
 		tComb = getStackForType(CombType.INFINITY);
 		GT_Values.RA.addCentrifugeRecipe(tComb, GT_Values.NI, GT_Values.NF, GT_Values.NF, ItemList.FR_Wax.get(1L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Infinity, 1L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.InfinityCatalyst, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[]{5000, 1, 5, 0, 0, 0}, 96000, 24000000);
+
+		//Weeb Line
+		tComb = getStackForType(CombType.WEEBIUM);
+		addProcessSpecialLUV(tComb, GTNH_ExtraMaterials.Weebium, 80);
+		addSpecialCentLuV(tComb, GT_OreDictUnificator.get(OrePrefixes.dustTiny, GTNH_ExtraMaterials.Weebium, 1L), 45, GTNH_ExtraMaterials.Bathwater.getFluid(144L));
+		tComb = getStackForType(CombType.UUMATTER);
+		addProcessLUV(tComb, Materials.UUMatter, 80);
+		addSpecialCentLuV(tComb, GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.UUMatter, 1L), 45, Materials.UUMatter.getFluid(2L));
+		tComb = getStackForType(CombType.UUAMPLIFIER);
+		addProcessLUV(tComb, Materials.UUMatter, 80);
+		addSpecialCentLuV(tComb, GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.UUAmplifier, 1L), 45, Materials.UUAmplifier.getFluid(2L));
+		tComb = getStackForType(CombType.ANIMEGIRLESSENCE);
+		addSpecialCentLuV(tComb, GT_OreDictUnificator.get(OrePrefixes.dustTiny, GTNH_ExtraMaterials.AGEssence, 1L), 45, Materials.UUAmplifier.getFluid(1L));
+		addProcessLUV(tComb, GTNH_ExtraMaterials.AGEssence, 80);
 
 	}
 

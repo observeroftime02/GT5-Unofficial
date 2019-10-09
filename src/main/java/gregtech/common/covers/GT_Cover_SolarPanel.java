@@ -3,6 +3,7 @@ package gregtech.common.covers;
 import com.dreammaster.lib.Refstrings;
 import eu.usrv.yamcore.auxiliary.LogHelper;
 import forestry.core.genetics.alleles.EnumAllele;
+import gregtech.api.enums.ItemList;
 import gregtech.api.interfaces.tileentity.ICoverable;
 import gregtech.api.util.GT_CoverBehavior;
 import gregtech.api.util.GT_Utility;
@@ -72,9 +73,9 @@ public class GT_Cover_SolarPanel
 
         if (mMultiAmp){
             if (coverState == 1){
-                aTileEntity.injectEnergyUnits((byte) 6, mVoltage, mAmpere);
+                aTileEntity.injectEnergyUnits((byte) 6, ((100L - (long) coverNum) * ((long) this.mVoltage)) / 100L, mAmpere);
             } else if (coverState == 2) {
-                if (aTimer % 4L == 0) aTileEntity.injectEnergyUnits((byte) 6, mVoltage, mAmpere);
+                if (aTimer % 4L == 0) aTileEntity.injectEnergyUnits((byte) 6, ((100L - (long) coverNum) * ((long) this.mVoltage)) / 100L, mAmpere);
             }
 
         } else {
@@ -117,18 +118,36 @@ public class GT_Cover_SolarPanel
             aTileEntity.setCoverDataAtSide(aSide, (aCoverVariable & 0x3));
             return true;
         }
-        for(int i=0;i<aPlayer.inventory.mainInventory.length;i++){
-            ItemStack is=aPlayer.inventory.mainInventory[i];
-            if(is==null) continue;
-            if(is.getUnlocalizedName().equals(new ItemStack(Items.water_bucket).getUnlocalizedName())){
-                aPlayer.inventory.mainInventory[i]=new ItemStack(Items.bucket);
-                if (aPlayer.inventoryContainer != null) aPlayer.inventoryContainer.detectAndSendChanges();
-                GT_Utility.sendChatToPlayer(aPlayer,"Cleaned solar panel from "+(aCoverVariable>>2)+"% dirt");
-                aTileEntity.setCoverDataAtSide(aSide, (aCoverVariable & 0x3));
-                return true;
+        if (mMultiAmp) {
+            for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
+                ItemStack is = aPlayer.inventory.mainInventory[i];
+                if (is == null) continue;
+                if (is.isItemEqual(ItemList.Gamer_girl_Panties.get(1L))) {
+                    aPlayer.inventory.mainInventory[i] = ItemList.Consumed_Gamer_Girl_Panties.get(1L);
+                    if (aPlayer.inventoryContainer != null) aPlayer.inventoryContainer.detectAndSendChanges();
+                    GT_Utility.sendChatToPlayer(aPlayer, "Used the panties to clean " + (aCoverVariable >> 2) + "% dirt");
+                    aTileEntity.setCoverDataAtSide(aSide, (aCoverVariable & 0x3));
+                    return true;
+                }
+            }
+        } else {
+            for (int i = 0; i < aPlayer.inventory.mainInventory.length; i++) {
+                ItemStack is = aPlayer.inventory.mainInventory[i];
+                if (is == null) continue;
+                if (is.getUnlocalizedName().equals(new ItemStack(Items.water_bucket).getUnlocalizedName())) {
+                    aPlayer.inventory.mainInventory[i] = new ItemStack(Items.bucket);
+                    if (aPlayer.inventoryContainer != null) aPlayer.inventoryContainer.detectAndSendChanges();
+                    GT_Utility.sendChatToPlayer(aPlayer, "Cleaned solar panel from " + (aCoverVariable >> 2) + "% dirt");
+                    aTileEntity.setCoverDataAtSide(aSide, (aCoverVariable & 0x3));
+                    return true;
+                }
             }
         }
-        GT_Utility.sendChatToPlayer(aPlayer,"You need water bucket in inventory to clean the panel.");
+        if (mMultiAmp){
+            GT_Utility.sendChatToPlayer(aPlayer, "You need Anime Girl Panties in your inventory to clean the panel.");
+        } else {
+            GT_Utility.sendChatToPlayer(aPlayer, "You need water bucket in inventory to clean the panel.");
+        }
         return false;
     }
 
