@@ -3161,7 +3161,7 @@ public enum GT_BeeDefinition implements IBeeDefinition {
 
         @Override
         protected void registerMutations() {
-            IBeeMutationCustom tMutation = registerMutation(THAUMIUMSHARD.species, NAQUADAH.species, 99);
+            IBeeMutationCustom tMutation = registerMutation(THAUMIUMSHARD.species, NAQUADAH.species, 7);
             tMutation.requireResource("blockWeebium");
         }
     },
