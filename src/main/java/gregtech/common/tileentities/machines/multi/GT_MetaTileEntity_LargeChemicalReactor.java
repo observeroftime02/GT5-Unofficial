@@ -19,6 +19,7 @@ import net.minecraftforge.fluids.FluidStack;
 import java.util.ArrayList;
 
 public class GT_MetaTileEntity_LargeChemicalReactor extends GT_MetaTileEntity_MultiBlockBase {
+	private boolean hasTurboHeatingCoil = false;
 
 	private final int CASING_INDEX = 176;
 
@@ -136,7 +137,11 @@ public class GT_MetaTileEntity_LargeChemicalReactor extends GT_MetaTileEntity_Mu
 				}
 				
 				this.mEUt = -EUt;
-				this.mMaxProgresstime = maxProgresstime;
+				if (hasTurboHeatingCoil){
+					this.mMaxProgresstime = 1;
+				} else {
+					this.mMaxProgresstime = maxProgresstime;
+				}
 				this.mOutputItems = recipe.mOutputs;
 				this.mOutputFluids = recipe.mFluidOutputs;
 				this.updateSlots();
@@ -152,6 +157,8 @@ public class GT_MetaTileEntity_LargeChemicalReactor extends GT_MetaTileEntity_Mu
 		int zDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetZ;
 		int casingAmount = 0;
 		boolean hasHeatingCoil = false;
+		hasTurboHeatingCoil = false;
+
 		// x=width, z=depth, y=height
 		for (int x = -1 + xDir; x <= xDir + 1; x++) {
 			for (int z = -1 + zDir; z <= zDir + 1; z++) {
@@ -182,6 +189,10 @@ public class GT_MetaTileEntity_LargeChemicalReactor extends GT_MetaTileEntity_Mu
 						hasHeatingCoil = true;
 						continue;
 					}
+					if (centerCoords == 2 && block == GregTech_API.sBlockCasings5 && aBaseMetaTileEntity.getMetaIDOffset(x, y, z) == 9) {
+						hasTurboHeatingCoil = true;
+						continue;
+					}
 						if (!addInputToMachineList(tileEntity, CASING_INDEX) && !addOutputToMachineList(tileEntity, CASING_INDEX)
 								&& !addMaintenanceToMachineList(tileEntity, CASING_INDEX)
 								&& !addEnergyInputToMachineList(tileEntity, CASING_INDEX)) {
@@ -196,7 +207,7 @@ public class GT_MetaTileEntity_LargeChemicalReactor extends GT_MetaTileEntity_Mu
 			}
 
 		}
-		return casingAmount >= 8 && hasHeatingCoil;
+		return casingAmount >= 8 && (hasHeatingCoil || hasTurboHeatingCoil);
 	}
 
 	@Override
