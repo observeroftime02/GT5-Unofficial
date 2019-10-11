@@ -1,7 +1,9 @@
 package gregtech.common.tileentities.machines.multi;
 
+import com.dreammaster.lib.Refstrings;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import eu.usrv.yamcore.auxiliary.LogHelper;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.Dyes;
 import gregtech.api.enums.ItemList;
@@ -27,8 +29,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GT_MetaTileEntity_PyrolyseOven extends GT_MetaTileEntity_MultiBlockBase {
-	
-	private int coilMetaID;
+    public static LogHelper Logger = new LogHelper("GT5U");
+
+    private int coilMetaID;
+    public FluidStack mFluidOut = null;
+
 	public static GT_CopiedBlockTexture mTextureULV = new GT_CopiedBlockTexture(Block.getBlockFromItem(ItemList.Casing_ULV.get(1).getItem()), 6, 0, Dyes.MACHINE_METAL.mRGBa);
 	
 	//private final int CASING_INDEX = 22;
@@ -135,9 +140,32 @@ public class GT_MetaTileEntity_PyrolyseOven extends GT_MetaTileEntity_MultiBlock
                 } else {
                     this.mMaxProgresstime = Math.max(mMaxProgresstime * 2 / (1 + coilMetaID), 1);
                 }
-                if (tRecipe.mOutputs.length > 0) this.mOutputItems = new ItemStack[]{tRecipe.getOutput(0)};
+
+                //if (tRecipe.mOutputs.length > 0) this.mOutputItems = new ItemStack[]{tRecipe.getOutput(0)};
+
+                if (coilMetaID == 9) {
+                    if (tRecipe.mOutputs.length > 0) this.mActualOutput = new ItemStack[]{tRecipe.getOutput(0)};
+                    mActualOutputMult = new ItemStack[]{GT_Utility.mul(2, mActualOutput)};
+                    this.mOutputItems = mActualOutputMult;
+                } else {
+                    if (tRecipe.mOutputs.length > 0) this.mOutputItems = new ItemStack[]{tRecipe.getOutput(0)};
+                }
+
+
                 if (tRecipe.mFluidOutputs.length > 0)
-                    this.mOutputFluids = new FluidStack[]{tRecipe.getFluidOutput(0)};
+                    Logger.warn("mFluidoutput: "+ tRecipe.getFluidOutput(0));
+                    mFluidOut = tRecipe.getFluidOutput(0);
+                 //  this.mOutputFluids = new FluidStack[]{mFluidOut, mFluidOut};
+
+                if (coilMetaID == 9) {
+                    this.mOutputFluids = new FluidStack[]{mFluidOut, mFluidOut};
+
+                } else {
+                    this.mOutputFluids = new FluidStack[]{mFluidOut};
+                }
+
+
+
                 updateSlots();
                 return true;
             }

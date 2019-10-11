@@ -1330,6 +1330,7 @@ public class GT_Utility {
         return null;
     }
 
+
     public static ItemStack copyAmount(long aAmount, Object... aStacks) {
         ItemStack rStack = copy(aStacks);
         if (isStackInvalid(rStack)) return null;

@@ -39,7 +39,11 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
     public boolean mMachine = false, mWrench = false, mScrewdriver = false, mSoftHammer = false, mHardHammer = false, mSolderingTool = false, mCrowbar = false, mRunningOnLoad = false;
     public int mPollution = 0, mProgresstime = 0, mMaxProgresstime = 0, mEUt = 0, mEfficiencyIncrease = 0, mUpdate = 0, mStartUpCheck = 100, mRuntime = 0, mEfficiency = 0;
     public ItemStack[] mOutputItems = null;
+    public ItemStack[] mActualOutput = null;
+    public ItemStack[] mActualOutputMult = null;
     public FluidStack[] mOutputFluids = null;
+    public FluidStack[] mOutputFluidsActual = null;
+    public FluidStack[] mOutputFluidsMult = null;
     public String mNEI;
     public int damageFactorLow = 5;
     public float damageFactorHigh = 0.6f;
