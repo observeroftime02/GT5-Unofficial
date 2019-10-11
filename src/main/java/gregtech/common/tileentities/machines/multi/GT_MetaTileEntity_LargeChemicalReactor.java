@@ -1,5 +1,6 @@
 package gregtech.common.tileentities.machines.multi;
 
+import eu.usrv.yamcore.auxiliary.LogHelper;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.Textures;
 import gregtech.api.gui.GT_GUIContainer_MultiMachine;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 
 public class GT_MetaTileEntity_LargeChemicalReactor extends GT_MetaTileEntity_MultiBlockBase {
 	private boolean hasTurboHeatingCoil = false;
+	public static LogHelper Logger = new LogHelper("GT5U");
 
 	private final int CASING_INDEX = 176;
 
@@ -51,7 +53,8 @@ public class GT_MetaTileEntity_LargeChemicalReactor extends GT_MetaTileEntity_Mu
 				"1x Input Bus/Hatch (Any inert casing)",
 				"1x Output Bus/Hatch (Any inert casing)",
 				"1x Maintenance Hatch (Any inert casing)",
-				"1x Energy Hatch (Any inert casing)"};
+				"1x Energy Hatch (Any inert casing)",
+				"Use Infinity Coil to reduce every recipe time to 1/20th second"};
 	}
 
 	@Override
@@ -138,7 +141,9 @@ public class GT_MetaTileEntity_LargeChemicalReactor extends GT_MetaTileEntity_Mu
 				
 				this.mEUt = -EUt;
 				if (hasTurboHeatingCoil){
-					this.mMaxProgresstime = 1;
+					Logger.warn("Tier: " + tier);
+					this.mMaxProgresstime /= tier;
+					Logger.warn("mMaxProgresstime: " + mMaxProgresstime);
 				} else {
 					this.mMaxProgresstime = maxProgresstime;
 				}
