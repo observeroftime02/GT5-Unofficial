@@ -153,7 +153,6 @@ public class GT_MetaTileEntity_PyrolyseOven extends GT_MetaTileEntity_MultiBlock
 
 
                 if (tRecipe.mFluidOutputs.length > 0)
-                    Logger.warn("mFluidoutput: "+ tRecipe.getFluidOutput(0));
                     mFluidOut = tRecipe.getFluidOutput(0);
                  //  this.mOutputFluids = new FluidStack[]{mFluidOut, mFluidOut};
 
