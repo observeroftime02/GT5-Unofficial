@@ -102,7 +102,9 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Iron, 4L)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12012), 120, 480);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Steel, 4L)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12013), 120, 480);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.HSSG, 4L)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12014), 120, 480);
-
+        if (Loader.isModLoaded("dreamcraft")) {
+            GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Quantum_Tank_IV.get(1L), CustomItemList.Hull_UEV.get(1L), ItemList.Hatch_Output_MAX.get(64L), GT_Utility.getIntegratedCircuit(2)}, Materials.Polybenzimidazole.getMolten(16000), ItemList.Hatch_Output_Mega.get(1L), 1200, 7864320);
+        }
                 // Solar Pannels
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_LV.get(14L), ItemList.Weebium_Chip.get(2L), ItemList.Gamer_girl_Panties.get(2L), ItemList.Circuit_Parts_DiodeSMD.get(2L), GT_OreDictUnificator.get(cableGt16, Materials.RedstoneAlloy, 2L)}, GT_Values.NF, ItemList.Cover_SolarPanel_LVx16.get(1L), 32, 32, true);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_MV.get(14L), ItemList.Weebium_Chip.get(4L), ItemList.Gamer_girl_Panties.get(4L), ItemList.Circuit_Parts_DiodeSMD.get(4L), GT_OreDictUnificator.get(wireGt16, Materials.SuperconductorMV, 4L)}, GT_Values.NF, ItemList.Cover_SolarPanel_MVx16.get(1L), 128, 128, true);

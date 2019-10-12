@@ -142,8 +142,10 @@ public class GT_MetaTileEntity_LargeChemicalReactor extends GT_MetaTileEntity_Mu
 				this.mEUt = -EUt;
 				if (hasTurboHeatingCoil){
 					Logger.warn("Tier: " + tier);
-					this.mMaxProgresstime /= tier;
-					Logger.warn("mMaxProgresstime: " + mMaxProgresstime);
+					Logger.warn("maxProgresstime before division: " + maxProgresstime);
+					Logger.warn("recipe.mDuration: " + recipe.mDuration);
+					this.mMaxProgresstime = Math.max((recipe.mDuration/ 2^(tier -1)), 1);
+					Logger.warn("MaxProgresstime: " + this.mMaxProgresstime);
 				} else {
 					this.mMaxProgresstime = maxProgresstime;
 				}
