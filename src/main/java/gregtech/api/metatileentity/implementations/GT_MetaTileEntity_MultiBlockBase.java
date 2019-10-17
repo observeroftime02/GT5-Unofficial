@@ -489,6 +489,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                             tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
                         }
                             else if (i == 180) {
+                                //Giant turbine
                                 ItemStack tStack = GT_Utility.copyAmount(3, tTurbine);
                                 tNBT2.setTag("Ingredient.0", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.1", tStack.writeToNBT(new NBTTagCompound()));
@@ -503,6 +504,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                             }
 
                             else if (i == 182) {
+                                //Ridiculous turbine, gives back only 2 If* rods on purpose, to make this an expensive choice for the disassembler turbine loophole
                                 ItemStack tStack = GT_Utility.copyAmount(5, tTurbine);
                                 tNBT2.setTag("Ingredient.0", tStack.writeToNBT(new NBTTagCompound()));
                                 tNBT2.setTag("Ingredient.1", tStack.writeToNBT(new NBTTagCompound()));
