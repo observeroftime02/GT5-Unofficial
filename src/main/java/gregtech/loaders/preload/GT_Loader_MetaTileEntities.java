@@ -1,7 +1,10 @@
 package gregtech.loaders.preload;
 
 import codechicken.nei.api.API;
+import com.github.bartimaeusnek.bartworks.common.items.BW_ItemBlocks;
+import com.github.bartimaeusnek.bartworks.common.loaders.ItemRegistry;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.*;
@@ -21,10 +24,13 @@ import gregtech.common.tileentities.machines.multi.*;
 import gregtech.common.tileentities.machines.steam.*;
 import gregtech.common.tileentities.storage.*;
 import ic2.core.Ic2Items;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+import com.github.bartimaeusnek.bartworks.common.blocks.BW_TileEntityContainer;
 
 public class GT_Loader_MetaTileEntities implements Runnable {//TODO CHECK CIRCUIT RECIPES AND USAGES
     private final static String aTextWire1 = "wire."; private static final String aTextCable1 = "cable."; private static final String aTextWire2 = " Wire"; private static final String aTextCable2 = " Cable";
@@ -37,7 +43,9 @@ public class GT_Loader_MetaTileEntities implements Runnable {//TODO CHECK CIRCUI
 
     private final static boolean aBoolConst_0 = false;
 	private final static Boolean isNEILoaded = Loader.isModLoaded("NotEnoughItems");
-	
+    //public static final Block LONGTANK = new BW_TileEntityContainer(Material.iron, GT_TileEntity_SuperTankLong.class, "SuperTankLong");
+
+
     private static void run1() {
 		GT_ModHandler.addCraftingRecipe(ItemList.Casing_Pipe_Polytetrafluoroethylene.get(1L), bits, new Object[]{"PIP", "IFI", "PIP", 'P', OrePrefixes.plate.get(Materials.Polytetrafluoroethylene), 'F', OrePrefixes.frameGt.get(Materials.Polytetrafluoroethylene), 'I', OrePrefixes.pipeMedium.get(Materials.Polytetrafluoroethylene)});
         GT_ModHandler.addCraftingRecipe(ItemList.Casing_ULV.get(1L), bits, new Object[]{aTextPlate, aTextPlateWrench, aTextPlate, 'P', OrePrefixes.plate.get(Materials.WroughtIron)});
@@ -263,6 +271,10 @@ public class GT_Loader_MetaTileEntities implements Runnable {//TODO CHECK CIRCUI
 //        GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Output_ULV.get(1L), bitsd, new Object[]{" XC", "IM ", 'M', ItemList.Hull_ULV, 'C', OrePrefixes.plate.get(Materials.Rubber), 'I', OrePrefixes.pipeMedium.get(Materials.Copper), 'X', ItemList.Cell_Empty});
 //        GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Output_LV.get(1L), bitsd, new Object[]{" XC", "IM ", 'M', ItemList.Hull_LV, 'C', ItemList.Electric_Pump_LV,  'I', OrePrefixes.pipeMedium.get(Materials.Bronze), 'X', ItemList.Large_Fluid_Cell_Steel});
 //        GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Output_MV.get(1L), bitsd, new Object[]{" XC", "IM ", 'M', ItemList.Hull_MV, 'C', ItemList.Electric_Pump_MV,  'I', OrePrefixes.pipeMedium.get(Materials.Steel), 'X', ItemList.Large_Fluid_Cell_Aluminium});
+
+        //new GT_TileEntity_SuperTankLong().registerTank();
+        //GameRegistry.registerBlock(GT_Loader_MetaTileEntities.LONGTANK, BW_ItemBlocks.class, "Longtank");
+
 
         ItemList.Quantum_Tank_LV.set(new GT_MetaTileEntity_QuantumTank(120, "quantum.tank.tier.06", "Quantum Tank I", 6).getStackForm(1L));
         ItemList.Quantum_Tank_MV.set(new GT_MetaTileEntity_QuantumTank(121, "quantum.tank.tier.07", "Quantum Tank II", 7).getStackForm(1L));
