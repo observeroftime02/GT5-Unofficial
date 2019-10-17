@@ -15,6 +15,7 @@ import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 public class GT_MetaTileEntity_OilCracker extends GT_MetaTileEntity_MultiBlockBase {
     private ForgeDirection orientation;
     private int controllerX, controllerZ;
+    public boolean hasTurboCoil = false;
 
     public GT_MetaTileEntity_OilCracker(int aID, String aName, String aNameRegional) {
         super(aID, aName, aNameRegional);
@@ -60,6 +62,79 @@ public class GT_MetaTileEntity_OilCracker extends GT_MetaTileEntity_MultiBlockBa
     }
 
     @Override
+    public void saveNBTData(NBTTagCompound aNBT){
+        aNBT.setInteger("mEUt", mEUt);
+        aNBT.setInteger("mProgresstime", mProgresstime);
+        aNBT.setInteger("mMaxProgresstime", mMaxProgresstime);
+        aNBT.setInteger("mEfficiencyIncrease", mEfficiencyIncrease);
+        aNBT.setInteger("mEfficiency", mEfficiency);
+        aNBT.setInteger("mPollution", mPollution);
+        aNBT.setInteger("mRuntime", mRuntime);
+
+
+        if (mOutputItems != null) {
+            aNBT.setInteger("mOutputItemsLength", mOutputItems.length);
+            for (int i = 0; i < mOutputItems.length; i++)
+                if (mOutputItems[i] != null) {
+                    NBTTagCompound tNBT = new NBTTagCompound();
+                    mOutputItems[i].writeToNBT(tNBT);
+                    aNBT.setTag("mOutputItem" + i, tNBT);
+                }
+        }
+        if (mOutputFluids != null) {
+            aNBT.setInteger("mOutputFluidsLength", mOutputFluids.length);
+            for (int i = 0; i < mOutputFluids.length; i++)
+                if (mOutputFluids[i] != null) {
+                    NBTTagCompound tNBT = new NBTTagCompound();
+                    mOutputFluids[i].writeToNBT(tNBT);
+                    aNBT.setTag("mOutputFluids" + i, tNBT);
+                }
+        }
+        aNBT.setBoolean("mHasTurboCoil", hasTurboCoil);
+        aNBT.setBoolean("mWrench", mWrench);
+        aNBT.setBoolean("mScrewdriver", mScrewdriver);
+        aNBT.setBoolean("mSoftHammer", mSoftHammer);
+        aNBT.setBoolean("mHardHammer", mHardHammer);
+        aNBT.setBoolean("mSolderingTool", mSolderingTool);
+        aNBT.setBoolean("mCrowbar", mCrowbar);
+
+    }
+
+    @Override
+    public void loadNBTData(NBTTagCompound aNBT){
+        mEUt = aNBT.getInteger("mEUt");
+        mProgresstime = aNBT.getInteger("mProgresstime");
+        mMaxProgresstime = aNBT.getInteger("mMaxProgresstime");
+        if (mMaxProgresstime > 0) mRunningOnLoad = true;
+        mEfficiencyIncrease = aNBT.getInteger("mEfficiencyIncrease");
+        mEfficiency = aNBT.getInteger("mEfficiency");
+        mPollution = aNBT.getInteger("mPollution");
+        mRuntime = aNBT.getInteger("mRuntime");
+
+        int aOutputItemsLength = aNBT.getInteger("mOutputItemsLength");
+        if (aOutputItemsLength > 0) {
+            mOutputItems = new ItemStack[aOutputItemsLength];
+            for (int i = 0; i < mOutputItems.length; i++)
+                mOutputItems[i] = GT_Utility.loadItem(aNBT, "mOutputItem" + i);
+        }
+
+        int aOutputFluidsLength = aNBT.getInteger("mOutputFluidsLength");
+        if (aOutputFluidsLength > 0) {
+            mOutputFluids = new FluidStack[aOutputFluidsLength];
+            for (int i = 0; i < mOutputFluids.length; i++)
+                mOutputFluids[i] = GT_Utility.loadFluid(aNBT, "mOutputFluids" + i);
+        }
+
+        hasTurboCoil = aNBT.getBoolean("mHasTurboCoil");
+        mWrench = aNBT.getBoolean("mWrench");
+        mScrewdriver = aNBT.getBoolean("mScrewdriver");
+        mSoftHammer = aNBT.getBoolean("mSoftHammer");
+        mHardHammer = aNBT.getBoolean("mHardHammer");
+        mSolderingTool = aNBT.getBoolean("mSolderingTool");
+        mCrowbar = aNBT.getBoolean("mCrowbar");
+    }
+
+    @Override
     public boolean checkRecipe(ItemStack aStack) {
         ArrayList<FluidStack> tInputList = getStoredFluids();
         FluidStack[] tFluidInputs = tInputList.toArray(new FluidStack[tInputList.size()]);
@@ -77,8 +152,12 @@ public class GT_MetaTileEntity_OilCracker extends GT_MetaTileEntity_MultiBlockBa
                 this.mEUt *= 4;
                 this.mMaxProgresstime /= 2;
             }
-            if (this.mEUt > 0) {
-                this.mEUt = (-this.mEUt);
+            if (hasTurboCoil){
+                this.mEUt = 0;
+            } else {
+                if (this.mEUt > 0) {
+                    this.mEUt = (-this.mEUt);
+                }
             }
             this.mMaxProgresstime = Math.max(1, this.mMaxProgresstime);
             this.mOutputFluids = new FluidStack[]{tRecipe.getFluidOutput(0)};
@@ -95,6 +174,8 @@ public class GT_MetaTileEntity_OilCracker extends GT_MetaTileEntity_MultiBlockBa
         int xDir = this.orientation.offsetX;
         int zDir = this.orientation.offsetZ;
         int amount = 0;
+
+
         replaceDeprecatedCoils(aBaseMetaTileEntity);
         boolean negSideInput = false, negSideOutput = false, posSideInput = false, posSideOutput = false;
         if (xDir != 0) {
@@ -103,27 +184,34 @@ public class GT_MetaTileEntity_OilCracker extends GT_MetaTileEntity_MultiBlockBa
                     for (int h = -2; h < 3; h++) {
                         if (!(j == 0 && i == 0 && (h == -1 || h == 0 || h == 1))) {
                             if (h == 1 || h == -1) {
-                                if (aBaseMetaTileEntity.getBlockOffset(xDir + i, j, h + zDir) != GregTech_API.sBlockCasings5) {
+                                if ((aBaseMetaTileEntity.getBlockOffset(xDir + i, j, h + zDir) != GregTech_API.sBlockCasings5)) {
                                     return false;
                                 }
-                                if (aBaseMetaTileEntity.getMetaIDOffset(xDir + i, j, h + zDir) != 0) {
-                                    return false;
+                                if ((aBaseMetaTileEntity.getMetaIDOffset(xDir + i, j, h + zDir) != 0)) {
+                                    if ((aBaseMetaTileEntity.getMetaIDOffset(xDir + i, j, h + zDir) != 9)){
+                                        return false;
+                                    }
+                                }
+                                if ((aBaseMetaTileEntity.getMetaIDOffset(xDir + i, j, h + zDir) == 9)){
+                                    hasTurboCoil = true;
+                                } else {
+                                    hasTurboCoil = false;
                                 }
                             }
                             if (h == 2 || h == -2) {
                                 IGregTechTileEntity tTileEntity = aBaseMetaTileEntity.getIGregTechTileEntityOffset(xDir + i, j, h + zDir);
                                 if (addInputToMachineList(tTileEntity, 49)) {
-                                	if (h == -2) {
-                                		negSideInput = true;
-                                	} else {
-                                		posSideInput = true;
-                                	}
+                                    if (h == -2) {
+                                        negSideInput = true;
+                                    } else {
+                                        posSideInput = true;
+                                    }
                                 } else if (addOutputToMachineList(tTileEntity, 49)) {
-                                	if (h == -2) {
-                                		negSideOutput = true;
-                                	} else {
-                                		posSideOutput = true;
-                                	}                                	
+                                    if (h == -2) {
+                                        negSideOutput = true;
+                                    } else {
+                                        posSideOutput = true;
+                                    }
                                 } else if (!addEnergyInputToMachineList(tTileEntity, 49) && !addMaintenanceToMachineList(tTileEntity, 49)){
                                     if (aBaseMetaTileEntity.getBlockOffset(xDir + i, j, h + zDir) != GregTech_API.sBlockCasings4) {
                                         return false;
@@ -170,17 +258,17 @@ public class GT_MetaTileEntity_OilCracker extends GT_MetaTileEntity_MultiBlockBa
                             if (h == 2 || h == -2) {
                                 IGregTechTileEntity tTileEntity = aBaseMetaTileEntity.getIGregTechTileEntityOffset(xDir + h, j, i + zDir);
                                 if (addInputToMachineList(tTileEntity, 49)) {
-                                	if (h == -2) {
-                                		negSideInput = true;
-                                	} else {
-                                		posSideInput = true;
-                                	}
+                                    if (h == -2) {
+                                        negSideInput = true;
+                                    } else {
+                                        posSideInput = true;
+                                    }
                                 } else if (addOutputToMachineList(tTileEntity, 49)) {
-                                	if (h == -2) {
-                                		negSideOutput = true;
-                                	} else {
-                                		posSideOutput = true;
-                                	}                                	
+                                    if (h == -2) {
+                                        negSideOutput = true;
+                                    } else {
+                                        posSideOutput = true;
+                                    }
                                 } else if (!addEnergyInputToMachineList(tTileEntity, 49) && !addMaintenanceToMachineList(tTileEntity, 49)){
                                     if (aBaseMetaTileEntity.getBlockOffset(xDir + h, j, i + zDir) != GregTech_API.sBlockCasings4) {
                                         return false;
@@ -212,9 +300,9 @@ public class GT_MetaTileEntity_OilCracker extends GT_MetaTileEntity_MultiBlockBa
                 }
             }
         }
-        if ((negSideInput && negSideOutput) || (posSideInput && posSideOutput) 
-        		|| (negSideInput && posSideInput) || (negSideOutput && posSideOutput)) {
-        	return false;
+        if ((negSideInput && negSideOutput) || (posSideInput && posSideOutput)
+                || (negSideInput && posSideInput) || (negSideOutput && posSideOutput)) {
+            return false;
         }
         if (amount < 18) return false;
         return true;
