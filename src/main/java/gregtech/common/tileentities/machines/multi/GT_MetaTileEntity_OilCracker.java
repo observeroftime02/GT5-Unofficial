@@ -159,7 +159,11 @@ public class GT_MetaTileEntity_OilCracker extends GT_MetaTileEntity_MultiBlockBa
                     this.mEUt = (-this.mEUt);
                 }
             }
-            this.mMaxProgresstime = Math.max(1, this.mMaxProgresstime);
+            if (hasTurboCoil) {
+                this.mMaxProgresstime = 1;
+            } else {
+                this.mMaxProgresstime = Math.max(1, this.mMaxProgresstime);
+            }
             this.mOutputFluids = new FluidStack[]{tRecipe.getFluidOutput(0)};
             return true;
         }

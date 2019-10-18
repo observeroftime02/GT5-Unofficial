@@ -19,6 +19,7 @@ import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -27,6 +28,7 @@ public class GT_MetaTileEntity_MultiFurnace
         extends GT_MetaTileEntity_MultiBlockBase {
     private int mLevel = 0;
     private int mCostDiscount = 1;
+    private boolean hasTurboCoil = false;
 
     public GT_MetaTileEntity_MultiFurnace(int aID, String aName, String aNameRegional) {
         super(aID, aName, aNameRegional);
@@ -98,11 +100,19 @@ public class GT_MetaTileEntity_MultiFurnace
                 if (mMaxProgresstime == Integer.MAX_VALUE - 1 && mEUt == Integer.MAX_VALUE - 1)
                     return false;
 
-                this.mEUt = GT_Utility.safeInt(((long)mEUt) * this.mLevel / (long)this.mCostDiscount,1);
+                if (hasTurboCoil){
+                    this.mEUt = 0;
+                } else {
+                    this.mEUt = GT_Utility.safeInt(((long) mEUt) * this.mLevel / (long) this.mCostDiscount, 1);
+                }
                 if (mEUt == Integer.MAX_VALUE - 1)
                     return false;
                 if (this.mEUt > 0) {
-                    this.mEUt = (-this.mEUt);
+                    if (hasTurboCoil){
+                        this.mEUt = 0;
+                    } else {
+                        this.mEUt = (-this.mEUt);
+                    }
                 }
             }
             updateSlots();
@@ -127,38 +137,52 @@ public class GT_MetaTileEntity_MultiFurnace
             case 0:
                 this.mLevel = 1;
                 this.mCostDiscount = 1;
+                hasTurboCoil = false;
                 break;
             case 1:
                 this.mLevel = 2;
                 this.mCostDiscount = 1;
+                hasTurboCoil = false;
                 break;
             case 2:
                 this.mLevel = 4;
                 this.mCostDiscount = 1;
+                hasTurboCoil = false;
                 break;
             case 3:
                 this.mLevel = 8;
                 this.mCostDiscount = 1;
+                hasTurboCoil = false;
                 break;
             case 4:
                 this.mLevel = 16;
                 this.mCostDiscount = 2;
+                hasTurboCoil = false;
                 break;
             case 5:
                 this.mLevel = 16;
                 this.mCostDiscount = 4;
+                hasTurboCoil = false;
                 break;
             case 6:
                 this.mLevel = 16;
                 this.mCostDiscount = 8;
+                hasTurboCoil = false;
                 break;
             case 7:
                 this.mLevel = 16;
                 this.mCostDiscount = 16;
+                hasTurboCoil = false;
                 break;
             case 8:
                 this.mLevel = 16;
                 this.mCostDiscount = 24;
+                hasTurboCoil = false;
+                break;
+            case 9:
+                this.mLevel = 16;
+                this.mCostDiscount = 36;
+                hasTurboCoil = true;
                 break;
             default:
                 return false;
@@ -279,6 +303,14 @@ public class GT_MetaTileEntity_MultiFurnace
                         EnumChatFormatting.GREEN+mLevel*8+EnumChatFormatting.RESET+" Discount: (EU/t) / "+EnumChatFormatting.GREEN+mCostDiscount+EnumChatFormatting.RESET,
                 StatCollector.translateToLocal("GT5U.multiblock.pollution")+": "+ EnumChatFormatting.GREEN + mPollutionReduction+ EnumChatFormatting.RESET+" %"
         };
+    }
+
+    public void saveNBTData(NBTTagCompound aNBT){
+        aNBT.setBoolean("mHasTurboCoil", hasTurboCoil);
+    }
+
+    public void loadNBTData(NBTTagCompound aNBT){
+        hasTurboCoil = aNBT.getBoolean("mHasTurboCoil");
     }
 
 }
