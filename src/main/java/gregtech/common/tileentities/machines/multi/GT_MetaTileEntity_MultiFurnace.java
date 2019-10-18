@@ -110,6 +110,7 @@ public class GT_MetaTileEntity_MultiFurnace
                 if (this.mEUt > 0) {
                     if (hasTurboCoil){
                         this.mEUt = 0;
+                        this.mMaxProgresstime = 1;
                     } else {
                         this.mEUt = (-this.mEUt);
                     }
