@@ -181,7 +181,7 @@ public class GT_MetaTileEntity_MultiFurnace
                 hasTurboCoil = false;
                 break;
             case 9:
-                this.mLevel = 16;
+                this.mLevel = 32;
                 this.mCostDiscount = 36;
                 hasTurboCoil = true;
                 break;
