@@ -99,11 +99,13 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.PmCell1.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.Gamer_girl_Panties.get(2L)}, GT_Values.NF, ItemList.PmCell2.get(1L), 2400, 7680);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.PmCell2.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.Gamer_girl_Panties.get(2L)}, GT_Values.NF, ItemList.PmCell4.get(1L), 2400, 7680);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Neutronium, 2L), ItemList.Field_Generator_UHV.get(2L), GT_OreDictUnificator.get(cableGt04, Materials.Bedrockium, 2L), GT_OreDictUnificator.get(circuit, Materials.Quantum, 2L), ItemList.Hull_MAX.get(1L)}, GT_Values.NF, ItemList.Generator_Naquadah_Mark_X.get(1L), 120, 480);
-        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Iron, 4L)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12012), 120, 480);
-        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Steel, 4L)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12013), 120, 480);
-        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.HSSG, 4L)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12014), 120, 480);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Iron, 4L), GT_Utility.getIntegratedCircuit(17)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12012), 120, 480);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Steel, 4L), GT_Utility.getIntegratedCircuit(17)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12013), 120, 480);
+        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.HSSG, 4L), GT_Utility.getIntegratedCircuit(17)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12014), 120, 480);
         if (Loader.isModLoaded("dreamcraft")) {
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Quantum_Tank_IV.get(1L), CustomItemList.Hull_UEV.get(1L), ItemList.Hatch_Output_MAX.get(64L), GT_Utility.getIntegratedCircuit(2)}, Materials.Polybenzimidazole.getMolten(16000), ItemList.Hatch_Output_Mega.get(1L), 1200, 7864320);
+            GT_Values.RA.addAssemblerRecipe(new ItemStack[]{CustomItemList.Hull_UEV.get(1L), GT_OreDictUnificator.get(OrePrefixes.pipeLarge, Materials.DraconiumAwakened, 1L), ItemList.Electric_Motor_UEV.get(1L), GT_OreDictUnificator.get(OrePrefixes.rotor, Materials.InfinityCatalyst, 1L), GT_Utility.getIntegratedCircuit(3)}, GT_Values.NF, ItemList.Hatch_Muffler_UEV.get(1L), 200, 2000000);
+            GT_Values.RA.addAssemblerRecipe(new ItemStack[]{CustomItemList.Hull_UIV.get(1L), GT_OreDictUnificator.get(OrePrefixes.pipeLarge, Materials.Infinity, 1L), ItemList.Electric_Motor_UIV.get(1L), GT_OreDictUnificator.get(OrePrefixes.rotor, Materials.Infinity, 1L), GT_Utility.getIntegratedCircuit(3)}, GT_Values.NF, ItemList.Hatch_Muffler_UIV.get(1L), 200, 2000000);
         }
                 // Solar Pannels
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Cover_SolarPanel_LV.get(14L), ItemList.Weebium_Chip.get(2L), ItemList.Gamer_girl_Panties.get(2L), ItemList.Circuit_Parts_DiodeSMD.get(2L), GT_OreDictUnificator.get(cableGt16, Materials.RedstoneAlloy, 2L)}, GT_Values.NF, ItemList.Cover_SolarPanel_LVx16.get(1L), 32, 32, true);
@@ -248,8 +250,27 @@ public class GT_CustomRecipeLoader implements Runnable {
                     Bathwater.getFluid(64000L)},
                 ItemList.Special_Oredrill_Circuit.get(1L), 72000, 1992000);
 
-
-
+        // UIV Motor
+        if (Loader.isModLoaded("dreamcraft")) {
+            GT_Values.RA.addAssemblylineRecipe(ItemList.Electric_Motor_UEV.get(1, new Object() {
+            }), 288000, new ItemStack[]{
+                    GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.SamariumMagnetic, 16L),
+                    GT_OreDictUnificator.get(OrePrefixes.stickLong, Weebium, 4L),
+                    GT_OreDictUnificator.get(OrePrefixes.ring, Materials.Infinity, 4L),
+                    GT_OreDictUnificator.get(OrePrefixes.round, Materials.Infinity, 16L),
+                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                    GT_OreDictUnificator.get(OrePrefixes.cableGt04, Materials.DraconiumAwakened, 8L)}, new FluidStack[]{
+                    Materials.Naquadria.getMolten(1296),
+                    Materials.SolderingAlloy.getMolten(1296),
+                    Materials.Lubricant.getFluid(2000)}, ItemList.Electric_Motor_UIV.get(1), 2500, 7500000);
+        }
 
 
 

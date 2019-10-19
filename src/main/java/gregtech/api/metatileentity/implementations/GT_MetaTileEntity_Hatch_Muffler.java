@@ -83,7 +83,35 @@ public class GT_MetaTileEntity_Hatch_Muffler extends GT_MetaTileEntity_Hatch {
     //TODO: Hardcode some numbers here instead of calculating them.
 
     public int calculatePollutionReduction(int aPollution){
-    	return (int) (aPollution *(Math.pow(0.85F, mTier - 1)));
+    	//return (int) (aPollution *(Math.pow(0.85F, mTier - 1)));
+
+        switch (mTier) {
+            case 1:
+                return 100;
+            case 2:
+                return 85;
+            case 3:
+                return 72;
+            case 4:
+                return 61;
+            case 5:
+                return 52;
+            case 6:
+                return 44;
+            case 7:
+                return 37;
+            case 8:
+                return 32;
+            case 9:
+                return 27;
+            case 10:
+                return 15;
+            case 11:
+                return 10;
+            default:
+                return 0;
+        }
+
     }
 
     @Override

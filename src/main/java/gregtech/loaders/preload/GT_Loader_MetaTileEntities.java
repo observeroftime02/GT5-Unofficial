@@ -370,7 +370,9 @@ public class GT_Loader_MetaTileEntities implements Runnable {//TODO CHECK CIRCUI
         ItemList.Hatch_Muffler_ZPM.set(new GT_MetaTileEntity_Hatch_Muffler(97, "hatch.muffler.tier.07", "Muffler Hatch (ZPM)", 7).getStackForm(1L));
         ItemList.Hatch_Muffler_UV.set(new GT_MetaTileEntity_Hatch_Muffler(98, "hatch.muffler.tier.08", "Muffler Hatch (UV)", 8).getStackForm(1L));
         ItemList.Hatch_Muffler_MAX.set(new GT_MetaTileEntity_Hatch_Muffler(99, "hatch.muffler.tier.09", "Muffler Hatch (UHV)", 9).getStackForm(1L));
-        ItemList.Hatch_Muffler_UEV.set(new GT_MetaTileEntity_Hatch_Muffler(2352, "hatch.muffler.tier.09", "Muffler Hatch (UEV)", 10).getStackForm(1L));
+        ItemList.Hatch_Muffler_UEV.set(new GT_MetaTileEntity_Hatch_Muffler(2352, "hatch.muffler.tier.10", "Muffler Hatch (UEV)", 10).getStackForm(1L));
+        ItemList.Hatch_Muffler_UIV.set(new GT_MetaTileEntity_Hatch_Muffler(2353, "hatch.muffler.tier.11", "Muffler Hatch (UIV)", 11).getStackForm(1L));
+
 
         GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Muffler_LV.get(1L), bitsd, new Object[]{"MX ", "PR ", 'M', ItemList.Hull_LV, 'P', OrePrefixes.pipeMedium.get(Materials.Bronze), 'R', OrePrefixes.rotor.get(Materials.Bronze), 'X', ItemList.Electric_Motor_LV});
         GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Muffler_MV.get(1L), bitsd, new Object[]{"MX ", "PR ", 'M', ItemList.Hull_MV, 'P', OrePrefixes.pipeMedium.get(Materials.Steel), 'R', OrePrefixes.rotor.get(Materials.Steel), 'X', ItemList.Electric_Motor_MV});
