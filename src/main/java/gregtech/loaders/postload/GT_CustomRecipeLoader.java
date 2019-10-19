@@ -270,6 +270,33 @@ public class GT_CustomRecipeLoader implements Runnable {
                     Materials.Naquadria.getMolten(1296),
                     Materials.SolderingAlloy.getMolten(1296),
                     Materials.Lubricant.getFluid(2000)}, ItemList.Electric_Motor_UIV.get(1), 2500, 7500000);
+
+            // UIV Conveyor
+            GT_Values.RA.addAssemblylineRecipe(ItemList.Conveyor_Module_UEV.get(1, new Object(){}),144000,new ItemStack[]{
+                    ItemList.Electric_Motor_UIV.get(2, new Object(){}),
+                    GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L),
+                    GT_OreDictUnificator.get(OrePrefixes.ring, Materials.Infinity, 4L),
+                    GT_OreDictUnificator.get(OrePrefixes.round, Materials.Infinity, 32L),
+                    GT_OreDictUnificator.get(OrePrefixes.cableGt04, Materials.DraconiumAwakened, 2L)}, new FluidStack[]{
+                    Materials.SolderingAlloy.getMolten(4608),
+                    Materials.Lubricant.getFluid(16000),
+                    Materials.StyreneButadieneRubber.getMolten(23040)}, ItemList.Conveyor_Module_UIV.get(1), 2500, 7500000);
+
+            // UIV Pump
+            GT_Values.RA.addAssemblylineRecipe(ItemList.Electric_Pump_UEV.get(1, new Object(){}),288000,new Object[]{
+                    ItemList.Electric_Motor_UIV.get(1, new Object(){}),
+                    GT_OreDictUnificator.get(OrePrefixes.pipeLarge, Materials.DraconiumAwakened, 2L),
+                    GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L),
+                    GT_OreDictUnificator.get(OrePrefixes.screw, Materials.Infinity, 8L),
+                    new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.ring, (Materials.StyreneButadieneRubber), 16L), GT_OreDictUnificator.get(OrePrefixes.ring, (Materials.Silicone), 16L)},
+                    GT_OreDictUnificator.get(OrePrefixes.rotor, Materials.InfinityCatalyst, 2L),
+                    GT_OreDictUnificator.get(OrePrefixes.cableGt04, Materials.DraconiumAwakened, 2L)}, new FluidStack[]{
+                    Materials.Naquadria.getMolten(4608),
+                    Materials.SolderingAlloy.getMolten(4608),
+                    Materials.Lubricant.getFluid(16000)}, ItemList.Electric_Pump_UIV.get(1), 2500, 7500000);
+
+
+
         }
 
 
