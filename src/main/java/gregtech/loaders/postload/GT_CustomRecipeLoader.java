@@ -1,6 +1,8 @@
 package gregtech.loaders.postload;
 
 import com.dreammaster.gthandler.CustomItemList;
+import com.github.bartimaeusnek.bartworks.common.loaders.ItemRegistry;
+import com.github.bartimaeusnek.bartworks.util.BW_Util;
 import cpw.mods.fml.common.Loader;
 import gregtech.GT_Mod;
 import gregtech.api.enums.*;
@@ -11,6 +13,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import com.github.bartimaeusnek.bartworks.system.material.WerkstoffLoader;
+import com.github.technus.tectech.recipe.TT_recipeAdder;
+
 
 
 import static gregtech.api.enums.GTNH_ExtraMaterials.*;
@@ -250,7 +254,7 @@ public class GT_CustomRecipeLoader implements Runnable {
                     Bathwater.getFluid(64000L)},
                 ItemList.Special_Oredrill_Circuit.get(1L), 72000, 1992000);
 
-        // UIV Motor
+        /*// UIV Motor
         if (Loader.isModLoaded("dreamcraft")) {
             GT_Values.RA.addAssemblylineRecipe(ItemList.Electric_Motor_UEV.get(1, new Object() {
             }), 288000, new ItemStack[]{
@@ -283,7 +287,7 @@ public class GT_CustomRecipeLoader implements Runnable {
                     Materials.StyreneButadieneRubber.getMolten(23040)}, ItemList.Conveyor_Module_UIV.get(1), 2500, 7500000);
 
             // UIV Pump
-            GT_Values.RA.addAssemblylineRecipe(ItemList.Electric_Pump_UEV.get(1, new Object(){}),288000,new Object[]{
+           GT_Values.RA.addAssemblylineRecipe(ItemList.Electric_Pump_UEV.get(1, new Object(){}),288000,new Object[]{
                     ItemList.Electric_Motor_UIV.get(1, new Object(){}),
                     GT_OreDictUnificator.get(OrePrefixes.pipeLarge, Materials.DraconiumAwakened, 2L),
                     GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L),
@@ -293,12 +297,183 @@ public class GT_CustomRecipeLoader implements Runnable {
                     GT_OreDictUnificator.get(OrePrefixes.cableGt04, Materials.DraconiumAwakened, 2L)}, new FluidStack[]{
                     Materials.Naquadria.getMolten(4608),
                     Materials.SolderingAlloy.getMolten(4608),
-                    Materials.Lubricant.getFluid(16000)}, ItemList.Electric_Pump_UIV.get(1), 2500, 7500000);
+                    Materials.Lubricant.getFluid(16000)}, ItemList.Electric_Pump_UIV.get(1), 2500, 7500000);*/
 
 
 
+
+
+        if (Loader.isModLoaded("dreamcraft") && Loader.isModLoaded("tectech")) {
+
+            // Motor UIV
+            TT_recipeAdder.addResearchableAssemblylineRecipe(
+                    ItemList.Electric_Motor_UEV.get(1L),
+                    64000,
+                    128,
+                    BW_Util.getMachineVoltageFromTier(9),
+                    8,
+                    new Object[]{
+                            GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.SamariumMagnetic, 16L),
+                            GT_OreDictUnificator.get(OrePrefixes.stickLong, Weebium, 4L),
+                            GT_OreDictUnificator.get(OrePrefixes.ring, Materials.Infinity, 4L),
+                            GT_OreDictUnificator.get(OrePrefixes.round, Materials.Infinity, 16L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.cableGt04, Materials.DraconiumAwakened, 8L)
+                    },
+                    new FluidStack[]{
+                            Materials.Naquadria.getMolten(1296),
+                            Materials.SolderingAlloy.getMolten(1296),
+                            Materials.Lubricant.getFluid(2000)
+                    },
+                    ItemList.Electric_Motor_UIV.get(1L),
+                    240000,
+                    BW_Util.getMachineVoltageFromTier(9)
+            );
+
+
+            // UIV Conveyor
+            TT_recipeAdder.addResearchableAssemblylineRecipe(
+                    ItemList.Conveyor_Module_UEV.get(1L),
+                    64000,
+                    128,
+                    BW_Util.getMachineVoltageFromTier(9),
+                    8,
+                    new Object[]{
+                            ItemList.Electric_Motor_UIV.get(2, new Object(){}),
+                            GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L),
+                            GT_OreDictUnificator.get(OrePrefixes.ring, Materials.Infinity, 4L),
+                            GT_OreDictUnificator.get(OrePrefixes.round, Materials.Infinity, 32L),
+                            GT_OreDictUnificator.get(OrePrefixes.cableGt04, Materials.DraconiumAwakened, 2L)
+                    },
+                    new FluidStack[]{
+                            Materials.SolderingAlloy.getMolten(4608),
+                            Materials.Lubricant.getFluid(16000),
+                            Materials.StyreneButadieneRubber.getMolten(23040)
+                    },
+                    ItemList.Conveyor_Module_UIV.get(1L),
+                    240000,
+                    BW_Util.getMachineVoltageFromTier(9)
+            );
+
+
+            // UIV Pump
+            TT_recipeAdder.addResearchableAssemblylineRecipe(
+                    ItemList.Electric_Pump_UEV.get(1L),
+                    64000,
+                    128,
+                    BW_Util.getMachineVoltageFromTier(9),
+                    8,
+                    new Object[]{
+                            GT_OreDictUnificator.get(OrePrefixes.pipeLarge, Materials.DraconiumAwakened, 2L),
+                            GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L),
+                            GT_OreDictUnificator.get(OrePrefixes.screw, Materials.Infinity, 8L),
+                            new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.ring, (Materials.StyreneButadieneRubber), 16L), GT_OreDictUnificator.get(OrePrefixes.ring, (Materials.Silicone), 16L)},
+                            GT_OreDictUnificator.get(OrePrefixes.rotor, Materials.InfinityCatalyst, 2L),
+                            GT_OreDictUnificator.get(OrePrefixes.cableGt04, Materials.DraconiumAwakened, 2L)
+                    },
+                    new FluidStack[]{
+                            Materials.Naquadria.getMolten(4608),
+                            Materials.SolderingAlloy.getMolten(4608),
+                            Materials.Lubricant.getFluid(16000)
+                    },
+                    ItemList.Electric_Pump_UIV.get(1L),
+                    240000,
+                    BW_Util.getMachineVoltageFromTier(9)
+            );
+
+
+            // UIV Piston
+            TT_recipeAdder.addResearchableAssemblylineRecipe(
+                    ItemList.Electric_Piston_UEV.get(1L),
+                    64000,
+                    128,
+                    BW_Util.getMachineVoltageFromTier(9),
+                    8,
+                    new Object[]{
+                            ItemList.Electric_Motor_UEV.get(1L),
+                            GT_OreDictUnificator.get(plate, Materials.Neutronium, 12L),
+                            GT_OreDictUnificator.get(ring, Materials.Neutronium, 16L),
+                            GT_OreDictUnificator.get(round, Materials.Neutronium, 64L),
+                            GT_OreDictUnificator.get(stick, Materials.Neutronium, 16L),
+                            GT_OreDictUnificator.get(gearGt, Materials.Neutronium, 4L),
+                            GT_OreDictUnificator.get(gearGtSmall, Materials.Neutronium, 8L),
+                            GT_OreDictUnificator.get(cableGt04, Materials.DraconiumAwakened, 8L),
+                    },
+                    new FluidStack[]{
+                            Materials.Naquadria.getMolten(5184),
+                            Materials.SolderingAlloy.getMolten(10368),
+                            Materials.Lubricant.getMolten(16000)
+                    },
+                    ItemList.Electric_Piston_UIV.get(1L),
+                    240000,
+                    BW_Util.getMachineVoltageFromTier(9)
+            );
+
+            // UIV Sensor
+            TT_recipeAdder.addResearchableAssemblylineRecipe(
+                    ItemList.Sensor_UEV.get(1L),
+                    64000,
+                    128,
+                    BW_Util.getMachineVoltageFromTier(9),
+                    8,
+                    new Object[]{
+                            GT_OreDictUnificator.get(frameGt, Materials.Infinity, 12L),
+                            ItemList.Electric_Motor_UIV.get(1L),
+                            GT_OreDictUnificator.get(plate, Materials.Infinity, 16L),
+                            ItemList.Gravistar.get(32L),
+                            CustomItemList.NanoCircuit.get(8L),
+                            GT_OreDictUnificator.get(foil, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(foil, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(foil, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(foil, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(cableGt04, Materials.DraconiumAwakened, 14L),
+                    },
+                    new FluidStack[]{
+                            Materials.Naquadria.getMolten(5184),
+                            Materials.SolderingAlloy.getMolten(10368),
+                            Weebium.getMolten(16000)
+                    },
+                    ItemList.Sensor_UIV.get(1L),
+                    240000,
+                    BW_Util.getMachineVoltageFromTier(9)
+            );
+
+            // UEV Emitter
+            TT_recipeAdder.addResearchableAssemblylineRecipe(
+                    ItemList.Emitter_UEV.get(1L),
+                    64000,
+                    128,
+                    BW_Util.getMachineVoltageFromTier(9),
+                    8,
+                    new Object[]{
+                            GT_OreDictUnificator.get(frameGt, Materials.Infinity, 12L),
+                            ItemList.Electric_Motor_UIV.get(1L),
+                            GT_OreDictUnificator.get(stick, Materials.Infinity, 16L),
+                            ItemList.Gravistar.get(32L),
+                            CustomItemList.NanoCircuit.get(8L),
+                            GT_OreDictUnificator.get(foil, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(foil, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(foil, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(foil, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(cableGt04, Materials.DraconiumAwakened, 14L),
+                    },
+                    new FluidStack[]{
+                            Materials.Naquadria.getMolten(5184),
+                            Materials.SolderingAlloy.getMolten(10368),
+                            Weebium.getMolten(16000)
+                    },
+                    ItemList.Emitter_UIV.get(1L),
+                    240000,
+                    BW_Util.getMachineVoltageFromTier(9)
+            );
         }
-
 
 
         }
