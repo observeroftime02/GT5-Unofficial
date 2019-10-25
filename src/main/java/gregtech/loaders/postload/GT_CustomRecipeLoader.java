@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import com.github.bartimaeusnek.bartworks.system.material.WerkstoffLoader;
 import com.github.technus.tectech.recipe.TT_recipeAdder;
+import com.github.technus.tectech.thing.metaTileEntity.hatch.GT_MetaTileEntity_Hatch_Rack;
 
 
 
@@ -97,7 +98,7 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addElectrolyzerRecipe(GT_OreDictUnificator.get(cell, RedPMSlurry, 1L), GT_OreDictUnificator.get(dust, GAGPanties, 1L), GT_Values.NF, Materials.NitricAcid.getFluid(144), GT_OreDictUnificator.get(dust, RedPMSlurry, 1L), ItemList.Cell_Empty.get(1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, new int[]{10000,10000,0,0,0,0}, 120, 480);
 
         // Assembler Recipes
-        GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(plate, Weebium, 6L), GT_OreDictUnificator.get(frameGt, Weebium, 1L), ItemList.Casing_Weebium.get(1L), 50, 16);
+       // GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(plate, Weebium, 6L), GT_OreDictUnificator.get(frameGt, Weebium, 1L), ItemList.Casing_Weebium.get(1L), 50, 16);
         GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(plate, Materials.UUMatter, 6L), GT_OreDictUnificator.get(frameGt, Materials.UUMatter, 1L), ItemList.Casing_UUM.get(1L), 50, 16);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Large_Fluid_Cell_Neutronium.get(1L), GT_OreDictUnificator.get(gemExquisite, SoulGem, 2L), ItemList.Gamer_girl_Panties.get(2L)}, GT_Values.NF, ItemList.PmCell1.get(1L), 2400, 7680);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.PmCell1.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.Gamer_girl_Panties.get(2L)}, GT_Values.NF, ItemList.PmCell2.get(1L), 2400, 7680);
@@ -209,101 +210,82 @@ public class GT_CustomRecipeLoader implements Runnable {
                     ItemList.Doritos.get(16), 1200, 32000);
         }
 
-        //T5 Drilling Rig
-        GT_Values.RA.addAssemblylineRecipe(ItemList.OreDrill4.get(1L, new Object[]{}), 288000, new ItemStack[]{
-                        ItemList.OreDrill4.get(1L),
-                        GT_OreDictUnificator.get(frameGt, Weebium, 16L),
-                        GT_OreDictUnificator.get(plate, Weebium, 32L),
-                        GT_OreDictUnificator.get(stick, Weebium, 32L),
-                        GT_OreDictUnificator.get(gearGt, Weebium, 8L),
-                        GT_OreDictUnificator.get(gearGtSmall, Materials.Infinity, 16L),
-                        ItemList.Special_Oredrill_Circuit.get(1L),
-                        CustomItemList.QuantumCircuit.get(4L),
-                        CustomItemList.PikoCircuit.get(8L),
-                        CustomItemList.NanoCircuit.get(16L),
-                        GT_OreDictUnificator.get(plateDense, Materials.Tritanium, 8L),
-                        GT_OreDictUnificator.get(wireFine, Weebium, 64L),
-                        GT_OreDictUnificator.get(wireFine, Weebium, 64L),
-                        GT_OreDictUnificator.get(wireFine, Weebium, 64L),
-                        GT_OreDictUnificator.get(wireFine, Weebium, 64L),}, new FluidStack[]{
-                        Materials.Lubricant.getFluid(9216L),
-                        Materials.SolderingAlloy.getMolten(9216L),
-                        Materials.Neutronium.getMolten(18432),
-                        Materials.UUMatter.getFluid(128000L)},
-                ItemList.OreDrill5.get(1L), 36000, 1992000);
-
-        //Ore Drilling Control Circuit
-        GT_Values.RA.addAssemblylineRecipe(CustomItemList.QuantumCircuit.get(1L, new Object[]{}), 576000, new ItemStack[]{
-                    ItemList.Gamer_girl_Panties.get(64L),
-                    CustomItemList.QuantumCircuit.get(8L),
-                    CustomItemList.PikoCircuit.get(16L),
-                    CustomItemList.NanoCircuit.get(32L),
-                    ItemList.Circuit_Wetwaremainframe.get(64L),
-                    ItemList.Circuit_Wetwaresupercomputer.get(64L),
-                    ItemList.Circuit_Wetwaresupercomputer.get(64L),
-                    ItemList.Robot_Arm_UEV.get(32L),
-                    ItemList.Sensor_UEV.get(32L),
-                    ItemList.Emitter_UEV.get(32L),
-                    ItemList.Circuit_Board_Wetware_Extreme.get(64),
-                    GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
-                    GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
-                    GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
-                    GT_OreDictUnificator.get(plateDense, Weebium, 8L),}, new FluidStack[]{
-                    Materials.SolderingAlloy.getMolten(1440L),
-                    Materials.BioMediumSterilized.getFluid(64000L),
-                    Bathwater.getFluid(64000L)},
-                ItemList.Special_Oredrill_Circuit.get(1L), 72000, 1992000);
-
-        /*// UIV Motor
-        if (Loader.isModLoaded("dreamcraft")) {
-            GT_Values.RA.addAssemblylineRecipe(ItemList.Electric_Motor_UEV.get(1, new Object() {
-            }), 288000, new ItemStack[]{
-                    GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.SamariumMagnetic, 16L),
-                    GT_OreDictUnificator.get(OrePrefixes.stickLong, Weebium, 4L),
-                    GT_OreDictUnificator.get(OrePrefixes.ring, Materials.Infinity, 4L),
-                    GT_OreDictUnificator.get(OrePrefixes.round, Materials.Infinity, 16L),
-                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
-                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
-                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
-                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
-                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
-                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
-                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
-                    GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.Tartarite, 64L),
-                    GT_OreDictUnificator.get(OrePrefixes.cableGt04, Materials.DraconiumAwakened, 8L)}, new FluidStack[]{
-                    Materials.Naquadria.getMolten(1296),
-                    Materials.SolderingAlloy.getMolten(1296),
-                    Materials.Lubricant.getFluid(2000)}, ItemList.Electric_Motor_UIV.get(1), 2500, 7500000);
-
-            // UIV Conveyor
-            GT_Values.RA.addAssemblylineRecipe(ItemList.Conveyor_Module_UEV.get(1, new Object(){}),144000,new ItemStack[]{
-                    ItemList.Electric_Motor_UIV.get(2, new Object(){}),
-                    GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L),
-                    GT_OreDictUnificator.get(OrePrefixes.ring, Materials.Infinity, 4L),
-                    GT_OreDictUnificator.get(OrePrefixes.round, Materials.Infinity, 32L),
-                    GT_OreDictUnificator.get(OrePrefixes.cableGt04, Materials.DraconiumAwakened, 2L)}, new FluidStack[]{
-                    Materials.SolderingAlloy.getMolten(4608),
-                    Materials.Lubricant.getFluid(16000),
-                    Materials.StyreneButadieneRubber.getMolten(23040)}, ItemList.Conveyor_Module_UIV.get(1), 2500, 7500000);
-
-            // UIV Pump
-           GT_Values.RA.addAssemblylineRecipe(ItemList.Electric_Pump_UEV.get(1, new Object(){}),288000,new Object[]{
-                    ItemList.Electric_Motor_UIV.get(1, new Object(){}),
-                    GT_OreDictUnificator.get(OrePrefixes.pipeLarge, Materials.DraconiumAwakened, 2L),
-                    GT_OreDictUnificator.get(OrePrefixes.plate, Weebium, 2L),
-                    GT_OreDictUnificator.get(OrePrefixes.screw, Materials.Infinity, 8L),
-                    new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.ring, (Materials.StyreneButadieneRubber), 16L), GT_OreDictUnificator.get(OrePrefixes.ring, (Materials.Silicone), 16L)},
-                    GT_OreDictUnificator.get(OrePrefixes.rotor, Materials.InfinityCatalyst, 2L),
-                    GT_OreDictUnificator.get(OrePrefixes.cableGt04, Materials.DraconiumAwakened, 2L)}, new FluidStack[]{
-                    Materials.Naquadria.getMolten(4608),
-                    Materials.SolderingAlloy.getMolten(4608),
-                    Materials.Lubricant.getFluid(16000)}, ItemList.Electric_Pump_UIV.get(1), 2500, 7500000);*/
-
-
 
 
 
         if (Loader.isModLoaded("dreamcraft") && Loader.isModLoaded("tectech")) {
+
+            // T5 Drilling Rig
+            TT_recipeAdder.addResearchableAssemblylineRecipe(
+                    ItemList.OreDrill4.get(1L),
+                    1228800,
+                    4096,
+                    BW_Util.getMachineVoltageFromTier(11),
+                    32,
+                    new Object[]{
+                            ItemList.OreDrill4.get(1L),
+                            GT_OreDictUnificator.get(frameGt, Weebium, 16L),
+                            GT_OreDictUnificator.get(plate, Weebium, 32L),
+                            GT_OreDictUnificator.get(stick, Weebium, 32L),
+                            GT_OreDictUnificator.get(gearGt, Weebium, 8L),
+                            GT_OreDictUnificator.get(gearGtSmall, Materials.Infinity, 16L),
+                            ItemList.Special_Oredrill_Circuit.get(1L),
+                            CustomItemList.QuantumCircuit.get(4L),
+                            CustomItemList.PikoCircuit.get(8L),
+                            CustomItemList.NanoCircuit.get(16L),
+                            GT_OreDictUnificator.get(plateDense, Materials.Tritanium, 8L),
+                            GT_OreDictUnificator.get(wireFine, Weebium, 64L),
+                            GT_OreDictUnificator.get(wireFine, Weebium, 64L),
+                            GT_OreDictUnificator.get(wireFine, Weebium, 64L),
+                            GT_OreDictUnificator.get(wireFine, Weebium, 64L)
+                    },
+                    new FluidStack[]{
+                            Materials.Lubricant.getFluid(9216L),
+                            Materials.SolderingAlloy.getMolten(9216L),
+                            Materials.Neutronium.getMolten(18432),
+                            Materials.UUMatter.getFluid(128000L)
+                    },
+                    ItemList.OreDrill5.get(1L),
+                    240000,
+                    BW_Util.getMachineVoltageFromTier(11)
+            );
+
+
+            // Special Oredrill Circuit
+            TT_recipeAdder.addResearchableAssemblylineRecipe(
+                    CustomItemList.QuantumCircuit.get(1L),
+                    1228800,
+                    4096,
+                    BW_Util.getMachineVoltageFromTier(11),
+                    16,
+                    new Object[]{
+                            ItemList.Gamer_girl_Panties.get(64L),
+                            CustomItemList.QuantumCircuit.get(8L),
+                            CustomItemList.PikoCircuit.get(16L),
+                            CustomItemList.NanoCircuit.get(32L),
+                            ItemList.Circuit_Wetwaremainframe.get(64L),
+                            ItemList.Circuit_Wetwaresupercomputer.get(64L),
+                            ItemList.Circuit_Wetwaresupercomputer.get(64L),
+                            ItemList.Robot_Arm_UEV.get(32L),
+                            ItemList.Sensor_UEV.get(32L),
+                            ItemList.Emitter_UEV.get(32L),
+                            ItemList.Circuit_Board_Wetware_Extreme.get(64),
+                            GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(plateDense, Weebium, 8L)
+                    },
+                    new FluidStack[]{
+                            Materials.SolderingAlloy.getMolten(1440L),
+                            Materials.BioMediumSterilized.getFluid(64000L),
+                            Bathwater.getFluid(64000L)
+                    },
+                    ItemList.Special_Oredrill_Circuit.get(1L),
+                    240000,
+                    BW_Util.getMachineVoltageFromTier(11)
+            );
+
+
 
             // Motor UIV
             TT_recipeAdder.addResearchableAssemblylineRecipe(
@@ -473,6 +455,63 @@ public class GT_CustomRecipeLoader implements Runnable {
                     240000,
                     BW_Util.getMachineVoltageFromTier(9)
             );
+
+            // Smug Weebium Casing
+            TT_recipeAdder.addResearchableAssemblylineRecipe(
+                    ItemList.Casing_MiningOsmiridium.get(1L),
+                    2147483646,
+                    4096,
+                    BW_Util.getMachineVoltageFromTier(11),
+                    8,
+                    new Object[]{
+                            GT_OreDictUnificator.get(frameGt, Weebium, 1L),
+                            GT_OreDictUnificator.get(plate, Weebium, 6L),
+                            GT_OreDictUnificator.get(foil, Materials.Osmiridium, 8L),
+                            GT_OreDictUnificator.get(foil, Materials.Infinity, 4L),
+                            GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 32L),
+                            ItemList.Field_Generator_UIV.get(1L)
+                    },
+                    new FluidStack[]{
+                            Materials.Tritanium.getMolten(2304),
+                            WerkstoffLoader.LuVTierMaterial.getMolten(23040),
+                            WerkstoffLoader.Ruridit.getMolten(2304)
+                    },
+                    ItemList.Casing_Weebium.get(1L),
+                    240000,
+                    BW_Util.getMachineVoltageFromTier(11)
+            );
+
+            // Field Gen XI
+            TT_recipeAdder.addResearchableAssemblylineRecipe(
+                    ItemList.Field_Generator_UEV.get(1L),
+                    1048576,
+                    4096,
+                    BW_Util.getMachineVoltageFromTier(11),
+                    8,
+                    new Object[]{
+                            GT_OreDictUnificator.get(frameGt, Weebium, 1L),
+                            GT_OreDictUnificator.get(plate, Weebium, 6L),
+                            ItemList.Special_Oredrill_Circuit.get(8L),
+                            GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(wireFine, Materials.Infinity, 64L),
+                            GT_OreDictUnificator.get(cableGt08, Materials.DraconiumAwakened, 8L),
+                    },
+                    new FluidStack[]{
+                            Materials.Quantum.getMolten(3456L),
+                            Materials.SolderingAlloy.getMolten(18432L),
+                    },
+                    ItemList.Field_Generator_UIV.get(1L),
+                    240000,
+                    BW_Util.getMachineVoltageFromTier(11)
+            );
+
+            //new GT_MetaTileEntity_Hatch_Rack.RackComponent(ItemList.Special_Oredrill_Circuit.get(1), 256, 0, -.8F, 12000, true);
         }
 
 
