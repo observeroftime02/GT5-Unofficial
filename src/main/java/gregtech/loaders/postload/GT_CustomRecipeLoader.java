@@ -104,9 +104,9 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.PmCell1.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.Gamer_girl_Panties.get(2L)}, GT_Values.NF, ItemList.PmCell2.get(1L), 2400, 7680);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.PmCell2.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.Gamer_girl_Panties.get(2L)}, GT_Values.NF, ItemList.PmCell4.get(1L), 2400, 7680);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Neutronium, 2L), ItemList.Field_Generator_UHV.get(2L), GT_OreDictUnificator.get(cableGt04, Materials.Bedrockium, 2L), GT_OreDictUnificator.get(circuit, Materials.Quantum, 2L), ItemList.Hull_MAX.get(1L)}, GT_Values.NF, ItemList.Generator_Naquadah_Mark_X.get(1L), 120, 480);
-        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Iron, 4L), GT_Utility.getIntegratedCircuit(17)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12012), 120, 480);
-        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Steel, 4L), GT_Utility.getIntegratedCircuit(17)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12013), 120, 480);
-        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.HSSG, 4L), GT_Utility.getIntegratedCircuit(17)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12014), 120, 480);
+        //GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Iron, 4L), GT_Utility.getIntegratedCircuit(17)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12012), 120, 480);
+        //GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Steel, 4L), GT_Utility.getIntegratedCircuit(17)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12013), 120, 480);
+        //GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.HSSG, 4L), GT_Utility.getIntegratedCircuit(17)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12014), 120, 480);
         if (Loader.isModLoaded("dreamcraft")) {
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.Quantum_Tank_IV.get(1L), CustomItemList.Hull_UEV.get(1L), ItemList.Hatch_Output_MAX.get(64L), GT_Utility.getIntegratedCircuit(2)}, Materials.Polybenzimidazole.getMolten(16000), ItemList.Hatch_Output_Mega.get(1L), 1200, 7864320);
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{CustomItemList.Hull_UEV.get(1L), GT_OreDictUnificator.get(OrePrefixes.pipeLarge, Materials.DraconiumAwakened, 1L), ItemList.Electric_Motor_UEV.get(1L), GT_OreDictUnificator.get(OrePrefixes.rotor, Materials.InfinityCatalyst, 1L), GT_Utility.getIntegratedCircuit(3)}, GT_Values.NF, ItemList.Hatch_Muffler_UEV.get(1L), 200, 2000000);
@@ -187,11 +187,8 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dust, CursedEntropy, 1L), WerkstoffLoader.Ruthenium.getMolten(16), GT_OreDictUnificator.get(gem, CursedEntropy, 1L), 7500, 1200,131000);
 
 
-        // Shaped Crafting Recipes
-        GT_ModHandler.addCraftingRecipe(ItemList.Generator_Naquadah_Mark_X.get(1L), bits, new Object[]{"NCN", "FMF", "WCW", 'M', ItemList.Hull_MAX, 'F', ItemList.Field_Generator_UHV, 'C', circuit.get(Materials.Quantum), 'W', cableGt04.get(Materials.Bedrockium), 'N', stick.get(Materials.Neutronium)});
-
-
-    }
+        new GT_CustomCraftingRecipeLoader().run();
+           }
 
     public void run2(){
 
