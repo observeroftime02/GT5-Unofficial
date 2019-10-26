@@ -1,11 +1,6 @@
 GT5-Unofficial
 ===
 
-## IMPORTANT
-
-This is a modified forked version, mostly for experimental purposes. Do not use this for anything!
-
-
 ## About
 
 GT5-Unofficial is a decompiled and modified version of GT5.07.07. The goal of the mod is to maintain and extend the end game of GT5.
