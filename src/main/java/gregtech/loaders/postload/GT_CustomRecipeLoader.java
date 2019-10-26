@@ -11,6 +11,7 @@ import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import com.github.bartimaeusnek.bartworks.system.material.WerkstoffLoader;
 import com.github.technus.tectech.recipe.TT_recipeAdder;
@@ -69,7 +70,8 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addChemicalRecipe(GT_OreDictUnificator.get(cell,PMSlurry, 1L), GT_OreDictUnificator.get(dustTiny, Materials.Infinity, 1L).copy().splitStack(0), GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(cell, RedPMSlurry, 1L), GT_Values.NI, 120, 480);
         GT_Values.RA.addMultiblockChemicalRecipe( new ItemStack[]{GT_OreDictUnificator.get(dust, RefPMagium, 1L), GT_OreDictUnificator.get(dust, Materials.CosmicNeutronium, 1L)}, new FluidStack[]{Materials.HydrofluoricAcid.getFluid(144L)}, new FluidStack[]{RefPMagium.getFluid(144)}, new ItemStack[]{GT_OreDictUnificator.get(dustTiny, Materials.CosmicNeutronium, 1L)}, 120, 480);
         GT_Values.RA.addMultiblockChemicalRecipe( new ItemStack[]{GT_Utility.getIntegratedCircuit(2), GT_OreDictUnificator.get(dustTiny, Materials.Infinity, 1L)}, new FluidStack[]{Materials.AntiKnock.getFluid(4000L)}, new FluidStack[]{InfiniteDiesel.getFluid(4000L)}, new ItemStack[]{GT_OreDictUnificator.get(dustTiny, Materials.InfinityCatalyst, 1L)}, 36000, 7680);
-
+        //GT_Values.RA.addChemicalRecipe(ItemList.Weebium_Wafer_Raw.get(1L), GT_OreDictUnificator.get(dust, AGEssence, 1L), Bathwater.getFluid(144), GT_Values.NF, ItemList.Weebium_Wafer.get(1L), 3600, (int)GT_Values.V[9]);
+        GT_Values.RA.addMultiblockChemicalRecipe( new ItemStack[]{ItemList.Weebium_Wafer_Raw.get(1L), GT_OreDictUnificator.get(dust, Weebium, 1L), GT_OreDictUnificator.get(dust, Materials.MysteriousCrystal, 4L), CustomItemList.TCetiESeaweedExtract.get(4L), GT_Utility.copyAmount(0, GT_OreDictUnificator.get(dustTiny, Materials.Infinity, 1))}, new FluidStack[]{Bathwater.getFluid(144L)}, null, new ItemStack[]{ItemList.Weebium_Wafer.get(1)}, 3600, (int)GT_Values.V[9]);
         if (Loader.isModLoaded("bartworks")) {
             GT_Values.RA.addChemicalRecipe(GT_Utility.getIntegratedCircuit(1), GT_Values.NI,  WerkstoffLoader.AcidicOsmiumSolution.getFluidOrGas(1000), WerkstoffLoader.OsmiumSolution.getFluidOrGas(100), GT_Values.NI, 150, 7680);
         }
@@ -161,7 +163,7 @@ public class GT_CustomRecipeLoader implements Runnable {
 
         // Cutting Machine
         GT_Values.RA.addCutterRecipe(GT_OreDictUnificator.get(block, Weebium, 1L), GT_OreDictUnificator.get(plate, Weebium, 9L), null, 1200, 524000);
-        GT_Values.RA.addCutterRecipe(ItemList.Weebium_Silicon_Boule.get(1), GT_Values.NI, ItemList.Weebium_Wafer.get(64), ItemList.Weebium_Wafer.get(64), 18000, 2000000, true);
+        GT_Values.RA.addCutterRecipe(ItemList.Weebium_Silicon_Boule.get(1), GT_Values.NI, ItemList.Weebium_Wafer_Raw.get(64), ItemList.Weebium_Wafer_Raw.get(64), 18000, 2000000, true);
         GT_Values.RA.addCutterRecipe(ItemList.Engraved_Weebium_Wafer.get(1), GT_Values.NI, ItemList.Weebium_Chip.get(8), GT_Values.NI, 3200, 2000000, true);
 
 
@@ -507,6 +509,39 @@ public class GT_CustomRecipeLoader implements Runnable {
                     240000,
                     BW_Util.getMachineVoltageFromTier(11)
             );
+
+            // Highly Ultimate Battery
+            TT_recipeAdder.addResearchableAssemblylineRecipe(
+                    CustomItemList.BatteryHull_UHV_Full.get(1L),
+                    12345678,
+                    512,
+                    BW_Util.getMachineVoltageFromTier(9),
+                    8,
+                    new Object[]{
+                            GT_OreDictUnificator.get(OrePrefixes.plateDouble, Materials.Neutronium, 64L),
+                            new Object[]{OrePrefixes.circuit.get(Materials.Nano), 1L},
+                            new Object[]{OrePrefixes.circuit.get(Materials.Nano), 1L},
+                            new Object[]{OrePrefixes.circuit.get(Materials.Nano), 1L},
+                            new Object[]{OrePrefixes.circuit.get(Materials.Nano), 1L},
+                            ItemList.ZPM2.get(8),
+                            ItemList.Field_Generator_UEV.get(4),
+                            ItemList.Circuit_Wafer_UHPIC.get(64),
+                            ItemList.Circuit_Wafer_UHPIC.get(64),
+                            ItemList.Weebium_Wafer.get(32),
+                            ItemList.Circuit_Parts_DiodeSMD.get(64),
+                            GT_OreDictUnificator.get(OrePrefixes.wireGt02, Weebium, 64),
+                    },
+                    new FluidStack[]{
+                            Materials.SolderingAlloy.getMolten(3760),
+                            Materials.Naquadria.getMolten(9000),
+                            new FluidStack(FluidRegistry.getFluid("ic2coolant"), 32000)
+                    },
+                    ItemList.ZPM4.get(1L),
+                    24000,
+                    BW_Util.getMachineVoltageFromTier(9)
+            );
+
+
 
             //new GT_MetaTileEntity_Hatch_Rack.RackComponent(ItemList.Special_Oredrill_Circuit.get(1), 256, 0, -.8F, 12000, true);
         }
