@@ -33,7 +33,7 @@ public class GT_CustomRecipeLoader implements Runnable {
 
         // Blast Furnace Recipes
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(dust, Materials.UUAmplifier, 32), GT_Utility.getIntegratedCircuit(11), Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(ingotHot, Materials.UUAmplifier, 1), null, 400, 19753, 10800);
-        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(dust, Materials.UUMatter, 32), GT_Utility.getIntegratedCircuit(11), Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(ingotHot, Materials.UUMatter, 1), null, 400, 19753, 10800);
+        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(dust, Materials.UUMatter, 32), GT_Utility.getIntegratedCircuit(11), Bathwater.getFluid(1L), null, GT_OreDictUnificator.get(ingotHot, Materials.UUMatter, 1), null, 400, 19753, 10800);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(dust, Weebium, 1L), GT_Utility.getIntegratedCircuit(11), AGEssence.getFluid(144L), null, GT_OreDictUnificator.get(ingotHot, Weebium, 1L), null, 125, 498073, 9001);
         GT_Values.RA.addBlastRecipe(PMagium.getDust(1), GT_Utility.getIntegratedCircuit(11), AGEssence.getFluid(144), null, GT_OreDictUnificator.get(ingotHot, PMagium, 1L), null, 12500, 2000000, 10800);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(block, Materials.Silicon, 64), GT_OreDictUnificator.get(ingot, Weebium, 16), AGEssence.getFluid(32000), null, ItemList.Weebium_Silicon_Boule.get(1), null, 36000, 2000000, 10800);
@@ -46,7 +46,7 @@ public class GT_CustomRecipeLoader implements Runnable {
 
 
         // Fluid Extractor Recipes
-        GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(ingot, Materials.UUMatter, 1L), GT_Values.NI, Materials.UUMatter.getFluid(16L),10000, 10, 32);
+        GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(ingot, Materials.UUMatter, 1L), GT_Values.NI, Materials.UUMatter.getFluid(32L),10000, 10, 32);
         GT_Values.RA.addFluidExtractionRecipe(GT_OreDictUnificator.get(ingot, Materials.UUAmplifier, 1L), GT_Values.NI, Materials.UUAmplifier.getFluid(16L),10000, 10, 32);
         GT_Values.RA.addFluidExtractionRecipe(ItemList.Gamer_girl_Panties.get(1L), GT_Values.NI, GTNH_ExtraMaterials.Bathwater.getFluid(2500L), 10000, 250, 480);
         GT_Values.RA.addFluidExtractionRecipe(AGEssence.getDust(1), GT_Values.NI, AGEssence.getFluid(144L), 10000, 20, 408);

@@ -6,6 +6,7 @@ import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GT_BaseCrop;
 import gregtech.api.util.GT_Log;
+import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -387,12 +388,12 @@ public class GT_CropLoader
                     "Mica",
                     "Bush"
             }, Materials.Mica, ItemList.Crop_Drop_Mica.get(1L), null);
-            new GT_BaseCrop(180, "Weebium", "MamiTomoe", ItemList.Gamer_girl_Panties.get(1), 13, 4, 0, 2, 4, 1, 1, 0, 2, 0, new String[] {
+            new GT_BaseCrop(180, "Weebium", "MamiTomoe", ItemList.Gamer_girl_Panties.get(1), 6, 4, 200, 2, 4, 1, 1, 0, 2, 0, new String[] {
                     "Weeb",
                     "Depressed",
                     "Food"
             }, GTNH_ExtraMaterials.Weebium, ItemList.Gamer_girl_Panties.get(1L), new ItemStack[] {
-                    GTNH_ExtraMaterials.Weebium.getDustSmall(1), Materials.UUMatter.getDustTiny(1), ItemList.Circuit_Chip_Biocell.get(1)
+                    GT_ModHandler.getModItem("dreamcraft", "item.TCetiESeaweedExtract", 1, 0), GTNH_ExtraMaterials.Weebium.getDustSmall(1), Materials.UUMatter.getDustTiny(1), ItemList.Circuit_Chip_Biocell.get(1)
             });
             new GT_BaseCrop(181, "Doritos", "MamiTomoe", ItemList.Dorito_Chip.get(1), 4, 4, 0, 2, 4, 1, 1, 0, 2, 0, new String[] {
                     "Weeb",
