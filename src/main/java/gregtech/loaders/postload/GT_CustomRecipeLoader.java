@@ -31,6 +31,10 @@ public class GT_CustomRecipeLoader implements Runnable {
 
     public void run() {
 
+        GT_Values.RA.addTestmachineRecipe(GT_OreDictUnificator.get(dust, Materials.Salt, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(dust, Materials.SodiumHydroxide, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, 20, 16);
+        GT_Values.RA.addTestmachineRecipe(GT_OreDictUnificator.get(dust, Materials.Iron, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, Materials.Water.getFluid(144), Materials.DilutedHydrochloricAcid.getFluid(144L), GT_OreDictUnificator.get(dust, Materials.Steel, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, 20, 16);
+        GT_Values.RA.addTestmachineRecipe(new ItemStack[]{GT_OreDictUnificator.get(dust, Materials.MysteriousCrystal, 1L), GT_OreDictUnificator.get(dust, Materials.Neutronium, 1L)}, Materials.SulfuricAcid.getFluid(144L), Materials.DilutedSulfuricAcid.getFluid(144L), new ItemStack[]{GT_OreDictUnificator.get(dust, Materials.InfinityCatalyst, 1L), GT_OreDictUnificator.get(dust, Materials.Naquadah, 1L)}, new int[]{7500,7500}, 15, 16);
+
         // Blast Furnace Recipes
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(dust, Materials.UUAmplifier, 32), GT_Utility.getIntegratedCircuit(11), Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(ingotHot, Materials.UUAmplifier, 1), null, 400, 19753, 10800);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(dust, Materials.UUMatter, 32), GT_Utility.getIntegratedCircuit(11), Bathwater.getFluid(1L), null, GT_OreDictUnificator.get(ingotHot, Materials.UUMatter, 1), null, 400, 19753, 10800);
