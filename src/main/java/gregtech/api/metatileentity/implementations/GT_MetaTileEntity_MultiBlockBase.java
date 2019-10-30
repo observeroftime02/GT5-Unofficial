@@ -476,19 +476,18 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                                 tStack = GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.TungstenSteel, 1);
                                 tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
                             } else if (i == 176) {
-                            ItemStack tStack = GT_Utility.copyAmount(2, tTurbine);
-                            tNBT2.setTag("Ingredient.0", tStack.writeToNBT(new NBTTagCompound()));
-                            tNBT2.setTag("Ingredient.1", tStack.writeToNBT(new NBTTagCompound()));
-                            tNBT2.setTag("Ingredient.2", tStack.writeToNBT(new NBTTagCompound()));
-                            tNBT2.setTag("Ingredient.3", tStack.writeToNBT(new NBTTagCompound()));
-                            tNBT2.setTag("Ingredient.5", tStack.writeToNBT(new NBTTagCompound()));
-                            tNBT2.setTag("Ingredient.6", tStack.writeToNBT(new NBTTagCompound()));
-                            tNBT2.setTag("Ingredient.7", tStack.writeToNBT(new NBTTagCompound()));
-                            tNBT2.setTag("Ingredient.8", tStack.writeToNBT(new NBTTagCompound()));
-                            tStack = GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Americium, 1);
-                            tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
-                        }
-                            else if (i == 180) {
+                                ItemStack tStack = GT_Utility.copyAmount(2, tTurbine);
+                                tNBT2.setTag("Ingredient.0", tStack.writeToNBT(new NBTTagCompound()));
+                                tNBT2.setTag("Ingredient.1", tStack.writeToNBT(new NBTTagCompound()));
+                                tNBT2.setTag("Ingredient.2", tStack.writeToNBT(new NBTTagCompound()));
+                                tNBT2.setTag("Ingredient.3", tStack.writeToNBT(new NBTTagCompound()));
+                                tNBT2.setTag("Ingredient.5", tStack.writeToNBT(new NBTTagCompound()));
+                                tNBT2.setTag("Ingredient.6", tStack.writeToNBT(new NBTTagCompound()));
+                                tNBT2.setTag("Ingredient.7", tStack.writeToNBT(new NBTTagCompound()));
+                                tNBT2.setTag("Ingredient.8", tStack.writeToNBT(new NBTTagCompound()));
+                                tStack = GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Americium, 1);
+                                tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
+                            } else if (i == 180) {
                                 //Giant turbine
                                 ItemStack tStack = GT_Utility.copyAmount(3, tTurbine);
                                 tNBT2.setTag("Ingredient.0", tStack.writeToNBT(new NBTTagCompound()));
@@ -501,9 +500,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
                                 tNBT2.setTag("Ingredient.8", tStack.writeToNBT(new NBTTagCompound()));
                                 tStack = GT_OreDictUnificator.get(OrePrefixes.stickLong, GTNH_ExtraMaterials.Weebium, 1);
                                 tNBT2.setTag("Ingredient.4", tStack.writeToNBT(new NBTTagCompound()));
-                            }
-
-                            else if (i == 182) {
+                            } else if (i == 182) {
                                 //Ridiculous turbine, gives back only 2 If* rods on purpose, to make this an expensive choice for the disassembler turbine loophole
                                 ItemStack tStack = GT_Utility.copyAmount(5, tTurbine);
                                 tNBT2.setTag("Ingredient.0", tStack.writeToNBT(new NBTTagCompound()));
@@ -524,7 +521,7 @@ public abstract class GT_MetaTileEntity_MultiBlockBase extends MetaTileEntity {
 
                         }
                     }
-                    ((GT_MetaGenerated_Tool) mInventory[1].getItem()).doDamage(mInventory[1], (long)getDamageToComponent(mInventory[1]) * (long) Math.min(mEUt / this.damageFactorLow, Math.pow(mEUt, this.damageFactorHigh)));
+                    ((GT_MetaGenerated_Tool) mInventory[1].getItem()).doDamage(mInventory[1], (long) getDamageToComponent(mInventory[1]) * (long) Math.min(mEUt / this.damageFactorLow, Math.pow(mEUt, this.damageFactorHigh)));
                     if (mInventory[1].stackSize == 0) mInventory[1] = null;
                 }
             }

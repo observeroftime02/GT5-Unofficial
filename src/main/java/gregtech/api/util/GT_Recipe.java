@@ -1594,6 +1594,8 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
 
             if (aInputs == null) {
                 aInputs = new ItemStack[0];
+            } else {
+                aInputs = GT_Utility.getArrayListWithoutTrailingNulls(aInputs).toArray(new ItemStack[0]);
             }
         	for (ItemStack input : aInputs) {
         		FluidStack inputFluidContent = FluidContainerRegistry.getFluidForFilledItem(input);
@@ -1632,6 +1634,8 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
         	aFluidInputs = adjustedFluidInputs.toArray(new FluidStack[adjustedFluidInputs.size()]);
             if (aOutputs == null) {
                 aOutputs = new ItemStack[0];
+            } else {
+                aOutputs = GT_Utility.getArrayListWithoutTrailingNulls(aOutputs).toArray(new ItemStack[0]);
             }
         	
         	for (ItemStack output : aOutputs) {
@@ -1679,31 +1683,33 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
 				ArrayList<PositionedStack> inputStacks = new ArrayList<PositionedStack>(inputlimit);
 				
 				for (int i = 0; i < itemLimit; i++, j++) {
-                    if (GT_Values.allow_broken_recipemap) {
-                        if (this != null && this.mInputs != null && this.mInputs[i] != null)
-                            inputStacks.add(new FixedPositionedStack(this.mInputs[i].copy(), 48 - j % 3 * 18, (j >= 3 ? 5 : 23)));
-                        else {
-                            if (this.mOutputs != null && this.mOutputs.length > 0 && this.mOutputs[0] != null)
-                                GT_Log.out.println("recipe " + this.toString() + " Output 0:" + this.mOutputs[0].getDisplayName() + " has errored!");
-                            else
-                                GT_Log.out.println("recipe " + this.toString() + " has errored!");
-                            inputStacks.add(new FixedPositionedStack(new ItemStack(Items.command_block_minecart), 48 - j % 3 * 18, (j >= 3 ? 5 : 23)));
-                        }
-                    }else
+                    if( this.mInputs == null || (this.mInputs[i] == null && (i == 0 && itemLimit == 1)) ) {
+                        if (this.mOutputs != null && this.mOutputs.length > 0 && this.mOutputs[0] != null)
+                            GT_Log.out.println("recipe " + this.toString() + " Output 0:" + this.mOutputs[0].getDisplayName() + " has errored!");
+                        else
+                            GT_Log.out.println("recipe " + this.toString() + " has errored!");
+
+                        new Exception("Recipe Fixme").printStackTrace(GT_Log.out);
+                    }
+
+
+                    if ((this.mInputs != null && this.mInputs[i] != null) || !GT_Values.allow_broken_recipemap)
                         inputStacks.add(new FixedPositionedStack(this.mInputs[i].copy(), 48 - j % 3 * 18, (j >= 3 ? 5 : 23)));
+                    else
+                        inputStacks.add(new FixedPositionedStack(new ItemStack(Items.command_block_minecart), 48 - j % 3 * 18, (j >= 3 ? 5 : 23)));
 				}
 				
 				for (int i = 0; i < fluidLimit; i++, j++) {
-                    if (GT_Values.allow_broken_recipemap) {
-                        if (this != null && this.mFluidInputs != null && this.mFluidInputs[i] != null)
-                            inputStacks.add(new FixedPositionedStack(GT_Utility.getFluidDisplayStack(this.mFluidInputs[i], true), 48 - j % 3 * 18, (j >= 3 ? 5 : 23)));
-                        else {
-                            if (this.mOutputs != null && this.mOutputs.length > 0 && this.mOutputs[0] != null)
-                                GT_Log.out.println("recipe " + this.toString() + " Output 0:" + this.mOutputs[0].getDisplayName() + " has errored!");
-                            else
-                                GT_Log.out.println("recipe " + this.toString() + " has errored!");
-                        }
-                    }else
+                    if (this.mFluidInputs == null || this.mFluidInputs[i] == null) {
+                        if (this.mOutputs != null && this.mOutputs.length > 0 && this.mOutputs[0] != null)
+                            GT_Log.out.println("recipe " + this.toString() + " Output 0:" + this.mOutputs[0].getDisplayName() + " has errored!");
+                        else
+                            GT_Log.out.println("recipe " + this.toString() + " has errored!");
+
+                        new Exception("Recipe Fixme").printStackTrace(GT_Log.out);
+                    }
+
+                    if ((this.mFluidInputs != null && this.mFluidInputs[i] != null) || !GT_Values.allow_broken_recipemap)
                         inputStacks.add(new FixedPositionedStack(GT_Utility.getFluidDisplayStack(this.mFluidInputs[i], true), 48 - j % 3 * 18, (j >= 3 ? 5 : 23)));
                 }
 				
