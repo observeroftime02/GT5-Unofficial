@@ -36,6 +36,10 @@ public interface IGT_RecipeAdder {
 
     public boolean addTestmachineRecipe(ItemStack[] aInputs, FluidStack aFluidInputs, FluidStack aFluidOutputs, ItemStack[] aOutputs, int[] aChances, int aDuration, int aEUtick);
 
+    public boolean addMultiblockTestmachineRecipe(ItemStack[] aInputs, FluidStack[] aFluidInputs, FluidStack[] aFluidOutputs, ItemStack[] aOutputs, int[] aChances, int aDuration, int aEUtick);
+
+    public boolean addMultiblockTestmachineRecipe(ItemStack aInput1, ItemStack aInput2, ItemStack aInput3, ItemStack aInput4, FluidStack aFluidInput1, FluidStack aFluidInput2, FluidStack aFluidOutput1, FluidStack aFluidOutput2, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, ItemStack aOutput4, int[] aChances, int aDuration, int aEUtick);
+
 
     /**
      * Adds a Centrifuge Recipe

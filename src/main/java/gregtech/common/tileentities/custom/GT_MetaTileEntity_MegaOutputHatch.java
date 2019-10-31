@@ -8,7 +8,7 @@ import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Hatch_Outpu
 public class GT_MetaTileEntity_MegaOutputHatch extends GT_MetaTileEntity_Hatch_Output {
 
     public GT_MetaTileEntity_MegaOutputHatch(int aID, String aName, String aNameRegional) {
-        super(aID, aName, aNameRegional, 0);
+        super(aID, aName, aNameRegional, 9);
         this.mDescriptionArray[1] = "One output hatch to rule them all...";
         this.mDescriptionArray[2] = "Extra Huge Fluid Output for certain ridiculous machines.";
         this.mDescriptionArray[3] = "Capacity: 2147000000L";

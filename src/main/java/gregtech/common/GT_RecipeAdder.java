@@ -55,6 +55,7 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
             return false;
         }  else {
             GT_Recipe.GT_Recipe_Map.sTestRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, aInput3, aInput4}, new ItemStack[]{aOutput1, aOutput2, aOutput3, aOutput4}, null, new FluidStack[]{aFluidInput}, new FluidStack[]{aFluidOutput}, aDuration, aEUt, 0);
+            GT_Recipe.GT_Recipe_Map.sMultiblockTestmachine.addRecipe(true, new ItemStack[]{aInput1, aInput2, aInput3, aInput4}, new ItemStack[]{aOutput1, aOutput2, aOutput3, aOutput4}, null, new FluidStack[]{aFluidInput}, new FluidStack[]{aFluidOutput}, aDuration, aEUt, 0);
             return true;
         }
 
@@ -66,6 +67,7 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
             return false;
         }  else {
                 GT_Recipe.GT_Recipe_Map.sTestRecipes.addRecipe(false, aInputs, aOutputs, null, null, new FluidStack[]{aFluidInputs}, new FluidStack[]{aFluidOutputs}, aDuration, aEUtick, 0);
+            GT_Recipe.GT_Recipe_Map.sMultiblockTestmachine.addRecipe(false, aInputs, aOutputs, null, new FluidStack[]{aFluidInputs}, new FluidStack[]{aFluidOutputs}, aDuration, aEUtick, 0);
         return true;
         }
     }
@@ -76,9 +78,35 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
             return false;
         }  else {
             GT_Recipe.GT_Recipe_Map.sTestRecipes.addRecipe(false, aInputs, aOutputs, null, aChances, new FluidStack[]{aFluidInputs}, new FluidStack[]{aFluidOutputs}, aDuration, aEUtick, 0);
+            GT_Recipe.GT_Recipe_Map.sMultiblockTestmachine.addRecipe(false, aInputs, aOutputs, null, aChances, new FluidStack[]{aFluidInputs}, new FluidStack[]{aFluidOutputs}, aDuration, aEUtick, 0);
             return true;
         }
     }
+
+    public boolean addMultiblockTestmachineRecipe(ItemStack[] aInputs, FluidStack[] aFluidInputs, FluidStack[] aFluidOutputs, ItemStack[] aOutputs, int[] aChances, int aDuration, int aEUtick){
+        if ((aInputs == null) || (aOutputs == null)) {
+            return false;
+        }  else {
+            GT_Recipe.GT_Recipe_Map.sMultiblockTestmachine.addRecipe(false, aInputs, aOutputs, null, aChances, aFluidInputs, aFluidOutputs, aDuration, aEUtick, 0);
+            //GT_Recipe.GT_Recipe_Map.sMultiblockTestmachine.addRecipe(true, new ItemStack[]{aInput1, aInput2}, new ItemStack[]{aOutput1, aOutput2, aOutput3, aOutput4, aOutput5, aOutput6, }, null, aChances, new FluidStack[]{aFluidInput}, new FluidStack[]{aFluidOutput}, aDuration, aEUt, false);
+
+            return true;
+        }
+    }
+
+    public boolean addMultiblockTestmachineRecipe(ItemStack aInput1, ItemStack aInput2, ItemStack aInput3, ItemStack aInput4, FluidStack aFluidInput1, FluidStack aFluidInput2, FluidStack aFluidOutput1, FluidStack aFluidOutput2, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, ItemStack aOutput4, int[] aChances, int aDuration, int aEUtick){
+        if ((aInput1 == null) || (aOutput1 == null)) {
+            return false;
+        }  else {
+            //GT_Recipe.GT_Recipe_Map.sMultiblockTestmachine.addRecipe(false, aInputs, aOutputs, null, aChances, aFluidInputs, aFluidOutputs, aDuration, aEUtick, 0);
+            GT_Recipe.GT_Recipe_Map.sMultiblockTestmachine.addRecipe(true, new ItemStack[]{aInput1, aInput2, aInput3, aInput4}, new ItemStack[]{aOutput1, aOutput2, aOutput3, aOutput4}, null, aChances, new FluidStack[]{aFluidInput1, aFluidInput2}, new FluidStack[]{aFluidOutput1, aFluidOutput2}, aDuration, aEUtick, 0);
+
+            return true;
+        }
+    }
+
+
+
 
     public boolean addCentrifugeRecipe(ItemStack aInput1, int aInput2, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, ItemStack aOutput4, ItemStack aOutput5, ItemStack aOutput6, int aDuration) {
         return addCentrifugeRecipe(aInput1, aInput2 < 0 ? ItemList.IC2_Fuel_Can_Empty.get(-aInput2, new Object[0]) : aInput2 > 0 ? ItemList.Cell_Empty.get(aInput2, new Object[0]) : null, null, null, aOutput1, aOutput2, aOutput3, aOutput4, aOutput5, aOutput6, null, aDuration, 5);

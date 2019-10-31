@@ -14,6 +14,7 @@ import gregtech.api.util.*;
 import gregtech.common.tileentities.automation.*;
 import gregtech.common.tileentities.boilers.*;
 import gregtech.common.tileentities.custom.GT_MetaTileEntity_MegaOutputHatch;
+import gregtech.common.tileentities.custom.GT_MetaTileEntity_MegaInputtHatch;
 import gregtech.common.tileentities.generators.*;
 import gregtech.common.tileentities.machines.GT_MetaTileEntity_BasicHull_Bronze;
 import gregtech.common.tileentities.machines.GT_MetaTileEntity_BasicHull_BronzeBricks;
@@ -250,6 +251,8 @@ public class GT_Loader_MetaTileEntities implements Runnable {//TODO CHECK CIRCUI
         ItemList.Hatch_Input_ZPM.set(new GT_MetaTileEntity_Hatch_Input(57, "hatch.input.tier.07", "Input Hatch (ZPM)", 7).getStackForm(1L));
         ItemList.Hatch_Input_UV.set(new GT_MetaTileEntity_Hatch_Input(58, "hatch.input.tier.08", "Input Hatch (UV)", 8).getStackForm(1L));
         ItemList.Hatch_Input_MAX.set(new GT_MetaTileEntity_Hatch_Input(59, "hatch.input.tier.09", "Input Hatch (UHV)", 9).getStackForm(1L));
+        ItemList.Hatch_Input_Mega.set(new GT_MetaTileEntity_MegaInputtHatch(31773, "Mega Ultimate Input Hatch", "Mega Ultimate Input Hatch").getStackForm(1L));
+
 
 //        GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Input_ULV.get(1L), bitsd, new Object[]{"CX ", "MI ", 'M', ItemList.Hull_ULV, 'C', OrePrefixes.plate.get(Materials.Rubber), 'I', OrePrefixes.pipeMedium.get(Materials.Copper), 'X', ItemList.Cell_Empty});
 //        GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Input_LV.get(1L), bitsd, new Object[]{"CX ", "MI ", 'M', ItemList.Hull_LV, 'C', ItemList.Electric_Pump_LV,  'I', OrePrefixes.pipeMedium.get(Materials.Bronze), 'X', ItemList.Large_Fluid_Cell_Steel});
@@ -768,7 +771,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {//TODO CHECK CIRCUI
         ItemList.Machine_ZPM_Unboxinator.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(417, "basicmachine.unboxinator.tier.07", "Unboxinator", 7, "Grabs things out of Boxes", GT_Recipe.GT_Recipe_Map.sUnboxinatorRecipes, 1, 2, 0, 0, 1, "Unpackager.png", "", aBoolConst_0, aBoolConst_0, 0, "UNBOXINATOR", new Object[]{"BCB", "VMR", aTextWireCoil, 'M', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, 'R', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.ROBOT_ARM, 'V', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CONVEYOR, 'C', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CIRCUIT, 'W', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE, 'B', OreDictNames.craftingChest}).getStackForm(1L));
         ItemList.Machine_UV_Unboxinator.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(418, "basicmachine.unboxinator.tier.08", "Unboxinator", 8, "Grabs things out of Boxes", GT_Recipe.GT_Recipe_Map.sUnboxinatorRecipes, 1, 2, 0, 0, 1, "Unpackager.png", "", aBoolConst_0, aBoolConst_0, 0, "UNBOXINATOR", new Object[]{"BCB", "VMR", aTextWireCoil, 'M', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, 'R', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.ROBOT_ARM, 'V', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CONVEYOR, 'C', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CIRCUIT, 'W', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE, 'B', OreDictNames.craftingChest}).getStackForm(1L));
 
-        ItemList.Machine_LV_Testmachine.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(429, "basicmachine.Testmachine.tier.01", "Basic Test Machine", 1, "A Basic Machine for Development and testing purpose", GT_Recipe.GT_Recipe_Map.sTestRecipes, 4, 4, 128000, 0, 1, "Testmachine.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(200)), aBoolConst_0, aBoolConst_0, 0, "CHEMICAL_REACTOR", new Object[]{"WEW", "GRG", aTextCableHull, 'M', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, 'R', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.ROTOR, 'E', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.MOTOR, 'C', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CIRCUIT, 'W', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE, 'G', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.GLASS}).getStackForm(1L));
+        ItemList.Machine_LV_Testmachine.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(429, "basicmachine.Testmachine.tier.01", "Basic Test Machine", 1, "A Basic Machine for Development and testing purpose", GT_Recipe.GT_Recipe_Map.sTestRecipes, 4, 4, 128000,  0, 1, "Testmachine.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(200)), aBoolConst_0, aBoolConst_0, 0, "CHEMICAL_REACTOR", new Object[]{"WEW", "GRG", aTextCableHull, 'M', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, 'R', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.ROTOR, 'E', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.MOTOR, 'C', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CIRCUIT, 'W', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE, 'G', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.GLASS}).getStackForm(1L));
 
 
 
@@ -1322,6 +1325,9 @@ public class GT_Loader_MetaTileEntities implements Runnable {//TODO CHECK CIRCUI
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_EV_LightningRod.get(1L), bitsd, new Object[]{"LTL", "TMT", "LTL", 'M', ItemList.Hull_ZPM, 'L', ItemList.Energy_LapotronicOrb2, 'T', ItemList.Transformer_UV_ZPM});
         ItemList.Machine_IV_LightningRod.set(new GT_MetaTileEntity_LightningRod(1176, "basicgenerator.lightningrod.05", "Lightning Rod III", 5).getStackForm(1));
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_IV_LightningRod.get(1L), bitsd, new Object[]{"LTL", "TMT", "LTL", 'M', ItemList.Hull_UV, 'L', ItemList.ZPM2, 'T', ItemList.Transformer_MAX_UV});
+
+        ItemList.Machine_Multi_LargeChemicalReactor.set(new GT_MetaTileEntity_LargeTestmachine(6525, "multimachine.testmachine", "Large Testmachine").getStackForm(1));
+
 
         ItemList.Machine_Multi_LargeChemicalReactor.set(new GT_MetaTileEntity_LargeChemicalReactor(1169, "multimachine.chemicalreactor", "Large Chemical Reactor").getStackForm(1));
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_Multi_LargeChemicalReactor.get(1L), bitsd, new Object[]{"CRC", "PMP", "CBC",
