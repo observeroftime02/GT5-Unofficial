@@ -25,7 +25,9 @@ import gregtech.api.objects.*;
 import gregtech.api.util.*;
 import gregtech.common.entities.GT_Entity_Arrow;
 import gregtech.common.gui.GT_ContainerVolumetricFlask;
+import gregtech.common.gui.GT_ContainerVolumetricFlaskAdvanced;
 import gregtech.common.gui.GT_GUIContainerVolumetricFlask;
+import gregtech.common.gui.GT_GUIContainerVolumetricFlaskAdvanced;
 import gregtech.common.items.GT_MetaGenerated_Tool_01;
 import gregtech.common.items.armor.ModularArmor_Item;
 import gregtech.common.items.armor.gui.*;
@@ -1470,6 +1472,8 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                     return new ContainerElectricArmor1(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getCurrentEquippedItem()));
                 case 10:
                     return new GT_ContainerVolumetricFlask(aPlayer.inventory);
+                case 11:
+                    return new GT_ContainerVolumetricFlaskAdvanced(aPlayer.inventory);
                 default:
                     return getRightItem(aPlayer, ID);
             }
@@ -1526,6 +1530,8 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
                     return new GuiElectricArmor1(new ContainerElectricArmor1(aPlayer, new InventoryArmor(ModularArmor_Item.class, aPlayer.getCurrentEquippedItem())), aPlayer);
                 case 10:
                     return new GT_GUIContainerVolumetricFlask(new GT_ContainerVolumetricFlask(aPlayer.inventory));
+                case 11:
+                    return new GT_GUIContainerVolumetricFlaskAdvanced(new GT_ContainerVolumetricFlaskAdvanced(aPlayer.inventory));
                 default:
                     return getRightItemGui(aPlayer, ID);
             }

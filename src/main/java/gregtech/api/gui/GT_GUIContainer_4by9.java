@@ -10,12 +10,12 @@ public class GT_GUIContainer_4by9 extends GT_GUIContainerMetaTile_Machine {
     private final String mName;
 
     public GT_GUIContainer_4by9(InventoryPlayer aInventoryPlayer, IGregTechTileEntity aTileEntity, String aName) {
-        super(new GT_Container_4by9(aInventoryPlayer, aTileEntity), RES_PATH_GUI + "5by5.png");
+        super(new GT_Container_4by9(aInventoryPlayer, aTileEntity), RES_PATH_GUI + "4by9.png");
         mName = aName;
     }
 
     public GT_GUIContainer_4by9(InventoryPlayer aInventoryPlayer, IGregTechTileEntity aTileEntity, String aName, String aBackground) {
-        super(new GT_Container_4by9(aInventoryPlayer, aTileEntity), RES_PATH_GUI + aBackground + "5by5.png");
+        super(new GT_Container_4by9(aInventoryPlayer, aTileEntity), RES_PATH_GUI + aBackground + "4by9.png");
         mName = aName;
     }
 

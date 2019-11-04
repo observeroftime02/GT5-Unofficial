@@ -88,6 +88,7 @@ public class GT_Loader_Item_Block_And_Fluid
         ItemList.Rotor_IV.set(GT_OreDictUnificator.get(OrePrefixes.rotor, Materials.TungstenSteel, 1L));
 
         ItemList.VOLUMETRIC_FLASK.set(new GT_VolumetricFlask("Volumetric_Flask", "Volumetric flask", 1000));
+        ItemList.VOLUMETRIC_FLASK_ADVANCED.set(new GT_VolumetricFlaskAdvanced("Volumetric_Flask_Advanced", "Advanced Volumetric flask", 128000));
 
         Item tItem = (Item) GT_Utility.callConstructor("gregtech.common.items.GT_SensorCard_Item", 0, null, false, new Object[]{"sensorcard", "GregTech Sensor Card"});
         ItemList.NC_SensorCard.set(tItem == null ? new GT_Generic_Item("sensorcard", "GregTech Sensor Card", "Nuclear Control not installed", false) : tItem);
