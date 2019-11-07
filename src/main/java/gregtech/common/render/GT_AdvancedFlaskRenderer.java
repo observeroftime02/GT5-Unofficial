@@ -2,7 +2,6 @@ package gregtech.common.render;
 
 import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.enums.ItemList;
-import gregtech.common.items.GT_VolumetricFlask;
 import gregtech.common.items.GT_VolumetricFlaskAdvanced;
 import ic2.core.util.DrawUtil;
 import net.minecraft.client.Minecraft;

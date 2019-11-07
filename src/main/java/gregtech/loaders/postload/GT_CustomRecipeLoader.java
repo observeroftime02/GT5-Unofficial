@@ -191,6 +191,7 @@ public class GT_CustomRecipeLoader implements Runnable {
 
         // Circuit Assembler
        // GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{ItemList.Circuit_Board_Wetware_Extreme.get(2L), ItemList.Circuit_Wetwarecomputer.get(2L), ItemList.Circuit_Parts_DiodeSMD.get(32L), ItemList.Weebium_Chip.get(16L), ItemList.Circuit_Chip_Ram.get(64L), GT_OreDictUnificator.get(wireFine, Materials.YttriumBariumCuprate, 24)}, Materials.SolderingAlloy.getMolten(144L), ItemList.Special_Oredrill_Circuit.get(1L), 600, 38400, true);
+          GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{ItemList.VOLUMETRIC_FLASK.get(1L), GT_OreDictUnificator.get(circuit, Materials.Advanced, 1L), GT_OreDictUnificator.get(foil, Materials.Polybenzimidazole, 4L), GT_OreDictUnificator.get(wireFine, Materials.ElectrumFlux, 16L)}, Materials.SolderingAlloy.getMolten(432), ItemList.VOLUMETRIC_FLASK_ADVANCED.get(1L), 2800, (int)GT_Values.V[3]);
 
         // Macerator Recipes
         GT_Values.RA.addPulveriserRecipe(ItemList.Gamer_girl_Panties.get(1L), new ItemStack[]{GT_OreDictUnificator.get(dust, GAGPanties, 1L)}, new int[]{10000}, 120, 480);
