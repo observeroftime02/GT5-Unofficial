@@ -196,7 +196,12 @@ public class GT_TileEntity_Ores extends TileEntity implements ITexturedTileEntit
             return rList;
         }
         if (this.mMetaData < 16000) {
-            rList.add(new ItemStack(aDroppedOre, 1, this.mMetaData));
+            Random randomGenerator  = new Random();
+            int tRandom = randomGenerator.nextInt(aFortune) + 1;
+
+            for (int i = 0; i < tRandom; i++){
+                rList.add(new ItemStack(aDroppedOre, 1, this.mMetaData));
+            }
             return rList;
         }
         Materials aMaterial = GregTech_API.sGeneratedMaterials[(this.mMetaData % 1000)];
