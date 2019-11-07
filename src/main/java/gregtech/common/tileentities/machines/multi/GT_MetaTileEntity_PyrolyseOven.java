@@ -145,7 +145,7 @@ public class GT_MetaTileEntity_PyrolyseOven extends GT_MetaTileEntity_MultiBlock
 
                 if (coilMetaID == 9) {
                     if (tRecipe.mOutputs.length > 0) this.mActualOutput = new ItemStack[]{tRecipe.getOutput(0)};
-                    mActualOutputMult = new ItemStack[]{GT_Utility.mul(2, mActualOutput)};
+                    mActualOutputMult = new ItemStack[]{GT_Utility.mul(2, (Object[]) mActualOutput)};
                     this.mOutputItems = mActualOutputMult;
                 } else {
                     if (tRecipe.mOutputs.length > 0) this.mOutputItems = new ItemStack[]{tRecipe.getOutput(0)};
