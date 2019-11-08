@@ -570,7 +570,6 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
         public static final GT_Recipe_Map sTestRecipes = new GT_Recipe_Map(new HashSet<GT_Recipe>(1170), "gt.recipe.Testmachine", "Testmachine", null, RES_PATH_GUI + "basicmachines/Testmachine", 4, 4, 1, 0, 1, E, 1, E, false, true);
         public static final GT_Recipe_Map sVacuumRecipes = new GT_Recipe_Map(new HashSet<GT_Recipe>(305), "gt.recipe.vacuumfreezer", "Vacuum Freezer", null, RES_PATH_GUI + "basicmachines/Default", 1, 1, 1, 0, 1, E, 1, E, false, true);
         public static final GT_Recipe_Map sChemicalRecipes = new GT_Recipe_Map(new HashSet<GT_Recipe>(1170), "gt.recipe.chemicalreactor", "Chemical Reactor", null, RES_PATH_GUI + "basicmachines/ChemicalReactor", 2, 2, 1, 0, 1, E, 1, E, true, true);
-
         public static final GT_Recipe_Map sMultiblockChemicalRecipes = new GT_Recipe_Map_LargeChemicalReactor();
         public static final GT_Recipe_Map sMultiblockTestmachine = new GT_Recipe_Map_LargeTestmachine();
         public static final GT_Recipe_Map sDistillationRecipes = new GT_Recipe_Map_DistillationTower();
@@ -1859,7 +1858,7 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
 				
 				for (int i = 0; i < itemLimit; i++, j++) {
 
-                    if( this.mInputs == null || (this.mInputs[i] == null && (i == 0 && itemLimit == 1)) ) {
+				    if( this.mInputs == null || (this.mInputs[i] == null && (i == 0 && itemLimit == 1)) ) {
 
                         if (this.mOutputs != null && this.mOutputs.length > 0 && this.mOutputs[0] != null)
                             GT_Log.out.println("recipe " + this.toString() + " Output 0:" + this.mOutputs[0].getDisplayName() + " has errored!");

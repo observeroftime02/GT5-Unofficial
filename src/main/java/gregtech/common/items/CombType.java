@@ -15,6 +15,7 @@ public enum CombType {
     MICA("mica", true, Materials.Mica, 100, 0xc3c3cd, 0xdfdfe6),
 
 
+
     //IC2 Line
     COOLANT("coolant", true, Materials._NULL, 100,0x144F5A, 0x2494A2),
     ENERGY("energy", true, Materials._NULL, 80,0xC11F1F, 0xEBB9B9),
@@ -156,6 +157,7 @@ public enum CombType {
     UUMATTER("UU-Matter", true, Materials.UUMatter, 30, 0x7F00C4, 0xCC6EFF),
     UUAMPLIFIER("UU-Amplifier", true, Materials.UUAmplifier, 30, 0xCC6EFF, 0x7F00C4),
     ANIMEGIRLESSENCE("Anime Girl Essence", true, GTNH_ExtraMaterials.AGEssence, 30, 0xfbb5ff, 0xfccfff);
+
 
 
     public boolean showInList;
