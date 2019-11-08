@@ -20,8 +20,13 @@ import static gregtech.api.enums.Materials.*;
 import static gregtech.api.enums.ItemList.*;
 
 public class GT_CustomCircuitRecipeLoader implements Runnable {
+
+    private final static long mMultiplier = GT_Mod.gregtechproxy.mCircuitMultiplier;
+
     @Override
     public void run() {
+
+
 
         ItemList Dio = ItemList.Circuit_Parts_DiodeSMD;
         ItemList Cap = ItemList.Circuit_Parts_CapacitorSMD;
@@ -39,7 +44,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Circuit_Chip_Ram.get(64L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(144L),
-                Circuit_Wetwaresupercomputer.get(1L), 600, 38400);
+                Circuit_Wetwaresupercomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 600, 38400);
 
         // Bioprocessor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -50,7 +55,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Circuit_Parts_TransistorSMD.get(48L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(144L),
-                Circuit_Bioprocessor.get(1L), 600, 153600);
+                Circuit_Bioprocessor.get(mMultiplier <= 0 ? 1 : mMultiplier), 600, 153600);
 
         // Wetware Processor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -61,7 +66,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Circuit_Parts_TransistorSMD.get(32L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(144L),
-                Circuit_Neuroprocessor.get(1L), 400, 38400);
+                Circuit_Neuroprocessor.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 38400);
 
         // Wetware Processor Assembly
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -72,7 +77,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Circuit_Chip_Ram.get(24),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(144L),
-                Circuit_Wetwarecomputer.get(1L), 600, 38400);
+                Circuit_Wetwarecomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 600, 38400);
 
         // Crystalprocessor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -83,7 +88,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Tra.get(24L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72L),
-                Circuit_Crystalprocessor.get(1L), 200, 9600);
+                Circuit_Crystalprocessor.get(mMultiplier <= 0 ? 1 : mMultiplier), 200, 9600);
 
         // Nanoprocessor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -92,7 +97,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 GT_OreDictUnificator.get(OrePrefixes.bolt, Platinum, 8L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72L),
-                Circuit_Nanoprocessor.get(1L), 200, 600);
+                Circuit_Nanoprocessor.get(mMultiplier <= 0 ? 1 : mMultiplier), 200, 600);
 
         //Quantumprocessor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -101,7 +106,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 GT_OreDictUnificator.get(OrePrefixes.bolt, NiobiumTitanium, 8L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72L),
-                Circuit_Quantumprocessor.get(1L), 200, 2400);
+                Circuit_Quantumprocessor.get(mMultiplier <= 0 ? 1 : mMultiplier), 200, 2400);
 
         // Integrated procesor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -110,7 +115,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 GT_OreDictUnificator.get(OrePrefixes.bolt, AnnealedCopper, 8L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72L),
-                Circuit_Processor.get(1L), 200, 60);
+                Circuit_Processor.get(mMultiplier <= 0 ? 1 : mMultiplier), 200, 60);
 
         //Nanoprocessor Mainframe
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -121,7 +126,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Ram.get(16L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(144L),
-                ItemList.Circuit_Master.get(1L), 1600, 1920);
+                ItemList.Circuit_Master.get(mMultiplier <= 0 ? 1 : mMultiplier), 1600, 1920);
 
         //Crystallprocessor Mainframe
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -132,7 +137,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Ram.get(32L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(144L),
-                Circuit_Crystalmainframe.get(1L), 1600, 30720);
+                Circuit_Crystalmainframe.get(mMultiplier <= 0 ? 1 : mMultiplier), 1600, 30720);
 
         //Elite Nanocomputer
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -143,7 +148,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Ram.get(16L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(144L),
-                Circuit_Elitenanocomputer.get(1L), 400, 600);
+                Circuit_Elitenanocomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 600);
 
         //Nanoprocessor Assembly
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -154,7 +159,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Ram.get(8L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72L),
-                Circuit_Nanocomputer.get(1L), 400, 600);
+                Circuit_Nanocomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 600);
 
         //Crystalprocessor Assembly
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -165,7 +170,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Ram.get(24L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72L),
-                Circuit_Crystalcomputer.get(1L), 400, 9600);
+                Circuit_Crystalcomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 9600);
 
         //Biowareprocessor Assembly
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -176,7 +181,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Ram.get(32L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(144L),
-                Circuit_Biowarecomputer.get(1L), 800, 153600);
+                Circuit_Biowarecomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 800, 153600);
 
         //Ultimate Crystalcomputer
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -187,7 +192,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Circuit_Chip_NAND.get(64L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(144L),
-                Circuit_Ultimatecrystalcomputer.get(1L), 400, 9600);
+                Circuit_Ultimatecrystalcomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 9600);
 
         //Master Quantumcomputer
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -198,7 +203,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Ram.get(16L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72l),
-                Circuit_Masterquantumcomputer.get(1L), 400, 2400);
+                Circuit_Masterquantumcomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 2400);
 
         //Workstation
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -209,7 +214,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 GT_OreDictUnificator.get(OrePrefixes.bolt, Platinum, 16l),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72l),
-                Circuit_Data.get(1L), 400, 120);
+                Circuit_Data.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 120);
 
         //Processor Assembly
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -220,7 +225,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Ram.get(4l),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72l),
-                Circuit_Advanced.get(1l), 400, 96);
+                Circuit_Advanced.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 96);
 
         //Mainframe
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -231,7 +236,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Ram.get(16l),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72l),
-                Circuit_Elite.get(1l), 1600, 480);
+                Circuit_Elite.get(mMultiplier <= 0 ? 1 : mMultiplier), 1600, 480);
 
         //Quantumprocessor Assembly
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -242,7 +247,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Ram.get(4l),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72l),
-                Circuit_Quantumcomputer.get(1L), 400, 2400);
+                Circuit_Quantumcomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 2400);
 
         //Microprocessor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -251,7 +256,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 GT_OreDictUnificator.get(OrePrefixes.bolt, Copper, 4l),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(16l),
-                Circuit_Microprocessor.get(1l), 200, 60);
+                Circuit_Microprocessor.get(mMultiplier <= 0 ? 1 : mMultiplier), 200, 60);
 
         //Quantumprocessor Mainframe
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -262,7 +267,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Ram.get(24l),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(144l),
-                Circuit_Quantummainframe.get(1l), 1600, 7680);
+                Circuit_Quantummainframe.get(mMultiplier <= 0 ? 1 : mMultiplier), 1600, 7680);
 
         //Good Electronic Circuit
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -272,7 +277,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 GT_OreDictUnificator.get(OrePrefixes.wireGt01, Copper, 1l),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(16l),
-                Circuit_Good.get(1l), 300, 30);
+                Circuit_Good.get(mMultiplier <= 0 ? 1 : mMultiplier), 300, 30);
 
         //Good Integrated Circuit
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -282,7 +287,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 GT_OreDictUnificator.get(OrePrefixes.bolt, AnnealedCopper, 4l),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(16l),
-                Circuit_Integrated_Good.get(1l), 400, 24);
+                Circuit_Integrated_Good.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 24);
 
         //Advanced Circuit
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -293,7 +298,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 GT_OreDictUnificator.get(OrePrefixes.bolt, AnnealedCopper, 8),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(16l),
-                GT_ModHandler.getModItem("IC2", "itemPartCircuitAdv", 1L, 0), 600, 32);
+                GT_ModHandler.getModItem("IC2", "itemPartCircuitAdv", mMultiplier <= 0 ? 1 : mMultiplier, 0), 600, 32);
 
         //Electronic Circuit
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -302,7 +307,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Circuit_Primitive.get(2l),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(16l),
-                GT_ModHandler.getModItem("IC2", "itemPartCircuit", 1L, 0), 1200, 32);
+                GT_ModHandler.getModItem("IC2", "itemPartCircuit", mMultiplier <= 0 ? 1 : mMultiplier, 0), 1200, 32);
 
         //Integrated Logic Circuit
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -313,7 +318,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 GT_OreDictUnificator.get(OrePrefixes.bolt, Tin, 2l),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(16l),
-                Circuit_Basic.get(1l), 200, 16);
+                Circuit_Basic.get(mMultiplier <= 0 ? 1 : mMultiplier), 200, 16);
 
         //Data Stick
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -324,7 +329,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 GT_OreDictUnificator.get(OrePrefixes.plate, Plastic, 4l),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72l),
-                Tool_DataStick.get(1l), 1200, 2400);
+                Tool_DataStick.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 2400);
 
         //Data Orb
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
@@ -335,7 +340,37 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Ram.get(64l),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(144l),
-                Tool_DataOrb.get(1l), 1200, 2400);
+                Tool_DataOrb.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 2400);
+
+        //Neuro Processing Unit
+        GT_Values.RA.addAssemblylineRecipe(
+                Circuit_Crystalmainframe.get(1l), 72000, new ItemStack[]{
+                        Circuit_Board_Wetware_Extreme.get(1l),
+                        Circuit_Chip_Stemcell.get(16l),
+                        Circuit_Parts_Reinforced_Glass_Tube.get(16l),
+                        GT_OreDictUnificator.get(OrePrefixes.pipeTiny, Polybenzimidazole, 8l),
+                        GT_OreDictUnificator.get(OrePrefixes.itemCasing, ElectrumFlux, 4l),
+                        GT_OreDictUnificator.get(OrePrefixes.foil, StyreneButadieneRubber, 32l),
+                        GT_OreDictUnificator.get(OrePrefixes.bolt, HSSS, 32l)}, new FluidStack[]{
+                        GrowthMediumSterilized.getFluid(250l),
+                        UUMatter.getFluid(250l),
+                        new FluidStack(FluidRegistry.getFluid("ic2coolant"), 1000)},
+                Circuit_Chip_NeuroCPU.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 80000);
+
+        //Bio Processing Unit
+        GT_Values.RA.addAssemblylineRecipe(
+                Circuit_Chip_NeuroCPU.get(1l), 144000, new ItemStack[]{
+                        Circuit_Board_Bio_Ultra.get(1l),
+                        Circuit_Chip_Biocell.get(32l),
+                        Circuit_Parts_Reinforced_Glass_Tube.get(16l),
+                        GT_OreDictUnificator.get(OrePrefixes.pipeTiny, Polybenzimidazole, 16l),
+                        GT_OreDictUnificator.get(OrePrefixes.itemCasing, Tungsten, 16l),
+                        GT_OreDictUnificator.get(OrePrefixes.foil, Silicone, 64l),
+                        GT_OreDictUnificator.get(OrePrefixes.bolt, TungstenSteel, 32l)}, new FluidStack[]{
+                        BioMediumSterilized.getFluid(500l),
+                        UUMatter.getFluid(500l),
+                        new FluidStack(FluidRegistry.getFluid("ic2coolant"), 2000)},
+                Circuit_Chip_BioCPU.get(mMultiplier <= 0 ? 1 : mMultiplier), 2400, 160000);
 
         if (Loader.isModLoaded("tectech")) {
 
@@ -356,7 +391,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                             SolderingAlloy.getMolten(1440l),
                             BioMediumSterilized.getFluid(1440l),
                             new FluidStack(FluidRegistry.getFluid("ic2coolant"), 10000)},
-                            Circuit_Biowaresupercomputer.get(1l), 4000, 500000);
+                            Circuit_Biowaresupercomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 4000, 500000);
 
 
 
@@ -378,7 +413,26 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                     new FluidStack[]{SolderingAlloy.getMolten(2880l),
                             BioMediumSterilized.getFluid(2880l),
                             new FluidStack(FluidRegistry.getFluid("ic2coolant"), 20000)},
-                    Circuit_Biomainframe.get(1l), 6000, 2000000);
+                    Circuit_Biomainframe.get(mMultiplier <= 0 ? 1 : mMultiplier), 6000, 2000000);
+
+            //Wetware MainFrame
+            TT_recipeAdder.addResearchableAssemblylineRecipe(
+                    Circuit_Wetwaresupercomputer.get(1l),
+                    24000, 64, 50000, 4, new ItemStack[]{
+                            GT_OreDictUnificator.get(OrePrefixes.frameGt, Tritanium, 2l),
+                            Circuit_Wetwaresupercomputer.get(2l),
+                            ZPM_Coil.get(16l),
+                            Cap.get(64l),
+                            Res.get(64l),
+                            Tra.get(64l),
+                            Dio.get(64l),
+                            Ram.get(64l),
+                            GT_OreDictUnificator.get(OrePrefixes.wireGt01, SuperconductorZPM, 64l),
+                            GT_OreDictUnificator.get(OrePrefixes.foil, Silicone, 64l)}, new FluidStack[]{
+                            SolderingAlloy.getMolten(2880l),
+                            new FluidStack(FluidRegistry.getFluid("ic2coolant"), 10000),
+                            Radon.getGas(2500l)},
+                    Circuit_Wetwaremainframe.get(mMultiplier <= 0 ? 1 : mMultiplier), 2000, 300000);
 
 
 
@@ -404,7 +458,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                             SolderingAlloy.getMolten(3760l),
                             Naquadria.getMolten(4032l),
                             new FluidStack(FluidRegistry.getFluid("ic2coolant"), 20000)},
-                    CustomItemList.NanoCircuit.get(1l), 80000,8000000);
+                    CustomItemList.NanoCircuit.get(mMultiplier <= 0 ? 1 : mMultiplier), 80000,8000000);
 
             //Piko Circuit
             TT_recipeAdder.addResearchableAssemblylineRecipe(
@@ -425,7 +479,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                             SolderingAlloy.getMolten(3760l),
                             UUMatter.getFluid(8000l),
                             Osmium.getMolten(1152l)},
-                    CustomItemList.PikoCircuit.get(1l), 100000, 8000000);
+                    CustomItemList.PikoCircuit.get(mMultiplier <= 0 ? 1 : mMultiplier), 100000, 8000000);
 
             //Quantum Circuit
             TT_recipeAdder.addResearchableAssemblylineRecipe(
@@ -445,7 +499,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                             SolderingAlloy.getMolten(3760l),
                             UUMatter.getFluid(24000l),
                             Osmium.getMolten(2304l)},
-                    CustomItemList.QuantumCircuit.get(1l), 20000, 32000000);
+                    CustomItemList.QuantumCircuit.get(mMultiplier <= 0 ? 1 : mMultiplier), 20000, 32000000);
 
         }
 
