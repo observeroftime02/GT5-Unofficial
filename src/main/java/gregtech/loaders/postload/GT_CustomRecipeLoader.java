@@ -31,6 +31,8 @@ public class GT_CustomRecipeLoader implements Runnable {
 
     public void run() {
 
+        new GT_CustomCircuitRecipeLoader().run();
+
         GT_Values.RA.addTestmachineRecipe(GT_OreDictUnificator.get(dust, Materials.Salt, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(dust, Materials.SodiumHydroxide, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, 20, 16);
         GT_Values.RA.addTestmachineRecipe(GT_OreDictUnificator.get(dust, Materials.Iron, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, Materials.Water.getFluid(144), Materials.DilutedHydrochloricAcid.getFluid(144L), GT_OreDictUnificator.get(dust, Materials.Steel, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, 20, 16);
         GT_Values.RA.addTestmachineRecipe(new ItemStack[]{GT_OreDictUnificator.get(dust, Materials.Phosphorus, 1L), GT_OreDictUnificator.get(dust, Materials.Gallium, 1L)}, GT_Values.NF, GT_Values.NF, new ItemStack[]{GT_OreDictUnificator.get(dust, Materials.TricalciumPhosphate, 1L), GT_OreDictUnificator.get(bolt, Materials.HSSG, 2L)}, new int[]{5000, 1000}, 10, (int)GT_Values.V[2]);
