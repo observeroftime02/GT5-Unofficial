@@ -35,6 +35,16 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
         ItemList Coi = ItemList.Circuit_Parts_Coil;
         ItemList Ram = ItemList.Circuit_Chip_Ram;
 
+        //NAND Chip
+        GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
+                Circuit_Board_Phenolic_Good.get(1l),
+                Circuit_Chip_Simple_SoC.get(1l),
+                GT_OreDictUnificator.get(OrePrefixes.bolt, RedAlloy, 2l),
+                GT_OreDictUnificator.get(OrePrefixes.wireFine, Tin, 2l),
+                GT_Utility.getIntegratedCircuit(20)},
+                SolderingAlloy.getMolten(8l),
+                NandChip.get(mMultiplier <= 0 ? 1 : mMultiplier), 300, 120);
+
         //Wetware Supercomputer
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Wetware_Extreme.get(1L),
@@ -60,7 +70,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
         // Wetware Processor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
                 Circuit_Chip_NeuroCPU.get(1L),
-                Circuit_Chip_CrystalSoC.get(1L),
+                Circuit_Chip_CrystalCPU.get(1L),
                 Circuit_Chip_NanoCPU.get(1L),
                 Circuit_Parts_CapacitorSMD.get(32L),
                 Circuit_Parts_TransistorSMD.get(32L),
@@ -81,8 +91,8 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
 
         // Crystalprocessor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Elite.get(1L),
-                Circuit_Chip_CrystalSoC.get(1L),
+                Circuit_Board_Multifiberglass_Elite.get(1L),
+                Circuit_Chip_CrystalCPU.get(1L),
                 Circuit_Chip_NanoCPU.get(2L),
                 Cap.get(24L),
                 Tra.get(24L),
@@ -92,7 +102,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
 
         // Nanoprocessor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Advanced.get(1L),
+                Circuit_Board_Epoxy_Advanced.get(1L),
                 Circuit_Chip_SoC.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.bolt, Platinum, 8L),
                 GT_Utility.getIntegratedCircuit(20)},
@@ -110,7 +120,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
 
         // Integrated procesor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Plastic.get(1L),
+                Circuit_Board_Plastic_Advanced.get(1L),
                 Circuit_Chip_SoC.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.bolt, AnnealedCopper, 8L),
                 GT_Utility.getIntegratedCircuit(20)},
@@ -141,7 +151,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
 
         //Elite Nanocomputer
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Advanced.get(1L),
+                Circuit_Board_Epoxy_Advanced.get(1L),
                 Circuit_Nanocomputer.get(2L),
                 Dio.get(8L),
                 Circuit_Chip_NOR.get(4L),
@@ -152,7 +162,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
 
         //Nanoprocessor Assembly
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Advanced.get(1L),
+                Circuit_Board_Epoxy_Advanced.get(1L),
                 Circuit_Nanoprocessor.get(2L),
                 Coi.get(8L),
                 Cap.get(8L),
@@ -163,7 +173,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
 
         //Crystalprocessor Assembly
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Elite.get(1L),
+                Circuit_Board_Multifiberglass_Elite.get(1L),
                 Circuit_Crystalprocessor.get(2L),
                 Coi.get(24L),
                 Cap.get(32L),
@@ -185,7 +195,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
 
         //Ultimate Crystalcomputer
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Elite.get(1L),
+                Circuit_Board_Multifiberglass_Elite.get(1L),
                 Circuit_Crystalcomputer.get(2L),
                 Ram.get(4L),
                 Circuit_Chip_NOR.get(32L),
