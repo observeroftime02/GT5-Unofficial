@@ -522,85 +522,85 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Empty_Board_Basic.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, Gold, 4L)},
                 IronIIIChloride.getFluid(100L),
-                Circuit_Board_Phenolic_Good.get(1L), 600, 30);
+                Circuit_Board_Phenolic_Good.get(mMultiplier <= 0 ? 1 : mMultiplier), 600, 30);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Empty_Board_Basic.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, Gold, 4L)},
                 SodiumPersulfate.getFluid(200L),
-                Circuit_Board_Phenolic_Good.get(1L), 600, 30);
+                Circuit_Board_Phenolic_Good.get(mMultiplier <= 0 ? 1 : mMultiplier), 600, 30);
 
         //Advanced Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Advanced.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, Electrum, 8L)},
                 IronIIIChloride.getFluid(500L),
-                Circuit_Board_Epoxy_Advanced.get(1L), 1200, 30);
+                Circuit_Board_Epoxy_Advanced.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 30);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Advanced.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, Electrum, 8L)},
                 SodiumPersulfate.getFluid(1000L),
-                Circuit_Board_Epoxy_Advanced.get(1L), 1200, 30);
+                Circuit_Board_Epoxy_Advanced.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 30);
 
         //More Advanced Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Empty_Board_Elite.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, AnnealedCopper, 12L)},
                 IronIIIChloride.getFluid(1000L),
-                Circuit_Board_Fiberglass_Advanced.get(1L), 1200, 30);
+                Circuit_Board_Fiberglass_Advanced.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 30);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Empty_Board_Elite.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, AnnealedCopper, 12L)},
                 SodiumPersulfate.getFluid(2000L),
-                Circuit_Board_Fiberglass_Advanced.get(1L), 1800, 30);
+                Circuit_Board_Fiberglass_Advanced.get(mMultiplier <= 0 ? 1 : mMultiplier), 1800, 30);
 
         //Elite Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Elite.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, Platinum, 12L)},
                 IronIIIChloride.getFluid(2000L),
-                Circuit_Board_Multifiberglass_Elite.get(1L), 1200, 30);
+                Circuit_Board_Multifiberglass_Elite.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 30);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Elite.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, Platinum, 12L)},
                 SodiumPersulfate.getFluid(4000L),
-                Circuit_Board_Multifiberglass_Elite.get(1L), 1200, 30);
+                Circuit_Board_Multifiberglass_Elite.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 30);
 
         //Extreme Wetware Lifesupport Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Wetware.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, NiobiumTitanium, 32L)},
                 IronIIIChloride.getFluid(5000L),
-                Circuit_Board_Wetware_Extreme.get(1L), 1200, 30);
+                Circuit_Board_Wetware_Extreme.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 30);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Wetware.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, NiobiumTitanium, 32L)},
                 SodiumPersulfate.getFluid(10000L),
-                Circuit_Board_Wetware_Extreme.get(1L), 1200, 30);
+                Circuit_Board_Wetware_Extreme.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 30);
 
         //Plastic Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Plastic.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, Copper, 6L)},
                 IronIIIChloride.getFluid(250L),
-                Circuit_Board_Plastic_Advanced.get(1L), 800, 30);
+                Circuit_Board_Plastic_Advanced.get(mMultiplier <= 0 ? 1 : mMultiplier), 800, 30);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Plastic.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, Copper, 6L)},
                 SodiumPersulfate.getFluid(500L),
-                Circuit_Board_Plastic_Advanced.get(1L), 800, 30);
+                Circuit_Board_Plastic_Advanced.get(mMultiplier <= 0 ? 1 : mMultiplier), 800, 30);
 
         //Ultra Bio Mutated Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Bio.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, Neutronium, 48L)},
                 IronIIIChloride.getFluid(7500L),
-                Circuit_Board_Bio_Ultra.get(1L), 3200, 30);
+                Circuit_Board_Bio_Ultra.get(mMultiplier <= 0 ? 1 : mMultiplier), 3200, 30);
         //Ultra Bio Mutated Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Bio.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.foil, Neutronium, 48L)},
                 SodiumPersulfate.getFluid(15000L),
-                Circuit_Board_Bio_Ultra.get(1L), 3200, 30);
+                Circuit_Board_Bio_Ultra.get(mMultiplier <= 0 ? 1 : mMultiplier), 3200, 30);
 
 
 
