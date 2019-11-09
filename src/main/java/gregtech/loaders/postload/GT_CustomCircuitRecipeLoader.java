@@ -202,173 +202,173 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Circuit_Chip_NOR.get(4L),
                 Ram.get(16L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(72l),
+                SolderingAlloy.getMolten(72L),
                 Circuit_Masterquantumcomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 2400);
 
         //Workstation
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Plastic_Advanced.get(1L),
                 Circuit_Advanced.get(2L),
-                Dio.get(4l),
-                Ram.get(16l),
-                GT_OreDictUnificator.get(OrePrefixes.bolt, Platinum, 16l),
+                Dio.get(4L),
+                Ram.get(16L),
+                GT_OreDictUnificator.get(OrePrefixes.bolt, Platinum, 16L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(72l),
+                SolderingAlloy.getMolten(72L),
                 Circuit_Data.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 120);
 
         //Processor Assembly
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Plastic_Advanced.get(1L),
-                Circuit_Processor.get(2l),
-                Coi.get(4l),
-                Cap.get(8l),
-                Ram.get(4l),
+                Circuit_Processor.get(2L),
+                Coi.get(4L),
+                Cap.get(8L),
+                Ram.get(4L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(72l),
+                SolderingAlloy.getMolten(72L),
                 Circuit_Advanced.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 96);
 
         //Mainframe
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                GT_OreDictUnificator.get(OrePrefixes.frameGt, Aluminium, 2l),
-                Circuit_Data.get(2l),
-                Coi.get(12l),
-                Cap.get(16l),
-                Ram.get(16l),
+                GT_OreDictUnificator.get(OrePrefixes.frameGt, Aluminium, 2L),
+                Circuit_Data.get(2L),
+                Coi.get(12L),
+                Cap.get(16L),
+                Ram.get(16L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(72l),
+                SolderingAlloy.getMolten(72L),
                 Circuit_Elite.get(mMultiplier <= 0 ? 1 : mMultiplier), 1600, 480);
 
         //Quantumprocessor Assembly
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Fiberglass_Advanced.get(1l),
-                Circuit_Quantumprocessor.get(2l),
-                Coi.get(12l),
-                Cap.get(16l),
-                Ram.get(4l),
+                Circuit_Board_Fiberglass_Advanced.get(1L),
+                Circuit_Quantumprocessor.get(2L),
+                Coi.get(12L),
+                Cap.get(16L),
+                Ram.get(4L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(72l),
+                SolderingAlloy.getMolten(72L),
                 Circuit_Quantumcomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 2400);
 
         //Microprocessor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Plastic_Advanced.get(1l),
-                Circuit_Chip_SoC.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.bolt, Copper, 4l),
+                Circuit_Board_Plastic_Advanced.get(1L),
+                Circuit_Chip_SoC.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.bolt, Copper, 4L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(16l),
+                SolderingAlloy.getMolten(16L),
                 Circuit_Microprocessor.get(mMultiplier <= 0 ? 1 : mMultiplier), 200, 60);
 
         //Quantumprocessor Mainframe
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                GT_OreDictUnificator.get(OrePrefixes.frameGt, Aluminium, 2l),
-                Circuit_Quantumcomputer.get(2l),
-                Coi.get(24l),
-                Cap.get(48l),
-                Ram.get(24l),
+                GT_OreDictUnificator.get(OrePrefixes.frameGt, Aluminium, 2L),
+                Circuit_Quantumcomputer.get(2L),
+                Coi.get(24L),
+                Cap.get(48L),
+                Ram.get(24L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(144l),
+                SolderingAlloy.getMolten(144L),
                 Circuit_Quantummainframe.get(mMultiplier <= 0 ? 1 : mMultiplier), 1600, 7680);
 
         //Good Electronic Circuit
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Phenolic_Good.get(1),
-                GT_OreDictUnificator.get(OrePrefixes.circuit, Basic, 2l),
-                Dio.get(2l),
-                GT_OreDictUnificator.get(OrePrefixes.wireGt01, Copper, 1l),
+                GT_OreDictUnificator.get(OrePrefixes.circuit, Basic, 2L),
+                Dio.get(2L),
+                GT_OreDictUnificator.get(OrePrefixes.wireGt01, Copper, 1L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(16l),
+                SolderingAlloy.getMolten(16L),
                 Circuit_Good.get(mMultiplier <= 0 ? 1 : mMultiplier), 300, 30);
 
         //Good Integrated Circuit
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Phenolic_Good.get(1l),
-                Circuit_Basic.get(2l),
-                Tra.get(4l),
-                GT_OreDictUnificator.get(OrePrefixes.bolt, AnnealedCopper, 4l),
+                Circuit_Board_Phenolic_Good.get(1L),
+                Circuit_Basic.get(2L),
+                Tra.get(4L),
+                GT_OreDictUnificator.get(OrePrefixes.bolt, AnnealedCopper, 4L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(16l),
+                SolderingAlloy.getMolten(16L),
                 Circuit_Integrated_Good.get(mMultiplier <= 0 ? 1 : mMultiplier), 400, 24);
 
         //Advanced Circuit
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Integrated_Good.get(2l),
-                Circuit_Chip_ILC.get(2l),
-                Ram.get(2l),
-                Tra.get(4l),
+                Circuit_Integrated_Good.get(2L),
+                Circuit_Chip_ILC.get(2L),
+                Ram.get(2L),
+                Tra.get(4L),
                 GT_OreDictUnificator.get(OrePrefixes.bolt, AnnealedCopper, 8),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(16l),
+                SolderingAlloy.getMolten(16L),
                 GT_ModHandler.getModItem("IC2", "itemPartCircuitAdv", mMultiplier <= 0 ? 1 : mMultiplier, 0), 600, 32);
 
         //Electronic Circuit
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Coated_Basic.get(1l),
-                Res.get(2l),
-                Circuit_Primitive.get(2l),
+                Circuit_Board_Coated_Basic.get(1L),
+                Res.get(2L),
+                Circuit_Primitive.get(2L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(16l),
+                SolderingAlloy.getMolten(16L),
                 GT_ModHandler.getModItem("IC2", "itemPartCircuit", mMultiplier <= 0 ? 1 : mMultiplier, 0), 1200, 32);
 
         //Integrated Logic Circuit
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Coated_Basic.get(1l),
-                Circuit_Chip_ILC.get(1l),
-                Res.get(2l),
-                Dio.get(2l),
-                GT_OreDictUnificator.get(OrePrefixes.bolt, Tin, 2l),
+                Circuit_Board_Coated_Basic.get(1L),
+                Circuit_Chip_ILC.get(1L),
+                Res.get(2L),
+                Dio.get(2L),
+                GT_OreDictUnificator.get(OrePrefixes.bolt, Tin, 2L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(16l),
+                SolderingAlloy.getMolten(16L),
                 Circuit_Basic.get(mMultiplier <= 0 ? 1 : mMultiplier), 200, 16);
 
         //Data Stick
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Plastic_Advanced.get(1l),
-                Circuit_Chip_CPU.get(2l),
-                Circuit_Chip_NAND.get(32l),
-                Ram.get(4l),
-                GT_OreDictUnificator.get(OrePrefixes.plate, Plastic, 4l),
+                Circuit_Board_Plastic_Advanced.get(1L),
+                Circuit_Chip_CPU.get(2L),
+                Circuit_Chip_NAND.get(32L),
+                Ram.get(4L),
+                GT_OreDictUnificator.get(OrePrefixes.plate, Plastic, 4L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(72l),
+                SolderingAlloy.getMolten(72L),
                 Tool_DataStick.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 2400);
 
         //Data Orb
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Advanced.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.circuit, Advanced, 2l),
-                Ram.get(4l),
-                Circuit_Chip_NOR.get(32l),
-                Ram.get(64l),
+                Circuit_Board_Advanced.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.circuit, Advanced, 2L),
+                Ram.get(4L),
+                Circuit_Chip_NOR.get(32L),
+                Ram.get(64L),
                 GT_Utility.getIntegratedCircuit(20)},
-                SolderingAlloy.getMolten(144l),
+                SolderingAlloy.getMolten(144L),
                 Tool_DataOrb.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 2400);
 
         //Neuro Processing Unit
         GT_Values.RA.addAssemblylineRecipe(
-                Circuit_Crystalmainframe.get(1l), 72000, new ItemStack[]{
-                        Circuit_Board_Wetware_Extreme.get(1l),
-                        Circuit_Chip_Stemcell.get(16l),
-                        Circuit_Parts_Reinforced_Glass_Tube.get(16l),
-                        GT_OreDictUnificator.get(OrePrefixes.pipeTiny, Polybenzimidazole, 8l),
-                        GT_OreDictUnificator.get(OrePrefixes.itemCasing, ElectrumFlux, 4l),
-                        GT_OreDictUnificator.get(OrePrefixes.foil, StyreneButadieneRubber, 32l),
-                        GT_OreDictUnificator.get(OrePrefixes.bolt, HSSS, 32l)}, new FluidStack[]{
-                        GrowthMediumSterilized.getFluid(250l),
-                        UUMatter.getFluid(250l),
+                Circuit_Crystalmainframe.get(1L), 72000, new ItemStack[]{
+                        Circuit_Board_Wetware_Extreme.get(1L),
+                        Circuit_Chip_Stemcell.get(16L),
+                        Circuit_Parts_Reinforced_Glass_Tube.get(16L),
+                        GT_OreDictUnificator.get(OrePrefixes.pipeTiny, Polybenzimidazole, 8L),
+                        GT_OreDictUnificator.get(OrePrefixes.itemCasing, ElectrumFlux, 4L),
+                        GT_OreDictUnificator.get(OrePrefixes.foil, StyreneButadieneRubber, 32L),
+                        GT_OreDictUnificator.get(OrePrefixes.bolt, HSSS, 32L)}, new FluidStack[]{
+                        GrowthMediumSterilized.getFluid(250L),
+                        UUMatter.getFluid(250L),
                         new FluidStack(FluidRegistry.getFluid("ic2coolant"), 1000)},
                 Circuit_Chip_NeuroCPU.get(mMultiplier <= 0 ? 1 : mMultiplier), 1200, 80000);
 
         //Bio Processing Unit
         GT_Values.RA.addAssemblylineRecipe(
-                Circuit_Chip_NeuroCPU.get(1l), 144000, new ItemStack[]{
-                        Circuit_Board_Bio_Ultra.get(1l),
-                        Circuit_Chip_Biocell.get(32l),
-                        Circuit_Parts_Reinforced_Glass_Tube.get(16l),
-                        GT_OreDictUnificator.get(OrePrefixes.pipeTiny, Polybenzimidazole, 16l),
-                        GT_OreDictUnificator.get(OrePrefixes.itemCasing, Tungsten, 16l),
-                        GT_OreDictUnificator.get(OrePrefixes.foil, Silicone, 64l),
-                        GT_OreDictUnificator.get(OrePrefixes.bolt, TungstenSteel, 32l)}, new FluidStack[]{
-                        BioMediumSterilized.getFluid(500l),
-                        UUMatter.getFluid(500l),
+                Circuit_Chip_NeuroCPU.get(1L), 144000, new ItemStack[]{
+                        Circuit_Board_Bio_Ultra.get(1L),
+                        Circuit_Chip_Biocell.get(32L),
+                        Circuit_Parts_Reinforced_Glass_Tube.get(16L),
+                        GT_OreDictUnificator.get(OrePrefixes.pipeTiny, Polybenzimidazole, 16L),
+                        GT_OreDictUnificator.get(OrePrefixes.itemCasing, Tungsten, 16L),
+                        GT_OreDictUnificator.get(OrePrefixes.foil, Silicone, 64L),
+                        GT_OreDictUnificator.get(OrePrefixes.bolt, TungstenSteel, 32L)}, new FluidStack[]{
+                        BioMediumSterilized.getFluid(500L),
+                        UUMatter.getFluid(500L),
                         new FluidStack(FluidRegistry.getFluid("ic2coolant"), 2000)},
                 Circuit_Chip_BioCPU.get(mMultiplier <= 0 ? 1 : mMultiplier), 2400, 160000);
 
@@ -376,20 +376,20 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
 
             // Bioware Supercomputer
             TT_recipeAdder.addResearchableAssemblylineRecipe(
-                    Circuit_Biowarecomputer.get(1l),
+                    Circuit_Biowarecomputer.get(1L),
                     48000, 128, 500000, 8, new ItemStack[]{
-                            Circuit_Board_Bio_Ultra.get(2l),
-                            Circuit_Biowarecomputer.get(2l),
-                            Tra.get(16l),
-                            Res.get(16l),
-                            Cap.get(16l),
-                            Dio.get(48l),
-                            Circuit_Chip_NOR.get(32l),
-                            Ram.get(64l),
-                            GT_OreDictUnificator.get(OrePrefixes.wireFine, NiobiumTitanium, 32l),
-                            GT_OreDictUnificator.get(OrePrefixes.foil, Silicone, 16l)}, new FluidStack[]{
-                            SolderingAlloy.getMolten(1440l),
-                            BioMediumSterilized.getFluid(1440l),
+                            Circuit_Board_Bio_Ultra.get(2L),
+                            Circuit_Biowarecomputer.get(2L),
+                            Tra.get(16L),
+                            Res.get(16L),
+                            Cap.get(16L),
+                            Dio.get(48L),
+                            Circuit_Chip_NOR.get(32L),
+                            Ram.get(64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireFine, NiobiumTitanium, 32L),
+                            GT_OreDictUnificator.get(OrePrefixes.foil, Silicone, 16L)}, new FluidStack[]{
+                            SolderingAlloy.getMolten(1440L),
+                            BioMediumSterilized.getFluid(1440L),
                             new FluidStack(FluidRegistry.getFluid("ic2coolant"), 10000)},
                             Circuit_Biowaresupercomputer.get(mMultiplier <= 0 ? 1 : mMultiplier), 4000, 500000);
 
@@ -397,41 +397,41 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
 
             //Bio Mainframe
             TT_recipeAdder.addResearchableAssemblylineRecipe(
-                    Circuit_Biowaresupercomputer.get(1l),
+                    Circuit_Biowaresupercomputer.get(1L),
                     96000, 256, 1000000, 16, new ItemStack[]{
                             GT_OreDictUnificator.get(OrePrefixes.frameGt, Tritanium, 4L),
-                            Circuit_Biowaresupercomputer.get(2l),
-                            UV_Coil.get(2l),
-                            Dio.get(64l),
-                            Res.get(64l),
-                            Tra.get(64l),
-                            Cap.get(64l),
-                            Ram.get(64l),
-                            GT_OreDictUnificator.get(OrePrefixes.wireGt01, SuperconductorUHV, 64l),
-                            GT_OreDictUnificator.get(OrePrefixes.foil, Silicone, 64l),
-                            GT_OreDictUnificator.get(OrePrefixes.foil, Polybenzimidazole, 64l)},
-                    new FluidStack[]{SolderingAlloy.getMolten(2880l),
-                            BioMediumSterilized.getFluid(2880l),
+                            Circuit_Biowaresupercomputer.get(2L),
+                            UV_Coil.get(2L),
+                            Dio.get(64L),
+                            Res.get(64L),
+                            Tra.get(64L),
+                            Cap.get(64L),
+                            Ram.get(64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireGt01, SuperconductorUHV, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.foil, Silicone, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.foil, Polybenzimidazole, 64L)},
+                    new FluidStack[]{SolderingAlloy.getMolten(2880L),
+                            BioMediumSterilized.getFluid(2880L),
                             new FluidStack(FluidRegistry.getFluid("ic2coolant"), 20000)},
                     Circuit_Biomainframe.get(mMultiplier <= 0 ? 1 : mMultiplier), 6000, 2000000);
 
             //Wetware MainFrame
             TT_recipeAdder.addResearchableAssemblylineRecipe(
-                    Circuit_Wetwaresupercomputer.get(1l),
+                    Circuit_Wetwaresupercomputer.get(1L),
                     24000, 64, 50000, 4, new ItemStack[]{
-                            GT_OreDictUnificator.get(OrePrefixes.frameGt, Tritanium, 2l),
-                            Circuit_Wetwaresupercomputer.get(2l),
-                            ZPM_Coil.get(16l),
-                            Cap.get(64l),
-                            Res.get(64l),
-                            Tra.get(64l),
-                            Dio.get(64l),
-                            Ram.get(64l),
-                            GT_OreDictUnificator.get(OrePrefixes.wireGt01, SuperconductorZPM, 64l),
-                            GT_OreDictUnificator.get(OrePrefixes.foil, Silicone, 64l)}, new FluidStack[]{
-                            SolderingAlloy.getMolten(2880l),
+                            GT_OreDictUnificator.get(OrePrefixes.frameGt, Tritanium, 2L),
+                            Circuit_Wetwaresupercomputer.get(2L),
+                            ZPM_Coil.get(16L),
+                            Cap.get(64L),
+                            Res.get(64L),
+                            Tra.get(64L),
+                            Dio.get(64L),
+                            Ram.get(64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireGt01, SuperconductorZPM, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.foil, Silicone, 64L)}, new FluidStack[]{
+                            SolderingAlloy.getMolten(2880L),
                             new FluidStack(FluidRegistry.getFluid("ic2coolant"), 10000),
-                            Radon.getGas(2500l)},
+                            Radon.getGas(2500L)},
                     Circuit_Wetwaremainframe.get(mMultiplier <= 0 ? 1 : mMultiplier), 2000, 300000);
 
 
@@ -441,64 +441,64 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
         if (Loader.isModLoaded("dreamcraft")){
             //Nano Circuit
             TT_recipeAdder.addResearchableAssemblylineRecipe(
-                    Circuit_Biomainframe.get(1l),
+                    Circuit_Biomainframe.get(1L),
                     192000, 512, 2000000, 32, new ItemStack[]{
-                            GT_OreDictUnificator.get(OrePrefixes.frameGt, Tritanium, 8l),
-                            Circuit_Biomainframe.get(2l),
-                            Cap.get(64l),
-                            Dio.get(64l),
-                            Res.get(64l),
-                            Tra.get(64l),
-                            Ram.get(64l),
-                            Circuit_Chip_NPIC.get(64l),
-                            GT_OreDictUnificator.get(OrePrefixes.wireGt01, Draconium, 64l),
-                            GT_OreDictUnificator.get(OrePrefixes.wireGt02, SuperconductorUHV, 64l),
-                            GT_OreDictUnificator.get(OrePrefixes.foil, Silicone, 64l),
-                            GT_OreDictUnificator.get(OrePrefixes.foil, Polybenzimidazole, 64l)}, new FluidStack[]{
-                            SolderingAlloy.getMolten(3760l),
-                            Naquadria.getMolten(4032l),
+                            GT_OreDictUnificator.get(OrePrefixes.frameGt, Tritanium, 8L),
+                            Circuit_Biomainframe.get(2L),
+                            Cap.get(64L),
+                            Dio.get(64L),
+                            Res.get(64L),
+                            Tra.get(64L),
+                            Ram.get(64L),
+                            Circuit_Chip_NPIC.get(64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireGt01, Draconium, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireGt02, SuperconductorUHV, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.foil, Silicone, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.foil, Polybenzimidazole, 64L)}, new FluidStack[]{
+                            SolderingAlloy.getMolten(3760L),
+                            Naquadria.getMolten(4032L),
                             new FluidStack(FluidRegistry.getFluid("ic2coolant"), 20000)},
                     CustomItemList.NanoCircuit.get(mMultiplier <= 0 ? 1 : mMultiplier), 80000,8000000);
 
             //Piko Circuit
             TT_recipeAdder.addResearchableAssemblylineRecipe(
-                    CustomItemList.PicoWafer.get(1l),
+                    CustomItemList.PicoWafer.get(1L),
                     384000, 1024, 4000000, 64, new ItemStack[]{
-                            Circuit_Board_Bio_Ultra.get(1l),
-                            CustomItemList.PicoWafer.get(4l),
-                            CustomItemList.NanoCircuit.get(2l),
-                            Tra.get(64l),
-                            Res.get(64l),
-                            Cap.get(64l),
-                            Dio.get(64l),
-                            Circuit_Chip_PPIC.get(64l),
-                            GT_OreDictUnificator.get(OrePrefixes.foil, NiobiumTitanium, 16l),
-                            GT_OreDictUnificator.get(OrePrefixes.bolt, Osmium, 32l),
-                            GT_OreDictUnificator.get(OrePrefixes.bolt, Neutronium, 16l),
-                            GT_OreDictUnificator.get(OrePrefixes.wireFine, Lanthanum, 64l)}, new FluidStack[]{
-                            SolderingAlloy.getMolten(3760l),
-                            UUMatter.getFluid(8000l),
-                            Osmium.getMolten(1152l)},
+                            Circuit_Board_Bio_Ultra.get(1L),
+                            CustomItemList.PicoWafer.get(4L),
+                            CustomItemList.NanoCircuit.get(2L),
+                            Tra.get(64L),
+                            Res.get(64L),
+                            Cap.get(64L),
+                            Dio.get(64L),
+                            Circuit_Chip_PPIC.get(64L),
+                            GT_OreDictUnificator.get(OrePrefixes.foil, NiobiumTitanium, 16L),
+                            GT_OreDictUnificator.get(OrePrefixes.bolt, Osmium, 32L),
+                            GT_OreDictUnificator.get(OrePrefixes.bolt, Neutronium, 16L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireFine, Lanthanum, 64L)}, new FluidStack[]{
+                            SolderingAlloy.getMolten(3760L),
+                            UUMatter.getFluid(8000L),
+                            Osmium.getMolten(1152L)},
                     CustomItemList.PikoCircuit.get(mMultiplier <= 0 ? 1 : mMultiplier), 100000, 8000000);
 
             //Quantum Circuit
             TT_recipeAdder.addResearchableAssemblylineRecipe(
-                    CustomItemList.PikoCircuit.get(1l),
+                    CustomItemList.PikoCircuit.get(1L),
                     720000, 2048, 8000000, 128, new ItemStack[]{
-                            GT_OreDictUnificator.get(OrePrefixes.frameGt, Neutronium, 16l),
-                            CustomItemList.PikoCircuit.get(8l),
-                            Cap.get(64l),
-                            Dio.get(64l),
-                            Tra.get(64l),
-                            Res.get(64l),
-                            Circuit_Chip_QPIC.get(64l),
-                            GT_OreDictUnificator.get(OrePrefixes.foil, NiobiumTitanium, 64l),
-                            GT_OreDictUnificator.get(OrePrefixes.bolt, Indium, 64l),
-                            GT_OreDictUnificator.get(OrePrefixes.wireGt01, Bedrockium, 16l),
-                            GT_OreDictUnificator.get(OrePrefixes.wireFine, Lanthanum, 64l)}, new FluidStack[]{
-                            SolderingAlloy.getMolten(3760l),
-                            UUMatter.getFluid(24000l),
-                            Osmium.getMolten(2304l)},
+                            GT_OreDictUnificator.get(OrePrefixes.frameGt, Neutronium, 16L),
+                            CustomItemList.PikoCircuit.get(8L),
+                            Cap.get(64L),
+                            Dio.get(64L),
+                            Tra.get(64L),
+                            Res.get(64L),
+                            Circuit_Chip_QPIC.get(64L),
+                            GT_OreDictUnificator.get(OrePrefixes.foil, NiobiumTitanium, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.bolt, Indium, 64L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireGt01, Bedrockium, 16L),
+                            GT_OreDictUnificator.get(OrePrefixes.wireFine, Lanthanum, 64L)}, new FluidStack[]{
+                            SolderingAlloy.getMolten(3760L),
+                            UUMatter.getFluid(24000L),
+                            Osmium.getMolten(2304L)},
                     CustomItemList.QuantumCircuit.get(mMultiplier <= 0 ? 1 : mMultiplier), 20000, 32000000);
 
         }
@@ -509,88 +509,88 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
 
         // Good Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Empty_Board_Basic.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Gold, 4l)},
-                IronIIIChloride.getFluid(100l),
-                Circuit_Board_Phenolic_Good.get(1l), 600, 30);
+                Empty_Board_Basic.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Gold, 4L)},
+                IronIIIChloride.getFluid(100L),
+                Circuit_Board_Phenolic_Good.get(1L), 600, 30);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Empty_Board_Basic.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Gold, 4l)},
-                SodiumPersulfate.getFluid(200l),
-                Circuit_Board_Phenolic_Good.get(1l), 600, 30);
+                Empty_Board_Basic.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Gold, 4L)},
+                SodiumPersulfate.getFluid(200L),
+                Circuit_Board_Phenolic_Good.get(1L), 600, 30);
 
         //Advanced Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Advanced.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Electrum, 8l)},
-                IronIIIChloride.getFluid(500l),
-                Circuit_Board_Epoxy_Advanced.get(1l), 1200, 30);
+                Circuit_Board_Advanced.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Electrum, 8L)},
+                IronIIIChloride.getFluid(500L),
+                Circuit_Board_Epoxy_Advanced.get(1L), 1200, 30);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Advanced.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Electrum, 8l)},
-                SodiumPersulfate.getFluid(1000l),
-                Circuit_Board_Epoxy_Advanced.get(1l), 1200, 30);
+                Circuit_Board_Advanced.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Electrum, 8L)},
+                SodiumPersulfate.getFluid(1000L),
+                Circuit_Board_Epoxy_Advanced.get(1L), 1200, 30);
 
         //More Advanced Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Empty_Board_Elite.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, AnnealedCopper, 12l)},
-                IronIIIChloride.getFluid(1000l),
-                Circuit_Board_Fiberglass_Advanced.get(1l), 1200, 30);
+                Empty_Board_Elite.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, AnnealedCopper, 12L)},
+                IronIIIChloride.getFluid(1000L),
+                Circuit_Board_Fiberglass_Advanced.get(1L), 1200, 30);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Empty_Board_Elite.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, AnnealedCopper, 12l)},
-                SodiumPersulfate.getFluid(2000l),
-                Circuit_Board_Fiberglass_Advanced.get(1l), 1800, 30);
+                Empty_Board_Elite.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, AnnealedCopper, 12L)},
+                SodiumPersulfate.getFluid(2000L),
+                Circuit_Board_Fiberglass_Advanced.get(1L), 1800, 30);
 
         //Elite Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Elite.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Platinum, 12l)},
-                IronIIIChloride.getFluid(2000l),
-                Circuit_Board_Multifiberglass_Elite.get(1l), 1200, 30);
+                Circuit_Board_Elite.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Platinum, 12L)},
+                IronIIIChloride.getFluid(2000L),
+                Circuit_Board_Multifiberglass_Elite.get(1L), 1200, 30);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Elite.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Platinum, 12l)},
-                SodiumPersulfate.getFluid(4000l),
-                Circuit_Board_Multifiberglass_Elite.get(1l), 1200, 30);
+                Circuit_Board_Elite.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Platinum, 12L)},
+                SodiumPersulfate.getFluid(4000L),
+                Circuit_Board_Multifiberglass_Elite.get(1L), 1200, 30);
 
         //Extreme Wetware Lifesupport Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Wetware.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, NiobiumTitanium, 32l)},
-                IronIIIChloride.getFluid(5000l),
-                Circuit_Board_Wetware_Extreme.get(1l), 1200, 30);
+                Circuit_Board_Wetware.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, NiobiumTitanium, 32L)},
+                IronIIIChloride.getFluid(5000L),
+                Circuit_Board_Wetware_Extreme.get(1L), 1200, 30);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Wetware.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, NiobiumTitanium, 32l)},
-                SodiumPersulfate.getFluid(10000l),
-                Circuit_Board_Wetware_Extreme.get(1l), 1200, 30);
+                Circuit_Board_Wetware.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, NiobiumTitanium, 32L)},
+                SodiumPersulfate.getFluid(10000L),
+                Circuit_Board_Wetware_Extreme.get(1L), 1200, 30);
 
         //Plastic Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Plastic.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Copper, 6l)},
-                IronIIIChloride.getFluid(250l),
-                Circuit_Board_Plastic_Advanced.get(1l), 800, 30);
+                Circuit_Board_Plastic.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Copper, 6L)},
+                IronIIIChloride.getFluid(250L),
+                Circuit_Board_Plastic_Advanced.get(1L), 800, 30);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Plastic.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Copper, 6l)},
-                SodiumPersulfate.getFluid(500l),
-                Circuit_Board_Plastic_Advanced.get(1l), 800, 30);
+                Circuit_Board_Plastic.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Copper, 6L)},
+                SodiumPersulfate.getFluid(500L),
+                Circuit_Board_Plastic_Advanced.get(1L), 800, 30);
 
         //Ultra Bio Mutated Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Bio.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Neutronium, 48l)},
-                IronIIIChloride.getFluid(7500l),
-                Circuit_Board_Bio_Ultra.get(1l), 3200, 30);
+                Circuit_Board_Bio.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Neutronium, 48L)},
+                IronIIIChloride.getFluid(7500L),
+                Circuit_Board_Bio_Ultra.get(1L), 3200, 30);
         //Ultra Bio Mutated Circuit Board
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                Circuit_Board_Bio.get(1l),
-                GT_OreDictUnificator.get(OrePrefixes.foil, Neutronium, 48l)},
-                SodiumPersulfate.getFluid(15000l),
-                Circuit_Board_Bio_Ultra.get(1l), 3200, 30);
+                Circuit_Board_Bio.get(1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Neutronium, 48L)},
+                SodiumPersulfate.getFluid(15000L),
+                Circuit_Board_Bio_Ultra.get(1L), 3200, 30);
 
 
 
@@ -600,144 +600,138 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
 
             // Primitive
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 2l, 3),
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1l, 36),
-                    Dio.get(4l),
-                    Cap.get(4l),
-                    Tra.get(4l),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 2L, 3),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1L, 36),
+                    Dio.get(4L),
+                    Cap.get(4L),
+                    Tra.get(4L),
                     GT_Utility.getIntegratedCircuit(5)},
-                    SolderingAlloy.getMolten(36l),
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 4), 600, 30);
+                    SolderingAlloy.getMolten(36L),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 4), 600, 30);
 
             // Basic
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 3),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1l, 36),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 4),
-                            Dio.get(8l),
-                            Cap.get(8l),
-                            Tra.get(8l),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 3),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1L, 36),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 4),
+                            Dio.get(8L),
+                            Cap.get(8L),
+                            Tra.get(8L),
                             GT_Utility.getIntegratedCircuit(6)},
-                    SolderingAlloy.getMolten(72l),
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 5), 1500, 120);
+                    SolderingAlloy.getMolten(72L),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 5), 1500, 120);
 
             // Good
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 3),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1l, 36),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 5),
-                            Dio.get(12l),
-                            Cap.get(12l),
-                            Tra.get(12l),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 3),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1L, 36),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 5),
+                            Dio.get(12L),
+                            Cap.get(12L),
+                            Tra.get(12L),
                             GT_Utility.getIntegratedCircuit(6)},
-                    SolderingAlloy.getMolten(108l),
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 6), 2250, 480);
+                    SolderingAlloy.getMolten(108L),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 6), 2250, 480);
 
             // Advanced
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 3),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1l, 36),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 6),
-                            Dio.get(16l),
-                            Cap.get(16l),
-                            Tra.get(16l),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 3),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1L, 36),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 6),
+                            Dio.get(16L),
+                            Cap.get(16L),
+                            Tra.get(16L),
                             GT_Utility.getIntegratedCircuit(6)},
-                    SolderingAlloy.getMolten(108l),
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 7), 3000, 1920);
+                    SolderingAlloy.getMolten(108L),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 7), 3000, 1920);
 
             // Data
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 3),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1l, 36),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 7),
-                            Dio.get(20l),
-                            Cap.get(20l),
-                            Tra.get(20l),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 3),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1L, 36),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 7),
+                            Dio.get(20L),
+                            Cap.get(20L),
+                            Tra.get(20L),
                             GT_Utility.getIntegratedCircuit(6)},
-                    SolderingAlloy.getMolten(108l),
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 8), 3750, 7680);
+                    SolderingAlloy.getMolten(108L),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 8), 3750, 7680);
 
             // Elite
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 3),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1l, 36),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 8),
-                            Dio.get(24l),
-                            Cap.get(24l),
-                            Tra.get(24l),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 3),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1L, 36),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 8),
+                            Dio.get(24L),
+                            Cap.get(24L),
+                            Tra.get(24L),
                             GT_Utility.getIntegratedCircuit(6)},
-                    SolderingAlloy.getMolten(216l),
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 9), 4500, 30720);
+                    SolderingAlloy.getMolten(216L),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 9), 4500, 30720);
 
             // Master
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 3),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1l, 36),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 9),
-                            Dio.get(28l),
-                            Cap.get(28l),
-                            Tra.get(28l),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 3),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1L, 36),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 9),
+                            Dio.get(28L),
+                            Cap.get(28L),
+                            Tra.get(28L),
                             GT_Utility.getIntegratedCircuit(6)},
-                    SolderingAlloy.getMolten(252l),
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 10), 5250, 128880);
+                    SolderingAlloy.getMolten(252L),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 10), 5250, 128880);
 
             // Ultimate
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 3),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1l, 36),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 10),
-                            Dio.get(32l),
-                            Cap.get(32l),
-                            Tra.get(32l),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 3),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1L, 36),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 10),
+                            Dio.get(32L),
+                            Cap.get(32L),
+                            Tra.get(32L),
                             GT_Utility.getIntegratedCircuit(6)},
-                    SolderingAlloy.getMolten(288l),
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 11), 6000, 491520);
+                    SolderingAlloy.getMolten(288L),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 11), 6000, 491520);
 
             // Superconductor
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 3),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1l, 36),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 11),
-                            Dio.get(36l),
-                            Cap.get(36l),
-                            Tra.get(36l),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 3),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1L, 36),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 11),
+                            Dio.get(36L),
+                            Cap.get(36L),
+                            Tra.get(36L),
                             GT_Utility.getIntegratedCircuit(6)},
-                    SolderingAlloy.getMolten(324l),
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 12), 6750, 1966080);
+                    SolderingAlloy.getMolten(324L),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 12), 6750, 1966080);
 
             // Infinite
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 3),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1l, 36),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 12),
-                            Dio.get(40l),
-                            Cap.get(40l),
-                            Tra.get(40l),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 3),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1L, 36),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 12),
+                            Dio.get(40L),
+                            Cap.get(40L),
+                            Tra.get(40L),
                             GT_Utility.getIntegratedCircuit(6)},
-                    SolderingAlloy.getMolten(324l),
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 13), 7500, 7864320);
+                    SolderingAlloy.getMolten(324L),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 13), 7500, 7864320);
 
             // Bio
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 3),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1l, 36),
-                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 13),
-                            Dio.get(44l),
-                            Cap.get(44l),
-                            Tra.get(44l),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 3),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedgem", 1L, 36),
+                            GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 13),
+                            Dio.get(44L),
+                            Cap.get(44L),
+                            Tra.get(44L),
                             GT_Utility.getIntegratedCircuit(6)},
-                    SolderingAlloy.getMolten(396l),
-                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1l, 14), 8250, 7864320);
+                    SolderingAlloy.getMolten(396L),
+                    GT_ModHandler.getModItem("bartworks", "gt.bwMetaGeneratedItem0", 1L, 14), 8250, 7864320);
 
 
 
         }
-
-
-
-
-
-
 
         }
 }
