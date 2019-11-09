@@ -103,7 +103,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
         // Nanoprocessor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Epoxy_Advanced.get(1L),
-                Circuit_Chip_SoC.get(1L),
+                Circuit_Chip_SoC2.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.bolt, Platinum, 8L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72L),
@@ -112,7 +112,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
         //Quantumprocessor
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
                 Circuit_Board_Fiberglass_Advanced.get(1L),
-                Circuit_Chip_SoC.get(1L),
+                Circuit_Chip_SoC2.get(1L),
                 GT_OreDictUnificator.get(OrePrefixes.bolt, NiobiumTitanium, 8L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(72L),
@@ -271,7 +271,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
         //Quantumprocessor Mainframe
         GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
                 GT_OreDictUnificator.get(OrePrefixes.frameGt, Aluminium, 2L),
-                Circuit_Quantumcomputer.get(2L),
+                Circuit_Masterquantumcomputer.get(2L),
                 Coi.get(24L),
                 Cap.get(48L),
                 Ram.get(24L),
@@ -284,7 +284,15 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 Circuit_Board_Phenolic_Good.get(1),
                 GT_OreDictUnificator.get(OrePrefixes.circuit, Basic, 2L),
                 Dio.get(2L),
-                GT_OreDictUnificator.get(OrePrefixes.wireGt01, Copper, 1L),
+                GT_Utility.getIntegratedCircuit(21)},
+                SolderingAlloy.getMolten(16L),
+                Circuit_Good.get(mMultiplier <= 0 ? 1 : mMultiplier), 300, 30);
+
+        //Good Electronic Circuit
+        GT_Values.RA.addCircuitAssemblerRecipe(new ItemStack[]{
+                Circuit_Board_Phenolic_Good.get(1),
+                Circuit_Microprocessor.get(2l),
+                Dio.get(2L),
                 GT_Utility.getIntegratedCircuit(20)},
                 SolderingAlloy.getMolten(16L),
                 Circuit_Good.get(mMultiplier <= 0 ? 1 : mMultiplier), 300, 30);
