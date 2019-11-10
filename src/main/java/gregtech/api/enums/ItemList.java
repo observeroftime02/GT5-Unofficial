@@ -661,8 +661,9 @@ public enum ItemList implements IItemContainer {
     Machine_LV_Hammer, Machine_MV_Hammer, Machine_HV_Hammer, Machine_EV_Hammer, Machine_IV_Hammer,
     Machine_LV_FluidHeater, Machine_MV_FluidHeater, Machine_HV_FluidHeater, Machine_EV_FluidHeater, Machine_IV_FluidHeater,
     Machine_Multi_LargeChemicalReactor, Machine_Multi_LargeTestMachine,
-    Machine_LV_Miner, Machine_MV_Miner, Machine_HV_Miner, Machine_LV_Testmachine, Machine_UHV_Testmachine,
-
+    Machine_LV_Miner, Machine_MV_Miner, Machine_HV_Miner, Machine_LV_AdvancedChemicalReactor, Machine_MV_AdvancedChemicalReactor, Machine_HV_AdvancedChemicalReactor, Machine_EV_AdvancedChemicalReactor,
+    Machine_IV_AdvancedChemicalReactor, Machine_LuV_AdvancedChemicalReactor, Machine_ZPM_AdvancedChemicalReactor, Machine_UV_AdvancedChemicalReactor, Machine_UHV_AdvancedChemicalReactor,
+    Machine_UEV_AdvancedChemicalReactor, Machine_UIV_AdvancedChemicalReactor, Machine_UMV_AdvancedChemicalReactor,
     Neutron_Reflector,
     Reactor_Coolant_He_1, Reactor_Coolant_He_3, Reactor_Coolant_He_6, Reactor_Coolant_NaK_1, Reactor_Coolant_NaK_3, Reactor_Coolant_NaK_6,neutroniumHeatCapacitor,
     ThoriumCell_1, ThoriumCell_2, ThoriumCell_4,

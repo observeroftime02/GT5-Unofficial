@@ -9,6 +9,7 @@ import gregtech.api.enums.*;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
+import ic2.core.Ic2Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -64,6 +65,19 @@ public class GT_CustomCraftingRecipeLoader implements Runnable {
                         'O', ItemList.Reactor_Coolant_Sp_6,
                         'P', ItemList.Electric_Pump_UHV,
                         'T', CustomItemList.Transformer_MAXV_OPV});
+
+
+        /*GT_ModHandler.addCraftingRecipe(ItemList.Machine_LV_AdvancedChemicalReactor.get(1L),
+                bitsd,
+                new Object[]{"WMW", "GRG", "CHC", 'W', cableGt01.get(Materials.Tin),
+                        'M', ItemList.Electric_Motor_LV,
+                        'G', Ic2Items.reinforcedGlass,
+                        'R', rotor.get(Materials.Tin),
+                        'C', circuit.get(Materials.Basic),
+                        'H', ItemList.Electric_Pump_LV});*/
+
+
+
 
     }
 }

@@ -83,6 +83,11 @@ public class GT_Values {
      */
     public static final String[] VN = new String[]{"ULV", "LV", "MV", "HV", "EV", "IV", "LuV", "ZPM", "UV", "UHV", "UEV", "UIV", "UMV", "UXV", "OpV", "MAX"};
 
+    public static final ItemList[] Tier_Motor = new ItemList[]{ItemList.Electric_Motor_LV, ItemList.Electric_Motor_MV, ItemList.Electric_Motor_HV, ItemList.Electric_Motor_EV, ItemList.Electric_Motor_IV, ItemList.Electric_Motor_LuV, ItemList.Electric_Motor_ZPM, ItemList.Electric_Motor_UV, ItemList.Electric_Motor_UHV, ItemList.Electric_Motor_UEV, ItemList.Electric_Motor_UIV};
+
+    public static final ItemList[] Tier_Pump = new ItemList[]{ItemList.Electric_Pump_LV, ItemList.Electric_Pump_MV, ItemList.Electric_Pump_HV, ItemList.Electric_Pump_EV, ItemList.Electric_Pump_IV, ItemList.Electric_Pump_LuV, ItemList.Electric_Pump_ZPM, ItemList.Electric_Pump_UV, ItemList.Electric_Pump_UHV, ItemList.Electric_Pump_UEV, ItemList.Electric_Pump_UIV};
+
+
     /**
      * The long Names for the Voltages
      */

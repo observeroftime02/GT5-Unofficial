@@ -458,7 +458,7 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
             //Nano Circuit
             TT_recipeAdder.addResearchableAssemblylineRecipe(
                     Circuit_Biomainframe.get(1L),
-                    192000, 512, 2000000, 32, new ItemStack[]{
+                    921600, 512, 259375, 32, new ItemStack[]{
                             GT_OreDictUnificator.get(OrePrefixes.frameGt, Tritanium, 8L),
                             Circuit_Biomainframe.get(2L),
                             Cap.get(64L),
@@ -478,8 +478,8 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
 
             //Piko Circuit
             TT_recipeAdder.addResearchableAssemblylineRecipe(
-                    CustomItemList.PicoWafer.get(1L),
-                    384000, 1024, 4000000, 64, new ItemStack[]{
+                    CustomItemList.NanoCircuit.get(1L),
+                    1843200, 1024, 515625, 64, new ItemStack[]{
                             Circuit_Board_Bio_Ultra.get(1L),
                             CustomItemList.PicoWafer.get(4L),
                             CustomItemList.NanoCircuit.get(2L),
@@ -495,12 +495,12 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                             SolderingAlloy.getMolten(3760L),
                             UUMatter.getFluid(8000L),
                             Osmium.getMolten(1152L)},
-                    CustomItemList.PikoCircuit.get(mMultiplier <= 0 ? 1 : mMultiplier), 100000, 8000000);
+                    CustomItemList.PikoCircuit.get(mMultiplier <= 0 ? 1 : mMultiplier), 100000, 33000000);
 
             //Quantum Circuit
             TT_recipeAdder.addResearchableAssemblylineRecipe(
                     CustomItemList.PikoCircuit.get(1L),
-                    720000, 2048, 8000000, 128, new ItemStack[]{
+                    3686400, 2048, 2093750, 128, new ItemStack[]{
                             GT_OreDictUnificator.get(OrePrefixes.frameGt, Neutronium, 16L),
                             CustomItemList.PikoCircuit.get(8L),
                             Cap.get(64L),

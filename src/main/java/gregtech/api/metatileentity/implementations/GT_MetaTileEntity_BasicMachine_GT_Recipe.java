@@ -394,8 +394,14 @@ public class GT_MetaTileEntity_BasicMachine_GT_Recipe extends GT_MetaTileEntity_
                         case 9:
                             aRecipe[i] = ItemList.Electric_Pump_UHV;
                             break;
-                        default:
+                        case 10:
                             aRecipe[i] = ItemList.Electric_Pump_UEV;
+                            break;
+                        case 11:
+                            aRecipe[i] = ItemList.Electric_Pump_UIV;
+                            break;
+                        default:
+                            aRecipe[i] = ItemList.Electric_Pump_UIV;
                             break;
                     }
                     continue;
@@ -462,6 +468,12 @@ public class GT_MetaTileEntity_BasicMachine_GT_Recipe extends GT_MetaTileEntity_
                         case 9:
                             aRecipe[i] = ItemList.Electric_Motor_UHV;
                             break;
+                        case 10:
+                            aRecipe[i] = ItemList.Electric_Motor_UEV;
+                            break;
+                        case 11:
+                            aRecipe[i] = ItemList.Electric_Motor_UIV;
+                            break;
                         default:
                             aRecipe[i] = ItemList.Electric_Motor_UEV;
                             break;
@@ -498,6 +510,12 @@ public class GT_MetaTileEntity_BasicMachine_GT_Recipe extends GT_MetaTileEntity_
                             break;
                         case 9:
                             aRecipe[i] = ItemList.Electric_Piston_UHV;
+                            break;
+                        case 10:
+                            aRecipe[i] = ItemList.Electric_Piston_UEV;
+                            break;
+                        case 11:
+                            aRecipe[i] = ItemList.Electric_Piston_UIV;
                             break;
                         default:
                             aRecipe[i] = ItemList.Electric_Piston_UEV;
@@ -536,6 +554,12 @@ public class GT_MetaTileEntity_BasicMachine_GT_Recipe extends GT_MetaTileEntity_
                         case 9:
                             aRecipe[i] = ItemList.Conveyor_Module_UHV;
                             break;
+                        case 10:
+                            aRecipe[i] = ItemList.Conveyor_Module_UEV;
+                            break;
+                        case 11:
+                            aRecipe[i] = ItemList.Conveyor_Module_UIV;
+                            break;
                         default:
                             aRecipe[i] = ItemList.Conveyor_Module_UEV;
                             break;
@@ -573,8 +597,14 @@ public class GT_MetaTileEntity_BasicMachine_GT_Recipe extends GT_MetaTileEntity_
                         case 9:
                             aRecipe[i] = ItemList.Emitter_UHV;
                             break;
-                        default:
+                        case 10:
                             aRecipe[i] = ItemList.Emitter_UEV;
+                            break;
+                        case 11:
+                            aRecipe[i] = ItemList.Emitter_UIV;
+                            break;
+                        default:
+                            aRecipe[i] = ItemList.Emitter_UIV;
                             break;
                     }
                     continue;
@@ -610,8 +640,14 @@ public class GT_MetaTileEntity_BasicMachine_GT_Recipe extends GT_MetaTileEntity_
                         case 9:
                             aRecipe[i] = ItemList.Sensor_UHV;
                             break;
-                        default:
+                        case 10:
                             aRecipe[i] = ItemList.Sensor_UEV;
+                            break;
+                        case 11:
+                            aRecipe[i] = ItemList.Sensor_UIV;
+                            break;
+                        default:
+                            aRecipe[i] = ItemList.Sensor_UIV;
                             break;
                     }
                     continue;
@@ -647,8 +683,14 @@ public class GT_MetaTileEntity_BasicMachine_GT_Recipe extends GT_MetaTileEntity_
                         case 9:
                             aRecipe[i] = ItemList.Field_Generator_UHV;
                             break;
-                        default:
+                        case 10:
                             aRecipe[i] = ItemList.Field_Generator_UEV;
+                            break;
+                        case 11:
+                            aRecipe[i] = ItemList.Field_Generator_UIV;
+                            break;
+                        default:
+                            aRecipe[i] = ItemList.Field_Generator_UIV;
                             break;
                     }
                     continue;
