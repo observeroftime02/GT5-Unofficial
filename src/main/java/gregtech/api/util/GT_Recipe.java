@@ -1579,12 +1579,12 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
     // start
 
     public static class GT_Recipe_Map_LargeAdvancedChemicalReactor extends GT_Recipe_Map{
-        private static int TOTAL_INPUT_COUNT = 6;
-        private static int OUTPUT_COUNT = 2;
+        private static int TOTAL_INPUT_COUNT = 9;
+        private static int OUTPUT_COUNT = 5;
         private static int FLUID_OUTPUT_COUNT = 4;
 
         public GT_Recipe_Map_LargeAdvancedChemicalReactor() {
-            super(new HashSet<GT_Recipe>(1000), "gt.recipe.largeAdvancedChemicalReactor", "Lg. Adv. Chem Reactor", null, RES_PATH_GUI + "basicmachines/Default", 2, OUTPUT_COUNT, 0, 0, 1, E, 1, E, true, true);
+            super(new HashSet<GT_Recipe>(1000), "gt.recipe.largeAdvancedChemicalReactor", "Lg. Adv. Chem Reactor", null, RES_PATH_GUI + "basicmachines/Default", 9, OUTPUT_COUNT, 0, 0, 1, E, 1, E, true, true);
         }
 
         @Override
