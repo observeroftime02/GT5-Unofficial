@@ -163,7 +163,7 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
             return GT_Recipe.GT_Recipe_Map.sUnboxinatorRecipes;
         } else if (tmp.startsWith("polarizer")) {
             return GT_Recipe.GT_Recipe_Map.sPolarizerRecipes;
-        } else if(tmp.startsWith("press")){
+        } else if (tmp.startsWith("press")){
             return GT_Recipe.GT_Recipe_Map.sPressRecipes;
         } else if (tmp.startsWith("plasmaarcfurnace")) {
             return GT_Recipe.GT_Recipe_Map.sPlasmaArcFurnaceRecipes;
@@ -181,6 +181,10 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
             return GT_Recipe.GT_Recipe_Map.sAmplifiers;
         } else if (tmp.startsWith("circuitassembler")) {
             return GT_Recipe.GT_Recipe_Map.sCircuitAssemblerRecipes;
+        } else if (tmp.startsWith("advancedchemicalreactor")) {
+            return GT_Recipe.GT_Recipe_Map.sAdvancedChemicalReactorRecipes;
+        } else if (tmp.startsWith("massfab")) {
+            return GT_Recipe.GT_Recipe_Map.sMassFabFakeRecipes;
         }
 
         return null;
@@ -400,6 +404,7 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
 
     @Override
     public String[] getInfoData() {
+        //String tmp = mInventory[1].getUnlocalizedName().replaceAll("gt\\.blockmachines\\.basicmachine\\.", "");
         long storedEnergy=0;
         long maxEnergy=0;
         for(GT_MetaTileEntity_Hatch_Energy tHatch : mEnergyHatches) {
@@ -430,6 +435,7 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
                         " "+StatCollector.translateToLocal("GT5U.PA.discount")+": "+
                         EnumChatFormatting.GREEN+(1<<mMult)+EnumChatFormatting.RESET + " x",
                 StatCollector.translateToLocal("GT5U.PA.parallel")+": "+EnumChatFormatting.GREEN+((mInventory[1] != null) ? (mInventory[1].stackSize<<mMult) : 0)+EnumChatFormatting.RESET
+                       // "Machine Installed: " + tmp
         };
     }
 

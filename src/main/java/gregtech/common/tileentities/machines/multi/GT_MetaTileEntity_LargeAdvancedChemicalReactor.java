@@ -19,30 +19,30 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 
-public class GT_MetaTileEntity_LargeTestmachine extends GT_MetaTileEntity_MultiBlockBase {
+public class GT_MetaTileEntity_LargeAdvancedChemicalReactor extends GT_MetaTileEntity_MultiBlockBase {
 	private boolean hasTurboHeatingCoil = false;
 	public static LogHelper Logger = new LogHelper("GT5U");
 
 	private final int CASING_INDEX = 176;
 
-	public GT_MetaTileEntity_LargeTestmachine(int aID, String aName, String aNameRegional) {
+	public GT_MetaTileEntity_LargeAdvancedChemicalReactor(int aID, String aName, String aNameRegional) {
 		super(aID, aName, aNameRegional);
 	}
 
-	public GT_MetaTileEntity_LargeTestmachine(String aName) {
+	public GT_MetaTileEntity_LargeAdvancedChemicalReactor(String aName) {
 		super(aName);
 	}
 
 	@Override
 	public IMetaTileEntity newMetaEntity(IGregTechTileEntity aTileEntity) {
-		return new GT_MetaTileEntity_LargeTestmachine(this.mName);
+		return new GT_MetaTileEntity_LargeAdvancedChemicalReactor(this.mName);
 	}
 
 	@Override
 	public String[] getDescription() {
 		return new String[] {
-				"Controller block for the Large Testmachine",
-				"Has the same recipes as the Testmachine",
+				"Controller block for the Large Advanced Chemical Reactor",
+				"Has the same recipes as the Advanced Chemical Reactor",
 				"Does not lose efficiency when overclocked",
 				"Accepts fluids instead of fluid cells",
 				"Size(WxHxD): 3x3x3",
@@ -63,15 +63,15 @@ public class GT_MetaTileEntity_LargeTestmachine extends GT_MetaTileEntity_MultiB
 		if (aSide == aFacing) {
 			return new ITexture[] {
 					Textures.BlockIcons.casingTexturePages[1][48],
-					new GT_RenderedTexture(aActive ? Textures.BlockIcons.OVERLAY_FRONT_LARGE_CHEMICAL_REACTOR_ACTIVE
-							: Textures.BlockIcons.OVERLAY_FRONT_LARGE_CHEMICAL_REACTOR) };
+					new GT_RenderedTexture(aActive ? Textures.BlockIcons.OVERLAY_FRONT_LARGE_ADVANCED_CHEMICAL_REACTOR_ACTIVE
+							: Textures.BlockIcons.OVERLAY_FRONT_LARGE_ADVANCED_CHEMICAL_REACTOR) };
 		}
 		return new ITexture[] { Textures.BlockIcons.casingTexturePages[1][48] };
 	}
 	
 	@Override
     public Object getClientGUI(int aID, InventoryPlayer aPlayerInventory, IGregTechTileEntity aBaseMetaTileEntity) {
-        return new GT_GUIContainer_MultiMachine(aPlayerInventory, aBaseMetaTileEntity, getLocalName(), "LargeChemicalReactor.png");
+        return new GT_GUIContainer_MultiMachine(aPlayerInventory, aBaseMetaTileEntity, getLocalName(), "LargeAadvancedChemicalReactor.png");
     }
 
 	@Override
@@ -121,7 +121,7 @@ public class GT_MetaTileEntity_LargeTestmachine extends GT_MetaTileEntity_MultiB
 		if (inputs.length > 0 || fluids.length > 0) {
 			long voltage = getMaxInputVoltage();
 			byte tier = (byte) Math.max(1, GT_Utility.getTier(voltage));
-			GT_Recipe recipe = GT_Recipe.GT_Recipe_Map.sMultiblockTestmachine.findRecipe(getBaseMetaTileEntity(), false,
+			GT_Recipe recipe = GT_Recipe.GT_Recipe_Map.sMultiblockAdvancedChemicalReactor.findRecipe(getBaseMetaTileEntity(), false,
 					false, gregtech.api.enums.GT_Values.V[tier], fluids, inputs);
 			if (recipe != null && recipe.isRecipeInputEqual(true, fluids, inputs)) {
 				this.mEfficiency = (10000 - (getIdealStatus() - getRepairStatus()) * 1000);

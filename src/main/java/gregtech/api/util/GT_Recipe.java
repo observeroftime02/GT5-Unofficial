@@ -567,11 +567,11 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
         public static final GT_Recipe_Map sBlastRecipes = new GT_Recipe_Map(new HashSet<GT_Recipe>(800), "gt.recipe.blastfurnace", "Blast Furnace", null, RES_PATH_GUI + "basicmachines/Default", 2, 2, 1, 0, 1, "Heat Capacity: ", 1, " K", false, true);
         public static final GT_Recipe_Map sPrimitiveBlastRecipes = new GT_Recipe_Map(new HashSet<GT_Recipe>(200), "gt.recipe.primitiveblastfurnace", "Primitive Blast Furnace", null, RES_PATH_GUI + "basicmachines/Default", 3, 3, 1, 0, 1, E, 1, E, false, true);
         public static final GT_Recipe_Map sImplosionRecipes = new GT_Recipe_Map(new HashSet<GT_Recipe>(900), "gt.recipe.implosioncompressor", "Implosion Compressor", null, RES_PATH_GUI + "basicmachines/Default", 2, 2, 2, 0, 1, E, 1, E, true, true);
-        public static final GT_Recipe_Map sTestRecipes = new GT_Recipe_Map(new HashSet<GT_Recipe>(1170), "gt.recipe.Testmachine", "Testmachine", null, RES_PATH_GUI + "basicmachines/Testmachine", 4, 4, 1, 0, 1, E, 1, E, false, true);
+        public static final GT_Recipe_Map sAdvancedChemicalReactorRecipes = new GT_Recipe_Map(new HashSet<GT_Recipe>(1170), "gt.recipe.AdvancedChemicalReactor", "Adv. Chemical Reactor", null, RES_PATH_GUI + "basicmachines/AdvancedChemicalReactor", 4, 4, 1, 0, 1, E, 1, E, false, true);
         public static final GT_Recipe_Map sVacuumRecipes = new GT_Recipe_Map(new HashSet<GT_Recipe>(305), "gt.recipe.vacuumfreezer", "Vacuum Freezer", null, RES_PATH_GUI + "basicmachines/Default", 1, 1, 1, 0, 1, E, 1, E, false, true);
         public static final GT_Recipe_Map sChemicalRecipes = new GT_Recipe_Map(new HashSet<GT_Recipe>(1170), "gt.recipe.chemicalreactor", "Chemical Reactor", null, RES_PATH_GUI + "basicmachines/ChemicalReactor", 2, 2, 1, 0, 1, E, 1, E, true, true);
         public static final GT_Recipe_Map sMultiblockChemicalRecipes = new GT_Recipe_Map_LargeChemicalReactor();
-        public static final GT_Recipe_Map sMultiblockTestmachine = new GT_Recipe_Map_LargeTestmachine();
+        public static final GT_Recipe_Map sMultiblockAdvancedChemicalReactor = new GT_Recipe_Map_LargeAdvancedChemicalReactor();
         public static final GT_Recipe_Map sDistillationRecipes = new GT_Recipe_Map_DistillationTower();
         public static final GT_Recipe_Map sCrakingRecipes = new GT_Recipe_Map(new HashSet<GT_Recipe>(70), "gt.recipe.craker", "Oil Cracker", null, RES_PATH_GUI + "basicmachines/OilCracker", 1, 1, 1, 2, 1, E, 1, E, true, true);
         public static final GT_Recipe_Map sPyrolyseRecipes = new GT_Recipe_Map(new HashSet<GT_Recipe>(150), "gt.recipe.pyro", "Pyrolyse Oven", null, RES_PATH_GUI + "basicmachines/Default", 2, 1, 1, 0, 1, E, 1, E, true, true);
@@ -1578,13 +1578,13 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
 
     // start
 
-    public static class GT_Recipe_Map_LargeTestmachine extends GT_Recipe_Map{
+    public static class GT_Recipe_Map_LargeAdvancedChemicalReactor extends GT_Recipe_Map{
         private static int TOTAL_INPUT_COUNT = 6;
         private static int OUTPUT_COUNT = 2;
         private static int FLUID_OUTPUT_COUNT = 4;
 
-        public GT_Recipe_Map_LargeTestmachine() {
-            super(new HashSet<GT_Recipe>(1000), "gt.recipe.largeTestmachine", "Large Testmachine", null, RES_PATH_GUI + "basicmachines/Default", 2, OUTPUT_COUNT, 0, 0, 1, E, 1, E, true, true);
+        public GT_Recipe_Map_LargeAdvancedChemicalReactor() {
+            super(new HashSet<GT_Recipe>(1000), "gt.recipe.largeAdvancedChemicalReactor", "Lg. Adv. Chem Reactor", null, RES_PATH_GUI + "basicmachines/Default", 2, OUTPUT_COUNT, 0, 0, 1, E, 1, E, true, true);
         }
 
         @Override
@@ -1667,12 +1667,12 @@ public class GT_Recipe implements Comparable<GT_Recipe> {
             aOutputs = adjustedOutputs.toArray(new ItemStack[adjustedOutputs.size()]);
             aFluidOutputs = adjustedFluidOutputs.toArray(new FluidStack[adjustedFluidOutputs.size()]);
 
-            return addRecipe(new GT_Recipe_LargeTestmachine(aOptimize, aInputs, aOutputs, aSpecial, aOutputChances, aFluidInputs, aFluidOutputs, aDuration, aEUt, aSpecialValue));
+            return addRecipe(new GT_Recipe_LargeAdvancedChemicalReactor(aOptimize, aInputs, aOutputs, aSpecial, aOutputChances, aFluidInputs, aFluidOutputs, aDuration, aEUt, aSpecialValue));
         }
 
-        private static class GT_Recipe_LargeTestmachine extends GT_Recipe{
+        private static class GT_Recipe_LargeAdvancedChemicalReactor extends GT_Recipe{
 
-            protected GT_Recipe_LargeTestmachine(boolean aOptimize, ItemStack[] aInputs, ItemStack[] aOutputs, Object aSpecialItems, int[] aChances, FluidStack[] aFluidInputs, FluidStack[] aFluidOutputs, int aDuration, int aEUt, int aSpecialValue) {
+            protected GT_Recipe_LargeAdvancedChemicalReactor(boolean aOptimize, ItemStack[] aInputs, ItemStack[] aOutputs, Object aSpecialItems, int[] aChances, FluidStack[] aFluidInputs, FluidStack[] aFluidOutputs, int aDuration, int aEUt, int aSpecialValue) {
                 super(aOptimize, aInputs, aOutputs, aSpecialItems, aChances, aFluidInputs, aFluidOutputs, aDuration, aEUt, aSpecialValue);
             }
 

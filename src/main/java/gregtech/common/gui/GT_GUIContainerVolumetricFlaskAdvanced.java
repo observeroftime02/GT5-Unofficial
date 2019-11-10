@@ -19,7 +19,7 @@ import java.text.ParseException;
 
 @SideOnly(Side.CLIENT)
 public final class GT_GUIContainerVolumetricFlaskAdvanced extends GuiContainer {
-    private static final ResourceLocation BACKGROUND = new ResourceLocation("gregtech:textures/gui/VolumetricFlask.png");
+    private static final ResourceLocation BACKGROUND = new ResourceLocation("gregtech:textures/gui/VolumetricFlaskAdvanced.png");
 
     private GuiIntegerBox amount;
     private GuiButton apply;

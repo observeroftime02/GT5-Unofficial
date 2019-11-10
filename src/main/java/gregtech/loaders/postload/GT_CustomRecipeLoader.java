@@ -1,22 +1,17 @@
 package gregtech.loaders.postload;
 
 import com.dreammaster.gthandler.CustomItemList;
-import com.github.bartimaeusnek.bartworks.common.loaders.ItemRegistry;
 import com.github.bartimaeusnek.bartworks.util.BW_Util;
 import cpw.mods.fml.common.Loader;
-import gregtech.GT_Mod;
 import gregtech.api.enums.*;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import com.github.bartimaeusnek.bartworks.system.material.WerkstoffLoader;
 import com.github.technus.tectech.recipe.TT_recipeAdder;
-import com.github.technus.tectech.thing.metaTileEntity.hatch.GT_MetaTileEntity_Hatch_Rack;
-import scala.xml.MalformedAttributeException;
 
 
 import static gregtech.api.enums.GTNH_ExtraMaterials.*;
@@ -32,28 +27,6 @@ public class GT_CustomRecipeLoader implements Runnable {
     public void run() {
 
         new GT_CustomCircuitRecipeLoader().run();
-
-        GT_Values.RA.addTestmachineRecipe(GT_OreDictUnificator.get(dust, Materials.Salt, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(dust, Materials.SodiumHydroxide, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, 20, 16);
-        GT_Values.RA.addTestmachineRecipe(GT_OreDictUnificator.get(dust, Materials.Iron, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, Materials.Water.getFluid(144), Materials.DilutedHydrochloricAcid.getFluid(144L), GT_OreDictUnificator.get(dust, Materials.Steel, 1L), GT_Values.NI, GT_Values.NI, GT_Values.NI, 20, 16);
-        GT_Values.RA.addTestmachineRecipe(new ItemStack[]{GT_OreDictUnificator.get(dust, Materials.Phosphorus, 1L), GT_OreDictUnificator.get(dust, Materials.Gallium, 1L)}, GT_Values.NF, GT_Values.NF, new ItemStack[]{GT_OreDictUnificator.get(dust, Materials.TricalciumPhosphate, 1L), GT_OreDictUnificator.get(bolt, Materials.HSSG, 2L)}, new int[]{5000, 1000}, 10, (int)GT_Values.V[2]);
-        // GT_Values.RA.addTestmachineRecipe(new ItemStack[]{GT_OreDictUnificator.get(dust, Materials.MysteriousCrystal, 1L), GT_OreDictUnificator.get(dust, Materials.Neutronium, 1L)}, Materials.SulfuricAcid.getFluid(144L), Materials.DilutedSulfuricAcid.getFluid(144L), new ItemStack[]{GT_OreDictUnificator.get(dust, Materials.InfinityCatalyst, 1L), GT_OreDictUnificator.get(dust, Materials.Naquadah, 1L)}, new int[]{7500,7500}, 15, 16);
-        GT_Values.RA.addMultiblockTestmachineRecipe( new ItemStack[]{GT_OreDictUnificator.get(dust, Materials.MysteriousCrystal, 1L), GT_OreDictUnificator.get(dust, Materials.Neutronium, 1L)}, new FluidStack[]{Materials.Water.getFluid(144L), Materials.SulfuricAcid.getFluid(144L)}, new FluidStack[]{Materials.DilutedSulfuricAcid.getFluid(144L)}, new ItemStack[]{GT_OreDictUnificator.get(dust, Materials.InfinityCatalyst, 1L), GT_OreDictUnificator.get(dust, Materials.Naquadah, 1L)}, new int[]{7500,7500,7500}, 10, 10);
-        GT_Values.RA.addMultiblockTestmachineRecipe(new ItemStack[]{GT_OreDictUnificator.get(dust, PMagium, 32L), GT_OreDictUnificator.get(dust, AGEssence, 16L), GT_Utility.getIntegratedCircuit(21)}, new FluidStack[]{Bathwater.getFluid(288L), Materials.Infinity.getMolten(144L)}, new FluidStack[]{Sweat.getFluid(144L), Urine.getFluid(144L)}, new ItemStack[]{GT_OreDictUnificator.get(dustTiny, CursedEntropy, 8), ItemList.Grief_Seed.get(1L)}, new int[]{7500,7500,7500,7500}, 10, 16);
-        GT_Values.RA.addMultiblockTestmachineRecipe(
-                GT_OreDictUnificator.get(dust, Materials.TricalciumPhosphate, 1L),
-                GT_OreDictUnificator.get(dust, Materials.HSSS, 1L),
-                GT_Utility.getIntegratedCircuit(2),
-                GT_Values.NI,
-                Bathwater.getFluid(144l),
-                GT_Values.NF,
-                Urine.getFluid(72L),
-                GT_Values.NF,
-                ItemList.Special_Oredrill_Circuit.get(1L),
-                GT_OreDictUnificator.get(bolt, Materials.Steel, 1L),
-                GT_Values.NI,
-                GT_Values.NI,
-                new int[]{7500,7500,0,0}, 10, 16);
-
 
         // Blast Furnace Recipes
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(dust, Materials.UUAmplifier, 32), GT_Utility.getIntegratedCircuit(11), Materials.Helium.getPlasma(144L), null, GT_OreDictUnificator.get(ingotHot, Materials.UUAmplifier, 1), null, 400, 19753, 10800);

@@ -1,13 +1,11 @@
 package gregtech.loaders.postload;
 
 import com.dreammaster.gthandler.CustomItemList;
-import com.github.bartimaeusnek.bartworks.system.material.CircuitGeneration.BW_Meta_Items;
 import com.github.technus.tectech.recipe.TT_recipeAdder;
 import cpw.mods.fml.common.Loader;
 import gregtech.GT_Mod;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.ItemList;
-import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
@@ -610,7 +608,46 @@ public class GT_CustomCircuitRecipeLoader implements Runnable {
                 SodiumPersulfate.getFluid(15000L),
                 Circuit_Board_Bio_Ultra.get(mMultiplier <= 0 ? 1 : mMultiplier), 3200, 30);
 
+        // Blank Epoxy Circuit Board
+        GT_Values.RA.addAdvancedChemicalReactorRecipe( new ItemStack[]{
+                GT_OreDictUnificator.get(OrePrefixes.plate, Epoxid, 1l),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Gold, 8l)},
+                SulfuricAcid.getFluid(500L), GT_Values.NF, new ItemStack[]{
+                Circuit_Board_Advanced.get(mMultiplier <= 0 ? 1 : mMultiplier)}, 600, 30);
 
+        // Blank Multilayer Fiber-Reinforced Circuit Board
+        GT_Values.RA.addAdvancedChemicalReactorRecipe( new ItemStack[]{
+                Empty_Board_Elite.get(2l),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Platinum, 16l)},
+                SulfuricAcid.getFluid(500L), GT_Values.NF, new ItemStack[]{
+                Circuit_Board_Elite.get(mMultiplier <= 0 ? 1 : mMultiplier)}, 600, 480);
+
+        // Blank Phenolic Circuit Board
+        GT_Values.RA.addAdvancedChemicalReactorRecipe(new ItemStack[]{
+                GT_OreDictUnificator.get(OrePrefixes.dust, Wood, 1L),
+                GT_Utility.getIntegratedCircuit(1)},
+                Glue.getFluid(36L), GT_Values.NF, new ItemStack[]{
+                Empty_Board_Basic.get(mMultiplier <= 0 ? 1 : mMultiplier)}, 300, 16);
+
+        // Blank Fiber-Reinforced Circuit Board
+        GT_Values.RA.addAdvancedChemicalReactorRecipe(new ItemStack[]{
+                GT_OreDictUnificator.get(OrePrefixes.plate, EpoxidFiberReinforced, 1L),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Copper, 12L)},
+                SulfuricAcid.getFluid(500l), GT_Values.NF, new ItemStack[]{
+                Empty_Board_Elite.get(mMultiplier <= 0 ? 1 : mMultiplier)}, 500, 10);
+
+        // Blank Plastic Circuit Board
+        GT_Values.RA.addAdvancedChemicalReactorRecipe(new ItemStack[]{
+                GT_OreDictUnificator.get(OrePrefixes.plate, Polybenzimidazole, 1l),
+                GT_OreDictUnificator.get(OrePrefixes.foil, Copper, 4L)},
+                SulfuricAcid.getFluid(500L), GT_Values.NF, new ItemStack[]{
+                Circuit_Board_Plastic.get(mMultiplier <= 0 ? 1 : mMultiplier)}, 500, 10);
+
+        // Blank Coated Circuit Board
+        GT_Values.RA.addAdvancedChemicalReactorRecipe(new ItemStack[]{
+                GT_OreDictUnificator.get(OrePrefixes.plate, Wood, 1L)},
+                Glue.getFluid(72L), GT_Values.NF, new ItemStack[]{
+                Circuit_Board_Basic.get(mMultiplier <= 0 ? 1 : mMultiplier)}, 250, 16);
 
         // BARTWORKS CIRCUITS //
         if (Loader.isModLoaded("bartworks")) {
