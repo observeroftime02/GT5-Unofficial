@@ -111,6 +111,7 @@ public class GT_CustomCraftingRecipeLoader implements Runnable {
                         'C', TierMaterials.CONSTRUCTION[11].mCircuit,
                         'H', TierMaterials.CONSTRUCTION[11].mHull});
 
+
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_UMV_AdvancedChemicalReactor.get(1L),
                 bitsd,
                 new Object[]{"PRP", "WMW", "CHC",
