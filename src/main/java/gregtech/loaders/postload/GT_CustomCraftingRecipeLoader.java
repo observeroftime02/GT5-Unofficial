@@ -68,7 +68,7 @@ public class GT_CustomCraftingRecipeLoader implements Runnable {
 
 
 
-        GT_ModHandler.addCraftingRecipe(ItemList.Machine_UHV_AdvancedChemicalReactor.get(1L),
+       /* GT_ModHandler.addCraftingRecipe(ItemList.Machine_UHV_AdvancedChemicalReactor.get(1L),
                 bitsd,
                 new Object[]{"PRP", "WMW", "CHC",
                         'P', pipeHuge.get(Materials.MysteriousCrystal),
@@ -76,38 +76,50 @@ public class GT_CustomCraftingRecipeLoader implements Runnable {
                         'W', wireGt08.get(Materials.Ichorium),
                         'M', ItemList.Electric_Motor_UHV,
                         'C', circuit.get(Materials.Infinite),
-                        'H', ItemList.Hull_MAX});
+                        'H', ItemList.Hull_MAX}); */
+
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_UHV_AdvancedChemicalReactor.get(1L),
+                bitsd,
+                new Object[]{ "PRP", "WMW", "CHC",
+                        'P', TierMaterials.CONSTRUCTION[9].mPipe,
+                        'R', TierMaterials.CONSTRUCTION[9].mRotor,
+                        'W', TierMaterials.CONSTRUCTION[9].mCable,
+                        'M', TierMaterials.CONSTRUCTION[9].mMotor,
+                        'C', TierMaterials.CONSTRUCTION[9].mCircuit,
+                        'H', TierMaterials.CONSTRUCTION[9].mHull});
 
 
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_UEV_AdvancedChemicalReactor.get(1L),
                 bitsd,
-                new Object[]{"PRP", "WMW", "CHC",
-                        'P', pipeHuge.get(Materials.NetherStar),
-                        'R', rotor.get(Materials.Draconium),
-                        'W', cableGt08.get(Materials.Draconium),
-                        'M', ItemList.Electric_Motor_UEV,
-                        'C', circuit.get(Materials.Bio),
-                        'H', CustomItemList.Hull_UEV});
+                new Object[]{ "PRP", "WMW", "CHC",
+                        'P', TierMaterials.CONSTRUCTION[10].mPipe,
+                        'R', TierMaterials.CONSTRUCTION[10].mRotor,
+                        'W', TierMaterials.CONSTRUCTION[10].mCable,
+                        'M', TierMaterials.CONSTRUCTION[10].mMotor,
+                        'C', TierMaterials.CONSTRUCTION[10].mCircuit,
+                        'H', TierMaterials.CONSTRUCTION[10].mHull});
+
+
 
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_UIV_AdvancedChemicalReactor.get(1L),
                 bitsd,
                 new Object[]{"PRP", "WMW", "CHC",
-                        'P', pipeHuge.get(Materials.Infinity),
-                        'R', rotor.get(Materials.Infinity),
-                        'W', cableGt08.get(Materials.NetherStar),
-                        'M', ItemList.Electric_Motor_UIV,
-                        'C', CustomItemList.NanoCircuit,
-                        'H', CustomItemList.Hull_UIV});
+                        'P', TierMaterials.CONSTRUCTION[11].mPipe,
+                        'R', TierMaterials.CONSTRUCTION[11].mRotor,
+                        'W', TierMaterials.CONSTRUCTION[11].mCable,
+                        'M', TierMaterials.CONSTRUCTION[11].mMotor,
+                        'C', TierMaterials.CONSTRUCTION[11].mCircuit,
+                        'H', TierMaterials.CONSTRUCTION[11].mHull});
 
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_UMV_AdvancedChemicalReactor.get(1L),
                 bitsd,
                 new Object[]{"PRP", "WMW", "CHC",
-                        'P', pipeHuge.get(Weebium),
-                        'R', rotor.get(Weebium),
-                        'W', cableGt08.get(Weebium),
-                        'M', ItemList.Electric_Motor_UIV,
-                        'C', CustomItemList.PikoCircuit,
-                        'H', CustomItemList.Hull_UMV});
+                        'P', TierMaterials.CONSTRUCTION[12].mPipe,
+                        'R', TierMaterials.CONSTRUCTION[12].mRotor,
+                        'W', TierMaterials.CONSTRUCTION[12].mCable,
+                        'M', TierMaterials.CONSTRUCTION[12].mMotor,
+                        'C', TierMaterials.CONSTRUCTION[12].mCircuit,
+                        'H', TierMaterials.CONSTRUCTION[12].mHull});
 
 
 
