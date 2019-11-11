@@ -232,6 +232,12 @@ public final class SubTag implements ICondition<ISubTagContainer> {
      */
     public static final SubTag ENERGY_ROTATIONAL = getNewSubTag("ENERGY_ROTATIONAL");
     /**
+     * Energy Tag for Rotating Power
+     * Primary = Speed
+     * Secondary = Power
+     */
+    public static final SubTag CONSTRUCTION_MATERIAL = getNewSubTag("CONSTRUCTION_MATERIAL");
+    /**
      * Energy Tag for Steam Power
      * Primary = Steam per Tick
      * Secondary = unused (always 1)

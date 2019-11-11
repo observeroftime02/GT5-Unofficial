@@ -67,14 +67,47 @@ public class GT_CustomCraftingRecipeLoader implements Runnable {
                         'T', CustomItemList.Transformer_MAXV_OPV});
 
 
-        /*GT_ModHandler.addCraftingRecipe(ItemList.Machine_LV_AdvancedChemicalReactor.get(1L),
+
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_UHV_AdvancedChemicalReactor.get(1L),
                 bitsd,
-                new Object[]{"WMW", "GRG", "CHC", 'W', cableGt01.get(Materials.Tin),
-                        'M', ItemList.Electric_Motor_LV,
-                        'G', Ic2Items.reinforcedGlass,
-                        'R', rotor.get(Materials.Tin),
-                        'C', circuit.get(Materials.Basic),
-                        'H', ItemList.Electric_Pump_LV});*/
+                new Object[]{"PRP", "WMW", "CHC",
+                        'P', pipeHuge.get(Materials.MysteriousCrystal),
+                        'R', rotor.get(Materials.Neutronium),
+                        'W', wireGt08.get(Materials.Ichorium),
+                        'M', ItemList.Electric_Motor_UHV,
+                        'C', circuit.get(Materials.Infinite),
+                        'H', ItemList.Hull_MAX});
+
+
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_UEV_AdvancedChemicalReactor.get(1L),
+                bitsd,
+                new Object[]{"PRP", "WMW", "CHC",
+                        'P', pipeHuge.get(Materials.NetherStar),
+                        'R', rotor.get(Materials.Draconium),
+                        'W', cableGt08.get(Materials.Draconium),
+                        'M', ItemList.Electric_Motor_UEV,
+                        'C', circuit.get(Materials.Bio),
+                        'H', CustomItemList.Hull_UEV});
+
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_UIV_AdvancedChemicalReactor.get(1L),
+                bitsd,
+                new Object[]{"PRP", "WMW", "CHC",
+                        'P', pipeHuge.get(Materials.Infinity),
+                        'R', rotor.get(Materials.Infinity),
+                        'W', cableGt08.get(Materials.NetherStar),
+                        'M', ItemList.Electric_Motor_UIV,
+                        'C', CustomItemList.NanoCircuit,
+                        'H', CustomItemList.Hull_UIV});
+
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_UMV_AdvancedChemicalReactor.get(1L),
+                bitsd,
+                new Object[]{"PRP", "WMW", "CHC",
+                        'P', pipeHuge.get(Weebium),
+                        'R', rotor.get(Weebium),
+                        'W', cableGt08.get(Weebium),
+                        'M', ItemList.Electric_Motor_UIV,
+                        'C', CustomItemList.PikoCircuit,
+                        'H', CustomItemList.Hull_UMV});
 
 
 
