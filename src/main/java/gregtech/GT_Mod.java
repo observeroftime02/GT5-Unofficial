@@ -18,9 +18,11 @@ import gregtech.common.GT_DummyWorld;
 import gregtech.common.GT_Network;
 import gregtech.common.GT_Proxy;
 import gregtech.common.GT_RecipeAdder;
+import gregtech.common.blocks.WB_Blocks;
 import gregtech.common.entities.GT_Entity_Arrow;
 import gregtech.common.entities.GT_Entity_Arrow_Potion;
 import gregtech.common.items.GT_MetaGenerated_Tool_01;
+import gregtech.common.items.WB_SimpleItem;
 import gregtech.common.items.armor.components.LoadArmorComponents;
 import gregtech.common.items.behaviors.Behaviour_DataOrb;
 import gregtech.common.tileentities.machines.basic.GT_MetaTileEntity_Massfabricator;
@@ -145,6 +147,8 @@ public class GT_Mod implements IGT_Mod {
 
     @Mod.EventHandler
     public void onPreLoad(FMLPreInitializationEvent aEvent) {
+        WB_Blocks.init();
+        WB_SimpleItem.init();
         Locale.setDefault(Locale.ENGLISH);
         if (GregTech_API.sPreloadStarted) {
             return;
@@ -1007,6 +1011,8 @@ public class GT_Mod implements IGT_Mod {
                 super.displayAllReleventItems(aList);
             }
         };
+
+
     }
 
     @Mod.EventHandler

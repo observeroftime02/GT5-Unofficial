@@ -103,7 +103,6 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.PmCell1.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.Gamer_girl_Panties.get(2L)}, GT_Values.NF, ItemList.PmCell2.get(1L), 2400, 7680);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.PmCell2.get(2L), GT_OreDictUnificator.get(stickLong, Materials.Neutronium, 4L), ItemList.Gamer_girl_Panties.get(2L)}, GT_Values.NF, ItemList.PmCell4.get(1L), 2400, 7680);
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Neutronium, 2L), ItemList.Field_Generator_UHV.get(2L), GT_OreDictUnificator.get(cableGt04, Materials.Bedrockium, 2L), GT_OreDictUnificator.get(circuit, Materials.Quantum, 2L), ItemList.Hull_MAX.get(1L)}, GT_Values.NF, ItemList.Generator_Naquadah_Mark_X.get(1L), 120, 480);
-        GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.stick, Materials.SamariumMagnetic, 2L), GT_OreDictUnificator.get(OrePrefixes.wireFine, Weebium, 32L), GT_Utility.getIntegratedCircuit(2)}, GT_Values.NF, ItemList.UIV_Coil.get(1L), 2000, 32000000);
 
 
         //GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(stick, Materials.Iron, 4L), GT_Utility.getIntegratedCircuit(17)}, GT_Values.NF, GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1L, 12012), 120, 480);

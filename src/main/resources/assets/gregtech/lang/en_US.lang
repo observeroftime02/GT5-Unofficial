@@ -1,3 +1,7 @@
+item.TestItem.name=Simple Test Item
+tile.TestBlock.name=Simple Test Block
+tile.TestOre.name=Simple Test Ore
+
 GT5U.turbine.running.true=Turbine running
 GT5U.turbine.running.false=Turbine stopped
 GT5U.turbine.maintenance.false=No Maintainance issues

@@ -68,15 +68,6 @@ public class GT_CustomCraftingRecipeLoader implements Runnable {
 
 
 
-       /* GT_ModHandler.addCraftingRecipe(ItemList.Machine_UHV_AdvancedChemicalReactor.get(1L),
-                bitsd,
-                new Object[]{"PRP", "WMW", "CHC",
-                        'P', pipeHuge.get(Materials.MysteriousCrystal),
-                        'R', rotor.get(Materials.Neutronium),
-                        'W', wireGt08.get(Materials.Ichorium),
-                        'M', ItemList.Electric_Motor_UHV,
-                        'C', circuit.get(Materials.Infinite),
-                        'H', ItemList.Hull_MAX}); */
 
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_UHV_AdvancedChemicalReactor.get(1L),
                 bitsd,

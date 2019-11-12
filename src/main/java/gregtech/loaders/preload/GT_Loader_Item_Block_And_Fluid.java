@@ -80,6 +80,7 @@ public class GT_Loader_Item_Block_And_Fluid
         new GT_MetaGenerated_Item_99();
         new GT_MetaGenerated_Tool_01();
         new GT_FluidDisplayItem();
+        WB_Blocks.postinit();
 
         ItemList.Rotor_LV.set(GT_OreDictUnificator.get(OrePrefixes.rotor, Materials.Tin, 1L));
         ItemList.Rotor_MV.set(GT_OreDictUnificator.get(OrePrefixes.rotor, Materials.Bronze, 1L));
