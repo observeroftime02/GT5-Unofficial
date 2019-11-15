@@ -5,6 +5,7 @@ import gregtech.api.enums.*;
 import gregtech.api.items.GT_MetaGenerated_Item_X32;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.common.covers.GT_Cover_SolarPanel;
+import gregtech.common.covers.GT_Cover_SolarPanel_MultiAmp;
 import net.minecraft.item.Item;
 
 public class GT_MetaGenerated_Item_03
@@ -244,18 +245,18 @@ public class GT_MetaGenerated_Item_03
 
 
 
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_LVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_LVx16), new GT_Cover_SolarPanel(32, true, 16L));
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_MVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_MVx16), new GT_Cover_SolarPanel(128, true, 16L));
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_HVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_HVx16), new GT_Cover_SolarPanel(512, true, 16L));
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_EVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_EVx16), new GT_Cover_SolarPanel(2048, true, 16L));
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_IVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_IVx16), new GT_Cover_SolarPanel(8192, true, 16L));
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_LuVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_LuVx16), new GT_Cover_SolarPanel(32768, true, 16L));
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_ZPMx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_ZPMx16), new GT_Cover_SolarPanel(131072, true, 16L));
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UVx16), new GT_Cover_SolarPanel(524288, true, 16L));
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UHVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UHVx16), new GT_Cover_SolarPanel(2097152, true, 16L));
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UEVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UEVx16), new GT_Cover_SolarPanel(8388608, true, 16L));
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UIVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UIVx16), new GT_Cover_SolarPanel(33554432, true, 16L));
-        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UMVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UMVx16), new GT_Cover_SolarPanel(134217728, true, 16L));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_LVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_LVx16), new GT_Cover_SolarPanel_MultiAmp(32, true, 16L));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_MVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_MVx16), new GT_Cover_SolarPanel_MultiAmp(128, true, 16L));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_HVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_HVx16), new GT_Cover_SolarPanel_MultiAmp(512, true, 16L));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_EVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_EVx16), new GT_Cover_SolarPanel_MultiAmp(2048, true, 16L));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_IVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_IVx16), new GT_Cover_SolarPanel_MultiAmp(8192, true, 16L));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_LuVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_LuVx16), new GT_Cover_SolarPanel_MultiAmp(32768, true, 16L));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_ZPMx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_ZPMx16), new GT_Cover_SolarPanel_MultiAmp(131072, true, 16L));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UVx16), new GT_Cover_SolarPanel_MultiAmp(524288, true, 16L));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UHVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UHVx16), new GT_Cover_SolarPanel_MultiAmp(2097152, true, 16L));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UEVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UEVx16), new GT_Cover_SolarPanel_MultiAmp(8388608, true, 16L));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UIVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UIVx16), new GT_Cover_SolarPanel_MultiAmp(33554432, true, 16L));
+        GregTech_API.registerCover(ItemList.Cover_SolarPanel_UMVx16.get(1L, new Object[0]), new GT_RenderedTexture(Textures.BlockIcons.SOLARPANEL_UMVx16), new GT_Cover_SolarPanel_MultiAmp(134217728, true, 16L));
 
 
 

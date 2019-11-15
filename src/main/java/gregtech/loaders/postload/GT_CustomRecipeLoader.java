@@ -7,6 +7,7 @@ import gregtech.api.enums.*;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
+import gregtech.common.items.WB_SimpleItem;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -188,12 +189,13 @@ public class GT_CustomRecipeLoader implements Runnable {
         GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dust, CursedEntropy, 1L), Materials.Americium.getMolten(8L), GT_OreDictUnificator.get(gem, CursedEntropy, 1L), 7500, 1000,131000);
         GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dust, CursedEntropy, 1L), WerkstoffLoader.Ruthenium.getMolten(16), GT_OreDictUnificator.get(gem, CursedEntropy, 1L), 7500, 1200,131000);
 
+        GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(dust, Materials.Sunnarium, 16L), Materials.Infinity.getMolten(288L), GT_ModHandler.getModItem("gregtech", "SolarDiode", 1L, 0), 7500, 1200, 650);
 
         new GT_CustomCraftingRecipeLoader().run();
            }
 
     public void run2(){
-
+        System.out.println("Loading Assline and Research station recipes now");
 
         //Assline Recipes
         if (Loader.isModLoaded("harvestcraft")) {

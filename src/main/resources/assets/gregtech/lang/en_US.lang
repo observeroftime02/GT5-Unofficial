@@ -1,4 +1,5 @@
 item.TestItem.name=Simple Test Item
+item.SolarDiode.name=High Energy Solar Diode
 tile.TestBlock.name=Simple Test Block
 tile.TestOre.name=Simple Test Ore
 
