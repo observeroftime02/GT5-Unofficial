@@ -402,8 +402,6 @@ public class GT_CropLoader
             }, ItemList.Dorito_Chip.get(1L), null);
 
 
-
-
         } catch (Throwable e) {
             GT_Log.err.println("GT_Mod: Failed to register Crops to IC2.");
             e.printStackTrace(GT_Log.err);

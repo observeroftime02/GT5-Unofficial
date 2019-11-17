@@ -268,7 +268,6 @@ public class GT_Assemblyline_Server {
 							break;
 
 
-
 						case 9:
 							mMats = new Materials[]{
 									GTNH_ExtraMaterials.Weebium,
@@ -278,8 +277,6 @@ public class GT_Assemblyline_Server {
 									Materials.Mica
 							};
 							break;
-
-
 
 
 					}
