@@ -176,6 +176,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     public boolean mExplosionItemDrop = false;
     public boolean mKeepOriginalVeins = true;
     public boolean mCropProcessingCleanroomReq = true;
+    public long mCircuitMultiplier = 1;
     public int mVeinDensityModifier = 8;
     public int mSizeModifier = 16;
     public int mSkeletonsShootGTArrows = 16;
