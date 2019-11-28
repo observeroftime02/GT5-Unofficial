@@ -820,7 +820,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {//TODO CHECK CIRCUI
         //GT_ModHandler.addCraftingRecipe(ItemList.Machine_ZPM_RockBreaker.get(1L), bitsd, new Object[]{"PED", aTextWireHull, "GGG", 'M', ItemList.Hull_ZPM, 'D', OreDictNames.craftingGrinder, 'E', ItemList.Electric_Motor_ZPM, 'P', ItemList.Electric_Piston_ZPM, 'C', OrePrefixes.circuit.get(Materials.Ultimate), 'W', OrePrefixes.cableGt01.get(Materials.Naquadah), 'G', Ic2Items.reinforcedGlass});
         //GT_ModHandler.addCraftingRecipe(ItemList.Machine_UV_RockBreaker.get(1L), bitsd, new Object[]{"PED", aTextWireHull, "GGG", 'M', ItemList.Hull_UV, 'D', OreDictNames.craftingGrinder, 'E', ItemList.Electric_Motor_UV, 'P', ItemList.Electric_Piston_UV, 'C', OrePrefixes.circuit.get(Materials.Superconductor), 'W', OrePrefixes.cableGt01.get(Materials.NaquadahAlloy), 'G', Ic2Items.reinforcedGlass});
 
-        //test
+
 
         ItemList.Machine_LV_Disassembler.set(new GT_MetaTileEntity_Disassembler(451, "basicmachine.disassembler.tier.01", "Basic Disassembler", 1).getStackForm(1L));
         ItemList.Machine_MV_Disassembler.set(new GT_MetaTileEntity_Disassembler(452, "basicmachine.disassembler.tier.02", "Advanced Disassembler", 2).getStackForm(1L));
